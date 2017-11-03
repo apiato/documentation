@@ -125,7 +125,7 @@ Important things to remember when contributing:
 * **Send coherent history** make sure each individual commit in your pull request is meaningful. If you had to make multiple intermediate commits while developing, please squash them before submitting.
 * **Write tests** (classes or functions) as required. Your changes must be covered with Tests (Functional or Unit). (Code without tests could be accepted in some cases).
 * **Ensure that tests pass** before submitting your pull request. We have Travis CI automatically running tests for pull requests. However, running the tests locally `vendor/bin/phpunit` after adding your changes will save you time.
-* **Update the Documentation** `docs/_docs/*`. 
+* **Update the Documentation** `github.com/apiato/documentation/tree/master/_docs`. 
 * **Update the CHANGELOG** `CHANGELOG.md`.
 * **Submit one feature/change per pull request.** If you have multiple features/changes you wish to submit, please break them up into separate pull requests.
 * **Push additional changes to the same PR** once you have a pull request for a branch, you can push additional changes to the same branch and they will be added to the pull request automatically. You should not create a new pull request for the same branch.
@@ -323,13 +323,29 @@ Edit > Commit > Push > PR :)
 <a name="Contributing-Documentation"></a>
 ## Contributing to the Documentation
 
-The documentation is generated using [Jekyll](https://jekyllrb.com/) and it lives in the `/docs` folder. 
+The documentation is generated using [Jekyll](https://jekyllrb.com/) and lives in the [documentation repository (apiato/documentation)](https://github.com/apiato/documentation), in the `_docs/` folder. 
+
+All you have to do is navigate to `_docs/` folder, find the markdown `.md` file that you want to update *(all files are named as they are in the site menu)*, update or add the text, the commit.
+
+> You do not need to build the site locally. Just edit the markdown files and submit your PR. Github will build the site for us. 
+
+
+### Documentation Tips:
+
+- The styles are in `main.scss` and `_sass/*`.
+- The Layout `_layouts/default.html`.
+- The docs folders `_docs/*` do not represent the categories displayed in the site. 
+- To add new category for a file `category: "New Category"` (usually defined in each documentation readme).
+you must add the category name to `_config.yml` under `categories-order` in order to appear in the site. 
+- To set a link, use the internal links as follow: `[your-text]( { { site.baseurl } } { % link _docs/path/file.md % } )`. NOTE: remove the spaces between the tags.
+
+
 
 ### Run the docs locally: 
 
 #### In Docker:
 
-1. `cd .../apiato/docs`
+1. `git clone https://github.com/apiato/documentation .`
 2. `docker run -v $PWD:/srv/jekyll -p 4000:4000 -it jekyll/jekyll bash` 
 3. `bundle install`
 4. `jekyll serve`
@@ -338,26 +354,11 @@ The documentation is generated using [Jekyll](https://jekyllrb.com/) and it live
 #### Natively:
 
 1. Install (Jekyll)[https://jekyllrb.com/] and its dependencies.
-2. `cd docs/`
+2. `git clone https://github.com/apiato/documentation .`
 3. `bundle install`
 4. `bundle exec jekyll serve`
 5. Browse `http://localhost:4000`
 6. Finally `jekyll build`
-
-### Documentation Tips:
-
-The content of the documentation can be found in the `docs/_docs` folder.
-
-The styles are in `main.scss` and `docs/_sass/*`.
-
-The Layout `docs/_layouts/default.html`.
-
-The docs folders `_docs/*` do not represent the categories displayed in the site. 
-
-To add new category for a file `category: "New Category"` (usually defined in each documentation readme) 
-you must add the category name to `docs/_config.yml` under `categories-order` in order to appear in the site. 
-
-To set a link, use the internal links as follow: `[your-text]( { { site.baseurl } } { % link _docs/path/file.md % } )`. NOTE: remove the spaces between the tags
 
 
 
