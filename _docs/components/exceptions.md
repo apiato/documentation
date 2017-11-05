@@ -9,6 +9,7 @@ order: 15
 * [Rules](#rules)
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
+* [Application Error Codes](#error-codes)
 
 
 <a name="definition"></a>
@@ -164,4 +165,50 @@ throw (new AwesomeExceptionWithCustomData())->overrideCustomData(['foo' => 'bar'
 
 ```
 
+<a name="error-codes"></a>
+### Application Error Codes
 
+Apiato provides a convenient way to manage all `application error codes` in one central place. Therefore, Apiato provides, amongst others, the `\App\Ship\Exceptions\Codes\ApplicationErrorCodesTable` class, which already holds various information for multiple errors.
+
+Thereby, one error look like this:
+```php
+const BASE_GENERAL_ERROR = [
+	'code' => 1001,
+	'title' => 'Unknown / Unspecified Error.',
+	'description' => 'Something unexpected happened.',
+];
+```
+
+Note that the `code` is used to be sent back to the client. The `title` and `description`, however, can be used to automatically generate a documentation regarding all defined error codes and their meaning. Please note that this feature is currently not implemented but will be added later on.
+
+#### Linking Exceptions and Error Codes
+
+In order to link an `error code` to an `Exception`, you simply need override the `useErrorCode()` method of the `Exception`.
+
+Consider the following example:
+```php
+class InternalErrorException extends Exception
+{
+
+    public $httpStatusCode = SymfonyResponse::HTTP_INTERNAL_SERVER_ERROR;
+
+    public $message = 'Something went wrong!';
+	
+	public code = 4711; // this code will be overwritten by the useErrorCode() method!
+
+    public function useErrorCode()
+    {
+        return ApplicationErrorCodes::BASE_INTERNAL_ERROR;
+    }
+}
+```
+
+Please note that already defined `$code` values may be overwritten by the `useErrorCode()` method! Furthermore, this feature is completely optional - you may still use the known `public $code = 4711;` approach to manually set an error code.
+
+#### Defining Own Error Code Tables
+
+Of course, Apiato allows you to define your own `CustomErrorCodesTable`. In fact, there already exists such a file where you can define your own error codes. Please note that the `ApplicationErrorCodesTable` may be adapted by Apiato - the others will not.
+
+If you like to split the errors in various files, you can easily create a `UserErrorCodesTable` in respective namespace and define the errors accordingly. However, you need to manually "register" this code table. This can be achieved in the `ErrorCodeManager::getCodeTables()` method.
+
+Now you can easily use your `UserErrorCodesTable::USER_NOT_VERIFIED` error in your `Exception` class.
