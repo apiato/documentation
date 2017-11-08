@@ -10,6 +10,8 @@ title: "Welcome to Apiato"
 [![Build Status](https://scrutinizer-ci.com/g/apiato/apiato/badges/build.png?b=master)](https://scrutinizer-ci.com/g/apiato/apiato/build-status/master)
 [![Build Status](https://travis-ci.org/apiato/apiato.svg?branch=master)](https://travis-ci.org/apiato/apiato)
 [![Latest Stable Version](https://poser.pugx.org/apiato/apiato/v/stable)](https://packagist.org/packages/apiato/apiato)
+[![Backers on Open Collective](https://opencollective.com/apiato/backers/badge.svg)](#backers) 
+[![Sponsors on Open Collective](https://opencollective.com/apiato/sponsors/badge.svg)](#sponsors)
 [![License](https://poser.pugx.org/apiato/apiato/license)](https://packagist.org/packages/apiato/apiato)
 [![Latest Unstable Version](https://poser.pugx.org/apiato/apiato/v/unstable)](https://packagist.org/packages/apiato/apiato)
 
@@ -42,16 +44,38 @@ As well as, it can be exposed to the world allowing developers to interact with 
 API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work on their codes in parallel. After the Frontend Apps are ready they get attached to the Backend (API-Centric) code to start functioning. This leads to zero decoupling between the Frontend and the Backend code and also removes the dependencies. The API documentation acts as the contract between both sides during the development life cycle of all the Apps.
 
 
+<a name="Sponsors"></a>
+## Sponsors
+
+Support this project by becoming a sponsor. 
+
+Your logo will show up on the [github repository](https://github.com/apiato/apiato/) index page, the [site](http://apiato.io/) landing page and the [documentation](http://docs.apiato.io/) main page, with a link to your website. [[Become a sponsor](https://opencollective.com/apiato#sponsor)]
+
+<a href="https://opencollective.com/apiato/sponsor/0/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/1/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/2/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/3/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/4/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/5/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/6/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/7/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/8/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/apiato/sponsor/9/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/9/avatar.svg"></a>
+
+
+
 ## Features
 
-Apiato comes with great features. **Read the full [features list](https://github.com/apiato/apiato#features) on Github.**
+Apiato comes with great features. **Read the full [features list](http://apiato.io/#features) on the site.**
+
 
 
 
 ## Software Architecture
 
 **Apiato** is built using the new architectural pattern **[Porto](https://github.com/Mahmoudz/Porto)**.
-> **Porto SAP** is a modern Software Architectural Pattern, designed to help developers organize their Code in a super maintainable way. It is very helpful for big and long term projects, as they tend to have higher complexity with time.
+
+**Porto SAP** is a modern Software Architectural Pattern, designed to help developers organize their Code in a super maintainable way. It is very helpful for big and long term projects, as they tend to have higher complexity with time.
 
 You are **NOT** forced to build your Application using the Porto architecture.
 You can build it using the [MVC](http://apiato.io/getting-started/architecture/#mvc-intro) architecture, and still benifit from all the features that Apiato provides. *(The Apiato MVC version is a little different than the standrd MVC)*. The Apiato features themselves are written using Porto, but can be used by any architecture.
@@ -88,17 +112,26 @@ Join our [Slack](https://slackin-mezlsumyvc.now.sh/) chatting room, by click on 
 [![](https://s19.postimg.org/h7pvzy9ar/Slack-i_OS-icon.png)](https://slackin-mezlsumyvc.now.sh/)
 
 
-<a name="Testimonials"></a>
-## Testimonials
-
-[Some feedback from awesome people here.]({{ site.baseurl }}{% link _docs/miscellaneous/testimonials.md %})
-
-
 <a name="Donations"></a>
 ## Donations
 
-Help me keep the project development going, by [contributing](http://apiato.io/miscellaneous/contribution/#Contributing-Apiato) or donating a little.
+> Help keeping the project development going, by [contributing](http://docs.apiato.io/miscellaneous/contribution/#Contributing-Apiato) or donating a little. 
+> Thanks in advance.
+
+Donate directly via [Paypal](https://www.paypal.me/mzalt)
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/mzalt) 
+
+or become a backer on [Open Collective](https://opencollective.com/apiato#backer)
+
+<a href="https://opencollective.com/apiato#backers" target="_blank"><img src="https://opencollective.com/apiato/backers.svg?width=890"></a>
+
+or show your support via [Beerpay](https://beerpay.io/apiato/apiato)
+
 [![Beerpay](https://beerpay.io/apiato/apiato/badge.svg?style=flat)](https://beerpay.io/apiato/apiato)
 
+
+<a name="Testimonials"></a>
+## Testimonials
+
+Some [feedbacks]({{ site.baseurl }}{% link _docs/miscellaneous/testimonials.md %}) from awesome people.
