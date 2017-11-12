@@ -37,15 +37,17 @@ order: 6
 
 
 <a name="intro"></a>
-### Introduction
+### Introduction 
 
 The two most common architectures, used for building projects on top of Apiato are:
 
 - **Porto** (Route Request Controller Action Task Model Transformer).
-- **MVC** (Model View Controller).
+- **MVC** (Model View Controller). *The Apiato MVC version is a little different than the standrd MVC.*
 
-Porto is the recommended architecture for building scalable API's with Apiato. 
-However, Apiato also support building API's using the popular MVC architecture (with a little modifications).
+Porto is the Apiato recommended architecture for building scalable API's with Apiato. 
+However, it also support building API's using the popular MVC architecture (with a little modifications).
+
+*Apiato features are written using Porto, and can be used by any architecture.*
 
 Below you will see how you can both any of the architectures to build your project.
 
