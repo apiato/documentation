@@ -39,17 +39,23 @@ order: 2
 1) Clone the repo, install dependencies and setup the project:
 
 
-Latest [stable](https://github.com/apiato/apiato/releases/latest) release:
+Option 1: Latest [stable](https://github.com/apiato/apiato/releases/latest) release:
 
 ```shell
 composer create-project apiato/apiato my-api
 ```
 
-Latest [master](https://github.com/apiato/apiato/commits/master) dev version *(unstable)*:
-*This gives you features from the upcoming release.* 
+Option 2: Current [LTS](https://github.com/apiato/apiato/tree/7.2) "Long-Term Support" stable release (**7.2**):
 
 ```shell
-composer create-project apiato/apiato:dev-master my-api
+composer create-project apiato/apiato my-api 7.2
+```
+
+Option 3: On going [development](https://github.com/apiato/apiato/commits/master) branch "dev master" *(unstable)*:
+*This gives you features from the upcoming releases.* 
+
+```shell
+composer create-project apiato/apiato my-api dev-master
 ```
 
 2) Edit your `.env` variables to match with your environment (Set Database credentials, App URL, ...).

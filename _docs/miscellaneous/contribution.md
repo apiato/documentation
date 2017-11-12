@@ -180,11 +180,7 @@ If you want to fix a bug on the latest stable release your PR should be sent to 
 
 If you want to add new features or do anything else, that should be added to the next stable release, you need to pull the master branch and submit your PR there.   
 
-`composer create-project apiato/apiato:dev-master project-a`
-
-Or
-
-`composer create-project --stability=dev apiato/apiato project-a`
+`composer create-project apiato/apiato project-a dev-master`
 
 2) Initialize git in Project A
 

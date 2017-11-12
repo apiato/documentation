@@ -134,6 +134,17 @@ or show your support via [Beerpay](https://beerpay.io/apiato/apiato)
 [![Beerpay](https://beerpay.io/apiato/apiato/badge.svg?style=flat)](https://beerpay.io/apiato/apiato)
 
 
+<a name="Getting started"></a>
+## Getting started
+
+Install and have fun [installation guide]({{ site.baseurl }}{% link _docs/getting-started/installation.md %}) :)
+
+**LTS (Long-Term Support)** release is available. And offers support for 12 months, after the release date.
+
+The current LTS version is **7.2** (Release date 2017-11-11). 
+It offers bug fixes (for 12 months) and security updates (for 12 months). And does not get any new features.
+
+
 <a name="Testimonials"></a>
 ## Testimonials
 
