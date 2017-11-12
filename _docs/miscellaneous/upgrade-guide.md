@@ -4,6 +4,7 @@ category: "Miscellaneous"
 order: 12
 ---
 
+- [Upgrade from 7.1 to 7.2](#upgrade-apiato-from-version71To72)
 - [Upgrade from 7.0 to 7.1](#upgrade-apiato-from-version70To71)
 - [Upgrade from 5.0 to 7.0](#upgrade-apiato-from-version50To70)
 - [Upgrade from 4.1 to 5.0](#upgrade-apiato-from-version-41To50)
@@ -12,6 +13,13 @@ order: 12
 - [Upcoming Release Notes](#Upcoming-Release)
 
 <br>
+
+<a name="upgrade-apiato-from-version71To72"></a>
+## Upgrade from 7.1 to 7.2
+
+> Estimated upgrading time is 10 minutes.
+
+Use the [Manual Upgrading Guide](#Manual-Upgrading-Guide) Below.
 
 
 <a name="upgrade-apiato-from-version70To71"></a>
@@ -134,9 +142,13 @@ git checkout -b apiato
 git branch --set-upstream-to upstream/master
 ```
 
+> If you are upgrading to specific version (not the latest stable version "Master") select your 
+> version [branch](https://github.com/apiato/apiato/branches), set your upstream to track that 
+> branch, example if you're upgradsing to 7.2 set it to `git branch --set-upstream-to upstream/7.2`.
+
 ```shell
 ❯ git branch -vv
- apiato          77b4d945 [upstream/master] ...
+ apiato          77b4d945 [upstream/{branch-name}] ...
  master          77d302aa [origin/master] ...
 ```
 
@@ -152,6 +164,7 @@ git fetch upstream
 ```shell
 git reset --hard upstream/master
 ```
+> If you selected a specific branch in step 3 above, reset to that branch example (`git reset --hard upstream/7.2`)
 
 6) Now you can move the updates to your master branch in 2 ways:
 
