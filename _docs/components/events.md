@@ -90,3 +90,52 @@ event(New UserEmailChangedEvent($user));
 ## Queueing an Event
 
 Events can implement `Illuminate\Contracts\Queue\ShouldQueue` to be queued.
+
+## Handling an Event
+You can handle jobs on dispatching an event.
+
+To do so you need to implement one of the following interfaces:
+
+`Apiato\Core\Abstracts\Events\Interfaces\ShouldHandleNow`
+
+`Apiato\Core\Abstracts\Events\Interfaces\ShouldHandle`
+
+This will force you to implement the `handle` method and will make apiato execute the method upon dispatching the event.
+
+- The `ShouldHandleNow` Interface will make the event execute the handle method as soon as the event gets dispatched.
+
+- The `ShouldHandle` Interface will create an eventjob and execute the handle method async (through laravel jobs).
+    
+    
+```php
+namespace App\Containers\Example\Events;
+
+
+use Apiato\Core\Abstracts\Events\Interfaces\ShouldHandle;
+use App\Ship\Parents\Events\Event;
+
+class ExampleEvent extends Event implements ShouldHandle
+{
+    /**
+     * If ShouldHandle interface is implemented this variable
+     * sets the time (in seconds or timestamp) to wait before a job is executed
+     *
+     * @var \DateTimeInterface|\DateInterval|int|null $jobDelay
+     */
+    public $jobDelay = 60;
+
+    /**
+     * If ShouldHandle interface is implemented this variable
+     * sets the name of the queue to push the job on
+     *
+     * @var string $jobQueue
+     */
+    public $jobQueue = "example_queue";
+
+    public function handle()
+    {
+        // Do some handling here
+    }
+    
+}
+```
