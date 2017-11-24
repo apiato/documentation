@@ -76,3 +76,10 @@ return [
         // some other config params here...
     ],
 ```
+You can access the respective configuration key like this:
+```php
+$value = Config::get('config1-container.containers.namespace');     // returns 'App'
+$value = config('config1-container.containers.namespace');          // same, but using a function
+
+$defaultValue = Config::get('config1-container.unknown.key', 'defaultvalue');   // returns 'defaultvalue' as this key is not set!
+```
