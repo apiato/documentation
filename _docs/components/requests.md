@@ -467,7 +467,7 @@ example request:
 
 Your Task to process this data, however, requests the field `data.name` as `data.username`. You can call the the helper 
 like this:
-```
+```php
 $request->mapInput([
     'data.name' => 'data.username',
 ]);
