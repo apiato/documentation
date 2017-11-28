@@ -15,6 +15,7 @@ order: 10
 * [How are Service Providers auto-loaded?](#q11)
 * [Why is the Laravel 5.5 Auto-Discovery feature not working?](#q12)
 * [How to create third-party Containers?](#q13)
+* [What is the default Username for authentication?](#q14)
 * [I have a question and I can't find answer!!](#q100)
 
 <br>
@@ -212,10 +213,12 @@ To use install the Container in your project add it as dependency to `app/Ship/c
 
 The `apiato/containers-installer` will download your Container to the `app/containers/` directory. 
 
+<a name="q14"></a>
+## What is the default Username for authentication?
 
-
-
-
+The default credentials to login are:
+* Username: admin@admin.com
+* Password: admin
 
 <a name="q100"></a>
 ## I have a question and I can't find answer!!
