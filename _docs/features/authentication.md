@@ -228,7 +228,7 @@ The Access Token should be sent in the `Authorization` header of type `Bearer` E
 <a name="logout"></a>
 ## Logout
 
-Logout by sending a POST request to `http://api.apiato.dev/v1/logout/` containing the Token in the Header.
+Logout by sending a `DELETE` request to `http://api.apiato.dev/v1/logout/` containing the Token in the Header.
 
 ```json
 {
