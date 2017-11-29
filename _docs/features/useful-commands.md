@@ -31,10 +31,10 @@ You can see list of all commands, by typing `php artisan` and look for **Apiato*
 ## List All Actions Command
 
 It's useful to be able to see all the implemented use cases in your application. To do so type
-`php artisan apiato:actions`
+`php artisan apiato:list:actions`
 
 You can also pass `--withfilename` flag to see all Actions with the files names.  
-`apiato:actions --withfilename`
+`apiato:list:actions --withfilename`
 
 ![]({{ site.baseurl }}/images/documentation/actions-commands.png)
 
