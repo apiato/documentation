@@ -6,6 +6,7 @@ order: 103
 
 - [Available Commands](#available-commands)
 - [List All Actions Command](#list-all-actions-command)
+- [List All Tasks Command](#list-all-tasks-command)
 - [List Container Dependencies Command](#list-container-dependencies-command)
 
 <br>
@@ -36,6 +37,15 @@ You can also pass `--withfilename` flag to see all Actions with the files names.
 `apiato:actions --withfilename`
 
 ![]({{ site.baseurl }}/images/documentation/actions-commands.png)
+
+<a name="list-all-tasks-command"></a>
+## List All Tasks Command
+
+It's useful to be able to see all the implemented tasks in your application. To do so type
+`php artisan apiato:list:tasks`
+
+You can also pass `--withfilename` flag to see all Tasks with the files names.  
+`apiato:list:tasks --withfilename`
 
 <a name="list-container-dependencies-command"></a>
 ## List Container Dependencies Command
