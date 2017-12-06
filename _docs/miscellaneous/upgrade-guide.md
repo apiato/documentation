@@ -152,7 +152,12 @@ git branch --set-upstream-to upstream/master
  master          77d302aa [origin/master] ...
 ```
 
-
+> Should an **error** occur while performing this step, execute step 4, then try again.
+> Example:
+```shell
+❯ git branch --set-upstream-to upstream/master
+error: the requested upstream branch 'upstream/master' does not exist
+```
 4) Fetch everything from upstream
 
 ```shell
