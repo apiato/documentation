@@ -86,7 +86,7 @@ This guide will show you how to freshly install the new Apiato 5.0, then migrate
 
 10) Open `phpunit.xml` file of the new project and delete this line from the file `<file>./app/Ship/Engine/Loaders/FactoryMixer/FactoriesLoader.php</file>`.
 
-11) If you had live testing data in your old project inside `app/Ship/Seeders/Data/Testing/Seeders/TestingDataSeeder.php` file, then copy that file content and past it in the new project inside `app/Ship/Seeders/SeedTestingData.php`. You will need to rename the class (not the file) from `TestingDataSeeder` to `SeedTestingData`,  
+11) If you had live testing data in your old project inside `app/Ship/Seeders/Data/Testing/Seeders/TestingDataSeeder.php` file, then copy that file content and past it in the new project inside `app/Ship/Seeders/SeedTestingData.php`. You will need to rename the class (not the file) from `TestingDataSeeder` to `SeedTestingData`,
 and you will need to update the namespace from `namespace App\Ship\Seeders\Data\Testing\Seeders;` to `namespace App\Ship\Seeders;`.
 
 12) If you ever used the `HashIdTrait`, you need to search and replace this namespace `App\Ship\Engine\Traits\HashIdTrait` with this `Apiato\Core\Traits\HashIdTrait`.
@@ -113,13 +113,13 @@ Use the [Manual Upgrading Guide](#Manual-Upgrading-Guide) Below.
 <a name="Manual-Upgrading-Guide"></a>
 ## Manual Upgrading Guide:
 
-*This guide will show you, how to keep you project synced with the latest master branch of Apiato. 
+*This guide will show you, how to keep you project synced with the latest master branch of Apiato.
 And the same method can be used to upgrade older version to the newer one*
 
 1) Setup an upstream remote (to point to your fork of the apiato repository)
 
 ```shell
-git remote add upstream git@github.com:username/apiato.git
+git remote add upstream https://github.com/apiato/apiato
 ```
 
 ```shell
@@ -142,8 +142,8 @@ git checkout -b apiato
 git branch --set-upstream-to upstream/master
 ```
 
-> If you are upgrading to specific version (not the latest stable version "Master") select your 
-> version [branch](https://github.com/apiato/apiato/branches), set your upstream to track that 
+> If you are upgrading to specific version (not the latest stable version "Master") select your
+> version [branch](https://github.com/apiato/apiato/branches), set your upstream to track that
 > branch, example if you're upgradsing to 7.2 set it to `git branch --set-upstream-to upstream/7.2`.
 
 ```shell
@@ -156,7 +156,7 @@ git branch --set-upstream-to upstream/master
 4) Fetch everything from upstream
 
 ```shell
-git fetch upstream 
+git fetch upstream
 ```
 
 5) Let your apiato branch get the upstream logs
@@ -194,20 +194,20 @@ git checkout master
 ```
 
 ```shell
-git log apiato          
+git log apiato
 ```
 (to copy each commit ID, one by one)
 
 ```shell
-git cherry-pick {commit-ID}     
-``` 
+git cherry-pick {commit-ID}
+```
 (if you get any conflict solve it and keep moving)
 
 <br>
 
 Checkout the project setup in [Contributing to Apiato]({{ site.baseurl }}{% link _docs/miscellaneous/contribution.md %}).
 
-7) Run Composer update then run all the tests, and fix the occurring problems, if there's any. 
+7) Run Composer update then run all the tests, and fix the occurring problems, if there's any.
 You may want to update some of your custom containers dependencies as well.
 
 ```shell
@@ -222,4 +222,4 @@ See the [Upcoming Release Notes](#Upcoming-Release) for details about the change
 <a name="Upcoming-Release"></a>
 ## Upcoming Release Notes
 
-Checkout the [ChangeLog](https://github.com/apiato/apiato/blob/master/CHANGELOG.md) notes, for the upcoming features and changes. 
+Checkout the [ChangeLog](https://github.com/apiato/apiato/blob/master/CHANGELOG.md) notes, for the upcoming features and changes.
