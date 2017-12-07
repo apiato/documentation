@@ -18,6 +18,7 @@ order: 3
     * [isOwner](#isowner)
     * [getInputByKey](#getinputbykey)
     * [sanitizeData](#sanitizedata)
+    * [mapInput](#mapinput)
 * [Storing Data on the Request](#storing-data-on-the-request)
 * [Unit Testing for Actions (Request)](#unit-testing-for-actions-request)
 
@@ -122,14 +123,6 @@ public function handle(UpdateUserRequest $updateUserRequest)
 By just injecting the request class you already applied the validation and authorization rules.
 
 When you need to pass data to the Action, you should pass the request Object as it is to the Action parameter.
-
-
-
-
-
-
-
-
 
 <a name="request-properties"></a>
 
@@ -270,9 +263,15 @@ class DeleteUserRequest extends Request
 }
 ```
 
+If you do not like the `laravelish` style with `|` in order to separate the different `roles` or `permissions` (e.g., see the example above),
+you can also use the `array notation`. The example from above would look like this (only part that changes):
 
-
-
+```php
+    protected $access = [
+            'permission' => ['delete-users', 'another-permissions'],
+            'roles' => ['manger'],
+    ];
+```
 
 <a name="how-the-authorize-function-work"></a>
 
@@ -445,17 +444,43 @@ other fields from the `$request` are omitted as they are not specified. So basic
 `filter` on the `$request`, only passing the defined values. Furthermore, the DOT Notation allows you to easily specify
 the fields to would like to pass through. This makes partially updating an resource quite easy!
 
-
-
-
 **Heads Up:**
 
 Note that the `fillable fields` of an entity can be easily obtained with `$entity->getFillable()`!
 
+<a name="mapinput"></a>
 
+Sometimes you might want to map input from the request to other fields in order to automatically pass it to a `Action` 
+or `Task`. Of course, you can manually map those fields, but you can also rely on the `mapInput(array $fields)` helper 
+function.
 
+This helper, in turn, allows to "redefine" keys in the request for subsequent processing. Consider the following 
+example request:
 
+```json
+{
+	"data" : {
+		"name" : "John Doe"
+	}
+}
+```
 
+Your Task to process this data, however, requests the field `data.name` as `data.username`. You can call the the helper 
+like this:
+```php
+$request->mapInput([
+    'data.name' => 'data.username',
+]);
+```
+
+The resulting structure would look like this:
+```json
+{
+	"data" : {
+		"username" : "John Doe"
+	}
+}
+```
 
 <a name="storing-data-on-the-request"></a>
 

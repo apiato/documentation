@@ -48,7 +48,7 @@ composer create-project apiato/apiato my-api
 Option 2: Current [LTS](https://github.com/apiato/apiato/tree/7.2) "Long-Term Support" stable release (**7.2**):
 
 ```shell
-composer create-project apiato/apiato my-api 7.2
+composer create-project apiato/apiato my-api 7.2.*
 ```
 
 Option 3: On going [development](https://github.com/apiato/apiato/commits/master) branch "dev master" *(unstable)*:
