@@ -45,33 +45,38 @@ Read the section in the  [**Porto SAP Documentation (#Actions)**](https://github
 
 namespace App\Containers\User\Actions;
 
-use App\Containers\Authorization\Tasks\AssignUserToRoleTask;
-use App\Containers\User\Tasks\CreateUserByCredentialsTask;
-use App\Ship\Parents\Actions\Action;
-use App\Ship\Parents\Requests\Request;
 use Apiato\Core\Foundation\Facades\Apiato;
+use App\Containers\User\Models\User;
+use App\Ship\Parents\Actions\Action;
 
 class CreateAdminAction extends Action
 {
 
     /**
-     * @param \App\Ship\Parents\Requests\Request $request
+     * @param string $email
+     * @param string $password
+     * @param string $name
+     * @param bool   $isClient
      *
-     * @return  mixed
+     * @return  \App\Containers\User\Models\User
      */
-    public function run(Request $request)
+    public function run(string $email, string $password, string $name, bool $isClient = false): User
     {
-        $admin = Apiato::call(CreateUserByCredentialsTask::class, [$request->email, $request->password, $request->name]);
+        $admin = Apiato::call('User@CreateUserByCredentialsTask', [
+            $isClient,
+            $email,
+            $password,
+            $name
+        ]);
 
-        Apiato::call(AssignUserToRoleTask::class, [$admin, ['admin']]);
+        Apiato::call('Authorization@AssignUserToRoleTask', [$admin, ['admin']]);
 
         return $admin;
     }
 }
-
 ```
 
-But injecting each Task in the constructor and then using it below through its property is really boring and the more Tasks you use the worse it gets. So instead you can use the function `call` to call whichever Task you want and then pass any parameters to it.
+Injecting each Task in the constructor and then using it below through its property is really boring and the more Tasks you use the worse it gets. So instead you can use the function `call` to call whichever Task you want and then pass any parameters to it.
 
 
 The Action itself was also called using `Apiato::call()` which triggers the `run` function in it.
@@ -113,18 +118,17 @@ namespace App\Containers\Email\Actions;
 
 use App\Containers\Xxx\Tasks\Sample111Task;
 use App\Containers\Xxx\Tasks\Sample222Task;
-use App\Ship\Parents\Requests\Request;
 use App\Ship\Parents\Actions\Action;
 
 class DemoAction extends Action
 {
 
-    public function run(Request $request)
+    public function run($xxx, $yyy, $zzz)
     {
 
-        $foo = Apiato::call(Sample111Task::class, [$request->xxx, $request->yyy]);
+        $foo = Apiato::call(Sample111Task::class, [$xxx, $yyy]);
 
-        $bar = Apiato::call(Sample222Task::class, [$request->foo, $request->zzz]);
+        $bar = Apiato::call(Sample222Task::class, [$zzz]);
 
         // ...
 
@@ -143,7 +147,7 @@ class DemoAction extends Action
 
     public function deleteUser(DeleteUserRequest $request)
     {
-        $user = Apiato::call(DeleteUserAction::class, [$request]);
+        $user = Apiato::call(DeleteUserAction::class, [$request->xxx, $request->yyy]);
 
         return $this->deleted($user);
     }
