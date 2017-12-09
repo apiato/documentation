@@ -12,7 +12,7 @@ order: 100
 <a name="definition-principles"></a>
 ### Definition & Principles
 
-Value Objects are simple Objects, pretty similar to Models, but they do not get stored in the DB, thus they don't have ID's. 
+Values are short names for the known "Value Objects" which are simple Objects, pretty similar to Models in the concept of representing data, but they do not get stored in the DB, thus they don't have ID's. 
 They also do not hold functionality or change any state, they just hold data.
 
 A Value Object is an immutable object that is defined by its encapsulated attributes. 
@@ -31,8 +31,8 @@ We create Value Object when we need it to represent/serve/manipulate some data (
     - Containers
         - {container-name}
             - Values
-                - OutputValue.php
-                - RegionValue.php
+                - Output.php
+                - Region.php
                 - ...
 ```
 
@@ -41,9 +41,9 @@ We create Value Object when we need it to represent/serve/manipulate some data (
 ```php
 <?php
 
-use App\Ship\Parents\Values\Values;
+use App\Ship\Parents\Values\Value;
 
-class Location extends Values
+class Location extends Value
 {
     private $x = null;
     
