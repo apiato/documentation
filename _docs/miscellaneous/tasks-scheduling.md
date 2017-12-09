@@ -10,9 +10,15 @@ order: 3
 <a name="Tasks-Scheduling"></a>
 ### Tasks Scheduling
 
-Below is a quick guide for how to schedule some Tasks (Laravel Comamnds, Laravel Jobs or Shell Commands), 
-in order to run at specific intervals or dates.   
 
+Tasks Scheduler:
+
+ * a script executor program, such as "Cron Job". (Cron Job is a time-based scripts scheduler in Unix-like computer operating systems).
+ * its role is to schedule the execution of CLI Commands "Artisan Commands", periodically at fixed times, dates, or intervals.
+ * Laravel has a wrapper around the "Cron Job" called the Laravel scheduler. This allows the framework to schedule classs like and Artisan Commands, Queued Jobs in addition to  custom Shell Commands, to run later.
+ 
+Below is a quick guide for how to schedule some scripts execution such as (custom Shell Commands, Laravel Comamnds, Laravel [Jobs](https://laravel.com/docs/5.5/queues), and other classes), in order to run at specific intervals or dates.
+   
 
 #### Server Setup
 
@@ -46,6 +52,6 @@ Example:
          // ...
     }
 ``` 
-More details [here](https://laravel.com/docs/5.5/scheduling#defining-schedules).
+More details [here](https://laravel.com/docs/scheduling#defining-schedules).
 
 > NOTE: you do not need to register the commands with the `$commands` property or point to them in the `commands()` function. Apiato will do that automatically for you.
