@@ -9,13 +9,21 @@ order: 33
 * [Rules](#rules)
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
+* [Execute Jobs Execution](#Execute-Jobs-Execution)
 
 <a name="definition"></a>
 
 ### Definition
 
-Jobs is a name given to classes that are usually created to be queued (deferred for later).
-When a Job class is dispatched, it performs a specific job and dies.
+Jobs:
+
+ * are simple classes that can do one thing or multiple related things. 
+ * Job is a name given to a class that is usually created to be queued (it's execution is usually deferred for later, after the execution of previous Jobs are completed).
+ * Jobs can be scheduled to be executed later by a queuing mechanism (queue system like beanstalkd).
+ * When a Job class is dispatched, it performs its specific job and dies.
+ * Laravel's queue worker will process every Job as it's pushed onto the queue.
+ 
+More info [here](https://laravel.com/docs/queues).
 
 <a name="principles"></a>
 
@@ -88,4 +96,10 @@ dispatch(new CreateAndValidateAddressJob($recipients));
 App::make(\Illuminate\Contracts\Bus\Dispatcher\Dispatcher::class)->dispatch(New StatusChangedJob($object));
 ```
 
-For more information about the Policies read [this](https://laravel.com/docs/5.3/queues).
+
+<a name="Execute-Jobs-Execution"></a>
+
+### Execute Jobs Execution
+
+For running your Jobs checkout the [Tasks Queuing]({{ site.baseurl }}{% link _docs/miscellaneous/tasks-queuing.md %}) page.
+
