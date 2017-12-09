@@ -12,7 +12,7 @@ order: 3
 <a name="definition-principles"></a>
 ### Definition & Principles
 
-Transporters is the choosen name of Apiato for DTO's (Data Transfer Objects). 
+Transporters is a name choosen by Apiato for DTO's (Data Transfer Objects). 
 Transporters are used to pass user data (comming from Requests, Commands, or other places) from place to another (Actions to Tasks / Controller to Action / Command to Action / ...).
 
 They are very useful for reducing the number of parameters in functions, which prevents the duplication of the long parameters.   
