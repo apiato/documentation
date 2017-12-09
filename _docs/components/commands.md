@@ -9,14 +9,22 @@ order: 32
 * [Rules](#rules)
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
+* [Schedule Commands Execution](#Schedule-Commands-Execution)
+* [Define Consoles Routes](#Routes)
+
+
 
 <a name="definition"></a>
 
 ### Definition
 
-Commands are the console commands, it's a way to execute some code from the CLI.
+Commands:
 
-Commands could be Closure based or Classes. For more details refer to this [link](https://laravel.com/docs/artisan).
+ * is a laravel artisan command. Laravel has it's own default commands and you create your own as well.
+ * provides a way to interact with the Laravel app. 
+ * a Command can be scheduled by a Task scheduler, like Cron Job or by the Laravel built in wrapper of the Cron Job "laravel scheduler".
+ * Commands could be Closure based or Classes.
+ * "dispatch" is the term that is usually used to call a Command.
 
 <a name="principles"></a>
 
@@ -92,3 +100,15 @@ class SayWelcome extends ConsoleCommand
 ```shell
 php artisan say:welcome
 ```
+
+
+<a name="Schedule-Commands-Execution"></a>
+### Schedule Commands Execution  
+
+To Schedule the execution of a Command checkout the [Tasks Scheduling]({{ site.baseurl }}{% link _docs/miscellaneous/tasks-scheduling.md %}) page.
+
+
+<a name="Routes"></a>
+## Define Consoles Routes
+
+To define Console route go to `app/Ship/Commands/Routes.php`.
