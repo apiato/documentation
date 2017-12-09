@@ -13,7 +13,7 @@ order: 3
 
 Tasks Scheduler:
 
- * a script executor program, such as "Cron Job". (Cron Job is a time-based scripts scheduler in Unix-like computer operating systems).
+ * is a script executor program, such as "Cron Job". (Cron Job is a time-based scripts scheduler in Unix-like computer operating systems).
  * its role is to schedule the execution of CLI Commands "Artisan Commands", periodically at fixed times, dates, or intervals.
  * Laravel has a wrapper around the "Cron Job" called the Laravel scheduler. This allows the framework to schedule classs like and Artisan Commands, Queued Jobs in addition to  custom Shell Commands, to run later.
  

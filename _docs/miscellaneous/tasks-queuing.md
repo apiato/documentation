@@ -13,7 +13,7 @@ order: 4
 
 Tasks Queuing: 
 
- * Queues System, which executes the Jobs classes (after being serialized and stored in a string somewhere) one by one once he receives it or once it's scheduled. 
+ * Queues System, which executes the Jobs classes one by one once he receives it or once it's scheduled (after being serialized and stored in a string somewhere). 
  * to be able to queue the Jobs you need a Queuing System such as Beanstalkd, Redis, Amazon SQS or simply the DB.
  * Laravel has a "queue worker" that will process new Jobs as they are pushed onto the queue system, ("queue:work" and "queue:listen"). It's job is to push the jobs to the queue system in order to be executed.
  * to keep the "queue worker "queue:work" artisan command, running permanently in the background, you should use a process monitor such as "Supoervisor" to ensure that the queue worker does not stop running. It will simply make sure to execute the "php artisan queue:work" command.

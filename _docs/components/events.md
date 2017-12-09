@@ -63,10 +63,9 @@ More details [here](https://laravel.com/docs/events).
 <a name="usage"></a>
 ### Usage
 
-In laravel you can create and register events in multiple way. The recommended way by Apiato is the following:
+In laravel you can create and register events in multiple way.
 
-Create an Event that handles itself. (This will remove the need for the `EventsServiceProvider` which maps each Event to its handler).
-**But if you prefer using that method you can extend `Apiato\Core\Abstracts\Providers\EventsProvider`.**
+Below is an example of an Event that handles itself. 
 
 Event Class Example:
 
@@ -103,6 +102,10 @@ class UserRegisteredEvent extends Event implements ShouldQueue
     }
 }
 ```
+
+> Note: You will get more benefits creating Events Listeners for each Event.
+
+To do this you will need to extend this EventsProvider `Apiato\Core\Abstracts\Providers\EventsProvider`.
 
 
 <a name="dispatch-events"></a>
