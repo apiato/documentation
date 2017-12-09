@@ -18,21 +18,16 @@ order: 15
 Exceptions are classes the handles errors, and helps developers debug their code in a more efficient way.
 
 <a name="principles"></a>
-
 ## Principles
 
 - Exceptions can be thrown from anywhere in the application.
-
-- Exceptions SHOULD be created inside the Containers. However, general Exceptions SHOULD be created the Port layer.
+- Exceptions SHOULD be created inside the Containers. However, general Exceptions CAN be created in the Port layer.
 
 <a name="rules"></a>
-
 ### Rules
 
 - All Exceptions MUST extend `App\Ship\Parents\Exceptions\Exception`.
-
 - Shared (general) Exceptions between all Containers SHOULD be created in the **Exceptions Port** folder (`app/Ship/Exceptions/*`).
-
 - Every Exception SHOULD have two properties `httpStatusCode` and `message`, both properties will be displayed when an error occurs. You can override those values while throwing the error.
 
 <a name="folder-structure"></a>
@@ -48,11 +43,10 @@ Exceptions are classes the handles errors, and helps developers debug their code
                 - ...
 
     - Ship
-        - Features
-            - Exceptions
-                  - IncorrectIdException.php
-                - InternalErrorException.php
-                - ...
+        - Exceptions
+            - IncorrectIdException.php
+            - InternalErrorException.php
+            - ...
 ```
 
 <a name="code-samples"></a>
