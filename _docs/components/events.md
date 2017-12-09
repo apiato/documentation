@@ -5,26 +5,62 @@ order: 35
 ---
 
 - [Definition](#definition)
+- [Principles](#principles)
 - [Rules](#rules)
+* [Folder Structure](#folder-structure)
 - [Usage](#usage)
 - [Dispatch Events](#dispatch-events)
 - [Queueing](#Queueing)
+- [Broadcasting](#Broadcasting)
 
 <a name="definition"></a>
-
 ### Definition
 
-Events provides a simple observer implementation, allowing you to subscribe and listen for various events that occur in your application. More details [here](https://laravel.com/docs/events).
+Events: 
+
+ - Events provides a simple observer implementation, allowing you to subscribe and listen for various events that occur in your application.
+ - Events are classes that can be fired from anywhere in your application.
+ - an event class will usually be bound to one or many Events Listeners Classes or has those Listeners registered to listen to it.
+ - "fire" is the term that is usually used to call an Event.
+
+More details [here](https://laravel.com/docs/events).
+
+<a name="principles"></a>
+## Principles
+
+- Events can be fired from Actions and or Tasks. It's preferable to choose one place only. (Tasks are recommended).
+- Events SHOULD be created inside the Containers. However, general Events CAN be created in the Port layer.
 
 <a name="rules"></a>
-
 ### Rules
 
 - Events classes CAN be placed inside the Containers in Events folders or on the Ship for the general Events.
 - All Events MUST extend from `App\Ship\Parents\Events\Event`.
 
-<a name="usage"></a>
 
+### Folder Structure
+
+```
+ - App
+    - Containers
+        - {container-name}
+            - Events
+                - SomethingHappenedEvent.php
+                - ...
+            - Listeners
+                - ListenToMusicListener.php
+                - ...
+
+    - Ship
+        - Events
+            - GlobalStateChanged.php
+            - SomethingBiiigHappenedEvent.php
+            - ...
+```
+
+
+
+<a name="usage"></a>
 ### Usage
 
 In laravel you can create and register events in multiple way. The recommended way by Apiato is the following:
@@ -139,3 +175,12 @@ class ExampleEvent extends Event implements ShouldHandle
     
 }
 ```
+
+
+<a name="Broadcasting"></a>
+## Broadcasting
+
+
+
+Note: to define Broadcasting route go to `app/Ship/Boardcasts/Routes.php`.
+
