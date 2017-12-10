@@ -7,7 +7,7 @@ order: 1
 ### Software's
 
 * [GIT](https://git-scm.com/downloads)
-* [PHP](php.net) >= 7.0
+* [PHP](php.net) >= 7.1
 * PHP Extensions:
    * OpenSSL PHP Extension
    * PDO PHP Extension
