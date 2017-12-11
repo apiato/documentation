@@ -39,7 +39,7 @@ order: 2
 1) Clone the repo, install dependencies and setup the project:
 
 
-Option 1: Latest [stable](https://github.com/apiato/apiato/releases/latest) release:
+Option 1: Latest [stable](https://github.com/apiato/apiato/releases/latest) release (**7.3**):
 
 ```shell
 composer create-project apiato/apiato my-api
@@ -48,11 +48,11 @@ composer create-project apiato/apiato my-api
 Option 2: Current [LTS](https://github.com/apiato/apiato/tree/7.2) "Long-Term Support" stable release (**7.2**):
 
 ```shell
-composer create-project apiato/apiato my-api 7.2.*
+composer create-project apiato/apiato my-api ~7.2
 ```
 
 Option 3: On going [development](https://github.com/apiato/apiato/commits/master) branch "dev master" *(unstable)*:
-*This gives you features from the upcoming releases.* 
+*This gives you features from the upcoming releases. But you need to keep syncing your project with the upstream master branch and running composer update when changes occurs.* 
 
 ```shell
 composer create-project apiato/apiato my-api dev-master
