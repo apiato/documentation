@@ -144,7 +144,7 @@ git branch --set-upstream-to upstream/master
 
 > If you are upgrading to specific version (not the latest stable version "Master") select your
 > version [branch](https://github.com/apiato/apiato/branches), set your upstream to track that
-> branch, example if you're upgradsing to 7.2 set it to `git branch --set-upstream-to upstream/7.2`.
+> branch, example if you're upgrading to 7.2 set it to `git branch --set-upstream-to upstream/7.2`.
 
 ```shell
 ❯ git branch -vv
