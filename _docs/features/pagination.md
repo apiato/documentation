@@ -58,6 +58,6 @@ entities.
 
 You can allow developers to skip the pagination limit as follow:
 
-First you need to enable that feature from the server by setting `PAGINATION_SKIP` to `true` (`PAGINATION_SKIP=true`).
+First, you need to enable that feature from the server by setting `PAGINATION_SKIP` to `true` (`PAGINATION_SKIP=true`).
 
-Second inform the developers (users) to pass `?limit=0` with the request they wish to get all it's data unpaginated.  
+Second, inform the developers (users) to pass `?limit=0` with the request they wish to get all it's data un-paginated.  

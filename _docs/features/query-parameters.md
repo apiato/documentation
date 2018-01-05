@@ -268,21 +268,32 @@ Include relationships for complex data structures.
 
 Get an object with its relationships:
 
-For this to work, your `Transformer` should have the relationships defined on it. *Check the [Transformers]({{ site.baseurl }}{% link _docs/components/transformers.md %}) for more details.*
+For this to work, your `Transformer` should have the relationships defined on it. 
+*Check the [Transformers]({{ site.baseurl }}{% link _docs/components/transformers.md %}) for more details on how to define such relationships.*
 
-using `include` with comma `,` separator:
+You can include such relationships by adding the `include` query parameter with comma `,` separated names, like so:
 
 ```
-include=tags,user
+?include=tags,user
 ```
 
-The `?include=` parameter can be used with any endpoint, only if it supports it.
+It is also possible to 
 
-How to use it: let's say there's a Driver object and Car object. And there's an endpoint `/cars` that returns all the cars objects.
-The include allows getting the cars with their drivers `/cars?include=drivers`.
 
-However, for this parameter to work, the endpoint `/cars` should clearly define that it
+The `?include=` parameter can be used with any endpoint if it is supported.
+
+### How to use it
+Let's say there is a `Driver` and a `Car` object. Also, there is an `/cars` endpoint that returns all `Car` objects.
+The `?include` parameter allows getting all cars with their respective drivers in one request by calling `/cars?include=driver`.
+
+However, for this parameter to work, the `CarTransformer`, which handles the `/cars` endpoint should clearly define that it
 accepts `driver` as relationship (in the **Available Relationships** section).
+
+### Nested Includes
+It is also possible to request "nested includes". Extend the example from above. Imagine, that a `Driver` may also have a 
+relationship to an `Address` object. You can access this information as well by calling `?include=driver,driver.address`.
+
+Of course, the `address` include is defined in the respective `DriverTransformer` that is used here.
 
 **Usage:**
 

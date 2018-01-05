@@ -16,12 +16,10 @@ order: 3
 <a name="definition-principles"></a>
 ### Definition & Principles
 
-Transporters is a name choosen by Apiato for DTO's (Data Transfer Objects). 
-Transporters are used to pass user data (comming from Requests, Commands, or other places) from place to another (Actions to Tasks / Controller to Action / Command to Action / ...).
+Transporters is a name chosen by Apiato for DTO's (Data Transfer Objects). 
+Transporters are used to pass user data (coming from Requests, Commands, or other places) from place to another (Actions to Tasks / Controller to Action / Command to Action / ...).
 
 They are very useful for reducing the number of parameters in functions, which prevents the duplication of the long parameters.   
-
-
 
 Apiato uses [this package](https://github.com/fireproofsocks/dto) for the DTO. Refer to the [dto package wiki](https://github.com/fireproofsocks/dto/wiki) for more details.
 
@@ -30,7 +28,6 @@ Apiato uses [this package](https://github.com/fireproofsocks/dto) for the DTO. R
 ### Rules
 
 - All Models MUST extend from `App\Ship\Parents\Transporters\Transporter`.
-
 
 <a name="folder-structure"></a>
 ### Folder Structure
@@ -130,8 +127,7 @@ $user = $action->run($transporter);
 
 
 <a name="Requests-and-Transporters"></a>
-### Optionally swtich between Requests and Transporters 
-
+### Optionally switch between Requests and Transporters 
 
 ```php
 // if you have the following function signature
@@ -171,8 +167,32 @@ $user = Apiato::call('MyContainer@myAction', [$request]);
 // if request has Transporter defined on it, it will be the one passed to the Action. So the Action can even type hint the custom Transporter defined on the Request.
 ```
 
+#### Transforming a Request to a Transporter
 
+If you want to directly transform a `Request` to a `Transporter` you can simply call
 
+```php
+$transporter = $request->toTransporter();
+```
+
+This method does take the `protected $transporter` of the `Request` class into account. If none is defined, a regular `DataTransporter` will be created.
+
+Note, that `$transporter` will now have all fields from `$request` - so you can directly access them. In order to do so, 
+you can call:
+```php
+// "simple" access via direct properties
+$name = $transporter->name;
+
+// complex access via method
+$username = $transporter->getInputByKey('your.nested.username.field');
+```
+
+Of course, you can also "sanitize" the data, like you would have done in the `Request` classes by using `sanitizeData(array)`.
+
+Finally, if you need to access the original `Request` object, you can access it via
+```php
+$originalRequest = $transporter->request;
+```
 
 
 <a name="set-data"></a>
@@ -189,6 +209,7 @@ If the data is defined as required like this on the Transporter:
 
 ```php
     protected $schema = [
+        'type' => 'object',
         'properties' => [
             'email',
             'password',
@@ -219,14 +240,16 @@ $dataTransporter = new ProxyApiLoginTransporter(
  
 #### Set Instance
 
-Passing Objects doesn't work!, because the third party package cannot hydrate it. So to pass instances from a place to another on the Transporter object, you can do the following:
+Passing Objects does not work!, because the third party package cannot hydrate it. So to pass instances from a place to 
+another on the Transporter object, you can do the following:
 
 ```php
 $transporter = new DataTransporter();
 $transporter->setInstance("command_instance", $this);
 ```
 
-**Warning:** you can set instances, but they do not appear when calling `toArray()` or other similar funtions, since they cannot be hydrated. See below how you can get the instance form the Transporter object.
+**Warning:** you can set instances, but they do not appear when calling `toArray()` or other similar functions, since 
+they cannot be hydrated. See below how you can get the instance form the Transporter object.
 
 #### Get Instance:
 
@@ -238,8 +261,7 @@ $console = $data->command_instance;
 ### Get Data
  
 To get all data from the Transporter you can call `$data->toArray()` or `$data->toJson()`... there are many other functions on the class.
- 
- 
+
 To get specific data just call the data name, as you would when accessing data from a Request object `$data->username`.
  
 
@@ -261,4 +283,4 @@ To get specific data just call the data name, as you would when accessing data f
 
 
 
-MORE INFO COMMING...
+

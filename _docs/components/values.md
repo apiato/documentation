@@ -49,7 +49,7 @@ class Location extends Value
     
     private $y = null;
 
-    protected $resourceKey = 'localoca';
+    protected $resourceKey = 'locales';
     
     public function __construct($x, $y)
     {

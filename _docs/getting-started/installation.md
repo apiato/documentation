@@ -298,23 +298,11 @@ homestead up --provision
 *If you see `No input file specified` on the sub-domains!  
 try running this command `homestead halt && homestead up --provision`.*
 
-
-
 <a name="Dev-Env-Opt-C"></a>
 ### A.3) Using something else
 
-If you're not into virtualization solutions, you can setup your environment directly on your machine. Check the [software's requirements list]({{ site.baseurl }}{% link _docs/getting-started/requirements.md %}).
-
-
-
-
-
-
-
-
-
-
-
+If you're not into virtualization solutions, you can setup your environment directly on your machine. 
+Check the [software's requirements list]({{ site.baseurl }}{% link _docs/getting-started/requirements.md %}).
 
 <a name="Play"></a>
 ## C) Play
@@ -389,5 +377,3 @@ X-RateLimit-Remaining → 29
   }
 }
 ```
-
-

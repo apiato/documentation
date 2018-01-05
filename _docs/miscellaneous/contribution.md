@@ -323,8 +323,7 @@ The documentation is generated using [Jekyll](https://jekyllrb.com/) and lives i
 
 All you have to do is navigate to `_docs/` folder, find the markdown `.md` file that you want to update *(all files are named as they are in the site menu)*, update or add the text, the commit.
 
-> You do not need to build the site locally. Just edit the markdown files and submit your PR. Github will build the site for us. 
-
+> You do not need to build the site locally. Just edit the markdown files and submit your PR. GitHub will build the site for us. 
 
 ### Documentation Tips:
 
@@ -334,8 +333,6 @@ All you have to do is navigate to `_docs/` folder, find the markdown `.md` file 
 - To add new category for a file `category: "New Category"` (usually defined in each documentation readme).
 you must add the category name to `_config.yml` under `categories-order` in order to appear in the site. 
 - To set a link, use the internal links as follow: `[your-text]( { { site.baseurl } } { % link _docs/path/file.md % } )`. NOTE: remove the spaces between the tags.
-
-
 
 ### Run the docs locally: 
 
@@ -356,15 +353,6 @@ you must add the category name to `_config.yml` under `categories-order` in orde
 5. Browse `http://localhost:4000`
 6. Finally `jekyll build`
 
-
-
-
-
-
-
-
-<br>
-
 <a name="Contributing-Generator"></a>
 ## Contributing to the Code Generator
 
@@ -382,7 +370,6 @@ This abstract class does all the work for you.
 General Info: the only function that gets called whenever a command is executed is the `handle()` function. 
 This function exist on the abstract class `Apiato\Core\Generator\GeneratorCommand` which does all the common job for all the generator commands.
 For better understanding of how things work. Make sure you read that function.    
-
 
 1 - Add create new command by copy pasting any of the existing components commands already supported. The `Generator/Commands/RouteGenerator.php` is a great example.
 
@@ -420,4 +407,3 @@ For each generator you need to implement exactly one method (as it is defined in
 
 You may provide another default filename or extension by overriding the `getDefaultFileName()` or `getDefaultFileExtension()` 
 method, which simply returns a `string`.
-
