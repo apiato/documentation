@@ -16,7 +16,7 @@ order: 4
 <br >
 apiato provides a Role-Based Access Control (RBAC) from it's Authorization Container.
 
-Behind the scenes apiato is using the [Laravel's authorization](https://laravel.com/docs/5.4/authorization) functionality that was introduced in version 5.1.11 with the helper package [laravel-permission](https://github.com/spatie/laravel-permission). So you can always refer to the correspond documentation for more information.
+Behind the scenes apiato is using the [Laravel's authorization](https://laravel.com/docs/5.6/authorization) functionality that was introduced in version 5.1.11 with the helper package [laravel-permission](https://github.com/spatie/laravel-permission). So you can always refer to the correspond documentation for more information.
 
 <a name="how-it-works"></a>
 
