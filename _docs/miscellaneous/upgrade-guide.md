@@ -4,6 +4,8 @@ category: "Miscellaneous"
 order: 12
 ---
 
+- [Upgrade from 7.3 to 7.4](#upgrade-apiato-from-version73To74)
+- [Upgrade from 7.2 to 7.3](#upgrade-apiato-from-version72To73)
 - [Upgrade from 7.1 to 7.2](#upgrade-apiato-from-version71To72)
 - [Upgrade from 7.0 to 7.1](#upgrade-apiato-from-version70To71)
 - [Upgrade from 5.0 to 7.0](#upgrade-apiato-from-version50To70)
@@ -14,20 +16,61 @@ order: 12
 
 <br>
 
+<a name="upgrade-apiato-from-version73To74"></a>
+## Upgrade from 7.3 to 7.4
+
+> Estimated upgrading time: 30 minutes.
+
+**IMPORTANT NOTE 1** : Before upgrading, please review **all** of your own dependencies, if respective "Laravel 5.6 compatible versions" are 
+already published!
+
+**IMPORTANT NOTE 2** : Before upgrading, please `git commit` all of your changes in order to rollback if something breaks! 
+
+Key Changes:
+- Apiato now requires PHP 7.1.3 to run - this is because of Laravel's dependency!
+- Added Laravel 5.6. See the [Laravel Upgrade Guide](https://laravel.com/docs/5.6/upgrade) for more details.
+
+Most of the changes introduced by Laravel 5.6 are easy to integrate. However, the following might be a **BREAKING CHANGE** 
+to your application. Please review the following changes with caution:
+
+> Database: Index Order Of Morph Columns
+> 
+> The indexing of the columns built by the morphs migration method has been reversed for better performance. If you are 
+> using the morphs method in one of your migrations, you may receive an error when attempting to run the migration's 
+> down method. If the application is still in development, you may use the migrate:fresh command to rebuild the database 
+> from scratch. If the application is in production, you should pass an explicit index name to the morphs method.
+
+Manual Tasks to do:
+- Update your own dependencies to new L5.6 compatible versions!
+- Add the new `LOG_CHANNEL=stack` to your environment file.
+- Copy the 2 new Laravel config files (`hashing.php` and `logging.php`) to `/config/` folder in your main project tree.
+- Adjust the `TrustProxies` in `App/Ship/Middlewares` accordingly.
+- **Check, if the described "breaking change" may affect your application!**
+- Check (and eventually manually set) the dependency to `apiato/core : 2.4.*` in your `App/Ship/composer.json` file
+
+Use the [Manual Upgrading Guide](#Manual-Upgrading-Guide) below.
+
+<a name="upgrade-apiato-from-version72To73"></a>
+## Upgrade from 7.2 to 7.3
+
+> Estimated upgrading time: 20 minutes.
+
+Use the [Manual Upgrading Guide](#Manual-Upgrading-Guide) below.
+
 <a name="upgrade-apiato-from-version71To72"></a>
 ## Upgrade from 7.1 to 7.2
 
-> Estimated upgrading time is 10 minutes.
+> Estimated upgrading time: 10 minutes.
 
-Use the [Manual Upgrading Guide](#Manual-Upgrading-Guide) Below.
+Use the [Manual Upgrading Guide](#Manual-Upgrading-Guide) below.
 
 
 <a name="upgrade-apiato-from-version70To71"></a>
 ## Upgrade from 7.0 to 7.1
 
-> Estimated upgrading time is 45 minutes.
+> Estimated upgrading time: 45 minutes.
 
-Use the [Manual Upgrading Guide](#Manual-Upgrading-Guide) Below.
+Use the [Manual Upgrading Guide](#Manual-Upgrading-Guide) below.
 
 
 
@@ -35,7 +78,7 @@ Use the [Manual Upgrading Guide](#Manual-Upgrading-Guide) Below.
 <a name="upgrade-apiato-from-version50To70"></a>
 ## Upgrade from 5.0 to 7.0
 
-> Estimated upgrading time is 30 minutes.
+> Estimated upgrading time: 30 minutes.
 
 By upgrading to `Apiato 7.0` you can benefit from all the features provided by `Laravel 5.5`.
 
@@ -56,14 +99,14 @@ in apiato. This means, that you still need to **manually** register 3rd-party `S
 <a name="upgrade-apiato-from-version-41To50"></a>
 ## Upgrade from 4.1 to 5.0
 
-> Estimated upgrading time is 15 minutes.
+> Estimated upgrading time: 15 minutes.
 
 
-This guide will show you how to freshly install the new Apiato 5.0, then migrate your old project (built with Apiato 4.1) to the freshly installed one (Apiato 5.0).
+This guide will show you how to freshly install the new Apiato 5.0, then migrate your old project (built with Apiato 4.1) 
+to the freshly installed one (Apiato 5.0).
 
-*In the guide w'll be using the term **Old Project** (referring to your old project that was built with Apiato 4.1), and the term New **Project** (referring to the new freshly installed Apiato 5.0).*
-
-
+*In the guide w'll be using the term **Old Project** (referring to your old project that was built with Apiato 4.1), 
+and the term New **Project** (referring to the new freshly installed Apiato 5.0).*
 
 1) Download and install Apiato 5.0. See [Application Setup]({{ site.baseurl }}{% link _docs/getting-started/installation.md %}).
 
@@ -105,10 +148,7 @@ That's it :)
 <a name="how-to-manually-upgrade-older-versions-to-41"></a>
 ## How to manually upgrade older versions to 4.1?
 
-Use the [Manual Upgrading Guide](#Manual-Upgrading-Guide) Below.
-
-
-
+Use the [Manual Upgrading Guide](#Manual-Upgrading-Guide) below.
 
 <a name="Manual-Upgrading-Guide"></a>
 ## Manual Upgrading Guide:
