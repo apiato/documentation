@@ -15,7 +15,7 @@ title: "Welcome to Apiato"
 [![License](https://poser.pugx.org/apiato/apiato/license)](https://packagist.org/packages/apiato/apiato)
 [![Latest Unstable Version](https://poser.pugx.org/apiato/apiato/v/unstable)](https://packagist.org/packages/apiato/apiato)
 
-**Build great API's faster, with PHP and laravel 5.5**
+**Build great API's faster, with PHP and laravel 5.6**
 
 
 ## What is Apiato

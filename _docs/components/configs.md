@@ -14,7 +14,7 @@ order: 31
 <a name="definition"></a>
 ### Definition
 
-Configs are files that container configurations. For more details about them check this [doc](https://laravel.com/docs/5.3/configuration).
+Configs are files that container configurations. For more details about them check this [doc](https://laravel.com/docs/5.6/configuration).
 
 In each Apiato container, there are two types of config files: 
 - the container specific config file (a config file that contains the container specific configurations).

@@ -16,7 +16,7 @@ Tasks Scheduler:
  * its role is to schedule the execution of CLI Commands "Artisan Commands", periodically at fixed times, dates, or intervals.
  * Laravel has a wrapper around the "Cron Job" called the Laravel scheduler. This allows the framework to schedule class like and Artisan Commands, Queued Jobs in addition to  custom Shell Commands, to run later.
  
-Below is a quick guide for how to schedule some scripts execution such as (custom Shell Commands, Laravel Commands, Laravel [Jobs](https://laravel.com/docs/5.5/queues), and other classes), in order to run at specific intervals or dates.
+Below is a quick guide for how to schedule some scripts execution such as (custom Shell Commands, Laravel Commands, Laravel [Jobs](https://laravel.com/docs/5.6/queues), and other classes), in order to run at specific intervals or dates.
 
 #### Server Setup
 

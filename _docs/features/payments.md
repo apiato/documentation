@@ -58,7 +58,7 @@ $user->charge($acccount, $amount, 'USD');
 `$user->paymentAccounts` will return a *generic* `PaymentAccount` which may be transformed to the dedicated 
 payment account (`PaypalAccount`, `StripeAccount`, ...). You can call the `accountable()` function on the selected 
 payment in order to do this. For more information about this, we refer to the 
-[Polymorphic Relationships](https://laravel.com/docs/5.5/eloquent-relationships#polymorphic-relations) in the 
+[Polymorphic Relationships](https://laravel.com/docs/5.6/eloquent-relationships#polymorphic-relations) in the 
 official Laravel Docs.
 
 <a name="payment-accounts"></a>
