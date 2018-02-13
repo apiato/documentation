@@ -39,7 +39,7 @@ order: 2
 1) Clone the repo, install dependencies and setup the project:
 
 
-Option 1: Latest [stable](https://github.com/apiato/apiato/releases/latest) release (**7.3**):
+Option 1: Latest [stable](https://github.com/apiato/apiato/releases/latest) release (**7.4**):
 
 ```shell
 composer create-project apiato/apiato my-api
