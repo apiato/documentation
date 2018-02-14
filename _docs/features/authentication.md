@@ -12,6 +12,7 @@ order: 3
         - [Login without Proxy for first-party clients](#login-without-proxy-for-first-party-clients)
     - [B: For third-party clients](#third-party-clients)
         - [Login without Proxy for third-party clients](#login-without-proxy-for-third-party-clients)
+- [Login With Custom Attributes](#login-with-custom-attributes)
 - [Logout](#logout)
 - [Responses](#responses)
 - [Change Tokens Expiration dates](#change-tokens-expiration-dates)
@@ -223,7 +224,22 @@ The Access Token should be sent in the `Authorization` header of type `Bearer` E
 
 **Keep in mind there's no session state when using Tokens for Authentication**
 
+<a name="login-with-custom-attributes"></a>
+## Login With Custom Attributes
 
+> This feature is supported with Apiato 7.4.
+
+By default, Apiato allows `User`s to log in with their `email` address. However, you may want to also allow `username` and 
+`phone` to login your users. 
+  
+Here is, how to configure and use this feature.
+
+- You may need to adapt your database accordingly (e.g., add the respective field to the `users` table).
+- You may need to adapt the `Task` that `create` a `User` object (e.g., the `CreateUserByCredentialsTask`) accordingly 
+  to support the new fields. This may also affect your `Register` logic.
+- Check the `App\Containers\Authentication\Configs\authentication-container` Configuration file and check the `login` params 
+  in order to configure this feature.
+- Adapt the `ProxyApiLoginTransporter` accordingly to support your new Login Fields. These fields need to be added to `properties`
 
 <a name="logout"></a>
 ## Logout
