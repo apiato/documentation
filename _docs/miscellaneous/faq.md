@@ -49,7 +49,7 @@ It's recommended that the front-end Apps code live outside apiato completely. Ex
 
 The front-end App should be able to run as a stand alone App, and it can consume the Server API or other Testing API's.
 
-You can configure NGINX to server the Front-end and the Back-end each on a different domain or on subdomains *(Example `app.com` for the front-end App and `api.app.com` for the API)*.
+You can configure NGINX to serve the Front-end and the Back-end each on a different domain or on subdomains *(Example `app.com` for the front-end App and `api.app.com` for the API)*.
 
 **Example project structure:**
 

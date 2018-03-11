@@ -24,7 +24,7 @@ Read from the [**Porto SAP Documentation (#Routes)**](https://github.com/Mahmoud
 
 - The API Routes files MUST be named according to their API's versions, exposure and functionality. Example `CreateOrder.v1.public.php`, `FulfillOrder.v2.public.php`, `CancelOrder.v1.private.php`...
 
-- Web Routes files and pretty similar to API web files but they can be named anything.
+- Web Routes files are pretty similar to API web files but they can be named anything.
 
 <a name="folder-structure"></a>
 
