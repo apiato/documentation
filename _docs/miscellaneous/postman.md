@@ -1,5 +1,5 @@
 ---
-title: "Postman Environment & Collection"
+title: "Postman Environment"
 category: "Miscellaneous"
 order: 13
 ---
