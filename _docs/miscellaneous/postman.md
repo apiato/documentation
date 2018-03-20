@@ -13,14 +13,17 @@ order: 13
 <a name="title"></a>
 ## Apiato Postman API & Environment
 
-If you use Postman to build and explore your API's you will find this predefined Apiato Postman collection a great start to your new Apiato project. Simply download both the Environment and Collection to Postman to get started.
+If you use Postman to build and explore your API's you will find this predefined Apiato Postman collection a great 
+start to your new Apiato project. Simply download both the Environment and Collection to Postman to get started.
 
 <a name="prerequisites"></a>
 ### Prerequisites
 
 #### Configure Apiato
 
-It's important that you run the following shell commands to migrate and seed your database. The next command configures a Laravel Passport client. Finally you need to run the last command to grant the Admin user with full permission to access all routes.
+It's important that you run the following shell commands to migrate and seed your database. The next command configures 
+a Laravel Passport client. Finally you need to run the last command to grant the Admin user with full permission to 
+access all routes.
 
 ```bash
 php artisan migrate:refresh --seed
@@ -28,7 +31,7 @@ php artisan passport:client --password
 php artisan apiato:permissions:toRole admin
 ```
 
-Be sure to copy and paste your new Client Id and Client Secret into the .env file. Like so...
+Be sure to copy and paste your new Client Id and Client Secret into the `.env` file. Like so...
 
 ```bash
 CLIENT_WEB_ADMIN_ID={CLIENT_ID}
@@ -68,11 +71,13 @@ The first thing you need to do to use the Apiato endpoints is to login to your A
 * Select **Login** endpoint.
 * Click **Send** button.
 
-The response will return a body with the API access token. Normally you would have to manually add this in a header with each request using `Authorization: Bearer TOKEN`. This however is automatically done for you.
+The response will return a body with the API access token. Normally you would have to manually add this in a header 
+with each request using `Authorization: Bearer TOKEN`. This however is automatically done for you.
 
 From this point you can now access all endpoints using the **Super Admin** role.
 
-If you would like to test logging into your application with different users then switch to the `body` tab on the `login` endpoint and update the credentials.
+If you would like to test logging into your application with different users then switch to the `body` tab on the 
+`login` endpoint and update the credentials.
 
 ```json
 {

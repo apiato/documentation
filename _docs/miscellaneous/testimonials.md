@@ -4,14 +4,10 @@ category: "Miscellaneous"
 order: 30
 ---
 
-
-
 <a name="Testimonials"></a>
 ## Testimonials
 
 #### Some feedback from awesome people.
-
-
 
 ![]({{ site.baseurl }}/images/testimonials/A7.jpg)
 

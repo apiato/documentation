@@ -23,12 +23,9 @@ to make testing your API much faster and fun.
 
 Writing functional tests, makes implementing, debugging and modifying a feature faster.  
 
-With apiato you just prepare the data you want to send for your POST request, call the `call()` function and start asserting the response. 
-Everything else is set for you. 
-There are helper functions to create and preare a testing user with the right authorization (roles and permissions) for each request.
-
-
-
+With apiato you just prepare the data you want to send for your POST request, call the `call()` function and start 
+asserting the response. Everything else is set for you. There are helper functions to create and prepare a testing user 
+with the right authorization (roles and permissions) for each request.
 
 <a name="tests-properties"></a>
 ## Tests properties
@@ -194,9 +191,6 @@ $user = $this->getTestingUser([
 > **NOTE:** Later all the test helper functions will be documented, meanwhile to see all the available functions  
 check all the public functions in all the traits in this directory `vendor/apiato/core/Traits/TestsTraits/PhpUnit/*`.
 
-
-
-
 <a name="faker"></a>
 ## Faker
 
@@ -208,25 +202,24 @@ Just use it: `$this->faker->name;`
 
 See the [Tests]({{ site.baseurl }}{% link _docs/components/tests.md %}) Page, for more details about the Tests components.
 
-
-
 <a name="create-live-testing-data"></a>
 ## Create live Testing Data
 
 To test your app with some live testing data (like creating items in an inventory) you can use this feature to
-automatically generate those data. This is also helpful for staging when real people are testing your app with some testing data.
+automatically generate those data. This is also helpful for staging when real people are testing your app with some 
+testing data.
 
 1. Go to `Seeder/SeedTestingData.php` seeder class, and create your live testing data.
 
 2. Run this command `php artisan apiato:seed-test`
-
-
 
 <a name="Debugging-with-PsySH"></a>
 ## Debugging with PsySH
 
 For better debugging and development, you can open a runtime developer console while executing your test.
 
-Using [PsySH](http://psysh.org/) (interactive debugger and REPL "read-eval-print loop" for PHP). *The package is required by the Laravel Tinker Package.*
+Using [PsySH](http://psysh.org/) (interactive debugger and REPL "read-eval-print loop" for PHP). *The package is 
+required by the Laravel Tinker Package.*
 
-To use it set the breakpoint `eval(\Psy\sh());` anywhere you want in any Actions, Controllers, Tasks... and run your test normally.
+To use it set the breakpoint `eval(\Psy\sh());` anywhere you want in any Actions, Controllers, Tasks... and run your 
+test normally.

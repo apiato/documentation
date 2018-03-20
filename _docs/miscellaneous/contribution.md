@@ -28,19 +28,13 @@ Thank you for considering to contribute to Apiato. This project is powered and d
     * [Code Generator](#Contributing-Generator)
 
 
-
-
-
-
 <a name="Standards-Practices"></a>
 # Standards and Practices
-
 
 <a name="Versioning"></a>
 ### Versioning
 
 The project is versioned under the [Semantic Versioning](http://semver.org/) guidelines.
-
 
 <a name="Coding-Standards"></a>
 ### Coding Standards
@@ -56,24 +50,31 @@ As well as it is compliant with [PSR-4](https://github.com/php-fig/fig-standards
 <a name="Git-Branches"></a>
 ### Git Branches
 
-The `master` branch contains the upcoming Apiato release (in both repositories `apiato/apiato` and `apiato/core`). While the other branches are for the stable releases.
+The `master` branch contains the upcoming Apiato release (in both repositories `apiato/apiato` and `apiato/core`). 
+While the other branches are for the stable releases.
 
-Bug fixes should be sent to the latest stable branch, never to the `master` branch, unless they fix features that exist only in the upcoming release.
+Bug fixes should be sent to the latest stable branch, never to the `master` branch, unless they fix features that exist 
+only in the upcoming release.
 
 Major new features should always be sent to the `master` branch, which contains the upcoming release.
 
 **Example:**
 
-Say we are in version `7.0` right now. The repository would have at least the following two branches `master` and `7.0` (possibly older branches as well such as `5.1`, `5.0`, `4.2`, `4.1`, `4.0` and so on). The latest stable branch in this case would be the `7.0`. The next release will be `7.1` or `8.0`.
+Say we are in version `7.0` right now. The repository would have at least the following two branches `master` and `7.0` 
+(possibly older branches as well such as `5.1`, `5.0`, `4.2`, `4.1`, `4.0` and so on). The latest stable branch in this 
+case would be the `7.0`. The next release will be `7.1` or `8.0`.
 
-If your PR contains a major change or a braking change, or new Container than it must be sent to the `master` branch. And if your PR fixes a bug, then it should be sent to the latest release branch.
+If your PR contains a major change or a braking change, or new Container than it must be sent to the `master` branch. 
+And if your PR fixes a bug, then it should be sent to the latest release branch.
 
-> If you would like to always contribute to Apiato, it's better to use the master branch instead of the latest release branch, to always have the latest features and updates.
+> If you would like to always contribute to Apiato, it's better to use the master branch instead of the latest release 
+branch, to always have the latest features and updates.
 
 <a name="Proposing-Feature"></a>
 ### Proposing Feature
 
-If you have a proposal or a feature request, you may create an issue with `[Feature]` tag in the title, example `[Feature] Support XML responses`.
+If you have a proposal or a feature request, you may create an issue with `[Feature]` tag in the title, example 
+`[Feature] Support XML responses`.
 
 The proposal should also describe the new feature, as well as implementation ideas.
 The proposal will then be reviewed and either approved or denied.
@@ -92,28 +93,23 @@ A good bug report includes the following sections:
 * Expected outcome
 * Actual outcome
 * Steps to reproduce, including sample code
-* Any other information that will help us debug and reproduce the issue, including stack traces, system/environment information, and screenshots
+* Any other information that will help us debug and reproduce the issue, including stack traces, system/environment 
+information, and screenshots
 
 
 <a name="Fixing-Bugs"></a>
 ### Fixing Bugs
 
-If you see a bug report that you'd like to fix,
-please feel free to do so.
-Following the directions and guidelines described in the "Adding New Features" section below, you may create bugfix branches and send us pull requests.
-
+If you see a bug report that you'd like to fix, please feel free to do so. Following the directions and guidelines 
+described in the "Adding New Features" section below, you may create bugfix branches and send us pull requests.
 
 <a name="Adding-New-Features"></a>
-
 ### Adding New Features
 
-If you have an idea for a new feature, 
-it's a good idea to check out our [issues](https://github.com/apiato/apiato/issues) or active [pull requests](https://github.com/apiato/apiato/pulls) first 
-to see if the feature is already being worked on. 
-If not, feel free to submit an issue first, asking whether the feature is beneficial to the project. 
-This will save you from doing a lot of development work only to have your feature rejected.
-
-
+If you have an idea for a new feature, it's a good idea to check out our [issues](https://github.com/apiato/apiato/issues) 
+or active [pull requests](https://github.com/apiato/apiato/pulls) first to see if the feature is already being worked on. 
+If not, feel free to submit an issue first, asking whether the feature is beneficial to the project. This will save you 
+from doing a lot of development work only to have your feature rejected.
 
 <a name="Contribution-Guidelines"></a>
 ### Contribution Guidelines
@@ -131,18 +127,12 @@ Important things to remember when contributing:
 * **Push additional changes to the same PR** once you have a pull request for a branch, you can push additional changes to the same branch and they will be added to the pull request automatically. You should not create a new pull request for the same branch.
 * **Comment on the pull request** when you want people to know that you have pushed new changes. Although GitHub does notify people of commit pushes, people are more likely notice your changes if you leave a comment.
 
-
-
 <a name="Security-Vulnerabilities"></a>
 ### Security Vulnerabilities
 
-If you discover a security vulnerability, please send email to `mahmoud@zalt.me`.
-
-
-
+If you discover a security vulnerability, please send an email to `mahmoud@zalt.me`.
 
 <br>
-
 
 ___
 
@@ -159,8 +149,8 @@ The Apiato skeleton, is the actual Apiato project on the repository `apiato/apia
 
 This guide will help you contribute to the Apiato skeleton project, while working on your personal project. 
 
-If you added a feature/function to your local project or created a useful container or fixed a bug. This guide will show you how to submit that change to Apiato.
-
+If you added a feature/function to your local project or created a useful container or fixed a bug. This guide will 
+show you how to submit that change to Apiato.
 
 ### SETUP
 
@@ -174,11 +164,13 @@ In this scenario let's assume we have the following:
 
 1) Create Project A from Apiato
 
-If you want to fix a bug on the latest stable release your PR should be sent to the latest stable branch, thus you need to pull the latest stable release of Apiato.
+If you want to fix a bug on the latest stable release your PR should be sent to the latest stable branch, thus you need 
+to pull the latest stable release of Apiato.
 
 `composer create-project apiato/apiato project-a`
 
-If you want to add new features or do anything else, that should be added to the next stable release, you need to pull the master branch and submit your PR there.   
+If you want to add new features or do anything else, that should be added to the next stable release, you need to pull 
+the master branch and submit your PR there.   
 
 `composer create-project apiato/apiato project-a dev-master`
 
@@ -279,9 +271,6 @@ Make sure you create a PR from your custom branch `feature-awesome` to `master` 
 
 Checkout [How to upgrade apiato]({{ site.baseurl }}{% link _docs/miscellaneous/faq.md %}).
 
-
-
-
 <br>
 
 <a name="Contributing-Core-Package"></a>
@@ -291,7 +280,6 @@ The Apiato core package, is what provides most of the functionality of the Apiat
 
 This guide will help you contribute to the Apiato core package, while the package is in your vendor directory. Without much effort.
 
-
 ### SETUP
 
 1) Delete the `core` package `vendor/apiato/core` from the vendor directory.
@@ -300,7 +288,8 @@ This guide will help you contribute to the Apiato core package, while the packag
 
 `composer update {your-username}/core --prefer-source`
 
-_The composer option `--prefer-source` will clone the package's git repository inside the vendor directory, so you can commit and push from the vendor directory directly._
+_The composer option `--prefer-source` will clone the package's git repository inside the vendor directory, so you can 
+commit and push from the vendor directory directly._
 
 3) Go to `vendor/apiato/core/` from the terminal to access the package Git, in order to commit.
 
@@ -311,17 +300,16 @@ You should now have the `.git` directory of the `core` package (your forked vers
 Edit > Commit > Push > PR :)
 
 
-
-
-
 <br>
 
 <a name="Contributing-Documentation"></a>
 ## Contributing to the Documentation
 
-The documentation is generated using [Jekyll](https://jekyllrb.com/) and lives in the [documentation repository (apiato/documentation)](https://github.com/apiato/documentation), in the `_docs/` folder. 
+The documentation is generated using [Jekyll](https://jekyllrb.com/) and lives in the 
+[documentation repository (apiato/documentation)](https://github.com/apiato/documentation), in the `_docs/` folder. 
 
-All you have to do is navigate to `_docs/` folder, find the markdown `.md` file that you want to update *(all files are named as they are in the site menu)*, update or add the text, the commit.
+All you have to do is navigate to `_docs/` folder, find the markdown `.md` file that you want to update *(all files 
+are named as they are in the site menu)*, update or add the text, the commit.
 
 > You do not need to build the site locally. Just edit the markdown files and submit your PR. GitHub will build the site for us. 
 
@@ -332,7 +320,8 @@ All you have to do is navigate to `_docs/` folder, find the markdown `.md` file 
 - The docs folders `_docs/*` do not represent the categories displayed in the site. 
 - To add new category for a file `category: "New Category"` (usually defined in each documentation readme).
 you must add the category name to `_config.yml` under `categories-order` in order to appear in the site. 
-- To set a link, use the internal links as follow: `[your-text]( { { site.baseurl } } { % link _docs/path/file.md % } )`. NOTE: remove the spaces between the tags.
+- To set a link, use the internal links as follow: `[your-text]( { { site.baseurl } } { % link _docs/path/file.md % } )`. 
+NOTE: remove the spaces between the tags.
 
 ### Run the docs locally: 
 
@@ -367,11 +356,12 @@ This abstract class does all the work for you.
 
 ### Add new component generator.
 
-General Info: the only function that gets called whenever a command is executed is the `handle()` function. 
-This function exist on the abstract class `Apiato\Core\Generator\GeneratorCommand` which does all the common job for all the generator commands.
-For better understanding of how things work. Make sure you read that function.    
+General Info: the only function that gets called whenever a command is executed is the `handle()` function. This 
+function exist on the abstract class `Apiato\Core\Generator\GeneratorCommand` which does all the common job for all 
+the generator commands. For better understanding of how things work. Make sure you read that function.    
 
-1 - Add create new command by copy pasting any of the existing components commands already supported. The `Generator/Commands/RouteGenerator.php` is a great example.
+1 - Add create new command by copy pasting any of the existing components commands already supported. The 
+`Generator/Commands/RouteGenerator.php` is a great example.
 
 For each generator you need to implement exactly one method (as it is defined in the respective interface)
 
