@@ -59,7 +59,7 @@ This Middleware is provided by the [Laravel Passport](https://laravel.com/docs/p
 <a name="how-to-get-access-token-using-oauth-20"></a>
 ## How to get Access Token using OAuth 2.0
 
-All the Auth Endpoints are documented. Go to [Documentation Generator Page]({{ site.baseurl }}{% link _docs/features/api-docs-generator.md %}) ro see how you can generate the API documentation, and read them.
+All the Auth Endpoints are documented. Go to [Documentation Generator Page]({{ site.baseurl }}{% link _docs/features/api-docs-generator.md %}) to see how you can generate the API documentation, and read them.
 
 <a name="quick-overview"></a>
 ## Quick Overview  
