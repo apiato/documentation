@@ -54,10 +54,12 @@ Checkout the [Requests]({{ site.baseurl }}{% link _docs/components/requests.md %
 
 You can change the default length and characters used in the ID from the config file `app/Ship/Configs/hashids.php`or in the `.env` file by editing the `HASH_ID_LENGTH` value.
 
-#### From Apiato Version 7.4.*
+### From Apiato Version 7.4.*
 You can set the `HASH_ID_KEY` in the `.env` file to any random string. You can generate this from any of the online random string generators, or run `head /dev/urandom | tr -dc 'A-Za-z0-9!"#$%&'\''()*+,-./:;<=>?@[\]^_{|}~' | head -c 32  ; echo` on the linux commandline. Apiato defaults to the `APP_KEY` should this not be set.
 
 The `HASH_ID_KEY` acts as the salt during hashing of the ID. This should never be changed in production as it renders all previously generated IDs quite difficult to decode and recover.   
+
+You can also set a custom alphabet to be used by the `HASH_ID` by setting the `HASH_ID_ALPHABET` option in the `.env` file to your prefered custom alphabet.
 
 <a name="testing"></a>
 
