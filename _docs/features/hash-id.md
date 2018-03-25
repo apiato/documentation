@@ -59,8 +59,6 @@ You can set the `HASH_ID_KEY` in the `.env` file to any random string. You can g
 
 The `HASH_ID_KEY` acts as the salt during hashing of the ID. This should never be changed in production as it renders all previously generated IDs quite difficult to decode and recover.   
 
-You can also set a custom alphabet to be used by the `HASH_ID` by setting the `HASH_ID_ALPHABET` option in the `.env` file to your prefered custom alphabet.
-
 <a name="testing"></a>
 
 ## Testing
