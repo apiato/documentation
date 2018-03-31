@@ -5,12 +5,12 @@ order: 24
 ---
 
 * [Definition](#definition)
-- [Principles](#principles)
+* [Principles](#principles)
 * [Rules](#rules)
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
 * [Run the Seeders](#run-the-seeders)
-- [Testing seeder command](#apiato-testing-seeder-command)
+* [Testing seeder command](#apiato-testing-seeder-command)
 
 <a name="definition"></a>
 
@@ -120,9 +120,8 @@ For more information about the Database Seeders read [this](https://laravel.com/
 
 It's useful sometimes to create a big set of testing data. apiato facilitates this task:
 
-1) Open `app/Ship/Seeders/Data/Testing/Seeders/TestingDataSeeder.php` and write your testing data here.
-
-2) Run this command any time you want this data available (example at staging servers):
+1. Open `app/Ship/Seeders/SeedTestingData.php` and write your testing data here.
+2. Run this command any time you want this data available (example at staging servers):
 
 ```shell
 php artisan apiato:seed-test
