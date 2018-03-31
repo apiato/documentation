@@ -5,7 +5,7 @@ order: 30
 ---
 
 * [Definition](#definition)
-- [Principles](#principles)
+* [Principles](#principles)
 * [Rules](#rules)
 * [Folder Structure](#folder-structure)
 * [Code Sample](#code-sample)
@@ -50,11 +50,10 @@ _Example: the `jwt.auth` middleware "provided by the JWT package" is registered 
            - Middlewares
               - WebAuthentication.php
    - Ship
-       - Features
-           - Middleware
-              - Http
-                 - EncryptCookies.php
-                 - VerifyCsrfToken.php
+       - Middleware
+          - Http
+             - EncryptCookies.php
+             - VerifyCsrfToken.php
 ```
 
 <a name="code-sample"></a>
@@ -156,42 +155,79 @@ class MiddlewareServiceProvider extends MiddlewareProvider
 ```php
 <?php
 
-namespace App\Ship\Engine\Kernels;
+namespace App\Ship\Kernels;
 
-use App\Ship\Features\Middlewares\Http\ResponseHeadersMiddleware;
+use App\Ship\Middlewares\Http\ProcessETagHeadersMiddleware;
+use App\Ship\Middlewares\Http\ProfilerMiddleware;
+use App\Ship\Middlewares\Http\ValidateJsonContent;
 use Illuminate\Foundation\Http\Kernel as LaravelHttpKernel;
 
-class ShipHttpKernel extends LaravelHttpKernel
+/**
+ * Class HttpKernel
+ *
+ * A.K.A (app/Http/Kernel.php)
+ *
+ * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ */
+class HttpKernel extends LaravelHttpKernel
 {
+
+    /**
+     * The application's global HTTP middleware stack.
+     *
+     * These middleware are run during every request to your application.
+     *
+     * @var array
+     */
     protected $middleware = [
+        // Laravel middleware's
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
-        \App\Ship\Features\Middlewares\Http\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        \App\Ship\Middlewares\Http\TrimStrings::class,
+        \App\Ship\Middlewares\Http\TrustProxies::class,
+
+        // CORS package middleware
         \Barryvdh\Cors\HandleCors::class,
     ];
 
+    /**
+     * The application's route middleware groups.
+     *
+     * @var array
+     */
     protected $middlewareGroups = [
         'web' => [
-            \App\Ship\Features\Middlewares\Http\EncryptCookies::class,
+            \App\Ship\Middlewares\Http\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \App\Ship\Features\Middlewares\Http\VerifyCsrfToken::class,
+            \App\Ship\Middlewares\Http\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+
         'api' => [
-            ResponseHeadersMiddleware::class,
-            'throttle:60,1',
+            ValidateJsonContent::class,
             'bindings',
+            ProcessETagHeadersMiddleware::class,
+            ProfilerMiddleware::class,
+            // The throttle Middleware is registered by the RoutesLoaderTrait in the Core
         ],
     ];
 
+    /**
+     * The application's route middleware.
+     *
+     * These middleware may be assigned to groups or used individually.
+     *
+     * @var array
+     */
     protected $routeMiddleware = [
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
+        'can'      => \Illuminate\Auth\Middleware\Authorize::class,
+        'auth'     => \Illuminate\Auth\Middleware\Authenticate::class,
     ];
+
 }
 ```
