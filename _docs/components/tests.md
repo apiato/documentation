@@ -5,7 +5,7 @@ order: 21
 ---
 
 * [Definition](#definition)
-- [Principles](#principles)
+* [Principles](#principles)
 * [Rules](#rules)
 * [Folder Structure](#folder-structure)
 * [Code Sample](#code-sample)
@@ -106,4 +106,4 @@ use App\Containers\{container-name}\Tests\TestCase;
 
 ```
 
-> See the **Tests Helpers** Page
+> See the [Tests Helpers]({{ site.baseurl }}{% link _docs/miscellaneous/tests-helpers.md %}) Page
