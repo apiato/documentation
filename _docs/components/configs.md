@@ -5,7 +5,7 @@ order: 31
 ---
 
 * [Definition](#definition)
-- [Principles](#principles)
+* [Principles](#principles)
 * [Rules](#rules)
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
@@ -16,9 +16,9 @@ order: 31
 
 Configs are files that container configurations. For more details about them check this [doc](https://laravel.com/docs/5.6/configuration).
 
-In each Apiato container, there are two types of config files: 
+In each Apiato container, there are two types of config files:
 - the container specific config file (a config file that contains the container specific configurations).
-- the container third party packages config files (a config file that belongs to a third party package, required by the composer file of the container).   
+- the container third party packages config files (a config file that belongs to a third party package, required by the composer file of the container).
 
 <a name="principles"></a>
 ## Principles
@@ -31,25 +31,24 @@ In each Apiato container, there are two types of config files:
 
 - When publishing a third party package config file move it manually to its container or to the Ship Features Config folder in case it is generic.
 - Framework config files (provided by laravel) lives at the default config directory on the root of the project.
-- You SHOULD not add any config file to the `app/config` directory. 
+- You SHOULD NOT add any config file to the `config` directory.
 - The container specific config file, MUST have the same name of the container in lower letters and post-fixed with `-container`, to prevent conflicts between third party packages and container specific packages.
 
 <a name="folder-structure"></a>
 ### Folder Structure
 
 ```
- - App
+- app
     - Containers
         - {container-name}
             - Configs
-                - config1-container.php
+                - {container-name}-container.php
                 - package-config-file1.php
                 - ...
     - Ship
-        - Features
-            - Configs
-                - apiato.php
-                - ...
+        - Configs
+            - apiato.php
+            - ...
 - config
     - app.php
     - ...
@@ -62,24 +61,22 @@ In each Apiato container, there are two types of config files:
 
 ```php
 <?php
-
+// app/Containers/{ContainerName}/Configs/{container-name}-container.php
 return [
 
-    'containers' => [
-        /*
-        |--------------------------------------------------------------------------
-        | Default Namespace
-        |--------------------------------------------------------------------------
-        */
-        'namespace'       => 'App',
+    /*
+    |--------------------------------------------------------------------------
+    | Default Namespace
+    |--------------------------------------------------------------------------
+    */
+    'namespace'       => 'App',
 
-        // some other config params here...
-    ],
+    // some other config params here...
 ```
 You can access the respective configuration key like this:
 ```php
-$value = Config::get('config1-container.containers.namespace');     // returns 'App'
-$value = config('config1-container.containers.namespace');          // same, but using a function
+$value = Config::get('{container-name}-container.namespace');     // returns 'App'
+$value = config('{container-name}-container.namespace');          // same, but using a function
 
-$defaultValue = Config::get('config1-container.unknown.key', 'defaultvalue');   // returns 'defaultvalue' as this key is not set!
+$defaultValue = Config::get('{container-name}-container.unknown.key', 'defaultvalue');   // returns 'defaultvalue' as this key is not set!
 ```
