@@ -5,7 +5,7 @@ order: 15
 ---
 
 * [Definition](#definition)
-- [Principles](#principles)
+* [Principles](#principles)
 * [Rules](#rules)
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
@@ -21,13 +21,13 @@ Exceptions are classes the handles errors, and helps developers debug their code
 ## Principles
 
 - Exceptions can be thrown from anywhere in the application.
-- Exceptions SHOULD be created inside the Containers. However, general Exceptions CAN be created in the Port layer.
+- Exceptions SHOULD be created inside the Containers. However, general Exceptions CAN be created in the `Ship` layer.
 
 <a name="rules"></a>
 ### Rules
 
 - All Exceptions MUST extend `App\Ship\Parents\Exceptions\Exception`.
-- Shared (general) Exceptions between all Containers SHOULD be created in the **Exceptions Port** folder (`app/Ship/Exceptions/*`).
+- Shared (general) Exceptions between all Containers SHOULD be created in the **Exceptions Ship** folder (`app/Ship/Exceptions/*`).
 - Every Exception SHOULD have two properties `httpStatusCode` and `message`, both properties will be displayed when an error occurs. You can override those values while throwing the error.
 
 <a name="folder-structure"></a>
@@ -60,7 +60,7 @@ Exceptions are classes the handles errors, and helps developers debug their code
 
 namespace App\Containers\User\Exceptions;
 
-use App\Port\Exception\Abstracts\Exception;
+use App\Ship\Parents\Exceptions\Exception;
 use Symfony\Component\HttpFoundation\Response;
 
 class AccountFailedException extends Exception
@@ -78,9 +78,9 @@ class AccountFailedException extends Exception
 ```php
 <?php
 
-namespace App\Port\Exception\Exceptions;
+namespace App\Ship\Exceptions;
 
-use App\Port\Exception\Abstracts\Exception;
+use App\Ship\Parents\Exceptions\Exception;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 class InternalErrorException extends Exception
@@ -96,9 +96,9 @@ class InternalErrorException extends Exception
 ```php
 <?php
 
-namespace App\Port\Exception\Exceptions;
+namespace App\Ship\Exceptions;
 
-use App\Port\Exception\Abstracts\Exception;
+use App\Ship\Parents\Exceptions\Exception;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 class AwesomeExceptionWithCustomData extends Exception
