@@ -13,7 +13,7 @@ order: 22
 
 By default caching is disabled.
 
-To enable it, go to `config/repository.php` config file and set `cache` > `enabled  => true`, or set it from the `.env` file using `ELOQUENT_QUERY_CACHE`.
+To enable it, go to `app/Ship/Configs/repository.php` config file and set `cache` > `enabled  => true`, or set it from the `.env` file using `ELOQUENT_QUERY_CACHE`.
 
 More details can be found [here](https://github.com/andersao/l5-repository#cache-config).
 
