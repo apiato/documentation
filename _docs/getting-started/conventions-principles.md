@@ -10,7 +10,6 @@ order: 7
 * [Good URL examples](#Good-examples) 
 * [General principles for HTTP methods](#General-principles) 
 
-
 <a name="HTTP-Methods"></a>
 ### HTTP Methods usage in RESTful API's
 - GET (SELECT): retrieve a specific resource from the server, or a listing of resources.
@@ -18,8 +17,6 @@ order: 7
 - PUT (UPDATE): update a resource on the server, providing the entire resource.
 - PATCH (UPDATE): update a resource on the server, providing only changed attributes.
 - DELETE (DELETE): remove a resource from the server.
-
-
 
 <a name="Naming-Conventions"></a>
 ### Naming Conventions for Routes & Actions
@@ -29,9 +26,6 @@ order: 7
 - **CreateResource**: to create a new resource.
 - **UpdateResource**: to update/edit existing resource. 
 - **DeleteResource**: to delete a resource.
-
-
-
 
 <a name="General-guidelines"></a>
 ### General guidelines and principles for RESTful URLs
@@ -48,8 +42,6 @@ order: 7
 - Don't use implementation-specific extensions in your URIs (.php, .py, .pl, etc.)
 - Limit your URI space as much as possible. And keep path segments short.
 - Don't put metadata in the body of a response that should be in a header
-
-
 
 <a name="Good-examples"></a>
 ### Good URL examples
@@ -78,8 +70,6 @@ order: 7
 - Add new Driver to a Car:
 	- `POST http://www.api.apiato.develop/v1/cars/123/drivers`
 
-
-
 <a name="General-principles"></a>
 ### General principles for HTTP methods
 
@@ -92,7 +82,3 @@ order: 7
 - Use POST whenever you have to do something that feels RPC-like.
 - Use PUT for classes of resources that are larger or hierarchical.
 - Use DELETE in preference to POST to remove resources.
-
-
-
-

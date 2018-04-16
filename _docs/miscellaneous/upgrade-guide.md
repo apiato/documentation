@@ -14,15 +14,13 @@ order: 12
 - [Manual Upgrading Guide](#Manual-Upgrading-Guide)
 - [Upcoming Release Notes](#Upcoming-Release)
 
-<br>
-
 <a name="upgrade-apiato-from-version73To74"></a>
 ## Upgrade from 7.3 to 7.4
 
 > Estimated upgrading time: 30 minutes.
 
-**IMPORTANT NOTE 1** : Before upgrading, please review **all** of your own dependencies, if respective "Laravel 5.6 compatible versions" are 
-already published!
+**IMPORTANT NOTE 1** : Before upgrading, please review **all** of your own dependencies, if respective "Laravel 5.6 
+compatible versions" are already published!
 
 **IMPORTANT NOTE 2** : Before upgrading, please `git commit` all of your changes in order to rollback if something breaks! 
 
@@ -86,7 +84,8 @@ By upgrading to `Apiato 7.0` you can benefit from all the features provided by `
 
 You just have to do the following changes found at the [GitHub Comparison Tool](https://github.com/apiato/apiato/compare/5.0...7.0).
 
-Note: Some of the files are not required to be upgraded. And some of them, can be simply replaced by the new files (copy a file content from the Apiato repository and replace it with your older version).
+Note: Some of the files are not required to be upgraded. And some of them, can be simply replaced by the new files 
+(copy a file content from the Apiato repository and replace it with your older version).
 
 Hint: You can do a git merge and solve the conflicts, if you don't want to manually do the changes commit by commit.
 
@@ -141,9 +140,6 @@ and you will need to update the namespace from `namespace App\Ship\Seeders\Data\
 15) Run your tests `vendor/bin/phpunit`.
 
 That's it :)
-
-
-
 
 <a name="how-to-manually-upgrade-older-versions-to-41"></a>
 ## How to manually upgrade older versions to 4.1?
@@ -261,10 +257,8 @@ composer update && vendor/bin/phpunit
 
 See the [Upcoming Release Notes](#Upcoming-Release) for details about the changes.
 
-
-
-
 <a name="Upcoming-Release"></a>
 ## Upcoming Release Notes
 
-Checkout the [ChangeLog](https://github.com/apiato/apiato/blob/master/CHANGELOG.md) notes, for the upcoming features and changes.
+Checkout the [ChangeLog](https://github.com/apiato/apiato/blob/master/CHANGELOG.md) notes, for the upcoming features 
+and changes.
