@@ -46,7 +46,7 @@ For Social Authentication Apiato uses [Socialite]( https://github.com/laravel/so
 - For Twitter: [https://apps.twitter.com/app](https://apps.twitter.com/app)
 - For Google: [https://console.developers.google.com/apis/credentials](https://console.developers.google.com/apis/credentials)
 
-For the callback URL you can use this Apiato web endpoint `http://apiato.dev/auth/{provider}/callback` *(replace the provider with any of the supported providers `facebook`, `twitter`,..)*.
+For the callback URL you can use this Apiato web endpoint `http://apiato.develop/auth/{provider}/callback` *(replace the provider with any of the supported providers `facebook`, `twitter`,..)*.
 
 2) Set the Tokens and Secrets in the `.env` file
 
@@ -72,7 +72,7 @@ For the callback URL you can use this Apiato web endpoint `http://apiato.dev/aut
 
 3) Make a request from your client to get the `oauth` info. **Each Social provider returns different response and keys**
 
-For testing purposes Apiato provides a web endpoint (`http://apiato.dev/auth/{provider}` ) to act as a client.
+For testing purposes Apiato provides a web endpoint (`http://apiato.develop/auth/{provider}` ) to act as a client.
 
 Use that endpoint from your browser *(replace the provider with any of the supported providers `facebook`, `twitter`,..)* to get the `oauth` info. 
 
@@ -100,7 +100,7 @@ Example Getting Twitter User: **Twitter requires the `oauth_token` and `oauth_se
 
 ```text
 POST /v1/auth/twitter HTTP/1.1
-Host: api.apiato.dev
+Host: api.apiato.develop
 Content-Type: application/x-www-form-urlencoded
 Accept: application/json
 

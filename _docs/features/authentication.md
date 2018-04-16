@@ -107,13 +107,13 @@ When this grant type is used, your server needs to authenticate the Client App f
 
 2) After registration the user can enter his (username + password) in your App login screen.
 
-3) Your App should send a **Post** request to `http://api.apiato.dev/v1/oauth/token` containing the user credentials (`username` and `password`) and the client credentials (`client_id` and `client_secret`) in addition to the `scope` and `grant_type=password`:
+3) Your App should send a **Post** request to `http://api.apiato.develop/v1/oauth/token` containing the user credentials (`username` and `password`) and the client credentials (`client_id` and `client_secret`) in addition to the `scope` and `grant_type=password`:
 
 **Request:**
 
 ```shell
 curl --request POST \
-  --url http://api.apiato.dev/v1/oauth/token \
+  --url http://api.apiato.develop/v1/oauth/token \
   --header 'accept: application/json' \
   --header 'content-type: application/x-www-form-urlencoded' \
   --data 'username=admin%40admin.com&password=admin&client_id=2&client_secret=SGUVv02b1ppQCgI7ZVeoTZDN6z8SSFLYiMOzzfiE&grant_type=password&scope='
@@ -164,7 +164,7 @@ CLIENT_WEB_ADMIN_SECRET=VkjYCUk5DUexJTE9yFAakytWCOqbShLgu9Ql67TI
 <a name="login-without-proxy-for-first-party-clients"></a>
 ### Login without Proxy for first-party clients
 
-Login from your App by sending a POST request to `http://api.apiato.dev/v1/oauth/token` with `grant_type=password`, the User credentials (`username` & `password`), Client Credentials (`client_id` & `client_secret`) and finally the `scope` which could be empty.
+Login from your App by sending a POST request to `http://api.apiato.develop/v1/oauth/token` with `grant_type=password`, the User credentials (`username` & `password`), Client Credentials (`client_id` & `client_secret`) and finally the `scope` which could be empty.
 
 
 <a name="third-party-clients"></a>
@@ -182,13 +182,13 @@ With this grant type your server needs to authenticate the Client App only, befo
 
 You may generate a personal client for testing purposes using `php artisan passport:client --personal`.
 
-2) User add the Client credentials to his "Server Side software" and send a **Post** request to `http://api.apiato.dev/v1/oauth/token` containing the Client credentials (`client_id` and `client_secret`) in addition to the `scope` and `grant_type=client_credentials`:
+2) User add the Client credentials to his "Server Side software" and send a **Post** request to `http://api.apiato.develop/v1/oauth/token` containing the Client credentials (`client_id` and `client_secret`) in addition to the `scope` and `grant_type=client_credentials`:
 
 Request:
 
 ```shell
 curl --request POST \
-  --url http://api.apiato.dev/v1/oauth/token \
+  --url http://api.apiato.develop/v1/oauth/token \
   --header 'accept: application/json' \
   --header 'content-type: application/x-www-form-urlencoded' \
   --data 'client_id=1&client_secret=y1RbtnOvh9rpA91zPI2tiVKmFlepNy9dhHkzUKle&grant_type=client_credentials&scope='
@@ -216,7 +216,7 @@ More info at [Laravel Passport Here](https://laravel.com/docs/5.6/passport#perso
 
 We usually do not need a proxy for third-party clients as they are most likely making calls form their servers, thus the Client ID and Secret should be secure and not exposed to the users.
 
-Login by sending a POST request to `http://api.apiato.dev/v1/oauth/token` with `grant_type=client_credentials`, Client Credentials (`client_id` & `client_secret`) and finally the `scope` which could be empty.
+Login by sending a POST request to `http://api.apiato.develop/v1/oauth/token` with `grant_type=client_credentials`, Client Credentials (`client_id` & `client_secret`) and finally the `scope` which could be empty.
 
 
 Once issued, you can use that Access Token to make requests to protected resources (Endpoints).
@@ -244,7 +244,7 @@ Here is, how to configure and use this feature.
 <a name="logout"></a>
 ## Logout
 
-Logout by sending a `DELETE` request to `http://api.apiato.dev/v1/logout/` containing the Token in the Header.
+Logout by sending a `DELETE` request to `http://api.apiato.develop/v1/logout/` containing the Token in the Header.
 
 ```json
 {
@@ -365,7 +365,7 @@ In case your server is issuing a short-lived access tokens, the users will need 
 <a name="refresh-token-via-proxy-for-first-party-clients"></a>
 
 ### Refresh Token with proxy for first-party clients
-By default Apiato provide this ready endpoint `http://api.poms.dev/v1/clients/web/admin/refresh` for the Web Admin Dashboard Client  to be used when you need to refresh token for that client. You can of course create as many other endpoints as you want for each client. See the code of (`app/Containers/Authentication/UI/API/Routes/ProxyRefreshForAdminWebClient.v1.public.php`) and create similar one for each client. The most important change will be the             `env('CLIENT_WEB_ADMIN_ID')` and `env('CLIENT_WEB_ADMIN_SECRET'),` passed to the `ProxyApiRefreshAction`.
+By default Apiato provide this ready endpoint `http://api.apiato.develop/v1/clients/web/admin/refresh` for the Web Admin Dashboard Client  to be used when you need to refresh token for that client. You can of course create as many other endpoints as you want for each client. See the code of (`app/Containers/Authentication/UI/API/Routes/ProxyRefreshForAdminWebClient.v1.public.php`) and create similar one for each client. The most important change will be the             `env('CLIENT_WEB_ADMIN_ID')` and `env('CLIENT_WEB_ADMIN_SECRET'),` passed to the `ProxyApiRefreshAction`.
 
 Those proxy refresh endpoints work in 2 ways. Either by passing the `refresh_token` manually to the endpoint. Or by passing it with the HttpCookie. In both cases the code will work and the server will reply with a response similar to this:
 
@@ -384,7 +384,7 @@ Containing new Access Token and new Refresh Token.
 <a name="refresh-token-via-non-proxy"></a>
 ### Refresh Token without proxy for first-party or third-party clients
 
-The request to `http://api.poms.dev/v1/oauth/token` should contain `grant_type=refresh_token`, the `client_id` & `client_secret`, in addition to the `refresh_token` and finally the `scope` which could be empty.
+The request to `http://api.poms.develop/v1/oauth/token` should contain `grant_type=refresh_token`, the `client_id` & `client_secret`, in addition to the `refresh_token` and finally the `scope` which could be empty.
 
 
 <a name="force-email-confirmation"></a>

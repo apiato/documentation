@@ -91,21 +91,21 @@ Notice should replace the space with `%20`.
 #### Search any field for multiple keywords
 
 ```
-api.domain.dev/endpoint?search=first keyword;second keyword
+api.domain.develop/endpoint?search=first keyword;second keyword
 ```
 
 <a name="search-in-specific-field"></a>
 
 #### Search in specific field
 ```
-api.domain.dev/endpoint?search=field:keyword here
+api.domain.develop/endpoint?search=field:keyword here
 ```
 
 <a name="search-any-field-for-multiple-keywords"></a>
 
 #### Search in specific fields for multiple keywords
 ```
-api.domain.dev/endpoint?search=field1:first field keyword;field2:second field keyword
+api.domain.develop/endpoint?search=field1:first field keyword;field2:second field keyword
 ```
 
 <a name="define-query-condition"></a>
@@ -113,7 +113,7 @@ api.domain.dev/endpoint?search=field1:first field keyword;field2:second field ke
 #### Define query condition
 
 ```
-api.domain.dev/endpoint?search=field:keyword&searchFields=name:like
+api.domain.develop/endpoint?search=field:keyword&searchFields=name:like
 ```
 
 Checkout the Search Page for full implementation example.
@@ -159,7 +159,7 @@ data you want back in the response.
 Return only ID and Name from that Model, (everything else will be returned as `null`).
 
 ```
-api.domain.dev/endpoint?filter=id;status
+api.domain.develop/endpoint?filter=id;status
 ```
 
 Example Response, including only id and status:
@@ -213,7 +213,7 @@ The `?page=` parameter can be applied to any **`GET`** HTTP request responsible 
 **Usage:**
 
 ```
-api.domain.dev/endpoint?page=200
+api.domain.develop/endpoint?page=200
 ```
 
 *The pagination object is always returned in the **meta** when pagination is available on the endpoint.*
@@ -228,7 +228,7 @@ api.domain.dev/endpoint?page=200
       "current_page": 22,
       "total_pages": 1111,
       "links": {
-        "previous": "http://api.domain.dev/endpoint?page=21"
+        "previous": "http://api.domain.develop/endpoint?page=21"
       }
     }
   }
@@ -245,19 +245,19 @@ The `?limit=` parameter can be applied to define, how many results should be ret
 **Usage:**
 
 ```
-api.domain.dev/endpoint?limit=100
+api.domain.develop/endpoint?limit=100
 ```
 
 This would return 100 resources within one page of the result. Of course, the `limit` and `page` query parameter can be
 combined in order to get the next 100 resources:
 
 ```
-api.domain.dev/endpoint?limit=100&page=2
+api.domain.develop/endpoint?limit=100&page=2
 ```
 
 In order to allow clients to request all data that matches their criteria (e.g., search-criteria) and disable pagination,
 you can manually override the `$allowDisablePagination` property in your specific `Repository` class. A requester can then
-get all data (with no pagination applied) by requesting `api.domain.dev/endpoint?limit=0`. This will return all matching
+get all data (with no pagination applied) by requesting `api.domain.develop/endpoint?limit=0`. This will return all matching
 entities.
 
 <a name="relationships-include"></a>
@@ -298,7 +298,7 @@ Of course, the `address` include is defined in the respective `DriverTransformer
 **Usage:**
 
 ```
-api.domain.dev/endpoint?include=relationship
+api.domain.develop/endpoint?include=relationship
 ```
 
 **Where to define the includes:**

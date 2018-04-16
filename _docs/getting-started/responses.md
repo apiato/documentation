@@ -60,7 +60,7 @@ By default Apiato uses `DataArraySerializer`. Below is an example of the respons
       "current_page": 999,
       "total_pages": 999,
       "links": {
-        "next": "http://api.apiato.dev/v1/accounts?page=999"
+        "next": "http://api.apiato.develop/v1/accounts?page=999"
       }
     }
   },
@@ -86,7 +86,7 @@ When data is paginated the response payload will contain a `meta` description ab
       "current_page": 999,
       "total_pages": 999,
       "links": {
-        "next": "http://api.apiato.dev/v1/accounts?page=999"
+        "next": "http://api.apiato.develop/v1/accounts?page=999"
       }
     }
   },
