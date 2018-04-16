@@ -19,25 +19,18 @@ order: 2
 * [C) Play](#Play)
 
 
- 
- 
-
-
 <a name="App"></a>
 ## A) Apiato Application Installation
 
 **Apiato** can be installed automatically with Composer (recommended) or manually (with Git or direct download):
 
-
 <a name="Code-Setup"></a>
 ### 1) Code Setup
-
 
 <a name="App-Composer"></a>
 #### 1.A) Automatically via Composer
 
 1) Clone the repo, install dependencies and setup the project:
-
 
 Option 1: Latest [stable](https://github.com/apiato/apiato/releases/latest) release (**7.4**):
 
@@ -52,7 +45,8 @@ composer create-project apiato/apiato my-api ~7.2
 ```
 
 Option 3: On going [development](https://github.com/apiato/apiato/commits/master) branch "dev master" *(unstable)*:
-*This gives you features from the upcoming releases. But you need to keep syncing your project with the upstream master branch and running composer update when changes occurs.* 
+*This gives you features from the upcoming releases. But you need to keep syncing your project with the upstream master 
+branch and running composer update when changes occurs.* 
 
 ```shell
 composer create-project apiato/apiato my-api dev-master
@@ -66,7 +60,6 @@ composer create-project apiato/apiato my-api dev-master
 #### 1.B) Manually
 
 You can download the Code directly from the repository as `.ZIP` file or clone the repository using `Git` (recommended):
-
 
 1) Clone the repository using `Git`:
 
@@ -96,15 +89,12 @@ php artisan key:generate
 
 5) delete the `.git` folder from the root directory and initialize your own with `git init`.
 
-
-
-
 <a name="Setup-Database"></a>
 ### 2) Database Setup
 
 1) Migrate the Database:
 
-b. Run the migration artisan command:
+Run the migration artisan command:
 
 ```shell
 php artisan migrate
@@ -116,23 +106,27 @@ php artisan migrate
 php artisan db:seed
 ```
 
-3) Optional. By default Apiato seeds a "Super User", given the default `admin` role (the role has no Permissions set to it). 
+3) Optional. By default Apiato seeds a "Super User", given the default `admin` role (the role has no Permissions set 
+to it). 
 
-To give the `admin` role, access to all the seeded permissions in the system, run the following command `php artisan apiato:permissions:toRole admin` at any time.
+To give the `admin` role, access to all the seeded permissions in the system, run the following command 
+```
+php artisan apiato:permissions:toRole admin
+```
+at any time.
 
-**NOTE:** if you are using Laradock, you need to run those commands from the `workspace` Container, you can enter that container by running `docker-compose exec workspace bash` from the Laradock folder.
-
+**NOTE:** if you are using Laradock, you need to run those commands from the `workspace` Container, you can enter that 
+container by running `docker-compose exec workspace bash` from the Laradock folder.
 
 <a name="Prepare-OAuth"></a>
 ### 3) OAuth 2.0 Setup 
 
-
-1) Create encryption keys to generate secure access tokens and create "personal access" and "password grant" clients which will be used to generate access tokens:
+1) Create encryption keys to generate secure access tokens and create "personal access" and "password grant" clients 
+which will be used to generate access tokens:
 
 ```shell
 php artisan passport:install
 ```
-
 
 <a name="Documentation"></a>
 ### 4) Documentation Setup
@@ -147,16 +141,17 @@ Install it Globally with `-g` or locally in the project without `-g`
 npm install apidoc -g
 ```
 
-Or install it by just running `npm install` on the root of the project, after checking the `package.json` file on the root. 
-
+Or install it by just running `npm install` on the root of the project, after checking the `package.json` file on the 
+root. 
 
 2) run `php artisan apiato:docs`
 
-Behind the scene `apiato:docs` is executing a command like this `apidoc -c app/Containers/Documentation/ApiDocJs/public -f public.php -i app -o public/api/documentation`.
+Behind the scene `apiato:docs` is executing a command like this
+```
+apidoc -c app/Containers/Documentation/ApiDocJs/public -f public.php -i app -o public/api/documentation
+```
 
 ##### Visit [API Docs Generator]({{ site.baseurl }}{% link _docs/features/api-docs-generator.md %}) for more details.
-
-
 
 <a name="Testing"></a>
 ### 5) Testing Setup
@@ -169,18 +164,21 @@ Behind the scene `apiato:docs` is executing a command like this `apidoc -c app/C
 vendor/bin/phpunit
 ```
 
-
-
-
-
-
-
-
 <a name="Development-Environment"></a>
 ## B) Development Environment Setup
 
-You can run **Apiato** on your favorite environment. Below you'll see how you can run it on top of [Vagrant](https://www.vagrantup.com/) (using [Laravel Homestead](https://laravel.com/docs/master/homestead)) or [Docker](https://www.docker.com/) (using [Laradock](https://github.com/Laradock/laradock)). 
-We'll see how to use both tools and you can pick one, or you can use other options like [Larvel Valet](https://laravel.com/docs/valet), [Laragon](https://laragon.org/) or even run it directly on your machine.
+You can run **Apiato** on your favorite environment. Below you'll see how you can run it on top of 
+[Vagrant](https://www.vagrantup.com/) (using [Laravel Homestead](https://laravel.com/docs/master/homestead)) or 
+[Docker](https://www.docker.com/) (using [Laradock](https://github.com/Laradock/laradock)). 
+
+We'll see how to use both tools and you can pick one, or you can use other options like 
+[Larvel Valet](https://laravel.com/docs/valet), [Laragon](https://laragon.org/) or even run it directly on your machine.
+
+> #### Heads up!
+> 
+> The ICANN has now officially approved `.dev` as a generic top level domain (gTLD). Therefore, it is **not** recommended 
+> to use `.dev` domains any more in your local development setup! The docs here has been changed to use `.develop` 
+> instead of `.dev`, however, you may change to `.localhost` or `.test` or whatever suits your needs.
 
 <a name="Dev-Env-Opt-A"></a>
 ### A.1) Using Docker (with Laradock)
@@ -224,9 +222,9 @@ docker-compose up -d nginx mysql redis beanstalkd
 127.0.0.1  admin.apiato.develop
 ```
 
-If you're using NGINX or Apache, make sure the **server_name** (in case of NGINX) or **ServerName** (in case of Apache) in your the server config file, is set to the following `apiato.develop api.apiato.develop admin.apiato.develop`. 
+If you're using NGINX or Apache, make sure the **server_name** (in case of NGINX) or **ServerName** (in case of Apache) 
+in your the server config file, is set to the following `apiato.develop api.apiato.develop admin.apiato.develop`.  
 *(Also don't forget to set your **root** or **DocumentRoot** to the public directory inside apiato `apiato/public`)*.
-
 
 <a name="Dev-Env-Opt-B"></a>
 ### A.2) Using Vagrant (with Laravel Homestead)
@@ -256,11 +254,10 @@ sites:
   	  to: /{full-path-to}/clients/web/admin
 ```
 
-Note: in the example above the `/{full-path-to}/clients/web/***` are separate apps, who live on their own 
-repositories and in different folder then the Apiato one. 
-If your Admins, Users or other type of Apps are within Apiato, then 
-you must point them all to the Apiato project folder `/{full-path-to}/apiato/public`. 
-So in that case you would have something like this:
+Note: in the example above the `/{full-path-to}/clients/web/***` are separate apps, who live on their own repositories 
+and in different folder then the Apiato one. If your Admins, Users or other type of Apps are within Apiato, then you 
+must point them all to the Apiato project folder `/{full-path-to}/apiato/public`. So in that case you would have 
+something like this:
  
 ```text
     - map: api.apiato.develop
@@ -285,9 +282,9 @@ So in that case you would have something like this:
 192.168.10.10   admin.apiato.develop
 ```
 
-If you're using NGINX or Apache, make sure the **server_name** (in case of NGINX) or **ServerName** (in case of Apache) in your the server config file, is set to the following `apiato.develop api.apiato.develop admin.apiato.develop`. 
+If you're using NGINX or Apache, make sure the **server_name** (in case of NGINX) or **ServerName** (in case of Apache) 
+in your the server config file, is set to the following `apiato.develop api.apiato.develop admin.apiato.develop`. 
 *(Also don't forget to set your **root** or **DocumentRoot** to the public directory inside apiato `apiato/public`)*.
-
 
 2.3) Run the Virtual Machine:
 
@@ -301,8 +298,8 @@ try running this command `homestead halt && homestead up --provision`.*
 <a name="Dev-Env-Opt-C"></a>
 ### A.3) Using something else
 
-If you're not into virtualization solutions, you can setup your environment directly on your machine. 
-Check the [software's requirements list]({{ site.baseurl }}{% link _docs/getting-started/requirements.md %}).
+If you're not into virtualization solutions, you can setup your environment directly on your machine. Check the 
+[software's requirements list]({{ site.baseurl }}{% link _docs/getting-started/requirements.md %}).
 
 <a name="Play"></a>
 ## C) Play
@@ -321,7 +318,8 @@ Now let's see it in action
 
 2) Make some HTTP calls to the API:
 
-*To make the calls you can use [Postman](https://www.getpostman.com/), [HTTPIE](https://github.com/jkbrzt/httpie) or any other tool you prefer.*
+*To make the calls you can use [Postman](https://www.getpostman.com/), [HTTPIE](https://github.com/jkbrzt/httpie) or 
+any other tool you prefer.*
 
 Let's test the (user registration) endpoint `http://api.apiato.develop/v1/register ` with **cURL**:
 
@@ -329,7 +327,7 @@ Let's test the (user registration) endpoint `http://api.apiato.develop/v1/regist
 curl -X POST -H "Accept: application/json" -H "Cache-Control: no-cache" -F "email=mahmoud@zalt.me" -F "password=so-secret" -F "name=Mahmoud Zalt" "http://api.apiato.develop/v1/register"
 ```
 
-You should get response similar to this:
+You should get response like this:
 
 ```json
 Access-Control-Allow-Origin → ...
