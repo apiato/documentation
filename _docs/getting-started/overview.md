@@ -11,7 +11,6 @@ order: 3
   * [Sample Action](#sample-action)
   * [Sample User Response](#user-res)
 
-
 <a name="Quick-Overview"></a>
 ## Quick Overview
 
@@ -19,6 +18,7 @@ order: 3
 ### The basic flow
 
 When an HTTP request is received, it first hits your predefined Endpoint (each endpoint live in its own Route file).
+
 <a name="sample-route"></a>
 #### Sample Route Endpoint
 
@@ -29,7 +29,9 @@ $router->get('hello', [
 ]);
 ```
 
-After the user makes a request to the endpoint `[GET] www.api.apiato.com/v1/hello` it calls the defined controller function (`sayHello`).
+After the user makes a request to the endpoint `[GET] www.api.apiato.com/v1/hello` it calls the defined controller 
+function (`sayHello`).
+
 <a name="control-fun"></a>
 #### Sample Controller Function
 
@@ -48,9 +50,11 @@ class Controller extends ApiController
 }
 ```
 
-This function takes a Request class `SayHelloRequest` to automatically checks if the user has the right access to this endpoint. _Only if the user has access, it proceed to the function body._
+This function takes a Request class `SayHelloRequest` to automatically checks if the user has the right access to this 
+endpoint. _Only if the user has access, it proceed to the function body._
 
 Then the function calls an Action (`SayHelloAction`) to perform the business logic.
+
 <a name="sample-action"></a>
 #### Sample Action
 
@@ -67,9 +71,10 @@ class SayHelloAction extends Action
 
 The Action can do anything then return a result (could be Object, String or anything).
 
-When the Action finish its job the controller function gets ready to build a response.
+When the Action finishes its job, the controller function gets ready to build a response.
 
 Json responses can be built using the helper function `json` (`$this->json(['foo' => 'bar']);`).
+
 <a name="user-res"></a>
 #### Sample User Response
 

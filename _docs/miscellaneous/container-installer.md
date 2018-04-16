@@ -8,7 +8,6 @@ order: 5
   * [Downloading and Installing 3rd Party Containers](#downloading-and-installing-3rdPartyContainers)
   * [Developing a Container](#developing-a-container)
 
-
 <a name="containers"></a>
 ## Containers
 
@@ -37,7 +36,6 @@ For example, the respective `/app/Containers/composer.json` file may look someth
     "johannesschobel/apiato-null" : "dev-master"
   }
 }
-
 ```
 
 You just need to call `composer update` in order to install the respective packages. The package (e.g., the container)
