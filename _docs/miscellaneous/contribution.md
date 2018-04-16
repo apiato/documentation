@@ -4,12 +4,8 @@ category: "Miscellaneous"
 order: 11
 ---
 
-
-
-Thank you for considering to contribute to Apiato. This project is powered and driven by its users. So contributions are **welcome** and will be fully **credited**.
-
-
-
+Thank you for considering to contribute to Apiato. This project is powered and driven by its users. So contributions 
+are **welcome** and will be fully **credited**.
 
 * [Standards and Practices](#Standards-Practices)
     * [Versioning](#Versioning)
@@ -27,7 +23,6 @@ Thank you for considering to contribute to Apiato. This project is powered and d
     * [Documentation](#Contributing-Documentation)
     * [Code Generator](#Contributing-Generator)
 
-
 <a name="Standards-Practices"></a>
 # Standards and Practices
 
@@ -44,8 +39,7 @@ The project is compliant with [PSR-1](https://github.com/php-fig/fig-standards/b
 [PSR-12](https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md) Styles.
  
 As well as it is compliant with [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md) Autoloader.
-*If you notice any compliance oversights, you can send a patch via pull request.*
-
+*If you notice any compliance oversights, you can send a pull request to address this issue.*
 
 <a name="Git-Branches"></a>
 ### Git Branches
@@ -96,7 +90,6 @@ A good bug report includes the following sections:
 * Any other information that will help us debug and reproduce the issue, including stack traces, system/environment 
 information, and screenshots
 
-
 <a name="Fixing-Bugs"></a>
 ### Fixing Bugs
 
@@ -132,15 +125,15 @@ Important things to remember when contributing:
 
 If you discover a security vulnerability, please send an email to `mahmoud@zalt.me`.
 
-<br>
-
 ___
 
 <a name="Contributing-Apiato"></a>
 # Contributing to Apiato
 
-> The project consist of 2 repositories `apiato/apiato` (the project skeleton, with default containers) and `apiato/core` (the core package of apiato).
-
+> #### Heads Up!
+> 
+> The project consist of 2 repositories `apiato/apiato` (the project skeleton, with default containers) and 
+`apiato/core` (the core package of apiato).
 
 <a name="Contributing-Skeleton-Project"></a>
 ## Contributing to the Skeleton Project
@@ -160,7 +153,6 @@ In this scenario let's assume we have the following:
 
 * `Apiato`     # is the starter/framework project
 * `Project-A`  # your personal project your building on top of apiato
-
 
 1) Create Project A from Apiato
 
@@ -278,7 +270,8 @@ Checkout [How to upgrade apiato]({{ site.baseurl }}{% link _docs/miscellaneous/f
 
 The Apiato core package, is what provides most of the functionality of the Apiato project. 
 
-This guide will help you contribute to the Apiato core package, while the package is in your vendor directory. Without much effort.
+This guide will help you contribute to the Apiato core package, while the package is in your vendor directory. Without 
+much effort.
 
 ### SETUP
 
@@ -299,9 +292,6 @@ You should now have the `.git` directory of the `core` package (your forked vers
 
 Edit > Commit > Push > PR :)
 
-
-<br>
-
 <a name="Contributing-Documentation"></a>
 ## Contributing to the Documentation
 
@@ -318,8 +308,8 @@ are named as they are in the site menu)*, update or add the text, the commit.
 - The styles are in `main.scss` and `_sass/*`.
 - The Layout `_layouts/default.html`.
 - The docs folders `_docs/*` do not represent the categories displayed in the site. 
-- To add new category for a file `category: "New Category"` (usually defined in each documentation readme).
-you must add the category name to `_config.yml` under `categories-order` in order to appear in the site. 
+- To add new category for a file `category: "New Category"` (usually defined in each documentation readme), you must 
+add the category name to `_config.yml` under `categories-order` in order to appear in the site. 
 - To set a link, use the internal links as follow: `[your-text]( { { site.baseurl } } { % link _docs/path/file.md % } )`. 
 NOTE: remove the spaces between the tags.
 
@@ -351,7 +341,6 @@ The Code generator is part of the `apiato/core` package.
 - Code Path: `/Generator`.
 
 Each component command, "Except the Containers Generator" must extend from the `Apiato\Core\Generator\GeneratorCommand.php`.
-
 This abstract class does all the work for you.
 
 ### Add new component generator.

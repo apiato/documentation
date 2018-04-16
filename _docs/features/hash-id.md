@@ -40,9 +40,9 @@ Note: if the feature is set to false `HASH_ID=false` the `getHashedKey()` will r
 
 There are 2 ways an ID's can be passed to your system via the API:
 
-In URL example: `www.apiato.dev/items/abcdef`.
+In URL example: `www.apiato.develop/items/abcdef`.
 
-In parameters example: [GET] or [POST] `www.apiato.dev/items?id=abcdef`.
+In parameters example: [GET] or [POST] `www.apiato.develop/items?id=abcdef`.
 
 in both cases you will need to inform your API about what's coming form the Request class.
 

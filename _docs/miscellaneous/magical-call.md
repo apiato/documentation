@@ -116,7 +116,8 @@ $foo = Apiato::call('Container@ActionOrTask', [], [
 <a name="#transactional-call"></a>
 ### Transactional Magical Call
 
-Sometimes, you want to wrap a call into one `Database Transaction` (see [Laravel Documentation](https://laravel.com/docs/5.6/database#database-transactions)).
+Sometimes, you want to wrap a call into one `Database Transaction` (see 
+[Laravel Documentation](https://laravel.com/docs/5.6/database#database-transactions)).
 
 Consider the following example: You want to create a new `Team` and automatically assign yourself (i.e., your own 
 `User`) to this newly created `Team`. Your `CreateTeamAction` may call a dedicated `CreateTeamTask` and a 

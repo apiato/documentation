@@ -71,7 +71,7 @@ However, Apiato uses a middleware `app/Ship/Middlewares/Http/ProfilerMiddleware.
         "route": {
             "uri": "GET /",
             "middleware": "api, throttle:30,1",
-            "domain": "http://api.apiato.dev",
+            "domain": "http://api.apiato.develop",
             "as": "apis_root_page",
             "controller": "App\\Containers\\Welcome\\UI\\API\\Controllers\\Controller@apiRoot",
             "namespace": "App\\Containers\\Welcome\\UI\\API\\Controllers",
@@ -108,7 +108,7 @@ However, Apiato uses a middleware `app/Ship/Middlewares/Http/ProfilerMiddleware.
                     "time": 1506105927.694811
                 },
                 {
-                    "message": "[2017-09-18 17:38:15] testing.INFO: New User registration. ID = 970ylqvaogmxnbdr | Email = apiato@mail.dev.      Thank you for signing up.\n</div>\n</body>\n</html>\n  \n",
+                    "message": "[2017-09-18 17:38:15] testing.INFO: New User registration. ID = 970ylqvaogmxnbdr | Email = apiato@mail.develop.      Thank you for signing up.\n</div>\n</body>\n</html>\n  \n",
                     "message_html": null,
                     "is_string": false,
                     "label": "info",

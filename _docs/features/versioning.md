@@ -30,9 +30,9 @@ Automatically the endpoint inside that route file will be accessible by adding t
 
 Example: 
 
-- `http://api.apiato.dev/v1/register`
-- `http://api.apiato.dev/v1/orders`
-- `http://api.apiato.dev/v2/stores/123`
+- `http://api.apiato.develop/v1/register`
+- `http://api.apiato.develop/v1/orders`
+- `http://api.apiato.develop/v2/stores/123`
 
 
 
