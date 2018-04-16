@@ -64,7 +64,7 @@ class RegisterUserTest extends TestCase
     {
         // prepare your post data
         $data = [
-            'email'    => 'hello@mail.dev',
+            'email'    => 'hello@mail.develop',
             'name'     => 'Mahmoud',
             'password' => 'secret',
         ];
@@ -181,7 +181,7 @@ $response = $this->endpoint('get@item/{id}')->injectId($user->id)->makeCall();
 $user = $this->getTestingUser();
 
 $user = $this->getTestingUser([
-    'email'    => 'hello@mail.dev',
+    'email'    => 'hello@mail.develop',
     'name'     => 'Hello',
     'password' => 'secret',
 ]);

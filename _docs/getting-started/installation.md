@@ -214,17 +214,17 @@ docker-compose up -d nginx mysql redis beanstalkd
 
 5.1) Open the hosts file on your local machine `/etc/hosts`.
 
-*We'll be using `apiato.dev` as local domain (you can change it if you want).*
+*We'll be using `apiato.develop` as local domain (you can change it if you want).*
 
 5.2) Map the domain and its subdomains to 127.0.0.1:
 
 ```text
-127.0.0.1  apiato.dev
-127.0.0.1  api.apiato.dev
-127.0.0.1  admin.apiato.dev
+127.0.0.1  apiato.develop
+127.0.0.1  api.apiato.develop
+127.0.0.1  admin.apiato.develop
 ```
 
-If you're using NGINX or Apache, make sure the **server_name** (in case of NGINX) or **ServerName** (in case of Apache) in your the server config file, is set to the following `apiato.dev api.apiato.dev admin.apiato.dev`. 
+If you're using NGINX or Apache, make sure the **server_name** (in case of NGINX) or **ServerName** (in case of Apache) in your the server config file, is set to the following `apiato.develop api.apiato.develop admin.apiato.develop`. 
 *(Also don't forget to set your **root** or **DocumentRoot** to the public directory inside apiato `apiato/public`)*.
 
 
@@ -239,20 +239,20 @@ If you're using NGINX or Apache, make sure the **server_name** (in case of NGINX
 homestead edit
 ```
 
-1.2) Map the `api.apiato.dev` domain to the project public directory - Example:
+1.2) Map the `api.apiato.develop` domain to the project public directory - Example:
 
 ```text
 sites:
-	- map: api.apiato.dev
+	- map: api.apiato.develop
   	  to: /{full-path-to}/apiato/public
 ```
 
-1.3) You can also map other domains like `apiato.dev` and `admin.apiato.dev` to other web apps:
+1.3) You can also map other domains like `apiato.develop` and `admin.apiato.develop` to other web apps:
 
 ```text
-	- map: apiato.dev
+	- map: apiato.develop
   	  to: /{full-path-to}/clients/web/user
-	- map: admin.apiato.dev
+	- map: admin.apiato.develop
   	  to: /{full-path-to}/clients/web/admin
 ```
 
@@ -263,11 +263,11 @@ you must point them all to the Apiato project folder `/{full-path-to}/apiato/pub
 So in that case you would have something like this:
  
 ```text
-    - map: api.apiato.dev
+    - map: api.apiato.develop
       to: /{full-path-to}/apiato/public
-    - map: apiato.dev
+    - map: apiato.develop
       to: /{full-path-to}/apiato/public
-    - map: admin.apiato.dev
+    - map: admin.apiato.develop
       to: /{full-path-to}/apiato/public
 ```
 
@@ -275,17 +275,17 @@ So in that case you would have something like this:
 
 2.1) Open the hosts file on your local machine `/etc/hosts`.
 
-*We'll be using `apiato.dev` as local domain (you can change it if you want).*
+*We'll be using `apiato.develop` as local domain (you can change it if you want).*
 
 2.2) Map the domain and its subdomains to the Vagrant IP Address:
 
 ```text
-192.168.10.10   apiato.dev
-192.168.10.10   api.apiato.dev
-192.168.10.10   admin.apiato.dev
+192.168.10.10   apiato.develop
+192.168.10.10   api.apiato.develop
+192.168.10.10   admin.apiato.develop
 ```
 
-If you're using NGINX or Apache, make sure the **server_name** (in case of NGINX) or **ServerName** (in case of Apache) in your the server config file, is set to the following `apiato.dev api.apiato.dev admin.apiato.dev`. 
+If you're using NGINX or Apache, make sure the **server_name** (in case of NGINX) or **ServerName** (in case of Apache) in your the server config file, is set to the following `apiato.develop api.apiato.develop admin.apiato.develop`. 
 *(Also don't forget to set your **root** or **DocumentRoot** to the public directory inside apiato `apiato/public`)*.
 
 
@@ -311,22 +311,22 @@ Now let's see it in action
 
 1.a. Open your web browser and visit: 
 
-- `http://apiato.dev` You should see an HTML page, with `Apiato` in the middle.
-- `http://admin.apiato.dev` You should see an HTML Login page.
+- `http://apiato.develop` You should see an HTML page, with `Apiato` in the middle.
+- `http://admin.apiato.develop` You should see an HTML Login page.
 
 1.b. Open your HTTP client and call: 
 
-- `http://api.apiato.dev/` You should see a JSON response with message: `"Welcome to apiato."`, 
-- `http://api.apiato.dev/v1` You should see a JSON response with message: `"Welcome to apiato (API V1)."`,   
+- `http://api.apiato.develop/` You should see a JSON response with message: `"Welcome to apiato."`, 
+- `http://api.apiato.develop/v1` You should see a JSON response with message: `"Welcome to apiato (API V1)."`,   
 
 2) Make some HTTP calls to the API:
 
 *To make the calls you can use [Postman](https://www.getpostman.com/), [HTTPIE](https://github.com/jkbrzt/httpie) or any other tool you prefer.*
 
-Let's test the (user registration) endpoint `http://api.apiato.dev/v1/register ` with **cURL**:
+Let's test the (user registration) endpoint `http://api.apiato.develop/v1/register ` with **cURL**:
 
 ```shell
-curl -X POST -H "Accept: application/json" -H "Cache-Control: no-cache" -F "email=mahmoud@zalt.me" -F "password=so-secret" -F "name=Mahmoud Zalt" "http://api.apiato.dev/v1/register"
+curl -X POST -H "Accept: application/json" -H "Cache-Control: no-cache" -F "email=mahmoud@zalt.me" -F "password=so-secret" -F "name=Mahmoud Zalt" "http://api.apiato.develop/v1/register"
 ```
 
 You should get response similar to this:

@@ -31,15 +31,15 @@ have the freedom to structure your own project anyway you like, and still use al
 <a name="q2"></a>
 ## How to use my custom domain?
 
-Change the default URL from `apiato.dev` to `awesome.com`
+Change the default URL from `apiato.develop` to `awesome.com`
 
 1) Edit your hosts file `sudo vi ect/hosts`, and map your domain `awesome.com` to the IP address of your Virtual Host 
 (Localhost, Docker IP, Vagrant IP, ...)
 
-2) Edit the `.env` file and replace `apiato.dev` with `awesome.com` in `APP_URL`, and `API_URL` *(note the API domain 
+2) Edit the `.env` file and replace `apiato.develop` with `awesome.com` in `APP_URL`, and `API_URL` *(note the API domain 
 should be api.)*
 
-3) Edit the `phpunit.xml` file and change `API_BASE_URL` from `apiato.dev` to `awesome.com`
+3) Edit the `phpunit.xml` file and change `API_BASE_URL` from `apiato.develop` to `awesome.com`
 
 
 <a name="q3"></a>

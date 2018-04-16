@@ -18,17 +18,17 @@ order: 110
 
 ## The provided Admin route
 
-- http://admin.apiato.dev/dashboard
+- http://admin.apiato.develop/dashboard
 
-- http://admin.apiato.dev/login
+- http://admin.apiato.develop/login
 
-- http://admin.apiato.dev/logout
+- http://admin.apiato.develop/logout
 
 <a name="how-it-works"></a>
 
 ## How it works
 
-Visiting `http://admin.apiato.dev/dashboard` will redirect you to a login page for admins.
+Visiting `http://admin.apiato.develop/dashboard` will redirect you to a login page for admins.
 
 the default credentials are:
 

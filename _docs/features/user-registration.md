@@ -12,7 +12,7 @@ order: 5
 
 ### Register users by credentials (email and passwords)
 
-Call the `http://api.apiato.dev/v1/register` endpoint (you can find it's documentation after generating the API Docs.
+Call the `http://api.apiato.develop/v1/register` endpoint (you can find it's documentation after generating the API Docs.
 
 Check out the `registerUser` endpoint in the API Routes files.
 
@@ -23,7 +23,7 @@ This will registered new Users and generates Personal Access Tokens and respond 
 
 ```http
 curl --request POST \
-  --url http://api.apiato.dev/v1/register \
+  --url http://api.apiato.develop/v1/register \
   --header 'accept: application/json' \
   --header 'content-type: application/x-www-form-urlencoded' \
   --data 'email=apiato%40mail.com1&password=password&name=Mahmoud%20Zalt'

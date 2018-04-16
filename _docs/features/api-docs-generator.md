@@ -103,9 +103,9 @@ php artisan apiato:docs
 
 #### 3 - Visit this URL's as shown in your terminal:
 
-- Public (external) API at `http://apiato.dev/api/documentation/`
+- Public (external) API at `http://apiato.develop/api/documentation/`
 
-- Private (internal) API at `http://apiato.dev/api/private/documentation/`.
+- Private (internal) API at `http://apiato.develop/api/private/documentation/`.
 
 **NOTE:** Every time you do changes in the DocBlock of the Routes file you need to run this command.
 
@@ -190,7 +190,7 @@ Apiato generates by defaults 2 API documentations, each one has it's own `apidoc
   "description": "Apiato (Private API) Documentation",
   "title": "Welcome to Apiato",
   "version": "1.0.0",
-  "url" : "http://api.apiato.dev",
+  "url" : "http://api.apiato.develop",
   "template": {
     "withCompare": true,
     "withGenerator": true
