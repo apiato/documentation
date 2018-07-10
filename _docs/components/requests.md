@@ -287,6 +287,56 @@ On the other side if `isKing` *(a custom function could be written by you anywhe
 
 Checkout the [hasAccess](https://apiato.readme.io/docs/requests#section-hasaccess) below.
 
+<a name="how-to-add-custom-authorize-function"></a>
+
+## How to add a custom authorize function
+
+The best way to add a custom authorize function is through a Trait, which can be added to your Requests. In the below example we create a Trait named TenantPermissionTrait with a single method called isTenant.
+
+The isTenant method calls a Task to verify that the user is a member of the Tenant.
+
+```
+<?php
+namespace App\Containers\Tenant\Traits;
+
+use Apiato\Core\Foundation\Facades\Apiato;
+
+trait TenantPermissionTrait
+{
+    public function isTenant()
+    {
+        return Apiato::call('Tenant@CheckTenantAccessTask', [$this->tenant_id, $this->user()]);
+    }
+}
+```
+
+Add the Trait to the Request to use the isTenant in the authorization check.
+```
+<?php
+
+namespace App\Containers\Tenant\UI\API\Requests;
+
+use App\Containers\Tenant\Traits\TenantPermissionTrait;
+use App\Ship\Parents\Requests\Request;
+
+/**
+ * Class FindTenantByIdRequest.
+ */
+class FindTenantByIdRequest extends Request
+{
+
+    use TenantPermissionTrait;
+
+    ....
+
+    public function authorize()
+    {
+        return $this->check([
+            'isTenant',
+        ]);
+    }
+}
+```
 
 
 
