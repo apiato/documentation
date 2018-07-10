@@ -8,6 +8,7 @@ order: 35
 - [Principles](#principles)
 - [Rules](#rules)
 * [Folder Structure](#folder-structure)
+- [Enabling events](#enabling)
 - [Usage](#usage)
 - [Dispatch Events](#dispatch-events)
 - [Queueing](#Queueing)
@@ -58,7 +59,57 @@ More details [here](https://laravel.com/docs/events).
             - ...
 ```
 
+<a name="enabling"></a>
+### Enabling
 
+Before you can use events you need to add the EventServiceProvider to the MainServiceProvider.php of the Ship. See example below.
+
+```
+<?php
+
+namespace App\Containers\Tenant\Providers;
+
+use App\Ship\Parents\Providers\MainProvider;
+
+/**
+ * Class MainServiceProvider.
+ *
+ * The Main Service Provider of this container, it will be automatically registered in the framework.
+ */
+class MainServiceProvider extends MainProvider
+{
+
+    /**
+     * Container Service Providers.
+     *
+     * @var array
+     */
+    public $serviceProviders = [
+        EventServiceProvider::class,
+    ];
+
+    /**
+     * Container Aliases
+     *
+     * @var  array
+     */
+    public $aliases = [
+        // 'Foo' => Bar::class,
+    ];
+
+    /**
+     * Register anything in the container.
+     */
+    public function register()
+    {
+        parent::register();
+
+        // $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
+        // ...
+    }
+}
+
+```
 
 <a name="usage"></a>
 ### Usage
@@ -105,7 +156,33 @@ class UserRegisteredEvent extends Event implements ShouldQueue
 
 > Note: You will get more benefits creating Events Listeners for each Event.
 
-To do this you will need to extend this EventsProvider `Apiato\Core\Abstracts\Providers\EventsProvider`.
+To do this you will need to create an EventServiceProvider in your container extending EventsProvider `App\Ship\Parents\Providers\EventsProvider`.
+
+The EventServiceProvider needs to be registered in the containers MainServiceProvider
+```
+<?php
+
+namespace App\Containers\User\Providers;
+
+use App\Ship\Parents\Providers\MainProvider;
+
+/**
+ * Class MainServiceProvider.
+ *
+ * The Main Service Provider of this container, it will be automatically registered in the framework.
+ */
+class MainServiceProvider extends MainProvider
+{
+
+/**
+ * Container Service Providers.
+ *
+ * @var array
+ */
+public $serviceProviders = [
+    EventServiceProvider::class,
+];
+```
 
 
 <a name="dispatch-events"></a>
