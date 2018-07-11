@@ -12,6 +12,7 @@ order: 3
     * [urlParameters](#urlparameters)
     * [access](#access)
 * [How the authorize function work](#how-the-authorize-function-work)
+    * [Add Custom Authorize Functions](#custom-authorize-functions)
 * [Allow a Role to access every endpoint](#allow-a-role-to-access-every-endpoint)
 * [Request Helper Functions](#request-helper-functions)
     * [hasAccess](#hasaccess)
@@ -173,7 +174,6 @@ class AssignUserToRoleRequest extends Request
 }
 ```
 
-
 **Note:** validations rules that relies on your ID like (`exists:users,id`) will not work unless you decode your ID before passing it to the validation.
 
 <a name="urlparameters"></a>
@@ -287,8 +287,56 @@ On the other side if `isKing` *(a custom function could be written by you anywhe
 
 Checkout the [hasAccess](https://apiato.readme.io/docs/requests#section-hasaccess) below.
 
+<a name="custom-authorize-functions"></a>
 
+### Add Custom Authorize Functions
 
+The best way to add a custom authorize function is through a Trait, which can be added to your `Request` classes. In the example below we create a Trait named `IsAuthorPermissionTrait` with a single method called `isAuthor`.
+
+The `isAuthor()` method, in turn, calls a Task to verify that the current user is an author (e.g., if the user has the proper `Role` assigned).
+
+```
+<?php
+namespace App\Containers\User\Traits;
+
+use Apiato\Core\Foundation\Facades\Apiato;
+
+trait IsAuthorPermissionTrait
+{
+    public function isAuthor()
+    {
+        // The task needs to be implemented properly!
+        return Apiato::call('User@CheckIfUserHasProperRoleTask', [$this->user(), ['author']]);
+    }
+}
+```
+
+Now, add the newly created Trait to the Request to use the `isAuthor` function in the authorization check.
+```
+<?php
+
+namespace App\Containers\User\UI\API\Requests;
+
+use App\Containers\User\Traits\IsAuthorPermissionTrait;
+use App\Ship\Parents\Requests\Request;
+
+class FindUserByIdRequest extends Request
+{
+
+    use IsAuthorPermissionTrait;
+
+    // ...
+    
+    public function authorize()
+    {
+        return $this->check([
+            'isAuthor',
+        ]);
+    }
+}
+```
+
+Now, the Request uses the newly created `isAuthor` method to check the proper access rights.
 
 <a name="allow-a-role-to-access-every-endpoint"></a>
 

@@ -8,6 +8,7 @@ order: 35
 - [Principles](#principles)
 - [Rules](#rules)
 * [Folder Structure](#folder-structure)
+- [Enabling Events](#enabling-events)
 - [Usage](#usage)
 - [Dispatch Events](#dispatch-events)
 - [Queueing](#Queueing)
@@ -58,14 +59,37 @@ More details [here](https://laravel.com/docs/events).
             - ...
 ```
 
+<a name="enabling-events"></a>
+### Enabling Events
 
+Before you can use events you need to add the `EventServiceProvider` to the `MainServiceProvider` of the Ship (if this has not been registered so far). See example below.
+
+```
+<?php
+
+namespace App\Containers\Car\Providers;
+
+class MainServiceProvider extends MainProvider
+{
+
+    /**
+     * Container Service Providers.
+     *
+     * @var array
+     */
+    public $serviceProviders = [
+        EventServiceProvider::class,
+    ];
+
+    // ...
+}
+
+```
 
 <a name="usage"></a>
 ### Usage
 
-In laravel you can create and register events in multiple way.
-
-Below is an example of an Event that handles itself. 
+In Laravel you can create and register events in multiple way. Below is an example of an Event that handles itself. 
 
 Event Class Example:
 
@@ -105,8 +129,34 @@ class UserRegisteredEvent extends Event implements ShouldQueue
 
 > Note: You will get more benefits creating Events Listeners for each Event.
 
-To do this you will need to extend this EventsProvider `Apiato\Core\Abstracts\Providers\EventsProvider`.
+To do this you will need to create a custom `EventServiceProvider` in your container extending `App\Ship\Parents\Providers\EventsProvider`.
 
+Your custom `EventServiceProvider` needs to be registered in the containers `MainServiceProvider` as well.
+
+```
+<?php
+
+namespace App\Containers\Car\Providers;
+
+use App\Ship\Parents\Providers\MainProvider;
+
+/**
+ * Class MainServiceProvider.
+ *
+ * The Main Service Provider of this container, it will be automatically registered in the framework.
+ */
+class MainServiceProvider extends MainProvider
+{
+
+    /**
+     * Container Service Providers.
+     *
+     * @var array
+     */
+    public $serviceProviders = [
+        EventServiceProvider::class,
+    ];
+```
 
 <a name="dispatch-events"></a>
 
@@ -179,11 +229,7 @@ class ExampleEvent extends Event implements ShouldHandle
 }
 ```
 
-
 <a name="Broadcasting"></a>
 ## Broadcasting
 
-
-
 Note: to define Broadcasting route go to `app/Ship/Boardcasts/Routes.php`.
-
