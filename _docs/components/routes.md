@@ -9,7 +9,7 @@ order: 1
 * [Folder Structure](#folder-structure)
 * [Web Routes](#web-routes)
 * [API Routes](#api-routes)
-- [Protect your Endpoints:](#protect-your-endpoints-)
+- [Protect your Endpoints:](#protect-your-endpoints)
 * [Difference between Public & Private routes files](#difference-between-public-private-routes-files)
 
 <a name="definition-principles"></a>
