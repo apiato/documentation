@@ -380,7 +380,7 @@ The `hasAccess` function, decides if the the user has Access or not based on the
 
 ### **isOwner**
 
-The `hasAccess` function, checks if the passed URL ID is the same as the User ID of the request.
+The `isOwner` function, checks if the passed URL ID is the same as the User ID of the request.
 
 Example:
 
