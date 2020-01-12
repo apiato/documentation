@@ -36,19 +36,19 @@ The `?limit=` parameter can be applied to define, how many results should be ret
 **Usage:**
 
 ```
-api.domain.develop/endpoint?limit=100
+api.domain.test/endpoint?limit=100
 ```
 
 This would return 100 resources within one page of the result. Of course, the `limit` and `page` query parameter can be
 combined in order to get the next 100 resources:
 
 ```
-api.domain.develop/endpoint?limit=100&page=2
+api.domain.test/endpoint?limit=100&page=2
 ```
 
 In order to allow clients to request all data that matches their criteria (e.g., search-criteria) and disable pagination,
 you can manually override the `$allowDisablePagination` property in your specific `Repository` class. A requester can then
-get all data (with no pagination applied) by requesting `api.domain.develop/endpoint?limit=0`. This will return all matching
+get all data (with no pagination applied) by requesting `api.domain.test/endpoint?limit=0`. This will return all matching
 entities.
 
 
@@ -60,4 +60,4 @@ You can allow developers to skip the pagination limit as follow:
 
 First, you need to enable that feature from the server by setting `PAGINATION_SKIP` to `true` (`PAGINATION_SKIP=true`).
 
-Second, inform the developers (users) to pass `?limit=0` with the request they wish to get all it's data un-paginated.  
+Second, inform the developers (users) to pass `?limit=0` with the request they wish to get all it's data un-paginated.

@@ -6,9 +6,9 @@ order: 202
 
 Profiling is very important to optimize the performance of your application. And help you better understand what happens when a request is received, as well as it can speed up the debugging process.
 
-Apiato uses the third-party package [laravel-debugbar](https://github.com/barryvdh/laravel-debugbar) (which uses the [PHP Debug Bar](http://phpdebugbar.com/)), to collect the profiling data. 
+Apiato uses the third-party package [laravel-debugbar](https://github.com/barryvdh/laravel-debugbar) (which uses the [PHP Debug Bar](http://phpdebugbar.com/)), to collect the profiling data.
 
-By default the **laravel-debugbar** package displays the profiling data in the browser. 
+By default the **laravel-debugbar** package displays the profiling data in the browser.
 However, Apiato uses a middleware `app/Ship/Middlewares/Http/ProfilerMiddleware.php` to append the profiling data to the response.
 
 
@@ -16,7 +16,7 @@ However, Apiato uses a middleware `app/Ship/Middlewares/Http/ProfilerMiddleware.
 
 ```json
 {
-    // Actual Response Here... 
+    // Actual Response Here...
     "_profiler": {
         "__meta": {
             "id": "X167f293230e3457f1bbd95d9c82aba4a",
@@ -71,7 +71,7 @@ However, Apiato uses a middleware `app/Ship/Middlewares/Http/ProfilerMiddleware.
         "route": {
             "uri": "GET /",
             "middleware": "api, throttle:30,1",
-            "domain": "http://api.apiato.develop",
+            "domain": "http://api.apiato.test",
             "as": "apis_root_page",
             "controller": "App\\Containers\\Welcome\\UI\\API\\Controllers\\Controller@apiRoot",
             "namespace": "App\\Containers\\Welcome\\UI\\API\\Controllers",
@@ -108,7 +108,7 @@ However, Apiato uses a middleware `app/Ship/Middlewares/Http/ProfilerMiddleware.
                     "time": 1506105927.694811
                 },
                 {
-                    "message": "[2017-09-18 17:38:15] testing.INFO: New User registration. ID = 970ylqvaogmxnbdr | Email = apiato@mail.develop.      Thank you for signing up.\n</div>\n</body>\n</html>\n  \n",
+                    "message": "[2017-09-18 17:38:15] testing.INFO: New User registration. ID = 970ylqvaogmxnbdr | Email = apiato@mail.test.      Thank you for signing up.\n</div>\n</body>\n</html>\n  \n",
                     "message_html": null,
                     "is_string": false,
                     "label": "info",
@@ -136,4 +136,4 @@ However, Apiato uses a middleware `app/Ship/Middlewares/Http/ProfilerMiddleware.
 
 By default the profiler feature is turned off. To turn it on edit the `.env` file and set `DEBUGBAR_ENABLED=true`.
 
-To control and modify the profiler response, you need to edit this config file `app/Ship/Configs/debugbar.php`. 
+To control and modify the profiler response, you need to edit this config file `app/Ship/Configs/debugbar.php`.

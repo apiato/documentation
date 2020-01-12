@@ -16,7 +16,7 @@ order: 5
 
 In Apiato you can define your own response payload or use one of the supported serializers.
 
-Currently the supported serializers are (`ArraySerializer`, `DataArraySerializer` and `JsonApiSerializer`). As provided 
+Currently the supported serializers are (`ArraySerializer`, `DataArraySerializer` and `JsonApiSerializer`). As provided
 by [Fractal](http://fractal.thephpleague.com/transformers/).
 
 By default Apiato uses `DataArraySerializer`. Below is an example of the response payload.
@@ -58,7 +58,7 @@ By default Apiato uses `DataArraySerializer`. Below is an example of the respons
       "current_page": 999,
       "total_pages": 999,
       "links": {
-        "next": "http://api.apiato.develop/v1/accounts?page=999"
+        "next": "http://api.apiato.test/v1/accounts?page=999"
       }
     }
   },
@@ -84,7 +84,7 @@ When data is paginated the response payload will contain a `meta` description ab
       "current_page": 999,
       "total_pages": 999,
       "links": {
-        "next": "http://api.apiato.develop/v1/accounts?page=999"
+        "next": "http://api.apiato.test/v1/accounts?page=999"
       }
     }
   },
@@ -105,7 +105,7 @@ For more details read the `Relationships` section in the [Query Parameters]({{ s
 <a name="change-apiao-res-payload"></a>
 ### Change the default Response payload:
 
-The default response format (specification) is the `DataArray` Fractal Serializer (`League\Fractal\Serializer\DataArraySerializer`). 
+The default response format (specification) is the `DataArray` Fractal Serializer (`League\Fractal\Serializer\DataArraySerializer`).
 
 To change the default Fractal Serializer open the `.env` file and change the
 
@@ -118,7 +118,7 @@ The Supported Serializers are
 * `DataArraySerializer`
 * `JsonApiSerializer`
 
-More details can be found at [Fractal](http://fractal.thephpleague.com/transformers/) and 
+More details can be found at [Fractal](http://fractal.thephpleague.com/transformers/) and
 [Laravel Fractal Wrapper](https://github.com/spatie/laravel-fractal).
 
 In case of returning JSON Data (`JsonApiSerializer`), you may wish to check some JSON response standards:
@@ -130,26 +130,26 @@ In case of returning JSON Data (`JsonApiSerializer`), you may wish to check some
 <a name="Resource-Keys"></a>
 ### Resource Keys
 
-#### For JsonApiSerializer. 
+#### For JsonApiSerializer.
 
-The transformer allows appending a `ResourceKey` to the transformed resource. You can set the `ResourceKey` in your 
+The transformer allows appending a `ResourceKey` to the transformed resource. You can set the `ResourceKey` in your
 response payload in 2 ways:
 
 1. Manually set it via the respective parameter in the `$this->transform()` call. Note that this will only set the
 `top level` resource key and does not affect the resource keys from `included` resources!
-2. Specify it on the respective `Model`. By overriding the the $resourceKey, (`protected $resourceKey = 'FooBar';`). 
+2. Specify it on the respective `Model`. By overriding the the $resourceKey, (`protected $resourceKey = 'FooBar';`).
 If no `$resourceKey` is defined at the `Model`, the `ShortClassName` is used as key. For example, the `ShortClassName` of
 the `App\Containers\User\Models\User::class` is `User`.
 
 #### For DataArraySerializer.
 
-By default the `object` keyword is used as a resource key for each response, and it's set manually in each transformer, 
+By default the `object` keyword is used as a resource key for each response, and it's set manually in each transformer,
 *to be automated later*.
 
 <a name="Error-Res-Format"></a>
 ### Error Responses formats
 
-Visit each feature, example the Authentication and there you will see how an unauthenticated response looks like, same 
+Visit each feature, example the Authentication and there you will see how an unauthenticated response looks like, same
 for Authorization, Validation and so on.
 
 <a name="build-res-from-con"></a>

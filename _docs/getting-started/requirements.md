@@ -18,6 +18,6 @@ order: 1
 * [Composer](https://getcomposer.org/download/)
 * [Node](https://nodejs.org/en/) *(required for the API Docs generator feature)*
 * Web Server *([Nginx](https://www.nginx.com/) is recommended)*
-* Database Engine *(no recommendation)*
 * Cache Engine *([Redis](http://redis.io/download) is recommended)*
-* Queues Engine *([Beanstalkd](https://github.com/kr/beanstalkd) is recommended)*
+* Database Engine *(no recommendation)*
+* Queues Engine *(no recommendation)*

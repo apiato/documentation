@@ -103,9 +103,9 @@ php artisan apiato:docs
 
 #### 3 - Visit this URL's as shown in your terminal:
 
-- Public (external) API at `http://apiato.develop/api/documentation/`
+- Public (external) API at `http://apiato.test/api/documentation/`
 
-- Private (internal) API at `http://apiato.develop/api/private/documentation/`.
+- Private (internal) API at `http://apiato.test/api/private/documentation/`.
 
 **NOTE:** Every time you do changes in the DocBlock of the Routes file you need to run this command.
 
@@ -171,7 +171,7 @@ HTTP/1.1 200 OK
 
 To avoid having to generate and update the Single and Multiple responses of the same object (recommended only for private API's)
 you can use the general shared Multiple Response `* @apiUse GeneralSuccessMultipleResponse`
-which you can find and modify it from `app/Containers/Documentation/UI/API/Routes/*`  
+which you can find and modify it from `app/Containers/Documentation/UI/API/Routes/*`
 
 
 
@@ -190,7 +190,7 @@ Apiato generates by defaults 2 API documentations, each one has it's own `apidoc
   "description": "Apiato (Private API) Documentation",
   "title": "Welcome to Apiato",
   "version": "1.0.0",
-  "url" : "http://api.apiato.develop",
+  "url" : "http://api.apiato.test",
   "template": {
     "withCompare": true,
     "withGenerator": true

@@ -40,9 +40,9 @@ Note: if the feature is set to false `HASH_ID=false` the `getHashedKey()` will r
 
 There are 2 ways an ID's can be passed to your system via the API:
 
-In URL example: `www.apiato.develop/items/abcdef`.
+In URL example: `www.apiato.test/items/abcdef`.
 
-In parameters example: [GET] or [POST] `www.apiato.develop/items?id=abcdef`.
+In parameters example: [GET] or [POST] `www.apiato.test/items?id=abcdef`.
 
 in both cases you will need to inform your API about what's coming form the Request class.
 
@@ -57,7 +57,7 @@ You can change the default length and characters used in the ID from the config 
 ### From Apiato Version 7.4.*
 You can set the `HASH_ID_KEY` in the `.env` file to any random string. You can generate this from any of the online random string generators, or run `head /dev/urandom | tr -dc 'A-Za-z0-9!"#$%&'\''()*+,-./:;<=>?@[\]^_{|}~' | head -c 32  ; echo` on the linux commandline. Apiato defaults to the `APP_KEY` should this not be set.
 
-The `HASH_ID_KEY` acts as the salt during hashing of the ID. This should never be changed in production as it renders all previously generated IDs quite difficult to decode and recover.   
+The `HASH_ID_KEY` acts as the salt during hashing of the ID. This should never be changed in production as it renders all previously generated IDs quite difficult to decode and recover.
 
 <a name="testing"></a>
 

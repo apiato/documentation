@@ -7,8 +7,8 @@ order: 7
 * [HTTP Methods usage in RESTful API's](#HTTP-Methods)
 * [Naming Conventions for Routes & Actions](#Naming-Conventions)
 * [General guidelines and principles for RESTful URLs](#General-guidelines)
-* [Good URL examples](#Good-examples) 
-* [General principles for HTTP methods](#General-principles) 
+* [Good URL examples](#Good-examples)
+* [General principles for HTTP methods](#General-principles)
 
 <a name="HTTP-Methods"></a>
 ### HTTP Methods usage in RESTful API's
@@ -24,7 +24,7 @@ order: 7
 - **GetAllResource**: to fetch all resources. You can apply `?search` query parameter to filter data.
 - **FindResourceByID**: to search for single resource by its unique identifier.
 - **CreateResource**: to create a new resource.
-- **UpdateResource**: to update/edit existing resource. 
+- **UpdateResource**: to update/edit existing resource.
 - **DeleteResource**: to delete a resource.
 
 <a name="General-guidelines"></a>
@@ -35,7 +35,7 @@ order: 7
 - Use plural nouns only for consistency (no singular nouns).
 - Use HTTP verbs (GET, POST, PUT, DELETE) to operate on the collections and elements.
 - You should not need to go deeper than resource/identifier/resource.
-- Put the version number at the base of your URL, for example `http://apiato.develop/v1/path/to/resource`.
+- Put the version number at the base of your URL, for example `http://apiato.test/v1/path/to/resource`.
 - If an input data changes the logic of the endpoint, it should be passed in the URL. If not can go in the header "like Auth Token".
 - Don't use query parameters to alter state.
 - Don't use mixed-case paths if you can help it; lowercase is best.
@@ -47,28 +47,28 @@ order: 7
 ### Good URL examples
 
 - Find a single Car by its unique identifier (ID):
-	- `GET http://www.api.apiato.develop/v1/cars/123`
+	- `GET http://www.api.apiato.test/v1/cars/123`
 - Get all Cars:
-	- `GET http://www.api.apiato.develop/v1/cars`
+	- `GET http://www.api.apiato.test/v1/cars`
 - Find/Search cars by one or more fields:
-	- `GET http://www.api.apiato.develop/v1/cars?search=maker:mercedes`
-	- `GET http://www.api.apiato.develop/v1/cars?search=maker:mercedes;color:white`
+	- `GET http://www.api.apiato.test/v1/cars?search=maker:mercedes`
+	- `GET http://www.api.apiato.test/v1/cars?search=maker:mercedes;color:white`
 - Order and Sort query result:
-	- `GET http://www.api.apiato.develop/v1/cars?orderBy=created_at&sortedBy=desc`
-	- `GET http://www.api.apiato.develop/v1/cars?search=maker:mercedes&orderBy=created_at&sortedBy=desc`
+	- `GET http://www.api.apiato.test/v1/cars?orderBy=created_at&sortedBy=desc`
+	- `GET http://www.api.apiato.test/v1/cars?search=maker:mercedes&orderBy=created_at&sortedBy=desc`
 - Specify optional fields:
-	- `GET http://www.api.apiato.develop/v1/cars?filter=id;name;status`
-	- `GET http://www.api.apiato.develop/v1/cars/123?filter=id;name;status`
+	- `GET http://www.api.apiato.test/v1/cars?filter=id;name;status`
+	- `GET http://www.api.apiato.test/v1/cars/123?filter=id;name;status`
 - Get all Drivers belonging to a Car:
-	- `GET http://www.api.apiato.develop/v1/cars/123/drivers`
-	- `GET http://www.api.apiato.develop/v1/cars/123/drivers/123/addresses`
+	- `GET http://www.api.apiato.test/v1/cars/123/drivers`
+	- `GET http://www.api.apiato.test/v1/cars/123/drivers/123/addresses`
 - Include Drivers objects relationship with the car response:
-	- `GET http://www.api.apiato.develop/v1/cars/123?include=drivers`
-	- `GET http://www.api.apiato.develop/v1/cars/123?include=drivers,owner`
+	- `GET http://www.api.apiato.test/v1/cars/123?include=drivers`
+	- `GET http://www.api.apiato.test/v1/cars/123?include=drivers,owner`
 - Add new Car:
-	- `POST http://www.api.apiato.develop/v1/cars`
+	- `POST http://www.api.apiato.test/v1/cars`
 - Add new Driver to a Car:
-	- `POST http://www.api.apiato.develop/v1/cars/123/drivers`
+	- `POST http://www.api.apiato.test/v1/cars/123/drivers`
 
 <a name="General-principles"></a>
 ### General principles for HTTP methods

@@ -326,7 +326,7 @@ class FindUserByIdRequest extends Request
     use IsAuthorPermissionTrait;
 
     // ...
-    
+
     public function authorize()
     {
         return $this->check([
@@ -384,7 +384,7 @@ The `isOwner` function, checks if the passed URL ID is the same as the User ID o
 
 Example:
 
-Let's say we have an endpoint `www.api.apiato.develop/v1/users/{ID}/delete` that deletes a user. And we only need users to delete their own user accounts.
+Let's say we have an endpoint `www.api.apiato.test/v1/users/{ID}/delete` that deletes a user. And we only need users to delete their own user accounts.
 
 With `isOwner`, user of ID 1 can only call `/users/1/delete` and won't be able to call `/users/2/delete` or any other ID.
 
@@ -441,7 +441,7 @@ However, in PHP `false` and `''` _(empty string)_ are also considered as `empty`
 
 You can read more about this problem [here](https://github.com/apiato/apiato/issues/186).
 
-In order to simplify sanitizing `Request Data` when using `application/json` instead of `x-www-form-urlencoded`, 
+In order to simplify sanitizing `Request Data` when using `application/json` instead of `x-www-form-urlencoded`,
 apiato offers a convenient `sanitizeInput($fields)` method.
 
 Consider the following Request data:
@@ -498,11 +498,11 @@ Note that the `fillable fields` of an entity can be easily obtained with `$entit
 
 <a name="mapinput"></a>
 
-Sometimes you might want to map input from the request to other fields in order to automatically pass it to a `Action` 
-or `Task`. Of course, you can manually map those fields, but you can also rely on the `mapInput(array $fields)` helper 
+Sometimes you might want to map input from the request to other fields in order to automatically pass it to a `Action`
+or `Task`. Of course, you can manually map those fields, but you can also rely on the `mapInput(array $fields)` helper
 function.
 
-This helper, in turn, allows to "redefine" keys in the request for subsequent processing. Consider the following 
+This helper, in turn, allows to "redefine" keys in the request for subsequent processing. Consider the following
 example request:
 
 ```json
@@ -513,7 +513,7 @@ example request:
 }
 ```
 
-Your Task to process this data, however, requests the field `data.name` as `data.username`. You can call the the helper 
+Your Task to process this data, however, requests the field `data.name` as `data.username`. You can call the the helper
 like this:
 ```php
 $request->mapInput([
