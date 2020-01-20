@@ -20,35 +20,35 @@ order: 1
 
 This magical function allows you to call any Action or Task `run` function, from anywhere. Using the `Apiato::call()` Facade.
 
-The function `call` is mainly used for calling Apiato `Actions` from `Controllers` and for calling Apiato `Tasks` 
+The function `call` is mainly used for calling Apiato `Actions` from `Controllers` and for calling Apiato `Tasks`
 from `Actions`.
 
-Each Action knows which UI called it, using `$this->getUI()`, this is useful for handling the same Action differently 
-based on the UI type (Web or API). This will work when calling the Action from Controllers and Commands using the 
-magical `call()` function. 
+Each Action knows which UI called it, using `$this->getUI()`, this is useful for handling the same Action differently
+based on the UI type (Web or API). This will work when calling the Action from Controllers and Commands using the
+magical `call()` function.
 
 <a name="Usage-options"></a>
 ### Usage options
 
-In the first argument you can pass the class full name, as follow `App\Containers\User\Tasks\CreateUserTask::class`, 
+In the first argument you can pass the class full name, as follow `App\Containers\User\Tasks\CreateUserTask::class`,
 or you can pass the container name and class name, as follow `User@CreateUserTask`.
 
-It is highly recommended to use the Apiato caller style `containerName@className` as it helps removing direct 
-dependencies between containers. The function will verify the Container exist before calling the function and inform 
+It is highly recommended to use the Apiato caller style `containerName@className` as it helps removing direct
+dependencies between containers. The function will verify the Container exist before calling the function and inform
 the user to install Container if not exist.
 
-Note: When a class is directly called using his full name, a warning will be logged informing you to use the 
-"apiato caller style". This info, however, can be disabled by changing the flag 
-`apiato.logging.log-wrong-apiato-caller-style` in the `Ship/Configs/apiato.php` file accordingly. 
+Note: When a class is directly called using his full name, a warning will be logged informing you to use the
+"apiato caller style". This info, however, can be disabled by changing the flag
+`apiato.logging.log-wrong-apiato-caller-style` in the `Ship/Configs/apiato.php` file accordingly.
 
 ```php
 <?php
 
-// Call "AssignUserToRoleTask" Task from the "Authorization" Container using the apiato caller style 
+// Call "AssignUserToRoleTask" Task from the "Authorization" Container using the apiato caller style
 Apiato::call('Authorization@AssignUserToRoleTask');
 
 // Call "AssignUserToRoleTask" Task from the "Authorization" Container using class full name.
-// This will cause to add an INFO entry to the log file! 
+// This will cause to add an INFO entry to the log file!
 Apiato::call(\App\Containers\Authorization\Tasks\AssignUserToRoleTask::class);
 ```
 
@@ -60,10 +60,10 @@ $foo = \Apiato\Core\Foundation\Facades\Apiato::call('Container@ActionOrTask');
 ```
 
 **Notes**:
-- From Controllers and Actions you can use the `$this->call('Container@ActionOrTask')` instead of the Facade 
+- From Controllers and Actions you can use the `$this->call('Container@ActionOrTask')` instead of the Facade
 but it's not recommended.
-- The magical `call` function accepts the class full namespace (`\App\Containers\User\Tasks\GetAllUsersTask::class`) 
-and the Apiato caller style (`Containers@GetAllUsersTask`). 
+- The magical `call` function accepts the class full namespace (`\App\Containers\User\Tasks\GetAllUsersTask::class`)
+and the Apiato caller style (`Containers@GetAllUsersTask`).
 - There is also a `transactionalCall()` method available, that wraps everything in a `DB::Transaction` (see below).
 
 <a name="passing-arguments-to-the-run-function"></a>
@@ -98,7 +98,7 @@ $foo = Apiato::call('Container@ActionOrTask', [$runArgument], [
     'function-without-argument',
     [
       'function1' => ['function1-argument1', 'function1-argument2']
-    ],  
+    ],
 ]);
 
 $foo = Apiato::call('Container@ActionOrTask', [], [
@@ -116,27 +116,27 @@ $foo = Apiato::call('Container@ActionOrTask', [], [
 <a name="#transactional-call"></a>
 ### Transactional Magical Call
 
-Sometimes, you want to wrap a call into one `Database Transaction` (see 
-[Laravel Documentation](https://laravel.com/docs/5.6/database#database-transactions)).
+Sometimes, you want to wrap a call into one `Database Transaction` (see
+[Laravel Documentation](https://laravel.com/docs/master/database#database-transactions)).
 
-Consider the following example: You want to create a new `Team` and automatically assign yourself (i.e., your own 
-`User`) to this newly created `Team`. Your `CreateTeamAction` may call a dedicated `CreateTeamTask` and a 
+Consider the following example: You want to create a new `Team` and automatically assign yourself (i.e., your own
+`User`) to this newly created `Team`. Your `CreateTeamAction` may call a dedicated `CreateTeamTask` and a
 `AssignMemberToTeamTask` afterwards.
- 
- However, if the `AssignMemberToTeamTask` fails, for unknown reasons, you may want to "rollback" (i.e., remove) the 
+
+ However, if the `AssignMemberToTeamTask` fails, for unknown reasons, you may want to "rollback" (i.e., remove) the
  newly created `Team` from the database in order to keep the database in a valid state.
-  
+
  That's where `DB::transactions` comes into play!
- 
- Apiato provides a `transactionalCall($class, $params, $extraMethods)` method with the similar parameters as already 
- known from the  `call()` method. Internally, this method calls this `call()` method anyways, but wraps it into a 
+
+ Apiato provides a `transactionalCall($class, $params, $extraMethods)` method with the similar parameters as already
+ known from the  `call()` method. Internally, this method calls this `call()` method anyways, but wraps it into a
  `DB::transaction`.
- 
- If any `Exception` occurs during the execution of the `$class` to be called, everything done in this context is 
- automatically rolled-back from the database. However, respective operations on the file system (e.g., you may also 
- have uploaded a profile picture for this `Team` already that needs to be removed in this case) need to be performed 
+
+ If any `Exception` occurs during the execution of the `$class` to be called, everything done in this context is
+ automatically rolled-back from the database. However, respective operations on the file system (e.g., you may also
+ have uploaded a profile picture for this `Team` already that needs to be removed in this case) need to be performed
  manually!
- 
+
  Typically, you may want to use the `transactionalCall()` on the `Controller` level!
 
 <a name="use-case-example"></a>

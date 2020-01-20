@@ -142,7 +142,7 @@ curl --request POST \
 4) Your Client App should save the Tokens and start requesting secure data, by sending the Access Token in the HTTP
 Header `Authorization = Bearer {Access-Token}`.
 
-More info at [Laravel Passport Here](https://laravel.com/docs/5.6/passport#password-grant-tokens)
+More info at [Laravel Passport Here](https://laravel.com/docs/master/passport#password-grant-tokens)
 
 <br>
 
@@ -233,7 +233,7 @@ the Access Token in the HTTP Header `Authorization = Bearer {Access-Token}`.
 Note: When a new user is registered, will be issued a personal Access Token automatically. Check the User
 "Registration page".
 
-More info at [Laravel Passport Here](https://laravel.com/docs/5.6/passport#personal-access-tokens)
+More info at [Laravel Passport Here](https://laravel.com/docs/master/passport#personal-access-tokens)
 
 <a name="login-without-proxy-for-third-party-clients"></a>
 ### Login without Proxy for third-party clients

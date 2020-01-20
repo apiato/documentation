@@ -107,10 +107,10 @@ For more details read the `Relationships` section in the [Query Parameters]({{ s
 
 The default response format (specification) is the `DataArray` Fractal Serializer (`League\Fractal\Serializer\DataArraySerializer`).
 
-To change the default Fractal Serializer open the `.env` file and change the
+To change the default Fractal Serializer open the `app/Ship/Configs/fractal.php` file and change the
 
 ```text
-API_RESPONSE_SERIALIZER=League\Fractal\Serializer\DataArraySerializer
+'default_serializer' => League\Fractal\Serializer\DataArraySerializer::class,
 ```
 
 The Supported Serializers are

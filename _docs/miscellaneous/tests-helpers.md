@@ -18,7 +18,7 @@ order: 2
 <br>
 <br>
 
-Apiato provides additional helper functions, on top of the [Laravel's default Tests](https://laravel.com/docs/5.6/http-tests),
+Apiato provides additional helper functions, on top of the [Laravel's default Tests](https://laravel.com/docs/master/http-tests),
 to make testing your API much faster and fun.
 
 Writing functional tests, makes implementing, debugging and modifying a feature faster.

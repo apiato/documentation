@@ -7,7 +7,7 @@ order: 1
 ### Software's
 
 * [GIT](https://git-scm.com/downloads)
-* [PHP](php.net) >= 7.1.3
+* [PHP](php.net) >= 7.2 *(7.4 is recommended)*
 * PHP Extensions:
    * OpenSSL PHP Extension
    * PDO PHP Extension
@@ -17,7 +17,7 @@ order: 1
    * Intl Extension *(required when you use the Localization Container)*
 * [Composer](https://getcomposer.org/download/)
 * [Node](https://nodejs.org/en/) *(required for the API Docs generator feature)*
-* Web Server *([Nginx](https://www.nginx.com/) is recommended)*
-* Cache Engine *([Redis](http://redis.io/download) is recommended)*
-* Database Engine *(no recommendation)*
-* Queues Engine *(no recommendation)*
+* Web Server *(example [Nginx](https://www.nginx.com/) )*
+* Cache Engine *(example [Redis](http://redis.io))*
+* Database Engine *(example [MySQL](https://www.mysql.com/))*
+* Queues Engine *(example: [Beanstalkd](https://beanstalkd.github.io/))*

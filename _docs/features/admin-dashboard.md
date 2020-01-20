@@ -28,13 +28,17 @@ order: 110
 
 ## How it works
 
-Visiting `http://admin.apiato.test/dashboard` will redirect you to a login page for admins.
+Visiting [http://admin.apiato.test/dashboard](http://admin.apiato.test/dashboard) will redirect you to a login page for admins.
 
-the default credentials are:
+> the default credentials are:
+>
+> - email: **admin@admin.com**
+>
+> - password: **admin**
 
-- email: **admin@admin.com**
+![]({{ site.baseurl }}/images/documentation/admin-login.png)
 
-- password: **admin**
+It is up to you to build and customize your admin dashboard however you prefer.
 
 <a name="change-default-admin-credentials"></a>
 

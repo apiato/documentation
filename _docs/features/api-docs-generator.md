@@ -24,7 +24,8 @@ Apiato make writing and generating documentations very easy with the `php artisa
 
 ## Requirements
 
-- Install the [ApiDocJs](http://apidocjs.com/) tool.
+- Install the [ApiDocJs](http://apidocjs.com/) tool, the project directory
+    - (`npm install apidoc`)
 
 - (Recommended) read the [Routes]({{ site.baseurl }}{% link _docs/components/routes.md %}) page first.
 
@@ -103,11 +104,15 @@ php artisan apiato:docs
 
 #### 3 - Visit this URL's as shown in your terminal:
 
-- Public (external) API at `http://apiato.test/api/documentation/`
+- Public (external) API at [http://apiato.test/api/documentation/](http://apiato.test/api/documentation/).
 
-- Private (internal) API at `http://apiato.test/api/private/documentation/`.
+![]({{ site.baseurl }}/images/documentation/public-api-doc.png)
 
-**NOTE:** Every time you do changes in the DocBlock of the Routes file you need to run this command.
+- Private (internal) API at [http://apiato.test/api/private/documentation/](http://apiato.test/api/private/documentation/).
+
+![]({{ site.baseurl }}/images/documentation/private-api-doc.png)
+
+**NOTE:** Every time you change the DocBlock of a Route file you need to run the `apiato:docs` command, to regenerate.
 
 <a name="error-apidoc-not-found"></a>
 

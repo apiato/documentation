@@ -2,7 +2,9 @@
 title: "Welcome to Apiato"
 ---
 
-[![apiato.jpg]({{ site.baseurl }}/images/apiato.jpg)](https://apiato.io)
+> **Build great API's faster - With PHP 7.4 and laravel 6.**
+
+![apiato.jpg]({{ site.baseurl }}/images/image-rounded.png)
 
 [![apiato](https://img.shields.io/badge/Status-Awesome-brightgreen.svg)](https://github.com/apiato/apiato)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/apiato/apiato/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/apiato/apiato/?branch=master)
@@ -10,66 +12,27 @@ title: "Welcome to Apiato"
 [![Build Status](https://scrutinizer-ci.com/g/apiato/apiato/badges/build.png?b=master)](https://scrutinizer-ci.com/g/apiato/apiato/build-status/master)
 [![Build Status](https://travis-ci.org/apiato/apiato.svg?branch=master)](https://travis-ci.org/apiato/apiato)
 [![Latest Stable Version](https://poser.pugx.org/apiato/apiato/v/stable)](https://packagist.org/packages/apiato/apiato)
-[![Backers on Open Collective](https://opencollective.com/apiato/backers/badge.svg)](#backers) 
+[![Backers on Open Collective](https://opencollective.com/apiato/backers/badge.svg)](#backers)
 [![Sponsors on Open Collective](https://opencollective.com/apiato/sponsors/badge.svg)](#sponsors)
 [![License](https://poser.pugx.org/apiato/apiato/license)](https://packagist.org/packages/apiato/apiato)
-[![Latest Unstable Version](https://poser.pugx.org/apiato/apiato/v/unstable)](https://packagist.org/packages/apiato/apiato)
-
-**Build great API's faster, with PHP and laravel 5.6**
 
 
 ## What is Apiato
 
-**Apiato** is a framework for building scalable and testable API-Centric Applications with PHP.
-           
+**Apiato** is a framework for building scalable and testable API-Centric Applications with PHP, build on top of Laravel.
+
 It is designed to help you build scalable API's faster, by providing tools and functionalities that facilitates the development of any API-Centric App.
 
 Apiato uses the best frameworks, tools and conventions in a very creative way, to deliver a rich set of features for a modern PHP Application.
 
-**Why!?** Because setting up a solid API from scratch is time consuming (and of course, time is money!). 
+**Why!?** Because setting up a solid API from scratch is time consuming (and of course, time is money!).
 Apiato gives you the core features of robust API's fully documented, for free; so you can focus on writing your business logic, thus deliver faster to your clients.
 
+### Features
 
-### Why API-Centric Apps
+Apiato comes with an amazing list of features.
 
-Today we’re living in a digital era, where almost everything is connected to the Internet.
-
-Building cross-devices applications is becoming a must. And to do it, you need APIs (Application Programing Interfaces).
-
-Web developers are used to serve HTML pages directly from the Backend. However, this traditional method has many disadvantages nowadays.
-
-API's can serve anything and everything (Mobile Apps, Web Apps, Smart TVs, Smart Watches,...).
-As well as, it can be exposed to the world allowing developers to interact with your Application and help growing your business.
-
-API-Centric Apps allows Frontend (Web + Mobile) and Backend developers to work on their codes in parallel. After the Frontend Apps are ready they get attached to the Backend (API-Centric) code to start functioning. This leads to zero decoupling between the Frontend and the Backend code and also removes the dependencies. The API documentation acts as the contract between both sides during the development life cycle of all the Apps.
-
-
-<a name="Sponsors"></a>
-## Sponsors
-
-Support this project by becoming a sponsor. 
-
-Your logo will show up on the [github repository](https://github.com/apiato/apiato/) index page, the [site](http://apiato.io/) landing page and the [documentation](http://docs.apiato.io/) main page, with a link to your website. [[Become a sponsor](https://opencollective.com/apiato#sponsor)]
-
-### Our Great Sponsors:
-
-<a href="https://opencollective.com/apiato/sponsor/0/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/0/avatar.svg"></a>
-<a href="https://opencollective.com/apiato/sponsor/1/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/1/avatar.svg"></a>
-<a href="https://opencollective.com/apiato/sponsor/2/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/2/avatar.svg"></a>
-<a href="https://opencollective.com/apiato/sponsor/3/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/3/avatar.svg"></a>
-<a href="https://opencollective.com/apiato/sponsor/4/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/4/avatar.svg"></a>
-<a href="https://opencollective.com/apiato/sponsor/5/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/5/avatar.svg"></a>
-<a href="https://opencollective.com/apiato/sponsor/6/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/6/avatar.svg"></a>
-<a href="https://opencollective.com/apiato/sponsor/7/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/7/avatar.svg"></a>
-<a href="https://opencollective.com/apiato/sponsor/8/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/8/avatar.svg"></a>
-<a href="https://opencollective.com/apiato/sponsor/9/website" target="_blank"><img src="https://opencollective.com/apiato/sponsor/9/avatar.svg"></a>
-
-## Features
-
-Apiato comes with great features. **Read the full [features list](http://apiato.io/#features) on the site.**
-
-
-
+![]({{ site.baseurl }}/images/features.png)
 
 ## Software Architecture
 
@@ -82,7 +45,7 @@ Alternatively, you can build it using the [MVC]({{ site.baseurl }}{% link _docs/
 
 
 
-## How to read the docs
+### How to read the docs
 
 The documentation has 4 sections:
 
@@ -102,47 +65,105 @@ The documentation has 4 sections:
 
 > The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119 [[RFC2119](http://tools.ietf.org/html/rfc2119)].
 
+<a name="Sponsors"></a>
+## Our Lovely Sponsors:
 
 
-<a name="Chat"></a>
-## Get in touch
+<a href="https://opencollective.com/apiato/sponsor/0/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/0/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/1/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/1/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/2/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/2/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/3/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/3/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/4/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/4/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/5/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/5/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/6/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/6/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/7/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/7/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/8/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/8/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/9/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/9/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/10/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/10/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/11/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/11/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/12/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/12/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/13/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/13/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/14/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/14/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/15/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/15/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/16/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/16/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/17/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/17/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/18/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/18/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/19/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/19/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/20/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/20/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/21/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/21/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/22/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/22/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/23/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/23/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/24/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/24/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/25/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/25/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/26/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/26/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/27/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/27/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/28/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/28/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/29/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/29/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/30/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/30/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/31/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/31/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/32/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/32/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/33/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/33/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/34/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/34/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/35/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/35/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/36/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/36/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/37/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/37/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/38/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/38/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/39/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/39/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/40/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/40/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/41/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/41/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/42/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/42/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/43/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/43/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/44/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/44/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/45/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/45/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/46/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/46/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/47/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/47/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/48/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/48/avatar.svg?requireActive=false"></a>
+<a href="https://opencollective.com/apiato/sponsor/49/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/49/avatar.svg?requireActive=false"></a>
 
-Join our [Slack](https://slackin-mezlsumyvc.now.sh/) chatting room, by click on the Slack icon below.
-
-[![](https://s19.postimg.org/h7pvzy9ar/Slack-i_OS-icon.png)](https://slackin-mezlsumyvc.now.sh/)
-
+Sponsor Apiato with your [organization](https://opencollective.com/apiato/contribute/).
+<br>
+Your logo will show up on the [github repository](https://github.com/apiato/apiato/) index page and the [documentation](http://apiato.io/) main page.
+<br>
+For more info contact <a href = "mailto: support@apiato.io">support@apiato.io</a>.
 
 <a name="Donations"></a>
-## Donations
+### Financial Support
 
-> Help keeping the project development going, by [contributing](http://docs.apiato.io/miscellaneous/contribution/#Contributing-Apiato) or donating a little. 
-> Thanks in advance.
+Help us sustain the project.
 
-Donate directly via [Paypal](https://www.paypal.me/mzalt)
+<b>Option 1:</b> Donate directly to [Paypal](https://paypal.me/mzmmzz).
 
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/mzalt) 
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/mzmmzz)
 
-or become a backer on [Open Collective](https://opencollective.com/apiato#backer)
-
-<a href="https://opencollective.com/apiato#backers" target="_blank"><img src="https://opencollective.com/apiato/backers.svg?width=890"></a>
-
-or show your support via [Beerpay](https://beerpay.io/apiato/apiato)
+<b>Option 2:</b> Support us via [Beerpay](https://beerpay.io/apiato/apiato).
 
 [![Beerpay](https://beerpay.io/apiato/apiato/badge.svg?style=flat)](https://beerpay.io/apiato/apiato)
+
+<b>Option 3:</b> Become a backer on [Open Collective](https://opencollective.com/apiato#backer).
+
+<a href="https://opencollective.com/apiato#backers" target="_blank"><img src="https://opencollective.com/apiato/backers.svg?width=890"></a>
 
 
 <a name="Getting started"></a>
 ## Getting started
 
-Install and have fun [installation guide]({{ site.baseurl }}{% link _docs/getting-started/installation.md %}) :)
+Install and have fun :) [installation guide]({{ site.baseurl }}{% link _docs/getting-started/installation.md %})
 
-**LTS (Long-Term Support)** release is available. And offers support for 12 months, after the release date.
+<!--**LTS (Long-Term Support)** release is available. And offers support for 12 months, after the release date.-->
+<!--The current LTS version is **7.2** (Release date 2017-11-11).-->
+<!--It offers bug fixes (for 12 months) and security updates (for 12 months). And does not get any new features.-->
 
-The current LTS version is **7.2** (Release date 2017-11-11). 
-It offers bug fixes (for 12 months) and security updates (for 12 months). And does not get any new features.
+<a name="Chat"></a>
+### Get in touch with us
+
+Join our [Slack](https://slackin-mezlsumyvc.now.sh/) chatting room, by click on the Slack icon below.
+
+<a href="https://slackin-mezlsumyvc.now.sh/">
+   <img src="https://s19.postimg.cc/h7pvzy9ar/Slack-i_OS-icon.png" alt="Apiato SLACK"/>
+</a>
 
 
 <a name="Testimonials"></a>
 ## Testimonials
 
-Some [feedbacks]({{ site.baseurl }}{% link _docs/miscellaneous/testimonials.md %}) from awesome people.
+> Read the < **[feedbacks]({{ site.baseurl }}{% link _docs/miscellaneous/testimonials.md %})** > of some Apiato users.

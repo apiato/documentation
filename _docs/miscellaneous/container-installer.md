@@ -11,7 +11,7 @@ order: 5
 <a name="containers"></a>
 ## Containers
 
-apiato ships with a few pre-defined and pre-configured containers. However, other developers may provide additional
+Apiato ships with a few pre-defined and pre-configured containers. However, other developers may provide additional
 features in form of a respective container. This section explains, how so called `3rd party containers` may be
 automatically downloaded and installed to your specific web application.
 
@@ -20,7 +20,10 @@ automatically downloaded and installed to your specific web application.
 <a name="downloading-and-installing-3rdPartyContainers"></a>
 ### Downloading and Installing 3rd Party Containers
 
-In order to use a specific container that is developed by a 3rd party developer, apiato provides an easy-to-use solution 
+> A curated list of awesome Apiato containers
+> [https://github.com/apiato/awesome-apiato](https://github.com/apiato/awesome-apiato)
+
+In order to use a specific container that is developed by a 3rd party developer, apiato provides an easy-to-use solution
 for downloading, installing and continuously updating containers from 3rd party developers.
 
 As an application developer, you simply need to include the respective `vendor/project` to the
@@ -52,7 +55,7 @@ in a new container and provide the features. Note that you need to upload the co
 it on `Packagist` in order to be available via `Composer`. Please see a respective tutorial how to submit a package
 to `GitHub` and release it via `Packagist`.
 
-In particular, the only thing that needs to be done, when developing a container, is to provide a specific `composer.json` 
+In particular, the only thing that needs to be done, when developing a container, is to provide a specific `composer.json`
 file within the main folder of the container.
 
 An example of such a `composer.json` file is shown below:
