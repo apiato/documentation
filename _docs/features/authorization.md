@@ -16,7 +16,7 @@ order: 4
 <br >
 apiato provides a Role-Based Access Control (RBAC) from it's Authorization Container.
 
-Behind the scenes apiato is using the [Laravel's authorization](https://laravel.com/docs/5.6/authorization) functionality that was introduced in version 5.1.11 with the helper package [laravel-permission](https://github.com/spatie/laravel-permission). So you can always refer to the correspond documentation for more information.
+Behind the scenes apiato is using the [Laravel's authorization](https://laravel.com/docs/master/authorization) functionality that was introduced in version 5.1.11 with the helper package [laravel-permission](https://github.com/spatie/laravel-permission). So you can always refer to the correspond documentation for more information.
 
 <a name="how-it-works"></a>
 
@@ -96,18 +96,18 @@ You will need to set `$access` property in your test class, check out the [Tests
 <a name="seeding-some-users-admins"></a>
 ## Seeding some users (Admins)
 
-By default **apiato** comes with a `Super Admin` with Access to Admin Dashboard. 
+By default **apiato** comes with a `Super Admin` with Access to Admin Dashboard.
 
 This Super Admin Credentials are:
 
 + email: admin@admin.com
 + password: admin
 
-This Admin seeded by `app/Containers/Authorization/Data/Seeders/AuthorizationDefaultUsersSeeder_3.php`. 
+This Admin seeded by `app/Containers/Authorization/Data/Seeders/AuthorizationDefaultUsersSeeder_3.php`.
 
 The Default Super User, has a default role `admin`.
 
-The `admin` default role **has no permissions given to it**. 
+The `admin` default role **has no permissions given to it**.
 
 To give permissions to the `admin` role (or any other role), you can use the dedicated endpoints (from your custom Admin Interface) or use this command `php artisan apiato:permissions:toRole admin` to give it all the permissions in the system.
 
@@ -123,7 +123,7 @@ By default Apiato uses a single guard called `web` for all it's roles and permis
 <a name="Permissions-Inheriting-with-Levels"></a>
 ## Permissions Inheriting with Levels
 
-When you create a role you can set an optional parameter, called `level`, which is set to `0` by default, 
+When you create a role you can set an optional parameter, called `level`, which is set to `0` by default,
 The default seeded `admin` role has it set to `999`.
 
 Level allows inheriting permissions.
@@ -131,9 +131,9 @@ Role with higher level is inheriting permission from roles with lower level.
 
 Below is a nice example of how it works:
 
-You have three roles: user, moderator and admin. 
-User has a permission to read articles, moderator can manage comments and admin can create articles. 
-User has a level 1, moderator level 2 and admin level 3. 
+You have three roles: user, moderator and admin.
+User has a permission to read articles, moderator can manage comments and admin can create articles.
+User has a level 1, moderator level 2 and admin level 3.
 It means, moderator and administrator has also permission to read articles, but administrator can manage comments as well.
 
 ```php

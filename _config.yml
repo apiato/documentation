@@ -1,7 +1,7 @@
 # ----
 # Site
 
-title: apiato
+title: Apiato
 url: "https://github.com/apiato/apiato"
 baseurl:
 google_analytics_key: UA-37514928-7
@@ -70,6 +70,7 @@ categories-order:
  - Main Components
  - Optional Components
  - Miscellaneous
+ - General
 
 # -----------
 # CloudCannon

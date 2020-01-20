@@ -1,9 +1,10 @@
 ---
 title: "Upgrade Guide"
-category: "Miscellaneous"
-order: 12
+category: "General"
+order: 3
 ---
 
+- [Upgrade from 7.4 to 8.0](#upgrade-apiato-from-version74To80)
 - [Upgrade from 7.3 to 7.4](#upgrade-apiato-from-version73To74)
 - [Upgrade from 7.2 to 7.3](#upgrade-apiato-from-version72To73)
 - [Upgrade from 7.1 to 7.2](#upgrade-apiato-from-version71To72)
@@ -14,28 +15,39 @@ order: 12
 - [Manual Upgrading Guide](#Manual-Upgrading-Guide)
 - [Upcoming Release Notes](#Upcoming-Release)
 
+<a name="upgrade-apiato-from-version74To80"></a>
+## Upgrade from 7.4 to 8.0
+
+> Estimated upgrading time: 30 minutes.
+
+1) Move the `WePay` Container away until the upgrade is done, or delete it if you're not using it. This container was removed in Apiato 8.0.
+
+2) Follow the steps from the [Manual Upgrading Guide](#Manual-Upgrading-Guide) below.
+
+3) Use `.test` instead of `.develop` for the URL's.
+
 <a name="upgrade-apiato-from-version73To74"></a>
 ## Upgrade from 7.3 to 7.4
 
 > Estimated upgrading time: 30 minutes.
 
-**IMPORTANT NOTE 1** : Before upgrading, please review **all** of your own dependencies, if respective "Laravel 5.6 
+**IMPORTANT NOTE 1** : Before upgrading, please review **all** of your own dependencies, if respective "Laravel 5.6
 compatible versions" are already published!
 
-**IMPORTANT NOTE 2** : Before upgrading, please `git commit` all of your changes in order to rollback if something breaks! 
+**IMPORTANT NOTE 2** : Before upgrading, please `git commit` all of your changes in order to rollback if something breaks!
 
 Key Changes:
 - Apiato now requires PHP 7.1.3 to run - this is because of Laravel's dependency!
-- Added Laravel 5.6. See the [Laravel Upgrade Guide](https://laravel.com/docs/5.6/upgrade) for more details.
+- Added Laravel 5.6. See the [Laravel Upgrade Guide](https://laravel.com/docs/master/upgrade) for more details.
 
-Most of the changes introduced by Laravel 5.6 are easy to integrate. However, the following might be a **BREAKING CHANGE** 
+Most of the changes introduced by Laravel 5.6 are easy to integrate. However, the following might be a **BREAKING CHANGE**
 to your application. Please review the following changes with caution:
 
 > Database: Index Order Of Morph Columns
-> 
-> The indexing of the columns built by the morphs migration method has been reversed for better performance. If you are 
-> using the morphs method in one of your migrations, you may receive an error when attempting to run the migration's 
-> down method. If the application is still in development, you may use the migrate:fresh command to rebuild the database 
+>
+> The indexing of the columns built by the morphs migration method has been reversed for better performance. If you are
+> using the morphs method in one of your migrations, you may receive an error when attempting to run the migration's
+> down method. If the application is still in development, you may use the migrate:fresh command to rebuild the database
 > from scratch. If the application is in production, you should pass an explicit index name to the morphs method.
 
 Manual Tasks to do:
@@ -84,7 +96,7 @@ By upgrading to `Apiato 7.0` you can benefit from all the features provided by `
 
 You just have to do the following changes found at the [GitHub Comparison Tool](https://github.com/apiato/apiato/compare/5.0...7.0).
 
-Note: Some of the files are not required to be upgraded. And some of them, can be simply replaced by the new files 
+Note: Some of the files are not required to be upgraded. And some of them, can be simply replaced by the new files
 (copy a file content from the Apiato repository and replace it with your older version).
 
 Hint: You can do a git merge and solve the conflicts, if you don't want to manually do the changes commit by commit.
@@ -101,10 +113,10 @@ in apiato. This means, that you still need to **manually** register 3rd-party `S
 > Estimated upgrading time: 15 minutes.
 
 
-This guide will show you how to freshly install the new Apiato 5.0, then migrate your old project (built with Apiato 4.1) 
+This guide will show you how to freshly install the new Apiato 5.0, then migrate your old project (built with Apiato 4.1)
 to the freshly installed one (Apiato 5.0).
 
-*In the guide w'll be using the term **Old Project** (referring to your old project that was built with Apiato 4.1), 
+*In the guide w'll be using the term **Old Project** (referring to your old project that was built with Apiato 4.1),
 and the term New **Project** (referring to the new freshly installed Apiato 5.0).*
 
 1) Download and install Apiato 5.0. See [Application Setup]({{ site.baseurl }}{% link _docs/getting-started/installation.md %}).
@@ -149,116 +161,129 @@ Use the [Manual Upgrading Guide](#Manual-Upgrading-Guide) below.
 <a name="Manual-Upgrading-Guide"></a>
 ## Manual Upgrading Guide:
 
-*This guide will show you, how to keep you project synced with the latest master branch of Apiato.
-And the same method can be used to upgrade older version to the newer one*
+> These commands and examples, are compatible with the Apiato 8.0 upgrade. You can just copy/past.
 
-1) Setup an upstream remote (to point to your fork of the apiato repository)
+1) Checkout a new branch from your stable branch, to perform the upgrade.
 
 ```shell
-git remote add upstream https://github.com/apiato/apiato
+❯ git checkout -b upgrade-apiato
 ```
+
+2) Configure a new remote (upstream) that points to the official Apiato repository.
+
+```shell
+❯ git remote add upstream https://github.com/apiato/apiato
+```
+
+Verify the new upstream repository was added, by listing the current configured remote repositories.
 
 ```shell
 ❯ git remote -vv
-origin      git@bitbucket.org:username/project-a.git (fetch)
-origin      git@bitbucket.org:username/project-a.git (push)
+
+origin      git@bitbucket.org:username/my-awesome-api.git (fetch)
+origin      git@bitbucket.org:username/my-awesome-api.git (push)
 upstream    git@github.com:apiato/apiato.git (fetch)
 upstream    git@github.com:apiato/apiato.git (push)
 ```
 
-2) Create apiato branch
+3) Checkout a new branch to hold the latest Apiato changes. *This branch will be merged into your `upgrade-apiato` branch created above.*
 
 ```shell
-git checkout -b apiato
+❯ git checkout -b apiato-{version}
+// Example:   git checkout -b apiato-8.0
 ```
 
-3) Let the apiato branch track the upstream master branch
+4) Configure this branch to track an upstream specific branch.
+
+*Replace `{upstream-branch-name}` with the [branch](https://github.com/apiato/apiato/branches) name you want to upgrade to (for example `8.0`).*
 
 ```shell
-git branch --set-upstream-to upstream/master
+❯ git fetch upstream {upstream-branch-name}
+// Example:   git fetch upstream 8.0
+
+❯ git branch --set-upstream-to upstream/{upstream-branch-name}
+// Example:   git branch --set-upstream-to upstream/8.0
 ```
 
-> If you are upgrading to specific version (not the latest stable version "Master") select your
-> version [branch](https://github.com/apiato/apiato/branches), set your upstream to track that
-> branch, example if you're upgrading to 7.2 set it to `git branch --set-upstream-to upstream/7.2`.
+Verify your local branch is tracking the Apiato specified upstream branch.
 
 ```shell
 ❯ git branch -vv
- apiato          77b4d945 [upstream/{branch-name}] ...
+
+ apiato          77b4d945 [upstream/{upstream-branch-name}] ...
  master          77d302aa [origin/master] ...
 ```
 
-> Should an **error** occur while performing this step, execute step 4, then try again.
-> Example:
-```shell
-❯ git branch --set-upstream-to upstream/master
-error: the requested upstream branch 'upstream/master' does not exist
-```
-4) Fetch everything from upstream
+5) Make this branch identical to the remote upstream branch
 
 ```shell
-git fetch upstream
+❯ git reset --hard upstream/{upstream-branch-name}
+// Example:   git reset --hard upstream/8.0
 ```
 
-5) Let your apiato branch get the upstream logs
+Verify this branch now contains the latest changes from the upstream branch.
 
 ```shell
-git reset --hard upstream/master
+❯ git log
 ```
-> If you selected a specific branch in step 3 above, reset to that branch example (`git reset --hard upstream/7.2`)
 
-6) Now you can move the updates to your master branch in 2 ways:
-
-
-**Option A**: merge the entire apiato branch with master and solve the conflicts manually. *(easier and faster)*
+6) Switch back to the `upgrade-apiato` branch
 
 ```shell
-git checkout master
+❯ git checkout upgrade-apiato
 ```
 
-The git merging can be done in many ways:
+7) Now lets merge the 2 branches. This step can be done in two ways:
 
-- Merge then solve the conflict manually `git merge --allow-unrelated-histories apiato`.
-- Merge and keep your project changes `git merge --allow-unrelated-histories -X ours apiato`.
-- Merge and overwrite your project with the apiato changes `git merge --allow-unrelated-histories -X theirs apiato`.
+**Option A**: Merge all the changes together and solve the conflicts if any. (Recommended)
 
+You can execute the next command with different different parameters, below are 2 options to pick whatever feels safer to you. Do not execute both of them.
 
-*-X is a shortcut for --strategy-option=*
+A1: This will overwrite your changes with the upstream changes. (Try this first and if your tests failed then you can try the second one).
+```shell
+❯ git merge --allow-unrelated-histories --strategy-option=theirs apiato-{version}
+// Example:   git merge --allow-unrelated-histories --strategy-option=theirs apiato-8.0
+```
 
+A2: This will let you solve all the conflicts manually. (Can be the most secure choice, but it's time consuming as well.)
+```shell
+❯ git merge --allow-unrelated-histories apiato-{version}
+// Example:   git merge --allow-unrelated-histories apiato-8.0
+```
 
-
-
-**Option B**: Manually cherry pick from apiato to master only the commits you need:
+**Option B**: Manually cherry pick the commits you likes to have:
 
 ```shell
-git checkout master
+❯ git log {upstream-branch-name}
 ```
 
-```shell
-git log apiato
-```
-(to copy each commit ID, one by one)
+(copy each commit ID, one by one)
 
 ```shell
-git cherry-pick {commit-ID}
+❯ git cherry-pick {commit-ID}
 ```
+
 (if you get any conflict solve it and keep moving)
 
-<br>
 
-Checkout the project setup in [Contributing to Apiato]({{ site.baseurl }}{% link _docs/miscellaneous/contribution.md %}).
+8) Compare your `.env` with the new `.env-example` and update it.
 
-7) Run Composer update then run all the tests, and fix the occurring problems, if there's any.
-You may want to update some of your custom containers dependencies as well.
+9) Check everything is working. By running Composer install first then re-running your tests.
+- Read the changelog [releases](https://github.com/apiato/apiato/releases) page.
+- You may want to update your custom containers dependencies, simply follow the `composer install` error outputs and bump each failing dependency. (Hint: visit each package [releases](https://github.com/apiato/apiato/releases) page, and use the version which supports the supported version of Laravel).
+- You may need to fix the failing tests.
 
 ```shell
-composer update && vendor/bin/phpunit
+❯ composer install  &&  vendor/bin/phpunit
 ```
 
-See the [Upcoming Release Notes](#Upcoming-Release) for details about the changes.
+10) Finally, merge the upgrade-apiato (which contains the upgraded changes) with your stable branch (could be master).
 
-<a name="Upcoming-Release"></a>
-## Upcoming Release Notes
+```shell
+❯ git checkout master
+❯ git merge upgrade-apiato
 
-Checkout the [ChangeLog](https://github.com/apiato/apiato/blob/master/CHANGELOG.md) notes, for the upcoming features 
-and changes.
+❯ php artisan -V
+```
+
+Enjoy :)

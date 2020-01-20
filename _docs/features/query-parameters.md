@@ -91,21 +91,21 @@ Notice should replace the space with `%20`.
 #### Search any field for multiple keywords
 
 ```
-api.domain.develop/endpoint?search=first keyword;second keyword
+api.domain.test/endpoint?search=first keyword;second keyword
 ```
 
 <a name="search-in-specific-field"></a>
 
 #### Search in specific field
 ```
-api.domain.develop/endpoint?search=field:keyword here
+api.domain.test/endpoint?search=field:keyword here
 ```
 
 <a name="search-any-field-for-multiple-keywords"></a>
 
 #### Search in specific fields for multiple keywords
 ```
-api.domain.develop/endpoint?search=field1:first field keyword;field2:second field keyword
+api.domain.test/endpoint?search=field1:first field keyword;field2:second field keyword
 ```
 
 <a name="define-query-condition"></a>
@@ -113,7 +113,7 @@ api.domain.develop/endpoint?search=field1:first field keyword;field2:second fiel
 #### Define query condition
 
 ```
-api.domain.develop/endpoint?search=field:keyword&searchFields=name:like
+api.domain.test/endpoint?search=field:keyword&searchFields=name:like
 ```
 
 Checkout the Search Page for full implementation example.
@@ -159,7 +159,7 @@ data you want back in the response.
 Return only ID and Name from that Model, (everything else will be returned as `null`).
 
 ```
-api.domain.develop/endpoint?filter=id;status
+api.domain.test/endpoint?filter=id;status
 ```
 
 Example Response, including only id and status:
@@ -213,7 +213,7 @@ The `?page=` parameter can be applied to any **`GET`** HTTP request responsible 
 **Usage:**
 
 ```
-api.domain.develop/endpoint?page=200
+api.domain.test/endpoint?page=200
 ```
 
 *The pagination object is always returned in the **meta** when pagination is available on the endpoint.*
@@ -228,7 +228,7 @@ api.domain.develop/endpoint?page=200
       "current_page": 22,
       "total_pages": 1111,
       "links": {
-        "previous": "http://api.domain.develop/endpoint?page=21"
+        "previous": "http://api.domain.test/endpoint?page=21"
       }
     }
   }
@@ -245,19 +245,19 @@ The `?limit=` parameter can be applied to define, how many results should be ret
 **Usage:**
 
 ```
-api.domain.develop/endpoint?limit=100
+api.domain.test/endpoint?limit=100
 ```
 
 This would return 100 resources within one page of the result. Of course, the `limit` and `page` query parameter can be
 combined in order to get the next 100 resources:
 
 ```
-api.domain.develop/endpoint?limit=100&page=2
+api.domain.test/endpoint?limit=100&page=2
 ```
 
 In order to allow clients to request all data that matches their criteria (e.g., search-criteria) and disable pagination,
 you can manually override the `$allowDisablePagination` property in your specific `Repository` class. A requester can then
-get all data (with no pagination applied) by requesting `api.domain.develop/endpoint?limit=0`. This will return all matching
+get all data (with no pagination applied) by requesting `api.domain.test/endpoint?limit=0`. This will return all matching
 entities.
 
 <a name="relationships-include"></a>
@@ -268,7 +268,7 @@ Include relationships for complex data structures.
 
 Get an object with its relationships:
 
-For this to work, your `Transformer` should have the relationships defined on it. 
+For this to work, your `Transformer` should have the relationships defined on it.
 *Check the [Transformers]({{ site.baseurl }}{% link _docs/components/transformers.md %}) for more details on how to define such relationships.*
 
 You can include such relationships by adding the `include` query parameter with comma `,` separated names, like so:
@@ -277,7 +277,7 @@ You can include such relationships by adding the `include` query parameter with 
 ?include=tags,user
 ```
 
-It is also possible to 
+It is also possible to
 
 
 The `?include=` parameter can be used with any endpoint if it is supported.
@@ -290,7 +290,7 @@ However, for this parameter to work, the `CarTransformer`, which handles the `/c
 accepts `driver` as relationship (in the **Available Relationships** section).
 
 ### Nested Includes
-It is also possible to request "nested includes". Extend the example from above. Imagine, that a `Driver` may also have a 
+It is also possible to request "nested includes". Extend the example from above. Imagine, that a `Driver` may also have a
 relationship to an `Address` object. You can access this information as well by calling `?include=driver,driver.address`.
 
 Of course, the `address` include is defined in the respective `DriverTransformer` that is used here.
@@ -298,7 +298,7 @@ Of course, the `address` include is defined in the respective `DriverTransformer
 **Usage:**
 
 ```
-api.domain.develop/endpoint?include=relationship
+api.domain.test/endpoint?include=relationship
 ```
 
 **Where to define the includes:**

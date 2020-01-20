@@ -28,11 +28,11 @@ Example:
 
 Automatically the endpoint inside that route file will be accessible by adding the version number to the URL.
 
-Example: 
+Example:
 
-- `http://api.apiato.develop/v1/register`
-- `http://api.apiato.develop/v1/orders`
-- `http://api.apiato.develop/v2/stores/123`
+- `http://api.apiato.test/v1/register`
+- `http://api.apiato.test/v1/orders`
+- `http://api.apiato.test/v2/stores/123`
 
 
 

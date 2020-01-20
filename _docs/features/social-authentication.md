@@ -46,7 +46,7 @@ For Social Authentication Apiato uses [Socialite]( https://github.com/laravel/so
 - For Twitter: [https://apps.twitter.com/app](https://apps.twitter.com/app)
 - For Google: [https://console.developers.google.com/apis/credentials](https://console.developers.google.com/apis/credentials)
 
-For the callback URL you can use this Apiato web endpoint `http://apiato.develop/auth/{provider}/callback` *(replace the provider with any of the supported providers `facebook`, `twitter`,..)*.
+For the callback URL you can use this Apiato web endpoint `http://apiato.test/auth/{provider}/callback` *(replace the provider with any of the supported providers `facebook`, `twitter`,..)*.
 
 2) Set the Tokens and Secrets in the `.env` file
 
@@ -56,13 +56,13 @@ For the callback URL you can use this Apiato web endpoint `http://apiato.develop
         'client_secret' => env('AUTH_FACEBOOK_CLIENT_SECRET'), // App Secret
         'redirect'      => env('AUTH_FACEBOOK_CLIENT_REDIRECT'),
     ],
-    
+
     'twitter' => [
         'client_id'     => env('AUTH_TWITTER_CLIENT_ID'), // Consumer Key (API Key)
         'client_secret' => env('AUTH_TWITTER_CLIENT_SECRET'), // Consumer Secret (API Secret)
         'redirect'      => env('AUTH_TWITTER_CLIENT_REDIRECT'),
     ],
-    
+
     'google' => [
         'client_id'     => env('AUTH_GOOGLE_CLIENT_ID'), // Client ID
         'client_secret' => env('AUTH_GOOGLE_CLIENT_SECRET'), // Client secret
@@ -72,9 +72,9 @@ For the callback URL you can use this Apiato web endpoint `http://apiato.develop
 
 3) Make a request from your client to get the `oauth` info. **Each Social provider returns different response and keys**
 
-For testing purposes Apiato provides a web endpoint (`http://apiato.develop/auth/{provider}` ) to act as a client.
+For testing purposes Apiato provides a web endpoint (`http://apiato.test/auth/{provider}` ) to act as a client.
 
-Use that endpoint from your browser *(replace the provider with any of the supported providers `facebook`, `twitter`,..)* to get the `oauth` info. 
+Use that endpoint from your browser *(replace the provider with any of the supported providers `facebook`, `twitter`,..)* to get the `oauth` info.
 
 Example Twitter Response:
 
@@ -100,19 +100,19 @@ Example Getting Twitter User: **Twitter requires the `oauth_token` and `oauth_se
 
 ```text
 POST /v1/auth/twitter HTTP/1.1
-Host: api.apiato.develop
+Host: api.apiato.test
 Content-Type: application/x-www-form-urlencoded
 Accept: application/json
 
 oauth_token=121212121-121212121&oauth_secret=34343434343434343343434343
 ```
 
-Note: For Facebook send only the `oauth_token` which is named as `access_token` in the facebook response. 
-For more details about the parameters checkout the generated documentation or visit `app/Containers/Socialauth/UI/API/Routes/AuthenticateAll.v1.private.php`  
+Note: For Facebook send only the `oauth_token` which is named as `access_token` in the facebook response.
+For more details about the parameters checkout the generated documentation or visit `app/Containers/Socialauth/UI/API/Routes/AuthenticateAll.v1.private.php`
 
 5) The endpoint above should return the User and his Personal Access Token.
 
-Example Twitter Response:  
+Example Twitter Response:
 
 ```json
 {
@@ -162,4 +162,4 @@ Example Twitter Response:
 
 1) Pick an Auth Provider from the supported providers by [Socialite](https://socialiteproviders.github.io/).
 
-2) Go to `app/Containers/Socialauth/Tasks/FindUserSocialProfileTask.php` and support your provider. 
+2) Go to `app/Containers/Socialauth/Tasks/FindUserSocialProfileTask.php` and support your provider.

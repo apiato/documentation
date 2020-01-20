@@ -74,18 +74,24 @@
                             {% endfor %}
                         </ul>
                     </li>
-                    
+
                     {% endfor %}
                 </ul>
 
 				<ul>
-					<li class="nav-item top-level {% if page.url == '/changelog/' %}current{% endif %}">
-						{% assign changelog = site.html_pages | where: 'url', '/changelog/' | first %}
-						<a href="{{ site.baseurl }}/changelog/">{{ changelog.title }}</a>
-					</li>
+<!--					<li class="nav-item top-level {% if page.url == '/changelog/' %}current{% endif %}">-->
+<!--						{% assign changelog = site.html_pages | where: 'url', '/changelog/' | first %}-->
+<!--						<a href="{{ site.baseurl }}/changelog/">{{ changelog.title }}</a>-->
+<!--					</li>-->
+
 					<li class="nav-item top-level">
-						<a href="https://github.com/apiato/awesome-apiato" target="_blank">3rd Party Apiato Containers</a>
+						<a href="https://github.com/apiato/awesome-apiato" target="_blank">3rd Party Containers</a>
 					</li>
+
+					<li class="nav-item top-level">
+						<a href="https://github.com/apiato/apiato/releases" target="_blank">Changelog</a>
+					</li>
+
 				</ul>
 			</nav>
 		</header>

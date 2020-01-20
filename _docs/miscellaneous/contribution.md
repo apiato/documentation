@@ -1,11 +1,13 @@
 ---
 title: "Contribution"
-category: "Miscellaneous"
-order: 11
+category: "General"
+order: 2
 ---
 
-Thank you for considering to contribute to Apiato. This project is powered and driven by its users. So contributions 
+> Thank you for considering to contribute to Apiato. This project is powered and driven by its users. So contributions
 are **welcome** and will be fully **credited**.
+>
+> Apiato follows the [Contributor Covenant](https://www.contributor-covenant.org/version/1/4/code-of-conduct) Code of Conduct.
 
 * [Standards and Practices](#Standards-Practices)
     * [Versioning](#Versioning)
@@ -18,8 +20,7 @@ are **welcome** and will be fully **credited**.
     * [Contribution Guidelines](#Contribution-Guidelines)
     * [Security Vulnerabilities](#Security-Vulnerabilities)
 * [Contributing to Apiato](#Contributing-Apiato)
-    * [Skeleton Project](#Contributing-Skeleton-Project)
-    * [Core Package](#Contributing-Core-Package)
+    * [Apiato Project](#Contributing-Project)
     * [Documentation](#Contributing-Documentation)
     * [Code Generator](#Contributing-Generator)
 
@@ -37,37 +38,37 @@ The project is versioned under the [Semantic Versioning](http://semver.org/) gui
 The project is compliant with [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md) Coding Standard,
 [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) Coding Style and some of the
 [PSR-12](https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md) Styles.
- 
+
 As well as it is compliant with [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md) Autoloader.
 *If you notice any compliance oversights, you can send a pull request to address this issue.*
 
 <a name="Git-Branches"></a>
 ### Git Branches
 
-The `master` branch contains the upcoming Apiato release (in both repositories `apiato/apiato` and `apiato/core`). 
+The `master` branch contains the upcoming Apiato release (in both repositories `apiato/apiato` and `apiato/core`).
 While the other branches are for the stable releases.
 
-Bug fixes should be sent to the latest stable branch, never to the `master` branch, unless they fix features that exist 
+Bug fixes should be sent to the latest stable branch, never to the `master` branch, unless they fix features that exist
 only in the upcoming release.
 
 Major new features should always be sent to the `master` branch, which contains the upcoming release.
 
 **Example:**
 
-Say we are in version `7.0` right now. The repository would have at least the following two branches `master` and `7.0` 
-(possibly older branches as well such as `5.1`, `5.0`, `4.2`, `4.1`, `4.0` and so on). The latest stable branch in this 
+Say we are in version `7.0` right now. The repository would have at least the following two branches `master` and `7.0`
+(possibly older branches as well such as `5.1`, `5.0`, `4.2`, `4.1`, `4.0` and so on). The latest stable branch in this
 case would be the `7.0`. The next release will be `7.1` or `8.0`.
 
-If your PR contains a major change or a braking change, or new Container than it must be sent to the `master` branch. 
+If your PR contains a major change or a braking change, or new Container than it must be sent to the `master` branch.
 And if your PR fixes a bug, then it should be sent to the latest release branch.
 
-> If you would like to always contribute to Apiato, it's better to use the master branch instead of the latest release 
+> If you would like to always contribute to Apiato, it's better to use the master branch instead of the latest release
 branch, to always have the latest features and updates.
 
 <a name="Proposing-Feature"></a>
 ### Proposing Feature
 
-If you have a proposal or a feature request, you may create an issue with `[Feature]` tag in the title, example 
+If you have a proposal or a feature request, you may create an issue with `[Feature]` tag in the title, example
 `[Feature] Support XML responses`.
 
 The proposal should also describe the new feature, as well as implementation ideas.
@@ -87,21 +88,21 @@ A good bug report includes the following sections:
 * Expected outcome
 * Actual outcome
 * Steps to reproduce, including sample code
-* Any other information that will help us debug and reproduce the issue, including stack traces, system/environment 
+* Any other information that will help us debug and reproduce the issue, including stack traces, system/environment
 information, and screenshots
 
 <a name="Fixing-Bugs"></a>
 ### Fixing Bugs
 
-If you see a bug report that you'd like to fix, please feel free to do so. Following the directions and guidelines 
+If you see a bug report that you'd like to fix, please feel free to do so. Following the directions and guidelines
 described in the "Adding New Features" section below, you may create bugfix branches and send us pull requests.
 
 <a name="Adding-New-Features"></a>
 ### Adding New Features
 
-If you have an idea for a new feature, it's a good idea to check out our [issues](https://github.com/apiato/apiato/issues) 
-or active [pull requests](https://github.com/apiato/apiato/pulls) first to see if the feature is already being worked on. 
-If not, feel free to submit an issue first, asking whether the feature is beneficial to the project. This will save you 
+If you have an idea for a new feature, it's a good idea to check out our [issues](https://github.com/apiato/apiato/issues)
+or active [pull requests](https://github.com/apiato/apiato/pulls) first to see if the feature is already being worked on.
+If not, feel free to submit an issue first, asking whether the feature is beneficial to the project. This will save you
 from doing a lot of development work only to have your feature rejected.
 
 <a name="Contribution-Guidelines"></a>
@@ -114,7 +115,7 @@ Important things to remember when contributing:
 * **Send coherent history** make sure each individual commit in your pull request is meaningful. If you had to make multiple intermediate commits while developing, please squash them before submitting.
 * **Write tests** (classes or functions) as required. Your changes must be covered with Tests (Functional or Unit). (Code without tests could be accepted in some cases).
 * **Ensure that tests pass** before submitting your pull request. We have Travis CI automatically running tests for pull requests. However, running the tests locally `vendor/bin/phpunit` after adding your changes will save you time.
-* **Update the Documentation** `github.com/apiato/documentation/tree/master/_docs`. 
+* **Update the Documentation** `github.com/apiato/documentation/tree/master/_docs`.
 * **Update the CHANGELOG** `CHANGELOG.md`.
 * **Submit one feature/change per pull request.** If you have multiple features/changes you wish to submit, please break them up into separate pull requests.
 * **Push additional changes to the same PR** once you have a pull request for a branch, you can push additional changes to the same branch and they will be added to the pull request automatically. You should not create a new pull request for the same branch.
@@ -130,19 +131,12 @@ ___
 <a name="Contributing-Apiato"></a>
 # Contributing to Apiato
 
-> #### Heads Up!
-> 
-> The project consist of 2 repositories `apiato/apiato` (the project skeleton, with default containers) and 
-`apiato/core` (the core package of apiato).
+<a name="Contributing-Project"></a>
+## Contributing to the Apiato Project
 
-<a name="Contributing-Skeleton-Project"></a>
-## Contributing to the Skeleton Project
+This guide will help you contribute to the Apiato project, while working on your personal project.
 
-The Apiato skeleton, is the actual Apiato project on the repository `apiato/apiato`.
-
-This guide will help you contribute to the Apiato skeleton project, while working on your personal project. 
-
-If you added a feature/function to your local project or created a useful container or fixed a bug. This guide will 
+If you added a feature/function to your local project or created a useful container or fixed a bug. This guide will
 show you how to submit that change to Apiato.
 
 ### SETUP
@@ -156,13 +150,13 @@ In this scenario let's assume we have the following:
 
 1) Create Project A from Apiato
 
-If you want to fix a bug on the latest stable release your PR should be sent to the latest stable branch, thus you need 
+If you want to fix a bug on the latest stable release your PR should be sent to the latest stable branch, thus you need
 to pull the latest stable release of Apiato.
 
 `composer create-project apiato/apiato project-a`
 
-If you want to add new features or do anything else, that should be added to the next stable release, you need to pull 
-the master branch and submit your PR there.   
+If you want to add new features or do anything else, that should be added to the next stable release, you need to pull
+the master branch and submit your PR there.
 
 `composer create-project apiato/apiato project-a dev-master`
 
@@ -225,7 +219,7 @@ Now you should have the following branches:
 
 `git fetch --all`
 
-2) Go to the apiato branch 
+2) Go to the apiato branch
 
 `git checkout apiato`
 
@@ -233,15 +227,15 @@ Now you should have the following branches:
 
 `git reset --hard upstream/master`
 
-4) Now you can cherry pick the commits you'd like to contribute 
+4) Now you can cherry pick the commits you'd like to contribute
 
 4.a) First go to the apiato branch
 
-`git checkout apiato` 
+`git checkout apiato`
 
 4.b) Create custom branch for your PR
 
-`git checkout -b feature-awesome`  (must be created from apiato)   
+`git checkout -b feature-awesome`  (must be created from apiato)
 
 4.c) Do the cherry-picking
 
@@ -265,29 +259,6 @@ Checkout [How to upgrade apiato]({{ site.baseurl }}{% link _docs/miscellaneous/f
 
 <br>
 
-<a name="Contributing-Core-Package"></a>
-## Contributing to the Core Package
-
-The Apiato core package, is what provides most of the functionality of the Apiato project. 
-
-This guide will help you contribute to the Apiato core package, while the package is in your vendor directory. Without 
-much effort.
-
-### SETUP
-
-1) Delete the `core` package `vendor/apiato/core` from the vendor directory.
-
-2) Pull the package to the project vendor (even if it was there) using:
-
-`composer update {your-username}/core --prefer-source`
-
-_The composer option `--prefer-source` will clone the package's git repository inside the vendor directory, so you can 
-commit and push from the vendor directory directly._
-
-3) Go to `vendor/apiato/core/` from the terminal to access the package Git, in order to commit.
-
-You should now have the `.git` directory of the `core` package (your forked version).
-
 ### USAGE (Contribution Steps)
 
 Edit > Commit > Push > PR :)
@@ -295,30 +266,30 @@ Edit > Commit > Push > PR :)
 <a name="Contributing-Documentation"></a>
 ## Contributing to the Documentation
 
-The documentation is generated using [Jekyll](https://jekyllrb.com/) and lives in the 
-[documentation repository (apiato/documentation)](https://github.com/apiato/documentation), in the `_docs/` folder. 
+The documentation is generated using [Jekyll](https://jekyllrb.com/) and its content lives in its own repository
+[(apiato/documentation)](https://github.com/apiato/documentation), in the `_docs/` folder.
 
-All you have to do is navigate to `_docs/` folder, find the markdown `.md` file that you want to update *(all files 
+All you have to do is navigate to `_docs/` folder, find the markdown `.md` file that you want to update *(all files
 are named as they are in the site menu)*, update or add the text, the commit.
 
-> You do not need to build the site locally. Just edit the markdown files and submit your PR. GitHub will build the site for us. 
+> You do not need to build the site locally. Just edit the markdown files and submit your PR. GitHub will build the site for us.
 
 ### Documentation Tips:
 
 - The styles are in `main.scss` and `_sass/*`.
 - The Layout `_layouts/default.html`.
-- The docs folders `_docs/*` do not represent the categories displayed in the site. 
-- To add new category for a file `category: "New Category"` (usually defined in each documentation readme), you must 
-add the category name to `_config.yml` under `categories-order` in order to appear in the site. 
-- To set a link, use the internal links as follow: `[your-text]( { { site.baseurl } } { % link _docs/path/file.md % } )`. 
+- The docs folders `_docs/*` do not represent the categories displayed in the site.
+- To add new category for a file `category: "New Category"` (usually defined in each documentation readme), you must
+add the category name to `_config.yml` under `categories-order` in order to appear in the site.
+- To set a link, use the internal links as follow: `[your-text]( { { site.baseurl } } { % link _docs/path/file.md % } )`.
 NOTE: remove the spaces between the tags.
 
-### Run the docs locally: 
+### Run the docs locally:
 
 #### In Docker:
 
 1. `git clone https://github.com/apiato/documentation .`
-2. `docker run -v $PWD:/srv/jekyll -p 4000:4000 -it jekyll/jekyll bash` 
+2. `docker run -v $PWD:/srv/jekyll -p 4000:4000 -it jekyll/jekyll bash`
 3. `bundle install`
 4. `jekyll serve`
 5. Browse `http://localhost:4000`
@@ -345,29 +316,29 @@ This abstract class does all the work for you.
 
 ### Add new component generator.
 
-General Info: the only function that gets called whenever a command is executed is the `handle()` function. This 
-function exist on the abstract class `Apiato\Core\Generator\GeneratorCommand` which does all the common job for all 
-the generator commands. For better understanding of how things work. Make sure you read that function.    
+General Info: the only function that gets called whenever a command is executed is the `handle()` function. This
+function exist on the abstract class `Apiato\Core\Generator\GeneratorCommand` which does all the common job for all
+the generator commands. For better understanding of how things work. Make sure you read that function.
 
-1 - Add create new command by copy pasting any of the existing components commands already supported. The 
+1 - Add create new command by copy pasting any of the existing components commands already supported. The
 `Generator/Commands/RouteGenerator.php` is a great example.
 
 For each generator you need to implement exactly one method (as it is defined in the respective interface)
 
-- `getUserInputs:` 
+- `getUserInputs:`
     This method reads all parameters from the command line or provides a wizard to get information from the user.
     The available options for this generator are specified using the `public $inputs = []` variable in respective generator.
-    Note that you do not need to specify the options for `--container` or `--file`, as both are handled directly by the 
+    Note that you do not need to specify the options for `--container` or `--file`, as both are handled directly by the
     Generator itself. Simply add the options that are specifically needed for this generator.
-    
-    Be sure to read input with the `checkParameterOrXYZ()` methods, as they automatically check if an option is available. 
+
+    Be sure to read input with the `checkParameterOrXYZ()` methods, as they automatically check if an option is available.
     Otherwise, they will ask the user for additional input.
-    
+
     The method must return an array of 3 keys:
   - `path-parameters` are used to replace variables within the path where the generator creates the file.
   - `file-parameters` are used to replace variables within the name of the file to be created.
   - `stub-parameters` are used to replace variables within the stub.
-  
+
 
 2 - Create the stub to be loaded in `Generator/Stubs`, copy any real component code and build the stub out of it.
 
@@ -384,5 +355,5 @@ For each generator you need to implement exactly one method (as it is defined in
 
 4 - Default FileName & FileExtension(optional)
 
-You may provide another default filename or extension by overriding the `getDefaultFileName()` or `getDefaultFileExtension()` 
+You may provide another default filename or extension by overriding the `getDefaultFileName()` or `getDefaultFileExtension()`
 method, which simply returns a `string`.
