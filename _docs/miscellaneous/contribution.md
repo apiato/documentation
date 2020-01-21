@@ -1,39 +1,37 @@
 ---
-title: "Contribution"
+title: "Contribution Guide"
 category: "General"
 order: 2
 ---
 
-> Thank you for considering to contribute to Apiato. This project is powered and driven by its users. So contributions
+> Thank you for your consideration to contribute. This project is powered and driven by its users, and contributions
 are **welcome** and will be fully **credited**.
->
-> Apiato follows the [Contributor Covenant](https://www.contributor-covenant.org/version/1/4/code-of-conduct) Code of Conduct.
 
-* [Standards and Practices](#Standards-Practices)
-    * [Versioning](#Versioning)
-    * [Coding Standards](#Coding-Standards)
-    * [Git Branches](#Git-Branches)
-    * [Proposing Feature](#Proposing-Feature)
-    * [Reporting Bugs](#Reporting-Bugs)
-    * [Fixing Bugs](#Fixing-Bugs)
-    * [Adding New Features](#Adding-New-Features)
-    * [Contribution Guidelines](#Contribution-Guidelines)
-    * [Security Vulnerabilities](#Security-Vulnerabilities)
-* [Contributing to Apiato](#Contributing-Apiato)
-    * [Apiato Project](#Contributing-Project)
-    * [Documentation](#Contributing-Documentation)
-    * [Code Generator](#Contributing-Generator)
+* [Code of Conduct](#Code-of-Conduct)
+* [Versioning](#Versioning)
+* [Coding Standards](#Coding-Standards)
+* [Git Branching Strategy](#Git-Branches)
+* [Adding New Features](#Adding-New-Features)
+* [Security Vulnerabilities](#Security-Vulnerabilities)
+* [Contribution Guides](#Contributing-Apiato)
+    * [Contribution General Guidelines](#Contribution-Guidelines)
+    * [Contributing to the Apiato Project](#Contributing-Project)
+    * [Contributing to the Documentation](#Contributing-Documentation)
+    * [Contributing to the Code Generator](#Contributing-Generator)
+    * [Making a new Release](#New-Release)
 
-<a name="Standards-Practices"></a>
-# Standards and Practices
+<a name="Code-of-Conduct"></a>
+# Code of Conduct
+
+Apiato follows the [Contributor Covenant](https://www.contributor-covenant.org/version/1/4/code-of-conduct) Code of Conduct.
 
 <a name="Versioning"></a>
-### Versioning
+# Versioning
 
 The project is versioned under the [Semantic Versioning](http://semver.org/) guidelines.
 
 <a name="Coding-Standards"></a>
-### Coding Standards
+# Coding Standards
 
 The project is compliant with [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md) Coding Standard,
 [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) Coding Style and some of the
@@ -43,96 +41,54 @@ As well as it is compliant with [PSR-4](https://github.com/php-fig/fig-standards
 *If you notice any compliance oversights, you can send a pull request to address this issue.*
 
 <a name="Git-Branches"></a>
-### Git Branches
+# Git Branching Strategy
 
-The `master` branch contains the upcoming Apiato release (in both repositories `apiato/apiato` and `apiato/core`).
-While the other branches are for the stable releases.
+The `master` branch contains the upcoming Apiato release.
+While the other branches are for all the stable releases.
 
-Bug fixes should be sent to the latest stable branch, never to the `master` branch, unless they fix features that exist
+Bug fixes should be sent to the latest stable branch (ex: `8.0`), not to the `master` branch, unless they fix features that exist
 only in the upcoming release.
 
 Major new features should always be sent to the `master` branch, which contains the upcoming release.
 
 **Example:**
 
-Say we are in version `7.0` right now. The repository would have at least the following two branches `master` and `7.0`
-(possibly older branches as well such as `5.1`, `5.0`, `4.2`, `4.1`, `4.0` and so on). The latest stable branch in this
-case would be the `7.0`. The next release will be `7.1` or `8.0`.
+Assuming that the current stable version is `8.0`. The repository would have at least the following two branches `master` and `8.0`.
 
 If your PR contains a major change or a braking change, or new Container than it must be sent to the `master` branch.
-And if your PR fixes a bug, then it should be sent to the latest release branch.
+And if your PR fixes a bug in the existing stable release, then it should be sent to the latest release branch `8.0`.
 
-> If you would like to always contribute to Apiato, it's better to use the master branch instead of the latest release
-branch, to always have the latest features and updates.
-
-<a name="Proposing-Feature"></a>
-### Proposing Feature
-
-If you have a proposal or a feature request, you may create an issue with `[Feature]` tag in the title, example
-`[Feature] Support XML responses`.
-
-The proposal should also describe the new feature, as well as implementation ideas.
-The proposal will then be reviewed and either approved or denied.
-Once a proposal is approved, a pull request may be created implementing the new feature.
-
-
-<a name="Reporting-Bugs"></a>
-### Reporting Bugs
-
-Bugs are tracked in our project's [issue tracker](https://github.com/apiato/apiato/issues).
-
-When submitting a bug report, please include enough information to reproduce the bug.
-
-A good bug report includes the following sections:
-
-* Expected outcome
-* Actual outcome
-* Steps to reproduce, including sample code
-* Any other information that will help us debug and reproduce the issue, including stack traces, system/environment
-information, and screenshots
-
-<a name="Fixing-Bugs"></a>
-### Fixing Bugs
-
-If you see a bug report that you'd like to fix, please feel free to do so. Following the directions and guidelines
-described in the "Adding New Features" section below, you may create bugfix branches and send us pull requests.
+> If you always contribute to Apiato, it's better to use the master branch instead of the latest release
+branch, to always have the latest features and updates. And would be good to merge the latest stable branch into your master from time to time, in case it has some bug fixes.
 
 <a name="Adding-New-Features"></a>
-### Adding New Features
+# Adding New Features
 
 If you have an idea for a new feature, it's a good idea to check out our [issues](https://github.com/apiato/apiato/issues)
 or active [pull requests](https://github.com/apiato/apiato/pulls) first to see if the feature is already being worked on.
-If not, feel free to submit an issue first, asking whether the feature is beneficial to the project. This will save you
-from doing a lot of development work only to have your feature rejected.
-
-<a name="Contribution-Guidelines"></a>
-### Contribution Guidelines
-Important things to remember when contributing:
-
-* **Run tests first** Before writing any line of code, run the tests `vendor/bin/phpunit`, and make sure all the tests are passing in your machine.
-* **Use topic/feature branches** Be descriptive in your branch names, (same apply to pull request title and descriptions).
-* **Keep your commits atomic** each commit should represent a single unit of change. (Also, remember to write helpful commit messages.)
-* **Send coherent history** make sure each individual commit in your pull request is meaningful. If you had to make multiple intermediate commits while developing, please squash them before submitting.
-* **Write tests** (classes or functions) as required. Your changes must be covered with Tests (Functional or Unit). (Code without tests could be accepted in some cases).
-* **Ensure that tests pass** before submitting your pull request. We have Travis CI automatically running tests for pull requests. However, running the tests locally `vendor/bin/phpunit` after adding your changes will save you time.
-* **Update the Documentation** `github.com/apiato/documentation/tree/master/_docs`.
-* **Update the CHANGELOG** `CHANGELOG.md`.
-* **Submit one feature/change per pull request.** If you have multiple features/changes you wish to submit, please break them up into separate pull requests.
-* **Push additional changes to the same PR** once you have a pull request for a branch, you can push additional changes to the same branch and they will be added to the pull request automatically. You should not create a new pull request for the same branch.
-* **Comment on the pull request** when you want people to know that you have pushed new changes. Although GitHub does notify people of commit pushes, people are more likely notice your changes if you leave a comment.
+If not, feel free to submit an issue first (proposing the new feature), asking whether the feature is beneficial to the project. Then go ahead and submit your PR to the master branch.
 
 <a name="Security-Vulnerabilities"></a>
-### Security Vulnerabilities
+# Security Vulnerabilities
 
-If you discover a security vulnerability, please send an email to `mahmoud@zalt.me`.
+If you discover a security vulnerability, please send an email to `support@apiato.io`.
 
 ___
 
-<a name="Contributing-Apiato"></a>
-# Contributing to Apiato
+<a name="Contribution-Guidelines"></a>
+# Contribution General Guidelines
+Important things to remember when contributing:
+
+* **Run tests first** before writing any line of code, run the tests `vendor/bin/phpunit`, and make sure all the tests are passing in your machine.
+* **Keep your commits atomic** Each commit should represent a single unit of change. (Also, remember to write helpful commit messages.)
+* **Write as many tests** Your changes must be covered with Tests (Functional or Unit). (Code without tests could be accepted in some cases).
+* **Ensure updating the documentation** the doc repo is there `https://github.com/apiato/documentation`.
+* **Submit one feature/change per pull request.** If you have multiple features/changes you wish to submit, please break them up into separate pull requests.
+
+
 
 <a name="Contributing-Project"></a>
-## Contributing to the Apiato Project
+# Contributing to the Apiato Project
 
 This guide will help you contribute to the Apiato project, while working on your personal project.
 
@@ -259,12 +215,8 @@ Checkout [How to upgrade apiato]({{ site.baseurl }}{% link _docs/miscellaneous/f
 
 <br>
 
-### USAGE (Contribution Steps)
-
-Edit > Commit > Push > PR :)
-
 <a name="Contributing-Documentation"></a>
-## Contributing to the Documentation
+# Contributing to the Documentation
 
 The documentation is generated using [Jekyll](https://jekyllrb.com/) and its content lives in its own repository
 [(apiato/documentation)](https://github.com/apiato/documentation), in the `_docs/` folder.
@@ -304,12 +256,9 @@ NOTE: remove the spaces between the tags.
 6. Finally `jekyll build`
 
 <a name="Contributing-Generator"></a>
-## Contributing to the Code Generator
+# Contributing to the Code Generator
 
-The Code generator is part of the `apiato/core` package.
-
-- Repository: `apiato/core`.
-- Code Path: `/Generator`.
+The Code generator is in `app/Ship/core/Generator`.
 
 Each component command, "Except the Containers Generator" must extend from the `Apiato\Core\Generator\GeneratorCommand.php`.
 This abstract class does all the work for you.
@@ -357,3 +306,26 @@ For each generator you need to implement exactly one method (as it is defined in
 
 You may provide another default filename or extension by overriding the `getDefaultFileName()` or `getDefaultFileExtension()`
 method, which simply returns a `string`.
+
+
+<a name="New-Release"></a>
+# Making a new Release (for admins)
+
+Master is the branch that contains all the new changes. 
+So we need to create a new branch from master then make a release from that new branch.
+
+1 - Merge the last [stable branch](https://github.com/apiato/apiato/branches) in the master branch. (To get any new bug fixes.)
+<br>
+2 - Decide on the next version number for the new release. By checking the current [releases](https://github.com/apiato/apiato/releases).
+<br>
+3 - Update the version VERSION value in `app/Ship/core/Foundation/Apiato.php` (example: `const VERSION = '8.1.0';`).
+<br>
+4 - From master, checkout a new branch named as the version number you want to release. (Example `8.1`).
+<br>
+5 - Go to [releases](https://github.com/apiato/apiato/releases) and create a new one from the branch created in the step above. (Example `8.1`).
+<br>
+6 - Make sure you write a complete Changelog, in the release description.
+<br>
+7 - Change the [default branch](https://github.com/apiato/apiato/settings/branches) on github to that new branch.
+<br>
+8 - If you updated the documentation and you should! then visit the [documentation](https://github.com/apiato/documentation) repository and merge the PR into master.
