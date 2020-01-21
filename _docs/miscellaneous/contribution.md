@@ -311,21 +311,33 @@ method, which simply returns a `string`.
 <a name="New-Release"></a>
 # Making a new Release (for admins)
 
-Master is the branch that contains all the new changes. 
-So we need to create a new branch from master then make a release from that new branch.
-
 1 - Merge the last [stable branch](https://github.com/apiato/apiato/branches) in the master branch. (To get any new bug fixes.)
 <br>
 2 - Decide on the next version number for the new release. By checking the current [releases](https://github.com/apiato/apiato/releases).
 <br>
 3 - Update the version VERSION value in `app/Ship/core/Foundation/Apiato.php` (example: `const VERSION = '8.1.0';`).
+
+### Minor Release 
+
+Your PR with that minor changes should be submitted and merged into master.
+
+1 - Go to [releases](https://github.com/apiato/apiato/releases) and create a new one from the master branch.
 <br>
-4 - From master, checkout a new branch named as the version number you want to release. (Example `8.1`).
+2 - Make sure you write a complete Changelog, in the release description.
 <br>
-5 - Go to [releases](https://github.com/apiato/apiato/releases) and create a new one from the branch created in the step above. (Example `8.1`).
+3 - If you updated the documentation and you should! then visit the [documentation](https://github.com/apiato/documentation) repository and merge the PR into master.
+
+### Major Release 
+
+Master is the branch that contains all the new changes. 
+So we need to create a new branch from master then make a release from that new branch.
+
+1 - From master, checkout a new branch named as the version number you want to release. (Example `8.1`).
 <br>
-6 - Make sure you write a complete Changelog, in the release description.
+2 - Go to [releases](https://github.com/apiato/apiato/releases) and create a new one from the branch created in the step above. (Example `8.1`).
 <br>
-7 - Change the [default branch](https://github.com/apiato/apiato/settings/branches) on github to that new branch.
+3 - Make sure you write a complete Changelog, in the release description.
 <br>
-8 - If you updated the documentation and you should! then visit the [documentation](https://github.com/apiato/documentation) repository and merge the PR into master.
+4 - Change the [default branch](https://github.com/apiato/apiato/settings/branches) on github to that new branch.
+<br>
+5 - If you updated the documentation and you should! then visit the [documentation](https://github.com/apiato/documentation) repository and merge the PR into master.
