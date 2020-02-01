@@ -132,10 +132,10 @@ If you are planning to use ApiDoc JS then proceed with this setup, else skip thi
 
 1) Install [ApiDocJs](http://apidocjs.com/) using NPM or your favorite dependencies manager:
 
-Install it Globally with `-g` or locally in the project without `-g`
+*You can install it Globally with `-g` or locally in the project without `-g`*
 
 ```shell
-npm install apidoc -g
+npm install apidoc
 ```
 
 Or install it by just running `npm install` on the root of the project, after checking the `package.json` file on the

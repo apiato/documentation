@@ -17,7 +17,7 @@ order: 1
    * Intl Extension *(required when you use the Localization Container)*
 * [Composer](https://getcomposer.org/download/)
 * [Node](https://nodejs.org/en/) *(required for the API Docs generator feature)*
-* Web Server *(example [Nginx](https://www.nginx.com/) )*
-* Cache Engine *(example [Redis](http://redis.io))*
-* Database Engine *(example [MySQL](https://www.mysql.com/))*
+* Web Server *(example: [Nginx](https://www.nginx.com/))*
+* Cache Engine *(example: [Redis](http://redis.io))*
+* Database Engine *(example: [MySQL](https://www.mysql.com/))*
 * Queues Engine *(example: [Beanstalkd](https://beanstalkd.github.io/))*

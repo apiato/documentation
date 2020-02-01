@@ -10,6 +10,10 @@ order: 90
 #### Some feedbacks from awesome users:
 
 
+![]({{ site.baseurl }}/images/testimonials/D1.png)
+
+---
+
 ![]({{ site.baseurl }}/images/testimonials/C2.jpeg)
 
 ---
@@ -35,6 +39,10 @@ order: 90
 ---
 
 ![]({{ site.baseurl }}/images/testimonials/C8.png)
+
+---
+
+![]({{ site.baseurl }}/images/testimonials/D2.png)
 
 ---
 
