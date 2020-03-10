@@ -6,8 +6,12 @@ order: 2
 
 - [Requirements](#requirements)
 - [Usage](#usage)
-  - [Error: ApiDoc not found](#error-apidoc-not-found)
-  - [Shared response for faster updating and less outdated responses](#shared-response-for-faster-updating-and-less-outdated-responses)
+    - [1 - Write a PHP **docblock** on top of your endpoint like this:](#1---write-a-php-docblock-on-top-of-your-endpoint-like-this)
+    - [2 - Run the documentations generator command from the root directory:](#2---run-the-documentations-generator-command-from-the-root-directory)
+    - [3 - Visit this URL's as shown in your terminal:](#3---visit-this-urls-as-shown-in-your-terminal)
+  - [Generate Swagger/OpenAPI JSON schema from apiDoc](#generate-swaggeropenapi-json-schema-from-apidoc)
+  - [Error: ApiDoc not found !!](#error-apidoc-not-found)
+  - [Shared response for faster updating and less outdated responses:](#shared-response-for-faster-updating-and-less-outdated-responses)
 - [Edit the default generated values in the templates:](#edit-the-default-generated-values-in-the-templates)
 - [Change the Documentations URL's](#change-the-documentations-urls)
 - [Edit the Documentation Header](#edit-the-documentation-header)
@@ -113,6 +117,20 @@ php artisan apiato:docs
 ![]({{ site.baseurl }}/images/documentation/private-api-doc.png)
 
 **NOTE:** Every time you change the DocBlock of a Route file you need to run the `apiato:docs` command, to regenerate.
+
+<a name="generate-apidoc-openapi-not-found"></a>
+
+### Generate Swagger/OpenAPI JSON schema from apiDoc
+
+It's also possible to generate a Swagger/OpenAPI JSON schema from apiDoc with:
+
+```shell
+
+php artisan apiato:swagger
+
+```
+
+You can find the JSON schema at [http://apiato.test/api/private/documentation/swagger/swagger.json](http://apiato.test/api/private/documentation/swagger/swagger.json)
 
 <a name="error-apidoc-not-found"></a>
 
