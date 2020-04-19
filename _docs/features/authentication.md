@@ -60,6 +60,10 @@ documentation for more details.
 <a name="how-to-get-access-token-using-oauth-20"></a>
 ## How to get Access Token using OAuth 2.0
 
+1) Generate client_id & client_secret. Continue reading below for details "For first-party clients".
+
+2) Use the generated client to call this oauth/token endpoint `http://api.apiato.test/v1/oauth/token`
+
 All the Auth Endpoints are documented. Go to [Documentation Generator Page]({{ site.baseurl }}{% link _docs/features/api-docs-generator.md %})
 to see how you can generate the API documentation, and read them.
 

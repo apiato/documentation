@@ -1,8 +1,9 @@
 ---
+---
 title: "Welcome to Apiato"
 ---
 
-> **Build great API's faster - With PHP 7.4 and laravel 6.**
+> **Build great API's faster - With PHP 7.4 and laravel 7.**
 
 ![apiato.jpg]({{ site.baseurl }}/images/image-rounded.png)
 
@@ -66,7 +67,7 @@ The documentation has 4 sections:
 > The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119 [[RFC2119](http://tools.ietf.org/html/rfc2119)].
 
 <a name="Sponsors"></a>
-## Our Lovely Sponsors:
+## Sponsors
 
 <a href="https://opencollective.com/apiato/sponsor/0/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/0/avatar.svg?requireActive=false"></a>
 <a href="https://opencollective.com/apiato/sponsor/1/website?requireActive=false" target="_blank"><img src="https://opencollective.com/apiato/sponsor/1/avatar.svg?requireActive=false"></a>
@@ -187,19 +188,11 @@ Help us sustain the project.
 
 <b>Option 1:</b> Donate via [Paypal](https://paypal.me/mzmmzz).
 <br>
-<b>Option 2:</b> Become a Sponsor via [Github Sponsors](https://github.com/sponsors/Mahmoudz).
+<b>Option 2:</b> Become a [Github Sponsors](https://github.com/sponsors/Mahmoudz).
 <br>
 <b>Option 3:</b> Become a Sponsor/Backer via [Open Collective](https://opencollective.com/apiato/contribute).
-
-
-<a name="Getting started"></a>
-## Getting started
-
-Install and have fun :) [installation guide]({{ site.baseurl }}{% link _docs/getting-started/installation.md %})
-
-<!--**LTS (Long-Term Support)** release is available. And offers support for 12 months, after the release date.-->
-<!--The current LTS version is **7.2** (Release date 2017-11-11).-->
-<!--It offers bug fixes (for 12 months) and security updates (for 12 months). And does not get any new features.-->
+<br>
+<b>Option 4:</b> Become a [Patreon](https://www.patreon.com/zalt).
 
 <a name="Chat"></a>
 ### Get in touch with us
@@ -210,6 +203,14 @@ Join our [Slack](https://slackin-mezlsumyvc.now.sh/) chatting room, by click on 
    <img src="https://s19.postimg.cc/h7pvzy9ar/Slack-i_OS-icon.png" alt="Apiato SLACK"/>
 </a>
 
+<a name="Getting started"></a>
+## Getting started
+
+Install and have fun :) [installation guide]({{ site.baseurl }}{% link _docs/getting-started/installation.md %})
+
+<!--**LTS (Long-Term Support)** release is available. And offers support for 12 months, after the release date.-->
+<!--The current LTS version is **7.2** (Release date 2017-11-11).-->
+<!--It offers bug fixes (for 12 months) and security updates (for 12 months). And does not get any new features.-->
 
 <a name="Testimonials"></a>
 ## Testimonials

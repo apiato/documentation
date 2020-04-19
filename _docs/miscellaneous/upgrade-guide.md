@@ -4,6 +4,7 @@ category: "General"
 order: 3
 ---
 
+- [Upgrade from 8.0 to 9.0](#upgrade-apiato-from-version80To90)
 - [Upgrade from 7.4 to 8.0](#upgrade-apiato-from-version74To80)
 - [Upgrade from 7.3 to 7.4](#upgrade-apiato-from-version73To74)
 - [Upgrade from 7.2 to 7.3](#upgrade-apiato-from-version72To73)
@@ -16,13 +17,26 @@ order: 3
 - [Upcoming Release Notes](#Upcoming-Release)
 
 <a name="upgrade-apiato-from-version74To80"></a>
+## Upgrade from 8.0 to 9.0
+
+> Estimated upgrading time: 30 minutes.
+
+1) Follow the steps in the [Manual Upgrading Guide](#Manual-Upgrading-Guide) below. 
+
+You can view [all changes here](https://github.com/apiato/apiato/compare/8.0...9.0).
+
+- Running `php artisan apiato` should return `9.0.0`
+- Running `php artisan -V` should return `7.*.*`  
+
+
+<a name="upgrade-apiato-from-version74To80"></a>
 ## Upgrade from 7.4 to 8.0
 
 > Estimated upgrading time: 30 minutes.
 
 1) Move the `WePay` Container away until the upgrade is done, or delete it if you're not using it. This container was removed in Apiato 8.0.
 
-2) Follow the steps from the [Manual Upgrading Guide](#Manual-Upgrading-Guide) below.
+2) Follow the steps in the [Manual Upgrading Guide](#Manual-Upgrading-Guide) below.
 
 3) Use `.test` instead of `.develop` for the URL's.
 

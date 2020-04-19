@@ -44,12 +44,11 @@ As well as it is compliant with [PSR-4](https://github.com/php-fig/fig-standards
 # Git Branching Strategy
 
 The `master` branch contains the upcoming Apiato release.
-While the other branches are for all the stable releases.
+While the other branches are for all the stable releases (`7.0`, `7.1`, `8.0`...).
 
-Bug fixes should be sent to the latest stable branch (ex: `8.0`), not to the `master` branch, unless they fix features that exist
-only in the upcoming release.
+Bug fixes should be sent to both (the latest stable branch) and to `master` branch, unless they fix features that exist only in the upcoming release, then they should only be sent to `master`.
 
-Major new features should always be sent to the `master` branch, which contains the upcoming release.
+Major new features (and big changes) should always be sent to the `master` branch, which contains the upcoming release.
 
 **Example:**
 
