@@ -9,23 +9,23 @@ order: 90
 
 #### Some feedbacks from awesome users:
 
-![]({{ site.baseurl }}/images/testimonials/M1.jpeg)
+![]({{ site.baseurl }}/images/testimonials/M1.png)
 
 ---
 
-![]({{ site.baseurl }}/images/testimonials/M2.jpeg)
+![]({{ site.baseurl }}/images/testimonials/M2.png)
 
 ---
 
-![]({{ site.baseurl }}/images/testimonials/M3.jpeg)
+![]({{ site.baseurl }}/images/testimonials/M3.png)
 
 ---
 
-![]({{ site.baseurl }}/images/testimonials/M4.jpeg)
+![]({{ site.baseurl }}/images/testimonials/M4.png)
 
 ---
 
-![]({{ site.baseurl }}/images/testimonials/M5.jpeg)
+![]({{ site.baseurl }}/images/testimonials/M5.png)
 
 ---
 

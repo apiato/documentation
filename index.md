@@ -1,5 +1,4 @@
 ---
----
 title: "Welcome to Apiato"
 ---
 
