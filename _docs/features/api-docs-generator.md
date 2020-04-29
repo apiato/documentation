@@ -15,9 +15,8 @@ order: 2
 - [Edit the default generated values in the templates:](#edit-the-default-generated-values-in-the-templates)
 - [Change the Documentations URL's](#change-the-documentations-urls)
 - [Edit the Documentation Header](#edit-the-documentation-header)
-- [API Documentation Headers Example](#api-documentation-headers-example)
-<br />
 
+<br />
 <br />
 Every great API needs a great Documentation.
 
@@ -323,7 +322,3 @@ You will notice some variables like `{{rate-limit}}` and `{{token-expires}}`. Th
 Feel free to extend them to include more info about your API from the `app/Containers/Documentation/Actions/ProcessMarkdownTemplatesAction.php` class.
 
 <a name="api-documentation-headers-example"></a>
-
-## API Documentation Headers Example
-
-![](https://s19.postimg.org/nwxrejwyb/d17df37-_Screen__Shot_2017-02-16_at_5.08.54__PM.png)
