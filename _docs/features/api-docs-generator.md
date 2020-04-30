@@ -20,7 +20,9 @@ order: 2
 <br />
 Every great API needs a great Documentation.
 
-Apiato make writing and generating documentations very easy with the `php artisan apiato:docs` command.
+Apiato make writing and generating documentations very easy with the `php artisan apiato:apidoc` command.
+
+Alternatively you can generate a swagger doc from the apidoc comments, to do so run `php artisan apiato:swagger` command.
 
 
 <a name="requirements"></a>
@@ -99,7 +101,7 @@ $router->post('users/login', [
 
 ```shell
 
-php artisan apiato:docs
+php artisan apiato:apidoc
 
 ```
 
@@ -115,7 +117,7 @@ php artisan apiato:docs
 
 ![]({{ site.baseurl }}/images/documentation/private-api-doc.png)
 
-**NOTE:** Every time you change the DocBlock of a Route file you need to run the `apiato:docs` command, to regenerate.
+**NOTE:** Every time you change the DocBlock of a Route file you need to run the `apiato:apidoc` command, to regenerate.
 
 <a name="generate-apidoc-openapi-not-found"></a>
 

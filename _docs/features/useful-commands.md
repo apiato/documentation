@@ -25,7 +25,8 @@ You can see list of all commands, by typing `php artisan` and look for **Apiato*
 - `php artisan apiato:permissions:toRole {role-name}` Give all system Permissions to a specific Role.
 - `php artisan apiato:seed-test` Seeds your custom testing data from `app/Ship/Seeders/SeedTestingData.php`.
 - `php artisan apiato:seed-deploy` Seeds your custom deployment data from `app/Ship/Seeders/SeedDeploymentData.php`.
-- `php artisan apiato:docs` Generate API Documentations from your routes Docblock. [More details]({{ site.baseurl }}{% link _docs/features/api-docs-generator.md %}).
+- `php artisan apiato:apidoc` Generate API Documentations with apidoc from your routes Docblock. [More details]({{ site.baseurl }}{% link _docs/features/api-docs-generator.md %}).
+- `php artisan apiato:swagger` Generate API Documentations with swagger from your routes Docblock. [More details]({{ site.baseurl }}{% link _docs/features/api-docs-generator.md %}).
 - `php artisan apiato:generate:{component}` Generate a specific component for the framework (e.g., `Action`, `Task`, ...). For more details on the `Code Generator` [click here]({{ site.baseurl }}{% link _docs/features/code-generator.md %}).
 - `php artisan apiato` Display the current Apiato version.
 

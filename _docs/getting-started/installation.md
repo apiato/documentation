@@ -132,22 +132,21 @@ If you are planning to use ApiDoc JS then proceed with this setup, else skip thi
 
 1) Install [ApiDocJs](http://apidocjs.com/) using NPM or your favorite dependencies manager:
 
-*You can install it Globally with `-g` or locally in the project without `-g`*
-
 ```shell
-npm install apidoc
+npm install
 ```
 
-Or install it by just running `npm install` on the root of the project, after checking the `package.json` file on the
-root.
+Or install it alone by just running `npm install apidoc` on the root of the project, after checking the `package.json` file on the root.
 
-2) Run `php artisan apiato:docs`
+2) Run `php artisan apiato:apidoc`
 
-Behind the scene `apiato:docs` is executing a command like this
+Behind the scene `apiato:apidoc` is executing a command like this
 
 ```
 apidoc -c app/Containers/Documentation/ApiDocJs/public -f public.php -i app -o public/api/documentation
 ```
+
+Alternatively you can generate a swagger doc from the apidoc comments, to do so run `php artisan apiato:swagger`.
 
 ##### Visit [API Docs Generator]({{ site.baseurl }}{% link _docs/features/api-docs-generator.md %}) for more details.
 
