@@ -120,7 +120,7 @@ Read about the Ship layer **[here](https://github.com/Mahmoudz/Porto#Port-Layer)
 ### MVC Introduction
 
 Due to the popularity of MVC, and the fact that many developers don't have enough time to learn about new architectures.
-Apiato, supports a the MVC architecture. That is 97% compatible with the laravel MVC.
+Apiato, supports the MVC architecture. That is 97% compatible with the laravel MVC.
 
 Below you will learn how you can build your API on top of Apiato, using your previous knowledge of the Laravel MVC
 framework.
@@ -202,14 +202,14 @@ same directory or/and in this container folder `app/Containers/Application/UI/WE
 
 ##### 7) Create Transformers
 
-In Laravel, the Transformers classes live in the `app/Transformers/` folder. But In Apiato MVC, the Controllers
+In Laravel, the Transformers classes live in the `app/Transformers/` folder. But In Apiato MVC, the Transformers
 classes should live in `app/Containers/Application/UI/API/Transformers/`.
 
 Transformers must extend from `App\Ship\Parents\Transformers\Transformer`.
 
 ##### 8) Create Service Providers
 
-In Laravel, the Service Providers classes live in the `app/Providers/` folder. But In Apiato MVC, the Controllers
+In Laravel, the Service Providers classes live in the `app/Providers/` folder. But In Apiato MVC, the Service Providers
 classes can live in `app/Containers/Application/Providers/`, but also can live anywhere else.
 
 If you want the Service Providers to be automatically loaded (without having to register it in the `config/app.php`
