@@ -196,9 +196,9 @@ Help us sustain the project.
 <a name="Chat"></a>
 ### Get in touch with us
 
-Join our [Slack](https://slackin-mezlsumyvc.now.sh/) chatting room, by click on the Slack icon below.
+Join our [Slack](https://join.slack.com/t/apiato/shared_invite/zt-i1dkzaxt-SdBJKtgbjBSivEP9Z~XN7g) chatting room, by click on the Slack icon below.
 
-<a href="https://slackin-mezlsumyvc.now.sh/">
+<a href="https://join.slack.com/t/apiato/shared_invite/zt-i1dkzaxt-SdBJKtgbjBSivEP9Z~XN7g">
    <img src="https://s19.postimg.cc/h7pvzy9ar/Slack-i_OS-icon.png" alt="Apiato SLACK"/>
 </a>
 
