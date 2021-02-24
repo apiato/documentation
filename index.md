@@ -162,9 +162,9 @@ You can sponsor us using any of the methods below:
 <a name="Chat"></a>
 ### Get in touch with us
 
-Join our [Slack](https://join.slack.com/t/apiato/shared_invite/zt-i1dkzaxt-SdBJKtgbjBSivEP9Z~XN7g) chatting room, by click on the Slack icon below.
+Join our [Slack](https://join.slack.com/t/apiato/shared_invite/zt-mtriung2-1__8zBAaJO_xXa_kMFsHgQ) chatting room, by click on the Slack icon below.
 
-<a href="https://join.slack.com/t/apiato/shared_invite/zt-i1dkzaxt-SdBJKtgbjBSivEP9Z~XN7g">
+<a href="https://apiato.slack.com/join/shared_invite/zt-mtriung2-1__8zBAaJO_xXa_kMFsHgQ">
    <img src="https://s19.postimg.cc/h7pvzy9ar/Slack-i_OS-icon.png" alt="Apiato SLACK"/>
 </a>
 
