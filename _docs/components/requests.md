@@ -18,7 +18,7 @@ order: 3
     * [hasAccess](#hasaccess)
     * [isOwner](#isowner)
     * [getInputByKey](#getinputbykey)
-    * [sanitizeData](#sanitizedata)
+    * [sanitizeInput](#sanitizeinput)
     * [mapInput](#mapinput)
 * [Storing Data on the Request](#storing-data-on-the-request)
 * [Unit Testing for Actions (Request)](#unit-testing-for-actions-request)
@@ -412,9 +412,9 @@ decoded value (e.g., `4`).
 Furthermore, one can define a `default` value to be returned, if the key is not present (or not set), like so:
 `$request->getInputByKey('data.name', 'Undefined')`
 
-<a name="sanitizedata"></a>
+<a name="sanitizeinput"></a>
 
-### **sanitizeData**
+### **sanitizeInput**
 
 Especially for `PATCH` requests, if you like to submit only the fields, to be changed to the API in order to:
 

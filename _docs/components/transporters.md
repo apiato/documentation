@@ -187,7 +187,7 @@ $name = $transporter->name;
 $username = $transporter->getInputByKey('your.nested.username.field');
 ```
 
-Of course, you can also "sanitize" the data, like you would have done in the `Request` classes by using `sanitizeData(array)`.
+Of course, you can also "sanitize" the data, like you would have done in the `Request` classes by using `sanitizeInput(array)`.
 
 Finally, if you need to access the original `Request` object, you can access it via
 ```php
