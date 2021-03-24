@@ -16,7 +16,7 @@ Call the `http://api.apiato.test/v1/register` endpoint (you can find it's docume
 
 Check out the `registerUser` endpoint in the API Routes files.
 
-This will registered new Users and generates Personal Access Tokens and respond with user object and token.
+This will register a new User and respond with user object.
 
 
 **Registration request:**
@@ -35,7 +35,7 @@ curl --request POST \
 {
   "data": {
     "object": "User",
-    "id": 77,
+    "id": XbPW7awNkzl83LD6,
     "name": "Mahmoud Zalt",
     "email": "apiato@mail.com",
     "confirmed": null,
@@ -48,25 +48,29 @@ curl --request POST \
       "avatar": null,
       "original": null
     },
-    "created_at": {
-      "date": "2017-04-05 16:17:26.000000",
-      "timezone_type": 3,
-      "timezone": "UTC"
-    },
-    "updated_at": {
-      "date": "2017-04-05 16:17:26.000000",
-      "timezone_type": 3,
-      "timezone": "UTC"
-    },
+    "created_at": "2021-03-24T15:02:56.000000Z",
+    "updated_at": "2021-03-24T15:02:56.000000Z",
+    "readable_created_at": "19 seconds ago",
+    "readable_updated_at": "19 seconds ago"
     "roles": {
       "data": []
     }
   }
 }
 ```
+  
+Note: After registration in order to get the user access token you will have to send another call to `http://api.example.com/v1/oauth/token` with following fields and values
+```
+username => your_username e.g. admin@admin.com
+password => your_password
+grant_type => password
+client_id => your_client_id
+client_secret => your_client_secret
+```
 
-Note: After registration you will have to send another call to `http://api.example.com/v1/oauth/token` in order to get the user access token.
+For Third-Party Clients you must have client ID and secret first. You can generate them by creating new client in your app using Laravel Passport.
 
+For First-Party Clients you can use a proxy to add those fields on requests coming from your trusted client. For an example on how to do it look at `ProxyLoginForAdminWebClientAction` Action in Authentication Container.
 
 <a name="register-users-by-social-account"></a>
 
