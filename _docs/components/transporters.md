@@ -27,7 +27,7 @@ Apiato uses [this package](https://github.com/fireproofsocks/dto) for the DTO. R
 <a name="rules"></a>
 ### Rules
 
-- All Models MUST extend from `App\Ship\Parents\Transporters\Transporter`.
+- All Transporters MUST extend from `App\Ship\Parents\Transporters\Transporter`.
 
 <a name="folder-structure"></a>
 ### Folder Structure
