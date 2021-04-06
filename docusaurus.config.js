@@ -2,13 +2,13 @@
 module.exports = {
   title: 'Apiato',
   tagline: 'Build scalable API\'s faster | With PHP 7.4 and Laravel 8.0',
-  url: 'https://moslem-deris.github.io',
+  url: 'https://apiato.github.io',
   baseUrl: '/docs/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'moslem-deris', // Usually your GitHub org/user name.
-  projectName: 'docs', // Usually your repo name.
+  organizationName: 'apiato', // Usually your GitHub org/user name.
+  projectName: 'documentation', // Usually your repo name.
   stylesheets: [
     "https://fonts.googleapis.com/icon?family=Material+Icons",
   ],
