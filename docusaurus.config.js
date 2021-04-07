@@ -108,8 +108,8 @@ module.exports = {
       darkTheme: require('prism-react-renderer/themes/dracula'),
     },
     googleAnalytics: {
-      trackingID: 'G-H1RNT1FEVT',
-      // Optional fields.
+      trackingID: 'G-MZQHHV9P45',
+      //  Optional fields.
       anonymizeIP: true, // Should IPs be anonymized?
     },
     algolia: {
