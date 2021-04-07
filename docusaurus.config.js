@@ -3,7 +3,7 @@ module.exports = {
   title: 'Apiato',
   tagline: 'Build scalable API\'s faster | With PHP 7.4 and Laravel 8.0',
   url: 'https://apiato.github.io',
-  baseUrl: '/docs/',
+  baseUrl: '/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',

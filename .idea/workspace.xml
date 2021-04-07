@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="464efc49-a3a3-47e0-bbee-70f01feec25c" name="Default Changelist" comment="Upgrade Documentation">
+    <list default="true" id="464efc49-a3a3-47e0-bbee-70f01feec25c" name="Default Changelist" comment="Update config file to match repo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +41,7 @@
       <option name="presentableId" value="Default" />
       <updated>1617624309092</updated>
       <workItem from="1617624310387" duration="3302000" />
-      <workItem from="1617706810618" duration="1519000" />
+      <workItem from="1617706810618" duration="2711000" />
     </task>
     <task id="LOCAL-00001" summary="Upgrade Documentation">
       <created>1617626321590</created>
@@ -57,7 +57,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617626615195</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Update config file to match repo">
+      <created>1617721506281</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1617721506281</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -78,6 +85,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="Upgrade Documentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Upgrade Documentation" />
+    <MESSAGE value="Update config file to match repo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update config file to match repo" />
   </component>
 </project>
