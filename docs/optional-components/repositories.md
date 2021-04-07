@@ -1,11 +1,9 @@
 ---
-title: "Repositories"
-category: "Optional Components"
-order: 14
+title: Repositories
 ---
 
 * [Definition](#definition)
-- [Principles](#principles)
+* [Principles](#principles)
 * [Rules](#rules)
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
@@ -14,9 +12,7 @@ order: 14
 * [All other Properties](#all-other-properties)
 
 
-<a name="definition"></a>
-
-### Definition
+### Definition {#definition}
 
 The Repository classes are an implementation of the Repository Design Pattern.
 
@@ -26,17 +22,13 @@ Repositories saves and retrieves Models to/from the underlying storage mechanism
 
 The Repository is used to separate the logic that retrieves the data and maps it to a Model, from the business logic that acts on the Model.
 
-<a name="principles"></a>
-
-## Principles
+### Principles {#principles}
 
 - Every Model SHOULD have a Repository.
 
 - A Model SHOULD always get accessed through its Repository. (Never direct access to Model).
 
-<a name="rules"></a>
-
-### Rules
+### Rules {#rules}
 
 - All Repositories MUST extend from `App\Ship\Parents\Repositories\Repository`. Extending from this class will give access to functions like (`find`, `create`, `update` and much more).
 
@@ -44,9 +36,7 @@ The Repository is used to separate the logic that retrieves the data and maps it
 
 - If a Repository belongs to a Model whose name is not equal to its Container name, then the Repository must set the `$container` property like this: `$container='ContainerName'`. *See an example below*
 
-<a name="folder-structure"></a>
-
-### Folder Structure
+### Folder Structure {#folder-structure}
 
 ```
  - app
@@ -58,12 +48,9 @@ The Repository is used to separate the logic that retrieves the data and maps it
                     - ...
 ```
 
-<a name="code-samples"></a>
-
-### Code Samples
+### Code Samples {#code-samples}
 
 **User `Repository`:**
-
 
 ```php
 <?php
@@ -84,7 +71,6 @@ class UserRepository extends Repository implements UserRepositoryInterface
 ```
 
 **Usage:**
-
 
 ```php
 <?php
@@ -108,7 +94,6 @@ Note: If the Repository belongs to Model with a name different than its Containe
 
 **Example:**
 
-
 ```php
 <?php
 
@@ -127,13 +112,9 @@ class RoleRepository extends Repository
 }
 ```
 
-<a name="other-properties"></a>
+### Other Properties: {#other-properties}
 
-### Other Properties:
-
-<a name="api-query-parameters-property"></a>
-
-### API Query Parameters Property
+### API Query Parameters Property {#api-query-parameters-property}
 
 To enable query parameters (`?search=text`,...) in your API you need to set the property `$fieldSearchable` on the Repository class, to instruct the querying on your model.
 
@@ -148,12 +129,9 @@ To enable query parameters (`?search=text`,...) in your API you need to set the 
 	];
 ```
 
-
 Continue reading to find more about those properties and what they do.
 
-<a name="all-other-properties"></a>
-
-### All other Properties
+### All other Properties {#all-other-properties}
 
 apiato uses the `andersao/l5-repository` package, to provide a lot of powerful features to the repository class. such as
 

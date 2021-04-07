@@ -1,19 +1,15 @@
 ---
-title: "Jobs"
-category: "Optional Components"
-order: 33
+title: Jobs
 ---
 
 * [Definition](#definition)
-- [Principles](#principles)
+* [Principles](#principles)
 * [Rules](#rules)
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
-* [Execute Jobs Execution](#Execute-Jobs-Execution)
+* [Execute Jobs Execution](#execute-jobs-execution)
 
-<a name="definition"></a>
-
-### Definition
+### Definition {#definition}
 
 Jobs:
 
@@ -25,21 +21,15 @@ Jobs:
  
 More info [here](https://laravel.com/docs/queues).
 
-<a name="principles"></a>
-
-## Principles
+### Principles {#principles}
 
 - A Container MAY have more than one Job.
 
-<a name="rules"></a>
-
-### Rules
+### Rules {#rules}
 
 - All Jobs MUST extend from `App\Ship\Parents\Jobs\Job`.
 
-<a name="folder-structure"></a>
-
-### Folder Structure
+### Folder Structure {#folder-structure}
 
 ```
  - app
@@ -50,9 +40,7 @@ More info [here](https://laravel.com/docs/queues).
                 - DoSomethingElseJob.php
 ```
 
-<a name="code-samples"></a>
-
-### Code Samples
+### Code Samples {#code-samples}
 
 **CreateAndValidateAddress with third party `Job`:**
 
@@ -83,7 +71,6 @@ class CreateAndValidateAddressJob extends Job
 
 Check the parent Job class.
 
-
 **Usage from `Action`:**
 
 ```php
@@ -96,10 +83,7 @@ dispatch(new CreateAndValidateAddressJob($recipients));
 App::make(\Illuminate\Contracts\Bus\Dispatcher\Dispatcher::class)->dispatch(New StatusChangedJob($object));
 ```
 
-
-<a name="Execute-Jobs-Execution"></a>
-
-### Execute Jobs Execution
+### Execute Jobs Execution {#execute-jobs-execution}
 
 For running your Jobs checkout the [Tasks Queuing]({{ site.baseurl }}{% link _docs/miscellaneous/tasks-queuing.md %}) page.
 

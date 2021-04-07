@@ -1,7 +1,5 @@
 ---
-title: "Commands"
-category: "Optional Components"
-order: 32
+title: Commands
 ---
 
 * [Definition](#definition)
@@ -10,13 +8,9 @@ order: 32
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
 * [Schedule Commands Execution](#Schedule-Commands-Execution)
-* [Define Consoles Routes](#Routes)
+* [Define Consoles Routes](#define-consoles-routes)
 
-
-
-<a name="definition"></a>
-
-### Definition
+### Definition {#definition}
 
 Commands:
 
@@ -26,9 +20,7 @@ Commands:
  * Commands could be Closure based or Classes.
  * "dispatch" is the term that is usually used to call a Command.
 
-<a name="principles"></a>
-
-## Principles
+### Principles {#principles}
 
 - Containers MAY or MAY NOT have one or more Commands.
 
@@ -36,16 +28,11 @@ Commands:
 
 - Ship may contain Application general Commands.
 
-
-<a name="rules"></a>
-
-### Rules
+### Rules {#rules}
 
 - All Commands MUST extend from `App\Ship\Parents\Commands\ConsoleCommand`.
 
-<a name="folder-structure"></a>
-
-### Folder Structure
+### Folder Structure {#folder-structure}
 
 ```
  - app
@@ -62,9 +49,7 @@ Commands:
             - ...
 ```
 
-<a name="code-samples"></a>
-
-### Code Samples
+### Code Samples {#code-samples}
 
 **Example: a simple Command**
 
@@ -127,14 +112,10 @@ class SayWelcomeCommand extends ConsoleCommand
 php artisan apiato:welcome
 ```
 
-
-<a name="Schedule-Commands-Execution"></a>
-### Schedule Commands Execution
+### Schedule Commands Execution {#Schedule-Commands-Execution}
 
 To Schedule the execution of a Command checkout the [Tasks Scheduling]({{ site.baseurl }}{% link _docs/miscellaneous/tasks-scheduling.md %}) page.
 
-
-<a name="Routes"></a>
-## Define Consoles Routes
+### Define Consoles Routes {#define-consoles-routes}
 
 To define Console route go to `app/Ship/Commands/Routes.php`.

@@ -1,18 +1,14 @@
 ---
-title: "Factories"
-category: "Optional Components"
-order: 25
+title: Factories
 ---
 
 * [Definition](#definition)
-- [Principles](#principles)
+* [Principles](#principles)
 * [Rules](#rules)
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
 
-<a name="definition"></a>
-
-### Definition
+### Definition {#definition}
 
 Factories (are a short name for Models Factories).
 
@@ -20,21 +16,15 @@ Factories are used to generate some fake data with the help of Faker to be used 
 
 Factories are mainly used from Tests.
 
-<a name="principles"></a>
-
-## Principles
+### Principles {#principles}
 
 - Factories SHOULD be created in the Containers.
 
-<a name="rules"></a>
-
-### Rules
+### Rules {#rules}
 
 - A Factory is just a plain PHP script. *(No classes or namespaces required)*
 
-<a name="folder-structure"></a>
-
-### Folder Structure
+### Folder Structure {#folder-structure}
 
 ```
  - app
@@ -46,9 +36,7 @@ Factories are mainly used from Tests.
                     - ...
 ```
 
-<a name="code-samples"></a>
-
-### Code Samples
+### Code Samples {#code-samples}
 
 **A User Model Factory:**
 
@@ -90,7 +78,6 @@ $rewards = factory(Reward::class, 3)->make()->each(function ($reward) use ($coun
     $reward->save();
 });
 ```
-
 
 Use make instance of create and pass any data any way, then save after establishing the relations.
 

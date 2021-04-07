@@ -1,21 +1,18 @@
 ---
-title: "Events"
-category: "Optional Components"
-order: 35
+title: Events
 ---
 
 - [Definition](#definition)
 - [Principles](#principles)
 - [Rules](#rules)
-* [Folder Structure](#folder-structure)
+- [Folder Structure](#folder-structure)
 - [Enabling Events](#enabling-events)
 - [Usage](#usage)
 - [Dispatch Events](#dispatch-events)
-- [Queueing](#Queueing)
-- [Broadcasting](#Broadcasting)
+- [Queueing](#queueing)
+- [Broadcasting](#broadcasting)
 
-<a name="definition"></a>
-### Definition
+### Definition {#definition}
 
 Events: 
 
@@ -26,20 +23,17 @@ Events:
 
 More details [here](https://laravel.com/docs/events).
 
-<a name="principles"></a>
-## Principles
+### Principles {#principles}
 
 - Events can be fired from Actions and or Tasks. It's preferable to choose one place only. (Tasks are recommended).
 - Events SHOULD be created inside the Containers. However, general Events CAN be created in the Port layer.
 
-<a name="rules"></a>
-### Rules
+### Rules {#rules}
 
 - Events classes CAN be placed inside the Containers in Events folders or on the Ship for the general Events.
 - All Events MUST extend from `App\Ship\Parents\Events\Event`.
 
-
-### Folder Structure
+### Folder Structure {#folder-structure}
 
 ```
  - App
@@ -59,8 +53,7 @@ More details [here](https://laravel.com/docs/events).
             - ...
 ```
 
-<a name="enabling-events"></a>
-### Enabling Events
+### Enabling Events {#enabling-events}
 
 Before you can use events you need to add the `EventServiceProvider` to the `MainServiceProvider` of the Ship (if this has not been registered so far). See example below.
 
@@ -86,8 +79,7 @@ class MainServiceProvider extends MainProvider
 
 ```
 
-<a name="usage"></a>
-### Usage
+### Usage {#usage}
 
 In Laravel you can create and register events in multiple way. Below is an example of an Event that handles itself. 
 
@@ -158,9 +150,7 @@ class MainServiceProvider extends MainProvider
     ];
 ```
 
-<a name="dispatch-events"></a>
-
-### Dispatch Events
+### Dispatch Events {#dispatch-events}
 
 You can dispatch an Event from anywhere you want (ideally from Actions and Tasks).
 
@@ -175,8 +165,7 @@ event(New UserEmailChangedEvent($user));
 \App::make(\Illuminate\Contracts\Bus\Dispatcher\Dispatcher::class)->dispatch(New UserEmailChangedEvent($user));
 ```
 
-<a name="Queueing"></a>
-## Queueing an Event
+## Queueing an Event {#queueing}
 
 Events can implement `Illuminate\Contracts\Queue\ShouldQueue` to be queued.
 
@@ -229,7 +218,6 @@ class ExampleEvent extends Event implements ShouldHandle
 }
 ```
 
-<a name="Broadcasting"></a>
-## Broadcasting
+## Broadcasting {#broadcasting}
 
 Note: to define Broadcasting route go to `app/Ship/Boardcasts/Routes.php`.

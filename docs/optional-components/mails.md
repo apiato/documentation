@@ -1,7 +1,5 @@
 ---
-title: "Mails"
-category: "Optional Components"
-order: 36
+title: Mails
 ---
 
 * [Definition](#definition)
@@ -9,37 +7,28 @@ order: 36
 * [Rules](#rules)
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
-* [Email Templates](#Templates)
-* [Configure Emails](#config)
-* [Queueing](#Queueing)
+* [Email Templates](#email-templates)
+* [Configure Emails](#configure-emails)
+* [Queueing](#queueing)
 
-<a name="definition"></a>
-
-### Definition
+### Definition {#definition}
 
 The Mail component allows you to describe an email and send it whenever needed. 
 
 For more details refer to this [link](https://laravel.com/docs/mail).
 
-<a name="principles"></a>
-
-## Principles
+### Principles {#principles}
 
 - Containers MAY or MAY NOT have one or more Mail.
 
 - Ship may contain general Mails.
 
-
-<a name="rules"></a>
-
-### Rules
+### Rules {#rules}
 
 - All Notifications MUST extend from `App\Ship\Parents\Mails\Mail`.
 - Email Templates must be placed inside the Mail directory in a Templates directory `app/Containers/{container}/Mails/Templates`.
 
-<a name="folder-structure"></a>
-
-### Folder Structure
+### Folder Structure {#folder-structure}
 
 ```
  - app
@@ -60,9 +49,7 @@ For more details refer to this [link](https://laravel.com/docs/mail).
                 - ...
 ```
 
-<a name="code-samples"></a>
-
-### Code Samples
+### Code Samples {#code-samples}
 
 **Example: a simple Mail**
 
@@ -106,9 +93,7 @@ Notifications can be sent from Actions or Tasks using the `Mail` Facade.
 Mail::send(new UserRegisteredMail($user));
 ```
 
-
-<a name="Templates"></a>
-## Email Templates
+## Email Templates {#email-templates}
 
 Templates should be placed inside a folder `Templates` inside the `Mail` folder.
 
@@ -120,9 +105,7 @@ In the example below we're using the `user-registered.blade.php` template in the
 $this->view('user::user-registered')
 ```
 
-
-<a name="config"></a>
-## Configure Emails
+## Configure Emails {#configure-emails}
 
 Open the `.env` file and set the From mail and address, this will be used globally whenever the `from` function is not called in the Mail. 
 
@@ -134,7 +117,6 @@ To use different email address in some classes add `->to($this->email, $this->na
 
 By default Apiato is configured to use Log Driver `MAIL_DRIVER=log`, you can change that from the `.env` file.
 
-<a name="Queueing"></a>
-## Queueing A Notification 
+## Queueing A Notification {#queueing}
 
 To queue a notification you should use `Illuminate\Bus\Queueable` and implement `Illuminate\Contracts\Queue\ShouldQueue`.

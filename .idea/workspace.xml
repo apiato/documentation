@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="464efc49-a3a3-47e0-bbee-70f01feec25c" name="Default Changelist" comment="Modify Config">
+    <list default="true" id="464efc49-a3a3-47e0-bbee-70f01feec25c" name="Default Changelist" comment="Update General section headers links">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/general/contribution-guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/general/contribution-guide.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/general/faq.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/general/faq.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/general/upgrade-guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/general/upgrade-guide.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/commands.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/commands.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/configs.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/configs.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/criterias.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/criterias.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/events.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/events.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/exceptions.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/exceptions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/factories.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/factories.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/jobs.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/jobs.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/languages.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/languages.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/mails.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/mails.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/middlewares.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/middlewares.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/migrations.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/migrations.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/notifications.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/notifications.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/providers.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/providers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/repositories.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/repositories.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/seeders.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/seeders.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/tests.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/tests.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/values.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/values.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +58,7 @@
       <option name="presentableId" value="Default" />
       <updated>1617624309092</updated>
       <workItem from="1617624310387" duration="3302000" />
-      <workItem from="1617706810618" duration="17432000" />
+      <workItem from="1617706810618" duration="21021000" />
     </task>
     <task id="LOCAL-00001" summary="Upgrade Documentation">
       <created>1617626321590</created>
@@ -158,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617832758806</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Update General section headers links">
+      <created>1617834413143</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1617834413143</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,6 +219,7 @@
     <MESSAGE value="Add CNAME" />
     <MESSAGE value="Modify CNAME" />
     <MESSAGE value="Modify Config" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modify Config" />
+    <MESSAGE value="Update General section headers links" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update General section headers links" />
   </component>
 </project>

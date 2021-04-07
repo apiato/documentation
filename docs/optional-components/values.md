@@ -1,7 +1,5 @@
 ---
-title: "Values"
-category: "Optional Components"
-order: 100
+title: Values
 ---
 
 - [Definition & Principles](#definition-principles)
@@ -9,8 +7,7 @@ order: 100
 - [Folder Structure](#folder-structure)
 - [Code Sample](#code-sample)
 
-<a name="definition-principles"></a>
-### Definition & Principles
+### Definition & Principles {#definition-principles}
 
 Values are short names for the known "Value Objects" which are simple Objects, pretty similar to Models in the concept of representing data, but they do not get stored in the DB, thus they don't have ID's. 
 They also do not hold functionality or change any state, they just hold data.
@@ -18,13 +15,11 @@ They also do not hold functionality or change any state, they just hold data.
 A Value Object is an immutable object that is defined by its encapsulated attributes. 
 We create Value Object when we need it to represent/serve/manipulate some data (attached as attributes), and w'll kill it later when we finish using it, to recreate it again when needed.  
 
-<a name="rules"></a>
-### Rules
+### Rules {#rules}
 
 - All Models MUST extend from `App\Ship\Parents\Values\Value`.
 
-<a name="folder-structure"></a>
-### Folder Structure
+### Folder Structure {#folder-structure}
 
 ```
  - App
@@ -36,7 +31,7 @@ We create Value Object when we need it to represent/serve/manipulate some data (
                 - ...
 ```
 
-### Code Sample
+### Code Sample {#code-sample}
 
 ```php
 <?php

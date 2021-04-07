@@ -1,34 +1,26 @@
 ---
-title: "Criterias"
-category: "Optional Components"
-order: 20
+title: Criterias
 ---
 
 * [Definition](#definition)
-- [Principles](#principles)
+* [Principles](#principles)
 * [Rules](#rules)
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
 
-<a name="definition"></a>
-
-### Definition
+### Definition {#definition}
 
 Criterias are classes used to hold and apply query condition when retrieving data from the database through a Repository.
 
 Without using a Criteria class, you can add your query conditions to a Repository or to a Model as scope. But with Criterias, your query conditions can be shared across multiple Models and Repositories. It allows you to define the query condition once and use it anywhere in the App.
 
-<a name="principles"></a>
-
-## Principles
+### Principles {#principles}
 
 - Every Container MAY have its own Criterias. However, shared Criterias SHOULD be created in the Ship layer.
 
 - A Criteria MUST not contain any extra code, if it needs data, the data SHOULD be passed to it from the Actions or the Task. It SHOULD not run (call) any Task for data.
 
-<a name="rules"></a>
-
-### Rules
+### Rules {#rules}
 
 - All Criterias MUST extend from `App\Ship\Parents\Criterias\Criteria`.
 
@@ -36,9 +28,7 @@ Without using a Criteria class, you can add your query conditions to a Repositor
 
 - A simple query condition example `"where user_id = $id"`, this can be named "This User Criteria", and used with all Models who has relations with the User Model.
 
-<a name="folder-structure"></a>
-
-### Folder Structure
+### Folder Structure {#folder-structure}
 
 ```
  - app
@@ -58,9 +48,7 @@ Without using a Criteria class, you can add your query conditions to a Repositor
                   - ...
 ```
 
-<a name="code-samples"></a>
-
-### Code Samples
+### Code Samples {#code-samples}
 
 **Example: a shared Criteria**
 
@@ -122,7 +110,6 @@ class ThisUserCriteria extends Criteria
     }
 }
 ```
-
 
 **Example: Passing data from `Task` to `Criteria`:**
 

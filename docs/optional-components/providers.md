@@ -1,7 +1,5 @@
 ---
-title: "Providers"
-category: "Optional Components"
-order: 13
+title: Providers
 ---
 
 * [Definition](#definition)
@@ -13,12 +11,10 @@ order: 13
   + [Container's Main Service Provider](#container-s-main-service-provider)
   + [Container's Additional Service Providers](#container-s-additional-service-providers)
   + [Third party packages Service Providers](#third-party-packages-service-providers)
-+ [Laravel 5.5 Auto Discovery feature.](#laravel-55-auto-discovery-feature)
+* [Laravel 5.5 Auto Discovery feature](#laravel-55-auto-discovery-feature)
 * [Information about Laravel Service Providers](#information-about-laravel-service-providers)
 
-<a name="definition"></a>
-
-### Definition
+### Definition {#definition}
 
 Providers (are short names for Service Providers).
 
@@ -26,9 +22,7 @@ Providers are the central place of configuring and bootstrapping a Container.
 
 They are the place where you register things like container bindings, event listeners, middleware, routes, other providers, aliases... to the framework service container.
 
-<a name="principles"></a>
-
-### Principles
+### Principles {#principles}
 
 - There are 2 types of Providers in a Container, the **Main Provider** and the **Additional (Job Specific) Providers** (EventsProvider, BroadcastsProvider, AuthProvider, MiddlewareProvider, RoutesProvider).
 
@@ -42,9 +36,7 @@ They are the place where you register things like container bindings, event list
 
 - Providers CAN be registered on the Ship Main Provider, if they are general or are intended to be used by many containers. (Same applies to Aliases).
 
-<a name="rules"></a>
-
-### Rules
+### Rules {#rules}
 
 - The Main Provider will be auto registered by the Ship Engine, so no need to register it manually anywhere.
 
@@ -60,9 +52,7 @@ They are the place where you register things like container bindings, event list
 Due to the nature and structure of Apiato applications, this features **is turned off**, because it messes up how `config` files are loaded
 in apiato. This means, that you still need to **manually** register 3rd-party `ServiceProviders` in the `ServiceProvider` of a `Container`.
 
-<a name="folder-structure"></a>
-
-### Folder Structure
+### Folder Structure {#folder-structure}
 
 **Example: User Container `Service Providers`**
 
@@ -76,12 +66,11 @@ in apiato. This means, that you still need to **manually** register 3rd-party `S
                 - ...
 ```
 
-
 In this example above only the `AuthServiceProvider` and `EventsServiceProvider` needs to be registered in `UserServiceProvider`. While the `UserServiceProvider` will get automatically registered (since it's named based on his Container name).
 
-<a name="code-samples"></a>
+<a name=""></a>
 
-### Code Samples
+### Code Samples {#code-samples}
 
 **Main Service Provider Example:**
 
@@ -127,25 +116,17 @@ class MainServiceProvider extends MainProvider
 }
 ```
 
-
 **Note**: when defining `register()` or `boot()` function in your Main provider "only" you must call the parent functions (`parent::register()`, `parent::boot()`) from your extended function.
 
-<a name="register-service-providers"></a>
+### Register Service Providers: {#register-service-providers}
 
-### Register Service Providers:
-
-<a name="container-s-main-service-provider"></a>
-
-#### Container's Main Service Provider
+#### Container's Main Service Provider {#container-s-main-service-provider}
 
 No need to register the Main `Service Provider` anywhere, it will be automatically registered, and it is responsible for registering all the Container Additional (Job Specific) Providers.
 
-<a name="container-s-additional-service-providers"></a>
-
-#### Container's Additional Service Providers
+#### Container's Additional Service Providers {#container-s-additional-service-providers}
 
 You MAY add as many Additional `Service Providers` as you want in a `Container`. However, in order to get them loaded in the framework you MUST register them all in the Main `Service Provider` as follow:
-
 
 ```php
 <?php
@@ -160,25 +141,17 @@ private $containerServiceProviders = [
 
 > Same rule applies to **Aliases**.
 
-<a name="third-party-packages-service-providers"></a>
-
-#### Third party packages Service Providers
+#### Third party packages Service Providers {#third-party-packages-service-providers}
 
 If a package requires registering its service provider in the `config/app.php`, you SHOULD register its service provider in the Main container where you are using it.
 However, if it's a generic package used by the entire framework and not a specific Container or feature. Then you can register that service provider in the `app/Ship/Providers/ShipProvider.php`, but never in the `config/app.php`.
 
-
-<a name="laravel-55-auto-discovery-feature"></a>
-
-### Laravel 5.5 Auto Discovery feature.
+### Laravel 5.5 Auto Discovery feature {#laravel-55-auto-discovery-feature}
 
 This feature is disabled in Apiato so far.
 More details [here]({{ site.baseurl }}{% link _docs/miscellaneous/faq.md %}).
 
-
-<a name="information-about-laravel-service-providers"></a>
-
-### Information about Laravel Service Providers
+### Information about Laravel Service Providers {#information-about-laravel-service-providers}
 
 By default Laravel provides some service providers in its `app/providers` directory.
 In apiato those providers have been renamed and moved to the Ship Layer `app/Ship/Parents/Providers/*`:

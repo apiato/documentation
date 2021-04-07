@@ -1,7 +1,5 @@
 ---
-title: "Notifications"
-category: "Optional Components"
-order: 37
+title: Notifications
 ---
 
 * [Definition](#definition)
@@ -9,13 +7,11 @@ order: 37
 * [Rules](#rules)
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
-* [Select Channels](#Select-Channels)
-* [Queueing](#Queueing)
-* [Use DB channel](#DB-channel)
+* [Select Channels](#select-channels)
+* [Queueing](#queueing)
+* [Use DB channel](#db-channel)
 
-<a name="definition"></a>
-
-### Definition
+### Definition {#definition}
 
 Notifications allows you to inform the user about a state changes in your application.  
 
@@ -25,24 +21,17 @@ When using the Database channel the notifications will be stored in a database t
 
 For more details refer to this [link](https://laravel.com/docs/notifications).
 
-<a name="principles"></a>
-
-## Principles
+## Principles {#principles}
 
 - Containers MAY or MAY NOT have one or more Notification.
 
 - Ship may contain Application general Notifications.
 
-
-<a name="rules"></a>
-
-### Rules
+### Rules {#rules}
 
 - All Notifications MUST extend from `App\Ship\Parents\Notifications\Notification`.
 
-<a name="folder-structure"></a>
-
-### Folder Structure
+### Folder Structure {#folder-structure}
 
 ```
  - app
@@ -57,9 +46,7 @@ For more details refer to this [link](https://laravel.com/docs/notifications).
             - ...
 ```
 
-<a name="code-samples"></a>
-
-### Code Samples
+### Code Samples {#code-samples}
 
 **Example: a simple Notification**
 
@@ -132,9 +119,7 @@ $user = User::firstOrCreate([
 $user->notify(new BirthdayReminderNotification($notificationMessage));
 ```
 
-
-<a name="Select-Channels"></a>
-## Select Channels
+## Select Channels {#select-channels}
 
 To select a notification channel, apiato have the `app/Ship/Configs/notification.php` config file where you can define the array of supported channels "e.g. SMS, Email, WebPush..", to be used for all your notifications.
 
@@ -143,17 +128,11 @@ you can override the **via** function `public function via($notifiable)` in the 
 
 Checkout [laravel notification channels](http://laravel-notification-channels.com) for list of supported integrations.
 
-
-
-<a name="Queueing"></a>
-## Queueing a Notification 
+## Queueing a Notification {#queueing}
 
 To queue a notification you should use `Illuminate\Bus\Queueable` and implement `Illuminate\Contracts\Queue\ShouldQueue`.
 
-
-
-<a name="db-channel"></a>
-## Use DB channel  
+## Use DB channel {#db-channel}
 
 Generally you need to generate the notification migration `php artisan notifications:table`, then run `php artisan migrate`, 
 however just running the migration command will do the job, since Apiato already adds the `_create_notifications_table.php` in the default migrations files directory `app/Ship/Migrations/`.

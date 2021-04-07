@@ -1,7 +1,5 @@
 ---
-title: "Seeders"
-category: "Optional Components"
-order: 24
+title: Seeders
 ---
 
 * [Definition](#definition)
@@ -12,23 +10,17 @@ order: 24
 * [Run the Seeders](#run-the-seeders)
 * [Testing seeder command](#apiato-testing-seeder-command)
 
-<a name="definition"></a>
-
-### Definition
+### Definition {#definition}
 
 Seeders (are a short name for Database Seeders).
 
 Seeders are classes made to seed the database with real data, this data usually should exist in the Application after the installation (Example: the default Users Roles and Permissions or the list of Countries).
 
-<a name="principles"></a>
-
-## Principles
+### Principles {#principles}
 
 - Seeders SHOULD be created in the Containers. (If the container is using a package that publishes a Seeder class, this class should be manually placed in the Container that make use of it. Do not reply on the package to place it on its right location).
 
-<a name="rules"></a>
-
-### Rules
+### Rules {#rules}
 
 - Seeders should be in the right directory inside the container to be loaded.
 
@@ -36,9 +28,7 @@ Seeders are classes made to seed the database with real data, this data usually 
 
 - If you wish to order the seeding of the classes, you can just append `_1`, `_2` to your classes.
 
-<a name="folder-structure"></a>
-
-### Folder Structure
+### Folder Structure {#folder-structure}
 
 ```
  - App
@@ -51,12 +41,9 @@ Seeders are classes made to seed the database with real data, this data usually 
                     - ...
 ```
 
-<a name="code-samples"></a>
-
-### Code Samples
+### Code Samples {#code-samples}
 
 **Roles `Seeder`:**
-
 
 ```php
 <?php
@@ -82,15 +69,11 @@ class OrderPermissionsSeeder_1 extends Seeder
     }
 }
 
-
 ```
-
 
 Note: Same `Seeder` class is allowed to contain seeding for multiple `Models`.
 
-<a name="run-the-seeders"></a>
-
-### Run the Seeders
+### Run the Seeders {#run-the-seeders}
 
 After registering the `Seeders` you can run this command:
 
@@ -100,7 +83,7 @@ php artisan db:seed
 
 To run specific Seeder class you can specific its class in the parameter as follow:
 
-```shell
+```bash
 php artisan db:seed --class="your\single\seeder\goes-here"
 ```
 
@@ -112,11 +95,7 @@ php artisan migrate --seed
 
 For more information about the Database Seeders read [this](https://laravel.com/docs/master/seeding).
 
-
-
-<a name="apiato-testing-seeder-command"></a>
-
-## Apiato testing seeder command
+## Apiato testing seeder command {#apiato-testing-seeder-command}
 
 It's useful sometimes to create a big set of testing data. apiato facilitates this task:
 

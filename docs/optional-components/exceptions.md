@@ -1,7 +1,5 @@
 ---
-title: "Exceptions"
-category: "Optional Components"
-order: 15
+title: Exceptions
 ---
 
 * [Definition](#definition)
@@ -9,30 +7,24 @@ order: 15
 * [Rules](#rules)
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
-* [Application Error Codes](#error-codes)
+* [Application Error Codes](#application-error-codes)
 
-
-<a name="definition"></a>
-### Definition
+### Definition {#definition}
 
 Exceptions are classes the handles errors, and helps developers debug their code in a more efficient way.
 
-<a name="principles"></a>
-## Principles
+### Principles {#principles}
 
 - Exceptions can be thrown from anywhere in the application.
 - Exceptions SHOULD be created inside the Containers. However, general Exceptions CAN be created in the `Ship` layer.
 
-<a name="rules"></a>
-### Rules
+### Rules {#rules}
 
 - All Exceptions MUST extend `App\Ship\Parents\Exceptions\Exception`.
 - Shared (general) Exceptions between all Containers SHOULD be created in the **Exceptions Ship** folder (`app/Ship/Exceptions/*`).
 - Every Exception SHOULD have two properties `httpStatusCode` and `message`, both properties will be displayed when an error occurs. You can override those values while throwing the error.
 
-<a name="folder-structure"></a>
-
-### Folder Structure
+### Folder Structure {#folder-structure}
 
 ```
  - App
@@ -49,9 +41,7 @@ Exceptions are classes the handles errors, and helps developers debug their code
             - ...
 ```
 
-<a name="code-samples"></a>
-
-### Code Samples
+### Code Samples {#code-samples}
 
 **User `Exception`:**
 
@@ -159,8 +149,7 @@ throw (new AwesomeExceptionWithCustomData())->overrideCustomData(['foo' => 'bar'
 
 ```
 
-<a name="error-codes"></a>
-### Application Error Codes
+### Application Error Codes {#application-error-codes}
 
 Apiato provides a convenient way to manage all `application error codes` in one central place. Therefore, Apiato provides, amongst others, the `\App\Ship\Exceptions\Codes\ApplicationErrorCodesTable` class, which already holds various information for multiple errors.
 

@@ -1,40 +1,30 @@
 ---
-title: "Migrations"
-category: "Optional Components"
-order: 23
+title: Migrations
 ---
 
 * [Definition](#definition)
-- [Principles](#principles)
+* [Principles](#principles)
 * [Rules](#rules)
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
 
-<a name="definition"></a>
-
-### Definition
+### Definition {#definition}
 
 Migrations (are the short name for Database Migrations).
 
 Migrations are the version control of your database. They are very useful for generating and documenting the database tables.
 
-<a name="principles"></a>
-
-## Principles
+### Principles {#principles}
 
 - Migrations SHOULD be created inside the Containers folders.
 
 - Migrations will be autoloaded in the framework
 
-<a name="rules"></a>
-
-### Rules
+### Rules {#rules}
 
 - No need to publish the DB Migrations. Just run the `artisan migrate` command and Laravel will read the Migrations from the Containers.
 
-<a name="folder-structure"></a>
-
-### Folder Structure
+### Folder Structure {#folder-structure}
 
 ```
  - app
@@ -46,12 +36,9 @@ Migrations are the version control of your database. They are very useful for ge
                     - ...
 ```
 
-<a name="code-samples"></a>
-
-### Code Samples
+### Code Samples {#code-samples}
 
 **User CreateUsersTable `Migrations`:**
-
 
 ```php
 
@@ -82,6 +69,5 @@ class CreateUsersTable extends Migration
 }
 
 ```
-
 
 For more information about the Database Migrations read [this](https://laravel.com/docs/master/migrations).
