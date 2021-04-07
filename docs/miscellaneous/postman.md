@@ -2,20 +2,18 @@
 title: Postman Environment
 ---
 
-- [Apiato Postman API & Environment](#title)
+- [Apiato Postman API & Environment](#apiato-postman-api--environment)
     * [Prerequisites](#prerequisites)
-    * [Add Apiato Environment & Collection to Postman ](#add-environment-collection)
-    * [Using the Postman Apiato API Collection](#using-apiato-collection)
-    * [Download Environment & Collection](#download)
+    * [Add Apiato Environment & Collection to Postman ](#add-apiato-environment--collection-to-postman)
+    * [Using the Postman Apiato API Collection](#using-the-postman-apiato-api-collection)
+    * [Download Environment & Collection](#download-environment--collection)
 
-<a name="title"></a>
-## Apiato Postman API & Environment
+## Apiato Postman API & Environment {#apiato-postman-api--environment}
 
 If you use Postman to build and explore your API's you will find this predefined Apiato Postman collection a great
 start to your new Apiato project. Simply download both the Environment and Collection to Postman to get started.
 
-<a name="prerequisites"></a>
-### Prerequisites
+### Prerequisites {#prerequisites}
 
 #### Configure Apiato
 
@@ -47,8 +45,7 @@ Visit the Postman website and download the application.
 
 * [Postman](https://www.getpostman.com/)
 
-<a name="add-environment-collection"></a>
-### Add Apiato Environment & Collection to Postman
+### Add Apiato Environment & Collection to Postman {#add-apiato-environment--collection-to-postman}
 
 * [Download Apiato Environment]({{ site.baseurl }}/assets/postman/Apiato_API.postman_environment.json)
 * [Download Apiato Collection]({{ site.baseurl }}/assets/postman/Apiato_API.postman_collection.json)
@@ -59,8 +56,7 @@ Steps
 * Click on "**Choose files**". Select both the Environment and Collection JSON files and click add.
 * Select "**Apiato Environment**" from the Environment dropdown list on the **top right** of the Postman Application.
 
-<a name="using-apiato-collection"></a>
-### Using the Postman Apiato API Collection
+### Using the Postman Apiato API Collection {#using-the-postman-apiato-api-collection}
 
 The first thing you need to do to use the Apiato endpoints is to login to your Apiato API.
 
@@ -84,8 +80,7 @@ If you would like to test logging into your application with different users the
 }
 ```
 
-<a name="download"></a>
-### Download Environment & Collection
+### Download Environment & Collection {#download-environment--collection}
 
 * [Download Apiato Environment]({{ site.baseurl }}/assets/postman/Apiato_API.postman_environment.json)
 * [Download Apiato Collection]({{ site.baseurl }}/assets/postman/Apiato_API.postman_collection.json)

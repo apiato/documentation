@@ -2,11 +2,6 @@
 title: Tasks Scheduling
 ---
 
-- [Tasks Scheduling](#Tasks-Scheduling)
-
-<a name="Tasks-Scheduling"></a>
-### Tasks Scheduling
-
 Tasks Scheduler:
 
 * is a script executor program, such as "Cron Job". (Cron Job is a time-based scripts scheduler in Unix-like computer
@@ -19,7 +14,7 @@ like and Artisan Commands, Queued Jobs in addition to  custom Shell Commands, to
 Below is a quick guide for how to schedule some scripts execution such as (custom Shell Commands, Laravel Commands,
 Laravel [Jobs](https://laravel.com/docs/master/queues), and other classes), in order to run at specific intervals or dates.
 
-#### Server Setup
+### Server Setup
 
 First let's set it up, by adding our single Cron entry, on the server. As follow:
 
@@ -31,7 +26,7 @@ Don't forget to replace the *path-to-your-project*.
 
 More details [here](https://laravel.com/docs/master/scheduling#introduction).
 
-#### App Setup
+### App Setup
 
 First you need to create some commands, that needs to be scheduled.
 The can be created in the Containers `(app/Containers/{container-name}/UI/CLI/Commands)` or in the Ship (`app/Ship/Commands`).

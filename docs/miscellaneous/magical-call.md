@@ -3,18 +3,16 @@ title: Magical Call
 ---
 
 - [The Magical Call](#the-magical-call)
-    + [Basic Usage](#basic-usage)
-    + [Usage options](#Usage-options)
-    + [Passing arguments to the run function](#passing-arguments-to-the-run-function)
-    + [Calling other functions before the run](#calling-other-functions-before-the-run)
-    + [Calling other functions and pass them arguments:](#calling-other-functions-and-pass-them-arguments)
+    + [Usage options](#usage-options)
+      + [Basic Usage](#basic-usage)
+      + [Passing arguments to the run function](#passing-arguments-to-the-run-function)
+      + [Calling other functions before the run](#calling-other-functions-before-the-run)
+      + [Calling other functions and pass them arguments:](#calling-other-functions-and-pass-them-arguments)
 - [Transactional Magical Call](#transactional-call)
 - [Use case example:](#use-case-example)
     + [The ListUsersTask class:](#the-listuserstask-class)
 
-
-<a name="the-magical-call"></a>
-### The Magical Call
+## The Magical Call {#the-magical-call}
 
 This magical function allows you to call any Action or Task `run` function, from anywhere. Using the `Apiato::call()` Facade.
 
@@ -25,8 +23,7 @@ Each Action knows which UI called it, using `$this->getUI()`, this is useful for
 based on the UI type (Web or API). This will work when calling the Action from Controllers and Commands using the
 magical `call()` function.
 
-<a name="Usage-options"></a>
-### Usage options
+### Usage options {#usage-options}
 
 In the first argument you can pass the class full name, as follow `App\Containers\User\Tasks\CreateUserTask::class`,
 or you can pass the container name and class name, as follow `User@CreateUserTask`.
@@ -50,8 +47,7 @@ Apiato::call('Authorization@AssignUserToRoleTask');
 Apiato::call(\App\Containers\Authorization\Tasks\AssignUserToRoleTask::class);
 ```
 
-<a name="basic-usage"></a>
-##### Basic Usage
+##### Basic Usage {#basic-usage}
 
 ```php
 $foo = \Apiato\Core\Foundation\Facades\Apiato::call('Container@ActionOrTask');
@@ -64,22 +60,19 @@ but it's not recommended.
 and the Apiato caller style (`Containers@GetAllUsersTask`).
 - There is also a `transactionalCall()` method available, that wraps everything in a `DB::Transaction` (see below).
 
-<a name="passing-arguments-to-the-run-function"></a>
-##### Passing arguments to the `run` function
+##### Passing arguments to the `run` function {#passing-arguments-to-the-run-function}
 
 ```php
 $foo = Apiato::call('Container@ActionOrTask', [$runArgument1, $runArgument2, $runArgument3]);
 ```
 
-<a name="calling-other-functions-before-the-run"></a>
-##### Calling other functions before calling the `run`
+##### Calling other functions before calling the `run` {#calling-other-functions-before-the-run}
 
 ```php
 $foo = Apiato::call('Container@ActionOrTask', [$runArgument], ['otherFunction1', 'otherFunction2']);
 ```
 
-<a name="calling-other-functions-and-pass-them-arguments"></a>
-##### Calling other functions and pass them arguments before calling the `run`
+##### Calling other functions and pass them arguments before calling the `run` {#calling-other-functions-and-pass-them-arguments}
 
 ```php
 <?php
@@ -111,8 +104,7 @@ $foo = Apiato::call('Container@ActionOrTask', [], [
 ]);
 ```
 
-<a name="#transactional-call"></a>
-### Transactional Magical Call
+## Transactional Magical Call {#transactional-call}
 
 Sometimes, you want to wrap a call into one `Database Transaction` (see
 [Laravel Documentation](https://laravel.com/docs/master/database#database-transactions)).
@@ -137,8 +129,7 @@ Consider the following example: You want to create a new `Team` and automaticall
 
  Typically, you may want to use the `transactionalCall()` on the `Controller` level!
 
-<a name="use-case-example"></a>
-### Use case example
+## Use case example {#use-case-example}
 
 ```php
 <?php
@@ -153,8 +144,7 @@ return Apiato::call('User@ListUsersTask', [], ['admins']);
 return Apiato::call('User@ListUsersTask', [], ['admins', ['roles' => ['manager', 'employee']]]);
 ```
 
-<a name="the-listuserstask-class"></a>
-##### The ListUsersTask class
+### The ListUsersTask class {#the-listuserstask-class}
 
 ```php
 <?php

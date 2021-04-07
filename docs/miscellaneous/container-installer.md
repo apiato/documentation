@@ -3,11 +3,10 @@ title: Containers Installer
 ---
 
 - [Containers](#containers)
-  * [Downloading and Installing 3rd Party Containers](#downloading-and-installing-3rdPartyContainers)
+  * [Downloading and Installing 3rd Party Containers](#downloading-and-installing-3rdParty-containers)
   * [Developing a Container](#developing-a-container)
 
-<a name="containers"></a>
-## Containers
+## Containers {#containers}
 
 Apiato ships with a few pre-defined and pre-configured containers. However, other developers may provide additional
 features in form of a respective container. This section explains, how so called `3rd party containers` may be
@@ -15,8 +14,7 @@ automatically downloaded and installed to your specific web application.
 
 **Note that this feature is only available for apiato > 4.1.3**
 
-<a name="downloading-and-installing-3rdPartyContainers"></a>
-### Downloading and Installing 3rd Party Containers
+### Downloading and Installing 3rd Party Containers {#downloading-and-installing-3rdParty-containers}
 
 > A curated list of awesome Apiato containers
 > [https://github.com/apiato/awesome-apiato](https://github.com/apiato/awesome-apiato)
@@ -45,8 +43,7 @@ needs to follow some basic guidelines listed below.
 
 > Warning: **Do not** modify content within a downloaded container, as it will be overwritten if you call `composer update`.
 
-<a name="developing-a-container"></a>
-### Developing a Container
+### Developing a Container {#developing-a-container}
 
 Developing a container that can be used by others is quite easy. Basically, you can `extract` already existing functionality
 in a new container and provide the features. Note that you need to upload the container to `GitHub` and then release
@@ -58,7 +55,7 @@ file within the main folder of the container.
 
 An example of such a `composer.json` file is shown below:
 
-```
+```json
 {
   "name": "vendor/project",
   "description": "This is a short description for your container.",

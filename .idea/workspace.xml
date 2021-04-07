@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="464efc49-a3a3-47e0-bbee-70f01feec25c" name="Default Changelist" comment="Update config file to run algolia">
+    <list default="true" id="464efc49-a3a3-47e0-bbee-70f01feec25c" name="Default Changelist" comment="Update main components headers links">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/main-components/actions.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/actions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/main-components/controllers.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/controllers.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/main-components/models.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/models.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/main-components/requests.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/requests.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/main-components/routes.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/routes.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/main-components/tasks.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/tasks.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/main-components/transformers.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/transformers.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/main-components/transporters.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/transporters.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/main-components/views.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/views.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/miscellaneous/container-installer.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/miscellaneous/container-installer.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/miscellaneous/magical-call.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/miscellaneous/magical-call.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/miscellaneous/tasks-queuing.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/miscellaneous/tasks-queuing.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/miscellaneous/tasks-scheduling.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/miscellaneous/tasks-scheduling.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/miscellaneous/tests-helpers.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/miscellaneous/tests-helpers.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +46,7 @@
       <option name="presentableId" value="Default" />
       <updated>1617624309092</updated>
       <workItem from="1617624310387" duration="3302000" />
-      <workItem from="1617706810618" duration="9501000" />
+      <workItem from="1617706810618" duration="10583000" />
     </task>
     <task id="LOCAL-00001" summary="Upgrade Documentation">
       <created>1617626321590</created>
@@ -122,7 +118,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617806362047</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Update main components headers links">
+      <created>1617809122572</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1617809122572</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,6 +149,7 @@
     <MESSAGE value="Update config file to match repo" />
     <MESSAGE value="Update config file to run google-analytics" />
     <MESSAGE value="Update config file to run algolia" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update config file to run algolia" />
+    <MESSAGE value="Update main components headers links" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update main components headers links" />
   </component>
 </project>

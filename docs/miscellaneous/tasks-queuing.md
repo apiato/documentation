@@ -2,11 +2,6 @@
 title: Tasks Queuing
 ---
 
-- [Tasks Queuing](#Tasks-Queuing)
-
-<a name="Tasks-Queuing"></a>
-### Tasks Queuing
-
 Tasks Queuing: 
 
 * Queues System, which executes the Jobs classes one by one once he receives it or once it's scheduled (after being 
