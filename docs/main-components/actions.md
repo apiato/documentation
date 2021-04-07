@@ -6,21 +6,15 @@ title: Actions
 - [Folder Structure](#folder-structure)
 - [Code Sample](#code-sample)
 
-<a name="definition-principles"></a>
-
-### Definition & Principles
+### Definition & Principles {#definition-principles}
 
 Read the section in the  [**Porto SAP Documentation (#Actions)**](https://github.com/Mahmoudz/Porto#Actions).
 
-<a name="rules"></a>
-
-### Rules
+### Rules {#rules}
 
 - All Actions MUST extend `App\Ship\Parents\Actions\Action`.
 
-<a name="folder-structure"></a>
-
-### Folder Structure
+### Folder Structure {#folder-structure}
 
 ```
  - app
@@ -32,9 +26,7 @@ Read the section in the  [**Porto SAP Documentation (#Actions)**](https://github
                 - ...
 ```
 
-<a name="code-sample"></a>
-
-### Code Sample
+### Code Sample {#code-sample}
 
 **Delete User Action:**
 
@@ -86,9 +78,7 @@ The Action itself was also called using `Apiato::call()` which triggers the `run
 Refer to the [**Magical Call**]({{ site.baseurl }}{% link _docs/miscellaneous/magical-call.md %})  page for more info and examples on how to use the call function.
 
 
-
 **Same Example using the `call` function:**
-
 
 ```php
 <?php
@@ -108,7 +98,6 @@ class DeleteUserAction extends Action
 
 }
 ```
-
 
 **Example: Calling multiple Tasks:**
 
@@ -138,7 +127,6 @@ class DemoAction extends Action
 }
 
 ```
-
 
 **Action usage from a Controller:**
 

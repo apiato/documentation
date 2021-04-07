@@ -6,13 +6,11 @@ title: Transporters
 - [Rules](#rules)
 - [Folder Structure](#folder-structure)
 - [Code Sample](#code-sample)
-- [Requests and Transporters](#Requests-and-Transporters)
+- [Requests and Transporters](#requests-and-transporters)
 - [Set Data](#set-data)
 - [Get Data](#get-data)
 
-
-<a name="definition-principles"></a>
-### Definition & Principles
+### Definition & Principles {#definition-principles}
 
 Transporters is a name chosen by Apiato for DTO's (Data Transfer Objects). 
 Transporters are used to pass user data (coming from Requests, Commands, or other places) from place to another (Actions to Tasks / Controller to Action / Command to Action / ...).
@@ -21,14 +19,11 @@ They are very useful for reducing the number of parameters in functions, which p
 
 Apiato uses [this package](https://github.com/fireproofsocks/dto) for the DTO. Refer to the [dto package wiki](https://github.com/fireproofsocks/dto/wiki) for more details.
 
-
-<a name="rules"></a>
-### Rules
+### Rules {#rules}
 
 - All Models MUST extend from `App\Ship\Parents\Transporters\Transporter`.
 
-<a name="folder-structure"></a>
-### Folder Structure
+### Folder Structure {#folder-structure}
 
 ```
  - App
@@ -40,9 +35,7 @@ Apiato uses [this package](https://github.com/fireproofsocks/dto) for the DTO. R
                     - ...
 ```
 
-
-<a name="code-sample"></a>
-### Code Sample
+### Code Sample {#code-sample}
 
 **Transporter class**
 
@@ -106,8 +99,6 @@ $dataTransporter = new ProxyApiLoginTransporter(
 $result = Apiato::call('Authentication@ProxyApiLoginAction', [$dataTransporter]);
 ```
 
-
-
 **Creating a Transporter from Test**
 
 ```php
@@ -121,11 +112,7 @@ $action = App::make(RegisterUserAction::class);
 $user = $action->run($transporter);
 ```	
  
-
-
-
-<a name="Requests-and-Transporters"></a>
-### Optionally switch between Requests and Transporters 
+### Optionally switch between Requests and Transporters {#requests-and-transporters}
 
 ```php
 // if you have the following function signature
@@ -192,9 +179,7 @@ Finally, if you need to access the original `Request` object, you can access it 
 $originalRequest = $transporter->request;
 ```
 
-
-<a name="set-data"></a>
-### Set Data
+### Set Data {#set-data}
 
 You can set data in many ways
 
@@ -234,8 +219,7 @@ $dataTransporter = new ProxyApiLoginTransporter(
 );
 ```
  
- 
- 
+
 #### Set Instance
 
 Passing Objects does not work!, because the third party package cannot hydrate it. So to pass instances from a place to 
@@ -255,8 +239,7 @@ they cannot be hydrated. See below how you can get the instance form the Transpo
 $console = $data->command_instance;
 ```
  
-<a name="get-data"></a>
-### Get Data
+### Get Data {#get-data}
  
 To get all data from the Transporter you can call `$data->toArray()` or `$data->toJson()`... there are many other functions on the class.
 

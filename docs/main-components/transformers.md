@@ -11,15 +11,11 @@ title: Transformers
     * [From Back-end](#from-back-end)
 * [Transformer Available helper functions:](#transformer-available-helper-functions)
 
-<a name="definition-principles"></a>
-
-### Definition & Principles
+### Definition & Principles {#definition-principles}
 
 Read from the [**Porto SAP Documentation (#Transformers)**](https://github.com/Mahmoudz/Porto#Transformers).
 
-<a name="rules"></a>
-
-### Rules
+### Rules {#rules}
 
 - All API responses MUST be formatted via a Transformer.
 
@@ -27,9 +23,7 @@ Read from the [**Porto SAP Documentation (#Transformers)**](https://github.com/M
 
 - Each Transformer MUST have a `transform()` function.
 
-<a name="folder-structure"></a>
-
-### Folder Structure
+### Folder Structure {#folder-structure}
 
 ```
  - app
@@ -42,9 +36,7 @@ Read from the [**Porto SAP Documentation (#Transformers)**](https://github.com/M
                         - ...
 ```
 
-<a name="code-samples"></a>
-
-### Code Samples
+### Code Samples {#code-samples}
 
 **Reward Transformer with Country relation:**
 
@@ -101,7 +93,6 @@ class ItemTransformer extends Transformer
 }
 ```
 
-
 **Usage from Controller (Single Item)**
 
 ```php
@@ -138,9 +129,7 @@ return $this->response->paginator($rewards, new RewardTransformer());
 
 ```
 
-<a name="relationships-include"></a>
-
-### Relationships (include)
+### Relationships (include) {#relationships-include}
 
 Loading relationships with the Transformer (calling other Transformers):
 
@@ -150,11 +139,7 @@ This can be done in 2 ways:
 
 2. By the Developer, define what relations to include at run time.
 
-
-
-<a name="from-front-end"></a>
-
-#### From Front-end
+#### From Front-end {#from-front-end}
 
 You can request data with their relationships directly from the API call using `include=tags,user`. But first the Transformer need to have the `availableIncludes` defined with their functions like this:
 
@@ -205,9 +190,7 @@ Now to get the `Tags` with the response when Accounts are requested pass the `?i
 
 To get Tags with User use the comma separator: `?include=tags,user`.
 
-<a name="from-back-end"></a>
-
-#### From Back-end
+#### From Back-end {#from-back-end}
 
 From the controller you can dynamically set the `DefaultInclude` using (`setDefaultIncludes`) anytime you want.
 
@@ -217,7 +200,6 @@ From the controller you can dynamically set the `DefaultInclude` using (`setDefa
 return $this->response->paginator($rewards, (new ProductsTransformer())->setDefaultIncludes(['tags']));
 
 ```
-
 
 You need to have `includeTags` function defined on the transformer. Look at the full examples above.
 
@@ -239,9 +221,7 @@ protected $defaultIncludes = [
 
 You need to have `includeUser` and `includeTags` functions defined on the transformer. Look at the full examples above.
 
-<a name="transformer-available-helper-functions"></a>
-
-## Transformer Available helper functions:
+## Transformer Available helper functions: {#transformer-available-helper-functions}
 
 - `user()` : returns current authenticated user object.
 

@@ -21,22 +21,16 @@ title: Requests
 * [Storing Data on the Request](#storing-data-on-the-request)
 * [Unit Testing for Actions (Request)](#unit-testing-for-actions-request)
 
-<a name="definition-principles"></a>
-
-### Definition & Principles
+### Definition & Principles {#definition-principles}
 
 Read from the [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmoudz/Porto#Requests).
 
-<a name="rules"></a>
-
-### Rules
+### Rules {#rules}
 
 - All Requests MUST extend from `App\Ship\Parents\Requests\Request`.
 - A Request MUST have a `rules()` function, returning an array. And an `authorize()` function to check for authorization (can return true when no authorization required).
 
-<a name="folder-structure"></a>
-
-### Folder Structure
+### Folder Structure {#folder-structure}
 
 ```
  - app
@@ -55,9 +49,7 @@ Read from the [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmo
                         - ...
 ```
 
-<a name="code-samples"></a>
-
-### Code Samples
+### Code Samples {#code-samples}
 
 **Example: Update User Requests**
 
@@ -123,15 +115,11 @@ By just injecting the request class you already applied the validation and autho
 
 When you need to pass data to the Action, you should pass the request Object as it is to the Action parameter.
 
-<a name="request-properties"></a>
-
-## Request Properties
+## Request Properties {#request-properties}
 
 apiato adds some new properties to the Request Class. Each of these properties is very useful for some situations, and let you achieve your goals faster and cleaner. Below we'll see description for each property:
 
-<a name="decode"></a>
-
-### **decode**
+### **decode** {#decode}
 
 The **$decode** property is used for decoding Hashed ID's from any Request on the fly
 
@@ -174,9 +162,7 @@ class AssignUserToRoleRequest extends Request
 
 **Note:** validations rules that relies on your ID like (`exists:users,id`) will not work unless you decode your ID before passing it to the validation.
 
-<a name="urlparameters"></a>
-
-### **urlParameters**
+### **urlParameters** {#urlparameters}
 
 The **$urlParameters** property is used for applying validation rules on the URL parameters:
 
@@ -222,9 +208,7 @@ class ConfirmUserEmailRequest extends Request
 }
 ```
 
-<a name="access"></a>
-
-### **access**
+### **access** {#access}
 
 The **$access** property, allows the user to define set of Roles and Permissions than can access this endpoint.
 
@@ -271,9 +255,7 @@ you can also use the `array notation`. The example from above would look like th
     ];
 ```
 
-<a name="how-the-authorize-function-work"></a>
-
-## How the authorize function work
+## How the authorize function work {#how-the-authorize-function-work}
 
 The `authorize` function is calling a `check` function which accepts an array of functions names. Each of those functions returns a boolean.
 
@@ -285,9 +267,7 @@ On the other side if `isKing` *(a custom function could be written by you anywhe
 
 Checkout the [hasAccess](https://apiato.readme.io/docs/requests#section-hasaccess) below.
 
-<a name="custom-authorize-functions"></a>
-
-### Add Custom Authorize Functions
+### Add Custom Authorize Functions {#custom-authorize-functions}
 
 The best way to add a custom authorize function is through a Trait, which can be added to your `Request` classes. In the example below we create a Trait named `IsAuthorPermissionTrait` with a single method called `isAuthor`.
 
@@ -336,9 +316,7 @@ class FindUserByIdRequest extends Request
 
 Now, the Request uses the newly created `isAuthor` method to check the proper access rights.
 
-<a name="allow-a-role-to-access-every-endpoint"></a>
-
-## Allow a Role to access every endpoint
+## Allow a Role to access every endpoint {#allow-a-role-to-access-every-endpoint}
 
 You can allow some Roles to access every endpoint in the system without having to define that role in each Request object.
 
@@ -354,17 +332,11 @@ To do this define those roles in `app/Ship/Configs/apiato.php` as follow:
 
 This will append the `admin` role to all roles access in every request object. Example: this `'roles' => 'manger'` becomes `'roles' => 'manger|admin'` (if the user is manager or admin "has any of the roles", will be allowed to access the endpoint function).
 
-
-
-<a name="request-helper-functions"></a>
-
-## Request Helper Functions
+## Request Helper Functions {#request-helper-functions}
 
 apiato also provides some helpful functions by default, so you can use them whenever you need them.
 
-<a name="hasaccess"></a>
-
-### **hasAccess**
+### **hasAccess** {#hasaccess}
 
 The `hasAccess` function, decides if the the user has Access or not based on the `$access` property.
 
@@ -374,9 +346,7 @@ The `hasAccess` function, decides if the the user has Access or not based on the
 
 - If you do not need to set a roles/permissions just set `'permission' => ''` or  `'permission' => null`.
 
-<a name="isowner"></a>
-
-### **isOwner**
+### **isOwner** {#isowner}
 
 The `isOwner` function, checks if the passed URL ID is the same as the User ID of the request.
 
@@ -386,9 +356,7 @@ Let's say we have an endpoint `www.api.apiato.test/v1/users/{ID}/delete` that de
 
 With `isOwner`, user of ID 1 can only call `/users/1/delete` and won't be able to call `/users/2/delete` or any other ID.
 
-<a name="getinputbykey"></a>
-
-### **getInputByKey**
+### **getInputByKey** {#getinputbykey}
 
 Get the data from within the `$request` by entering the name of the field. This function behaves like `$request->input('key.here')`,
 however, it works on the **decoded** values instead of the original data.
@@ -410,9 +378,7 @@ decoded value (e.g., `4`).
 Furthermore, one can define a `default` value to be returned, if the key is not present (or not set), like so:
 `$request->getInputByKey('data.name', 'Undefined')`
 
-<a name="sanitizeinput"></a>
-
-### **sanitizeInput**
+### **sanitizeInput** {#sanitizeinput}
 
 Especially for `PATCH` requests, if you like to submit only the fields, to be changed to the API in order to:
 
@@ -494,7 +460,7 @@ the fields to would like to pass through. This makes partially updating an resou
 
 Note that the `fillable fields` of an entity can be easily obtained with `$entity->getFillable()`!
 
-<a name="mapinput"></a>
+### **mapInput** {#mapinput}
 
 Sometimes you might want to map input from the request to other fields in order to automatically pass it to a `Action`
 or `Task`. Of course, you can manually map those fields, but you can also rely on the `mapInput(array $fields)` helper
@@ -528,9 +494,7 @@ The resulting structure would look like this:
 }
 ```
 
-<a name="storing-data-on-the-request"></a>
-
-## Storing Data on the Request
+## Storing Data on the Request {#storing-data-on-the-request}
 
 During the Request life-cycle you may want to store some data on the request object and pass it to other SubActions (or maybe if you prefer to Tasks).
 
@@ -546,10 +510,7 @@ To retrieve the data back at any time during the request life-cycle use:
 $someValue = $request->retrieve('someKey')
 ```
 
-
-<a name="unit-testing-for-actions-request"></a>
-
-## Unit Testing for Actions (Request)
+## Unit Testing for Actions (Request) {#unit-testing-for-actions-request}
 
 Since we're passing Requests objects to the Actions. When writing unit tests we need to create fake Request just to pass it to the Action with some fake data.
 

@@ -7,21 +7,15 @@ title: Tasks
 - [Folder Structure](#folder-structure)
 - [Code Sample](#code-sample)
 
-<a name="definition-principles"></a>
-
-### Definition & Principles
+### Definition & Principles {#definition-principles}
 
 Read from the [**Porto SAP Documentation (#Tasks)**](https://github.com/Mahmoudz/Porto#Tasks).
 
-<a name="rules"></a>
-
-### Rules
+### Rules {#rules}
 
 - All Tasks MUST extend from `App\Ship\Parents\Tasks\Task`.
 
-<a name="folder-structure"></a>
-
-### Folder Structure
+### Folder Structure {#folder-structure}
 
 ```
  - app
@@ -36,9 +30,7 @@ Read from the [**Porto SAP Documentation (#Tasks)**](https://github.com/Mahmoudz
                 - ...
 ```
 
-<a name="code-sample"></a>
-
-### Code Sample
+### Code Sample {#code-sample}
 
 **Find User Task by ID:**
 
@@ -73,7 +65,6 @@ class FindUserByIdTask extends Task
 
 }
 ```
-
 
 **Tasks usage from an Action:**
 

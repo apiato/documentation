@@ -7,21 +7,15 @@ title: Sub Actions
 - [Folder Structure](#folder-structure)
 - [Code Sample](#code-sample)
 
-<a name="definition-principles"></a>
-
-### Definition & Principles
+### Definition & Principles {#definition-principles}
 
 Read from the [**Porto SAP Documentation (#Sub-Actions)**](https://github.com/Mahmoudz/Porto#Sub-Actions).
 
-<a name="rules"></a>
-
-### Rules
+### Rules {#rules}
 
 - All SubActions MUST extend from `App\Ship\Parents\Actions\SubAction`.
 
-<a name="folder-structure"></a>
-
-### Folder Structure
+### Folder Structure {#folder-structure}
 
 ```
  - app
@@ -33,9 +27,7 @@ Read from the [**Porto SAP Documentation (#Sub-Actions)**](https://github.com/Ma
                 - ...
 ```
 
-<a name="code-sample"></a>
-
-### Code Sample
+### Code Sample {#code-sample}
 
 **ValidateAddressSubAction User Action:**
 

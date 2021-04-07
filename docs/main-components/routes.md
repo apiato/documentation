@@ -10,23 +10,17 @@ title: Routes
 - [Protect your Endpoints:](#protect-your-endpoints)
 * [Difference between Public & Private routes files](#difference-between-public-private-routes-files)
 
-<a name="definition-principles"></a>
-
-### Definition & Principles
+### Definition & Principles {#definition-principles}
 
 Read from the [**Porto SAP Documentation (#Routes)**](https://github.com/Mahmoudz/Porto#Routes).
 
-<a name="rules"></a>
-
-### Rules
+### Rules {#rules}
 
 - The API Routes files MUST be named according to their API's versions, exposure and functionality. Example `CreateOrder.v1.public.php`, `FulfillOrder.v2.public.php`, `CancelOrder.v1.private.php`...
 
 - Web Routes files are pretty similar to API web files but they can be named anything.
 
-<a name="folder-structure"></a>
-
-### Folder Structure
+### Folder Structure {#folder-structure}
 
 ```
  - app
@@ -47,9 +41,7 @@ Read from the [**Porto SAP Documentation (#Routes)**](https://github.com/Mahmoud
                       - ...
 ```
 
-<a name="web-routes"></a>
-
-### Web Routes
+### Web Routes {#web-routes}
 
 **Example: Endpoint to display a Hello View in the browser**
 
@@ -63,9 +55,7 @@ $router->get('/hello', [
 
 In all the Web `Routes` files the `$router` variable is an instance of the default Laravel Router `Illuminate\Routing\Router`.
 
-<a name="api-routes"></a>
-
-### API Routes
+### API Routes {#api-routes}
 
 **Example: User Login API Endpoint**
 
@@ -90,15 +80,10 @@ $router->get('users', [
 ]);
 ```
 
-<a name="protect-your-endpoints"></a>
-
-## Protect your Endpoints:
+## Protect your Endpoints: {#protect-your-endpoints}
 
 Checkout the [Authorization]({{ site.baseurl }}{% link _docs/features/authorization.md %}) Page.
 
-
-<a name="difference-between-public-private-routes-files"></a>
-
-### Difference between Public & Private routes files
+### Difference between Public & Private routes files {#difference-between-public-private-routes-files}
 
 apiato has 2 types of endpoints, Public (External) mainly for third parties clients, and Private (Internal) for your own Apps. This will help generating separate documentations for each and keep your internal API private.

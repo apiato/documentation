@@ -3,7 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="464efc49-a3a3-47e0-bbee-70f01feec25c" name="Default Changelist" comment="Update config file to run algolia">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docusaurus.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/docusaurus.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/main-components/actions.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/actions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/main-components/controllers.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/controllers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/main-components/models.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/models.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/main-components/requests.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/requests.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/main-components/routes.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/routes.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/main-components/tasks.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/tasks.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/main-components/transformers.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/transformers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/main-components/transporters.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/transporters.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/main-components/views.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/views.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +50,7 @@
       <option name="presentableId" value="Default" />
       <updated>1617624309092</updated>
       <workItem from="1617624310387" duration="3302000" />
-      <workItem from="1617706810618" duration="7408000" />
+      <workItem from="1617706810618" duration="9501000" />
     </task>
     <task id="LOCAL-00001" summary="Upgrade Documentation">
       <created>1617626321590</created>
@@ -107,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617795693002</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Update config file to run algolia">
+      <created>1617806362047</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1617806362047</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

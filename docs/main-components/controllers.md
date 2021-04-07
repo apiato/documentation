@@ -8,25 +8,19 @@ title: Controllers
 - [Code Sample](#code-sample)
 - [Controller response builder helper functions](#controller-response-builder-helper-functions)
     - [Some of the functions](#some-of-the-functions)
-
-<a name="definition-principles"></a>
-
-### Definition & Principles
+  
+### Definition & Principles {#definition-principles}
 
 Read from the [**Porto SAP Documentation (#Controllers)**](https://github.com/Mahmoudz/Porto#Controllers).
 
-<a name="rules"></a>
-
-### Rules
+### Rules {#rules}
 
 - All API Controller MUST extend from `App\Ship\Parents\Controllers\ApiController`.
 - All Web Controller MUST extend from `App\Ship\Parents\Controllers\WebController`.
 - Controllers should use the function `call` to call Actions. (do not manually inject the Action and invoke the `run`).
 - Controllers should pass the Request object to the Action instead of passing data from the request. The Request object is the best class to store the state of the Request during its life cycle.
 
-<a name="folder-structure"></a>
-
-### Folder Structure
+### Folder Structure {#folder-structure}
 
 ```
  - app
@@ -41,9 +35,7 @@ Read from the [**Porto SAP Documentation (#Controllers)**](https://github.com/Ma
                         - Controller.php
 ```
 
-<a name="code-sample"></a>
-
-### Code Sample
+### Code Sample {#code-sample}
 
 **User Web Welcome Controller:**
 
@@ -121,16 +113,11 @@ $router->post('logout', [
 ]);
 ```
 
-
-<a name="controller-response-builder-helper-functions"></a>
-
-### Controller response builder helper functions
+### Controller response builder helper functions {#controller-response-builder-helper-functions}
 
 Many helper function are there to help you build your response faster, those helpers exist in the `vendor/apiato/core/Traits/ResponseTrait.php`.
 
-<a name="some-of-the-functions"></a>
-
-#### Some functions
+#### Some functions {#some-of-the-functions}
 
 **transform**
 This is the most useful function which you will be using in most cases.
