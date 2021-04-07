@@ -113,6 +113,7 @@ module.exports = {
       anonymizeIP: true, // Should IPs be anonymized?
     },
     algolia: {
+      appId:'VE6XFC7CDM',
       apiKey: '091d0d3c9ca7d164fa88d5ea8fff83a2',
       indexName: 'prod_APIATO',
 
