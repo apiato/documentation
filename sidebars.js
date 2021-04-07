@@ -100,7 +100,6 @@ module.exports = {
         'general/faq',
         'general/contribution-guide',
         'general/upgrade-guide',
-        'general/testimonials'
       ],
     },
     {
