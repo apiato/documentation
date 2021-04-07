@@ -114,7 +114,7 @@ module.exports = {
     },
     algolia: {
       apiKey: '091d0d3c9ca7d164fa88d5ea8fff83a2',
-      indexName: 'APIATO',
+      indexName: 'prod_APIATO',
 
       // Optional: see doc section below
       contextualSearch: true,

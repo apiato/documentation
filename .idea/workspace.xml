@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="464efc49-a3a3-47e0-bbee-70f01feec25c" name="Default Changelist" comment="Update config file to match repo" />
+    <list default="true" id="464efc49-a3a3-47e0-bbee-70f01feec25c" name="Default Changelist" comment="Update config file to match repo">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,7 +41,7 @@
       <option name="presentableId" value="Default" />
       <updated>1617624309092</updated>
       <workItem from="1617624310387" duration="3302000" />
-      <workItem from="1617706810618" duration="3009000" />
+      <workItem from="1617706810618" duration="4193000" />
     </task>
     <task id="LOCAL-00001" summary="Upgrade Documentation">
       <created>1617626321590</created>
@@ -76,7 +78,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617791542794</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Update config file to match repo">
+      <created>1617791653966</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1617791653966</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
