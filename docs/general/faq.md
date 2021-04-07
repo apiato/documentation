@@ -2,32 +2,27 @@
 title: Frequently Asked Questions
 ---
 
-* [Do I have to use the Porto Architecture to benefit from Apiato](#q1)
-* [How to use my custom domain?](#q2)
-* [Where to put my frontend code?](#q3)
-* [Where do I register Service Providers and Aliases?](#q4)
-* [How to change API URL?](#q5)
-* [Where do I define my Composer dependencies?](#q7)
-* [How to enable Query Caching?](#q8)
-* [Can I give my Actions REST names?](#q9)
-* [How are Service Providers auto-loaded?](#q11)
-* [Why is the Laravel 5.5 Auto-Discovery feature not working?](#q12)
-* [How to create third-party Containers?](#q13)
-* [What is the default Username for authentication?](#q14)
-* [I have a question and I can't find answer!!](#q100)
+* [Do I have to use the Porto Architecture to benefit from Apiato](#do-i-have-to-use-the-porto-architecture-to-benefit-from-apiato)
+* [How to use my custom domain?](#how-to-use-my-custom-domain)
+* [Where to put my frontend code?](#where-to-put-my-frontend-code)
+* [Where do I register Service Providers and Aliases?](#where-do-i-register-service-providers-and-aliases)
+* [How to change API URL?](#how-to-change-the-default-api-url)
+* [Where do I define my Composer dependencies?](#where-do-i-define-my-composer-dependencies)
+* [How to enable Query Caching?](#how-to-enable-query-caching)
+* [Can I give my Actions REST names?](#can-i-give-my-actions-rest-names)
+* [How are Service Providers auto-loaded?](#how-are-service-providers-auto-loaded)
+* [Why is the Laravel 5.5 Auto-Discovery feature not working?](#why-is-the-laravel-55-auto-discovery-feature-not-working)
+* [How to create third-party Containers?](#how-to-create-third-party-containers)
+* [What is the default Username for authentication?](#what-is-the-default-username-for-authentication)
+* [I have a question and I can't find answer!!](#other-questions)
 
-<br/>
-
-<a name="q1"></a>
-## Do I have to use the Porto Architecture to benefit from Apiato!?
+### Do I have to use the Porto Architecture to benefit from Apiato!? {#do-i-have-to-use-the-porto-architecture-to-benefit-from-apiato}
 
 NO. You can still use the standard MVC (Controllers are still there) or any other architecture you prefer. And you can
 call the Apiato provided `Actions` and `Tasks` from your Controllers or Services or whichever classes you prefer. You
 have the freedom to structure your own project anyway you like, and still use all the feature that Apiato provide.
 
-
-<a name="q2"></a>
-## How to use my custom domain?
+### How to use my custom domain? {#how-to-use-my-custom-domain}
 
 Change the default URL from `apiato.test` to `awesome.com`
 
@@ -39,9 +34,7 @@ should be api.)*
 
 3) Edit the `phpunit.xml` file and change `API_BASE_URL` from `apiato.test` to `awesome.com`
 
-
-<a name="q3"></a>
-## Where to put my frontend code?
+### Where to put my frontend code? {#where-to-put-my-frontend-code}
 
 It's recommended that the front-end Apps code live outside apiato completely. Example in `clients/web/` directory,
 separated from the Server code (apiato Code).
@@ -88,8 +81,7 @@ In this case the code will live in:
           - CLI
 ```
 
-<a name="q4"></a>
-### Where do I register Service Providers and Aliases?
+### Where do I register Service Providers and Aliases? {#where-do-i-register-service-providers-and-aliases}
 
 Most of the third party packages Service Providers and Aliases SHOULD be registered inside the Container's Main Service
 Providers, inside the `$serviceProviders` and `$aliases` properties. However, some more general Service Providers and
@@ -103,8 +95,7 @@ Refer to the [Providers]({{ site.baseurl }}{% link _docs/components/providers.md
 it messes up how `config` files are loaded in apiato. This means, that you still need to **manually** register
 3rd-party `ServiceProviders` in the `ServiceProvider` of a `Container`.
 
-<a name="q5"></a>
-## How to change the default API URL (Subdomain and Prefix)?
+### How to change the default API URL (Subdomain and Prefix)? {#how-to-change-the-default-api-url}
 
 By default Apiato uses `api.` as subdomain for all endpoints. And adds only the `v1` API version as prefix.
 
@@ -119,8 +110,7 @@ endpoint to test, Example: In `CreateAdminTest` change `protected $endpoint = 'p
 
 To remove the version prefix as well, set `enable_version_prefix` to `false` in `app/Ship/Configs/apiato.php`.
 
-<a name="q7"></a>
-## Where do I define my Composer dependencies?
+### Where do I define my Composer dependencies? {#where-do-i-define-my-composer-dependencies}
 
 All the Composer dependencies should be defined in their Containers, in a `composer.json` file.
 
@@ -129,8 +119,7 @@ Finally the Framework core dependencies live on the project root `composer.json`
 
 Basically using any of the `composer.json` will do the same job. it's up to you to pick the most relevant location.
 
-<a name="q8"></a>
-## How to enable Query Caching?
+### How to enable Query Caching? {#how-to-enable-query-caching}
 
 By default this feature is turned off.
 
@@ -139,9 +128,7 @@ To turn it on, go to the `.env` file and set `ELOQUENT_QUERY_CACHE=true`. The qu
 
 _All these configurations can be changed from `Ship/Configs/repository.php`_.
 
-
-<a name="q9"></a>
-## Can I give my Actions REST names?
+### Can I give my Actions REST names? {#can-i-give-my-actions-rest-names}
 
 Example: `IndexAction`, `ShowAction`, `StoreAction`...
 
@@ -164,9 +151,7 @@ imagine you can add all your endpoints “routes files” with no implementation
 one “similar to TDD/BDD” with the help of a command that tells what you already have been completed and what
 needs to be completed.. as well as what Tasks are available to be used from any Action..
 
-
-<a name="q11"></a>
-## How are Service Providers auto-loaded?
+### How are Service Providers auto-loaded? {#how-are-service-providers-auto-loaded}
 
 Each Container has Main Provider and other Providers (Additional Providers).
 When `runLoadersBoot()` is called it auto register all the Main Providers from all the Containers.
@@ -186,8 +171,7 @@ registers the `ShipProvider` which has all the other Providers defined on its `$
 messes up how `config` files are loaded in apiato. This means, that you still need to **manually** register 3rd-party
 `ServiceProviders` in the `ServiceProvider` of a `Container`.
 
-<a name="q12"></a>
-## Why is the Laravel 5.5 Auto-Discovery feature not working?
+### Why is the Laravel 5.5 Auto-Discovery feature not working? {#why-is-the-laravel-55-auto-discovery-feature-not-working}
 
 That is, because this feature is turned off by default in Apiato. The Laravel `Auto-Discovery` feature registers 3rd-party
 Service Providers during startup of the application and thereby messes with the way, Apiato handles / loads components.
@@ -210,8 +194,7 @@ not belong to a composer package", they will still work fine).
 > You **must** register 3rd-party Service Providers on your own in the `MainServiceProvider` of respective Container
 (i.e., same like in Laravel 5.4 and before).
 
-<a name="q13"></a>
-## How to create third-party Containers?
+### How to create third-party Containers? {#how-to-create-third-party-containers}
 
 You can create your own Containers *(use the containers generator command to quickly create them)*, and publish them
 to your own repository. The only requirement is to have the package type set to `apiato-container`
@@ -221,17 +204,15 @@ To use install the Container in your project add it as dependency to `app/Ship/c
 
 The `apiato/containers-installer` will download your Container to the `app/containers/` directory.
 
-<a name="q14"></a>
-## What is the default Username for authentication?
+### What is the default Username for authentication? {#what-is-the-default-username-for-authentication}
 
 The default credentials to login are:
 * Username: admin@admin.com
 * Password: admin
 
-<a name="q100"></a>
-## I have a question and I can't find answer!!
+## I have a question and I can't find answer!! {#other-questions}
 
-If you have a question, or did not find an answer you were looking for. First make sure your question is related to
+If you have a question, or did not find an answer you were looking for on [StackOverflow](https://stackoverflow.com/questions/tagged/apiato). First make sure your question is related to
 apiato and is not a general question. If so, then consider visiting the
 [apiato's Github Issues](https://github.com/apiato/apiato/issues) and searching for *keywords* related to your
 issue *(filter open and closed issues)*. Another option you have is to get help from the community on

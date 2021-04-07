@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="464efc49-a3a3-47e0-bbee-70f01feec25c" name="Default Changelist" comment="Update main components headers links">
+    <list default="true" id="464efc49-a3a3-47e0-bbee-70f01feec25c" name="Default Changelist" comment="Modify Config">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/miscellaneous/container-installer.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/miscellaneous/container-installer.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/miscellaneous/magical-call.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/miscellaneous/magical-call.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/miscellaneous/tasks-queuing.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/miscellaneous/tasks-queuing.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/miscellaneous/tasks-scheduling.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/miscellaneous/tasks-scheduling.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/miscellaneous/tests-helpers.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/miscellaneous/tests-helpers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/general/contribution-guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/general/contribution-guide.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/general/faq.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/general/faq.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/general/upgrade-guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/general/upgrade-guide.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +44,7 @@
       <option name="presentableId" value="Default" />
       <updated>1617624309092</updated>
       <workItem from="1617624310387" duration="3302000" />
-      <workItem from="1617706810618" duration="10583000" />
+      <workItem from="1617706810618" duration="17432000" />
     </task>
     <task id="LOCAL-00001" summary="Upgrade Documentation">
       <created>1617626321590</created>
@@ -125,11 +123,56 @@
       <option name="project" value="LOCAL" />
       <updated>1617809122572</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Update miscellaneous headers links">
+      <created>1617810386972</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1617810386972</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Remove `Testimonials` document section">
+      <created>1617813000413</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1617813000413</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Add CNAME">
+      <created>1617832138768</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1617832138768</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Modify CNAME">
+      <created>1617832366224</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1617832366224</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Modify Config">
+      <created>1617832758806</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1617832758806</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -150,6 +193,11 @@
     <MESSAGE value="Update config file to run google-analytics" />
     <MESSAGE value="Update config file to run algolia" />
     <MESSAGE value="Update main components headers links" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update main components headers links" />
+    <MESSAGE value="Update miscellaneous headers links" />
+    <MESSAGE value="Remove `Testimonials` document section" />
+    <MESSAGE value="Add CNAME" />
+    <MESSAGE value="Modify CNAME" />
+    <MESSAGE value="Modify Config" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modify Config" />
   </component>
 </project>
