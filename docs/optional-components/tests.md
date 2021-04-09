@@ -93,4 +93,4 @@ use App\Containers\{container-name}\Tests\TestCase;
 
 ```
 
-> See the [Tests Helpers]({{ site.baseurl }}{% link _docs/miscellaneous/tests-helpers.md %}) Page
+> See the [Tests Helpers](.././miscellaneous/tests-helpers) Page

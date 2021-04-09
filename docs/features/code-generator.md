@@ -78,7 +78,7 @@ this would read your specific `config.stub` file instead the pre-defined one!
 
 ## Contributing {#contributing}
 
-If you would like to add your own generators, please check out the [Contribution Guide]({{ site.baseurl }}{% link _docs/miscellaneous/contribution.md %}).
+If you would like to add your own generators, please check out the [Contribution Guide](.././general/contribution-guide).
 
 ## For AngularJS 2 Users {#for-angularjs-users}
 

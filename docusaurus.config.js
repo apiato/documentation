@@ -4,8 +4,8 @@ module.exports = {
   tagline: 'Build scalable API\'s faster | With PHP 7.4 and Laravel 8.0',
   url: 'https://apiato.github.io',
   baseUrl: '/',
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'throw',
   favicon: 'img/favicon.ico',
   organizationName: 'apiato', // Usually your GitHub org/user name.
   projectName: 'documentation', // Usually your repo name.
@@ -39,7 +39,7 @@ module.exports = {
           dropdownActiveClassDisabled: true,
           dropdownItemsAfter: [
             {
-              to: '/versions',
+              to: 'https://github.com/apiato/apiato/releases',
               label: 'All versions',
             },
           ],

@@ -140,4 +140,4 @@ $this->mockIt(ChargeWithPaypalService::class)->shouldReceive('charge')->andRetur
 ]);
 ```
 
-Checkout the [Tests Helpers](tests-helpers) page for about Testing.
+Checkout the [Tests Helpers](.././miscellaneous/tests-helpers) page for about Testing.

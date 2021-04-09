@@ -5,8 +5,8 @@ slug: /
 
 ### Requirements
 
-* [GIT](https://git-scm.com/downloads)
-* [PHP](php.net) >= 7.2 *(7.4 is recommended)*
+* [GIT](https://git-scm.com/downloads/)
+* [PHP](https://www.php.net/) >= 7.2 *(7.4 is recommended)*
 * PHP Extensions:
    * OpenSSL PHP Extension
    * PDO PHP Extension

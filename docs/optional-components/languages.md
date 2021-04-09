@@ -47,4 +47,4 @@ echo __('messages.welcome');
 dd(__('messages.welcome'));
 ```
 
-For more info about the localization checkout the [Localization]({{ site.baseurl }}{% link _docs/features/localization.md %}) page.
+For more info about the localization checkout the [Localization](.././features/localization) page.

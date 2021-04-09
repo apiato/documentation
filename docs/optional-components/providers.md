@@ -149,7 +149,7 @@ However, if it's a generic package used by the entire framework and not a specif
 ### Laravel 5.5 Auto Discovery feature {#laravel-55-auto-discovery-feature}
 
 This feature is disabled in Apiato so far.
-More details [here]({{ site.baseurl }}{% link _docs/miscellaneous/faq.md %}).
+More details [here](.././general/faq).
 
 ### Information about Laravel Service Providers {#information-about-laravel-service-providers}
 

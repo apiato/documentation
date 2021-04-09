@@ -56,7 +56,7 @@ documentation for more details.
 
 2) Use the generated client to call this oauth/token endpoint `http://api.apiato.test/v1/oauth/token`
 
-All the Auth Endpoints are documented. Go to [Documentation Generator Page]({{ site.baseurl }}{% link _docs/features/api-docs-generator.md %})
+All the Auth Endpoints are documented. Go to [Documentation Generator Page](.././features/api-docs-generator)
 to see how you can generate the API documentation, and read them.
 
 ## Quick Overview {#quick-overview}
@@ -418,4 +418,4 @@ your `.env` file in order to the see the email content in the log file `laravel.
 
 ## Social Authentication {#social-authentication}
 
-For Social Authentication visit the [Social Authentication]({{ site.baseurl }}{% link _docs/features/social-authentication.md %}) page.
+For Social Authentication visit the [Social Authentication](.././features/social-authentication) page.

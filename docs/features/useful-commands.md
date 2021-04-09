@@ -19,9 +19,9 @@ You can see list of all commands, by typing `php artisan` and look for **Apiato*
 - `php artisan apiato:permissions:toRole {role-name}` Give all system Permissions to a specific Role.
 - `php artisan apiato:seed-test` Seeds your custom testing data from `app/Ship/Seeders/SeedTestingData.php`.
 - `php artisan apiato:seed-deploy` Seeds your custom deployment data from `app/Ship/Seeders/SeedDeploymentData.php`.
-- `php artisan apiato:apidoc` Generate API Documentations with apidoc from your routes Docblock. [More details]({{ site.baseurl }}{% link _docs/features/api-docs-generator.md %}).
-- `php artisan apiato:swagger` Generate API Documentations with swagger from your routes Docblock. [More details]({{ site.baseurl }}{% link _docs/features/api-docs-generator.md %}).
-- `php artisan apiato:generate:{component}` Generate a specific component for the framework (e.g., `Action`, `Task`, ...). For more details on the `Code Generator` [click here]({{ site.baseurl }}{% link _docs/features/code-generator.md %}).
+- `php artisan apiato:apidoc` Generate API Documentations with apidoc from your routes Docblock. [More details](.././features/api-docs-generator).
+- `php artisan apiato:swagger` Generate API Documentations with swagger from your routes Docblock. [More details](.././features/api-docs-generator).
+- `php artisan apiato:generate:{component}` Generate a specific component for the framework (e.g., `Action`, `Task`, ...). For more details on the `Code Generator` [click here](.././features/code-generator).
 - `php artisan apiato` Display the current Apiato version.
 
 ## List All Actions Command {#list-all-actions-command}
@@ -32,7 +32,7 @@ It's useful to be able to see all the implemented use cases in your application.
 You can also pass `--withfilename` flag to see all Actions with the files names.
 `apiato:list:actions --withfilename`
 
-![]({{ site.baseurl }}/images/documentation/actions-commands.png)
+![](../../static/img/actions-commands.png)
 
 ## List All Tasks Command {#list-all-tasks-command}
 

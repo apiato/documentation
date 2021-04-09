@@ -60,7 +60,7 @@ to prevent users from requesting unsupported languages, as follow:
 
 2. Create new languages files:
 
-Languages file can be placed in any container, not only the Localization Container. Refer to the [Localization]({{ site.baseurl }}{% link _docs/features/localization.md %}) 
+Languages file can be placed in any container, not only the Localization Container. Refer to the [Localization](.././features/localization) 
 page for more info.
 
 Example languages files are included in the Localization Container at `app/Containers/Localization/Resources/Languages`.
