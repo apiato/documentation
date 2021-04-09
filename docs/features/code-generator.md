@@ -14,7 +14,7 @@ title: Code Generator
 Code Generators are a nice way to speed up development by creating boiler-plate code based on your inputs. You may
 already be familiar with the Laravel code generators (`php artisan make:controller`). 
 
-Apiato code generator works the same way. And in addition it can generate a full Container with fully working CRUD operations, including routes, requests, controller, Actions, Repositories, Models, Migrations, documentation.... and much more)
+Apiato code generator works the same way. In addition, it can generate a full Container with fully working CRUD operations, including routes, requests, controller, Actions, Repositories, Models, Migrations, documentation.... and much more)
 
 ## Available Code Generator Commands {#available-code-generator-commands}
 

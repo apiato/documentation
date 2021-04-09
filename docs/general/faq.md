@@ -18,7 +18,7 @@ title: Frequently Asked Questions
 
 ### Do I have to use the Porto Architecture to benefit from Apiato!? {#do-i-have-to-use-the-porto-architecture-to-benefit-from-apiato}
 
-NO. You can still use the standard MVC (Controllers are still there) or any other architecture you prefer. And you can
+NO. You can still use the standard MVC (Controllers are still there) or any other architecture you prefer and you can
 call the Apiato provided `Actions` and `Tasks` from your Controllers or Services or whichever classes you prefer. You
 have the freedom to structure your own project anyway you like, and still use all the feature that Apiato provide.
 
@@ -39,7 +39,7 @@ should be api.)*
 It's recommended that the front-end Apps code live outside apiato completely. Example in `clients/web/` directory,
 separated from the Server code (apiato Code).
 
-The front-end App should be able to run as a stand alone App, and it can consume the Server API or other Testing API's.
+The front-end App should be able to run as a stand-alone App, and it can consume the Server API or other Testing API's.
 
 You can configure NGINX to serve the Front-end and the Back-end each on a different domain or on subdomains *(Example
 `app.com` for the front-end App and `api.app.com` for the API)*.
@@ -97,7 +97,7 @@ it messes up how `config` files are loaded in apiato. This means, that you still
 
 ### How to change the default API URL (Subdomain and Prefix)? {#how-to-change-the-default-api-url}
 
-By default Apiato uses `api.` as subdomain for all endpoints. And adds only the `v1` API version as prefix.
+By default, Apiato uses `api.` as subdomain for all endpoints and adds only the `v1` API version as prefix.
 
 To change this from `api.apiato.com` to `apiato.com/api/`, do the following:
 
@@ -115,13 +115,13 @@ To remove the version prefix as well, set `enable_version_prefix` to `false` in 
 All the Composer dependencies should be defined in their Containers, in a `composer.json` file.
 
 *The Ship layer dependencies live on the root of the Ship layer in a `composer.json` file.
-Finally the Framework core dependencies live on the project root `composer.json` file*.
+Finally, the Framework core dependencies live on the project root `composer.json` file*.
 
 Basically using any of the `composer.json` will do the same job. it's up to you to pick the most relevant location.
 
 ### How to enable Query Caching? {#how-to-enable-query-caching}
 
-By default this feature is turned off.
+By default, this feature is turned off.
 
 To turn it on, go to the `.env` file and set `ELOQUENT_QUERY_CACHE=true`. The query result will be cleared on
 `create`, `update` and `delete`.
@@ -134,12 +134,12 @@ Example: `IndexAction`, `ShowAction`, `StoreAction`...
 
 Yes, you can name anything, anyway you prefer, sa long as you’re just changing the name and not the naming format
 *“like in case of routes files, they include the version number which gets applied to the api,
-and the api type to help adding the route file to different docs automatically”*.
+and the api type to help to add the route file to different docs automatically”*.
 
 The goal of giving the Actions and Tasks… a descriptive long names is, to be able to understand what’s going on
 inside the class before opening it, and there’s a feature that I will add to the generator later,
 that will list all the use cases “Actions” in your system, so you can see what you already implemented and what
-needs to be done. If you’re Action name is “ShowAction” you will see 50 of them without really knowing what
+needs to be done. If your Action name is “ShowAction” you will see 50 of them without really knowing what
 the action is doing!,
 
 I prepend the container name before the action name, but still a maintainable code means anyone who reads it can
@@ -149,7 +149,7 @@ so I personally prefer `ShowTotalNumberOfUsersActions` than `ShowAction`.
 Back to that future feature, here’s how it works:
 imagine you can add all your endpoints “routes files” with no implementation and then implement them one by
 one “similar to TDD/BDD” with the help of a command that tells what you already have been completed and what
-needs to be completed.. as well as what Tasks are available to be used from any Action..
+needs to be completed... as well as what Tasks are available to be used from any Action..
 
 ### How are Service Providers auto-loaded? {#how-are-service-providers-auto-loaded}
 
@@ -163,8 +163,8 @@ it will be ignored.
 On the other side the `ApiatoServiceProvider` is manually registered on the `app.php` file (and it's the only one
 registered there).
 
-The `ApiatoServiceProvider` is the one who calls the `runLoadersBoot()`, on startup. After he call that function he
-registers the `ShipProvider` which has all the other Providers defined on its `$serviceProviders` property.
+The `ApiatoServiceProvider` is the one who calls `runLoadersBoot()` on startup. After it calls that function it
+registers `ShipProvider` which has all the other Providers defined on its `$serviceProviders` property.
 
 > **Important Information**: Laravel 5.5 introduces an `auto-discovery` feature that lets you automatically register
 `ServiceProviders`. Due to the nature and structure of Apiato applications, this features **is turned off**, because it
@@ -188,7 +188,7 @@ To re-enable it go to the main `composer.json` file and remove the "*" from the 
 ```
 
 After enabling the Auto-Discovery, you must move all the config files from the Containers and the Ship layer to the
-original config folder of Laravel. Otherwise they won't be loaded (except your custom Configs "config files that does
+original config folder of Laravel. Otherwise, they won't be loaded (except your custom Configs "config files that does
 not belong to a composer package", they will still work fine).
 
 > You **must** register 3rd-party Service Providers on your own in the `MainServiceProvider` of respective Container
@@ -210,7 +210,7 @@ The default credentials to login are:
 * Username: admin@admin.com
 * Password: admin
 
-## I have a question and I can't find answer!! {#other-questions}
+## I have a question, and I can't find answer!! {#other-questions}
 
 If you have a question, or did not find an answer you were looking for on [StackOverflow](https://stackoverflow.com/questions/tagged/apiato). First make sure your question is related to
 apiato and is not a general question. If so, then consider visiting the

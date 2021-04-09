@@ -2,7 +2,7 @@
 title: Search Query Parameter
 ---
 
-Below we'll see how to setup a Search Query Parameter, on a Model:
+Below we'll see how to set up a Search Query Parameter, on a Model:
 
 1. Add searchable Fields on the Model Repository, *all the other steps are normal steps* 
 
@@ -96,4 +96,4 @@ public function listAllUsers()
 
 ```
 
-5. Call it from anywhere as follow: [GET] `http://api.apiato.com/users?search=Mahmoud@apiato.com`
+5. Call it from anywhere as follows: [GET] `http://api.apiato.com/users?search=Mahmoud@apiato.com`

@@ -43,7 +43,7 @@ class Controller extends ApiController
 ```
 
 This function takes a Request class `SayHelloRequest` to automatically checks if the user has the right access to this 
-endpoint. _Only if the user has access, it proceed to the function body._
+endpoint. _Only if the user has access, it proceeds to the function body._
 
 Then the function calls an Action (`SayHelloAction`) to perform the business logic.
 
@@ -60,7 +60,7 @@ class SayHelloAction extends Action
 }
 ```
 
-The Action can do anything then return a result (could be Object, String or anything).
+The Action can do anything then return a result (could be an Object, a String or anything).
 
 When the Action finishes its job, the controller function gets ready to build a response.
 

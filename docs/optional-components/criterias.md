@@ -12,7 +12,7 @@ title: Criterias
 
 Criterias are classes used to hold and apply query condition when retrieving data from the database through a Repository.
 
-Without using a Criteria class, you can add your query conditions to a Repository or to a Model as scope. But with Criterias, your query conditions can be shared across multiple Models and Repositories. It allows you to define the query condition once and use it anywhere in the App.
+Without using a Criteria class, you can add your query conditions to a Repository or to a Model as scope, but with Criterias, your query conditions can be shared across multiple Models and Repositories. It allows you to define the query condition once and use it anywhere in the App.
 
 ### Principles {#principles}
 
@@ -26,7 +26,7 @@ Without using a Criteria class, you can add your query conditions to a Repositor
 
 - Every Criteria SHOULD have an `apply()` function.
 
-- A simple query condition example `"where user_id = $id"`, this can be named "This User Criteria", and used with all Models who has relations with the User Model.
+- A simple query condition example `"where user_id = $id"`, this can be named "This User Criteria", and used with all Models which have relations with the User Model.
 
 ### Folder Structure {#folder-structure}
 

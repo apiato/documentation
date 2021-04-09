@@ -39,5 +39,3 @@ X-RateLimit-Remaining →29
 The API rate limiting middleware is enabled and applied to all the Container Endpoints by default.
 
 To disable it set `API_RATE_LIMIT_ENABLED` to `false` in the `.env` file.
-
-

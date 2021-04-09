@@ -16,9 +16,9 @@ Read from the [**Porto SAP Documentation (#Routes)**](https://github.com/Mahmoud
 
 ### Rules {#rules}
 
-- The API Routes files MUST be named according to their API's versions, exposure and functionality. Example `CreateOrder.v1.public.php`, `FulfillOrder.v2.public.php`, `CancelOrder.v1.private.php`...
+- API Route files MUST be named according to their API's versions, exposure and functionality. Example `CreateOrder.v1.public.php`, `FulfillOrder.v2.public.php`, `CancelOrder.v1.private.php`...
 
-- Web Routes files are pretty similar to API web files but they can be named anything.
+- Web Route files are pretty similar to API web files, but they can be named anything.
 
 ### Folder Structure {#folder-structure}
 
@@ -86,4 +86,4 @@ Checkout the [Authorization](.././features/authorization) Page.
 
 ### Difference between Public & Private routes files {#difference-between-public-private-routes-files}
 
-apiato has 2 types of endpoints, Public (External) mainly for third parties clients, and Private (Internal) for your own Apps. This will help generating separate documentations for each and keep your internal API private.
+apiato has 2 types of endpoints, Public (External) mainly for third parties clients, and Private (Internal) for your own Apps. This will help to generate separate documentations for each and keep your internal API private.

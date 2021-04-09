@@ -48,11 +48,11 @@ Major new features (and big changes) should always be sent to the `master` branc
 
 Assuming that the current stable version is `8.0`. The repository would have at least the following two branches `master` and `8.0`.
 
-If your PR contains a major change or a braking change, or new Container than it must be sent to the `master` branch.
-And if your PR fixes a bug in the existing stable release, then it should be sent to the latest release branch `8.0`.
+If your PR contains a major change, or a braking change, or a new Container then it must be sent to `master` branch.
+If your PR fixes a bug in the existing stable release then it should be sent to the latest release branch `8.0`.
 
 > If you always contribute to Apiato, it's better to use the master branch instead of the latest release
-branch, to always have the latest features and updates. And would be good to merge the latest stable branch into your master from time to time, in case it has some bug fixes.
+branch, to always have the latest features and updates and would be good to merge the latest stable branch into your master from time to time, in case it has some bug fixes.
 
 ## Adding New Features {#adding-new-features}
 
@@ -62,7 +62,7 @@ If not, feel free to submit an issue first (proposing the new feature), asking w
 
 ## Security Vulnerabilities {#security-vulnerabilities}
 
-If you discover a security vulnerability, please send an email to `support@apiato.io`.
+If you discover a security vulnerability, please email `support@apiato.io`.
 
 ___
 
@@ -110,7 +110,7 @@ the master branch and submit your PR there.
 
 `git init`
 
-3.a) Setup your origin remote (to point to your project private repository url)
+3.a) Set up your origin remote (to point to your project private repository url)
 
 `git remote add origin git@bitbucket.org:username/repo.git`
 
@@ -119,7 +119,7 @@ the master branch and submit your PR there.
 `git remote set-url origin git@bitbucket.org:username/project-a.git`
 
 
-3.b) Setup an upstream remote (to point to your fork of the apiato repository)
+3.b) Set up an upstream remote (to point to your fork of the apiato repository)
 
 *assuming you already forked the repository*
 
@@ -173,13 +173,13 @@ Now you should have the following branches:
 
 `git reset --hard upstream/master`
 
-4) Now you can cherry pick the commits you'd like to contribute
+4) Now you can cherry-pick the commits you'd like to contribute
 
 4.a) First go to the apiato branch
 
 `git checkout apiato`
 
-4.b) Create custom branch for your PR
+4.b) Create a custom branch for your PR
 
 `git checkout -b feature-awesome`  (must be created from apiato)
 
@@ -199,7 +199,7 @@ Now you should have the following branches:
 
 Make sure you create a PR from your custom branch `feature-awesome` to `master` (or the latest stable release).
 
-*W'll do our best to merge your PR in the shortest time possible. Thanks in advanced :)*
+*We'll do our best to merge your PR in the shortest time possible. Thanks in advance :)*
 
 Checkout [How to upgrade apiato]({{ site.baseurl }}{% link _docs/miscellaneous/faq.md %}).
 
@@ -218,9 +218,9 @@ are named as they are in the site menu)*, update or add the text, the commit.
 - The styles are in `main.scss` and `_sass/*`.
 - The Layout `_layouts/default.html`.
 - The docs folders `_docs/*` do not represent the categories displayed in the site.
-- To add new category for a file `category: "New Category"` (usually defined in each documentation readme), you must
+- To add a new category for a file `category: "New Category"` (usually defined in each documentation readme), you must
 add the category name to `_config.yml` under `categories-order` in order to appear in the site.
-- To set a link, use the internal links as follow: `[your-text]( { { site.baseurl } } { % link _docs/path/file.md % } )`.
+- To set a link, use the internal links as follows: `[your-text]( { { site.baseurl } } { % link _docs/path/file.md % } )`.
 NOTE: remove the spaces between the tags.
 
 #### Run the docs locally:
@@ -252,10 +252,10 @@ This abstract class does all the work for you.
 #### Add new component generator.
 
 General Info: the only function that gets called whenever a command is executed is the `handle()` function. This
-function exist on the abstract class `Apiato\Core\Generator\GeneratorCommand` which does all the common job for all
+function exists on the abstract class `Apiato\Core\Generator\GeneratorCommand` which does all the common job for all
 the generator commands. For better understanding of how things work. Make sure you read that function.
 
-1 - Add create new command by copy pasting any of the existing components commands already supported. The
+1 - Add create new command by copying and pasting any of the existing components commands already supported. The
 `Generator/Commands/RouteGenerator.php` is a great example.
 
 For each generator you need to implement exactly one method (as it is defined in the respective interface)
@@ -297,7 +297,7 @@ method, which simply returns a `string`.
 
 1 - Merge the last [stable branch](https://github.com/apiato/apiato/branches) in the master branch. (To get any new bug fixes.)  
 2 - Decide on the next version number for the new release. By checking the current [releases](https://github.com/apiato/apiato/releases).  
-3 - Update the version VERSION value in `app/Ship/core/Foundation/Apiato.php` (example: `const VERSION = '8.1.0';`).
+3 - Update `VERSION` value in `app/Ship/core/Foundation/Apiato.php` (example: `const VERSION = '8.1.0';`).
 
 #### Minor Release 
 

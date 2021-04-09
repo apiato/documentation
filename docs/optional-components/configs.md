@@ -18,7 +18,7 @@ In each Apiato container, there are two types of config files:
 
 ### Principles {#principles}
 
-- Your custom config files and the third party packages config files, should be placed in the Container, unless it's too generic then it can be placed on the Ship Layer.
+- Your custom config files and third party packages config files, should be placed in the Container, unless it's too generic then it can be placed on the Ship Layer.
 - Container can have as many config files as it needs.
 
 ### Rules {#rules}

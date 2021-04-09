@@ -44,7 +44,7 @@ entities.
 
 ## Skip the Pagination Limit {#skip-the-pagination-limit}
 
-You can allow developers to skip the pagination limit as follow:
+You can allow developers to skip the pagination limit as follows:
 
 First, you need to enable that feature from the server by setting `PAGINATION_SKIP` to `true` (`PAGINATION_SKIP=true`).
 

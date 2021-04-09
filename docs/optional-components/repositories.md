@@ -18,7 +18,7 @@ The Repository classes are an implementation of the Repository Design Pattern.
 
 Their major roles are separating the business logic from the data (or the data access Task).
 
-Repositories saves and retrieves Models to/from the underlying storage mechanism.
+Repositories save and retrieves Models to/from the underlying storage mechanism.
 
 The Repository is used to separate the logic that retrieves the data and maps it to a Model, from the business logic that acts on the Model.
 
@@ -90,7 +90,7 @@ $offer = $offerRepository->findWhere([
 //....
 ```
 
-Note: If the Repository belongs to Model with a name different than its Container name, the Repository class of that Model must set the property `$container` and define the Container name.
+Note: If the Repository belongs to Model with a name different from its Container name, the Repository class of that Model must set the property `$container` and define the Container name.
 
 **Example:**
 

@@ -14,9 +14,9 @@ title: Commands
 
 Commands:
 
- * is a laravel artisan command. Laravel has it's own default commands and you create your own as well.
+ * is a laravel artisan command. Laravel has its own default commands, and you create your own as well.
  * provides a way to interact with the Laravel app.
- * a Command can be scheduled by a Task scheduler, like Cron Job or by the Laravel built in wrapper of the Cron Job "laravel scheduler".
+ * a Command can be scheduled by a Task scheduler, like Cron Job or by the Laravel built-in wrapper of the Cron Job "laravel scheduler".
  * Commands could be Closure based or Classes.
  * "dispatch" is the term that is usually used to call a Command.
 
@@ -24,7 +24,7 @@ Commands:
 
 - Containers MAY or MAY NOT have one or more Commands.
 
-- Every Command SHOULD call an Action to perform its job. And should not container any business logic.
+- Every Command SHOULD call an Action to perform its job, and should not container any business logic.
 
 - Ship may contain Application general Commands.
 

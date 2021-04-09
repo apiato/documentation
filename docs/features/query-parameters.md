@@ -5,7 +5,7 @@ title: Query Parameters
 - [Sorting & Ordering](#sorting-ordering)
 - [Searching](#searching)
     - [Search any field for multiple keywords](#search-any-field-for-multiple-keywords)
-    - [Search in specific field](#search-in-specific-field)
+    - [Search in a specific field](#search-in-a-specific-field)
     - [Search in specific fields for multiple keywords](#search-in-specific-fields-for-multiple-keywords)
     - [Define query condition](#define-query-condition)
     - [Define search fields for search](#define-search-fields-for-search)
@@ -25,7 +25,7 @@ Users often need to control the response data, thus the apiato supports some use
 
 The `?sortedBy=` parameter is usually used with the `orderBy` parameter.
 
-By default the `orderBy` sorts the data in **Ascending** order, if you want the data sorted in **Descending** order, you can add `&sortedBy=desc`.
+By default, the `orderBy` sorts the data in **Ascending** order, if you want the data sorted in **Descending** order, you can add `&sortedBy=desc`.
 
 ```
 ?orderBy=id&sortedBy=asc
@@ -84,7 +84,7 @@ Notice should replace the space with `%20`.
 api.domain.test/endpoint?search=first keyword;second keyword
 ```
 
-#### Search in specific field {#search-in-specific-field}
+#### Search in a specific field {#search-in-a-specific-field}
 
 ```
 api.domain.test/endpoint?search=field:keyword here
@@ -115,7 +115,7 @@ Checkout the Search Page for full implementation example.
 
 *(provided by the L5 Repository)*
 
-See the [Search query parameter](search-query-parameter) page, for how to set it up and control the searchability.
+See [Search query parameter](search-query-parameter) page, for how to set it up and control the searchability.
 
 ### Define the query condition for search {#define-the-query-condition-for-search}
 
@@ -130,7 +130,7 @@ See the [Search query parameter](search-query-parameter) page, for how to set it
 
 ## Filtering {#filtering}
 
-The `?filter=` parameter can be applied to any HTTP request. And is used to control the response size, by defining what
+`?filter=` parameter can be applied to any HTTP request and is used to control the response size, by defining what
 data you want back in the response.
 
 **Usage:**
@@ -176,7 +176,6 @@ Example Response, including only id and status:
     }...
 ```
 
-
 *(provided by the L5 Repository)*
 
 Note that the transformer, which is used to output / format the data is also filtered. This means, that only the fields
@@ -185,7 +184,7 @@ of the object.
 
 ## Pagination {#pagination}
 
-The `?page=` parameter can be applied to any **`GET`** HTTP request responsible for listing records (mainly for Paginated data).
+`?page=` parameter can be applied to any **`GET`** HTTP request responsible for listing records (mainly for Paginated data).
 
 **Usage:**
 
@@ -193,7 +192,7 @@ The `?page=` parameter can be applied to any **`GET`** HTTP request responsible 
 api.domain.test/endpoint?page=200
 ```
 
-*The pagination object is always returned in the **meta** when pagination is available on the endpoint.*
+*Pagination object is always returned in **meta** when pagination is available on the endpoint.*
 
 ```shell
   "data": [...],
@@ -215,7 +214,7 @@ api.domain.test/endpoint?page=200
 
 ## Limit {#limit}
 
-The `?limit=` parameter can be applied to define, how many results should be returned on one page (see also `Pagination`!).
+`?limit=` parameter can be applied to define, how many results should be returned on one page (see also `Pagination`!).
 
 **Usage:**
 
@@ -252,8 +251,7 @@ You can include such relationships by adding the `include` query parameter with 
 
 It is also possible to
 
-
-The `?include=` parameter can be used with any endpoint if it is supported.
+`?include=` parameter can be used with any endpoint if it is supported.
 
 ### How to use it {#relationships-include-how-to-use-it}
 Let's say there is a `Driver` and a `Car` object. Also, there is an `/cars` endpoint that returns all `Car` objects.

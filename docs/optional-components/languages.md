@@ -13,7 +13,7 @@ Languages are not real Components, they are just files that holds translations.
 
 ### Rules {#rules}
 
-- Languages CAN be placed inside the Containers. However the default laravel `resources/lang` languages files are still loaded and can be used as well.
+- Languages CAN be placed inside the Containers. However, the default laravel `resources/lang` languages files are still loaded and can be used as well.
 
 - All Translations are namespaced as the lower case of the Container name.
 

@@ -2,7 +2,55 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="464efc49-a3a3-47e0-bbee-70f01feec25c" name="Default Changelist" comment="Update optional components headers links">
-      <change beforePath="$PROJECT_DIR$/docusaurus.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/docusaurus.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/features/admin-dashboard.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/admin-dashboard.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/features/api-docs-generator.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/api-docs-generator.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/features/authentication.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/authentication.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/features/authorization.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/authorization.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/features/code-generator.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/code-generator.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/features/etag.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/etag.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/features/hash-id.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/hash-id.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/features/localization.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/localization.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/features/pagination.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/pagination.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/features/payments.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/payments.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/features/profiler.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/profiler.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/features/query-parameters.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/query-parameters.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/features/rate-limiting.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/rate-limiting.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/features/requests-monitor.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/requests-monitor.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/features/search-query-parameter.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/search-query-parameter.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/features/social-authentication.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/social-authentication.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/features/system-settings.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/system-settings.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/features/user-registration.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/user-registration.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/features/validation.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/validation.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/general/contribution-guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/general/contribution-guide.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/general/faq.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/general/faq.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/getting-started/installation.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/getting-started/installation.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/getting-started/overview.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/getting-started/overview.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/getting-started/requests.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/getting-started/requests.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/getting-started/responses.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/getting-started/responses.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/getting-started/software-architectural-patterns.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/getting-started/software-architectural-patterns.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/main-components/actions.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/actions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/main-components/controllers.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/controllers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/main-components/models.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/models.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/main-components/requests.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/requests.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/main-components/routes.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/routes.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/main-components/transformers.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/transformers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/main-components/views.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/views.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/miscellaneous/magical-call.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/miscellaneous/magical-call.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/miscellaneous/postman.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/miscellaneous/postman.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/miscellaneous/tasks-queuing.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/miscellaneous/tasks-queuing.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/miscellaneous/tasks-scheduling.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/miscellaneous/tasks-scheduling.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/miscellaneous/tests-helpers.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/miscellaneous/tests-helpers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/commands.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/commands.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/configs.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/configs.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/criterias.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/criterias.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/events.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/events.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/languages.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/languages.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/middlewares.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/middlewares.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/notifications.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/notifications.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/providers.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/providers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/repositories.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/repositories.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/optional-components/seeders.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/seeders.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +90,7 @@
       <updated>1617624309092</updated>
       <workItem from="1617624310387" duration="3302000" />
       <workItem from="1617706810618" duration="21988000" />
-      <workItem from="1618004484848" duration="2103000" />
+      <workItem from="1618004484848" duration="7552000" />
     </task>
     <task id="LOCAL-00001" summary="Upgrade Documentation">
       <created>1617626321590</created>
@@ -177,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618006527506</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Remove Blog">
+      <created>1618006810945</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1618006810945</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,6 +275,7 @@
     <MESSAGE value="Update General section headers links" />
     <MESSAGE value="Update optional components headers links" />
     <MESSAGE value="Fix all broken links" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix all broken links" />
+    <MESSAGE value="Remove Blog" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove Blog" />
   </component>
 </project>

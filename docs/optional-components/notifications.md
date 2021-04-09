@@ -13,7 +13,7 @@ title: Notifications
 
 ### Definition {#definition}
 
-Notifications allows you to inform the user about a state changes in your application.  
+Notifications allow you to inform the user about a state changes in your application.  
 
 The Laravel notifications supports sending notifications across a variety channels (mail, SMS, Slack, Database...). 
 
@@ -105,7 +105,7 @@ Notifications can be sent from Actions or Tasks using the `Notification` Facade.
 \Notification::send($user, new BirthdayReminderNotification($notificationMessage));
 ```
 
-Alternatively you can use the `Illuminate\Notifications\Notifiable` trait on the notifiable object "e.g. User" and then call it as follow:
+Alternatively you can use the `Illuminate\Notifications\Notifiable` trait on the notifiable object "e.g. User" and then call it as follows:
 
 ```php
 // get any user
@@ -121,9 +121,9 @@ $user->notify(new BirthdayReminderNotification($notificationMessage));
 
 ## Select Channels {#select-channels}
 
-To select a notification channel, apiato have the `app/Ship/Configs/notification.php` config file where you can define the array of supported channels "e.g. SMS, Email, WebPush..", to be used for all your notifications.
+To select a notification channel, apiato have the `app/Ship/Configs/notification.php` config file where you can define the array of supported channels "e.g. SMS, Email, WebPush...", to be used for all your notifications.
 
-If you wan to override the configuration for some notifications classes, or if you prefer to defined the channels within each notification class itself,
+If you want to override the configuration for some notifications classes, or if you prefer to define the channels within each notification class itself,
 you can override the **via** function `public function via($notifiable)` in the notification class and define your channels. 
 
 Checkout [laravel notification channels](http://laravel-notification-channels.com) for list of supported integrations.

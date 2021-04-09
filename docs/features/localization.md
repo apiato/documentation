@@ -13,7 +13,7 @@ The Localization is provided by the Localization Container.
 
 ## Select Request Language {#select-request-language}
 
-You can select the language of the response by adding the header `Accept-Language` to the request. By default the 
+You can select the language of the response by adding the header `Accept-Language` to the request. By default, the 
 `Accept-Language` is set to the language defined in `config/app.php` `locale`. 
 
 Please note that `Accept-Language` only determines, that the client _would like_ to get the information in this specific
@@ -28,7 +28,7 @@ may be set automatically without knowing!
 
 The API will answer with the applied language in the `Content-Language` header of the response.
 
-If the requested language cannot be resolved (e.g., it is not defined) the API throws an `UnsupportedLanguageException` to tell 
+If the requested language cannot be resolved (e.g. it is not defined) the API throws an `UnsupportedLanguageException` to tell 
 the client about this.
 
 The overall workflow of the Middleware is as follows:
@@ -42,7 +42,7 @@ if not throw an `Exception`.
 ## Support new languages {#support-new-languages}
 
 1. All supported languages must be added to the `supported_languages` in `app/Containers/Localization/Configs/localization.php` 
-to prevent users from requesting unsupported languages, as follow:
+to prevent users from requesting unsupported languages, as follows:
 
 ```php
 <?php
@@ -72,7 +72,7 @@ By default all the Container translation files are namespaced to the Container n
 **Example:**
 
 If a Container named `Store` has `en` translation file called `notifications` that contains translation for `welcome` 
-like "Welcome to our store :)". You can access this translation as follow `trans('store::notifications.welcome')`. If 
+like "Welcome to our store :)". You can access this translation as follows `trans('store::notifications.welcome')`. If 
 you remove the namespace (which is the lowercase of the container name) and try to access it like this 
 `trans('notifications.welcome')` it will not find your translation and will print `notifications.welcome` only.
 

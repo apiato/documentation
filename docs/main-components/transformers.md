@@ -131,17 +131,17 @@ return $this->response->paginator($rewards, new RewardTransformer());
 
 ### Relationships (include) {#relationships-include}
 
-Loading relationships with the Transformer (calling other Transformers):
+Loading relationships in Transformer (calling other Transformers):
 
 This can be done in 2 ways:
 
-1. By the User, he can specify what to relations to return in the response.
+1. By the User, he can specify what relations to return in response.
 
 2. By the Developer, define what relations to include at run time.
 
 #### From Front-end {#from-front-end}
 
-You can request data with their relationships directly from the API call using `include=tags,user`. But first the Transformer need to have the `availableIncludes` defined with their functions like this:
+You can request data with their relationships directly from the API call using `include=tags,user` but first the Transformer need to have the `availableIncludes` defined with their functions like this:
 
 ```php
 <?php

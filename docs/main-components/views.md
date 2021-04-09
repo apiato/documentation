@@ -14,7 +14,7 @@ Read from the [**Porto SAP Documentation (#Views)**](https://github.com/Mahmoudz
 
 ### Rules {#rules}
 
-- Views SHOULD be created inside the Containers. And they will be automatically available for use in the Web Controllers.
+- Views SHOULD be created inside the Containers, and they will be automatically available for use in the Web Controllers.
 
 - All Views are namespaced as the lower case of the Container name.
 
@@ -73,7 +73,7 @@ class Controller extends WebController
 
 ## Namespaces {#namespaces}
 
-By default all the Container Views are namespaced to the Container name.
+By default, all the Container Views are namespaced to the Container name.
 
 Example:
 

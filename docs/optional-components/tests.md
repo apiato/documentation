@@ -24,7 +24,7 @@ The two most essential Tests types for this architecture are the Unit Tests and 
 
 ### Rules {#rules}
 
-- All Container Tests classes SHOULD extend from a Container Internal TestCase class `{container-name}/tests/TestCase.php`. The container **TestCase** MUST extends from the main TestCase on the Ship layer `App\Ship\Parents\Tests\PhpUnit\TestCase`. *(Adding functions to the container TestCase allows sharing those functions between all Test classes of the Container)*.
+- All Container Tests classes SHOULD extend from a Container Internal TestCase class `{container-name}/tests/TestCase.php`. The container **TestCase** MUST extend main TestCase on Ship layer `App\Ship\Parents\Tests\PhpUnit\TestCase`. *(Adding functions to the container TestCase allows sharing those functions between all Test classes of the Container)*.
 
 ### Folder Structure {#folder-structure}
 

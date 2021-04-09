@@ -2,11 +2,11 @@
 title: Profiler
 ---
 
-Profiling is very important to optimize the performance of your application. And help you better understand what happens when a request is received, as well as it can speed up the debugging process.
+Profiling is very important to optimize the performance of your application, and help you better understand what happens when a request is received, as well as it can speed up the debugging process.
 
 Apiato uses the third-party package [laravel-debugbar](https://github.com/barryvdh/laravel-debugbar) (which uses the [PHP Debug Bar](http://phpdebugbar.com/)), to collect the profiling data.
 
-By default the **laravel-debugbar** package displays the profiling data in the browser.
+By default, the **laravel-debugbar** package displays the profiling data in the browser.
 However, Apiato uses a middleware `app/Ship/Middlewares/Http/ProfilerMiddleware.php` to append the profiling data to the response.
 
 
@@ -132,6 +132,6 @@ However, Apiato uses a middleware `app/Ship/Middlewares/Http/ProfilerMiddleware.
 
 ### Configuration
 
-By default the profiler feature is turned off. To turn it on edit the `.env` file and set `DEBUGBAR_ENABLED=true`.
+By default, the profiler feature is turned off. To turn it on edit the `.env` file and set `DEBUGBAR_ENABLED=true`.
 
 To control and modify the profiler response, you need to edit this config file `app/Ship/Configs/debugbar.php`.

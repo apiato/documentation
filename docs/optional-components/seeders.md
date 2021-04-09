@@ -81,7 +81,7 @@ After registering the `Seeders` you can run this command:
 php artisan db:seed
 ```
 
-To run specific Seeder class you can specific its class in the parameter as follow:
+To run specific Seeder class you can specify its class in the parameter as follows:
 
 ```bash
 php artisan db:seed --class="your\single\seeder\goes-here"

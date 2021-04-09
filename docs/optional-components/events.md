@@ -16,9 +16,9 @@ title: Events
 
 Events: 
 
- - Events provides a simple observer implementation, allowing you to subscribe and listen for various events that occur in your application.
+ - Events provide a simple observer implementation, allowing you to subscribe and listen for various events that occur in your application.
  - Events are classes that can be fired from anywhere in your application.
- - an event class will usually be bound to one or many Events Listeners Classes or has those Listeners registered to listen to it.
+ - An event class will usually be bound to one or many Events Listeners Classes or has those Listeners registered to listen to it.
  - "fire" is the term that is usually used to call an Event.
 
 More details [here](https://laravel.com/docs/events).
@@ -30,7 +30,7 @@ More details [here](https://laravel.com/docs/events).
 
 ### Rules {#rules}
 
-- Events classes CAN be placed inside the Containers in Events folders or on the Ship for the general Events.
+- Event classes CAN be placed inside the Containers in Events folders or on the Ship for the general Events.
 - All Events MUST extend from `App\Ship\Parents\Events\Event`.
 
 ### Folder Structure {#folder-structure}
@@ -81,7 +81,7 @@ class MainServiceProvider extends MainProvider
 
 ### Usage {#usage}
 
-In Laravel you can create and register events in multiple way. Below is an example of an Event that handles itself. 
+In Laravel, you can create and register events in multiple way. Below is an example of an Event that handles itself. 
 
 Event Class Example:
 
@@ -172,7 +172,7 @@ Events can implement `Illuminate\Contracts\Queue\ShouldQueue` to be queued.
 ## Handling an Event
 You can handle jobs on dispatching an event.
 
-To do so you need to implement one of the following interfaces:
+To do so, you need to implement one of the following interfaces:
 
 `Apiato\Core\Abstracts\Events\Interfaces\ShouldHandleNow`
 

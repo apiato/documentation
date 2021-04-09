@@ -9,7 +9,7 @@ title: Requests Monitor
 
 Apiato provides a simple and easy way to monitor and log all the HTTP requests coming to your application.
 
-The request monitor can be very useful when testing and debugging your frontend Apps who consumes your API. Especially when the frontend apps (Mobile, Web,..) are built by other developers who are far from you.
+The request monitor can be very useful when testing and debugging your frontend Apps which consume your API. Especially when the frontend apps (Mobile, Web,...) are built by other developers who are far from you.
 
 The requests monitor is provided by the Debugger Container, by a `RequestsMonitorMiddleware` middleware.
 
@@ -37,7 +37,7 @@ Screenshot example:
 
 ## Change the default log file {#change-the-default-log-file}
 
-By default everything is logged in the `debugger.log` file, to change the default file go to `Debugger/Configs/debugger.php` config file and set the file name:
+By default, everything is logged in the `debugger.log` file, to change the default file go to `Debugger/Configs/debugger.php` config file and set the file name:
 
 ```php
 <?php

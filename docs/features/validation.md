@@ -2,13 +2,13 @@
 title: Validation
 ---
 
-apiato uses the powerful [Laravel validation](https://laravel.com/docs/validation) system.
+Apiato uses the powerful [Laravel validation](https://laravel.com/docs/validation) system.
 
-But in apiato validation must be defined in the Requests components, since every request might have different rules.
+In Apiato, validation must be defined in [Request](.././main-components/requests) component, since every request might have different rules.
 
-And the Validations rules are automatically applied, once injecting the Request in the Controller.
+Validation rules are automatically applied, once injecting the Request in the Controller.
 
-Requests helps validating User data, accessibility, ownership and more can be added if needed.
+Requests help validating User data, accessibility, ownership and more can be added if needed.
 
 **Example Request with Validation rules:**
 

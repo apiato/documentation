@@ -28,7 +28,7 @@ Read from the [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmo
 ### Rules {#rules}
 
 - All Requests MUST extend from `App\Ship\Parents\Requests\Request`.
-- A Request MUST have a `rules()` function, returning an array. And an `authorize()` function to check for authorization (can return true when no authorization required).
+- A Request MUST have a `rules()` function, returning an array and `authorize()` function to check for authorization (can return true when no authorization required).
 
 ### Folder Structure {#folder-structure}
 
@@ -125,7 +125,7 @@ The **$decode** property is used for decoding Hashed ID's from any Request on th
 
 If you have enabled the HashID feature, that apiato provide out of the box. Most probably you are passing or allowing your users to pass Hashed (encoded) ID's into your application.
 
-Thus these ID's needs to be Decoded somewhere, apiato has a property on its Requests Components where you can specify those Hashed ID's in order to decode them before applying the validation rules.
+Thus, these IDs need to be Decoded somewhere, apiato has a property on its Requests Components where you can specify those Hashed ID's in order to decode them before applying the validation rules.
 
 Example:
 
@@ -257,7 +257,7 @@ you can also use the `array notation`. The example from above would look like th
 
 ## How the authorize function work {#how-the-authorize-function-work}
 
-The `authorize` function is calling a `check` function which accepts an array of functions names. Each of those functions returns a boolean.
+The `authorize` function is calling a `check` function which accepts an array of functions names. Each of those functions returns boolean.
 
 In the example above we are calling three functions `hasAccess`, `isOwner` and `isKing`.
 
@@ -322,7 +322,7 @@ You can allow some Roles to access every endpoint in the system without having t
 
 This is useful you want to let users with `Admin` role access everything.
 
-To do this define those roles in `app/Ship/Configs/apiato.php` as follow:
+To do this, define those roles in `app/Ship/Configs/apiato.php` as follows:
 
 ```php
 'requests' => [
@@ -338,7 +338,7 @@ apiato also provides some helpful functions by default, so you can use them when
 
 ### **hasAccess** {#hasaccess}
 
-The `hasAccess` function, decides if the the user has Access or not based on the `$access` property.
+`hasAccess` function, decides if user has Access or not based on the `$access` property.
 
 - If the user has any roles or permissions he will be given access.
 
@@ -352,7 +352,7 @@ The `isOwner` function, checks if the passed URL ID is the same as the User ID o
 
 Example:
 
-Let's say we have an endpoint `www.api.apiato.test/v1/users/{ID}/delete` that deletes a user. And we only need users to delete their own user accounts.
+Let's say we have an endpoint `www.api.apiato.test/v1/users/{ID}/delete` that deletes a user, and we only need users to delete their own user accounts.
 
 With `isOwner`, user of ID 1 can only call `/users/1/delete` and won't be able to call `/users/2/delete` or any other ID.
 
@@ -454,7 +454,7 @@ The extracted `$data` looks like this:
 Note that `data.blabla` is not within the `$data` array, as it was not present within the `$request`. Furthermore, all
 other fields from the `$request` are omitted as they are not specified. So basically, the method creates some kind of
 `filter` on the `$request`, only passing the defined values. Furthermore, the DOT Notation allows you to easily specify
-the fields to would like to pass through. This makes partially updating an resource quite easy!
+the fields to would like to pass through. This makes partially updating a resource quite easy!
 
 **Heads Up:**
 
@@ -477,7 +477,7 @@ example request:
 }
 ```
 
-Your Task to process this data, however, requests the field `data.name` as `data.username`. You can call the the helper
+Your Task to process this data, however, requests the field `data.name` as `data.username`. You can call the helper
 like this:
 ```php
 $request->mapInput([
@@ -496,7 +496,7 @@ The resulting structure would look like this:
 
 ## Storing Data on the Request {#storing-data-on-the-request}
 
-During the Request life-cycle you may want to store some data on the request object and pass it to other SubActions (or maybe if you prefer to Tasks).
+During the Request life-cycle you may want to store some data on the request object and pass it to other SubActions (or Tasks).
 
 To store some data on the request use:
 
@@ -512,7 +512,7 @@ $someValue = $request->retrieve('someKey')
 
 ## Unit Testing for Actions (Request) {#unit-testing-for-actions-request}
 
-Since we're passing Requests objects to the Actions. When writing unit tests we need to create fake Request just to pass it to the Action with some fake data.
+Since we're passing Request objects to Actions. When writing unit tests we need to create fake Request just to pass it to the Action with some fake data.
 
 ```php
 // creating

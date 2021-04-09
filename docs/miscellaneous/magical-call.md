@@ -10,7 +10,7 @@ title: Magical Call
       + [Calling other functions and pass them arguments:](#calling-other-functions-and-pass-them-arguments)
 - [Transactional Magical Call](#transactional-call)
 - [Use case example:](#use-case-example)
-    + [The ListUsersTask class:](#the-listuserstask-class)
+    + [The ListUsersTask class:](#the-list-users-task-class)
 
 ## The Magical Call {#the-magical-call}
 
@@ -25,10 +25,10 @@ magical `call()` function.
 
 ### Usage options {#usage-options}
 
-In the first argument you can pass the class full name, as follow `App\Containers\User\Tasks\CreateUserTask::class`,
-or you can pass the container name and class name, as follow `User@CreateUserTask`.
+In the first argument you can pass the class full name, as follows `App\Containers\User\Tasks\CreateUserTask::class`,
+or you can pass the container name and class name, as follows `User@CreateUserTask`.
 
-It is highly recommended to use the Apiato caller style `containerName@className` as it helps removing direct
+It is highly recommended to use Apiato caller style `containerName@className` as it helps to remove direct
 dependencies between containers. The function will verify the Container exist before calling the function and inform
 the user to install Container if not exist.
 
@@ -54,10 +54,8 @@ $foo = \Apiato\Core\Foundation\Facades\Apiato::call('Container@ActionOrTask');
 ```
 
 **Notes**:
-- From Controllers and Actions you can use the `$this->call('Container@ActionOrTask')` instead of the Facade
-but it's not recommended.
-- The magical `call` function accepts the class full namespace (`\App\Containers\User\Tasks\GetAllUsersTask::class`)
-and the Apiato caller style (`Containers@GetAllUsersTask`).
+- From Controllers and Actions you can use the `$this->call('Container@ActionOrTask')` instead of the Facade, but it's not recommended.
+- The magical `call` function accepts the class full namespace (`\App\Containers\User\Tasks\GetAllUsersTask::class`), and Apiato caller style (`Containers@GetAllUsersTask`).
 - There is also a `transactionalCall()` method available, that wraps everything in a `DB::Transaction` (see below).
 
 ##### Passing arguments to the `run` function {#passing-arguments-to-the-run-function}
@@ -144,7 +142,7 @@ return Apiato::call('User@ListUsersTask', [], ['admins']);
 return Apiato::call('User@ListUsersTask', [], ['admins', ['roles' => ['manager', 'employee']]]);
 ```
 
-### The ListUsersTask class {#the-listuserstask-class}
+### The ListUsersTask class {#the-list-users-task-class}
 
 ```php
 <?php

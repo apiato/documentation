@@ -142,7 +142,7 @@ If you get an error (`apidoc not found`),
 
 To prevent duplicating the responses between routes, let's create a shared response for each object.
 
-Example: `_user.v1.public.php` will contain all responses (single, multiple..) of the User:
+Example: `_user.v1.public.php` will contain all responses (single, multiple...) of the User:
 
 ```php
 <?php
@@ -170,14 +170,13 @@ HTTP/1.1 200 OK
 * @apiUse UserSuccessSingleResponse
  ```
 
-
 To avoid having to generate and update the Single and Multiple responses of the same object (recommended only for private API's)
 you can use the general shared Multiple Response `* @apiUse GeneralSuccessMultipleResponse`
 which you can find and modify it from `app/Containers/Documentation/UI/API/Routes/*`
 
 ## Edit the default generated values in the templates: {#edit-the-default-generated-values-in-the-templates}
 
-Apiato generates by defaults 2 API documentations, each one has it's own `apidoc.json` file. Both can be modified from the Documentation Containers in `Containers/Documentation/ApiDocJs/`
+Apiato generates by defaults 2 API documentations, each one has its own `apidoc.json` file. Both can be modified from the Documentation Containers in `Containers/Documentation/ApiDocJs/`
 
 `apidoc.json` Example file:
 
@@ -280,14 +279,12 @@ return [
 
 ## Edit the Documentation Header {#edit-the-documentation-header}
 
-The header usually is the Overview of your API. It contains Info about authenticating users, making requests, responses, potential errors, rate limiting, pagination, query parameters and anything you want.
+The header is usually the Overview of your API. It contains Info about authenticating users, making requests, responses, potential errors, rate limiting, pagination, query parameters and anything you want.
 
-All this information are written in `app/Containers/Documentation/ApiDocJs/shared/header.template.md` file, and the same file is used as header for both private and public documentations.
+All this information is written in `app/Containers/Documentation/ApiDocJs/shared/header.template.md` file, and the same file is used as header for both private and public documentations.
 
 To edit the content just open the markdown file in any markdown editor and edit it.
 
 You will notice some variables like `{{rate-limit}}` and `{{token-expires}}`. Those are replaced when running `apidoc:generate` with real values from your application configuration files.
 
 Feel free to extend them to include more info about your API from the `app/Containers/Documentation/Actions/ProcessMarkdownTemplatesAction.php` class.
-
-<a name="api-documentation-headers-example"></a>

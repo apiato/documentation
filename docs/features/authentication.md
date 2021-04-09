@@ -52,7 +52,7 @@ documentation for more details.
 
 ## How to get Access Token using OAuth 2.0 {#how-to-get-access-token-using-oauth-20}
 
-1) Generate client_id & client_secret. Continue reading below for details "For first-party clients".
+1) Generate `client_id` & `client_secret`. Continue reading below for details "For first-party clients".
 
 2) Use the generated client to call this oauth/token endpoint `http://api.apiato.test/v1/oauth/token`
 
@@ -61,16 +61,16 @@ to see how you can generate the API documentation, and read them.
 
 ## Quick Overview {#quick-overview}
 
-OAuth let's you authenticate using different methods, these methods are called `grants`.
+OAuth lets you authenticate using different methods, these methods are called `grants`.
 How to decide which grant type you should use! Check [this](https://oauth2.thephpleague.com/authorization-server/which-grant/),
 and keep reading this documentation.
 
 **Definitions:**
 - The Client credentials: are the `client_id` & `client_secret`.
 - The Proxy: is just an endpoint, that you should call instead of calling the Auth server endpoints directly, the proxy
-endpoint will append the client credentials to your request and calls the Auth server for you, then return its response back. Each first-client app should have its own proxy endpoints (at least one of Login and one of Token Refresh). By default Apiato provide an `Admin Web Client` endpoints.
+endpoint will append the client credentials to your request and calls the Auth server for you, then return its response back. Each first-client app should have its own proxy endpoints (at least one of Login and one of Token Refresh). By default, Apiato provide an `Admin Web Client` endpoints.
 
-> You can Login to the first party app with proxy or without proxy, while for the third party you only need to login
+> You can Log in to the first party app with proxy or without proxy, while for the third party you only need to log in
 > without proxy. (same apply to refreshing token).
 >
 > For first party apps:
@@ -84,7 +84,7 @@ endpoint will append the client credentials to your request and calls the Auth s
 
 First-party clients (Your Frontend Mobile, Web,... Apps) usually consumes your private API (Internal API).
 
-For first-party clients you need to use the **Resource owner credentials grant** (A.K.A Password Grant Tokens).
+For first-party clients you need to use the **Resource owner credentials grant** (A.K.A. Password Grant Tokens).
 
 When this grant type is used, your server needs to authenticate the Client App first (ensuring the request is coming
 from your trusted frontend App) and then needs to check if the user credentials are correct (ensuring the user is
@@ -102,7 +102,7 @@ another call to the user endpoint, using his Access Token.
 1) Create a password type Client in your database to represent one of your Apps (ex: Mobile App). Use
 `php artisan passport:client --password` to generate the client.
 
-2) After registration the user can enter his (username + password) in your App login screen.
+2) After registration, the user can enter his (username + password) in your App login screen.
 
 3) Your App should send a **Post** request to `http://api.apiato.test/v1/oauth/token` containing the user credentials
 (`username` and `password`) and the client credentials (`client_id` and `client_secret`) in addition to the `scope`
@@ -134,16 +134,14 @@ Header `Authorization = Bearer {Access-Token}`.
 
 More info at [Laravel Passport Here](https://laravel.com/docs/master/passport#password-grant-tokens)
 
-<br/>
-
 > WARNING: the Client ID and Secret should not be stored in JavaScript or browser cache, or made accessible in any way.
 
-So in case of Web Apps (JavaScript) you need to hide your client credentials behind a proxy. And Apiato by default
-provides you with a Login Proxy to use for all your trusted first party clients. W'll see below how you can use them.
+So in case of Web Apps (JavaScript) you need to hide your client credentials behind a proxy. Apiato by default
+provides you with a Login Proxy to use for all your trusted first party clients. We'll see below how you can use them.
 
 ### Login with Proxy for first-party clients {#login-with-proxy-for-first-party-clients}
 
-Concept: create endpoint for each trusted client, to be used for login.
+Concept: create an endpoint for each trusted client, to be used for a login.
 
 Apiato by default has one url ready for your Web Admin Dashboard `clients/web/admin/login`. You can add more as you
 need for each of your trusted first party clients Apps (example: `clients/web/users/login`, `clients/mobile/users/login`).
@@ -176,7 +174,7 @@ the User credentials (`username` & `password`), Client Credentials (`client_id` 
 Third party clients (User's custom external Apps, who wants to integrate with your Software) always consumes your
 public API (External API) only.
 
-For third-party clients you need to use the **Client credentials grant** (A.K.A Personal Access Tokens). *This grant
+For third-party clients you need to use the **Client credentials grant** (A.K.A. Personal Access Tokens). *This grant
 type is the simplest and is suitable for machine-to-machine authentication.*
 
 With this grant type your server needs to authenticate the Client App only, before issuing an access token.
@@ -296,7 +294,7 @@ Logout by sending a `DELETE` request to `http://api.apiato.test/v1/logout/` cont
 
 ## Change Tokens Expiration dates {#change-tokens-expiration-dates}
 
-Go to the `app/Ship/Configs/apiato.php` config file and edit this:
+Go to `app/Ship/Configs/apiato.php` config file and edit this:
 
 ```php
 <?php
@@ -341,11 +339,11 @@ $router->get('private/page', [
 ]);
 ```
 
-This Middleware is provided by apiato and is different than the default Laravel Auth Middleware.
+This Middleware is provided by apiato and is different from the default Laravel Auth Middleware.
 
 **If authentication failed, users will be redirected to a login page**
 
-To change the login page view go to the config file `app/Ship/Configs/apiato.php`, and set the name of your login page there as follow:
+To change the login page view go to the config file `app/Ship/Configs/apiato.php`, and set the name of your login page there as follows:
 
 ```php
 <?php
@@ -368,15 +366,14 @@ refresh token that was provided to them when the access token was issued.
 
 ### Refresh Token with proxy for first-party clients {#refresh-token-with-proxy-for-first-party-clients}
 
-By default Apiato provide this ready endpoint `http://api.apiato.test/v1/clients/web/admin/refresh` for the Web
+By default, Apiato provide this ready endpoint `http://api.apiato.test/v1/clients/web/admin/refresh` for the Web
 Admin Dashboard Client  to be used when you need to refresh token for that client. You can of course create as many
 other endpoints as you want for each client. See the code of (`app/Containers/Authentication/UI/API/Routes/ProxyRefreshForAdminWebClient.v1.public.php`)
 and create similar one for each client. The most important change will be the `env('CLIENT_WEB_ADMIN_ID')` and
 `env('CLIENT_WEB_ADMIN_SECRET'),` passed to the `ProxyApiRefreshAction`.
 
 Those proxy refresh endpoints work in 2 ways. Either by passing the `refresh_token` manually to the endpoint. Or by
-passing it with the HttpCookie. In both cases the code will work and the server will reply with a response similar to
-this:
+passing it with the HttpCookie. In both cases the code will work, and the server will reply with a response similar to this:
 
 ```json
 {
@@ -396,7 +393,7 @@ The request to `http://api.apiato.test/v1/oauth/token` should contain `grant_typ
 
 ## Force Email Confirmation {#force-email-confirmation}
 
-By default a user does not have to confirm his email address to be able to login.
+By default, a user does not have to confirm his email address to be able to login.
 However, to force users to confirm their email (prevent unconfirmed users from accessing the site), you can set
 `'require_email_confirmation' => true,` in `App\Containers\Authentication\Configs\authentication.php`.
 
@@ -413,7 +410,7 @@ It will send you an email with a link when you make a request to that link, it w
 Note: For security reason, make sure the reset password URL is set in `app/Containers/User/Configs/user-container.php`,
 and given to the client App, to be sent as parameter when calling the `/password-forgot`.
 
-Note: You must setup the email to get this function to work, however for testing purposes set the `MAIL_DRIVER=log` in
+Note: You must set up the email to get this function to work, however for testing purposes set the `MAIL_DRIVER=log` in
 your `.env` file in order to the see the email content in the log file `laravel.log`.
 
 ## Social Authentication {#social-authentication}

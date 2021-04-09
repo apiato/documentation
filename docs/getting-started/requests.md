@@ -10,7 +10,7 @@ title: Requests
 
 ## Form content types (W3C) {#form-content-types}
 
-By default Apiato is configured to encode simple text/ASCII data `x-www-form-urlencoded`. However, it does support
+By default, Apiato is configured to encode simple text/ASCII data `x-www-form-urlencoded`. However, it does support
 other types as well.
 
 ### ASCII payload {#ascii-payload}

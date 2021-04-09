@@ -99,7 +99,7 @@ php artisan migrate
 php artisan db:seed
 ```
 
-3) Optional. By default Apiato seeds a "Super User", given the default `admin` role (the role has no Permissions set
+3) Optional. By default. Apiato seeds a "Super User", given the default `admin` role (the role has no Permissions set
 to it).
 
 To give the `admin` role, access to all the seeded permissions in the system, run the following command, at any time.
@@ -162,7 +162,7 @@ We'll see how to use both tools and you can pick one, or you can use other optio
 
 > **Heads up!** <br/>
 > The ICANN has now officially approved `.dev` as a generic top level domain (gTLD). Therefore, it is **not** recommended
-> to use `.dev` domains any more in your local development setup! Our docs has been changed to use `.test`
+> to use `.dev` domains anymore in your local development setup! Our docs have been changed to use `.test`
 > instead of `.dev`, however, you may change it to `.example`, or `.localhost` or whatever suits your needs. [Read more](http://www.faqs.org/rfcs/rfc2606.html).
 
 ### A.1) Using Docker (with Laradock) {#Using-Docker-With-Laradock}
@@ -207,7 +207,7 @@ docker-compose up -d nginx mysql redis beanstalkd
 ```
 
 If you're using NGINX or Apache, make sure the **server_name** (in case of NGINX) or **ServerName** (in case of Apache)
-in your the server config file, is set to the following `apiato.test api.apiato.test admin.apiato.test`.
+in your server config file, is set to the following `apiato.test api.apiato.test admin.apiato.test`.
 *(Also don't forget to point the **Root** or **DocumentRoot** to the public directory inside apiato `apiato/public`)*.
 
 ### A.2) Using Vagrant (with Laravel Homestead) {#Using-Vagrant-Using-Homestead}
@@ -266,7 +266,7 @@ something like this:
 ```
 
 If you're using NGINX or Apache, make sure the **server_name** (in case of NGINX) or **ServerName** (in case of Apache)
-in your the server config file, is set to the following `apiato.test api.apiato.test admin.apiato.test`.
+in your server config file, is set to the following `apiato.test api.apiato.test admin.apiato.test`.
 *(Also don't forget to set your **root** or **DocumentRoot** to the public directory inside apiato `apiato/public`)*.
 
 2.3) Run the Virtual Machine:
@@ -280,7 +280,7 @@ try running this command `homestead halt && homestead up --provision`.*
 
 ### A.3) Using anything else {#Using-anything-else}
 
-If you're not into virtualization solutions, you can setup your environment directly on your machine. Check the
+If you're not into virtualization solutions, you can set up your environment directly on your machine. Check the
 [software's requirements list]({{ site.baseurl }}{% link _docs/getting-started/requirements.md %}).
 
 ## C) Let's Play {#Play}

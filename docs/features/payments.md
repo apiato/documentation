@@ -30,9 +30,9 @@ If your payment gateway is not supported, build it and contribute your container
 endpoints to create those endpoints (`createStripeAccount`, `createWepayAccount`, ...). A User may have multiple
 `PaymentAccount`.
 
-3) Then charge the user as follow `$user->charge($account, $amount);`. By providing the `$account` and the `$amount`.
+3) Then charge the user as follows `$user->charge($account, $amount);`. By providing the `$account` and the `$amount`.
 
-You can get `$account` from the user as follow `$user->paymentAccounts` this will return a Collection of all the
+You can get `$account` from the user as follows `$user->paymentAccounts` this will return a Collection of all the
 user payments accounts to select one.
 
 Example:

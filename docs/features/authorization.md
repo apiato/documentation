@@ -9,7 +9,7 @@ title: Authorization
 - [Roles & Permissions guards](#roles-permissions-guards)
 - [Permissions Inheriting with Levels](#permissions-inheriting-with-levels)
 
-apiato provides a Role-Based Access Control (RBAC) from it's Authorization Container.
+Apiato provides a Role-Based Access Control (RBAC) from its Authorization Container.
 
 Behind the scenes apiato is using the [Laravel's authorization](https://laravel.com/docs/master/authorization) functionality that was introduced in version 5.1.11 with the helper package [laravel-permission](https://github.com/spatie/laravel-permission). So you can always refer to the correspond documentation for more information.
 
@@ -25,7 +25,7 @@ Authorization in apiato is very simple and easy.
 
 *That should be done from your custom admin panel, which can consume the default provided Roles & Permissions API endpoints (Create Role, Assign User to Roles, List all Permission...).*
 
-3) Finally you need to protect your endpoints by Permissions (or/and Roles). The right place to do that is the Requests class.
+3) Finally, you need to protect your endpoints by Permissions (or/and Roles). The right place to do that is the Requests class.
 
 **Example protecting the (delete user) endpoint with `delete-users` permission:**
 
@@ -63,7 +63,6 @@ class DeleteUserRequest extends Request
 
 ```
 
-
 **For detailed explanation of this example, please visit the [Requests](.././main-components/requests) Page.**
 
 ## Responses {#responses}
@@ -84,7 +83,7 @@ You will need to set `$access` property in your test class, check out the [Tests
 
 ## Seeding some users (Admins) {#seeding-some-users-admins}
 
-By default **apiato** comes with a `Super Admin` with Access to Admin Dashboard.
+By default, **apiato** comes with a `Super Admin` with Access to Admin Dashboard.
 
 This Super Admin Credentials are:
 
@@ -103,7 +102,7 @@ Checkout each container **Seeders** directory `app/Containers/{container-name}/D
 
 ## Roles & Permissions guards {#roles-permissions-guards}
 
-By default Apiato uses a single guard called `web` for all it's roles and permissions, you can add/edit this behavior and support multiple guards at any time. Refer to the [laravel-permission](https://github.com/spatie/laravel-permission#using-multiple-guards) package for more details.
+By default, Apiato uses a single guard called `web` for all it's roles and permissions, you can add/edit this behavior and support multiple guards at any time. Refer to the [laravel-permission](https://github.com/spatie/laravel-permission#using-multiple-guards) package for more details.
 
 ## Permissions Inheriting with Levels {#permissions-inheriting-with-levels}
 

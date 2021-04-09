@@ -10,13 +10,13 @@ title: Hash ID
     - [for URL ID's](#for-url-ids)
 - [Availability](#availability)
 
-Hashing your internal ID's, is very helpful feature for security reasons (to prevent some hack attacks) and business reasons (to hide the real total records from your competitors).
+Hashing your internal ID's, is a very helpful feature for security reasons (to prevent some hack attacks) and business reasons (to hide the real total records from your competitors).
 
 ## Enable Hash ID {#enable-hash-id}
 
 Set the `HASH_ID=true` in the `.env` file.
 
-Also with the feature make sure to always use the `getHashedKey()` on any model, whenever you need to return an ID (mainly from transformers) weather hashed ID or not.
+Also, with the feature make sure to always use the `getHashedKey()` on any model, whenever you need to return an ID (mainly from transformers) weather hashed ID or not.
 
 Example:
 
@@ -89,4 +89,4 @@ More details on the [Tests Helpers](.././miscellaneous/tests-helpers) page.
 
 You can use the `Apiato\Core\Traits\HashIdTrait` to any model or class, in order to have the `encode` and `decode` functions.
 
-By default you have access to these functions `$this->encode($id)` and  `$this->decode($id)` from all your Tests class and Controllers.
+By default, you have access to these functions `$this->encode($id)` and  `$this->decode($id)` from all your Tests class and Controllers.

@@ -16,7 +16,7 @@ Laravel [Jobs](https://laravel.com/docs/master/queues), and other classes), in o
 
 ### Server Setup
 
-First let's set it up, by adding our single Cron entry, on the server. As follow:
+First let's set it up, by adding our single Cron entry, on the server. As follows:
 
 1) Type `crontab -e`
 
@@ -29,7 +29,7 @@ More details [here](https://laravel.com/docs/master/scheduling#introduction).
 ### App Setup
 
 First you need to create some commands, that needs to be scheduled.
-The can be created in the Containers `(app/Containers/{container-name}/UI/CLI/Commands)` or in the Ship (`app/Ship/Commands`).
+They can be created in the Containers `(app/Containers/{container-name}/UI/CLI/Commands)` or in the Ship (`app/Ship/Commands`).
 See the [Commands Page](.././optional-components/commands).
 
 Once you have your command ready, go to `app/Ship/Kernels/ConsoleKernel.php` and start adding the commands you need

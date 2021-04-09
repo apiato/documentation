@@ -24,7 +24,7 @@ with the right authorization (roles and permissions) for each request.
 
 ## Tests properties {#tests-properties}
 
-Some of the test helper functions reads your test class properties, to perform their jobs. below we will see those
+Some test helper functions reads your test class properties, to perform their jobs. below we will see those
 properties and who uses them:
 
 ### **$endpoint**: {#endpoint}
@@ -101,7 +101,7 @@ $response = $this->auth(false)->makeCall();
 ### **$access**: {#access}
 
 The `$access` property is where you define the permissions/roles that you need to give to your testing users in that
-test class. So when using `$user = $this->getTestingUser();` it will automatically takes all the roles and permissions
+test class. So when using `$user = $this->getTestingUser();` it will automatically take all the roles and permissions
 you gave him.
 
 ```php
@@ -125,7 +125,7 @@ Or you can call `getTestingUserWithoutAccess()` to get user without permissions 
 
 ## Tests functions {#tests-functions}
 
-All the test helper functions are provided by traits classes living inside `app/Ship/Tests/*` folder. And they are all
+All the test helper functions are provided by traits classes living inside `app/Ship/Tests/*` folder,and they are all
 available for usage from every test class in your application.
 
 #### makeCall {#make-call}

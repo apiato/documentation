@@ -7,7 +7,7 @@ title: Software Architectural Patterns
   * [Porto Introduction](#porto-introduction)
   * [The Containers Layer](#porto-container-layer)
     + [Remove a Container (default Containers)](#porto-remove-container)
-    + [Create new Container](#porto-new-containter)
+    + [Create a new Container](#porto-new-containter)
       * [Option 1) Using the Code Generator](#porto-new-container-code-generator)
       * [Option 2) Manually](#porto-new-container-manually)
     + [Container Conventions](#containter-conventions)
@@ -34,10 +34,10 @@ title: Software Architectural Patterns
 The two most common architectures, used for building projects on top of Apiato are:
 
 - [**Porto**](#porto) (Route Request Controller Action Task Model Transformer).
-- [**MVC**](#mvc) (Model View Controller). *The Apiato MVC version is a little different than the standard MVC.*
+- [**MVC**](#mvc) (Model View Controller). *The Apiato MVC version is a little different from the standard MVC.*
 
 Porto is the Apiato recommended architecture for building scalable API's with Apiato.
-However, it also support building API's using the popular MVC architecture (with a little modifications).
+However, it also supports building API's using the popular MVC architecture (with a little modifications).
 
 *Apiato features are written using Porto, and can be used by any architecture.*
 
@@ -47,11 +47,11 @@ Below you will see how you can both any of the architectures to build your proje
 
 ### Porto Introduction {#porto-introduction}
 
-Porto is an architecture that consists of 2 layers the **Containers** layer and the **Ship** layer.
+Porto is an architecture that consists of 2 layers the **Containers** layer and **Ship** layer.
 
 The **Container** layer holds your application business logic code. Same like Modular, DDD and plugins architectures;
-Apiato allows separating the business logic into multiple folders called **Containers**. While the **Ship** layer holds
-the infrastructure code (your shared code between all **Containers**). You will rarely touch it anyway.
+Apiato allows separating the business logic into multiple folders called **Containers** while **Ship** layer holds
+the infrastructure code (your shared code between all **Containers**) you will rarely touch it anyway.
 
 The Apiato features themselves are developed using the Porto Software Architectural Pattern. (Means the features
 provided in Apiato live in Containers).
@@ -67,12 +67,12 @@ Read about the Containers layer [here](https://github.com/Mahmoudz/Porto#Contain
 
 Apiato comes with some default containers. All the containers are optional, and some of them contain essential features.
 
-Let's say you don't want to use the built in documentation generator feature of Apiato. To get rid of that feature you
+Let's say you don't want to use the built-in documentation generator feature of Apiato. To get rid of that feature you
 can simply delete the `documentation` container.
 
 To remove a Container, simply delete the folder then run `composer update` to remove its dependencies.
 
-#### Create new Container {#porto-new-container}
+#### Create a new Container {#porto-new-container}
 
 ##### Option 1) Using the Code Generator: {#porto-new-container-code-generator}
 
@@ -119,7 +119,7 @@ The Porto architecture, does not replace the MVC architecture, instead it extend
 and Controllers all still exist, but in different places with a strict set of responsibilities for each component
 `class type`.
 
-#### Setup my Apiato MVC App {#setup-mvc}
+#### Set up my Apiato MVC App {#setup-mvc}
 
 ##### 1) First get a fresh version of Apiato {#get-a-fresh-version-of-apiato}
 
@@ -134,7 +134,7 @@ folder on the root of the Laravel project). This folder will hold all your Model
 
 ##### 3) Create route file {#create-route-file}
 
-In Laravel, the routes files live in the `routes/` folder on the root of the project. But In Apiato MVC, the routes
+In Laravel, the routes files live in the `routes/` folder on the root of the project but In Apiato MVC, the routes
 files should live in:
 
 - `app/Containers/Application/UI/API/Routes/` (for API Routes)
@@ -165,7 +165,7 @@ Route::get('/', function () {
 
 ##### 4) Create Controller {#create-controller}
 
-In Laravel, the Controllers classes live in the `app/Http/Controllers/` folder. But In Apiato MVC, the `Controller`
+In Laravel, the Controllers classes live in the `app/Http/Controllers/` folder but In Apiato MVC, the `Controller`
 classes should live in:
 
 - `app/Containers/Application/UI/API/Controllers/Controller.php` (To handle API Routes) MUST extend from `App\Ship\Parents\Controllers\ApiController`
@@ -173,7 +173,7 @@ classes should live in:
 
 ##### 5) Create Models {#create-models}
 
-In Laravel, the Models classes live in the root of the `app/` folder. But In Apiato MVC, the Models classes should
+In Laravel, the Models classes live in the root of the `app/` folder but In Apiato MVC, the Models classes should
 live in `app/Containers/Application/Models`.
 
 All model must `extend` from `App\Ship\Parents\Models\Model`.
@@ -188,19 +188,19 @@ same directory or/and in this container folder `app/Containers/Application/UI/WE
 
 ##### 7) Create Transformers {#create-transformers}
 
-In Laravel, the Transformers classes live in the `app/Transformers/` folder. But In Apiato MVC, the Transformers
+In Laravel, the Transformers classes live in the `app/Transformers/` folder but In Apiato MVC, the Transformers
 classes should live in `app/Containers/Application/UI/API/Transformers/`.
 
 Transformers must extend from `App\Ship\Parents\Transformers\Transformer`.
 
 ##### 8) Create Service Providers {#create-service-providers}
 
-In Laravel, the Service Providers classes live in the `app/Providers/` folder. But In Apiato MVC, the Service Providers
+In Laravel, the Service Providers classes live in the `app/Providers/` folder but In Apiato MVC, the Service Providers
 classes can live in `app/Containers/Application/Providers/`, but also can live anywhere else.
 
 If you want the Service Providers to be automatically loaded (without having to register it in the `config/app.php`
 file), rename your file to  `MainServiceProvider.php` (full path `app/Containers/Application/Providers/MainServiceProvider.php`).
-Otherwise you can create Service Providers anywhere and register them manually in Laravel.
+Otherwise, you can create Service Providers anywhere and register them manually in Laravel.
 
 ##### 9) Create Migrations {#create-migrations}
 

@@ -91,8 +91,8 @@ Accept: application/json
 oauth_token=121212121-121212121&oauth_secret=34343434343434343343434343
 ```
 
-Note: For Facebook send only the `oauth_token` which is named as `access_token` in the facebook response.
-For more details about the parameters checkout the generated documentation or visit `app/Containers/Socialauth/UI/API/Routes/AuthenticateAll.v1.private.php`
+Note: For Facebook only send `oauth_token` which is named as `access_token` in facebook response.
+For more details about parameters checkout the generated documentation or visit `app/Containers/Socialauth/UI/API/Routes/AuthenticateAll.v1.private.php`
 
 5) The endpoint above should return the User and his Personal Access Token.
 

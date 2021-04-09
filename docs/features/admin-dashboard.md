@@ -6,7 +6,7 @@ title: Admin Dashboard
 - [How it works](#how-it-works)
 - [Change default Admin credentials](#change-default-admin-credentials)
 
-*Apiato does not recommend serving HTML pages. Instead you should build your own Frontend App completely isolated from the Backend code.*
+*Apiato does not recommend serving HTML pages. Instead, you should build your own Frontend App completely isolated from the Backend code.*
 
 ## The provided Admin route {#the-provided-admin-route}
 

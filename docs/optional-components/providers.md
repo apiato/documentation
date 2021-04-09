@@ -32,7 +32,7 @@ They are the place where you register things like container bindings, event list
 
 - The Main Provider is where all the Job Specific Providers get registered.
 
-- Third party packages Providers MUST be registered inside the Container Main service provider.  (Same applies to Aliases).
+- Third party packages Providers MUST be registered inside the Container Main service provider. (Same applies to Aliases).
 
 - Providers CAN be registered on the Ship Main Provider, if they are general or are intended to be used by many containers. (Same applies to Aliases).
 
@@ -126,7 +126,7 @@ No need to register the Main `Service Provider` anywhere, it will be automatical
 
 #### Container's Additional Service Providers {#container-s-additional-service-providers}
 
-You MAY add as many Additional `Service Providers` as you want in a `Container`. However, in order to get them loaded in the framework you MUST register them all in the Main `Service Provider` as follow:
+You MAY add as many Additional `Service Providers` as you want in a `Container`. However, in order to get them loaded in the framework you MUST register them all in the Main `Service Provider` as follows:
 
 ```php
 <?php
@@ -153,7 +153,7 @@ More details [here](.././general/faq).
 
 ### Information about Laravel Service Providers {#information-about-laravel-service-providers}
 
-By default Laravel provides some service providers in its `app/providers` directory.
+By default, Laravel provides some service providers in its `app/providers` directory.
 In apiato those providers have been renamed and moved to the Ship Layer `app/Ship/Parents/Providers/*`:
 
 - AppServiceProvider
@@ -166,8 +166,8 @@ In apiato those providers have been renamed and moved to the Ship Layer `app/Shi
 Example: the `app/Containers/Authentication/Providers/AuthProvider.php` is extending the `AuthServiceProvider` to modify it.
 
 Those providers are not auto registered by default, thus writing any code there will not be available, unless you extend them.
-Once extended the child Provider should be registered in its Container Main Provider, which makes it's parent available.
+Once extended the child Provider should be registered in its Container Main Provider, which makes its parent available.
 
-This rule does not apply to the `RouteServiceProvider` since it's required by Apiato, this this Provider is registered by the `ApiatoProvider`.
+This rule does not apply to the `RouteServiceProvider` since it's required by Apiato, this Provider is registered by the `ApiatoProvider`.
 
 Check [How Service Providers are auto-loaded]({{ site.baseurl }}{% link _docs/miscellaneous/faq.md %}).

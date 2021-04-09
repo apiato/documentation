@@ -88,7 +88,7 @@ class Controller extends ApiController
 }
 ```
 
-**Notice** we call the Action using `Apiato::call()` which triggers the `run` function in the Action as well inform the action which UI called it, (`$this->getUI()`) in case you wanna handle the same Action differently based on the UI type.
+**Notice** we call the Action using `Apiato::call()` which triggers the `run` function in the Action as well inform the action which UI called it, (`$this->getUI()`) in case you want to handle the same Action differently based on the UI type.
 
 The second parameter of the `call` function is an array of the Action parameters in order. When you need to pass data to the Action, it's recommended to pass the Request Object as it should be the place that holds the state of your current request.
 
@@ -125,7 +125,7 @@ This is the most useful function which you will be using in most cases.
 - First required parameter accepts data as object or Collection of objects.
 - Second required parameter is the transformer object
 - Third optional parameter take the includes that should be returned by the response, _($availableIncludes and $defaultIncludes in the transformer class)_.  
-- Fourth optional parameter accepts meta data to be injected in the response.
+- Fourth optional parameter accepts metadata to be injected in the response.
 
 ```php
 // $user is a User Object
@@ -136,7 +136,7 @@ return $this->transform($orders, OrderTransformer::class, ['products', 'recipien
 ```
 
 **withMeta**
-This function allows including meta data in the response.
+This function allows including metadata in the response.
 
 ```php
 $metaData = ['total_credits', 10000];

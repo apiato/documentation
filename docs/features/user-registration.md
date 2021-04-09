@@ -7,7 +7,7 @@ title: User Registration
 
 ### Register users by credentials (email and passwords) {#register-users-by-credentials-email-and-passwords}
 
-Call the `http://api.apiato.test/v1/register` endpoint (you can find it's documentation after generating the API Docs.
+Call the `http://api.apiato.test/v1/register` endpoint (you can find its documentation after generating the API Docs.
 
 Check out the `registerUser` endpoint in the API Routes files.
 

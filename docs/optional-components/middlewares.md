@@ -16,17 +16,17 @@ You can enable and disable Middlewares as you wish.
 
 ### Principles {#principles}
 
-- There's two types of Middlewares, General (applied on all the Routes by default) and Endpoints Middlewares (applied on some Endpoints).
+- There are two types of Middlewares, General (applied on all the Routes by default) and Endpoints Middlewares (applied on some Endpoints).
 
-- The Middlewares CAN be placed in Ship layer or the Container layer depend on their roles.
+- The Middlewares CAN be placed in Ship layer or Container layer depending on its roles.
 
 ### Rules {#rules}
 
-- If the Middleware is written inside a Container it MUST be registered inside that Container.
+- If a Middleware is written inside a Container it MUST be registered inside that Container.
 
-- To register Middlewares in a Container the container needs to have a `MiddlewareServiceProvider`. And like all other Container Providers it MUST be registered in the `MainServiceProvider` of that Container.
+- To register Middlewares in a Container the container needs to have a `MiddlewareServiceProvider`, and like all other Container Providers it MUST be registered in the `MainServiceProvider` of that Container.
 
-- General Middlewares (like some default Laravel Middleware's) SHOULD live in the Ship layer `app/Ship/Middlewares/*` and are registered in the Ship Main Provider.
+- General Middlewares (like some default Laravel Middlewares) SHOULD live in the Ship layer `app/Ship/Middlewares/*` and are registered in the Ship Main Provider.
 
 - Third Party packages Middleware CAN be registered in Containers or on the Ship layer (wherever they make more sense).
 _Example: the `jwt.auth` middleware "provided by the JWT package" is registered in the Authentication Container (`Containers/Authentication/Providers/MiddlewareServiceProvider.php`)_.

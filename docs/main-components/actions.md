@@ -69,7 +69,7 @@ class CreateAdminAction extends Action
 > Note: instead of passing these parameters `string $email, string $password, string $name, bool $isClient = false` from place to another over and over.
 > Consider using the Transporters classes (simple DTO's "Data Transfer Objects"), for more details read the [Transporters Page](.././main-components/transporters).
 
-Injecting each Task in the constructor and then using it below through its property is really boring and the more Tasks you use the worse it gets. So instead you can use the function `call` to call whichever Task you want and then pass any parameters to it.
+Injecting each Task in constructor and then using it below through its property is really boring, and the more Tasks you use the worse it gets. So instead you can use the function `call` to call whichever Task you want and then pass any parameters to it.
 
 
 The Action itself was also called using `Apiato::call()` which triggers the `run` function in it.

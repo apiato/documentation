@@ -13,14 +13,14 @@ title: Responses
 
 In Apiato you can define your own response payload or use one of the supported serializers.
 
-Currently the supported serializers are (`ArraySerializer`, `DataArraySerializer` and `JsonApiSerializer`). As provided
+Currently, the supported serializers are (`ArraySerializer`, `DataArraySerializer` and `JsonApiSerializer`). As provided
 by [Fractal](http://fractal.thephpleague.com/transformers/).
 
-By default Apiato uses `DataArraySerializer`. Below is an example of the response payload.
+By default, Apiato uses `DataArraySerializer`. Below is an example of the response payload.
 
 ### Default Apiato Responses Payload: {#default-response-payload}
 
-`DataArraySerializer` pesponse payload look like this:
+`DataArraySerializer` response payload looks like this:
 
 ```json
 {
@@ -94,7 +94,7 @@ When data is paginated the response payload will contain a `meta` description ab
 
 **Includes:**
 
-Informs the User about what relationships can be include in the response. Example: `?include=tags,user`
+Informs the User about what relationships can be included in the response. Example: `?include=tags,user`
 
 For more details read the `Relationships` section in the [Query Parameters](.././features/query-parameters) page.
 
@@ -131,13 +131,13 @@ response payload in 2 ways:
 
 1. Manually set it via the respective parameter in the `$this->transform()` call. Note that this will only set the
 `top level` resource key and does not affect the resource keys from `included` resources!
-2. Specify it on the respective `Model`. By overriding the the $resourceKey, (`protected $resourceKey = 'FooBar';`).
+2. Specify it on the respective `Model`. By overriding $resourceKey, (`protected $resourceKey = 'FooBar';`).
 If no `$resourceKey` is defined at the `Model`, the `ShortClassName` is used as key. For example, the `ShortClassName` of
 the `App\Containers\User\Models\User::class` is `User`.
 
 #### For DataArraySerializer. {#resource-keys-for-data-array-serializer}
 
-By default the `object` keyword is used as a resource key for each response, and it's set manually in each transformer,
+By default, the `object` keyword is used as a resource key for each response, and it's set manually in each transformer,
 *to be automated later*.
 
 ### Error Responses formats {#error-response-formats}
