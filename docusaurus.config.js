@@ -24,7 +24,7 @@ module.exports = {
       logo: {
         alt: 'Apiato Logo',
         src: 'img/logo.png',
-      },  
+      },
       items: [
         {
           to: 'docs/',
@@ -32,7 +32,6 @@ module.exports = {
           label: 'Docs',
           position: 'left',
         },
-        {to: 'blog', label: 'Blog', position: 'left'},
         {
           type: 'docsVersionDropdown',
           position: 'right',
@@ -89,10 +88,6 @@ module.exports = {
         {
           title: 'More',
           items: [
-            {
-              label: 'Blog',
-              to: 'blog',
-            },
             {
               label: 'GitHub',
               href: 'https://github.com/apiato/apiato',

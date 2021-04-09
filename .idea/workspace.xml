@@ -2,28 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="464efc49-a3a3-47e0-bbee-70f01feec25c" name="Default Changelist" comment="Update optional components headers links">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/features/api-docs-generator.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/api-docs-generator.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/features/authentication.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/authentication.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/features/authorization.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/authorization.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/features/code-generator.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/code-generator.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/features/hash-id.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/hash-id.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/features/localization.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/localization.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/features/payments.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/payments.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/features/query-parameters.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/query-parameters.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/features/useful-commands.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/useful-commands.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/features/user-registration.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/user-registration.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/features/validation.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/validation.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/getting-started/requirements.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/getting-started/requirements.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/getting-started/responses.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/getting-started/responses.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/getting-started/software-architectural-patterns.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/getting-started/software-architectural-patterns.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/main-components/actions.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/actions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/main-components/models.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/models.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/main-components/routes.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/routes.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/miscellaneous/tasks-scheduling.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/miscellaneous/tasks-scheduling.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/optional-components/languages.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/languages.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/optional-components/providers.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/providers.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/optional-components/tests.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/tests.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docusaurus.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/docusaurus.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +42,7 @@
       <updated>1617624309092</updated>
       <workItem from="1617624310387" duration="3302000" />
       <workItem from="1617706810618" duration="21988000" />
-      <workItem from="1618004484848" duration="1839000" />
+      <workItem from="1618004484848" duration="2103000" />
     </task>
     <task id="LOCAL-00001" summary="Upgrade Documentation">
       <created>1617626321590</created>
@@ -192,7 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617838022462</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Fix all broken links">
+      <created>1618006527506</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1618006527506</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,6 +219,7 @@
     <MESSAGE value="Modify Config" />
     <MESSAGE value="Update General section headers links" />
     <MESSAGE value="Update optional components headers links" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update optional components headers links" />
+    <MESSAGE value="Fix all broken links" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix all broken links" />
   </component>
 </project>
