@@ -205,42 +205,17 @@ Checkout [How to upgrade apiato](.././general/faq).
 
 ### Contributing to the Documentation {#contributing-documentation}
 
-The documentation is generated using [Jekyll](https://jekyllrb.com/) and its content lives in its own repository
-[(apiato/documentation)](https://github.com/apiato/documentation), in the `_docs/` folder.
+This documentation is built using [Docusaurus 2](https://v2.docusaurus.io/), a modern static website generator.
 
-All you have to do is navigate to `_docs/` folder, find the markdown `.md` file that you want to update *(all files
+The content lives in its own repository
+[(apiato/documentation)](https://github.com/apiato/documentation), in the `docs/` folder.
+
+All you have to do is navigate to `docs/` folder, find the markdown `.md` file that you want to update *(all files
 are named as they are in the site menu)*, update or add the text, the commit.
 
 > You do not need to build the site locally. Just edit the markdown files and submit your PR. GitHub will build the site for us.
 
-#### Documentation Tips:
-
-- The styles are in `main.scss` and `_sass/*`.
-- The Layout `_layouts/default.html`.
-- The docs folders `_docs/*` do not represent the categories displayed in the site.
-- To add a new category for a file `category: "New Category"` (usually defined in each documentation readme), you must
-add the category name to `_config.yml` under `categories-order` in order to appear in the site.
-- To set a link, use the internal links as follows: `[your-text]( { { site.baseurl } } { % link _docs/path/file.md % } )`.
-NOTE: remove the spaces between the tags.
-
-#### Run the docs locally:
-
-##### In Docker:
-
-1. `git clone https://github.com/apiato/documentation .`
-2. `docker run -v $PWD:/srv/jekyll -p 4000:4000 -it jekyll/jekyll bash`
-3. `bundle install`
-4. `jekyll serve`
-5. Browse `http://localhost:4000`
-
-##### Natively:
-
-1. Install [Jekyll](https://jekyllrb.com/) and its dependencies.
-2. `git clone https://github.com/apiato/documentation .`
-3. `bundle install`
-4. `bundle exec jekyll serve`
-5. Browse `http://localhost:4000`
-6. Finally `jekyll build`
+Optionally, visit the [(documentation repository)](https://github.com/apiato/documentation) for more information on how to install it locally.
 
 ### Contributing to the Code Generator {#contributing-generator}
 
@@ -295,25 +270,25 @@ method, which simply returns a `string`.
 
 ### Making a new Release (for admins) {#new-release}
 
-1 - Merge the last [stable branch](https://github.com/apiato/apiato/branches) in the master branch. (To get any new bug fixes.)  
-2 - Decide on the next version number for the new release. By checking the current [releases](https://github.com/apiato/apiato/releases).  
+1 - Merge the last [stable branch](https://github.com/apiato/apiato/branches) in the master branch. (To get any new bug fixes.)
+2 - Decide on the next version number for the new release. By checking the current [releases](https://github.com/apiato/apiato/releases).
 3 - Update `VERSION` value in `app/Ship/core/Foundation/Apiato.php` (example: `const VERSION = '8.1.0';`).
 
-#### Minor Release 
+#### Minor Release
 
 Your PR with that minor changes should be submitted and merged into master.
 
-1 - Go to [releases](https://github.com/apiato/apiato/releases) and create a new one from the master branch.  
-2 - Make sure you write a complete Changelog, in the release description.  
+1 - Go to [releases](https://github.com/apiato/apiato/releases) and create a new one from the master branch.
+2 - Make sure you write a complete Changelog, in the release description.
 3 - If you updated the documentation and you should! then visit the [documentation](https://github.com/apiato/documentation) repository and merge the PR into master.
 
-#### Major Release 
+#### Major Release
 
-Master is the branch that contains all the new changes. 
+Master is the branch that contains all the new changes.
 So we need to create a new branch from master then make a release from that new branch.
 
-1 - From master, checkout a new branch named as the version number you want to release. (Example `8.1`).  
-2 - Go to [releases](https://github.com/apiato/apiato/releases) and create a new one from the branch created in the step above. (Example `8.1`).  
-3 - Make sure you write a complete Changelog, in the release description.  
-4 - Change the [default branch](https://github.com/apiato/apiato/settings/branches) on github to that new branch.  
+1 - From master, checkout a new branch named as the version number you want to release. (Example `8.1`).
+2 - Go to [releases](https://github.com/apiato/apiato/releases) and create a new one from the branch created in the step above. (Example `8.1`).
+3 - Make sure you write a complete Changelog, in the release description.
+4 - Change the [default branch](https://github.com/apiato/apiato/settings/branches) on github to that new branch.
 5 - If you updated the documentation and you should! then visit the [documentation](https://github.com/apiato/documentation) repository and merge the PR into master.

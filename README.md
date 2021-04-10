@@ -1,4 +1,10 @@
-# Website
+# Apiato Documentation
+
+Documentation repository for the [Apiato](https://github.com/apiato/apiato) project, served at [apiato.io](http://apiato.io).
+
+<p align="center">
+   <img src="https://github.com/apiato/documentation/blob/master/images/apiato-icon-medium.png" alt="Apiato Logo"/>
+</p>
 
 This website is built using [Docusaurus 2](https://v2.docusaurus.io/), a modern static website generator.
 
