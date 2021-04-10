@@ -139,7 +139,7 @@ apidoc -c app/Containers/Documentation/ApiDocJs/public -f public.php -i app -o p
 
 Alternatively you can generate a swagger doc from the apidoc comments, to do so run `php artisan apiato:swagger`.
 
-##### Visit [API Docs Generator]({{ site.baseurl }}{% link _docs/features/api-docs-generator.md %}) for more details.
+##### Visit [API Docs Generator](.././features/api-docs-generator) for more details.
 
 ### 5) Testing Setup {#Testing}
 
@@ -281,7 +281,7 @@ try running this command `homestead halt && homestead up --provision`.*
 ### A.3) Using anything else {#Using-anything-else}
 
 If you're not into virtualization solutions, you can set up your environment directly on your machine. Check the
-[software's requirements list]({{ site.baseurl }}{% link _docs/getting-started/requirements.md %}).
+[software's requirements list](.././).
 
 ## C) Let's Play {#Play}
 

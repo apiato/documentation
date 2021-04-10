@@ -201,7 +201,7 @@ Make sure you create a PR from your custom branch `feature-awesome` to `master` 
 
 *We'll do our best to merge your PR in the shortest time possible. Thanks in advance :)*
 
-Checkout [How to upgrade apiato]({{ site.baseurl }}{% link _docs/miscellaneous/faq.md %}).
+Checkout [How to upgrade apiato](.././general/faq).
 
 ### Contributing to the Documentation {#contributing-documentation}
 

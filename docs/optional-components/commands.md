@@ -114,7 +114,7 @@ php artisan apiato:welcome
 
 ### Schedule Commands Execution {#Schedule-Commands-Execution}
 
-To Schedule the execution of a Command checkout the [Tasks Scheduling]({{ site.baseurl }}{% link _docs/miscellaneous/tasks-scheduling.md %}) page.
+To Schedule the execution of a Command checkout the [Tasks Scheduling](.././miscellaneous/tasks-scheduling) page.
 
 ### Define Consoles Routes {#define-consoles-routes}
 

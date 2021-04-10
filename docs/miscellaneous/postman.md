@@ -6,7 +6,6 @@ title: Postman Environment
     * [Prerequisites](#prerequisites)
     * [Add Apiato Environment & Collection to Postman ](#add-apiato-environment--collection-to-postman)
     * [Using the Postman Apiato API Collection](#using-the-postman-apiato-api-collection)
-    * [Download Environment & Collection](#download-environment--collection)
 
 ## Apiato Postman API & Environment {#apiato-postman-api--environment}
 
@@ -79,8 +78,3 @@ If you would like to test logging into your application with different users the
 	"password": "admin"
 }
 ```
-
-### Download Environment & Collection {#download-environment--collection}
-
-* [Download Apiato Environment]({{ site.baseurl }}/assets/postman/Apiato_API.postman_environment.json)
-* [Download Apiato Collection]({{ site.baseurl }}/assets/postman/Apiato_API.postman_collection.json)

@@ -85,5 +85,5 @@ App::make(\Illuminate\Contracts\Bus\Dispatcher\Dispatcher::class)->dispatch(New 
 
 ### Execute Jobs Execution {#execute-jobs-execution}
 
-For running your Jobs checkout the [Tasks Queuing]({{ site.baseurl }}{% link _docs/miscellaneous/tasks-queuing.md %}) page.
+For running your Jobs checkout the [Tasks Queuing](.././miscellaneous/tasks-queuing) page.
 

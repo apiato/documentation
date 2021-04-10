@@ -147,4 +147,4 @@ for Authorization, Validation and so on.
 
 ## Building a Responses from the Controller: {#building-response-from-controller}
 
-Checkout the [Controller response builder helper functions]({{ site.baseurl }}{% link _docs/components/controllers.md %}).
+Checkout the [Controller response builder helper functions](.././main-components/controllers).

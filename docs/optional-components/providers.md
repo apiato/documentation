@@ -170,4 +170,4 @@ Once extended the child Provider should be registered in its Container Main Prov
 
 This rule does not apply to the `RouteServiceProvider` since it's required by Apiato, this Provider is registered by the `ApiatoProvider`.
 
-Check [How Service Providers are auto-loaded]({{ site.baseurl }}{% link _docs/miscellaneous/faq.md %}).
+Check [How Service Providers are auto-loaded](.././general/faq).
