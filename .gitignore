@@ -10,6 +10,10 @@
 # Generated files
 .docusaurus
 .cache-loader
+.sass-cache
+_site
+_docs
+yarn.lock
 
 # Misc
 .DS_Store
@@ -21,3 +25,4 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
