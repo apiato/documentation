@@ -57,11 +57,11 @@ to generate something for).
 
 #### Generating a Route (endpoint) file: {#generating-a-route-endpoint-file}
 
-![](../../static/img/generate-route-demo.png)
+![](../assets/img/generate-route-demo.png)
 
 #### Result {#result}
 
-![](../../static/img/generated-route-demo.png)
+![](../assets/img/generated-route-demo.png)
 
 ## Custom Code Stubs (aka. Customizing the Generator) {#custom-code-stubs}
 

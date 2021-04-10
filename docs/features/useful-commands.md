@@ -32,7 +32,7 @@ It's useful to be able to see all the implemented use cases in your application.
 You can also pass `--withfilename` flag to see all Actions with the files names.
 `apiato:list:actions --withfilename`
 
-![](../../static/img/actions-commands.png)
+![](../assets/img/actions-commands.png)
 
 ## List All Tasks Command {#list-all-tasks-command}
 
@@ -53,4 +53,4 @@ If you want to get the dependencies for one container, you can call
 php artisan apiato:list:dependencies app/Containers/{container-name}
 ```
 
-![](../../static/img/list-dependencies.png)
+![](../assets/img/list-dependencies.png)

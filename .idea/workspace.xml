@@ -2,19 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="464efc49-a3a3-47e0-bbee-70f01feec25c" name="Default Changelist" comment="Update optional components headers links">
-      <change afterPath="$PROJECT_DIR$/static/files/postman/Apiato_API.postman_collection.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/files/postman/Apiato_API.postman_environment.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/general/contribution-guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/general/contribution-guide.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/general/faq.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/general/faq.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/getting-started/installation.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/getting-started/installation.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/getting-started/responses.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/getting-started/responses.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/main-components/actions.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/main-components/actions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/features/api-docs-generator.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/api-docs-generator.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/features/code-generator.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/code-generator.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/features/default-endpoints.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/default-endpoints.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/features/useful-commands.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/useful-commands.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/getting-started/markdown-features.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/docs/getting-started/markdown-features.mdx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/miscellaneous/postman.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/miscellaneous/postman.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/miscellaneous/tests-helpers.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/miscellaneous/tests-helpers.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/optional-components/commands.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/commands.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/optional-components/jobs.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/jobs.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/optional-components/providers.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/optional-components/providers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/files/postman/Apiato_API.postman_collection.json" beforeDir="false" afterPath="$PROJECT_DIR$/docs/assets/files/postman/Apiato_API.postman_collection.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/files/postman/Apiato_API.postman_environment.json" beforeDir="false" afterPath="$PROJECT_DIR$/docs/assets/files/postman/Apiato_API.postman_environment.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/actions-commands.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/assets/img/actions-commands.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/docusaurus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/generate-route-demo.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/assets/img/generate-route-demo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/generated-route-demo.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/assets/img/generated-route-demo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/list-dependencies.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/assets/img/list-dependencies.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/private-api-doc.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/assets/img/private-api-doc.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/public-api-doc.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/assets/img/public-api-doc.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/routes.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/assets/img/routes.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -11,4 +11,4 @@ You can see the endpoints in three ways:
 
 ## Screenshot showing the result of `route:list`:
 
-![](../../static/img/routes.png)
+![](../assets/img/routes.png)
