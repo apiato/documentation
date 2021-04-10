@@ -33,6 +33,12 @@ module.exports = {
           position: 'left',
         },
         {
+          to: 'community/',
+          activeBasePath: 'community',
+          label: 'Community',
+          position: 'left',
+        },
+        {
           type: 'docsVersionDropdown',
           position: 'right',
           dropdownActiveClassDisabled: true,
@@ -119,6 +125,17 @@ module.exports = {
       searchParameters: {},
     },
   },
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'community',
+        path: 'community',
+        routeBasePath: 'community',
+        sidebarPath: require.resolve('./sidebarsCommunity.js'),
+      },
+    ],
+  ],
   presets: [
     [
       '@docusaurus/preset-classic',
