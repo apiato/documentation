@@ -8,7 +8,7 @@ module.exports = {
   onBrokenMarkdownLinks: 'throw',
   favicon: 'img/favicon.ico',
   organizationName: 'apiato', // Usually your GitHub org/user name.
-  projectName: 'documentation', // Usually your repo name.
+  projectName: 'apiato', // Usually your repo name.
   stylesheets: [
     "https://fonts.googleapis.com/icon?family=Material+Icons",
   ],
@@ -44,7 +44,7 @@ module.exports = {
           dropdownActiveClassDisabled: true,
           dropdownItemsAfter: [
             {
-              to: 'https://github.com/apiato/apiato/releases',
+              to: '/versions',
               label: 'All versions',
             },
           ],
@@ -54,7 +54,7 @@ module.exports = {
           position: 'right',
           dropdownItemsAfter: [
             {
-              to: 'https://github.com/moslem-deris/docs/issues',
+              to: 'https://github.com/apiato/documentation/issues',
               label: 'Help Us Translate',
             },
           ],
