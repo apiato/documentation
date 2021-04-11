@@ -75,9 +75,6 @@ Injecting each Task in constructor and then using it below through its property 
 The Action itself was also called using `Apiato::call()` which triggers the `run` function in it.
 
 
-Refer to the [**Magical Call**](.././miscellaneous/magical-call)  page for more info and examples on how to use the call function.
-
-
 **Same Example using the `call` function:**
 
 ```php

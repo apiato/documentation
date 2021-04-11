@@ -72,12 +72,6 @@ class CreateAdminAction extends Action
 Injecting each Task in constructor and then using it below through its property is really boring, and the more Tasks you use the worse it gets. So instead you can use the function `call` to call whichever Task you want and then pass any parameters to it.
 
 
-The Action itself was also called using `Apiato::call()` which triggers the `run` function in it.
-
-
-Refer to the [**Magical Call**](.././miscellaneous/magical-call)  page for more info and examples on how to use the call function.
-
-
 **Same Example using the `call` function:**
 
 ```php
