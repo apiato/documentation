@@ -216,7 +216,7 @@ Seeds files can live in that same directory or/and in this container folder `app
 ##### More Classes {#more-classes}
 
 All other classes types work the same way, you can refer to the documentation for where to place them and what they
-should extend. For more details you can always get in touch with us on **Slack**.
+should extend. For more details you can always get in touch with us in the chat room.
 
 #### How to use Apiato features {#apiato-features}
 

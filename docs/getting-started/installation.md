@@ -38,7 +38,7 @@ Option 2: On going [development](https://github.com/apiato/apiato/commits/master
 branch and running `composer install` when changes occurs.*
 
 ```shell
-composer create-project apiato/apiato my-api dev-master
+composer create-project apiato/apiato my-api --stability=dev
 ```
 
 2) Edit your `.env` variables to match with your environment (Set Database credentials, App URL, ...).

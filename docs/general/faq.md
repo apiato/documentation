@@ -216,8 +216,8 @@ If you have a question, or did not find an answer you were looking for on [Stack
 apiato and is not a general question. If so, then consider visiting the
 [apiato's Github Issues](https://github.com/apiato/apiato/issues) and searching for *keywords* related to your
 issue *(filter open and closed issues)*. Another option you have is to get help from the community on
-[Slack](https://join.slack.com/t/apiato/shared_invite/zt-mtriung2-1__8zBAaJO_xXa_kMFsHgQ).
+[Discord](https://discord.gg/ryPcV4KM5k).
 
 Lastly, if you got your question answered, consider sharing it, if you believe it can help others. You can submit a PR
-adding the questions and answer here on the FAQ page. Or leave it somewhere on the repository or on Slack. Thanks in
+adding the questions and answer here on the FAQ page. Or leave it somewhere on the repository or on the chat room. Thanks in
 advance :)
