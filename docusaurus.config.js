@@ -8,7 +8,7 @@ module.exports = {
   onBrokenMarkdownLinks: 'throw',
   favicon: 'img/favicon.ico',
   organizationName: 'apiato', // Usually your GitHub org/user name.
-  projectName: 'apiato', // Usually your repo name.
+  projectName: 'documentation', // Usually your repo name.
   stylesheets: [
     "https://fonts.googleapis.com/icon?family=Material+Icons",
   ],
