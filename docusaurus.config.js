@@ -148,7 +148,7 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
-            'https://github.com/apiato/documentation',
+            'https://github.com/apiato/documentation/tree/master',
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
         },
