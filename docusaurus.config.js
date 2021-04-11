@@ -100,7 +100,7 @@ module.exports = {
           items: [
             {
               label: 'Contribution Guide',
-              href: '/docs/general/contribution-guide',
+              href: '/community/contribution-guide',
             },
             {
               label: 'Code of Conduct',
