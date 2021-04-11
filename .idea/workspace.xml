@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="464efc49-a3a3-47e0-bbee-70f01feec25c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/assets/files/Apiato_API.postman.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/versioned_docs/version-9.x/assets/files/Apiato_API.postman.zip" afterDir="false" />
+    <list default="true" id="464efc49-a3a3-47e0-bbee-70f01feec25c" name="Default Changelist" comment="Move data from community to docs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/assets/files/postman/Apiato_API.postman_collection.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/assets/files/postman/Apiato_API.postman_environment.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/miscellaneous/postman.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/miscellaneous/postman.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/versioned_docs/version-9.x/assets/files/postman/Apiato_API.postman_collection.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/versioned_docs/version-9.x/assets/files/postman/Apiato_API.postman_environment.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/versioned_docs/version-9.x/miscellaneous/postman.md" beforeDir="false" afterPath="$PROJECT_DIR$/versioned_docs/version-9.x/miscellaneous/postman.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/features/code-generator.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/code-generator.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/docusaurus.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/versioned_docs/version-9.x/features/code-generator.md" beforeDir="false" afterPath="$PROJECT_DIR$/versioned_docs/version-9.x/features/code-generator.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/versions.json" beforeDir="false" afterPath="$PROJECT_DIR$/versions.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +26,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/community" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/versioned_docs/version-9.x/general" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -42,9 +38,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Projects\js\documentation\versioned_docs\version-9.x\general" />
       <recent name="C:\Projects\js\documentation\community" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Projects\js\documentation\docs\general" />
       <recent name="C:\Projects\js\documentation\docs\assets\files" />
       <recent name="C:\Projects\js\documentation\versioned_docs\version-9.x\assets\files" />
       <recent name="C:\Projects\js\documentation\static\files" />
@@ -224,7 +222,49 @@
       <option name="project" value="LOCAL" />
       <updated>1618103761606</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="update `repoUrl` to a hardcode string url">
+      <created>1618138323619</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1618138323619</updated>
+    </task>
+    <task id="LOCAL-00025" summary="update `repoUrl` to a hardcode string url">
+      <created>1618141571705</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1618141571705</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Bring `Magical Call` link back in ver9.x">
+      <created>1618145211687</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1618145211687</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Remove support page">
+      <created>1618146315719</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1618146315719</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Remove community section">
+      <created>1618146438080</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1618146438080</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Move data from community to docs">
+      <created>1618146486293</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1618146486294</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,6 +312,11 @@
     <MESSAGE value="Move assets in versioned folder" />
     <MESSAGE value="Add unVersioned files" />
     <MESSAGE value="Fix some broken links" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix some broken links" />
+    <MESSAGE value="update `repoUrl` to a hardcode string url" />
+    <MESSAGE value="Bring `Magical Call` link back in ver9.x" />
+    <MESSAGE value="Remove support page" />
+    <MESSAGE value="Remove community section" />
+    <MESSAGE value="Move data from community to docs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Move data from community to docs" />
   </component>
 </project>

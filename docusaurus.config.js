@@ -33,12 +33,6 @@ module.exports = {
           position: 'left',
         },
         {
-          to: 'community/',
-          activeBasePath: 'community',
-          label: 'Community',
-          position: 'left',
-        },
-        {
           type: 'docsVersionDropdown',
           position: 'left',
           dropdownActiveClassDisabled: true,
@@ -100,7 +94,7 @@ module.exports = {
           items: [
             {
               label: 'Contribution Guide',
-              href: '/community/contribution-guide',
+              href: '/docs/general/contribution-guide',
             },
             {
               label: 'Code of Conduct',
@@ -146,17 +140,7 @@ module.exports = {
       searchParameters: {},
     },
   },
-  plugins: [
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'community',
-        path: 'community',
-        routeBasePath: 'community',
-        sidebarPath: require.resolve('./sidebarsCommunity.js'),
-      },
-    ],
-  ],
+  plugins: [],
   presets: [
     [
       '@docusaurus/preset-classic',
