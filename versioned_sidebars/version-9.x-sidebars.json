@@ -1,0 +1,306 @@
+{
+  "version-9.x/docs": [
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Getting Started",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-9.x/getting-started/requirements"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/getting-started/installation"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/getting-started/overview"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/getting-started/requests"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/getting-started/responses"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/getting-started/software-architectural-patterns"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/getting-started/conventions-and-principles"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Features",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-9.x/features/code-generator"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/features/api-docs-generator"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/features/authentication"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/features/authorization"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/features/user-registration"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/features/social-authentication"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/features/query-parameters"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/features/default-endpoints"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/features/hash-id"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/features/localization"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/features/rate-limiting"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/features/requests-monitor"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/features/data-caching"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/features/pagination"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/features/payments"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/features/system-settings"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/features/api-versioning"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/features/validation"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/features/search-query-parameter"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/features/etag"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/features/useful-commands"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/features/admin-dashboard"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/features/profiler"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Main Components",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-9.x/main-components/routes"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/main-components/controllers"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/main-components/requests"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/main-components/transporters"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/main-components/actions"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/main-components/tasks"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/main-components/models"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/main-components/views"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/main-components/transformers"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/main-components/subactions"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Optional Components",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-9.x/optional-components/providers"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/optional-components/repositories"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/optional-components/exceptions"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/optional-components/criterias"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/optional-components/tests"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/optional-components/migrations"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/optional-components/seeders"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/optional-components/factories"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/optional-components/middlewares"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/optional-components/configs"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/optional-components/commands"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/optional-components/jobs"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/optional-components/languages"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/optional-components/events"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/optional-components/mails"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/optional-components/notifications"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/optional-components/values"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Miscellaneous",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-9.x/miscellaneous/magical-call"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/miscellaneous/tests-helpers"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/miscellaneous/tasks-scheduling"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/miscellaneous/tasks-queuing"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/miscellaneous/container-installer"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/miscellaneous/postman"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "General",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-9.x/general/faq"
+        },
+        {
+          "type": "doc",
+          "id": "version-9.x/general/upgrade-guide"
+        }
+      ]
+    }
+  ]
+}

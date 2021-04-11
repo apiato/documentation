@@ -201,7 +201,7 @@ Make sure you create a PR from your custom branch `feature-awesome` to `master` 
 
 *We'll do our best to merge your PR in the shortest time possible. Thanks in advance :)*
 
-Checkout [How to upgrade apiato](.././general/faq).
+Checkout [How to upgrade apiato](../docs/general/faq).
 
 ### Contributing to the Documentation {#contributing-documentation}
 
@@ -236,18 +236,18 @@ the generator commands. For better understanding of how things work. Make sure y
 For each generator you need to implement exactly one method (as it is defined in the respective interface)
 
 - `getUserInputs:`
-    This method reads all parameters from the command line or provides a wizard to get information from the user.
-    The available options for this generator are specified using the `public $inputs = []` variable in respective generator.
-    Note that you do not need to specify the options for `--container` or `--file`, as both are handled directly by the
-    Generator itself. Simply add the options that are specifically needed for this generator.
+  This method reads all parameters from the command line or provides a wizard to get information from the user.
+  The available options for this generator are specified using the `public $inputs = []` variable in respective generator.
+  Note that you do not need to specify the options for `--container` or `--file`, as both are handled directly by the
+  Generator itself. Simply add the options that are specifically needed for this generator.
 
-    Be sure to read input with the `checkParameterOrXYZ()` methods, as they automatically check if an option is available.
-    Otherwise, they will ask the user for additional input.
+  Be sure to read input with the `checkParameterOrXYZ()` methods, as they automatically check if an option is available.
+  Otherwise, they will ask the user for additional input.
 
-    The method must return an array of 3 keys:
-  - `path-parameters` are used to replace variables within the path where the generator creates the file.
-  - `file-parameters` are used to replace variables within the name of the file to be created.
-  - `stub-parameters` are used to replace variables within the stub.
+  The method must return an array of 3 keys:
+    - `path-parameters` are used to replace variables within the path where the generator creates the file.
+    - `file-parameters` are used to replace variables within the name of the file to be created.
+    - `stub-parameters` are used to replace variables within the stub.
 
 
 2 - Create the stub to be loaded in `Generator/Stubs`, copy any real component code and build the stub out of it.
