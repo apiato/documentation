@@ -51,8 +51,9 @@ export default function Home() {
       </header>
       <main>
 
-        <h1 className={styles.title}>What is Apiato?</h1>
-        <p className={styles.description}>An <b>open source</b> flawless framework for building scalable and testable API-Centric Apps with <b>PHP</b> and <b>Laravel</b><br />Designed to help building scalable API's faster. It uses the best frameworks, tools and conventions in a creative way, to deliver a rich set of features and functionalities, that facilitates the development of modern API-Centric Apps.</p>
+	    <br/>
+	    <br/>
+		  <p className={styles.description}>The <b>open source</b> flawless framework for building scalable and testable API-Centric Apps with <b>PHP</b> and <b>Laravel</b>.</p>
         <h1 className={styles.title}>Features</h1>
 
         {features && features.length > 0 && (

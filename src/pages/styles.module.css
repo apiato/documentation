@@ -4,8 +4,8 @@
  * CSS files with the .module.css suffix will be treated as CSS modules
  * and scoped locally.
  */
- @font-face { font-family: Hind Siliguri; src: url('../fonts/HindSiliguri-Regular.ttf'); } 
- @font-face { font-family: Martel; src: url('../fonts/Martel-Regular.ttf'); } 
+ @font-face { font-family: Hind Siliguri; src: url('../fonts/HindSiliguri-Regular.ttf'); }
+ @font-face { font-family: Martel; src: url('../fonts/Martel-Regular.ttf'); }
 
 *{
   /* font-family: Hind Siliguri; */
