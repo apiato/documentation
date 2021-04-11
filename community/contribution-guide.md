@@ -104,7 +104,7 @@ to pull the latest stable release of Apiato.
 If you want to add new features or do anything else, that should be added to the next stable release, you need to pull
 the master branch and submit your PR there.
 
-`composer create-project apiato/apiato project-a dev-master`
+`composer create-project apiato/apiato project-a --stability=dev`
 
 2) Initialize git in Project A
 
@@ -219,7 +219,7 @@ Optionally, visit the [(documentation repository)](https://github.com/apiato/doc
 
 ### Contributing to the Code Generator {#contributing-generator}
 
-The Code generator is in `app/Ship/core/Generator`.
+The Code generator is in `/core/Generator`.  The Core is in its own [repository](https://github.com/apiato/core).
 
 Each component command, "Except the Containers Generator" must extend from the `Apiato\Core\Generator\GeneratorCommand.php`.
 This abstract class does all the work for you.
@@ -272,7 +272,7 @@ method, which simply returns a `string`.
 
 1 - Merge the last [stable branch](https://github.com/apiato/apiato/branches) in the master branch. (To get any new bug fixes.)
 2 - Decide on the next version number for the new release. By checking the current [releases](https://github.com/apiato/apiato/releases).
-3 - Update `VERSION` value in `app/Ship/core/Foundation/Apiato.php` (example: `const VERSION = '8.1.0';`).
+3 - Update `VERSION` value in `/core/Foundation/Apiato.php` (example: `const VERSION = '8.1.0';`).
 
 #### Minor Release
 
