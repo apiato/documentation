@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="464efc49-a3a3-47e0-bbee-70f01feec25c" name="Default Changelist" comment="Add unVersioned files">
-      <change afterPath="$PROJECT_DIR$/src/pages/versions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docusaurus.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/docusaurus.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/community/contribution-guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/community/contribution-guide.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/features/code-generator.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/features/code-generator.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/versioned_docs/version-9.x/features/code-generator.md" beforeDir="false" afterPath="$PROJECT_DIR$/versioned_docs/version-9.x/features/code-generator.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
