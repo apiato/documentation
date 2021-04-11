@@ -305,7 +305,7 @@ any other tool you prefer.*
 Let's test the (user registration) endpoint `http://api.apiato.test/v1/register ` with **cURL**:
 
 ```shell
-curl -X POST -H "Accept: application/json" -H "Cache-Control: no-cache" -F "email=mahmoud@zalt.me" -F "password=so-secret" -F "name=Mahmoud Zalt" "http://api.apiato.test/v1/register"
+curl -X POST -H "Accept: application/json" -H "Cache-Control: no-cache" -F "email=John@Doe.me" -F "password=so-secret" -F "name=Mahmoud Zalt" "http://api.apiato.test/v1/register"
 ```
 
 You should get response like this:
@@ -328,7 +328,7 @@ X-RateLimit-Remaining → 29
   "data": {
     "object": "User",
     "id": 77,
-    "name": "Mahmoud Zalt",
+    "name": "John Doe",
     "email": "apiato@mail.com",
     "confirmed": null,
     "nickname": "Mega",

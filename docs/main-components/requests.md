@@ -522,8 +522,8 @@ Example One:
 
 ```php
 $data = [
-    'email'    => 'Mahmoud@test.test',
-    'name'     => 'Mahmoud',
+    'email'    => 'me@test.test',
+    'name'     => 'John Doe',
     'password' => 'so-secret',
 ];
 

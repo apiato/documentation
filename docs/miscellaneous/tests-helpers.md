@@ -58,7 +58,7 @@ class RegisterUserTest extends TestCase
         // prepare your post data
         $data = [
             'email'    => 'hello@mail.test',
-            'name'     => 'Mahmoud',
+            'name'     => 'John Doe',
             'password' => 'secret',
         ];
 

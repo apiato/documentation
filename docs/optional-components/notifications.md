@@ -110,7 +110,7 @@ Alternatively you can use the `Illuminate\Notifications\Notifiable` trait on the
 ```php
 // get any user
 $user = User::firstOrCreate([
-    'name' => 'Mahmoud Zalt',
+    'name' => 'John Doe',
     'email' => 'mail@something.com',
     'phone' => '0096123456789',
 ]);

@@ -20,7 +20,7 @@ curl --request POST \
   --url http://api.apiato.test/v1/register \
   --header 'accept: application/json' \
   --header 'content-type: application/x-www-form-urlencoded' \
-  --data 'email=apiato%40mail.com1&password=password&name=Mahmoud%20Zalt'
+  --data 'email=apiato%40mail.com1&password=password&name=John%20Doe'
 ```
 
 **Registration response:**
@@ -29,8 +29,8 @@ curl --request POST \
 {
   "data": {
     "object": "User",
-    "id": XbPW7awNkzl83LD6,
-    "name": "Mahmoud Zalt",
+    "id": "XbPW7awNkzl83LD6",
+    "name": "John Doe",
     "email": "apiato@mail.com",
     "confirmed": null,
     "nickname": "Mega",

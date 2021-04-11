@@ -96,4 +96,4 @@ public function listAllUsers()
 
 ```
 
-5. Call it from anywhere as follows: [GET] `http://api.apiato.com/users?search=Mahmoud@apiato.com`
+5. Call it from anywhere as follows: [GET] `http://api.apiato.com/users?search=something`

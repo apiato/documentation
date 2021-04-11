@@ -61,11 +61,6 @@ use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 
-/**
- * Class WebAuthentication
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
- */
 class WebAuthentication extends Middleware
 {
 
@@ -153,7 +148,6 @@ use Illuminate\Foundation\Http\Kernel as LaravelHttpKernel;
  *
  * A.K.A (app/Http/Kernel.php)
  *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
  */
 class HttpKernel extends LaravelHttpKernel
 {

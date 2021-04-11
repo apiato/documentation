@@ -67,8 +67,8 @@ User {
   tokentoken: "121212121-121212121"
   tokentokenSecret: "34343434343434343343434343"
   tokenid: "777777777"
-  tokennickname: "Mahmoud_Zalt"
-  tokenname: "Mahmoud Zalt"
+  tokennickname: "John Doe"
+  tokenname: "John Doe"
   tokenemail: null
   tokenavatar: "http://pbs.twimg.com/profile_images/88888888/PENrcePC_normal.jpg"
   tokenuser:
@@ -103,7 +103,7 @@ Example Twitter Response:
     "data": {
         "object": "User",
         "id": "eqwja3vw94kzmxr0",
-        "name": "Mahmoud Zalt",
+        "name": "John Doe",
         "email": null,
         "confirmed": false,
         "nickname": null,

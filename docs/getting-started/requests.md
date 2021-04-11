@@ -15,12 +15,12 @@ other types as well.
 
 ### ASCII payload {#ascii-payload}
 
-To tell the web server that you are posting simple text/ASCII payload (`name=Mahmoud+Zalt&age=18`), you need to include
+To tell the web server that you are posting simple text/ASCII payload (`name=John+Doe&age=18`), you need to include
 `Content-Type : x-www-form-urlencoded` in the request header.
 
 ### JSON payload {#json-payload}
 
-To tell the web server that you are posting JSON-formatted payload (`{name : 'Mahmoud Zalt', age: 18}`), you need to
+To tell the web server that you are posting JSON-formatted payload (`{name : 'John Doe', age: 18}`), you need to
 include `Content-Type = application/json` in the request header.
 
 *(you may wish return Json data in this case as well, you can do so by changing the response serializer from
