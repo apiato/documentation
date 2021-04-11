@@ -42,7 +42,7 @@ The above steps will ensure you have a functioning Apiato API environment to exp
 
 Visit the Postman website and download the application.
 
-* [Postman](https://www.getpostman.com/)
+[Download Postman](https://www.postman.com/downloads/)
 
 ### Add Apiato Environment & Collection to Postman {#add-apiato-environment--collection-to-postman}
 
