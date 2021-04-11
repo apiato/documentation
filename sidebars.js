@@ -85,7 +85,6 @@ module.exports = {
       type: 'category',
       label: 'Miscellaneous',
       items: [
-        'miscellaneous/magical-call',
         'miscellaneous/tests-helpers',
         'miscellaneous/tasks-scheduling',
         'miscellaneous/tasks-queuing',
