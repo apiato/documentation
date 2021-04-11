@@ -46,8 +46,7 @@ Visit the Postman website and download the application.
 
 ### Add Apiato Environment & Collection to Postman {#add-apiato-environment--collection-to-postman}
 
-* <a href="../assets/files/postman/Apiato_API.postman_environment.json" download>Download Apiato Environment</a>
-* <a href="../assets/files/postman/Apiato_API.postman_collection.json" download>Download Apiato Collection</a>
+[Download Apiato Environment & Collection](../assets/files/Apiato_API.postman.zip)
 
 Steps
 * Open Postman
