@@ -129,6 +129,7 @@ module.exports = {
       anonymizeIP: true, // Should IPs be anonymized?
     },
     algolia: {
+      // Apiato DocSearch Config File @ https://github.com/algolia/docsearch-configs/blob/master/configs/apiato.json
       apiKey: '5a14b34a43f1bba00c8f096d48577fa8',
       indexName: 'apiato',
 
