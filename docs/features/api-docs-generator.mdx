@@ -10,15 +10,23 @@ title: API Docs Generator
   - [Generate Swagger/OpenAPI JSON schema from apiDoc](#generate-swagger-openapi-json-schema-from-apidoc)
   - [Error: ApiDoc not found !!](#error-apidoc-not-found)
   - [Shared response for faster updating and less outdated responses:](#shared-response-for-faster-updating-and-less-outdated-responses)
-- [Edit the default generated values in the templates:](#edit-the-default-generated-values-in-the-templates)
-- [Change the Documentations URL's](#change-the-documentations-urls)
-- [Edit the Documentation Header](#edit-the-documentation-header)
+- [Documentation Customization](#documentation-customization)
+  - [Edit the default generated values in the templates:](#edit-the-default-generated-values-in-the-templates)
+  - [Change the Documentations URL's](#change-the-documentations-urls)
+  - [Edit the Documentation Header](#edit-the-documentation-header)
 
 Every great API needs a great Documentation.
 
 Apiato make writing and generating documentations very easy with the `php artisan apiato:apidoc` command.
 
 Alternatively you can generate a swagger doc from the apidoc comments, to do so run `php artisan apiato:swagger` command.
+
+:::danger ATTENTION
+
+This container is a `VendorContainer` and is installed with apiato by default,
+to modify its code you need to read [the instructions](#documentation-customization) first.
+
+:::
 
 ## Requirements {#requirements}
 
@@ -174,7 +182,28 @@ To avoid having to generate and update the Single and Multiple responses of the 
 you can use the general shared Multiple Response `* @apiUse GeneralSuccessMultipleResponse`
 which you can find and modify it from `app/Containers/Documentation/UI/API/Routes/*`
 
-## Edit the default generated values in the templates: {#edit-the-default-generated-values-in-the-templates}
+## Documentation customization {#documentation-customization}
+
+:::caution Instructions
+
+This container works out of the box perfectly but if you want to change its configs or modify the codes you MUST follow these steps first:
+
+1- Copy the container from `VendorSection` to `AppSection` (or any of your custom sections) of your project<br/>
+2- Fix any broken namespaces<br/>
+3- Update `section_name` & `html_files` in container configs<br/>
+4- Update `apidoc.json` files in `ApiDocJs/private` & `public` folders and fix the `filename`<br/>
+
+```json
+{
+    "header": {
+        "filename": "Containers/NEW_SECTION_NAME/Documentation/UI/WEB/Views/documentation/header.md"
+    }
+}
+```
+
+:::
+
+### Edit the default generated values in the templates: {#edit-the-default-generated-values-in-the-templates}
 
 Apiato generates by defaults 2 API documentations, each one has its own `apidoc.json` file. Both can be modified from the Documentation Containers in `Containers/Documentation/ApiDocJs/`
 
@@ -205,7 +234,7 @@ Apiato generates by defaults 2 API documentations, each one has its own `apidoc.
 }
 ```
 
-## Change the Documentations URL's {#change-the-documentations-urls}
+### Change the Documentations URL's {#change-the-documentations-urls}
 
 Edit the config file of the Documentation Container `Containers/Documentation/Configs/apidoc.php`
 
@@ -277,7 +306,7 @@ return [
 ];
 ```
 
-## Edit the Documentation Header {#edit-the-documentation-header}
+### Edit the Documentation Header {#edit-the-documentation-header}
 
 The header is usually the Overview of your API. It contains Info about authenticating users, making requests, responses, potential errors, rate limiting, pagination, query parameters and anything you want.
 
