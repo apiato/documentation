@@ -88,8 +88,9 @@ module.exports = {
         'miscellaneous/tests-helpers',
         'miscellaneous/tasks-scheduling',
         'miscellaneous/tasks-queuing',
+        'miscellaneous/postman',
         'miscellaneous/container-installer',
-        'miscellaneous/postman'
+        'miscellaneous/awesome-containers',
       ],
     },
     {
@@ -100,11 +101,6 @@ module.exports = {
         'general/contribution-guide',
         'general/upgrade-guide',
       ],
-    },
-    {
-      type: 'link',
-      label: '3rd Party Containers',
-      href: 'https://github.com/apiato/awesome-apiato'
     },
     {
       type: 'link',
