@@ -124,19 +124,14 @@ module.exports = {
       darkTheme: require('prism-react-renderer/themes/dracula'),
     },
     googleAnalytics: {
-      trackingID: 'G-MZQHHV9P45',
-      //  Optional fields.
-      anonymizeIP: true, // Should IPs be anonymized?
+      trackingID: 'UA-37514928-10',
+      anonymizeIP: true,
     },
     algolia: {
       // Apiato DocSearch Config File @ https://github.com/algolia/docsearch-configs/blob/master/configs/apiato.json
       apiKey: '5a14b34a43f1bba00c8f096d48577fa8',
       indexName: 'apiato',
-
-      // Optional: see doc section below
       contextualSearch: true,
-
-      // Optional: Algolia search parameters
       searchParameters: {},
     },
   },
