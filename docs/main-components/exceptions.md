@@ -2,21 +2,16 @@
 title: Exceptions
 ---
 
-* [Definition](#definition)
+* [Definition & Principles](#definition-principles)
 * [Principles](#principles)
 * [Rules](#rules)
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
 * [Application Error Codes](#application-error-codes)
 
-### Definition {#definition}
+### Definition & Principles {#definition-principles}
 
-Exceptions are classes the handles errors, and helps developers debug their code in a more efficient way.
-
-### Principles {#principles}
-
-- Exceptions can be thrown from anywhere in the application.
-- Exceptions SHOULD be created inside the Containers. However, general Exceptions CAN be created in the `Ship` layer.
+Read from the [**Porto SAP Documentation (#Exceptions)**](https://github.com/Mahmoudz/Porto#Exceptions).
 
 ### Rules {#rules}
 

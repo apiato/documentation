@@ -55,6 +55,7 @@ module.exports = {
         'main-components/models',
         'main-components/views',
         'main-components/transformers',
+        'main-components/exceptions',
         'main-components/subactions'
       ],
     },
@@ -64,7 +65,6 @@ module.exports = {
       items: [
         'optional-components/providers',
         'optional-components/repositories',
-        'optional-components/exceptions',
         'optional-components/criterias',
         'optional-components/tests',
         'optional-components/migrations',
