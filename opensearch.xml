@@ -4,8 +4,8 @@
   <ShortName>Apiato</ShortName>
   <Description>Search Apiato</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image width="16" height="16" type="image/x-icon">https://apiato.github.io/img/favicon.ico</Image>
-  <Url type="text/html" method="get" template="https://apiato.github.io/search?q={searchTerms}"/>
-  <Url type="application/opensearchdescription+xml" rel="self" template="https://apiato.github.io/opensearch.xml" />
-  <moz:SearchForm>https://apiato.github.io/</moz:SearchForm>
+  <Image width="16" height="16" type="image/x-icon">http://apiato.io/img/favicon.ico</Image>
+  <Url type="text/html" method="get" template="http://apiato.io//search?q={searchTerms}"/>
+  <Url type="application/opensearchdescription+xml" rel="self" template="http://apiato.io//opensearch.xml" />
+  <moz:SearchForm>http://apiato.io//</moz:SearchForm>
 </OpenSearchDescription>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://apiato.github.io/blog</id>
+    <id>http://apiato.io/blog</id>
     <title>Apiato Blog</title>
     <updated>2015-10-25T23:29:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://apiato.github.io/blog"/>
+    <link rel="alternate" href="http://apiato.io/blog"/>
     <subtitle>Apiato Blog</subtitle>
-    <icon>https://apiato.github.io/img/favicon.ico</icon>
+    <icon>http://apiato.io/img/favicon.ico</icon>
 </feed>
