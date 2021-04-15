@@ -17,9 +17,7 @@ When an HTTP request is received, it first hits your predefined Endpoint (each e
 
 ```php
 <?php
-$router->get('hello', [
-    'uses' => 'Controller@sayHello',
-]);
+Route::get('/hello', [Controller::class, 'sayHello']);
 ```
 
 After the user makes a request to the endpoint `[GET] www.api.apiato.com/v1/hello` it calls the defined controller 
@@ -33,7 +31,7 @@ class Controller extends ApiController
 {
 	public function sayHello(SayHelloRequest $request)
 	{
-            $helloMessage = Apiato::call(SayHelloAction::class);
+            $helloMessage = app(SayHelloAction::class)->run();
 
             $this->json([
                 $helloMessage
