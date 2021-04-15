@@ -2,7 +2,7 @@
 title: Rate Limiting
 ---
 
-**apiato** uses the default Laravel middleware for rate limiting (throttling).
+Apiato uses the default Laravel middleware for rate limiting (throttling).
 
 All REST API requests are throttled to prevent abuse and ensure stability. 
 The exact number of calls that your application can make per day varies based on the type of request you are making.
