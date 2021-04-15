@@ -124,8 +124,6 @@ In case of returning JSON Data (`JsonApiSerializer`), you may wish to check some
 
 ### Resource Keys {#resource-keys}
 
-#### For JsonApiSerializer. {#resource-keys-for-json-api-serializer}
-
 The transformer allows appending a `ResourceKey` to the transformed resource. You can set the `ResourceKey` in your
 response payload in 2 ways:
 
