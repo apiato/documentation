@@ -16,7 +16,6 @@ When an HTTP request is received, it first hits your predefined Endpoint (each e
 ### Sample Route Endpoint {#sample-route-endpoint}
 
 ```php
-<?php
 Route::get('/hello', [Controller::class, 'sayHello']);
 ```
 
@@ -26,7 +25,6 @@ function (`sayHello`).
 ### Sample Controller Function {#controller-function}
 
 ```php
-<?php
 class Controller extends ApiController
 {
 	public function sayHello(SayHelloRequest $request)
@@ -48,7 +46,6 @@ Then the function calls an Action (`SayHelloAction`) to perform the business log
 ### Sample Action {#sample-action}
 
 ```php
-<?php
 class SayHelloAction extends Action
 {
 	public function run()
