@@ -41,8 +41,6 @@ Read from the [**Porto SAP Documentation (#Exceptions)**](https://github.com/Mah
 **User `Exception`:**
 
 ```php
-<?php
-
 namespace App\Containers\AppSection\User\Exceptions;
 
 use App\Ship\Parents\Exceptions\Exception;
@@ -61,8 +59,6 @@ class AccountFailedException extends Exception
 **General `Exception`:**
 
 ```php
-<?php
-
 namespace App\Ship\Exceptions;
 
 use App\Ship\Parents\Exceptions\Exception;
@@ -79,8 +75,6 @@ class InternalErrorException extends Exception
 **General `Exception` with CustomData:**
 
 ```php
-<?php
-
 namespace App\Ship\Exceptions;
 
 use App\Ship\Parents\Exceptions\Exception;
@@ -114,32 +108,24 @@ class AwesomeExceptionWithCustomData extends Exception
 **Exception usage from anywhere:**
 
 ```php
-<?php
-
 throw new AccountFailedException();
 ```
 
 **Usage with Log for Debugging:**
 
 ```php
-<?php
-
 throw (new AccountFailedException())->debug($e); // debug() accepts string or \Exception instance
 ```
 
 **Usage and overriding the default `message`:**
 
 ```php
-<?php
-
 throw new AccountFailedException('I am the message to be displayed for the user');
 
 ```
 
 **Usage and overwriting pre-set CustomData**
 ```php
-<?php
-
 throw (new AwesomeExceptionWithCustomData())->overrideCustomData(['foo' => 'bar']);
 
 ```

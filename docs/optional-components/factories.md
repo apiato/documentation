@@ -41,8 +41,6 @@ Factories are mainly used from Tests.
 **A User Model Factory:**
 
 ```php
-<?php
-
 // User
 $factory->define(App\Containers\AppSection\User\Models\User::class, function (Faker\Generator $faker) {
     return [
@@ -58,8 +56,6 @@ $factory->define(App\Containers\AppSection\User\Models\User::class, function (Fa
 **Usage from `Tests` or anywhere else:**
 
 ```php
-<?php
-
 // creating 4 users
 factory(User::class, 4)->create();
 ```
@@ -67,8 +63,6 @@ factory(User::class, 4)->create();
 **Usage with relationships:**
 
 ```php
-<?php
-
 $countries = Country::all();
 
 // creating 3 rewards and attaching country relation to them
@@ -84,8 +78,6 @@ Use make instance of create and pass any data any way, then save after establish
 **Usage while overriding some values:**
 
 ```php
-<?php
-
 // creating single Offer and setting a user id
 $offer = factory(Offer::class)->make();
 $offer->user_id = $user->id;

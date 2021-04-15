@@ -38,8 +38,6 @@ Languages are not real Components, they are just files that holds translations.
 Nothing much to show here, here's how you use translated strings:
 
 ```php
-<?php
-
 __('messages.welcome');
 
 echo __('messages.welcome');

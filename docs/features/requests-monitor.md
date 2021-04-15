@@ -56,8 +56,6 @@ This container works out of the box perfectly but if you want to change its conf
 By default, everything is logged in the `debugger.log` file, to change the default file go to `Debugger/Configs/debugger.php` config file and set the file name:
 
 ```php
-<?php
-
 /*
 
  |--------------------------------------------------------------------------

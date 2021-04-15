@@ -51,9 +51,7 @@ In each Apiato container, there are two types of config files:
 
 **Example simple Config file**
 
-```php
-<?php
-// app/Containers/{ContainerName}/Configs/{container-name}-container.php
+```php// app/Containers/{ContainerName}/Configs/{container-name}-container.php
 return [
 
     /*

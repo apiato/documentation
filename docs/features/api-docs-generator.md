@@ -42,8 +42,6 @@ to modify its code you need to read [the instructions](#documentation-customizat
 *For more info about the parameters check out [ApiDocJs](http://apidocjs.com/#install) documentation*
 
 ```php
-<?php
-
 /**
  * @apiGroup           Authentication
  * @apiName            UserLogin
@@ -132,9 +130,7 @@ If you get an error (`apidoc not found`),
 
 2. edit the `executable` path to **`$(npm bin)/apidoc`** or to however you access the `apidoc` tool on your machine.
 
-```php
-<?php
-    /*
+```php    /*
     |--------------------------------------------------------------------------
     | Executable
     |--------------------------------------------------------------------------
@@ -153,8 +149,6 @@ To prevent duplicating the responses between routes, let's create a shared respo
 Example: `_user.v1.public.php` will contain all responses (single, multiple...) of the User:
 
 ```php
-<?php
-
 /**
  * @apiDefine UserSuccessSingleResponse
  * @apiSuccessExample {json} Success-Response:
@@ -239,8 +233,6 @@ Apiato generates by defaults 2 API documentations, each one has its own `apidoc.
 Edit the config file of the Documentation Container `Containers/Documentation/Configs/apidoc.php`
 
 ```php
-<?php
-
 return [
 
     /*

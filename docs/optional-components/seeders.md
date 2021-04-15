@@ -46,8 +46,6 @@ Seeders are classes made to seed the database with real data, this data usually 
 **Roles `Seeder`:**
 
 ```php
-<?php
-
 namespace App\Containers\Order\Data\Seeders;
 
 use App\Ship\Parents\Seeders\Seeder;

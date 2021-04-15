@@ -61,8 +61,6 @@ The two most essential Tests types for this architecture are the Unit Tests and 
 ### Code Sample {#code-sample}
 
 ```php
-<?php
-
 namespace App\Containers\AppSection\User\UI\API\Tests\Functional;
 
 use App\Containers\{container-name}\Tests\TestCase;

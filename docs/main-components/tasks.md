@@ -35,8 +35,6 @@ Read from the [**Porto SAP Documentation (#Tasks)**](https://github.com/Mahmoudz
 **Find User Task by ID:**
 
 ```php
-<?php
-
 namespace App\Containers\AppSection\User\Tasks;
 
 use App\Containers\AppSection\User\Contracts\UserRepositoryInterface;
@@ -69,8 +67,6 @@ class FindUserByIdTask extends Task
 **Tasks usage from an Action:**
 
 ```php
-<?php
-
 namespace App\Containers\Email\Actions;
 
 use App\Containers\Email\Tasks\ConfirmUserEmailTask;

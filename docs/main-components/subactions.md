@@ -32,8 +32,6 @@ Read from the [**Porto SAP Documentation (#Sub-Actions)**](https://github.com/Ma
 **ValidateAddressSubAction User Action:**
 
 ```php
-<?php
-
 namespace App\Containers\Shipment\Actions;
 
 use App\Containers\Recipient\Models\Recipient;

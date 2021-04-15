@@ -45,8 +45,6 @@ More info [here](https://laravel.com/docs/queues).
 **CreateAndValidateAddress with third party `Job`:**
 
 ```php
-<?php
-
 namespace App\Containers\Shipment\Jobs;
 
 use App\Port\Job\Abstracts\Job;
@@ -74,8 +72,6 @@ Check the parent Job class.
 **Usage from `Action`:**
 
 ```php
-<?php
-
 // using helper function
 dispatch(new CreateAndValidateAddressJob($recipients));
 

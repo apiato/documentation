@@ -51,8 +51,6 @@ For more details refer to this [link](https://laravel.com/docs/notifications).
 **Example: a simple Notification**
 
 ```php
-<?php
-
 namespace App\Containers\AppSection\User\Notifications;
 
 use App\Containers\AppSection\User\Models\User;

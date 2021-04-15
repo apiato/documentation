@@ -34,8 +34,6 @@ In Apiato you can use these two `Authentication Middlewares`, to protect your en
 To protect an **API** Endpoint from being accessible by unauthenticated users you can use the `auth:api` Middleware.
 
 ```php
-<?php
-
 $router->get('secret/info', [
     'uses'       => 'Controller@getSecretInfo',
     'middleware' => [
@@ -297,8 +295,6 @@ Logout by sending a `DELETE` request to `http://api.apiato.test/v1/logout/` cont
 Go to `app/Ship/Configs/apiato.php` config file and edit this:
 
 ```php
-<?php
-
 /*
 |--------------------------------------------------------------------------
 | Access Token Expiration
@@ -329,8 +325,6 @@ To protect an **Web** Endpoint from being accessible by unauthenticated users yo
 Example:
 
 ```php
-<?php
-
 $router->get('private/page', [
     'uses'       => 'Controller@showPrivatePage',
     'middleware' => [
@@ -346,8 +340,6 @@ This Middleware is provided by apiato and is different from the default Laravel 
 To change the login page view go to the config file `app/Ship/Configs/apiato.php`, and set the name of your login page there as follows:
 
 ```php
-<?php
-
 /*
 |--------------------------------------------------------------------------
 | The Login Page URL

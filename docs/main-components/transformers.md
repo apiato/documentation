@@ -41,8 +41,6 @@ Read from the [**Porto SAP Documentation (#Transformers)**](https://github.com/M
 **Reward Transformer with Country relation:**
 
 ```php
-<?php
-
 namespace App\Containers\Item\UI\API\Transformers;
 
 use App\Containers\Item\Models\Item;
@@ -96,8 +94,6 @@ class ItemTransformer extends Transformer
 **Usage from Controller (Single Item)**
 
 ```php
-<?php
-
 // getting any Model
 $user = $this->getUser();
 
@@ -119,8 +115,6 @@ $this->response->array([
 **Usage from Controller (Multiple Items/Collection)**
 
 ```php
-<?php
-
 // getting many Models Paginated
 $rewards = $this->getRewards();
 
@@ -144,8 +138,6 @@ This can be done in 2 ways:
 You can request data with their relationships directly from the API call using `include=tags,user` but first the Transformer need to have the `availableIncludes` defined with their functions like this:
 
 ```php
-<?php
-
 namespace App\Containers\Account\UI\API\Transformers;
 
 use App\Ship\Parents\Transformers\Transformer;
@@ -195,8 +187,6 @@ To get Tags with User use the comma separator: `?include=tags,user`.
 From the controller you can dynamically set the `DefaultInclude` using (`setDefaultIncludes`) anytime you want.
 
 ```php
-<?php
-
 return $this->response->paginator($rewards, (new ProductsTransformer())->setDefaultIncludes(['tags']));
 
 ```
@@ -206,8 +196,6 @@ You need to have `includeTags` function defined on the transformer. Look at the 
 If you want to include a relation with every response from this transformer you can define the relation directly in the transformer on (`$defaultIncludes`)
 
 ```php
-<?php
-
 protected $availableIncludes = [
     'users',
 ];

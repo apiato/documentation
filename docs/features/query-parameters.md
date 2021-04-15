@@ -50,8 +50,6 @@ The `?search=` parameter can be applied to any **`GET`** HTTP request.
 For the search to work you need to add `fieldSearchable` to the Repository of the Model.
 
 ```php
-<?php
-
 protected $fieldSearchable = [
     'name',
     'email',

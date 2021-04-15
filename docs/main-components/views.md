@@ -55,8 +55,6 @@ Read from the [**Porto SAP Documentation (#Views)**](https://github.com/Mahmoudz
 **Example: Usage From Controller**
 
 ```php
-<?php
-
 namespace App\Containers\Welcome\UI\WEB\Controllers;
 
 use App\Ship\Parents\Controllers\WebController;

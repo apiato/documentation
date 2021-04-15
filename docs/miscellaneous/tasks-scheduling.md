@@ -37,9 +37,7 @@ to schedule inside the `schedule` function.
 
 Example:
 
-```php
-<?php
-    protected function schedule(Schedule $schedule)
+```php    protected function schedule(Schedule $schedule)
     {
          $schedule->command('apiato:welcome')->everyMinute();
          $schedule->job(new myJob)->hourly();

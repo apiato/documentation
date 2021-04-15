@@ -51,8 +51,6 @@ _Example: the `jwt.auth` middleware "provided by the JWT package" is registered 
 **Middleware Example:**
 
 ```php
-<?php
-
 namespace App\Containers\Authentication\Middlewares;
 
 use App\Ship\Engine\Butlers\Facades\ContainersButler;
@@ -88,8 +86,6 @@ class WebAuthentication extends Middleware
 **Middleware registration inside the Container Example:**
 
 ```php
-<?php
-
 namespace App\Containers\Authentication\Providers;
 
 use App\Containers\Authentication\Middlewares\WebAuthentication;
@@ -134,8 +130,6 @@ class MiddlewareServiceProvider extends MiddlewareProvider
 **Middleware registration inside the Ship layer (HTTP Kernel) Example:**
 
 ```php
-<?php
-
 namespace App\Ship\Kernels;
 
 use App\Ship\Middlewares\Http\ProcessETagHeadersMiddleware;

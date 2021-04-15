@@ -54,8 +54,6 @@ For more details refer to this [link](https://laravel.com/docs/mail).
 **Example: a simple Mail**
 
 ```php
-<?php
-
 namespace App\Containers\AppSection\User\Mails;
 
 use App\Containers\AppSection\User\Models\User;

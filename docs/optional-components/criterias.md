@@ -53,8 +53,6 @@ Without using a Criteria class, you can add your query conditions to a Repositor
 **Example: a shared Criteria**
 
 ```php
-<?php
-
 namespace App\Ship\Features\Criterias\Eloquent;
 
 use App\Ship\Parents\Criterias\Criteria;
@@ -72,8 +70,6 @@ class OrderByCreationDateDescendingCriteria extends Criteria
 **Usage from `Task`:**
 
 ```php
-<?php
-
 public function run()
 {
     $this->userRepository->pushCriteria(new OrderByCreationDateDescendingCriteria);
@@ -87,8 +83,6 @@ public function run()
 **Example: `Criteria` accepting data input:**
 
 ```php
-<?php
-
 namespace App\Ship\Features\Criterias\Eloquent;
 
 use App\Ship\Parents\Criterias\Criteria;
@@ -114,8 +108,6 @@ class ThisUserCriteria extends Criteria
 **Example: Passing data from `Task` to `Criteria`:**
 
 ```php
-<?php
-
 public function run($user)
 {
     $this->accountRepository->pushCriteria(new ThisUserCriteria($user->id));

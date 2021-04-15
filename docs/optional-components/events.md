@@ -58,8 +58,6 @@ More details [here](https://laravel.com/docs/events).
 Before you can use events you need to add the `EventServiceProvider` to the `MainServiceProvider` of the Ship (if this has not been registered so far). See example below.
 
 ```
-<?php
-
 namespace App\Containers\Car\Providers;
 
 class MainServiceProvider extends MainProvider
@@ -86,8 +84,6 @@ In Laravel, you can create and register events in multiple way. Below is an exam
 Event Class Example:
 
 ```php
-<?php
-
 namespace App\Containers\AppSection\User\Events;
 
 use App\Containers\AppSection\User\Models\User;
@@ -126,8 +122,6 @@ To do this you will need to create a custom `EventServiceProvider` in your conta
 Your custom `EventServiceProvider` needs to be registered in the containers `MainServiceProvider` as well.
 
 ```
-<?php
-
 namespace App\Containers\Car\Providers;
 
 use App\Ship\Parents\Providers\MainProvider;
@@ -156,8 +150,6 @@ You can dispatch an Event from anywhere you want (ideally from Actions and Tasks
 
 Example: Dispatching the Event class from the example above
 ```php
-<?php
-
 // using helper function
 event(New UserEmailChangedEvent($user));
 

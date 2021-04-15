@@ -13,8 +13,6 @@ Requests help validating User data, accessibility, ownership and more can be add
 **Example Request with Validation rules:**
 
 ```php
-<?php
-
 namespace App\Containers\AppSection\User\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;

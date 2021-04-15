@@ -40,8 +40,6 @@ Apiato uses [this package](https://github.com/fireproofsocks/dto) for the DTO. R
 **Transporter class**
 
 ```php
-<?php
-
 namespace App\Containers\Authentication\Transporters;
 
 use App\Ship\Parents\Transporters\Transporter;

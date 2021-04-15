@@ -54,8 +54,6 @@ Read from the [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmo
 **Example: Update User Requests**
 
 ```php
-<?php
-
 namespace App\Containers\AppSection\User\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
@@ -99,8 +97,6 @@ class UpdateUserRequest extends Request
 **Usage from Controller:**
 
 ```php
-<?php
-
 public function handle(UpdateUserRequest $updateUserRequest)
 {
     $data = $updateUserRequest->all();
@@ -130,8 +126,6 @@ Thus, these IDs need to be Decoded somewhere, apiato has a property on its Reque
 Example:
 
 ```php
-<?php
-
 namespace App\Containers\Authorization\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
@@ -171,8 +165,6 @@ Laravel by default does not allow validating the URL parameters (`/stores/999/it
 Example:
 
 ```php
-<?php
-
 namespace App\Containers\Email\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
@@ -217,8 +209,6 @@ The `$access` property is used by the `hasAccess` function defined below in the 
 Example:
 
 ```php
-<?php
-
 namespace App\Containers\AppSection\User\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
@@ -273,9 +263,7 @@ The best way to add a custom authorize function is through a Trait, which can be
 
 The `isAuthor()` method, in turn, calls a Task to verify that the current user is an author (e.g., if the user has the proper `Role` assigned).
 
-```
-<?php
-namespace App\Containers\AppSection\User\Traits;
+```namespace App\Containers\AppSection\User\Traits;
 
 use Apiato\Core\Foundation\Facades\Apiato;
 
@@ -291,8 +279,6 @@ trait IsAuthorPermissionTrait
 
 Now, add the newly created Trait to the Request to use the `isAuthor` function in the authorization check.
 ```
-<?php
-
 namespace App\Containers\AppSection\User\UI\API\Requests;
 
 use App\Containers\AppSection\User\Traits\IsAuthorPermissionTrait;
@@ -387,9 +373,7 @@ b) partially update the respective resource
 
 Checking for the presence (or absence) of specific keys in the request typically results in huge `if` blocks, like so:
 
-```php
-<?php
-// ...
+```php// ...
 if($request->has('data.name')) {
    $data['name'] = $request->input('data.name'); // or use getInputByKey()
 }

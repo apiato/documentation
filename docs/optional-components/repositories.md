@@ -53,8 +53,6 @@ The Repository is used to separate the logic that retrieves the data and maps it
 **User `Repository`:**
 
 ```php
-<?php
-
 namespace App\Containers\AppSection\User\Data\Repositories;
 
 use App\Containers\AppSection\User\Contracts\UserRepositoryInterface;
@@ -73,8 +71,6 @@ class UserRepository extends Repository implements UserRepositoryInterface
 **Usage:**
 
 ```php
-<?php
-
 // paginate the data by 10
 $users = $userRepository->paginate(10);
 
@@ -95,8 +91,6 @@ Note: If the Repository belongs to Model with a name different from its Containe
 **Example:**
 
 ```php
-<?php
-
 namespace App\Containers\Authorization\Data\Repositories;
 
 use App\Ship\Parents\Repositories\Repository;
@@ -136,8 +130,6 @@ Continue reading to find more about those properties and what they do.
 apiato uses the `andersao/l5-repository` package, to provide a lot of powerful features to the repository class. such as
 
 ```php
-<?php
-
 	 // ...
 
     protected $cacheMinutes = 1440; // 1 day

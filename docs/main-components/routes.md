@@ -46,8 +46,6 @@ Read from the [**Porto SAP Documentation (#Routes)**](https://github.com/Mahmoud
 **Example: Endpoint to display a Hello View in the browser**
 
 ```php
-<?php
-
 $router->get('/hello', [
     'uses' => 'Controller@sayHello',
 ]);
@@ -60,8 +58,6 @@ In all the Web `Routes` files the `$router` variable is an instance of the defau
 **Example: User Login API Endpoint**
 
 ```php
-<?php
-
 $router->post('login', [
     'uses' => 'Controller@loginUser',
 ]);
@@ -70,8 +66,6 @@ $router->post('login', [
 **Example: Protected List All Users API Endpoint, for an API Routes file**
 
 ```php
-<?php
-
 $router->get('users', [
     'uses'       => 'Controller@listAllUsers',
     'middleware' => [

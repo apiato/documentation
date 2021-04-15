@@ -54,8 +54,6 @@ Commands:
 **Example: a simple Command**
 
 ```php
-<?php
-
 namespace App\Containers\Welcome\UI\CLI\Commands;
 
 use App\Ship\Parents\Commands\ConsoleCommand;

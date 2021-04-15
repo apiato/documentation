@@ -32,8 +32,6 @@ Read from the [**Porto SAP Documentation (#Models)**](https://github.com/Mahmoud
 ### Code Sample {#code-sample}
 
 ```php
-<?php
-
 namespace App\Containers\Demo\Models;
 
 use App\Ship\Parents\Models\Model;

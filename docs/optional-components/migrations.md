@@ -42,8 +42,6 @@ Migrations are the version control of your database. They are very useful for ge
 
 ```php
 
-<?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 

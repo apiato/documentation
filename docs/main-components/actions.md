@@ -31,8 +31,6 @@ Read the section in the  [**Porto SAP Documentation (#Actions)**](https://github
 **Delete User Action:**
 
 ```php
-<?php
-
 namespace App\Containers\AppSection\User\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
@@ -75,8 +73,6 @@ Injecting each Task in constructor and then using it below through its property 
 **Same Example using the `call` function:**
 
 ```php
-<?php
-
 namespace App\Containers\AppSection\User\Actions;
 
 use App\Containers\AppSection\User\Tasks\DeleteUserTask;
@@ -96,8 +92,6 @@ class DeleteUserAction extends Action
 **Example: Calling multiple Tasks:**
 
 ```php
-<?php
-
 namespace App\Containers\Email\Actions;
 
 use App\Containers\Xxx\Tasks\Sample111Task;

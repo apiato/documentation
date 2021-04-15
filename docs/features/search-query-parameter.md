@@ -7,8 +7,6 @@ Below we'll see how to set up a Search Query Parameter, on a Model:
 1. Add searchable Fields on the Model Repository, *all the other steps are normal steps* 
 
 ```php
-<?php
-
 namespace App\Containers\AppSection\User\Data\Repositories;
 
 use App\Containers\AppSection\User\Contracts\UserRepositoryInterface;
@@ -29,8 +27,6 @@ class UserRepository extends Repository implements UserRepositoryInterface
 2. Create basic list and search Task
 
 ```php
-<?php
-
 namespace App\Containers\AppSection\User\Tasks;
 
 use App\Containers\AppSection\User\Contracts\UserRepositoryInterface;
@@ -56,8 +52,6 @@ class ListUsersTask extends Action
 3. Create basic Action to call that basic Task, and maybe other Tasks later in the future when needed
 
 ```php
-<?php
-
 namespace App\Containers\AppSection\User\Actions;
 
 use App\Containers\AppSection\User\Tasks\ListUsersTask;
@@ -84,8 +78,6 @@ class ListAndSearchUsersAction extends Action
 4. Use the Action from a Controller
 
 ```php
-
-<?php
 
 public function listAllUsers()
 {

@@ -35,8 +35,6 @@ The `$endpoint = 'verb@uri';` property is where you define the endpoints you are
 **Example:**
 
 ```php
-<?php
-
 namespace App\Containers\AppSection\User\UI\API\Tests\Functional;
 
 use App\Containers\AppSection\User\Tests\TestCase;
@@ -105,8 +103,6 @@ test class. So when using `$user = $this->getTestingUser();` it will automatical
 you gave him.
 
 ```php
-<?php
-
     protected $access = [
         'roles'         => 'admin', // or   ['client', 'admin']
         'permissions'   => 'delete-users',
@@ -135,8 +131,6 @@ available for usage from every test class in your application.
 **Usage:**
 
 ```php
-<?php
-
 $response = $this->makeCall();
 
 $response = $this->makeCall([
@@ -160,8 +154,6 @@ $response = $this->endpoint('get@item/{id}')->injectId($user->id)->makeCall();
 **Usage:**
 
 ```php
-<?php
-
 $user = $this->getTestingUser();
 
 $user = $this->getTestingUser([

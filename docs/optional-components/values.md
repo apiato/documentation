@@ -34,8 +34,6 @@ We create Value Object when we need it to represent/serve/manipulate some data (
 ### Code Sample {#code-sample}
 
 ```php
-<?php
-
 use App\Ship\Parents\Values\Value;
 
 class Location extends Value

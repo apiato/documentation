@@ -75,8 +75,6 @@ In this example above only the `AuthServiceProvider` and `EventsServiceProvider`
 **Main Service Provider Example:**
 
 ```php
-<?php
-
 namespace App\Containers\Excel\Providers;
 
 use App\Ship\Parents\Providers\MainProvider;
@@ -129,8 +127,6 @@ No need to register the Main `Service Provider` anywhere, it will be automatical
 You MAY add as many Additional `Service Providers` as you want in a `Container`. However, in order to get them loaded in the framework you MUST register them all in the Main `Service Provider` as follows:
 
 ```php
-<?php
-
 private $containerServiceProviders = [
     AuthServiceProvider::class,
     EventsServiceProvider::class,

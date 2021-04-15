@@ -40,8 +40,6 @@ Read from the [**Porto SAP Documentation (#Controllers)**](https://github.com/Ma
 **User Web Welcome Controller:**
 
 ```php
-<?php
-
 class Controller extends PortWebController
 {
 
@@ -55,8 +53,6 @@ class Controller extends PortWebController
 **User API Login Controller:**
 
 ```php
-<?php
-
 class Controller extends ApiController
 {
 
@@ -99,8 +95,6 @@ Refer to the **Magical Call** page for more info and examples on how to use the 
 **Example: Usage from Routes Endpoint:**
 
 ```php
-<?php
-
 $router->post('login', [
     'uses' => 'Controller@loginUser',
 ]);
