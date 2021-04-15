@@ -19,69 +19,11 @@ title: Installation
 
 ## A) Apiato Application Installation {#App}
 
-**Apiato** can be installed automatically with Composer (recommended) or manually (with Git or direct download):
-
-### 1) Code Setup {#Code-setup}
-
-#### 1.A) Automatically via Composer {#App-Composer}
-
-1) Clone the repo, install dependencies and setup the project:
-
-Option 1: Latest [stable](https://github.com/apiato/apiato/releases/latest):
+### 1) Code Setup {#Code-Setup}
 
 ```shell
 composer create-project apiato/apiato my-api
 ```
-
-Option 2: On going [development](https://github.com/apiato/apiato/commits/master) branch "dev master" *(unstable)*:
-*This gives you features from the upcoming releases. But you need to keep syncing your project with the upstream master
-branch and running `composer install` when changes occurs.*
-
-```shell
-composer create-project apiato/apiato my-api --stability=dev
-```
-
-2) Edit your `.env` variables to match with your environment (Set Database credentials, App URL, ...).
-
-3) Continue from [2) Database Setup](#Setup-Database) below.
-
-#### 1.B) Manually {#App-Git}
-
-You can download the Code directly from the repository as `.ZIP` file or clone the repository using `Git` (recommended):
-
-1) Clone the repository using `Git`:
-
- ```shell
-git clone https://github.com/apiato/apiato.git
- ```
-
-> **Hint** <br/>
-> If using [Laradock](http://laradock.io/), you can run all the commands below from the `workspace` Container. <br/>
-> First you need to run the required tools by running `docker-compose up -d nginx mysql php-fpm workspace redis` from the Laradock folder _(of course you can add any other tools you need)_. <br/>
-> Then enter the  `workspace` Container by running `docker-compose exec workspace bash`. <br/>
-> For more details see the section **Using Docker (with Laradock)** below.
-
-2) Install all dependency packages (including Containers dependencies):
-
-```shell
-composer install
-```
-
-3) Create `.env` file and copy the content of `.env.example` inside it.
-
-```shell
-cp .env.example .env
-```
-
-*Check all the variables and edit whatever you want.*
-
-4) Generate a random key `APP_KEY`
-
-```shell
-php artisan key:generate
-```
-
-5) delete the `.git` folder from the root directory and initialize your own with `git init`.
 
 ### 2) Database Setup {#Setup-Detabase}
 
@@ -99,7 +41,7 @@ php artisan migrate
 php artisan db:seed
 ```
 
-3) Optional. By default. Apiato seeds a "Super User", given the default `admin` role (the role has no Permissions set
+3) Optional. By default, Apiato seeds a "Super User", given the default `admin` role (the role has no Permissions set
 to it).
 
 To give the `admin` role, access to all the seeded permissions in the system, run the following command, at any time.
@@ -119,27 +61,15 @@ php artisan passport:install
 
 ### 4) Documentation Setup {#Documentation}
 
-If you are planning to use ApiDoc JS then proceed with this setup, else skip this and use whatever you prefer:
-
 1) Install [ApiDocJs](http://apidocjs.com/) using NPM or your favorite dependencies manager:
 
 ```shell
 npm install
 ```
 
-Or install it alone by just running `npm install apidoc` on the root of the project, after checking the `package.json` file on the root.
-
 2) Run `php artisan apiato:apidoc`
 
-Behind the scene `apiato:apidoc` is executing a command like this
-
-```
-apidoc -c app/Containers/Documentation/ApiDocJs/public -f public.php -i app -o public/api/documentation
-```
-
-Alternatively you can generate a swagger doc from the apidoc comments, to do so run `php artisan apiato:swagger`.
-
-##### Visit [API Docs Generator](.././features/api-docs-generator) for more details.
+##### Visit [API Docs Generator](../features/api-docs-generator) for more details.
 
 ### 5) Testing Setup {#Testing}
 
@@ -162,43 +92,38 @@ We'll see how to use both tools and you can pick one, or you can use other optio
 
 > **Heads up!** <br/>
 > The ICANN has now officially approved `.dev` as a generic top level domain (gTLD). Therefore, it is **not** recommended
-> to use `.dev` domains anymore in your local development setup! Our docs have been changed to use `.test`
-> instead of `.dev`, however, you may change it to `.example`, or `.localhost` or whatever suits your needs. [Read more](http://www.faqs.org/rfcs/rfc2606.html).
+> to use `.dev` domains anymore in your local development setup! We use `.test`, however, you may change it to `.example`, or `.localhost` or whatever suits your needs. [Read more](http://www.faqs.org/rfcs/rfc2606.html).
 
 ### A.1) Using Docker (with Laradock) {#Using-Docker-With-Laradock}
 
-**Laradock** is a Docker PHP development environment. It facilitate running PHP Apps on Docker.
+**Laradock** is a Docker PHP development environment. It facilitates running PHP Apps on Docker.
 
-1) Install [Laradock](https://github.com/LaraDock/laradock#installation).
+Install [Laradock](https://github.com/LaraDock/laradock#installation).
 
-2) Navigate into the `laradock` directory:
+Navigate into the `laradock` directory:
 
 ```shell
 cd laradock
 ```
 This directory contains a `docker-compose.yml` file. (From the LaraDock project).
 
-2.1) If you haven't done so, rename `env-example` to `.env`.
+If you haven't done so, rename `env-example` to `.env`.
 
 ```shell
 cp env-example .env
 ```
 
-3) Run the Docker containers:
+Run the Docker containers:
 
 ```shell
 docker-compose up -d nginx mysql redis beanstalkd
 ```
 
-4) Make sure you are setting the `Docker IP` as `Host` for the `DB` and `Redis`  in your `.env` file.
+Make sure you are setting the `Docker IP` as `Host` for the `DB` and `Redis`  in your `.env` file.
 
-5) Add the domain to the Hosts file:
+Add the domain to the Hosts file: `/etc/hosts`. We'll be using `apiato.test` as local domain (you can change it if you want).
 
-5.1) Open the hosts file on your local machine `/etc/hosts`.
-
-*We'll be using `apiato.test` as local domain (you can change it if you want).*
-
-5.2) Map the domain and its subdomains to 127.0.0.1:
+Map the domain and its subdomains to 127.0.0.1:
 
 ```text
 127.0.0.1  apiato.test
@@ -212,15 +137,20 @@ in your server config file, is set to the following `apiato.test api.apiato.test
 
 ### A.2) Using Vagrant (with Laravel Homestead) {#Using-Vagrant-Using-Homestead}
 
-1) Configure Homestead:
+**Laravel Homestead** is installed by default. If you have removed homestead you can install it using  
+```shell
+composer require laravel/homestead --dev
+```  
+  
+#### Configure Homestead:
 
-1.1) Open the Homestead config file:
+Create the Homestead config file:
 
 ```shell
-homestead edit
+vendor/bin/homestead make
 ```
 
-1.2) Map the `api.apiato.test` domain to the project public directory - Example:
+Map the `api.apiato.test` domain to the project public directory - Example:
 
 ```text
 sites:
@@ -228,7 +158,7 @@ sites:
   	  to: /{full-path-to}/apiato/public
 ```
 
-1.3) You can also map other domains like `apiato.test` and `admin.apiato.test` to other web apps:
+You can also map other domains like `apiato.test` and `admin.apiato.test` to other web apps:
 
 ```text
 	- map: apiato.test
@@ -251,13 +181,13 @@ something like this:
       to: /{full-path-to}/apiato/public
 ```
 
-2) Add the domain to the Hosts file:
+#### Configure Hosts:
 
-2.1) Open the hosts file on your local machine `/etc/hosts`.
+Open the hosts file on your local machine `/etc/hosts`.
 
 *We'll be using `apiato.test` as local domain (you can change it if you want).*
 
-2.2) Map the domain and its subdomains to the Vagrant IP Address:
+Map the domain and its subdomains to the Vagrant IP Address:
 
 ```text
 192.168.10.10   apiato.test
@@ -269,7 +199,7 @@ If you're using NGINX or Apache, make sure the **server_name** (in case of NGINX
 in your server config file, is set to the following `apiato.test api.apiato.test admin.apiato.test`.
 *(Also don't forget to set your **root** or **DocumentRoot** to the public directory inside apiato `apiato/public`)*.
 
-2.3) Run the Virtual Machine:
+Run the Virtual Machine:
 
 ```shell
 homestead up --provision
@@ -287,17 +217,22 @@ If you're not into virtualization solutions, you can set up your environment dir
 
 Now let's see it in action
 
-1.a. Open your web browser and visit:
+Open your web browser and visit:
 
 - `http://apiato.test` You should see an HTML page, with `Apiato` in the middle.
-- `http://admin.apiato.test` You should see an HTML Login page.
+- `http://api.apiato.test` You should see a response like this:
+```json
+[
+"Welcome to Apiato"
+]
+```
 
-1.b. Open your HTTP client and call:
+Open your HTTP client and call:
 
 - `http://api.apiato.test/` You should see a JSON response with message: `"Welcome to apiato."`,
 - `http://api.apiato.test/v1` You should see a JSON response with message: `"Welcome to apiato (API V1)."`,
 
-2) Make some HTTP calls to the API:
+Make some HTTP calls to the API:
 
 *To make the calls you can use [Postman](https://www.getpostman.com/), [HTTPIE](https://github.com/jkbrzt/httpie) or
 any other tool you prefer.*
@@ -305,12 +240,13 @@ any other tool you prefer.*
 Let's test the (user registration) endpoint `http://api.apiato.test/v1/register ` with **cURL**:
 
 ```shell
-curl -X POST -H "Accept: application/json" -H "Cache-Control: no-cache" -F "email=John@Doe.me" -F "password=so-secret" -F "name=Mahmoud Zalt" "http://api.apiato.test/v1/register"
+curl -X POST -H "Accept: application/json" -H "Cache-Control: no-cache" -F "email=John@Doe.me" -F "password=so-secret" -F "name=John Doe" "http://api.apiato.test/v1/register"
 ```
 
-You should get response like this:
+You should get a response like this:
 
-```json
+Header:
+```text
 Access-Control-Allow-Origin → ...
 Cache-Control → ...
 Connection → keep-alive
@@ -323,36 +259,28 @@ Vary → Origin
 X-Powered-By → PHP/7.7.7
 X-RateLimit-Limit → 30
 X-RateLimit-Remaining → 29
-
+```
+Body:
+```json
 {
   "data": {
     "object": "User",
-    "id": 77,
+    "id": "7VgmkMw7rR2pWO5j",
     "name": "John Doe",
-    "email": "apiato@mail.com",
-    "confirmed": null,
-    "nickname": "Mega",
-    "gender": "male",
+    "email": "John@Doe.me",
+    "email_verified_at": null,
+    "gender": null,
     "birth": null,
-    "social_auth_provider": null,
-    "social_id": null,
-    "social_avatar": {
-      "avatar": null,
-      "original": null
-    },
-    "created_at": {
-      "date": "2017-04-05 16:17:26.000000",
-      "timezone_type": 3,
-      "timezone": "UTC"
-    },
-    "updated_at": {
-      "date": "2017-04-05 16:17:26.000000",
-      "timezone_type": 3,
-      "timezone": "UTC"
-    },
-    "roles": {
-      "data": []
-    }
+    "created_at": "2021-04-12T13:33:24.000000Z",
+    "updated_at": "2021-04-12T13:33:24.000000Z",
+    "readable_created_at": "1 second ago",
+    "readable_updated_at": "1 second ago"
+  },
+  "meta": {
+    "include": [
+      "roles"
+    ],
+    "custom": []
   }
 }
 ```
