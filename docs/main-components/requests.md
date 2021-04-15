@@ -126,7 +126,7 @@ Thus, these IDs need to be Decoded somewhere, apiato has a property on its Reque
 Example:
 
 ```php
-namespace App\Containers\Authorization\UI\API\Requests;
+namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 

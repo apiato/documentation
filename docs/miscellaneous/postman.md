@@ -29,8 +29,8 @@ php artisan apiato:permissions:toRole admin
 Be sure to copy and paste your new `client_id` and `client_secret` into the `.env` file. Like so...
 
 ```bash
-CLIENT_WEB_ADMIN_ID={CLIENT_ID}
-CLIENT_WEB_ADMIN_SECRET={CLIENT_SECRET}
+CLIENT_WEB_ID={CLIENT_ID}
+CLIENT_WEB_SECRET={CLIENT_SECRET}
 
 CLIENT_MOBILE_ADMIN_ID={CLIENT_ID}
 CLIENT_MOBILE_ADMIN_SECRET={CLIENT_SECRET}

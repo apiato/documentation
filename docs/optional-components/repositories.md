@@ -91,7 +91,7 @@ Note: If the Repository belongs to Model with a name different from its Containe
 **Example:**
 
 ```php
-namespace App\Containers\Authorization\Data\Repositories;
+namespace App\Containers\AppSection\Authorization\Data\Repositories;
 
 use App\Ship\Parents\Repositories\Repository;
 

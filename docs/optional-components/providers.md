@@ -159,7 +159,7 @@ In apiato those providers have been renamed and moved to the Ship Layer `app/Shi
 - EventsServiceProvider
 
 **VIP Note:** you should not touch those providers, instead you have to extend them from a containers providers in order to modify them.
-Example: the `app/Containers/Authentication/Providers/AuthProvider.php` is extending the `AuthServiceProvider` to modify it.
+Example: the `app/Containers/AppSection/Authentication/Providers/AuthProvider.php` is extending the `AuthServiceProvider` to modify it.
 
 Those providers are not auto registered by default, thus writing any code there will not be available, unless you extend them.
 Once extended the child Provider should be registered in its Container Main Provider, which makes its parent available.
