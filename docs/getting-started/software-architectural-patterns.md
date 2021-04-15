@@ -5,7 +5,7 @@ title: Software Architectural Patterns
 - [Porto](#porto)
   * [Introduction](#introduction)
   * [The Containers Layer](#porto-container-layer)
-    + [Create a new Container](#porto-new-containter)
+    * [Create a new Container](#porto-new-container)
       * [Option 1) Using the Code Generator](#porto-new-container-code-generator)
       * [Option 2) Manually](#porto-new-container-manually)
     + [Container Conventions](#containter-conventions)
