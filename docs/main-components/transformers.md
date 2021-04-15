@@ -151,7 +151,7 @@ namespace App\Containers\Account\UI\API\Transformers;
 use App\Ship\Parents\Transformers\Transformer;
 use App\Containers\Account\Models\Account;
 use App\Containers\Tag\Transformers\TagTransformer;
-use App\Containers\User\Transformers\UserTransformer;
+use App\Containers\AppSection\User\Transformers\UserTransformer;
 
 class AccountTransformer extends Transformer
 {

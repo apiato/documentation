@@ -33,10 +33,10 @@ Read the section in the  [**Porto SAP Documentation (#Actions)**](https://github
 ```php
 <?php
 
-namespace App\Containers\User\Actions;
+namespace App\Containers\AppSection\User\Actions;
 
 use Apiato\Core\Foundation\Facades\Apiato;
-use App\Containers\User\Models\User;
+use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Actions\Action;
 
 class CreateAdminAction extends Action
@@ -48,7 +48,7 @@ class CreateAdminAction extends Action
      * @param string $name
      * @param bool   $isClient
      *
-     * @return  \App\Containers\User\Models\User
+     * @return  \App\Containers\AppSection\User\Models\User
      */
     public function run(string $email, string $password, string $name, bool $isClient = false): User
     {
@@ -77,9 +77,9 @@ Injecting each Task in constructor and then using it below through its property 
 ```php
 <?php
 
-namespace App\Containers\User\Actions;
+namespace App\Containers\AppSection\User\Actions;
 
-use App\Containers\User\Tasks\DeleteUserTask;
+use App\Containers\AppSection\User\Tasks\DeleteUserTask;
 use App\Ship\Parents\Actions\Action;
 
 class DeleteUserAction extends Action

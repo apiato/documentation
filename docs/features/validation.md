@@ -15,7 +15,7 @@ Requests help validating User data, accessibility, ownership and more can be add
 ```php
 <?php
 
-namespace App\Containers\User\UI\API\Requests;
+namespace App\Containers\AppSection\User\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 

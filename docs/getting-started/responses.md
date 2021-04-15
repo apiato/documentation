@@ -131,7 +131,7 @@ response payload in 2 ways:
 `top level` resource key and does not affect the resource keys from `included` resources!
 2. Specify it on the respective `Model`. By overriding $resourceKey, (`protected $resourceKey = 'FooBar';`).
 If no `$resourceKey` is defined at the `Model`, the `ShortClassName` is used as key. For example, the `ShortClassName` of
-the `App\Containers\User\Models\User::class` is `User`.
+the `App\Containers\AppSection\User\Models\User::class` is `User`.
 
 ### Error Responses formats {#error-response-formats}
 

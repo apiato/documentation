@@ -44,7 +44,7 @@ Factories are mainly used from Tests.
 <?php
 
 // User
-$factory->define(App\Containers\User\Models\User::class, function (Faker\Generator $faker) {
+$factory->define(App\Containers\AppSection\User\Models\User::class, function (Faker\Generator $faker) {
     return [
         'name'     => $faker->name,
         'email'    => $faker->email,

@@ -32,7 +32,7 @@ Authorization in apiato is very simple and easy.
 ```php
 <?php
 
-namespace App\Containers\User\UI\API\Requests;
+namespace App\Containers\AppSection\User\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 

@@ -88,9 +88,9 @@ Event Class Example:
 ```php
 <?php
 
-namespace App\Containers\User\Events;
+namespace App\Containers\AppSection\User\Events;
 
-use App\Containers\User\Models\User;
+use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Events\Event;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Queue\ShouldQueue;

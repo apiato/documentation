@@ -37,9 +37,9 @@ The `$endpoint = 'verb@uri';` property is where you define the endpoints you are
 ```php
 <?php
 
-namespace App\Containers\User\UI\API\Tests\Functional;
+namespace App\Containers\AppSection\User\UI\API\Tests\Functional;
 
-use App\Containers\User\Tests\TestCase;
+use App\Containers\AppSection\User\Tests\TestCase;
 
 class RegisterUserTest extends TestCase
 {

@@ -56,9 +56,9 @@ For more details refer to this [link](https://laravel.com/docs/mail).
 ```php
 <?php
 
-namespace App\Containers\User\Mails;
+namespace App\Containers\AppSection\User\Mails;
 
-use App\Containers\User\Models\User;
+use App\Containers\AppSection\User\Models\User;
 use Illuminate\Bus\Queueable;
 use App\Ship\Parents\Mails\Mail;
 use Illuminate\Contracts\Queue\ShouldQueue;

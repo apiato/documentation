@@ -9,9 +9,9 @@ Below we'll see how to set up a Search Query Parameter, on a Model:
 ```php
 <?php
 
-namespace App\Containers\User\Data\Repositories;
+namespace App\Containers\AppSection\User\Data\Repositories;
 
-use App\Containers\User\Contracts\UserRepositoryInterface;
+use App\Containers\AppSection\User\Contracts\UserRepositoryInterface;
 use App\Ship\Parents\Repositories\Repository;
 
 class UserRepository extends Repository implements UserRepositoryInterface
@@ -31,9 +31,9 @@ class UserRepository extends Repository implements UserRepositoryInterface
 ```php
 <?php
 
-namespace App\Containers\User\Tasks;
+namespace App\Containers\AppSection\User\Tasks;
 
-use App\Containers\User\Contracts\UserRepositoryInterface;
+use App\Containers\AppSection\User\Contracts\UserRepositoryInterface;
 use App\Port\Action\Abstracts\Action;
 
 class ListUsersTask extends Action
@@ -58,9 +58,9 @@ class ListUsersTask extends Action
 ```php
 <?php
 
-namespace App\Containers\User\Actions;
+namespace App\Containers\AppSection\User\Actions;
 
-use App\Containers\User\Tasks\ListUsersTask;
+use App\Containers\AppSection\User\Tasks\ListUsersTask;
 use App\Port\Action\Abstracts\Action;
 
 class ListAndSearchUsersAction extends Action

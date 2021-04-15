@@ -55,10 +55,10 @@ The Repository is used to separate the logic that retrieves the data and maps it
 ```php
 <?php
 
-namespace App\Containers\User\Data\Repositories;
+namespace App\Containers\AppSection\User\Data\Repositories;
 
-use App\Containers\User\Contracts\UserRepositoryInterface;
-use App\Containers\User\Models\User;
+use App\Containers\AppSection\User\Contracts\UserRepositoryInterface;
+use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Repositories\Repository;
 
 class UserRepository extends Repository implements UserRepositoryInterface

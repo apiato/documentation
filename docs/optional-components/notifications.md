@@ -53,9 +53,9 @@ For more details refer to this [link](https://laravel.com/docs/notifications).
 ```php
 <?php
 
-namespace App\Containers\User\Notifications;
+namespace App\Containers\AppSection\User\Notifications;
 
-use App\Containers\User\Models\User;
+use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Notifications\Notification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;

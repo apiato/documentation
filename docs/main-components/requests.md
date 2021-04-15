@@ -56,7 +56,7 @@ Read from the [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmo
 ```php
 <?php
 
-namespace App\Containers\User\UI\API\Requests;
+namespace App\Containers\AppSection\User\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
@@ -219,7 +219,7 @@ Example:
 ```php
 <?php
 
-namespace App\Containers\User\UI\API\Requests;
+namespace App\Containers\AppSection\User\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
@@ -275,7 +275,7 @@ The `isAuthor()` method, in turn, calls a Task to verify that the current user i
 
 ```
 <?php
-namespace App\Containers\User\Traits;
+namespace App\Containers\AppSection\User\Traits;
 
 use Apiato\Core\Foundation\Facades\Apiato;
 
@@ -293,9 +293,9 @@ Now, add the newly created Trait to the Request to use the `isAuthor` function i
 ```
 <?php
 
-namespace App\Containers\User\UI\API\Requests;
+namespace App\Containers\AppSection\User\UI\API\Requests;
 
-use App\Containers\User\Traits\IsAuthorPermissionTrait;
+use App\Containers\AppSection\User\Traits\IsAuthorPermissionTrait;
 use App\Ship\Parents\Requests\Request;
 
 class FindUserByIdRequest extends Request

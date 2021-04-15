@@ -61,7 +61,7 @@ class Controller extends ApiController
 {
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\RegisterUserRequest $request
+     * @param \App\Containers\AppSection\User\UI\API\Requests\RegisterUserRequest $request
      *
      * @return  mixed
      */
@@ -73,7 +73,7 @@ class Controller extends ApiController
     }
 
     /**
-     * @param \App\Containers\User\UI\API\Requests\DeleteUserRequest $request
+     * @param \App\Containers\AppSection\User\UI\API\Requests\DeleteUserRequest $request
      *
      * @return  \Illuminate\Http\JsonResponse
      */

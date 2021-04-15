@@ -37,9 +37,9 @@ Read from the [**Porto SAP Documentation (#Tasks)**](https://github.com/Mahmoudz
 ```php
 <?php
 
-namespace App\Containers\User\Tasks;
+namespace App\Containers\AppSection\User\Tasks;
 
-use App\Containers\User\Contracts\UserRepositoryInterface;
+use App\Containers\AppSection\User\Contracts\UserRepositoryInterface;
 use App\Ship\Parents\Tasks\Task;
 use Exception;
 
@@ -75,7 +75,7 @@ namespace App\Containers\Email\Actions;
 
 use App\Containers\Email\Tasks\ConfirmUserEmailTask;
 use App\Containers\Email\Tasks\ValidateConfirmationCodeTask;
-use App\Containers\User\Tasks\FindUserByIdTask;
+use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
 use App\Ship\Parents\Actions\Action;
 
 class ValidateUserEmailByConfirmationCodeAction extends Action

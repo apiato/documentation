@@ -43,7 +43,7 @@ Read from the [**Porto SAP Documentation (#Exceptions)**](https://github.com/Mah
 ```php
 <?php
 
-namespace App\Containers\User\Exceptions;
+namespace App\Containers\AppSection\User\Exceptions;
 
 use App\Ship\Parents\Exceptions\Exception;
 use Symfony\Component\HttpFoundation\Response;
