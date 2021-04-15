@@ -20,7 +20,7 @@ curl --request POST \
   --url http://api.apiato.test/v1/register \
   --header 'accept: application/json' \
   --header 'content-type: application/x-www-form-urlencoded' \
-  --data 'email=apiato%40mail.com1&password=password&name=John%20Doe'
+  --data 'email=john%40doe.com&password=password&name=John%20Doe'
 ```
 
 **Registration response:**
@@ -31,24 +31,20 @@ curl --request POST \
     "object": "User",
     "id": "XbPW7awNkzl83LD6",
     "name": "John Doe",
-    "email": "apiato@mail.com",
-    "confirmed": null,
-    "nickname": "Mega",
-    "gender": "male",
+    "email": "john@doe.com",
+    "email_verified_at": null,
+    "gender": null,
     "birth": null,
-    "social_auth_provider": null,
-    "social_id": null,
-    "social_avatar": {
-      "avatar": null,
-      "original": null
-    },
-    "created_at": "2021-03-24T15:02:56.000000Z",
-    "updated_at": "2021-03-24T15:02:56.000000Z",
-    "readable_created_at": "19 seconds ago",
-    "readable_updated_at": "19 seconds ago"
-    "roles": {
-      "data": []
-    }
+    "created_at": "2021-04-15T14:17:24.000000Z",
+    "updated_at": "2021-04-15T14:17:24.000000Z",
+    "readable_created_at": "1 second ago",
+    "readable_updated_at": "1 second ago"
+  },
+  "meta": {
+    "include": [
+      "roles"
+    ],
+    "custom": []
   }
 }
 ```
@@ -62,9 +58,9 @@ client_id => your_client_id
 client_secret => your_client_secret
 ```
 
-For Third-Party Clients you must have client ID and secret first. You can generate them by creating new client in your app using Laravel Passport.
+For third-party clients you must have client ID and secret first. You can generate them by creating new client in your app using Laravel Passport.
 
-For First-Party Clients you can use a proxy to add those fields on requests coming from your trusted client. For an example on how to do it look at `ProxyLoginForAdminWebClientAction` Action in Authentication Container.
+For first-party clients you can use a proxy to add those fields on requests coming from your trusted client. For an example on how to do it look at `ProxyLoginForWebClientAction` Action in Authentication Container.
 
 ### Register users by Social Account {#register-users-by-social-account}
 
