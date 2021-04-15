@@ -47,6 +47,11 @@ By default, Apiato uses `DataArraySerializer`. Below is an example of the respon
     ...
   ],
   "meta": {
+    "include": [ // what can be included
+      "xxx",
+      "yyy"
+    ],
+    "custom": [],
     "pagination": {
       "total": 999,
       "count": 999,
@@ -57,12 +62,7 @@ By default, Apiato uses `DataArraySerializer`. Below is an example of the respon
         "next": "http://api.apiato.test/v1/accounts?page=999"
       }
     }
-  },
-  "include": [ // what can be included
-    "xxx",
-    "yyy"
-  ],
-  "custom": []
+  }
 }
 ```
 
@@ -73,7 +73,12 @@ When data is paginated the response payload will contain a `meta` description ab
 ```json
 {
   "meta": {
-    "pagination": {
+    "include": [
+      "xxx",
+      "yyy"
+    ],
+    "custom": [],
+    "pagination": { // pagination meta
       "total": 999,
       "count": 999,
       "per_page": 999,
@@ -83,12 +88,7 @@ When data is paginated the response payload will contain a `meta` description ab
         "next": "http://api.apiato.test/v1/accounts?page=999"
       }
     }
-  },
-  "include": [ // what can be included
-    "xxx",
-    "yyy"
-  ],
-  "custom": []
+  }
 }
 ```
 
@@ -96,7 +96,7 @@ When data is paginated the response payload will contain a `meta` description ab
 
 Informs the User about what relationships can be included in the response. Example: `?include=tags,user`
 
-For more details read the `Relationships` section in the [Query Parameters](.././features/query-parameters) page.
+For more details read the `Relationships` section in the [Query Parameters](../features/query-parameters#relationships-include) page.
 
 ### Change the default Response payload: {#change-default-response-payload}
 
@@ -135,14 +135,9 @@ response payload in 2 ways:
 If no `$resourceKey` is defined at the `Model`, the `ShortClassName` is used as key. For example, the `ShortClassName` of
 the `App\Containers\User\Models\User::class` is `User`.
 
-#### For DataArraySerializer. {#resource-keys-for-data-array-serializer}
-
-By default, the `object` keyword is used as a resource key for each response, and it's set manually in each transformer,
-*to be automated later*.
-
 ### Error Responses formats {#error-response-formats}
 
-Visit each feature, example the Authentication and there you will see how an unauthenticated response looks like, same
+Visit each feature, e.g. the Authentication and there you will see how an unauthenticated response looks like, same
 for Authorization, Validation and so on.
 
 ## Building a Responses from the Controller: {#building-response-from-controller}
