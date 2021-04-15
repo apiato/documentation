@@ -17,7 +17,7 @@ title: Conventions and Principles
 
 ### Naming Conventions for Routes & Actions {#naming-conventions-for-routes-and-actions}
 
-- **GetAllResource**: to fetch all resources. You can apply `?search` query parameter to filter data.
+- **GetAllResource**: to fetch all resources.
 - **FindResourceByID**: to search for single resource by its unique identifier.
 - **CreateResource**: to create a new resource.
 - **UpdateResource**: to update/edit existing resource.
