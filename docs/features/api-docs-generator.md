@@ -33,7 +33,7 @@ to modify its code you need to read [the instructions](#documentation-customizat
 - Install the [ApiDocJs](http://apidocjs.com/) tool, the project directory
     - (`npm install apidoc`)
 
-- (Recommended) read the [Routes](.././main-components/routes) page first.
+- (Recommended) read the [Routes](../main-components/routes) page first.
 
 ## Usage {#usage}
 

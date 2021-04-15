@@ -30,7 +30,7 @@ More details [here](https://laravel.com/docs/master/scheduling#introduction).
 
 First you need to create some commands, that needs to be scheduled.
 They can be created in the Containers `(app/Containers/{container-name}/UI/CLI/Commands)` or in the Ship (`app/Ship/Commands`).
-See the [Commands Page](.././optional-components/commands).
+See the [Commands Page](../optional-components/commands).
 
 Once you have your command ready, go to `app/Ship/Kernels/ConsoleKernel.php` and start adding the commands you need
 to schedule inside the `schedule` function.

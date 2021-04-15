@@ -93,4 +93,4 @@ use App\Containers\{container-name}\Tests\TestCase;
 
 ```
 
-> See the [Tests Helpers](.././miscellaneous/tests-helpers) Page
+> See the [Tests Helpers](../miscellaneous/tests-helpers) Page

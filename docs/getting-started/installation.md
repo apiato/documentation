@@ -211,7 +211,7 @@ try running this command `homestead halt && homestead up --provision`.*
 ### A.3) Using anything else {#Using-anything-else}
 
 If you're not into virtualization solutions, you can set up your environment directly on your machine. Check the
-[software's requirements list](.././).
+[software's requirements list](../).
 
 ## C) Let's Play {#Play}
 

@@ -88,7 +88,7 @@ Providers, inside the `$serviceProviders` and `$aliases` properties. However, so
 Aliases (application features used by all containers) CAN be registered on the Ship layer in
 `app/Ship/Providers/ShipProvider.php` inside the `$serviceProviders` and `$aliases` properties.
 
-Refer to the [Providers](.././optional-components/providers) page for more details.
+Refer to the [Providers](../optional-components/providers) page for more details.
 
 > **Important Information**: Laravel 5.5 introduces an `auto-discovery` feature that lets you automatically register
 `ServiceProviders`. Due to the nature and structure of Apiato applications, this features **is turned off**, because

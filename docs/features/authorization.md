@@ -63,7 +63,7 @@ class DeleteUserRequest extends Request
 
 ```
 
-**For detailed explanation of this example, please visit the [Requests](.././main-components/requests) Page.**
+**For detailed explanation of this example, please visit the [Requests](../main-components/requests) Page.**
 
 ## Responses {#responses}
 
@@ -79,7 +79,7 @@ class DeleteUserRequest extends Request
 
 ## Assign Roles & Permission to the Testing User {#assign-roles-permission-to-the-testing-user}
 
-You will need to set `$access` property in your test class, check out the [Tests Helpers](.././miscellaneous/tests-helpers) page for more details.
+You will need to set `$access` property in your test class, check out the [Tests Helpers](../miscellaneous/tests-helpers) page for more details.
 
 ## Seeding some users (Admins) {#seeding-some-users-admins}
 

@@ -241,7 +241,7 @@ Include relationships for complex data structures.
 Get an object with its relationships:
 
 For this to work, your `Transformer` should have the relationships defined on it.
-*Check the [Transformers](.././main-components/transformers) for more details on how to define such relationships.*
+*Check the [Transformers](../main-components/transformers) for more details on how to define such relationships.*
 
 You can include such relationships by adding the `include` query parameter with comma `,` separated names, like so:
 
@@ -290,7 +290,7 @@ Every Transformer can have 2 types of includes `$availableIncludes` and `$defaul
 
 `$defaultIncludes` will not be listed in the response, only the `$availableIncludes` will be.
 
-Visit the [Transformers](.././main-components/transformers) page for more details.
+Visit the [Transformers](../main-components/transformers) page for more details.
 
 *(provided by the Fractal Transformer)*
 
