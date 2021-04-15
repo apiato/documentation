@@ -24,7 +24,7 @@ To tell the web server that you are posting JSON-formatted payload (`{name : 'Jo
 include `Content-Type = application/json` in the request header.
 
 *(you may wish return Json data in this case as well, you can do so by changing the response serializer from
-`DataArraySerializer` to `JsonApiSerializer`, more about that in the response page).*
+`DataArraySerializer` to `JsonApiSerializer`, more about that in the [response page](./responses)).*
 
 ## HTTP Request Headers {#http-request-headers}
 
