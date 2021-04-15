@@ -7,7 +7,6 @@ title: Code Generator
 - [Demo](#demo)
 - [Custom Code Stubs](#custom-code-stubs)
 - [Contributing](#contributing)
-- [For AngularJS 2 Users](#for-angularjs-users)
 
 ## Introduction {#introduction}
 
@@ -18,19 +17,24 @@ Apiato code generator works the same way. In addition, it can generate a full Co
 
 ## Available Code Generator Commands {#available-code-generator-commands}
 
-To see the list of code generators type `php artisan`.
+To see the list of code generators type `php artisan` and look for `apiato`.
 
-```
+``` text
   apiato:generate:container        Create a Container for apiato from scratch
-  apiato:generate:action           Create a Action file for a Container
+  apiato:generate:action           Create an Action file for a Container
   apiato:generate:configuration    Create a Configuration file for a Container
+  apiato:generate:container:api    Create a Container for apiato from scratch (API Part)
+  apiato:generate:container:web    Create a Container for apiato from scratch (WEB Part)
   apiato:generate:controller       Create a controller for a container
+  apiato:generate:event            Create a new Event class and its corresponding Handler
+  apiato:generate:eventhandler     Create a new EventHandler class
   apiato:generate:exception        Create a new Exception class
   apiato:generate:job              Create a new Job class
   apiato:generate:mail             Create a new Mail class
   apiato:generate:migration        Create an "empty" migration file for a Container
   apiato:generate:model            Create a new Model class
   apiato:generate:notification     Create a new Notification class
+  apiato:generate:readme           Create a README file for a Container
   apiato:generate:repository       Create a new Repository class
   apiato:generate:request          Create a new Request class
   apiato:generate:route            Create a new Route class
@@ -38,8 +42,11 @@ To see the list of code generators type `php artisan`.
   apiato:generate:serviceprovider  Create a ServiceProvider for a Container
   apiato:generate:subaction        Create a new SubAction class
   apiato:generate:task             Create a Task file for a Container
+  apiato:generate:test:functional  Create a Functional Test file.
+  apiato:generate:test:testcase    Create the TestCase file.
+  apiato:generate:test:unit        Create a Unit Test file.
   apiato:generate:transformer      Create a new Transformer class for a given Model
-
+  apiato:generate:value            Create a new Value class
 ```
 
 To get more info about each command, add `--help` to the command. Example: `php artisan apiato:generate:route --help`. The help page shows all options, which can be directly passed to the command.
@@ -47,21 +54,58 @@ To get more info about each command, add `--help` to the command. Example: `php 
 If you do not provide respective information via the command line options, a wizard will be displayed to guide you through.
 
 For example, you can directly call `php artisan apiato:generate:controller --file=UserController` to directly specify the class
-to be generated. The wizard, however, will ask you for the `--container` as well.
+to be generated. The wizard, however, will ask you for the `--section` and `--container` as well.
 
-Note that **all** generators automatically inherit the options `--container` and `--file` (these are documented
+Note that **all** generators automatically inherit the options `--section`, `--container` and `--file` (these are documented
 as well in the help page). Furthermore, a generator may have specific options as well (e.g., the `--ui` (user-interface)
 to generate something for).
 
 ## Demo {#demo}
 
 #### Generating a Route (endpoint) file: {#generating-a-route-endpoint-file}
+```text
+$ php artisan apiato:generate:route
 
-![](../assets/img/generate-route-demo.png)
+ Enter the name of the Section [AppSection]:
+ >
+
+ Enter the name of the Container:
+ > Car
+
+ Enter the name of the Route file [DefaultRoute]:
+ > CreateCar
+
+> Generating (CreateCar) in (AppSection:Car) Container.
+
+ Select the UI for the controller [API]:
+  [0] API
+  [1] WEB
+ > 0
+
+ Enter the endpoint version (integer)[1]:
+ > 1
+
+ Select the type for this endpoint?[private]:
+  [0] private
+  [1] public
+ > 1
+
+ Enter the name of the controller function that needs to be invoked when calling this endpoint:
+ > createNewCar
+
+ Enter the HTTP verb of this endpoint (GET, POST,...):
+ > POST
+
+ Enter the endpoint URI (foo/bar/{id}):
+ > cars
+
+Route generated successfully.
+
+```
 
 #### Result {#result}
 
-![](../assets/img/generated-route-demo.png)
+`CreateCar.v1.public.php` file will be created in `App\Containers\AppSection\Car\UI\API\Routes\`
 
 ## Custom Code Stubs (aka. Customizing the Generator) {#custom-code-stubs}
 
@@ -79,7 +123,3 @@ this would read your specific `config.stub` file instead the pre-defined one!
 ## Contributing {#contributing}
 
 If you would like to add your own generators, please check out the [Contribution Guide](../general/contribution-guide).
-
-## For AngularJS 2 Users {#for-angularjs-users}
-
-Checkout this awesome [CRUD Containers generator package](https://github.com/llstarscreamll/Crud) for Angular 2.4+.
