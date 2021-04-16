@@ -16,7 +16,7 @@ title: Query Parameters
 - [Pagination](#pagination)
 - [Limit](#limit)
 - [Relationships (include)](#relationships-include)
-- [Caching skipping](#caching-skipping)
+- [Skip caching](#skip-caching)
 - [Configuration](#configuration)
 - [See the Query parameters from the User Developer perspective](#see-the-query-parameters-from-the-user-developer-perspective)
 - [More Information](#more-information)
@@ -319,7 +319,7 @@ Every Transformer can have 2 types of includes `$availableIncludes` and `$defaul
 
 Visit the [Transformers](../main-components/transformers) page for more details.
 
-## Caching skipping {#caching-skipping}
+## Skip caching {#skip-caching}
 *(provided by the [L5 Repository](https://github.com/andersao/l5-repository))*
 
 Note: You need to turn the Eloquent Query Caching ON for this feature to work. `ELOQUENT_QUERY_CACHE=true` in `.env`.
