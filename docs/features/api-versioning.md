@@ -5,7 +5,7 @@ title: API Versioning
 - [How it works](#how-it-works)
 - [Versioning API in header instead of URL](#version-the-api-in-header-instead-of-url)
 
-Since Laravel does not support API versioning, **apiato** provide a very easy way to implement versioning for your API.
+Since Laravel does not support API versioning, Apiato provide a very easy way to implement versioning for your API.
 
 ### How it works {#how-it-works}
 
