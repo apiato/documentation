@@ -2,27 +2,42 @@
 title: Pagination
 ---
 
-- [Change the default pagination limit](#change-the-default-pagination-limit)
 - [Limit](#limit)
+- [Change the default pagination limit](#change-the-default-pagination-limit)
 - [Skip the Pagination Limit](#skip-the-pagination-limit)
 
 For pagination apiato uses the [L5 Repository Package](https://packagist.org/packages/prettus/l5-repository) and the
 pagination gets applied whenever you use the `paginate` function on any model repository
 (example: `$stores = $this->storeRepository->paginate();`).
 
-## Change the default pagination limit {#change-the-default-pagination-limit}
+`?page=` parameter can be applied to any **`GET`** HTTP request responsible for listing records (mainly for Paginated data).
 
-Open the `.env` file and set a number for `PAGINATION_LIMIT_DEFAULT`:
+**Usage:**
 
-```env
-PAGINATION_LIMIT_DEFAULT=10
+```
+api.domain.test/endpoint?page=200
 ```
 
-This is used in the `config/repository.php` which is the config file of the **L5 Repository** Package.
+*Pagination object is always returned in **meta** when pagination is available on the endpoint.*
 
-## Limit {#limit}
+```shell
+  "data": [...],
+  "meta": {
+    "pagination": {
+      "total": 2000,
+      "count": 30,
+      "per_page": 30,
+      "current_page": 22,
+      "total_pages": 1111,
+      "links": {
+        "previous": "http://api.domain.test/endpoint?page=21"
+      }
+    }
+  }
+```
+### Limit {#limit}
 
-The `?limit=` parameter can be applied to define, how many results should be returned on one page (see also `Pagination`!).
+The `?limit=` parameter can be applied to define, how many results should be returned on one page (also see [Pagination](../features/query-parameters#pagination)).
 
 **Usage:**
 
@@ -42,10 +57,21 @@ you can manually override the `$allowDisablePagination` property in your specifi
 get all data (with no pagination applied) by requesting `api.domain.test/endpoint?limit=0`. This will return all matching
 entities.
 
-## Skip the Pagination Limit {#skip-the-pagination-limit}
+### Change the default pagination limit {#change-the-default-pagination-limit}
 
-You can allow developers to skip the pagination limit as follows:
+Open the `.env` file and set a number for `PAGINATION_LIMIT_DEFAULT`:
 
-First, you need to enable that feature from the server by setting `PAGINATION_SKIP` to `true` (`PAGINATION_SKIP=true`).
+```env
+PAGINATION_LIMIT_DEFAULT=10
+```
 
-Second, inform the developers (users) to pass `?limit=0` with the request they wish to get all it's data un-paginated.
+This is used in the `config/repository.php` which is the config file of the **L5 Repository** Package.
+
+### Skip the Pagination Limit {#skip-the-pagination-limit}
+
+In order to allow clients to request all data that matches their criteria (e.g. search-criteria) and disable pagination,
+you can set `PAGINATION_SKIP=true` in `.env` file.
+A request can then get all data (with no pagination applied) by applying `limit=0`.  
+
+This will return all matching entities:  
+`api.domain.test/endpoint?limit=0`
