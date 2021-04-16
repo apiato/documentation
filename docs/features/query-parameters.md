@@ -4,17 +4,18 @@ title: Query Parameters
 
 - [Sorting & Ordering](#sorting-ordering)
 - [Using the RequestCriteria](#using-the-request-criteria)
-    - [Searching](#searching)
-        - [Search any field for multiple keywords](#search-any-field-for-multiple-keywords)
-        - [Search in a specific field](#search-in-a-specific-field)
-        - [Search in specific fields for multiple keywords](#search-in-specific-fields-for-multiple-keywords)
-        - [Define query condition](#define-query-condition)
-        - [Define search fields for search](#define-search-fields-for-search)
-        - [Define the query condition for search](#define-the-query-condition-for-search)
-        - [Search Join](#search-join)
-    - [Filtering](#filtering)
+  - [Searching](#searching)
+    - [Search any field for multiple keywords](#search-any-field-for-multiple-keywords)
+    - [Search in a specific field](#search-in-a-specific-field)
+    - [Search in specific fields for multiple keywords](#search-in-specific-fields-for-multiple-keywords)
+    - [Define query condition](#define-query-condition)
+    - [Define search fields for search](#define-search-fields-for-search)
+    - [Define the query condition for search](#define-the-query-condition-for-search)
+    - [Search Join](#search-join)
+  - [Filtering](#filtering)
 - [Pagination](#pagination)
-- [Limit](#limit)
+  - [Limit](#limit)
+  - [Skip the Pagination Limit](#skip-the-pagination-limit)
 - [Relationships (include)](#relationships-include)
 - [Skip caching](#skip-caching)
 - [Configuration](#configuration)
@@ -218,53 +219,7 @@ of the object.
 ## Pagination {#pagination}
 *(provided by the [L5 Repository](https://github.com/andersao/l5-repository))*
 
-`?page=` parameter can be applied to any **`GET`** HTTP request responsible for listing records (mainly for Paginated data).
-
-**Usage:**
-
-```
-api.domain.test/endpoint?page=200
-```
-
-*Pagination object is always returned in **meta** when pagination is available on the endpoint.*
-
-```shell
-  "data": [...],
-  "meta": {
-    "pagination": {
-      "total": 2000,
-      "count": 30,
-      "per_page": 30,
-      "current_page": 22,
-      "total_pages": 1111,
-      "links": {
-        "previous": "http://api.domain.test/endpoint?page=21"
-      }
-    }
-  }
-```
-
-## Limit {#limit}
-
-`?limit=` parameter can be applied to define, how many results should be returned on one page (see also `Pagination`!).
-
-**Usage:**
-
-```
-api.domain.test/endpoint?limit=100
-```
-
-This would return 100 resources within one page of the result. Of course, the `limit` and `page` query parameter can be
-combined in order to get the next 100 resources:
-
-```
-api.domain.test/endpoint?limit=100&page=2
-```
-
-In order to allow clients to request all data that matches their criteria (e.g. search-criteria) and disable pagination,
-you can set `PAGINATION_SKIP=true` in your project `.env`.
-A request can then get all data (with no pagination applied) by requesting `api.domain.test/endpoint?limit=0`.
-This will return all matching entities.
+See [Pagination](pagination).
 
 ## Relationships (include) {#relationships-include}
 *(provided by the [Fractal Transformer](https://fractal.thephpleague.com/transformers/))*
