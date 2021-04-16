@@ -102,11 +102,11 @@ php artisan apiato:apidoc
 
 - Public (external) API at [http://apiato.test/api/documentation/](http://apiato.test/api/documentation/).
 
-![](../assets/img/public-api-doc.png)
+![](../../assets/img/public-api-doc.png)
 
 - Private (internal) API at [http://apiato.test/api/private/documentation/](http://apiato.test/api/private/documentation/).
 
-![](../assets/img/private-api-doc.png)
+![](../../assets/img/private-api-doc.png)
 
 **NOTE:** Every time you change the DocBlock of a Route file you need to run the `apiato:apidoc` command, to regenerate.
 

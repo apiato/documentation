@@ -18,26 +18,47 @@ module.exports = {
       label: 'Core Features',
       items: [
         'core-features/code-generator',
-        'core-features/api-docs-generator',
         'core-features/authentication',
         'core-features/authorization',
         'core-features/user-registration',
-        'core-features/social-authentication',
         'core-features/query-parameters',
         'core-features/default-endpoints',
         'core-features/hash-id',
-        'core-features/localization',
         'core-features/rate-limiting',
-        'core-features/requests-monitor',
         'core-features/data-caching',
         'core-features/pagination',
-        'core-features/payments',
-        'core-features/system-settings',
         'core-features/api-versioning',
         'core-features/validation',
         'core-features/etag',
         'core-features/useful-commands',
         'core-features/profiler'
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Additional Features',
+      items: [
+        'additional-features/overview',
+        'additional-features/container-installer',
+        {
+          'Apiato Containers': [
+            'additional-features/apiato-containers/api-docs-generator',
+            'additional-features/apiato-containers/requests-monitor',
+            'additional-features/apiato-containers/social-authentication',
+            'additional-features/apiato-containers/localization',
+            'additional-features/apiato-containers/payments',
+            'additional-features/apiato-containers/system-settings',
+          ],
+        },
+        {
+          'Community Containers': [
+            {
+              type: 'link',
+              label: 'Example Container',
+              href: 'https://github.com/johannesschobel/apiato-null'
+            },
+          ],
+        }
       ],
     },
     {
