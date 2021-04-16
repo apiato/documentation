@@ -9,7 +9,7 @@ You can see list of all commands, by typing `php artisan` and look for **Apiato*
 
 ### Available Commands {#available-commands}
   - `php artisan apiato`                           Display the current Apiato version.
-  - `php artisan apiato:apidoc`                    Generate API Documentations with apidoc from your routes Docblock. [More details](../core-features/documentation).
+  - `php artisan apiato:apidoc`                    Generate API Documentations with apidoc from your routes Docblock. [More details](../additional-features/apiato-containers/documentation).
   - `php artisan apiato:create:admin `             Create a new User with the ADMIN role
   - `php artisan apiato:generate:{component}`      Generate a specific component for the framework (e.g., `Action`, `Task`, ...). For more details on the `Code Generator` [click here](../core-features/code-generator).
   - `php artisan apiato:list:actions`              List all Actions in the Application.

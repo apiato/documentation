@@ -134,8 +134,6 @@ Checkout the Search Page for full implementation example.
 ?search=name:John;email:john@main.com
 ```
 
-See [Search query parameter](search-query-parameter) page, for how to set it up and control the searchability.
-
 #### Define the query condition for search {#define-the-query-condition-for-search}
 
 ```
@@ -298,7 +296,7 @@ Some of them are built in house, or inherited from other packages such as Fracta
 
 2) Visit the documentation URL
 
-More details in the [API Docs Generator](documentation) page.
+More details in the [API Docs Generator](../additional-features/apiato-containers/documentation) page.
 
 ## More Information {#more-information}
 

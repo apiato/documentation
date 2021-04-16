@@ -66,4 +66,4 @@ For first-party clients you can use a proxy to add those fields on requests comi
 
 > (Facebook, Twitter, Google..)
 
-Checkout the [Social Authentication](../core-features/social-authentication) Page for how to Sign up with Social Account.
+Checkout the [Social Authentication](../additional-features/apiato-containers/social-authentication) Page for how to Sign up with Social Account.

@@ -45,4 +45,4 @@ echo __('messages.welcome');
 dd(__('messages.welcome'));
 ```
 
-For more info about the localization checkout the [Localization](../core-features/localization) page.
+For more info about the localization checkout the [Localization](../additional-features/apiato-containers/localization) page.
