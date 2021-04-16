@@ -8,7 +8,7 @@ In Apiato, validation must be defined in [Request](../main-components/requests) 
 
 Validation rules are automatically applied, once injecting the Request in the Controller.
 
-Requests help validating User data, accessibility, ownership and more can be added if needed.
+Requests help validating User data, accessibility, ownership and more.
 
 **Example Request with Validation rules:**
 
@@ -37,19 +37,9 @@ class RegisterUserRequest extends Request
 **Usage from Controller Example:**
 
 ```php
-    public function registerUser(RegisterUserRequest $request, CreateUserAction $action)
+    public function registerUser(RegisterUserRequest $request)
     {
-        // if the actions takes the request object, you can pass the entire request instance as parameter
-        $user = Apiato::call('User@RegisterUserAction', [
-            [
-                $request['email'],
-                $request['password'],
-                $request['name'],
-                $request['gender'],
-                $request['birth']
-            ]
-        ]);
-        
+        $user = app(RegisterUserAction::class)->run($request);
         return $this->transform($user, UserTransformer::class);
     }
 ```
@@ -62,13 +52,12 @@ Single Field:
 
 ```json
 {
+  "message": "The given data was invalid.",
   "errors": {
     "email": [
       "The email has already been taken."
     ]
-  },
-  "status_code": 422,
-  "message": "The given data failed to pass validation."
+  }
 }
 ```
 
@@ -76,16 +65,15 @@ Multiple Fields:
 
 ```json
 {
+  "message": "The given data was invalid.",
   "errors": {
     "email": [
-      "The email field is required."
+      "The email has already been taken."
     ],
     "password": [
       "The password field is required."
     ]
-  },
-  "status_code": 422,
-  "message": "The given data failed to pass validation."
+  }
 }
 ```
 
