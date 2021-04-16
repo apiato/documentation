@@ -225,8 +225,6 @@ The Access Token should be sent in the `Authorization` header of type `Bearer`
 
 ## Login With Custom Attributes {#login-with-custom-attributes}
 
-> This feature is supported with Apiato ^7.4.
-
 By default, Apiato allow users to log in with their `email` address. However, you may want to also allow users to
 be able to log in using their `username`and `phone`.
 
