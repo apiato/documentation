@@ -37,7 +37,7 @@ api.domain.test/endpoint?page=200
 ```
 ### Limit {#limit}
 
-The `?limit=` parameter can be applied to define, how many results should be returned on one page (also see [Pagination](../features/query-parameters#pagination)).
+The `?limit=` parameter can be applied to define, how many results should be returned on one page (also see [Pagination](../core-features/query-parameters#pagination)).
 
 **Usage:**
 

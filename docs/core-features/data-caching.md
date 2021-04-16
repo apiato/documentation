@@ -16,7 +16,7 @@ To enable it, go to `app/Ship/Configs/repository.php` config file and set `cache
 
 More details can be found [here](https://github.com/andersao/l5-repository#cache-config).
 
-Users can skip the query caching and request new data by passing specific parameter to the Endpoint. Checkout its documentation [here](../features/query-parameters#skip-caching).
+Users can skip the query caching and request new data by passing specific parameter to the Endpoint. Checkout its documentation [here](../core-features/query-parameters#skip-caching).
 
 ### Change different caching settings {#change-different-caching-settings}
 

@@ -1,5 +1,5 @@
 ---
-title: Containers Installer
+title: Container Installer
 ---
 
 - [Containers](#containers)

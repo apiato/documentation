@@ -43,7 +43,7 @@ Read about the Containers layer [here](https://github.com/Mahmoudz/Porto#Contain
 
 `php artisan apiato:generate:container`
 
-Refer to the [code generator](../features/code-generator) page for more details.
+Refer to the [code generator](../core-features/code-generator) page for more details.
 
 ##### Option 2) manually: {#porto-new-container-manually}
 
