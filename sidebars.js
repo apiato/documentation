@@ -35,7 +35,6 @@ module.exports = {
         'features/system-settings',
         'features/api-versioning',
         'features/validation',
-        'features/search-query-parameter',
         'features/etag',
         'features/useful-commands',
         'features/admin-dashboard',
