@@ -1,5 +1,5 @@
 ---
-title: API Docs Generator
+title: Documentation
 ---
 
 - [Requirements](#requirements)

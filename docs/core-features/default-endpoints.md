@@ -6,6 +6,6 @@ Apiato comes loaded with many useful API endpoints for speeding up the developme
 
 You can see the endpoints in three ways:
 - In Terminal, by running `php artisan route:list -c`.
-- In Browser, by generating the beautiful detailed documentation. See [API Docs Generator](api-docs-generator).
+- In Browser, by generating the beautiful detailed documentation. See [API Docs Generator](documentation).
 - In Code, by navigating to the `Routes` folder of each container's UI.
 

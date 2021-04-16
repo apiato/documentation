@@ -49,7 +49,7 @@ documentation for more details.
 
 2) Use the generated client to call this oauth/token endpoint `http://api.apiato.test/v1/oauth/token`
 
-All the Auth Endpoints are documented. Go to [Documentation Generator Page](../core-features/api-docs-generator)
+All the Auth Endpoints are documented. Go to [Documentation Generator Page](../core-features/documentation)
 to see how you can generate the API documentation, and read them.
 
 ## Quick Overview {#quick-overview}

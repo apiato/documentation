@@ -42,12 +42,12 @@ module.exports = {
         'additional-features/container-installer',
         {
           'Apiato Containers': [
-            'additional-features/apiato-containers/api-docs-generator',
-            'additional-features/apiato-containers/requests-monitor',
+            'additional-features/apiato-containers/documentation',
+            'additional-features/apiato-containers/debugger',
             'additional-features/apiato-containers/social-authentication',
             'additional-features/apiato-containers/localization',
             'additional-features/apiato-containers/payments',
-            'additional-features/apiato-containers/system-settings',
+            'additional-features/apiato-containers/settings',
           ],
         },
         {

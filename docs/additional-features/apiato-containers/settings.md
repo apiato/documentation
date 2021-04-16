@@ -1,5 +1,5 @@
 ---
-title: System Settings
+title: Settings
 ---
 
 :::info

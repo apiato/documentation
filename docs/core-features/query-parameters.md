@@ -298,7 +298,7 @@ Some of them are built in house, or inherited from other packages such as Fracta
 
 2) Visit the documentation URL
 
-More details in the [API Docs Generator](api-docs-generator) page.
+More details in the [API Docs Generator](documentation) page.
 
 ## More Information {#more-information}
 

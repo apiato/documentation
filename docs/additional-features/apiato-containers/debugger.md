@@ -1,5 +1,5 @@
 ---
-title: Requests Monitor
+title: Debugger
 ---
 
 - [Enable requests logging](#enable-requests-logging)
