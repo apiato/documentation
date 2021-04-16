@@ -37,7 +37,6 @@ module.exports = {
         'features/validation',
         'features/etag',
         'features/useful-commands',
-        'features/admin-dashboard',
         'features/profiler'
       ],
     },
