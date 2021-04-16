@@ -20,33 +20,33 @@ Apiato code generator works the same way. In addition, it can generate a full Co
 To see the list of code generators type `php artisan` and look for `apiato`.
 
 ``` text
-  apiato:generate:container        Create a Container for apiato from scratch
-  apiato:generate:action           Create an Action file for a Container
-  apiato:generate:configuration    Create a Configuration file for a Container
-  apiato:generate:container:api    Create a Container for apiato from scratch (API Part)
-  apiato:generate:container:web    Create a Container for apiato from scratch (WEB Part)
-  apiato:generate:controller       Create a controller for a container
-  apiato:generate:event            Create a new Event class and its corresponding Handler
-  apiato:generate:eventhandler     Create a new EventHandler class
-  apiato:generate:exception        Create a new Exception class
-  apiato:generate:job              Create a new Job class
-  apiato:generate:mail             Create a new Mail class
-  apiato:generate:migration        Create an "empty" migration file for a Container
-  apiato:generate:model            Create a new Model class
-  apiato:generate:notification     Create a new Notification class
-  apiato:generate:readme           Create a README file for a Container
-  apiato:generate:repository       Create a new Repository class
-  apiato:generate:request          Create a new Request class
-  apiato:generate:route            Create a new Route class
-  apiato:generate:seeder           Create a new Seeder class
-  apiato:generate:serviceprovider  Create a ServiceProvider for a Container
-  apiato:generate:subaction        Create a new SubAction class
-  apiato:generate:task             Create a Task file for a Container
-  apiato:generate:test:functional  Create a Functional Test file.
-  apiato:generate:test:testcase    Create the TestCase file.
-  apiato:generate:test:unit        Create a Unit Test file.
-  apiato:generate:transformer      Create a new Transformer class for a given Model
-  apiato:generate:value            Create a new Value class
+  php artisan apiato:generate:container        Create a Container for apiato from scratch
+  php artisan apiato:generate:action           Create an Action file for a Container
+  php artisan apiato:generate:configuration    Create a Configuration file for a Container
+  php artisan apiato:generate:container:api    Create a Container for apiato from scratch (API Part)
+  php artisan apiato:generate:container:web    Create a Container for apiato from scratch (WEB Part)
+  php artisan apiato:generate:controller       Create a controller for a container
+  php artisan apiato:generate:event            Create a new Event class and its corresponding Handler
+  php artisan apiato:generate:eventhandler     Create a new EventHandler class
+  php artisan apiato:generate:exception        Create a new Exception class
+  php artisan apiato:generate:job              Create a new Job class
+  php artisan apiato:generate:mail             Create a new Mail class
+  php artisan apiato:generate:migration        Create an "empty" migration file for a Container
+  php artisan apiato:generate:model            Create a new Model class
+  php artisan apiato:generate:notification     Create a new Notification class
+  php artisan apiato:generate:readme           Create a README file for a Container
+  php artisan apiato:generate:repository       Create a new Repository class
+  php artisan apiato:generate:request          Create a new Request class
+  php artisan apiato:generate:route            Create a new Route class
+  php artisan apiato:generate:seeder           Create a new Seeder class
+  php artisan apiato:generate:serviceprovider  Create a ServiceProvider for a Container
+  php artisan apiato:generate:subaction        Create a new SubAction class
+  php artisan apiato:generate:task             Create a Task file for a Container
+  php artisan apiato:generate:test:functional  Create a Functional Test file.
+  php artisan apiato:generate:test:testcase    Create the TestCase file.
+  php artisan apiato:generate:test:unit        Create a Unit Test file.
+  php artisan apiato:generate:transformer      Create a new Transformer class for a given Model
+  php artisan apiato:generate:value            Create a new Value class
 ```
 
 To get more info about each command, add `--help` to the command. Example: `php artisan apiato:generate:route --help`. The help page shows all options, which can be directly passed to the command.
