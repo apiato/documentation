@@ -3,14 +3,16 @@ title: Query Parameters
 ---
 
 - [Sorting & Ordering](#sorting-ordering)
-- [Searching](#searching)
-    - [Search any field for multiple keywords](#search-any-field-for-multiple-keywords)
-    - [Search in a specific field](#search-in-a-specific-field)
-    - [Search in specific fields for multiple keywords](#search-in-specific-fields-for-multiple-keywords)
-    - [Define query condition](#define-query-condition)
-    - [Define search fields for search](#define-search-fields-for-search)
-    - [Define the query condition for search](#define-the-query-condition-for-search)
-- [Filtering](#filtering)
+- [Using the RequestCriteria](#using-the-request-criteria)
+    - [Searching](#searching)
+        - [Search any field for multiple keywords](#search-any-field-for-multiple-keywords)
+        - [Search in a specific field](#search-in-a-specific-field)
+        - [Search in specific fields for multiple keywords](#search-in-specific-fields-for-multiple-keywords)
+        - [Define query condition](#define-query-condition)
+        - [Define search fields for search](#define-search-fields-for-search)
+        - [Define the query condition for search](#define-the-query-condition-for-search)
+        - [Search Join](#search-join)
+    - [Filtering](#filtering)
 - [Pagination](#pagination)
 - [Limit](#limit)
 - [Relationships (include)](#relationships-include)
@@ -22,6 +24,7 @@ title: Query Parameters
 Users often need to control the response data, thus the apiato supports some useful and common query parameters:
 
 ## Sorting & Ordering {#sorting-ordering}
+*(provided by the [L5 Repository](https://github.com/andersao/l5-repository))*
 
 The `?sortedBy=` parameter is usually used with the `orderBy` parameter.
 
@@ -41,9 +44,31 @@ Accepts:
 - `asc` for Ascending.
 - `desc` for Descending.
 
-*(provided by the L5 Repository)*
+## Using the RequestCriteria {#using-the-request-criteria}
+*(provided by the [L5 Repository](https://github.com/andersao/l5-repository))*
 
-## Searching {#searching}
+RequestCriteria is a standard Criteria implementation. It enables filters to perform in the repository from parameters sent in the request.
+
+You can perform a dynamic search, filter the data and customize the queries.
+
+Apiato provides `addRequestCriteria()` & `removeRequestCriteria()` methods which are available in both `Actions` and `Tasks` provided by the `HasRequestCriteriaTrait`.  
+
+Usage example:
+```php
+class GetAllAdminsAction extends Action
+{
+    public function run()
+    {
+        return app(GetAllUsersTask::class)->addRequestCriteria()->run();
+//        return app(GetAllUsersTask::class)->removeRequestCriteria()->run();
+    }
+}
+```
+Using `removeRequestCriteria()` is only meaningful if you have applied RequestCriteria using below methods, otherwise RequestCriteria is not applied automatically thus you don't need to remove it if it is not needed.
+
+To use the Criteria in your repository, you can add a new criteria in the boot method of your repository, or directly use in your controller, in order to filter out only a few requests.
+Read more about it [here](https://github.com/andersao/l5-repository#using-the-requestcriteria).
+### Searching {#searching}
 
 The `?search=` parameter can be applied to any **`GET`** HTTP request.
 
@@ -64,7 +89,6 @@ protected $fieldSearchable = [
     // ...
 ];
 ```
-
 
 ```
 ?search=John
@@ -102,20 +126,16 @@ api.domain.test/endpoint?search=field:keyword&searchFields=name:like
 
 Checkout the Search Page for full implementation example.
 
-*(provided by the L5 Repository)*
-
-### Define search fields for search {#define-search-fields-for-search}
+#### Define search fields for search {#define-search-fields-for-search}
 
 ```
 ?search=name:John&email:john@main.com
 ?search=name:John;email:john@main.com
 ```
 
-*(provided by the L5 Repository)*
-
 See [Search query parameter](search-query-parameter) page, for how to set it up and control the searchability.
 
-### Define the query condition for search {#define-the-query-condition-for-search}
+#### Define the query condition for search {#define-the-query-condition-for-search}
 
 ```
 ?searchFields=name:like
@@ -124,9 +144,26 @@ See [Search query parameter](search-query-parameter) page, for how to set it up 
 ?search=git&searchFields=url:like
 ```
 
-*(provided by the L5 Repository)*
 
-## Filtering {#filtering}
+#### Search Join: {#search-join}
+By default, search makes its queries using the OR comparison operator for each query parameter.
+
+```
+api.domain.test/v1/endpoint?search=age:17;email:john@gmail.com
+```
+
+The above example will execute the following query:
+
+```sql
+SELECT * FROM users WHERE age = 17 OR email = 'john@gmail.com';
+```
+In order for it to query using the AND, pass the `searchJoin` parameter as shown below:
+
+```
+api.domain.test/v1/endpoint?search=age:17;email:john@gmail.com&searchJoin=and
+```
+
+### Filtering {#filtering}
 
 `?filter=` parameter can be applied to any HTTP request and is used to control the response size, by defining what
 data you want back in the response.
@@ -174,13 +211,12 @@ Example Response, including only id and status:
     }...
 ```
 
-*(provided by the L5 Repository)*
-
 Note that the transformer, which is used to output / format the data is also filtered. This means, that only the fields
-to be filtered are present - all other fields are excluded. This also applies for all (!) relationships (i.e., includes)
+to be filtered are present - all other fields are excluded. This also applies for all relationships (i.e., includes)
 of the object.
 
 ## Pagination {#pagination}
+*(provided by the [L5 Repository](https://github.com/andersao/l5-repository))*
 
 `?page=` parameter can be applied to any **`GET`** HTTP request responsible for listing records (mainly for Paginated data).
 
@@ -208,8 +244,6 @@ api.domain.test/endpoint?page=200
   }
 ```
 
-*(provided by the Laravel Paginator)*
-
 ## Limit {#limit}
 
 `?limit=` parameter can be applied to define, how many results should be returned on one page (see also `Pagination`!).
@@ -227,12 +261,13 @@ combined in order to get the next 100 resources:
 api.domain.test/endpoint?limit=100&page=2
 ```
 
-In order to allow clients to request all data that matches their criteria (e.g., search-criteria) and disable pagination,
-you can manually override the `$allowDisablePagination` property in your specific `Repository` class. A requester can then
-get all data (with no pagination applied) by requesting `api.domain.test/endpoint?limit=0`. This will return all matching
-entities.
+In order to allow clients to request all data that matches their criteria (e.g. search-criteria) and disable pagination,
+you can set `PAGINATION_SKIP=true` in your project `.env`.
+A request can then get all data (with no pagination applied) by requesting `api.domain.test/endpoint?limit=0`.
+This will return all matching entities.
 
 ## Relationships (include) {#relationships-include}
+*(provided by the [Fractal Transformer](https://fractal.thephpleague.com/transformers/))*
 
 Include relationships for complex data structures.
 
@@ -256,7 +291,7 @@ Let's say there is a `Driver` and a `Car` object. Also, there is an `/cars` endp
 The `?include` parameter allows getting all cars with their respective drivers in one request by calling `/cars?include=driver`.
 
 However, for this parameter to work, the `CarTransformer`, which handles the `/cars` endpoint should clearly define that it
-accepts `driver` as relationship (in the **Available Relationships** section).
+accepts `driver` as relationship ([$availableIncludes](#where-to-define-the-includes) in Transformer).
 
 ### Nested Includes {#relationships-include-nested-includes}
 It is also possible to request "nested includes". Extend the example from above. Imagine, that a `Driver` may also have a
@@ -264,13 +299,7 @@ relationship to an `Address` object. You can access this information as well by 
 
 Of course, the `address` include is defined in the respective `DriverTransformer` that is used here.
 
-**Usage:**
-
-```
-api.domain.test/endpoint?include=relationship
-```
-
-**Where to define the includes:**
+#### Where to define the includes: {#where-to-define-the-includes}
 
 Every Transformer can have 2 types of includes `$availableIncludes` and `$defaultIncludes`:
 
@@ -290,11 +319,10 @@ Every Transformer can have 2 types of includes `$availableIncludes` and `$defaul
 
 Visit the [Transformers](../main-components/transformers) page for more details.
 
-*(provided by the Fractal Transformer)*
-
 ## Caching skipping {#caching-skipping}
+*(provided by the [L5 Repository](https://github.com/andersao/l5-repository))*
 
-Note: You need to turn the Eloquent Query Caching ON for this feature to work. Checkout the Configuration Page "ELOQUENT_QUERY_CACHE".
+Note: You need to turn the Eloquent Query Caching ON for this feature to work. `ELOQUENT_QUERY_CACHE=true` in `.env`.
 
 To run a new query and force disabling the cache on certain endpoints, you can use this parameter
 
@@ -303,8 +331,6 @@ To run a new query and force disabling the cache on certain endpoints, you can u
 ```
 
 It's not recommended to keep skipping cache as it has bad impact on the performance.
-
-*(provided by the L5 Repository)*
 
 ## Configuration {#configuration}
 
