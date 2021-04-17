@@ -115,8 +115,6 @@ To enable query parameters (`?search=text`,...) in your API you need to set the 
 **Example `$fieldSearchable` of a `Repository`:**
 
 ```php
-	 <?php
-
 	protected $fieldSearchable = [
 	  'name'  => 'like',
 	  'email' => '=',

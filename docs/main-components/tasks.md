@@ -20,32 +20,27 @@ Read [**Porto SAP Documentation (#Tasks)**](https://github.com/Mahmoudz/Porto#Ta
 ```
  - app
     - Containers
-        - {container-name}
-            - Tasks
-                - ConfirmUserEmailTask.php
-                - GenerateEmailConfirmationUrlTask.php
-                - SendConfirmationEmailTask.php
-                - ValidateConfirmationCodeTask.php
-                - SetUserEmailTask.php
-                - ...
+        - {section-name}
+            - {container-name}
+                - Tasks
+                    - ConfirmUserEmailTask.php
+                    - GenerateEmailConfirmationUrlTask.php
+                    - SendConfirmationEmailTask.php
+                    - ValidateConfirmationCodeTask.php
+                    - SetUserEmailTask.php
+                    - ...
 ```
 
 ### Code Sample {#code-sample}
 
-**Find User Task by ID:**
+#### Task
 
 ```php
-namespace App\Containers\AppSection\User\Tasks;
-
-use App\Containers\AppSection\User\Contracts\UserRepositoryInterface;
-use App\Ship\Parents\Tasks\Task;
-use Exception;
-
 class FindUserByIdTask extends Task
 {
     private $userRepository;
 
-    public function __construct(UserRepositoryInterface $userRepository)
+    public function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
     }
@@ -60,45 +55,19 @@ class FindUserByIdTask extends Task
 
         return $user;
     }
-
 }
 ```
 
-**Tasks usage from an Action:**
+#### Task usage from an Action
 
 ```php
-namespace App\Containers\Email\Actions;
-
-use App\Containers\Email\Tasks\ConfirmUserEmailTask;
-use App\Containers\Email\Tasks\ValidateConfirmationCodeTask;
-use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
-use App\Ship\Parents\Actions\Action;
-
 class ValidateUserEmailByConfirmationCodeAction extends Action
 {
-    private $validateConfirmationCodeTask;
-
-    private $findUserByIdTask;
-
-    private $confirmUserEmailTask;
-
-    public function __construct(
-        ValidateConfirmationCodeTask $validateConfirmationCodeTask,
-        FindUserByIdTask $findUserByIdTask,
-        ConfirmUserEmailTask $confirmUserEmailTask
-    ) {
-        $this->validateConfirmationCodeTask = $validateConfirmationCodeTask;
-        $this->findUserByIdTask = $findUserByIdTask;
-        $this->confirmUserEmailTask = $confirmUserEmailTask;
-    }
-
     public function run($userId, $code)
     {
-        $this->validateConfirmationCodeTask->run($userId, $code);
-        $user = $this->findUserByIdTask->run($userId);
-        $this->confirmUserEmailTask->run($user);
-        ...
+        app(ValidateConfirmationCodeTask::class)->run($userId, $code);
+        $user = app(FindUserByIdTask::class)->run($userId);
+        app(ConfirmUserEmailTask::class)->run($user);
     }
 }
-
 ```
