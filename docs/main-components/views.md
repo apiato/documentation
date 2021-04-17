@@ -16,25 +16,24 @@ Read [**Porto SAP Documentation (#Views)**](https://github.com/Mahmoudz/Porto#Vi
 
 - Views SHOULD be created inside the Containers, and they will be automatically available for use in the Web Controllers.
 
-- All Views are namespaced as the lower case of the Container name.
-
 ### Folder Structure {#folder-structure}
 
 ```
  - app
     - Containers
-        - {container-name}
-            - UI
-                - WEB
-                    - Views
-                        - welcome.php
-                        - profile.php
-                        - ...
+        - {section-name}
+            - {container-name}
+                - UI
+                    - WEB
+                        - Views
+                            - welcome.php
+                            - profile.php
+                            - ...
 ```
 
 ### Code Sample {#code-samples}
 
-**Welcome page View**
+#### Welcome page View
 
 ```html
 <!DOCTYPE html>
@@ -43,22 +42,18 @@ Read [**Porto SAP Documentation (#Views)**](https://github.com/Mahmoudz/Porto#Vi
     <title>Welcome</title>
 </head>
 <body>
-<div class="container">
-    <div class="content">
-        <div class="title">Welcome</div>
+    <div class="container">
+        <div class="content">
+            <div class="title">Welcome</div>
+        </div>
     </div>
-</div>
 </body>
 </html>
 ```
 
-**Example: Usage From Controller**
+#### Usage From Controller
 
 ```php
-namespace App\Containers\Welcome\UI\WEB\Controllers;
-
-use App\Ship\Parents\Controllers\WebController;
-
 class Controller extends WebController
 {
     public function sayWelcome()
@@ -66,13 +61,12 @@ class Controller extends WebController
         return view('just-welcome');
     }
 }
-
 ```
 
 ## Namespaces {#namespaces}
 
-By default, all the Container Views are namespaced to the Container name.
+- By default, all Views are namespaced as the camleCase of its Section name + @ + camleCase of its Container name.
 
-Example:
+For example, a view named `welcome-page` inside `MySection` > `MyContainer` can be accessed like this: `view(mySection@myContainer::welcome-page)`
 
-If a Container named *Store* has View `say-hello`, you can access the view like this `view('store::just-welcome')`. If you try to access it without the namespace `view('just-welcome')`, it will not find your View.
+If you try to access it without the namespace `view('just-welcome')`, it will not find your View.
