@@ -69,7 +69,6 @@ module.exports = {
         'main-components/routes',
         'main-components/controllers',
         'main-components/requests',
-        'main-components/transporters',
         'main-components/actions',
         'main-components/tasks',
         'main-components/models',
