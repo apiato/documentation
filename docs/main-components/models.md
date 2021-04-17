@@ -15,27 +15,24 @@ Read [**Porto SAP Documentation (#Models)**](https://github.com/Mahmoudz/Porto#M
 ### Rules {#rules}
 
 - All Models MUST extend from `App\Ship\Parents\Models\Model`.
-- If the name of a model differs from the Container name you have to set the `$container` attribute in the repository - [more details](../optional-components/repositories).
+- If the name of a model differs from the Container name you have to implement `model()` method in the repository - [more details](../optional-components/repositories#model-method-example).
 
 ### Folder Structure {#folder-structure}
 
 ```
  - App
     - Containers
-        - {container-name}
-            - Models
-                - User.php
-                - UserId.php
-                - ...
+        - {section-name}
+            - {container-name}
+                - Models
+                    - User.php
+                    - UserId.php
+                    - ...
 ```
 
 ### Code Sample {#code-sample}
 
 ```php
-namespace App\Containers\Demo\Models;
-
-use App\Ship\Parents\Models\Model;
-
 class Demo extends Model
 {
     protected $table = 'demos';
@@ -60,7 +57,7 @@ class Demo extends Model
 
     public function user()
     {
-        return $this->belongsTo(\App\Containes\User\Models\User::class);
+        return $this->belongsTo(\App\Containes\AppSection\User\Models\User::class);
     }
 }
 ```
