@@ -8,7 +8,7 @@ title: Actions
 
 ### Definition & Principles {#definition-principles}
 
-Read the section in the  [**Porto SAP Documentation (#Actions)**](https://github.com/Mahmoudz/Porto#Actions).
+Read [**Porto SAP Documentation (#Actions)**](https://github.com/Mahmoudz/Porto#Actions).
 
 ### Rules {#rules}
 
@@ -19,113 +19,59 @@ Read the section in the  [**Porto SAP Documentation (#Actions)**](https://github
 ```
  - app
     - Containers
-        - {container-name}
-            - Actions
-                - CreateUserAction.php
-                - DeleteUserAction.php
-                - ...
+        - {section-name}
+            - {container-name}
+                - Actions
+                    - CreateUserAction.php
+                    - DeleteUserAction.php
+                    - ...
 ```
 
 ### Code Sample {#code-sample}
 
-**Delete User Action:**
+#### Action
 
 ```php
-namespace App\Containers\AppSection\User\Actions;
-
-use Apiato\Core\Foundation\Facades\Apiato;
-use App\Containers\AppSection\User\Models\User;
-use App\Ship\Parents\Actions\Action;
-
 class CreateAdminAction extends Action
 {
-
-    /**
-     * @param string $email
-     * @param string $password
-     * @param string $name
-     * @param bool   $isClient
-     *
-     * @return  \App\Containers\AppSection\User\Models\User
-     */
     public function run(string $email, string $password, string $name, bool $isClient = false): User
     {
-        $admin = Apiato::call('User@CreateUserByCredentialsTask', [
+        $admin = app(CreateUserByCredentialsTask::class)->run(
             $isClient,
             $email,
             $password,
             $name
-        ]);
+        );
 
-        Apiato::call('Authorization@AssignUserToRoleTask', [$admin, ['admin']]);
+        app(AssignUserToRoleTask::class)->run($admin, ['admin']);
 
         return $admin;
     }
 }
 ```
 
-Injecting each Task in constructor and then using it below through its property is really boring, and the more Tasks you use the worse it gets. So instead you can use the function `call` to call whichever Task you want and then pass any parameters to it.
-
-**Same Example using the `call` function:**
+#### Calling multiple Tasks
 
 ```php
-namespace App\Containers\AppSection\User\Actions;
-
-use App\Containers\AppSection\User\Tasks\DeleteUserTask;
-use App\Ship\Parents\Actions\Action;
-
-class DeleteUserAction extends Action
-{
-
-    public function run($userId)
-    {
-        return Apiato::call(DeleteUserTask::class, [$userId]); // <<<<<
-    }
-
-}
-```
-
-**Example: Calling multiple Tasks:**
-
-```php
-namespace App\Containers\Email\Actions;
-
-use App\Containers\Xxx\Tasks\Sample111Task;
-use App\Containers\Xxx\Tasks\Sample222Task;
-use App\Ship\Parents\Actions\Action;
-
 class DemoAction extends Action
 {
-
     public function run($xxx, $yyy, $zzz)
     {
-
-        $foo = Apiato::call(Sample111Task::class, [$xxx, $yyy]);
-
-        $bar = Apiato::call(Sample222Task::class, [$zzz]);
-
-        // ...
-
+        $foo = app(Sample111Task::class)->run($xxx, $yyy);
+        $bar = app(Sample222Task::class)->run($zzz);
     }
-
 }
-
 ```
 
-**Action usage from a Controller:**
+#### Usage from a Controller
 
 ```php
- <?php
-    //...
-
     public function deleteUser(DeleteUserRequest $request)
     {
-        $user = Apiato::call(DeleteUserAction::class, [$request->xxx, $request->yyy]);
-
+        $user = app(DeleteUserAction::class)->run($request);
         return $this->deleted($user);
     }
-
-    //...
 ```
-
+:::tip
 The same Action MAY be called by multiple Controllers (Web, Api, Cli).
+:::
