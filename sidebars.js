@@ -52,6 +52,7 @@ module.exports = {
         },
         {
           'Community Containers': [
+            'additional-features/community-containers/overview',
             {
               type: 'link',
               label: 'Example Container',
