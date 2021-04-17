@@ -14,7 +14,6 @@ title: Requests
 * [Allow a Role to access every endpoint](#allow-a-role-to-access-every-endpoint)
 * [Request Helper Functions](#request-helper-functions)
     * [hasAccess](#hasaccess)
-    * [isOwner](#isowner)
     * [getInputByKey](#getinputbykey)
     * [sanitizeInput](#sanitizeinput)
     * [mapInput](#mapinput)
@@ -35,46 +34,42 @@ Read [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmoudz/Porto
 ```
  - app
     - Containers
-        - {container-name}
-            - UI
-                - API
-                    - Requests
-                        - UpdateUserRequest.php
-                        - DeleteUserRequest.php
-                        - ...
-                - WEB
-                    - Requests
-                        - UpdateUserRequest.php
-                        - DeleteUserRequest.php
-                        - ...
+        - {section-name}
+            - {container-name}
+                - UI
+                    - API
+                        - Requests
+                            - UpdateUserRequest.php
+                            - DeleteUserRequest.php
+                            - ...
+                    - WEB
+                        - Requests
+                            - UpdateUserRequest.php
+                            - DeleteUserRequest.php
+                            - ...
 ```
 
 ### Code Samples {#code-samples}
 
-**Example: Update User Requests**
+#### Request
 
 ```php
-namespace App\Containers\AppSection\User\UI\API\Requests;
-
-use App\Ship\Parents\Requests\Request;
-
 class UpdateUserRequest extends Request
 {
-
-    protected $access = [
+    protected array $access = [
         'permission' => '',
         'roles'      => 'admin',
     ];
 
-    protected $decode = [
+    protected array $decode = [
 
     ];
 
-    protected $urlParameters = [
+    protected array $urlParameters = [
 
     ];
 
-    public function rules()
+    public function rules(): array
     {
         return [
             'email'    => 'email|unique:users,email',
@@ -83,10 +78,10 @@ class UpdateUserRequest extends Request
         ];
     }
 
-    public function authorize()
+    public function authorize(): bool
     {
         return $this->check([
-            'hasAccess|isOwner',
+            'hasAccess',
         ]);
     }
 }
@@ -94,7 +89,7 @@ class UpdateUserRequest extends Request
 
 *If you are wondering what are those properties doing on the request! keep reading*
 
-**Usage from Controller:**
+#### Controller
 
 ```php
 public function handle(UpdateUserRequest $updateUserRequest)
@@ -113,44 +108,24 @@ When you need to pass data to the Action, you should pass the request Object as 
 
 ## Request Properties {#request-properties}
 
-apiato adds some new properties to the Request Class. Each of these properties is very useful for some situations, and let you achieve your goals faster and cleaner. Below we'll see description for each property:
+Apiato adds some new properties to the Request Class. Each of these properties are very useful for some situations, and let you achieve your goals faster and cleaner. Below we'll see a description for each property:
 
 ### **decode** {#decode}
 
-The **$decode** property is used for decoding Hashed ID's from any Request on the fly
+The **$decode** property is used for decoding Hashed ID's from any Request on the fly.
 
-If you have enabled the HashID feature, that apiato provide out of the box. Most probably you are passing or allowing your users to pass Hashed (encoded) ID's into your application.
-
-Thus, these IDs need to be Decoded somewhere, apiato has a property on its Requests Components where you can specify those Hashed ID's in order to decode them before applying the validation rules.
+If you have enabled the HashID feature, most probably you are passing or allowing your users to pass Hashed (encoded) ID's into your application.
+These IDs need to be Decoded somewhere and Apiato has a property on its Requests Components where you can specify those Hashed ID's in order to decode them before applying the validation rules.
 
 Example:
 
 ```php
-namespace App\Containers\AppSection\Authorization\UI\API\Requests;
-
-use App\Ship\Parents\Requests\Request;
-
 class AssignUserToRoleRequest extends Request
 {
-
-    protected $decode = [
+    protected array $decode = [
         'user_id',
         'item_id',
     ];
-
-    public function rules()
-    {
-        return [
-
-        ];
-    }
-
-    public function authorize()
-    {
-        return $this->check([
-            // ..
-        ]);
-    }
 }
 ```
 
@@ -165,67 +140,40 @@ Laravel by default does not allow validating the URL parameters (`/stores/999/it
 Example:
 
 ```php
-namespace App\Containers\Email\UI\API\Requests;
-
-use App\Ship\Parents\Requests\Request;
-
 class ConfirmUserEmailRequest extends Request
 {
-
-    /**
-     * Defining the URL parameters (`/stores/999/items`) allows applying
-     * validation rules on them and allows accessing them like request data.
-     *
-     * @var  array
-     */
-    protected $urlParameters = [
+    protected array $urlParameters = [
         'id',
         'code',
     ];
 
-    public function rules()
+    public function rules(): array
     {
         return [
             'id'   => 'required|integer', // url parameter
             'code' => 'required|min:35|max:45', // url parameter
         ];
     }
-
-    public function authorize()
-    {
-        return $this->check([
-            // nothing! this is open endpoint.
-        ]);
-    }
 }
 ```
 
 ### **access** {#access}
 
-The **$access** property, allows the user to define set of Roles and Permissions than can access this endpoint.
+The **$access** property allows the user to define a set of Roles and Permissions that can access this endpoint.
 
 The `$access` property is used by the `hasAccess` function defined below in the `authorize` function, to check if the user has the necessary Roles & Permissions to call this endpoint (basically access the controller function where this request object is injected).
 
 Example:
 
 ```php
-namespace App\Containers\AppSection\User\UI\API\Requests;
-
-use App\Ship\Parents\Requests\Request;
-
 class DeleteUserRequest extends Request
 {
-    /**
-     * Define which Roles and/or Permissions has access to this request.
-     *
-     * @var  array
-     */
-    protected $access = [
+    protected array $access = [
         'permission' => 'delete-users|another-permissions',
         'roles' => 'manger'
     ];
 
-    public function authorize()
+    public function authorize(): bool
     {
         return $this->check([
             'hasAccess|isOwner',
@@ -247,7 +195,7 @@ you can also use the `array notation`. The example from above would look like th
 
 ## How the authorize function work {#how-the-authorize-function-work}
 
-The `authorize` function is calling a `check` function which accepts an array of functions names. Each of those functions returns boolean.
+The `authorize` function is calling a `check` function which accepts an array of function names. Each of those functions returns boolean.
 
 In the example above we are calling three functions `hasAccess`, `isOwner` and `isKing`.
 
@@ -263,35 +211,26 @@ The best way to add a custom authorize function is through a Trait, which can be
 
 The `isAuthor()` method, in turn, calls a Task to verify that the current user is an author (e.g., if the user has the proper `Role` assigned).
 
-```namespace App\Containers\AppSection\User\Traits;
-
-use Apiato\Core\Foundation\Facades\Apiato;
-
+```php
 trait IsAuthorPermissionTrait
 {
     public function isAuthor()
     {
         // The task needs to be implemented properly!
-        return Apiato::call('User@CheckIfUserHasProperRoleTask', [$this->user(), ['author']]);
+        return app(CheckIfUserHasProperRoleTask::class)->run($this->user(), ['author']);
     }
 }
 ```
 
 Now, add the newly created Trait to the Request to use the `isAuthor` function in the authorization check.
-```
-namespace App\Containers\AppSection\User\UI\API\Requests;
-
-use App\Containers\AppSection\User\Traits\IsAuthorPermissionTrait;
-use App\Ship\Parents\Requests\Request;
-
+```php
 class FindUserByIdRequest extends Request
 {
-
     use IsAuthorPermissionTrait;
 
     // ...
 
-    public function authorize()
+    public function authorize(): bool
     {
         return $this->check([
             'isAuthor',
@@ -306,7 +245,7 @@ Now, the Request uses the newly created `isAuthor` method to check the proper ac
 
 You can allow some Roles to access every endpoint in the system without having to define that role in each Request object.
 
-This is useful you want to let users with `Admin` role access everything.
+This is useful when you want to let users with `Admin` role access everything.
 
 To do this, define those roles in `app/Ship/Configs/apiato.php` as follows:
 
@@ -320,7 +259,7 @@ This will append the `admin` role to all roles access in every request object. E
 
 ## Request Helper Functions {#request-helper-functions}
 
-apiato also provides some helpful functions by default, so you can use them whenever you need them.
+Apiato also provides some helpful functions by default, so you can use them whenever you need them.
 
 ### **hasAccess** {#hasaccess}
 
@@ -331,16 +270,6 @@ apiato also provides some helpful functions by default, so you can use them when
 - If you need more or less roles/permissions just add `|` between each permission.
 
 - If you do not need to set a roles/permissions just set `'permission' => ''` or  `'permission' => null`.
-
-### **isOwner** {#isowner}
-
-The `isOwner` function, checks if the passed URL ID is the same as the User ID of the request.
-
-Example:
-
-Let's say we have an endpoint `www.api.apiato.test/v1/users/{ID}/delete` that deletes a user, and we only need users to delete their own user accounts.
-
-With `isOwner`, user of ID 1 can only call `/users/1/delete` and won't be able to call `/users/2/delete` or any other ID.
 
 ### **getInputByKey** {#getinputbykey}
 
@@ -368,29 +297,29 @@ Furthermore, one can define a `default` value to be returned, if the key is not 
 
 Especially for `PATCH` requests, if you like to submit only the fields, to be changed to the API in order to:
 
-a) minimize the traffic
+a) minimize the traffic  
 b) partially update the respective resource
 
 Checking for the presence (or absence) of specific keys in the request typically results in huge `if` blocks, like so:
 
-```php// ...
+```php
 if($request->has('data.name')) {
    $data['name'] = $request->input('data.name'); // or use getInputByKey()
 }
+
 if($request->has('data.description')) {
    $data['description'] = $request->input('data.description'); // or use getInputByKey()
 }
-// ...
 ```
 
-So to avoid those `if` blocks, use `array_filter($data)` in order to remove `empty` fields from the request.
+So to avoid those `if` blocks, you might use `array_filter($data)` in order to remove `empty` fields from the request.
 
-However, in PHP `false` and `''` _(empty string)_ are also considered as `empty` (which is clearly not what you want).
+However, in PHP `false` and `''` _(empty string)_ are also considered `empty` (which is not what you want clearly).
 
 You can read more about this problem [here](https://github.com/apiato/apiato/issues/186).
 
 In order to simplify sanitizing `Request Data` when using `application/json` instead of `x-www-form-urlencoded`,
-apiato offers a convenient `sanitizeInput($fields)` method.
+apiato offers a convenient `sanitizeInput(array $fields)` method.
 
 Consider the following Request data:
 
@@ -413,11 +342,17 @@ Consider the following Request data:
 }
 ```
 
-The method lets you specify a list of `$fields` to be accessed and extracted from the `$request`. This is done using the
+This method lets you specify a list of `$fields` to be accessed and extracted from the `$request`. This is done using the
 DOT notation. Finally, call the `sanitizeInput()` method on the `$request`:
 
 ```php
-$fields = ['data.name', 'data.description', 'data.is_private', 'data.blabla', 'data.foo.c'];
+$fields = [
+    'data.name',
+    'data.description',
+    'data.is_private',
+    'data.blabla',
+    'data.foo.c'
+];
 $data = $request->sanitizeInput($fields);
 ```
 
@@ -440,9 +375,15 @@ other fields from the `$request` are omitted as they are not specified. So basic
 `filter` on the `$request`, only passing the defined values. Furthermore, the DOT Notation allows you to easily specify
 the fields to would like to pass through. This makes partially updating a resource quite easy!
 
-**Heads Up:**
-
-Note that the `fillable fields` of an entity can be easily obtained with `$entity->getFillable()`!
+You can also set default values while sanitizing data from the request
+```php
+$sanitizedData = $request->sanitizeInput([
+    'name' => 'John', // if name is not provided then default value will be set
+    'product.company.address' => 'Somewhere in the world', // dot notation is also supported
+    'email',
+    'password'
+]);
+```
 
 ### **mapInput** {#mapinput}
 
@@ -491,7 +432,7 @@ $request->keep(['someKey' => $someValue]);
 To retrieve the data back at any time during the request life-cycle use:
 
 ```php
-$someValue = $request->retrieve('someKey')
+$someValue = $request->retrieve('someKey');
 ```
 
 ## Unit Testing for Actions (Request) {#unit-testing-for-actions-request}
@@ -506,7 +447,7 @@ Example One:
 
 ```php
 $data = [
-    'email'    => 'me@test.test',
+    'email'    => 'john@doe.test',
     'name'     => 'John Doe',
     'password' => 'so-secret',
 ];
@@ -515,13 +456,10 @@ $data = [
 $request = RegisterUserRequest::injectData($data);
 
 // create instance of the Action
-$action = App::make(RegisterUserAction::class)->run($request);
+$action = app(RegisterUserAction::class)->run($request);
 
 // do any kind of assertions..
 $this->assertInstanceOf(User::class, $user);
-
-// ...
-
 ```
 
 Example Two (With Authenticated User):
@@ -533,12 +471,9 @@ $data = [
    'recipient' => $receipient,
 ];
 
-$user = factory(User::class)->create();
+$user = User::factory()->create();
 
 $request = MakeOrderRequest::injectData($data, $user);
 
-$order = App::make(MakeOrderAction::class)->run($request);
-
-// ...
-
+$order = app(MakeOrderAction::class)->run($request);
 ```
