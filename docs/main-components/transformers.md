@@ -28,27 +28,22 @@ Read [**Porto SAP Documentation (#Transformers)**](https://github.com/Mahmoudz/P
 ```
  - app
     - Containers
-        - {container-name}
-            - UI
-                - API
-                    - Transformers
-                        - UserTransformer.php
-                        - ...
+        - {section-name}
+            - {container-name}
+                - UI
+                    - API
+                        - Transformers
+                            - UserTransformer.php
+                            - ...
 ```
 
 ### Code Samples {#code-samples}
 
-**Reward Transformer with Country relation:**
+#### Reward Transformer with Country relation
 
 ```php
-namespace App\Containers\Item\UI\API\Transformers;
-
-use App\Containers\Item\Models\Item;
-use App\Ship\Parents\Transformers\Transformer;
-
 class ItemTransformer extends Transformer
 {
-
     protected $availableIncludes = [
         'images',
     ];
@@ -60,7 +55,7 @@ class ItemTransformer extends Transformer
     public function transform(Item $item)
     {
         $response = [
-            'object'      => 'Item',
+            'object'      => $item->getResourceKey(),
             'id'          => $item->getHashedKey(),
             'name'        => $item->name,
             'description' => $item->description,
@@ -68,12 +63,14 @@ class ItemTransformer extends Transformer
             'weight'      => (float)$item->weight,
             'created_at'  => $item->created_at,
             'updated_at'  => $item->updated_at,
+            'readable_created_at' => $item->created_at->diffForHumans(),
+            'readable_updated_at' => $item->updated_at->diffForHumans(),
         ];
 
         // add more or modify data for Admins only
         $response = $this->ifAdmin([
-            'real_id'    => $user->id,
-            'deleted_at' => $user->deleted_at,
+            'real_id'    => $item->id,
+            'deleted_at' => $item->deleted_at,
         ], $response);
 
         return $response;
@@ -91,36 +88,14 @@ class ItemTransformer extends Transformer
 }
 ```
 
-**Usage from Controller (Single Item)**
+#### Usage from Controller (Single Item)
 
 ```php
-// getting any Model
 $user = $this->getUser();
 
-// building the response with the transformer of the Model
-$this->response->item($user, new UserTransformer());
-
-// in case of collection of data
-$this->response->collection($user, new UserTransformer());
-
-// in case of Array
-$this->response->array([
-    'custom_field'  =>  'whatever',
-    'email'         =>  $user->email,
-]);
+$this->transform($user, UserTransformer::class);
 
 // more options are available
-```
-
-**Usage from Controller (Multiple Items/Collection)**
-
-```php
-// getting many Models Paginated
-$rewards = $this->getRewards();
-
-// building the response with the transformer of the Model
-return $this->response->paginator($rewards, new RewardTransformer());
-
 ```
 
 ### Relationships (include) {#relationships-include}
@@ -138,13 +113,6 @@ This can be done in 2 ways:
 You can request data with their relationships directly from the API call using `include=tags,user` but first the Transformer need to have the `availableIncludes` defined with their functions like this:
 
 ```php
-namespace App\Containers\Account\UI\API\Transformers;
-
-use App\Ship\Parents\Transformers\Transformer;
-use App\Containers\Account\Models\Account;
-use App\Containers\Tag\Transformers\TagTransformer;
-use App\Containers\AppSection\User\Transformers\UserTransformer;
-
 class AccountTransformer extends Transformer
 {
     protected $availableIncludes = [
@@ -174,7 +142,6 @@ class AccountTransformer extends Transformer
         // use `item` with single relationship
         return $this->item($account->user, new UserTransformer());
     }
-
 }
 ```
 
@@ -187,8 +154,7 @@ To get Tags with User use the comma separator: `?include=tags,user`.
 From the controller you can dynamically set the `DefaultInclude` using (`setDefaultIncludes`) anytime you want.
 
 ```php
-return $this->response->paginator($rewards, (new ProductsTransformer())->setDefaultIncludes(['tags']));
-
+return $this->transform($rewards, ProductsTransformer::class)->setDefaultIncludes(['tags']);
 ```
 
 You need to have `includeTags` function defined on the transformer. Look at the full examples above.
@@ -213,6 +179,6 @@ You need to have `includeUser` and `includeTags` functions defined on the transf
 
 - `user()` : returns current authenticated user object.
 
-- `ifAdmin($adminResponse, $clientResponse)` : merges normal client response with the admin extra or modified results, when current authenticated user is Admin.
+- `ifAdmin($adminResponse, $clientResponse)` : merges normal client response with the admin extra or modified results, when current authenticated user is Admin. Look at the full examples above.
 
 For more information about the Transformers read [this](http://fractal.thephpleague.com/transformers/).
