@@ -166,7 +166,7 @@ HTTP/1.1 200 OK
 This container works out of the box perfectly but if you want to change its configs or modify the codes you MUST follow these steps:
 
 1- Copy the container from `VendorSection` to `AppSection` (or any of your custom sections) of your project<br/>
-2- Fix any broken namespaces<br/>
+2- Fix the namespaces<br/>
 3- Update `section_name` & `html_files` in container configs<br/>
 4- Update `apidoc.json` files in `ApiDocJs/private` & `public` folders and fix the `filename`<br/>
 
