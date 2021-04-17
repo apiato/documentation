@@ -5,7 +5,7 @@ title: Routes
 - [Definition & Principles](#definition-principles)
 - [Rules](#rules)
 - [Folder Structure](#folder-structure)
-- [Examples](#examples)
+- [Code Sample](#code-sample)
 - [Protect your Endpoints](#protect-your-endpoints)
 - [Difference between Public & Private routes files](#difference-between-public-private-route-files)
 
@@ -41,7 +41,7 @@ Read [**Porto SAP Documentation (#Routes)**](https://github.com/Mahmoudz/Porto#R
                           - ...
 ```
 
-### Examples {#examples}
+### Code Sample {#code-sample}
 
 #### Web & API route
 Routes are defined exactly like the way you defined them in Laravel.

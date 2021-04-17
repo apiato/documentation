@@ -23,7 +23,7 @@ title: Requests
 
 ### Definition & Principles {#definition-principles}
 
-Read from the [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmoudz/Porto#Requests).
+Read [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmoudz/Porto#Requests).
 
 ### Rules {#rules}
 

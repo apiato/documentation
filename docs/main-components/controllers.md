@@ -11,7 +11,7 @@ title: Controllers
   
 ### Definition & Principles {#definition-principles}
 
-Read from the [**Porto SAP Documentation (#Controllers)**](https://github.com/Mahmoudz/Porto#Controllers).
+Read [**Porto SAP Documentation (#Controllers)**](https://github.com/Mahmoudz/Porto#Controllers).
 
 ### Rules {#rules}
 

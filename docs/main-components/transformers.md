@@ -13,7 +13,7 @@ title: Transformers
 
 ### Definition & Principles {#definition-principles}
 
-Read from the [**Porto SAP Documentation (#Transformers)**](https://github.com/Mahmoudz/Porto#Transformers).
+Read [**Porto SAP Documentation (#Transformers)**](https://github.com/Mahmoudz/Porto#Transformers).
 
 ### Rules {#rules}
 
