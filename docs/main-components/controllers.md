@@ -7,8 +7,8 @@ title: Controllers
 - [Folder Structure](#folder-structure)
 - [Code Sample](#code-sample)
 - [Controller response builder helper functions](#controller-response-builder-helper-functions)
-    - [Some of the functions](#some-of-the-functions)
-  
+  - [Some of the functions](#some-of-the-functions)
+
 ### Definition & Principles {#definition-principles}
 
 Read [**Porto SAP Documentation (#Controllers)**](https://github.com/Mahmoudz/Porto#Controllers).
@@ -17,32 +17,32 @@ Read [**Porto SAP Documentation (#Controllers)**](https://github.com/Mahmoudz/Po
 
 - All API Controller MUST extend from `App\Ship\Parents\Controllers\ApiController`.
 - All Web Controller MUST extend from `App\Ship\Parents\Controllers\WebController`.
-- Controllers should use the function `call` to call Actions. (do not manually inject the Action and invoke the `run`).
-- Controllers should pass the Request object to the Action instead of passing data from the request. The Request object is the best class to store the state of the Request during its life cycle.
+- Controllers should only call the the `run` method of Actions.
+- Controllers should pass the Request object to the Action instead of passing data from the request.
 
 ### Folder Structure {#folder-structure}
 
 ```
  - app
     - Containers
-        - {container-name}
-            - UI
-                - API
-                    - Controllers
-                        - Controller.php
-                - WEB
-                    - Controllers
-                        - Controller.php
+        - {section-name}
+            - {container-name}
+                - UI
+                    - API
+                        - Controllers
+                            - Controller.php
+                    - WEB
+                        - Controllers
+                            - Controller.php
 ```
 
 ### Code Sample {#code-sample}
 
-**User Web Welcome Controller:**
+#### Web Controller
 
 ```php
-class Controller extends PortWebController
+class Controller extends WebController
 {
-
     public function sayWelcome()
     {
         return view('welcome');
@@ -50,66 +50,44 @@ class Controller extends PortWebController
 }
 ```
 
-**User API Login Controller:**
+#### API Controller
 
 ```php
 class Controller extends ApiController
 {
-
-    /**
-     * @param \App\Containers\AppSection\User\UI\API\Requests\RegisterUserRequest $request
-     *
-     * @return  mixed
-     */
     public function registerUser(RegisterUserRequest $request)
     {
-        $user = Apiato::call(RegisterUserAction::class, [$request]);
-
+        $user = app(RegisterUserAction::class)->run($request);
         return $this->transform($user, UserTransformer::class);
     }
-
-    /**
-     * @param \App\Containers\AppSection\User\UI\API\Requests\DeleteUserRequest $request
-     *
-     * @return  \Illuminate\Http\JsonResponse
-     */
-    public function deleteUser(DeleteUserRequest $request)
-    {
-        $user = Apiato::call(DeleteUserAction::class, [$request]);
-
-        return $this->deleted($user);
-    }
-
-    // ...
 }
 ```
 
-**Notice** we call the Action using `Apiato::call()` which triggers the `run` function in the Action as well inform the action which UI called it, (`$this->getUI()`) in case you want to handle the same Action differently based on the UI type.
-
-The second parameter of the `call` function is an array of the Action parameters in order. When you need to pass data to the Action, it's recommended to pass the Request Object as it should be the place that holds the state of your current request.
-
-
-Refer to the **Magical Call** page for more info and examples on how to use the call function.
-
-
-**Example: Usage from Routes Endpoint:**
+:::tip
+In case you want to handle the same Action differently based on the UI type (e.g. API, Web, CLI) you can set the
+UI on Action with `setUI()` method.
 
 ```php
-$router->post('login', [
-    'uses' => 'Controller@loginUser',
-]);
+    app(WebLogoutAction::class)->setUI('Web')->run();
+```
 
-$router->post('logout', [
-    'uses'       => 'Controller@logoutUser',
-    'middleware' => [
-        'api.auth',
-    ],
-]);
+and get the UI in your Action with `getUI()` method.
+
+```php
+    $this->getUI();
+```
+:::
+
+#### Usage from Routes Endpoint
+
+```php
+Route::post('login', [Controller::class, 'loginUser']);
 ```
 
 ### Controller response builder helper functions {#controller-response-builder-helper-functions}
 
-Many helper function are there to help you build your response faster, those helpers exist in the `vendor/apiato/core/Traits/ResponseTrait.php`.
+Many helper function are there to help you build your response faster, those helpers exist in
+the `vendor/apiato/core/Traits/ResponseTrait.php`.
 
 #### Some functions {#some-of-the-functions}
 
@@ -118,7 +96,8 @@ This is the most useful function which you will be using in most cases.
 
 - First required parameter accepts data as object or Collection of objects.
 - Second required parameter is the transformer object
-- Third optional parameter take the includes that should be returned by the response, _($availableIncludes and $defaultIncludes in the transformer class)_.  
+- Third optional parameter take the includes that should be returned by the response, _($availableIncludes and
+  $defaultIncludes in the transformer class)_.
 - Fourth optional parameter accepts metadata to be injected in the response.
 
 ```php
@@ -138,14 +117,13 @@ $metaData = ['total_credits', 10000];
 return $this->withMeta($metaData)->transform($receipt, ReceiptTransformer::class);
 ```
 
-
 **json**
 This function allows passing array data to be represented as json.
 
 ```php
 return $this->json([
     'foo': 'bar'
-]);
+])
 ```
 
 **Other functions**
@@ -153,4 +131,5 @@ return $this->json([
 - accepted
 - deleted
 - noContent
-- // Some functions might not be documented, so refer to the `vendor/apiato/core/Traits/ResponseTrait.php` and see the public functions.
+- // Some functions might not be documented, so refer to the `vendor/apiato/core/Traits/ResponseTrait.php` and see the
+  public functions.
