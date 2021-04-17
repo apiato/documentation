@@ -20,37 +20,28 @@ Read [**Porto SAP Documentation (#Sub-Actions)**](https://github.com/Mahmoudz/Po
 ```
  - app
     - Containers
-        - {container-name}
-            - Actions
-                - ValidateAddressSubAction.php
-                - BuildOrderSubAction.php
-                - ...
+        - {section-name}
+            - {container-name}
+                - Actions
+                    - ValidateAddressSubAction.php
+                    - BuildOrderSubAction.php
+                    - ...
 ```
 
 ### Code Sample {#code-sample}
 
-**ValidateAddressSubAction User Action:**
+#### ExampleSubAction
 
 ```php
-namespace App\Containers\Shipment\Actions;
-
-use App\Containers\Recipient\Models\Recipient;
-use App\Containers\Recipient\Tasks\UpdateRecipientTask;
-use App\Containers\Shipment\Tasks\ValidateAddressWithEasyPostTask;
-use App\Containers\Shipment\Tasks\ValidateAddressWithMelissaDataTask;
-use App\Ship\Parents\Actions\SubAction;
-
-class ValidateAddressSubAction extends SubAction
+class ExampleSubAction extends SubAction
 {
-    public function run(Recipient $recipient)
+    public function run(SomeRequest $request)
     {
-        $hasValidAddress = true;
-
-        $easyPostResponse = Apiato::call(ValidateAddressWithEasyPostTask::class, [$recipient]);
-
-        ...
+        app(SomeTask::class)->run($request);
     }
 }
 ```
 
-**Every feature available for Actions, is also available in SubActions.**
+:::note
+Every feature available for Actions, are also available in SubActions.
+:::
