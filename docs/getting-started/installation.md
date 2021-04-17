@@ -25,7 +25,7 @@ title: Installation
 composer create-project apiato/apiato my-api
 ```
 
-### 2) Database Setup {#Setup-Detabase}
+### 2) Database Setup {#Setup-Database}
 
 1) Migrate the Database:
 
@@ -87,8 +87,8 @@ You can run **Apiato** on your favorite environment. Below you'll see how you ca
 [Vagrant](https://www.vagrantup.com/) (using [Laravel Homestead](https://laravel.com/docs/master/homestead)) or
 [Docker](https://www.docker.com/) (using [Laradock](https://github.com/Laradock/laradock)).
 
-We'll see how to use both tools and you can pick one, or you can use other options like
-[Larvel Valet](https://laravel.com/docs/valet), [Laragon](https://laragon.org/) or even run it directly on your machine.
+We'll see how to use both tools, and you can pick one, or you can use other options like
+[Laravel Valet](https://laravel.com/docs/valet), [Laragon](https://laragon.org/) or even run it directly on your machine.
 
 > **Heads up!** <br/>
 > The ICANN has now officially approved `.dev` as a generic top level domain (gTLD). Therefore, it is **not** recommended
@@ -237,7 +237,7 @@ Make some HTTP calls to the API:
 *To make the calls you can use [Postman](https://www.getpostman.com/), [HTTPIE](https://github.com/jkbrzt/httpie) or
 any other tool you prefer.*
 
-Let's test the (user registration) endpoint `http://api.apiato.test/v1/register ` with **cURL**:
+Let's test the (user registration) endpoint `http://api.apiato.test/v1/register` with **cURL**:
 
 ```shell
 curl -X POST -H "Accept: application/json" -H "Cache-Control: no-cache" -F "email=John@Doe.me" -F "password=so-secret" -F "name=John Doe" "http://api.apiato.test/v1/register"

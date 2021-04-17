@@ -83,7 +83,7 @@ php artisan key:generate
 
 5) delete the `.git` folder from the root directory and initialize your own with `git init`.
 
-### 2) Database Setup {#Setup-Detabase}
+### 2) Database Setup {#Setup-Database}
 
 1) Migrate the Database:
 
@@ -158,7 +158,7 @@ You can run **Apiato** on your favorite environment. Below you'll see how you ca
 [Docker](https://www.docker.com/) (using [Laradock](https://github.com/Laradock/laradock)).
 
 We'll see how to use both tools and you can pick one, or you can use other options like
-[Larvel Valet](https://laravel.com/docs/valet), [Laragon](https://laragon.org/) or even run it directly on your machine.
+[Laravel Valet](https://laravel.com/docs/valet), [Laragon](https://laragon.org/) or even run it directly on your machine.
 
 > **Heads up!** <br/>
 > The ICANN has now officially approved `.dev` as a generic top level domain (gTLD). Therefore, it is **not** recommended
@@ -167,7 +167,7 @@ We'll see how to use both tools and you can pick one, or you can use other optio
 
 ### A.1) Using Docker (with Laradock) {#Using-Docker-With-Laradock}
 
-**Laradock** is a Docker PHP development environment. It facilitate running PHP Apps on Docker.
+**Laradock** is a Docker PHP development environment. It facilitates running PHP Apps on Docker.
 
 1) Install [Laradock](https://github.com/LaraDock/laradock#installation).
 
