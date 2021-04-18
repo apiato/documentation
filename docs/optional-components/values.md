@@ -13,7 +13,7 @@ Values are short names for the known "Value Objects" which are simple Objects, p
 They also do not hold functionality or change any state, they just hold data.
 
 A Value Object is an immutable object that is defined by its encapsulated attributes. 
-We create Value Object when we need it to represent/serve/manipulate some data (attached as attributes), and we'll kill it later when we finish using it, to recreate it again when needed.  
+We create Value Object when we need it to represent/serve/manipulate some data (attached as attributes), and we'll kill it later when we don't need it anymore, to recreate it again when needed.  
 
 ### Rules {#rules}
 
@@ -22,26 +22,23 @@ We create Value Object when we need it to represent/serve/manipulate some data (
 ### Folder Structure {#folder-structure}
 
 ```
- - App
-    - Containers
-        - {container-name}
-            - Values
-                - Output.php
-                - Region.php
-                - ...
+- App
+  - Containers
+    - {section-name}
+      - {container-name}
+        - Values
+          - Output.php
+          - Region.php
+          - ...
 ```
 
 ### Code Sample {#code-sample}
 
 ```php
-use App\Ship\Parents\Values\Value;
-
 class Location extends Value
 {
     private $x = null;
-    
     private $y = null;
-
     protected $resourceKey = 'locales';
     
     public function __construct($x, $y)
