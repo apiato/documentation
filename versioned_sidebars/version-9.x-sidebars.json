@@ -38,99 +38,99 @@
     {
       "collapsed": true,
       "type": "category",
-      "label": "Features",
+      "label": "Core Features",
       "items": [
         {
           "type": "doc",
-          "id": "version-9.x/features/code-generator"
+          "id": "version-9.x/core-features/code-generator"
         },
         {
           "type": "doc",
-          "id": "version-9.x/features/api-docs-generator"
+          "id": "version-9.x/core-features/api-docs-generator"
         },
         {
           "type": "doc",
-          "id": "version-9.x/features/authentication"
+          "id": "version-9.x/core-features/authentication"
         },
         {
           "type": "doc",
-          "id": "version-9.x/features/authorization"
+          "id": "version-9.x/core-features/authorization"
         },
         {
           "type": "doc",
-          "id": "version-9.x/features/user-registration"
+          "id": "version-9.x/core-features/user-registration"
         },
         {
           "type": "doc",
-          "id": "version-9.x/features/social-authentication"
+          "id": "version-9.x/core-features/social-authentication"
         },
         {
           "type": "doc",
-          "id": "version-9.x/features/query-parameters"
+          "id": "version-9.x/core-features/query-parameters"
         },
         {
           "type": "doc",
-          "id": "version-9.x/features/default-endpoints"
+          "id": "version-9.x/core-features/default-endpoints"
         },
         {
           "type": "doc",
-          "id": "version-9.x/features/hash-id"
+          "id": "version-9.x/core-features/hash-id"
         },
         {
           "type": "doc",
-          "id": "version-9.x/features/localization"
+          "id": "version-9.x/core-features/localization"
         },
         {
           "type": "doc",
-          "id": "version-9.x/features/rate-limiting"
+          "id": "version-9.x/core-features/rate-limiting"
         },
         {
           "type": "doc",
-          "id": "version-9.x/features/requests-monitor"
+          "id": "version-9.x/core-features/requests-monitor"
         },
         {
           "type": "doc",
-          "id": "version-9.x/features/data-caching"
+          "id": "version-9.x/core-features/data-caching"
         },
         {
           "type": "doc",
-          "id": "version-9.x/features/pagination"
+          "id": "version-9.x/core-features/pagination"
         },
         {
           "type": "doc",
-          "id": "version-9.x/features/payments"
+          "id": "version-9.x/core-features/payments"
         },
         {
           "type": "doc",
-          "id": "version-9.x/features/system-settings"
+          "id": "version-9.x/core-features/system-settings"
         },
         {
           "type": "doc",
-          "id": "version-9.x/features/api-versioning"
+          "id": "version-9.x/core-features/api-versioning"
         },
         {
           "type": "doc",
-          "id": "version-9.x/features/validation"
+          "id": "version-9.x/core-features/validation"
         },
         {
           "type": "doc",
-          "id": "version-9.x/features/search-query-parameter"
+          "id": "version-9.x/core-features/search-query-parameter"
         },
         {
           "type": "doc",
-          "id": "version-9.x/features/etag"
+          "id": "version-9.x/core-features/etag"
         },
         {
           "type": "doc",
-          "id": "version-9.x/features/useful-commands"
+          "id": "version-9.x/core-features/useful-commands"
         },
         {
           "type": "doc",
-          "id": "version-9.x/features/admin-dashboard"
+          "id": "version-9.x/core-features/admin-dashboard"
         },
         {
           "type": "doc",
-          "id": "version-9.x/features/profiler"
+          "id": "version-9.x/core-features/profiler"
         }
       ]
     },

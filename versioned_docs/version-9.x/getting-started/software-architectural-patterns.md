@@ -78,7 +78,7 @@ To remove a Container, simply delete the folder then run `composer update` to re
 
 `php artisan apiato:container`
 
-Refer to the [code generator](.././features/code-generator) page for more details.
+Refer to the [code generator](../core-features/code-generator) page for more details.
 
 ##### Option 2) manually: {#porto-new-container-manually}
 
