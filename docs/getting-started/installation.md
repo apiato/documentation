@@ -2,30 +2,28 @@
 title: Installation
 ---
 
-* [A) Apiato Installation](#App)
-	* [1) Code Setup](#Code-Setup)
-		* [Option 1: Automatically via Composer](#App-Composer)
-		* [Option 2: Manually](#App-Git)
-	* [2) Database Setup](#Setup-Database)
-	* [3) OAuth Setup](#Prepare-OAuth)
-	* [4) Documentation Setup](#Documentation)
-	* [5) Testing Setup](#Testing)
-* [B) Environment Setup](#Development-Environment)
-	* [Option 1: Using Docker and Laradock](#Using-Docker-With-Laradock)
-	* [Option 2: Using Vagrant and Homestead](#Using-Vagrant-Using-Homestead)
-	* [Option 3: Using MAMP/WAMP or something else](#Using-anything-else)
-* [C) Play](#Play)
+* [Apiato Installation](#App)
+	* [Code Setup](#Code-Setup)
+	* [Database Setup](#Setup-Database)
+	* [OAuth Setup](#Prepare-OAuth)
+	* [Documentation Setup](#Documentation)
+	* [Testing Setup](#Testing)
+* [Environment Setup](#Development-Environment)
+	* [Using Docker and Laradock](#Using-Docker-With-Laradock)
+	* [Using Vagrant and Homestead](#Using-Vagrant-Using-Homestead)
+	* [Using MAMP/WAMP or something else](#Using-anything-else)
+* [Play](#Play)
 
 
-## A) Apiato Application Installation {#App}
+## Apiato Application Installation {#App}
 
-### 1) Code Setup {#Code-Setup}
+### Code Setup {#Code-Setup}
 
 ```shell
 composer create-project apiato/apiato my-api
 ```
 
-### 2) Database Setup {#Setup-Database}
+### Database Setup {#Setup-Database}
 
 1) Migrate the Database:
 
@@ -50,7 +48,7 @@ To give the `admin` role, access to all the seeded permissions in the system, ru
 php artisan apiato:permissions:toRole admin
 ```
 
-### 3) OAuth 2.0 Setup {#Prepare-OAuth}
+### OAuth 2.0 Setup {#Prepare-OAuth}
 
 1) Create encryption keys to generate secure access tokens and create "personal access" and "password grant" clients
 which will be used to generate access tokens:
@@ -59,7 +57,7 @@ which will be used to generate access tokens:
 php artisan passport:install
 ```
 
-### 4) Documentation Setup {#Documentation}
+### Documentation Setup {#Documentation}
 
 1) Install [ApiDocJs](http://apidocjs.com/) using NPM or your favorite dependencies manager:
 
@@ -71,7 +69,7 @@ npm install
 
 ##### Visit [API Docs Generator](../additional-features/apiato-containers/documentation) for more details.
 
-### 5) Testing Setup {#Testing}
+### Testing Setup {#Testing}
 
 1) Open `phpunit.xml` and make sure the environments are correct for your domain.
 
@@ -81,7 +79,7 @@ npm install
 vendor/bin/phpunit
 ```
 
-## B) Development Environment Setup {#Development-Environment}
+## Development Environment Setup {#Development-Environment}
 
 You can run **Apiato** on your favorite environment. Below you'll see how you can run it on top of
 [Vagrant](https://www.vagrantup.com/) (using [Laravel Homestead](https://laravel.com/docs/master/homestead)) or
@@ -94,7 +92,7 @@ We'll see how to use both tools, and you can pick one, or you can use other opti
 > The ICANN has now officially approved `.dev` as a generic top level domain (gTLD). Therefore, it is **not** recommended
 > to use `.dev` domains anymore in your local development setup! We use `.test`, however, you may change it to `.example`, or `.localhost` or whatever suits your needs. [Read more](http://www.faqs.org/rfcs/rfc2606.html).
 
-### A.1) Using Docker (with Laradock) {#Using-Docker-With-Laradock}
+### Using Docker (with Laradock) {#Using-Docker-With-Laradock}
 
 **Laradock** is a Docker PHP development environment. It facilitates running PHP Apps on Docker.
 
@@ -135,7 +133,7 @@ If you're using NGINX or Apache, make sure the **server_name** (in case of NGINX
 in your server config file, is set to the following `apiato.test api.apiato.test admin.apiato.test`.
 *(Also don't forget to point the **Root** or **DocumentRoot** to the public directory inside apiato `apiato/public`)*.
 
-### A.2) Using Vagrant (with Laravel Homestead) {#Using-Vagrant-Using-Homestead}
+### Using Vagrant (with Laravel Homestead) {#Using-Vagrant-Using-Homestead}
 
 **Laravel Homestead** is installed by default. If you have removed homestead you can install it using  
 ```shell
@@ -208,12 +206,12 @@ homestead up --provision
 *If you see `No input file specified` on the sub-domains!
 try running this command `homestead halt && homestead up --provision`.*
 
-### A.3) Using anything else {#Using-anything-else}
+### Using anything else {#Using-anything-else}
 
 If you're not into virtualization solutions, you can set up your environment directly on your machine. Check the
 [software's requirements list](../).
 
-## C) Let's Play {#Play}
+## Let's Play {#Play}
 
 Now let's see it in action
 
