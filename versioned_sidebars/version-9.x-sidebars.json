@@ -287,30 +287,9 @@
         }
       ]
     },
-    {
-      "collapsed": true,
-      "type": "category",
-      "label": "General",
-      "items": [
-        {
-          "type": "doc",
-          "id": "version-9.x/general/faq"
-        },
-        {
-          "type": "doc",
-          "id": "version-9.x/general/contribution-guide"
-        },
-        {
-          "type": "doc",
-          "id": "version-9.x/general/upgrade-guide"
-        }
-      ]
-    },
-    {
-      "type": "link",
-      "label": "3rd Party Containers",
-      "href": "https://github.com/apiato/awesome-apiato"
-    },
+    "version-9.x/general/faq",
+    "version-9.x/general/contribution-guide",
+    "version-9.x/general/upgrade-guide",
     {
       "type": "link",
       "label": "Change Log",
