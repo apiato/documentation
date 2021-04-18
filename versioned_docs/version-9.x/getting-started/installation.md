@@ -139,7 +139,7 @@ apidoc -c app/Containers/Documentation/ApiDocJs/public -f public.php -i app -o p
 
 Alternatively you can generate a swagger doc from the apidoc comments, to do so run `php artisan apiato:swagger`.
 
-##### Visit [API Docs Generator](.././features/api-docs-generator) for more details.
+##### Visit [API Docs Generator](../core-features/api-docs-generator) for more details.
 
 ### 5) Testing Setup {#Testing}
 

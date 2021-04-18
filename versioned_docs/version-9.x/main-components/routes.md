@@ -82,7 +82,7 @@ $router->get('users', [
 
 ## Protect your Endpoints: {#protect-your-endpoints}
 
-Checkout the [Authorization](.././features/authorization) Page.
+Checkout the [Authorization](../core-features/authorization) Page.
 
 ### Difference between Public & Private routes files {#difference-between-public-private-routes-files}
 
