@@ -96,7 +96,7 @@ When data is paginated the response payload will contain a `meta` description ab
 
 Informs the User about what relationships can be included in the response. Example: `?include=tags,user`
 
-For more details read the `Relationships` section in the [Query Parameters](.././features/query-parameters) page.
+For more details read the `Relationships` section in the [Query Parameters](../core-features/query-parameters) page.
 
 ### Change the default Response payload: {#change-default-response-payload}
 
