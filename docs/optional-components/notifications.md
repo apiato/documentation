@@ -15,17 +15,15 @@ title: Notifications
 
 Notifications allow you to inform the user about a state changes in your application.  
 
-The Laravel notifications supports sending notifications across a variety channels (mail, SMS, Slack, Database...). 
+The Laravel notifications supports sending notifications across a variety of channels (mail, SMS, Slack, Database...). 
 
-When using the Database channel the notifications will be stored in a database to be displayed in your client interface.
-
-For more details refer to this [link](https://laravel.com/docs/notifications).
+When using the Database channel, the notifications will be stored in a database to be displayed in your client interface.
 
 ## Principles {#principles}
 
 - Containers MAY or MAY NOT have one or more Notification.
 
-- Ship may contain Application general Notifications.
+- Ship MAY contain Application general Notifications.
 
 ### Rules {#rules}
 
@@ -34,33 +32,26 @@ For more details refer to this [link](https://laravel.com/docs/notifications).
 ### Folder Structure {#folder-structure}
 
 ```
- - app
-    - Containers
-        - {container-name}
-            - Notifications
-                - UserRegisteredNotification.php
-                - ...
-    - Ship
+- app
+  - Containers
+    - {select-name}
+      - {container-name}
         - Notifications
-            - SystemFailureNotification.php
-            - ...
+          - UserRegisteredNotification.php
+          - ...
+  - Ship
+    - Notifications
+      - SystemFailureNotification.php
+      - ...
 ```
 
 ### Code Samples {#code-samples}
 
-**Example: a simple Notification**
+#### A Simple Notification
 
 ```php
-namespace App\Containers\AppSection\User\Notifications;
-
-use App\Containers\AppSection\User\Models\User;
-use App\Ship\Parents\Notifications\Notification;
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-
 class BirthdayReminderNotification extends Notification implements ShouldQueue
 {
-
     use Queueable;
 
     protected $notificationMessage;
@@ -95,7 +86,7 @@ class BirthdayReminderNotification extends Notification implements ShouldQueue
 }
 ```
 
-**Usage from an Action or Task:**
+#### Usage from an Action or Task
 
 Notifications can be sent from Actions or Tasks using the `Notification` Facade.  
 
@@ -106,13 +97,6 @@ Notifications can be sent from Actions or Tasks using the `Notification` Facade.
 Alternatively you can use the `Illuminate\Notifications\Notifiable` trait on the notifiable object "e.g. User" and then call it as follows:
 
 ```php
-// get any user
-$user = User::firstOrCreate([
-    'name' => 'John Doe',
-    'email' => 'mail@something.com',
-    'phone' => '0096123456789',
-]);
-
 // call notify, found on the Notifiable trait
 $user->notify(new BirthdayReminderNotification($notificationMessage));
 ```
@@ -122,7 +106,7 @@ $user->notify(new BirthdayReminderNotification($notificationMessage));
 To select a notification channel, apiato have the `app/Ship/Configs/notification.php` config file where you can define the array of supported channels "e.g. SMS, Email, WebPush...", to be used for all your notifications.
 
 If you want to override the configuration for some notifications classes, or if you prefer to define the channels within each notification class itself,
-you can override the **via** function `public function via($notifiable)` in the notification class and define your channels. 
+you can override the `via` function `public function via($notifiable)` in the notification class and define your channels. 
 
 Checkout [laravel notification channels](http://laravel-notification-channels.com) for list of supported integrations.
 
@@ -134,3 +118,7 @@ To queue a notification you should use `Illuminate\Bus\Queueable` and implement 
 
 Generally you need to generate the notification migration `php artisan notifications:table`, then run `php artisan migrate`, 
 however just running the migration command will do the job, since Apiato already adds the `_create_notifications_table.php` in the default migrations files directory `app/Ship/Migrations/`.
+
+:::info Further reading
+More info at [Laravel Docs](https://laravel.com/docs/notifications).
+:::
