@@ -65,7 +65,7 @@ class Controller extends WebController
 
 ## Namespaces {#namespaces}
 
-- By default, all Views are namespaced as the camleCase of its Section name + @ + camleCase of its Container name.
+- By default, all Views are namespaced as the camelCase of its Section name + `@` + camelCase of its Container name.
 
 For example, a view named `welcome-page` inside `MySection` > `MyContainer` can be accessed like this: `view(mySection@myContainer::welcome-page)`
 
