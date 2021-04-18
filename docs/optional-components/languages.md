@@ -15,22 +15,25 @@ Languages are not real Components, they are just files that holds translations.
 
 - Languages CAN be placed inside the Containers. However, the default laravel `resources/lang` languages files are still loaded and can be used as well.
 
-- All Translations are namespaced as the lower case of the Container name.
+- All Translations are namespaced as the camelCase of its Section name + `@` + camelCase of its Container name.  
+  For example, translation key inside a translation file named `messages` inside `MySection` > `MyContainer` can be accessed like this: `__(mySection@myContainer::messages.welcome)`
+
 
 ### Folder Structure {#folder-structure}
 
 ```
- - app
-    - Containers
-        - {container-name}
-            - Resources
-                - Languages
-                   - en
-                      - messages.php
-                      - users.php
-                   - ar
-                      - messages.php
-                      - users.php
+- app
+  - Containers
+    - {section-name}
+      - {container-name}
+        - Resources
+          - Languages
+            - en
+              - messages.php
+              - users.php
+            - ar
+              - messages.php
+              - users.php
 ```
 
 ### Usage {#usage}
@@ -38,11 +41,9 @@ Languages are not real Components, they are just files that holds translations.
 Nothing much to show here, here's how you use translated strings:
 
 ```php
-__('messages.welcome');
-
-echo __('messages.welcome');
-
-dd(__('messages.welcome'));
+__('mySection@myContainer::messages.welcome');
 ```
 
-For more info about the localization checkout the [Localization](../additional-features/apiato-containers/localization) page.
+:::info Further reading
+More info at [Localization](../additional-features/apiato-containers/localization).
+:::
