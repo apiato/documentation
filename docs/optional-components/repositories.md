@@ -7,9 +7,9 @@ title: Repositories
 * [Rules](#rules)
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
-* [Other Properties:](#other-properties)
-* [API Query Parameters Property](#api-query-parameters-property)
-* [All other Properties](#all-other-properties)
+* [Other Properties](#other-properties)
+  * [API Query Parameters Property](#api-query-parameters-property)
+  * [All other Properties](#all-other-properties)
 
 
 ### Definition {#definition}
@@ -102,16 +102,12 @@ class DemoRepository extends Repository
 
 To enable query parameters (`?search=text`,...) in your API you need to set the property `$fieldSearchable` on the Repository class, to instruct the querying on your model. More [details](../core-features/query-parameters##using-the-request-criteria).
 
-#### Example $fieldSearchable of a Repository
-
 ```php
 	protected $fieldSearchable = [
       'name'  => 'like',
       'email' => '=',
 	];
 ```
-
-Continue reading to find more about those properties and what they do.
 
 #### All other Properties {#all-other-properties}
 
