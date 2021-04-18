@@ -10,7 +10,7 @@ title: Factories
 
 ### Definition {#definition}
 
-Factories (are a short name for Models Factories).
+Factories (are a short name for Model Factories).
 
 Factories are used to generate some fake data with the help of Faker to be used for testing purposes.
 
@@ -22,74 +22,51 @@ Factories are mainly used from Tests.
 
 ### Rules {#rules}
 
-- A Factory is just a plain PHP script. *(No classes or namespaces required)*
+- All Factories MUST extend from `App\Ship\Parents\Factories\Factory`.
 
 ### Folder Structure {#folder-structure}
 
 ```
  - app
     - Containers
-        - {container-name}
-             - Data
-                - Factories
-                    - UserFactory.php
-                    - ...
+        - {section-name}
+            - {container-name}
+                 - Data
+                    - Factories
+                        - UserFactory.php
+                        - ...
 ```
 
 ### Code Samples {#code-samples}
 
-**A User Model Factory:**
+#### A User Model Factory
 
 ```php
-// User
-$factory->define(App\Containers\AppSection\User\Models\User::class, function (Faker\Generator $faker) {
-    return [
-        'name'     => $faker->name,
-        'email'    => $faker->email,
-        'password' => bcrypt(str_random(10)),
-    ];
-});
+class UserFactory extends Factory
+{
+    protected $model = User::class;
 
-// ...
+    public function definition(): array
+    {
+        static $password;
+
+        return [
+            'name' => $this->faker->name,
+            'email' => $this->faker->unique()->safeEmail,
+            'password' => $password ?: $password = Hash::make('testing-password'),
+            'email_verified_at' => now(),
+            'remember_token' => Str::random(10),
+            'is_admin' => false,
+        ];
+    }
+}
 ```
 
-**Usage from `Tests` or anywhere else:**
+#### Usage from Tests or Anywhere Else
 
 ```php
 // creating 4 users
-factory(User::class, 4)->create();
+User::factory()->count(4)->create();
 ```
 
-**Usage with relationships:**
-
-```php
-$countries = Country::all();
-
-// creating 3 rewards and attaching country relation to them
-$rewards = factory(Reward::class, 3)->make()->each(function ($reward) use ($countries) {
-    $reward->save();
-    $reward->countries()->attach([$countries->random(1)->id, $countries->random(1)->id]);
-    $reward->save();
-});
-```
-
-Use make instance of create and pass any data any way, then save after establishing the relations.
-
-**Usage while overriding some values:**
-
-```php
-// creating single Offer and setting a user id
-$offer = factory(Offer::class)->make();
-$offer->user_id = $user->id;
-$offer->save();
-
-// ANOTHER EXAMPLE:
-
-// creating multiple Accounts
-factory(Account::class, 3)->make()->each(function ($account) use ($user) {
-    $account->user_id = $user->id;
-    $account->save();
-});
-```
-
-For more information about the Models Factories read [this](https://laravel.com/docs/master/testing#model-factories).
+For more information about the Models Factories read [this](https://laravel.com/docs/master/database-testing#defining-model-factories).
