@@ -70,4 +70,4 @@ For First-Party Clients you can use a proxy to add those fields on requests comi
 
 > (Facebook, Twitter, Google..)
 
-Checkout the [Social Authentication](/social-authentication) Page for how to Sign up with Social Account.
+Checkout the [Social Authentication](./social-authentication) Page for how to Sign up with Social Account.
