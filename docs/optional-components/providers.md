@@ -7,11 +7,10 @@ title: Providers
 * [Rules](#rules)
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
-* [Register Service Providers:](#register-service-providers)
+* [Register Service Providers](#register-service-providers)
   + [Container's Main Service Provider](#container-s-main-service-provider)
   + [Container's Additional Service Providers](#container-s-additional-service-providers)
   + [Third party packages Service Providers](#third-party-packages-service-providers)
-* [Laravel 5.5 Auto Discovery feature](#laravel-55-auto-discovery-feature)
 * [Information about Laravel Service Providers](#information-about-laravel-service-providers)
 
 ### Definition {#definition}
@@ -46,106 +45,73 @@ They are the place where you register things like container bindings, event list
 
 - The Main Provider MUST be named `MainServiceProvider` in every container.
 
-- You should not register any Provider in the framework (`config/app.php`), only the `ApiatoProvider` should be registered there.
-
-> **Important Information**: Laravel 5.5 introduces an `auto-discovery` feature that lets you automatically register `ServiceProviders`.
-Due to the nature and structure of Apiato applications, this features **is turned off**, because it messes up how `config` files are loaded
-in apiato. This means, that you still need to **manually** register 3rd-party `ServiceProviders` in the `ServiceProvider` of a `Container`.
+- You should not register any Provider in the framework (`config/app.php`).
 
 ### Folder Structure {#folder-structure}
 
-**Example: User Container `Service Providers`**
+#### Example: User Container `Service Providers`
 
 ```
  - app
-    - Containers
-        - User
-            - Providers
-                - UserServiceProvider.php
-                - EventsServiceProvider.php
-                - ...
+     - Containers
+        - {section-name}
+            - User
+                - Providers
+                    - MainServiceProvider.php
+                    - AuthServiceProvider.php
+                    - EventsServiceProvider.php
+                    - ...
 ```
 
-In this example above only the `AuthServiceProvider` and `EventsServiceProvider` needs to be registered in `UserServiceProvider`. While the `UserServiceProvider` will get automatically registered (since it's named based on his Container name).
-
-<a name=""></a>
+In this example above only the `AuthServiceProvider` and `EventsServiceProvider` needs to be registered in `MainServiceProvider`. While the `MainServiceProvider` will get automatically registered.
 
 ### Code Samples {#code-samples}
 
-**Main Service Provider Example:**
+#### Main Service Provider Example
 
 ```php
-namespace App\Containers\Excel\Providers;
-
-use App\Ship\Parents\Providers\MainProvider;
-use Maatwebsite\Excel\ExcelServiceProvider;
-use Maatwebsite\Excel\Facades\Excel;
-
 class MainServiceProvider extends MainProvider
 {
-
-    /**
-     * Container Service Providers.
-     *
-     * @var array
-     */
-    public $serviceProviders = [
-        // ...			
-    ];
-
-    /**
-     * Container Aliases
-     *
-     * @var  array
-     */
-    public $aliases = [
+    // These providers will we automatically registered
+    public array $serviceProviders = [
+        PassportServiceProvider::class,
+        AuthProvider::class,
+        MiddlewareServiceProvider::class
         // ...
     ];
 
-    /**
-     * Register anything in the container.
-     */
-    public function register()
-    {
-        parent::register();
-
-        $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
-    }
+    public array $aliases = [
+        // ...
+    ];
 }
 ```
-
-**Note**: when defining `register()` or `boot()` function in your Main provider "only" you must call the parent functions (`parent::register()`, `parent::boot()`) from your extended function.
 
 ### Register Service Providers: {#register-service-providers}
 
 #### Container's Main Service Provider {#container-s-main-service-provider}
 
-No need to register the Main `Service Provider` anywhere, it will be automatically registered, and it is responsible for registering all the Container Additional (Job Specific) Providers.
+No need to register the `MainService Provider` anywhere, it will be automatically registered, and it is responsible for registering all Container Additional (Job Specific) Providers.
 
 #### Container's Additional Service Providers {#container-s-additional-service-providers}
 
-You MAY add as many Additional `Service Providers` as you want in a `Container`. However, in order to get them loaded in the framework you MUST register them all in the Main `Service Provider` as follows:
+You MAY add as many Additional Service Providers as you want in a Container. However, in order to get them loaded in the framework you MUST register them all in the `MainService Provider` as follows:
 
 ```php
-private $containerServiceProviders = [
+public array $serviceProviders = [
     AuthServiceProvider::class,
     EventsServiceProvider::class,
     // ...
 ];
-],
 ```
 
-> Same rule applies to **Aliases**.
+:::note
+Same rule applies to **Aliases**.
+:::
 
 #### Third party packages Service Providers {#third-party-packages-service-providers}
 
 If a package requires registering its service provider in the `config/app.php`, you SHOULD register its service provider in the Main container where you are using it.
 However, if it's a generic package used by the entire framework and not a specific Container or feature. Then you can register that service provider in the `app/Ship/Providers/ShipProvider.php`, but never in the `config/app.php`.
-
-### Laravel 5.5 Auto Discovery feature {#laravel-55-auto-discovery-feature}
-
-This feature is disabled in Apiato so far.
-More details [here](../general/faq).
 
 ### Information about Laravel Service Providers {#information-about-laravel-service-providers}
 
@@ -158,12 +124,14 @@ In apiato those providers have been renamed and moved to the Ship Layer `app/Shi
 - BroadcastServiceProvider
 - EventsServiceProvider
 
-**VIP Note:** you should not touch those providers, instead you have to extend them from a containers providers in order to modify them.
-Example: the `app/Containers/AppSection/Authentication/Providers/AuthProvider.php` is extending the `AuthServiceProvider` to modify it.
+:::note
+You should not touch those providers, instead you have to extend them from a containers providers in order to modify them.
+Example: the **app/Containers/AppSection/Authentication/Providers/AuthProvider.php** is extending the **AuthServiceProvider** to modify it.
+:::
 
 Those providers are not auto registered by default, thus writing any code there will not be available, unless you extend them.
 Once extended the child Provider should be registered in its Container Main Provider, which makes its parent available.
 
-This rule does not apply to the `RouteServiceProvider` since it's required by Apiato, this Provider is registered by the `ApiatoProvider`.
+This rule does not apply to the `RouteServiceProvider` since it's required by Apiato, this Provider is registered by the `ShipProvider`.
 
 Check [How Service Providers are auto-loaded](../general/faq).
