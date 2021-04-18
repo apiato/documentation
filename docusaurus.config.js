@@ -55,8 +55,8 @@ module.exports = {
         // },
         {
           href: 'https://github.com/apiato/apiato',
-          label: 'GitHub',
           position: 'right',
+          className: 'header-github-link',
         },
       ],
     },
