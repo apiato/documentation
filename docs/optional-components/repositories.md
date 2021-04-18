@@ -26,22 +26,23 @@ The Repository is used to separate the logic that retrieves the data and maps it
 
 - Every Model SHOULD have a Repository.
 
-- A Model SHOULD always get accessed through its Repository. (Never direct access to Model).
+- A Model SHOULD always get accessed through its Repository. (Never accessed directly).
 
 ### Rules {#rules}
 
-- All Repositories MUST extend from `App\Ship\Parents\Repositories\Repository`. Extending from this class will give access to functions like (`find`, `create`, `update` and much more).
+- All Repositories MUST extend from `App\Ship\Parents\Repositories\Repository`. Extending from this class will give you access to methods like (`find`, `create`, `update` and much more).
 
-- Repository name should be same like it's model name (model: `Foo` -> repository: `FooRepository`).
+- Repository name should be same as it's model name (model: `Foo` -> repository: `FooRepository`).
 
-- If a Repository belongs to a Model whose name is not equal to its Container name, then the Repository must set the `$container` property like this: `$container='ContainerName'`. *See an example below*
+- If a Repository belongs to a Model whose name is not equal to its Container name, then the Repository implement `model()` method like [this](#model-method-example).
 
 ### Folder Structure {#folder-structure}
 
 ```
  - app
     - Containers
-        - {container-name}
+        - {section-name}
+            - {container-name}
                 - Data
                 - Repositories
                     - UserRepository.php
@@ -50,16 +51,10 @@ The Repository is used to separate the logic that retrieves the data and maps it
 
 ### Code Samples {#code-samples}
 
-**User `Repository`:**
+#### Demo Repository
 
 ```php
-namespace App\Containers\AppSection\User\Data\Repositories;
-
-use App\Containers\AppSection\User\Contracts\UserRepositoryInterface;
-use App\Containers\AppSection\User\Models\User;
-use App\Ship\Parents\Repositories\Repository;
-
-class UserRepository extends Repository implements UserRepositoryInterface
+class DemoRepository extends Repository
 {
     protected $fieldSearchable = [
         'name'  => 'like',
@@ -68,7 +63,7 @@ class UserRepository extends Repository implements UserRepositoryInterface
 }
 ```
 
-**Usage:**
+#### Usage
 
 ```php
 // paginate the data by 10
@@ -86,54 +81,39 @@ $offer = $offerRepository->findWhere([
 //....
 ```
 
-Note: If the Repository belongs to Model with a name different from its Container name, the Repository class of that Model must set the property `$container` and define the Container name.
-
-**Example:**
+#### Different Model and Container Name {#model-method-example}
+The `model()` method must be implemented when the model has different name than the container.
 
 ```php
-namespace App\Containers\AppSection\Authorization\Data\Repositories;
-
-use App\Ship\Parents\Repositories\Repository;
-
-class RoleRepository extends Repository
+class DemoRepository extends Repository
 {
-    protected $container = 'Authorization'; // the container name. Must be set when the model has different name than the container
-
-    protected $fieldSearchable = [
-
-    ];
-
+    // ...
+    
+    public function model(): string
+    {
+        return Demo::class;
+    }
 }
 ```
 
 ### Other Properties: {#other-properties}
 
-### API Query Parameters Property {#api-query-parameters-property}
+#### API Query Parameters Property {#api-query-parameters-property}
 
-To enable query parameters (`?search=text`,...) in your API you need to set the property `$fieldSearchable` on the Repository class, to instruct the querying on your model.
+To enable query parameters (`?search=text`,...) in your API you need to set the property `$fieldSearchable` on the Repository class, to instruct the querying on your model. More [details](../core-features/query-parameters##using-the-request-criteria).
 
-**Example `$fieldSearchable` of a `Repository`:**
+#### Example $fieldSearchable of a Repository
 
 ```php
 	protected $fieldSearchable = [
-	  'name'  => 'like',
-	  'email' => '=',
+      'name'  => 'like',
+      'email' => '=',
 	];
 ```
 
 Continue reading to find more about those properties and what they do.
 
-### All other Properties {#all-other-properties}
+#### All other Properties {#all-other-properties}
 
-apiato uses the `andersao/l5-repository` package, to provide a lot of powerful features to the repository class. such as
-
-```php
-	 // ...
-
-    protected $cacheMinutes = 1440; // 1 day
-
-    protected $cacheOnly = ['all'];
-
-```
-
+Apiato uses the `l5-repository` package, to provide a lot of powerful features to the repository class.  
 To learn more about all the properties you can use, visit the `andersao/l5-repository` package [documentation](https://github.com/andersao/l5-repository).
