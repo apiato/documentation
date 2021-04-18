@@ -10,9 +10,9 @@ title: Tests
 
 ### Definition {#definition}
 
-Tests classes are created to test the Application classes are working as expected.
+Tests classes are created to test if the Application classes are working as expected.
 
-The two most essential Tests types for this architecture are the Unit Tests and the Functional Tests. However, Integration and Acceptance Tests can be used as well.
+The two most essential Test types for this architecture are the Unit Tests and the Functional Tests. However, Integration and Acceptance Tests can be used as well.
 
 ### Principles {#principles}
 
@@ -24,71 +24,62 @@ The two most essential Tests types for this architecture are the Unit Tests and 
 
 ### Rules {#rules}
 
-- All Container Tests classes SHOULD extend from a Container Internal TestCase class `{container-name}/tests/TestCase.php`. The container **TestCase** MUST extend main TestCase on Ship layer `App\Ship\Parents\Tests\PhpUnit\TestCase`. *(Adding functions to the container TestCase allows sharing those functions between all Test classes of the Container)*.
+- All Container Test classes SHOULD extend from a Container Internal TestCase class `{container-name}/Tests/TestCase.php`. The container **TestCase** MUST extend main TestCase on Ship layer `App\Ship\Parents\Tests\PhpUnit\TestCase`. *(Adding functions to the container TestCase allows sharing those functions between all Test classes of the Container)*.
 
 ### Folder Structure {#folder-structure}
 
 ```
  - app
     - Containers
-        - {container-name}
-            - Tests
-                - TestCase.php // the container test case
-                - Unit
-                    - CreateUserTest.php
-                    - UpdateUserTest.php
-                    - ...
-            - UI
-                - API
-                    - Tests
-                        - Functional
-                            - LoginTest.php
-                            - LogoutTest.php
-                            - ...
-                - WEB
-                    - Tests
-                        - Functional
-                            - LoginTest.php
-                            - LogoutTest.php
-                            - ...
-                - CLI
-                    - Tests
-                        - Functional
-                            - BackupDataTest.php
-                            - ...
+        - {section-name}
+            - {container-name}
+                - Tests
+                    - TestCase.php // the container test case
+                    - Unit
+                        - CreateUserTest.php
+                        - UpdateUserTest.php
+                        - ...
+                - UI
+                    - API
+                        - Tests
+                            - Functional
+                                - LoginTest.php
+                                - LogoutTest.php
+                                - ...
+                    - WEB
+                        - Tests
+                            - Functional
+                                - LoginTest.php
+                                - LogoutTest.php
+                                - ...
+                    - CLI
+                        - Tests
+                            - Functional
+                                - BackupDataTest.php
+                                - ...
 ```
 
 ### Code Sample {#code-sample}
 
 ```php
-namespace App\Containers\AppSection\User\UI\API\Tests\Functional;
-
-use App\Containers\{container-name}\Tests\TestCase;
-
-	class DeleteUserTest extends TestCase
+class DeleteUserTest extends TestCase
+{
+    protected $endpoint = 'delete@v1/users/{id}';
+    
+    protected array $access = [
+        'roles' => '',
+        'permissions' => 'delete-users',
+    ];
+    
+    public function testDeleteExistingUser()
     {
-        protected $endpoint = '/users';
+        $user = $this->getTestingUser();
 
-        protected $permissions = [
-            'delete-users'
-        ];
+        $response = $this->injectId($user->id)->makeCall();
 
-        public function testDeleteExistingUser_()
-        {
-            // get a testing user of type admin.
-            $user = $this->getLoggedInTestingAdmin();
-
-            // send the HTTP request
-            $response = $this->apiCall($this->endpoint, 'delete');
-
-            // assert response status is correct
-            $this->assertEquals($response->getStatusCode(), '202');
-
-            // ...
-        }
-
+        $response->assertStatus(204);
     }
-
+}
 ```
 
 > See the [Tests Helpers](../miscellaneous/tests-helpers) Page
