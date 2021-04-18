@@ -79,4 +79,6 @@ To Schedule the execution of a Command checkout the [Tasks Scheduling](../miscel
 
 To define Console route go to `app/Ship/Commands/Routes.php`.
 
-For more information about the Commands read [this](https://laravel.com/docs/artisan#writing-commands)
+:::info Further reading
+More info at [Laravel Docs](https://laravel.com/docs/artisan#writing-commands).
+:::

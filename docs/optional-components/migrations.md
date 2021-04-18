@@ -62,4 +62,6 @@ class CreateDemoTable extends Migration
 
 ```
 
-For more information about the Database Migrations read [this](https://laravel.com/docs/migrations).
+:::info Further reading
+More info at [Laravel Docs](https://laravel.com/docs/migrations).
+:::

@@ -77,8 +77,6 @@ Migrate & seed at the same time
 php artisan migrate --seed
 ```
 
-For more information about the Database Seeders read [this](https://laravel.com/docs/seeding).
-
 ### Testing Seeder Command {#apiato-testing-seeder-command}
 
 It's useful sometimes to create a big set of testing data. apiato facilitates this task:
@@ -89,3 +87,7 @@ It's useful sometimes to create a big set of testing data. apiato facilitates th
 ```shell
 php artisan apiato:seed-test
 ```
+
+:::info Further reading
+More info at [Laravel Docs](https://laravel.com/docs/seeding).
+:::

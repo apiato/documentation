@@ -162,4 +162,7 @@ class HttpKernel extends LaravelHttpKernel
     ];
 }
 ```
-For more information about the Middlewares read [this](https://laravel.com/docs/middleware).
+
+:::info Further reading
+More info at [Laravel Docs](https://laravel.com/docs/middleware).
+:::

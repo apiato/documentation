@@ -112,4 +112,7 @@ To enable query parameters (`?search=text`,...) in your API you need to set the 
 #### All other Properties {#all-other-properties}
 
 Apiato uses the `l5-repository` package, to provide a lot of powerful features to the repository class.  
+
+:::info Further reading
 To learn more about all the properties you can use, visit the `andersao/l5-repository` package [documentation](https://github.com/andersao/l5-repository).
+:::

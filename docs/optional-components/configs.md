@@ -72,4 +72,7 @@ You can access the respective configuration key like this:
 $value = Config::get('{section-name}-{container-name}.namespace');     // returns 'App'
 $value = config('{section-name}-{container-name}.namespace');          // same, but using laravel helper function
 ```
-For more information about the Configs read [this](https://laravel.com/docs/configuration).
+
+:::info Further reading
+More info at [Laravel Docs](https://laravel.com/docs/configuration).
+:::

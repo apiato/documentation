@@ -11,13 +11,11 @@ title: Jobs
 
 ### Definition {#definition}
 
- * Jobs are simple classes that can do one thing or multiple related things. 
- * Job is a name given to a class that is usually created to be queued (it's execution is usually deferred for later, after the execution of previous Jobs are completed).
- * Jobs can be scheduled to be executed later by a queuing mechanism (a queue system like beanstalkd).
- * When a Job class is dispatched, it performs its specific job and dies.
- * Laravel's queue worker will process every Job as it's pushed onto the queue.
- 
-More info [here](https://laravel.com/docs/queues).
+ - Jobs are simple classes that can do one thing or multiple related things. 
+ - Job is a name given to a class that is usually created to be queued (it's execution is usually deferred for later, after the execution of previous Jobs are completed).
+ - Jobs can be scheduled to be executed later by a queuing mechanism (a queue system like beanstalkd).
+ - When a Job class is dispatched, it performs its specific job and dies.
+ - Laravel's queue worker will process every Job as it's pushed onto the queue.
 
 ### Principles {#principles}
 
@@ -30,35 +28,32 @@ More info [here](https://laravel.com/docs/queues).
 ### Folder Structure {#folder-structure}
 
 ```
- - app
-    - Containers
-        - {container-name}
-            - Jobs
-                - DoSomethingJob.php
-                - DoSomethingElseJob.php
+- app
+  - Containers
+    - {section-name}
+      - {container-name}
+        - Jobs
+          - DoSomethingJob.php
+          - DoSomethingElseJob.php
 ```
 
 ### Code Samples {#code-samples}
 
-**CreateAndValidateAddress with third party `Job`:**
+#### DemoJob
 
 ```php
-namespace App\Containers\Shipment\Jobs;
-
-use App\Port\Job\Abstracts\Job;
-
-class CreateAndValidateAddressJob extends Job
+class DemoJob extends Job
 {
-    private $recipients;
+    private $something;
 
-    public function __construct(array $recipients)
+    public function __construct(array $someData)
     {
-        $this->recipients = $recipients;
+        $this->something = $someData;
     }
 
     public function handle()
     {
-        foreach ($this->recipients as $recipient) {
+        foreach ($this->something as $thing) {
             // do whatever you like
         }
     }
@@ -67,17 +62,19 @@ class CreateAndValidateAddressJob extends Job
 
 Check the parent Job class.
 
-**Usage from `Action`:**
+# Usage from Action
 
 ```php
 // using helper function
-dispatch(new CreateAndValidateAddressJob($recipients));
+dispatch(new DemoJob($someData));
 
 // manually
-App::make(\Illuminate\Contracts\Bus\Dispatcher\Dispatcher::class)->dispatch(New StatusChangedJob($object));
+app(\Illuminate\Contracts\Bus\Dispatcher\Dispatcher::class)->dispatch(New DemoJob($someData));
 ```
 
 ### Execute Jobs Execution {#execute-jobs-execution}
-
 For running your Jobs checkout the [Tasks Queuing](../miscellaneous/tasks-queuing) page.
 
+:::info Further reading
+More info at [Laravel Docs](https://laravel.com/docs/queues).
+:::

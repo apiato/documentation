@@ -99,4 +99,7 @@ public function run($user)
 
 ```
 
-For more information about the Criteria read [this](https://github.com/andersao/l5-repository#create-a-criteria).
+:::info Further reading
+More info at [Laravel Docs](https://github.com/andersao/l5-repository#create-a-criteria).
+:::
+
