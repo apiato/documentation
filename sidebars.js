@@ -107,7 +107,6 @@ module.exports = {
         'miscellaneous/tests-helpers',
         'miscellaneous/tasks-scheduling',
         'miscellaneous/tasks-queuing',
-        'miscellaneous/postman',
       ],
     },
     {
