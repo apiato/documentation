@@ -44,12 +44,12 @@ Bug fixes should be sent to both (the latest stable branch) and to `master` bran
 
 Major new features (and big changes) should always be sent to the `master` branch, which contains the upcoming release.
 
-**Example:**
+#### Example
 
-Assuming that the current stable version is `8.0`. The repository would have at least the following two branches `master` and `8.0`.
+Assuming that the current stable version is `10.0`. The repository would have at least the following two branches `master` and `10.0`.
 
-If your PR contains a major change, or a braking change, or a new Container then it must be sent to `master` branch.
-If your PR fixes a bug in the existing stable release then it should be sent to the latest release branch `8.0`.
+If your PR contains a major change, or a braking change, or a new Container, then it must be sent to `master` branch.
+If your PR fixes a bug in the existing stable release then it should be sent to the latest release branch `10.0`.
 
 > If you always contribute to Apiato, it's better to use the master branch instead of the latest release
 branch, to always have the latest features and updates and would be good to merge the latest stable branch into your master from time to time, in case it has some bug fixes.
@@ -82,26 +82,26 @@ Important things to remember when contributing:
 
 This guide will help you contribute to the Apiato project, while working on your personal project.
 
-If you added a feature/function to your local project or created a useful container or fixed a bug. This guide will
+If you added a feature/function to your local project or created a useful container or fixed a bug, This guide will
 show you how to submit that change to Apiato.
 
 #### SETUP
 
-**One time setup**
+##### One time setup
 
 In this scenario let's assume we have the following:
 
 * `Apiato`     # is the starter/framework project
-* `Project-A`  # your personal project your building on top of apiato
+* `Project-A`  # your personal project your building on top of Apiato
 
 1) Create Project A from Apiato
 
-If you want to fix a bug on the latest stable release your PR should be sent to the latest stable branch, thus you need
+If you want to fix a bug on the latest stable release, your PR should be sent to the latest stable branch, thus you need
 to pull the latest stable release of Apiato.
 
 `composer create-project apiato/apiato project-a`
 
-If you want to add new features or do anything else, that should be added to the next stable release, you need to pull
+If you want to add new features or do anything else that should be added to the next stable release, you need to pull
 the master branch and submit your PR there.
 
 `composer create-project apiato/apiato project-a --stability=dev`
@@ -110,7 +110,7 @@ the master branch and submit your PR there.
 
 `git init`
 
-3.a) Set up your origin remote (to point to your project private repository url)
+3.1) Set up your origin remote (to point to your project private repository url)
 
 `git remote add origin git@bitbucket.org:username/repo.git`
 
@@ -119,7 +119,7 @@ the master branch and submit your PR there.
 `git remote set-url origin git@bitbucket.org:username/project-a.git`
 
 
-3.b) Set up an upstream remote (to point to your fork of the apiato repository)
+3.2) Set up an upstream remote (to point to your fork of the Apiato repository)
 
 *assuming you already forked the repository*
 
@@ -139,11 +139,11 @@ upstream    git@github.com:username/apiato.git (push)
 
 `git add . && git commit -m 'first commit'`
 
-5.a) Create apiato branch
+5.1) Create apiato branch
 
 `git checkout -b apiato`
 
-5.b) Let the apiato branch track the upstream master branch
+5.2) Let the apiato branch track the upstream master branch
 
 `git checkout apiato`
 
@@ -159,7 +159,7 @@ Now you should have the following branches:
 
 #### USAGE (Contribution Steps)
 
-**Must do every time before you contribute**
+##### Must do every time before you contribute
 
 1) Update remotes (fetch)
 
@@ -175,15 +175,15 @@ Now you should have the following branches:
 
 4) Now you can cherry-pick the commits you'd like to contribute
 
-4.a) First go to the apiato branch
+4.1) First go to the apiato branch
 
 `git checkout apiato`
 
-4.b) Create a custom branch for your PR
+4.2) Create a custom branch for your PR
 
 `git checkout -b feature-awesome`  (must be created from apiato)
 
-4.c) Do the cherry-picking
+4.3) Do the cherry-picking
 
 `git log master`      (copy the commit ID)
 
@@ -201,8 +201,6 @@ Make sure you create a PR from your custom branch `feature-awesome` to `master` 
 
 *We'll do our best to merge your PR in the shortest time possible. Thanks in advance :)*
 
-Checkout [How to upgrade apiato](./faq).
-
 ### Contributing to the Documentation {#contributing-documentation}
 
 This documentation is built using [Docusaurus 2](https://v2.docusaurus.io/), a modern static website generator.
@@ -211,7 +209,7 @@ The content lives in its own repository
 [(apiato/documentation)](https://github.com/apiato/documentation), in the `docs/` folder.
 
 All you have to do is navigate to `docs/` folder, find the markdown `.md` file that you want to update *(all files
-are named as they are in the site menu)*, update or add the text, the commit.
+are named as they are in the site menu)*, update or add the text, then commit.  
 
 > You do not need to build the site locally. Just edit the markdown files and submit your PR. GitHub will build the site for us.
 
@@ -238,8 +236,11 @@ For each generator you need to implement exactly one method (as it is defined in
 - `getUserInputs:`
   This method reads all parameters from the command line or provides a wizard to get information from the user.
   The available options for this generator are specified using the `public $inputs = []` variable in respective generator.
-  Note that you do not need to specify the options for `--container` or `--file`, as both are handled directly by the
+
+:::note 
+  You do not need to specify the options for `--section`, `--container` or `--file`, as these are handled directly by the
   Generator itself. Simply add the options that are specifically needed for this generator.
+:::
 
   Be sure to read input with the `checkParameterOrXYZ()` methods, as they automatically check if an option is available.
   Otherwise, they will ask the user for additional input.
@@ -255,12 +256,12 @@ For each generator you need to implement exactly one method (as it is defined in
 3 - Finally register the command in `Generator/GeneratorsServiceProvider.php` using `registerGenerators`, example:
 
 ```php
-        $this->registerGenerators([
-            ActionGenerator::class,
-            RouteGenerator::class,
-            TaskGenerator::class,
-            // ...
-        ]);
+$this->registerGenerators([
+    ActionGenerator::class,
+    RouteGenerator::class,
+    TaskGenerator::class,
+    // ...
+]);
 ```
 
 4 - Default FileName & FileExtension(optional)
@@ -272,7 +273,7 @@ method, which simply returns a `string`.
 
 1 - Merge the last [stable branch](https://github.com/apiato/apiato/branches) in the master branch. (To get any new bug fixes.)
 2 - Decide on the next version number for the new release. By checking the current [releases](https://github.com/apiato/apiato/releases).
-3 - Update `VERSION` value in `/core/Foundation/Apiato.php` (example: `const VERSION = '8.1.0';`).
+3 - Update `VERSION` value in `/core/Foundation/Apiato.php` (example: `const VERSION = '10.0.0';`).
 
 #### Minor Release
 
@@ -280,15 +281,15 @@ Your PR with that minor changes should be submitted and merged into master.
 
 1 - Go to [releases](https://github.com/apiato/apiato/releases) and create a new one from the master branch.
 2 - Make sure you write a complete Changelog, in the release description.
-3 - If you updated the documentation and you should! then visit the [documentation](https://github.com/apiato/documentation) repository and merge the PR into master.
+3 - If you updated the documentation, and you should! then visit the [documentation](https://github.com/apiato/documentation) repository and merge the PR into master.
 
 #### Major Release
 
 Master is the branch that contains all the new changes.
 So we need to create a new branch from master then make a release from that new branch.
 
-1 - From master, checkout a new branch named as the version number you want to release. (Example `8.1`).
-2 - Go to [releases](https://github.com/apiato/apiato/releases) and create a new one from the branch created in the step above. (Example `8.1`).
+1 - From master, checkout a new branch named as the version number you want to release. (Example `10.0`).
+2 - Go to [releases](https://github.com/apiato/apiato/releases) and create a new one from the branch created in the step above. (Example `10.1`).
 3 - Make sure you write a complete Changelog, in the release description.
-4 - Change the [default branch](https://github.com/apiato/apiato/settings/branches) on github to that new branch.
-5 - If you updated the documentation and you should! then visit the [documentation](https://github.com/apiato/documentation) repository and merge the PR into master.
+4 - Change the [default branch](https://github.com/apiato/apiato/settings/branches) on GitHub to that new branch.
+5 - If you updated the documentation, and you should! then visit the [documentation](https://github.com/apiato/documentation) repository and merge the PR into master.

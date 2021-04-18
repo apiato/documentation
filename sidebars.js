@@ -109,9 +109,9 @@ module.exports = {
         'miscellaneous/tasks-queuing',
       ],
     },
-    'general/faq',
-    'general/contribution-guide',
-    'general/upgrade-guide',
+    'faq',
+    'contribution-guide',
+    'upgrade-guide',
     {
       type: 'link',
       label: 'Change Log',

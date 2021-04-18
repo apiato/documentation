@@ -134,7 +134,7 @@ Once extended the child Provider should be registered in its Container Main Prov
 
 This rule does not apply to the `RouteServiceProvider` since it's required by Apiato, this Provider is registered by the `ShipProvider`.
 
-Check [How Service Providers are auto-loaded](../general/faq).
+Check [How Service Providers are auto-loaded](../faq).
 
 :::info Further reading
 More info at [Laravel Docs](https://laravel.com/docs/providers).
