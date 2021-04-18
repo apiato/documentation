@@ -77,7 +77,7 @@ Migrate & seed at the same time
 php artisan migrate --seed
 ```
 
-For more information about the Database Seeders read [this](https://laravel.com/docs/master/seeding).
+For more information about the Database Seeders read [this](https://laravel.com/docs/seeding).
 
 ### Testing Seeder Command {#apiato-testing-seeder-command}
 

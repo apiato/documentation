@@ -13,7 +13,7 @@ title: Tests Helpers
 - [Create live Testing Data](#create-live-testing-data)
 - [Debugging with PsySH](#debugging-with-PsySH)
 
-Apiato provides additional helper functions, on top of the [Laravel's default Tests](https://laravel.com/docs/master/http-tests),
+Apiato provides additional helper functions, on top of the [Laravel's default Tests](https://laravel.com/docs/http-tests),
 to make testing your API much faster and fun.
 
 Writing functional tests, makes implementing, debugging and modifying a feature faster.

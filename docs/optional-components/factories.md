@@ -69,4 +69,4 @@ class UserFactory extends Factory
 User::factory()->count(4)->create();
 ```
 
-For more information about the Models Factories read [this](https://laravel.com/docs/master/database-testing#defining-model-factories).
+For more information about the Models Factories read [this](https://laravel.com/docs/database-testing#defining-model-factories).

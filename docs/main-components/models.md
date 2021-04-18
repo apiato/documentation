@@ -68,6 +68,6 @@ Notice the Demo Model has a relationship with User Model, which lives in another
 
 The casts attribute can be used to parse any of the model's attributes to a specific type. In the code sample below we can cast `total_credits` to `float`.
 
-More information about the applicable cast-types can be found in the laravel [eloquent-mutators](https://laravel.com/docs/master/eloquent-mutators) documentation.
+More information about the applicable cast-types can be found in the laravel [eloquent-mutators](https://laravel.com/docs/eloquent-mutators) documentation.
 
 You can place any dates inside the `$dates` to parse those automatically.

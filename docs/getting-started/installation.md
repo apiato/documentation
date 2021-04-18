@@ -82,7 +82,7 @@ vendor/bin/phpunit
 ## Development Environment Setup {#Development-Environment}
 
 You can run **Apiato** on your favorite environment. Below you'll see how you can run it on top of
-[Vagrant](https://www.vagrantup.com/) (using [Laravel Homestead](https://laravel.com/docs/master/homestead)) or
+[Vagrant](https://www.vagrantup.com/) (using [Laravel Homestead](https://laravel.com/docs/homestead)) or
 [Docker](https://www.docker.com/) (using [Laradock](https://github.com/Laradock/laradock)).
 
 We'll see how to use both tools, and you can pick one, or you can use other options like

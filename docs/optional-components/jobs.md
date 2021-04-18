@@ -11,11 +11,9 @@ title: Jobs
 
 ### Definition {#definition}
 
-Jobs:
-
- * are simple classes that can do one thing or multiple related things. 
+ * Jobs are simple classes that can do one thing or multiple related things. 
  * Job is a name given to a class that is usually created to be queued (it's execution is usually deferred for later, after the execution of previous Jobs are completed).
- * Jobs can be scheduled to be executed later by a queuing mechanism (queue system like beanstalkd).
+ * Jobs can be scheduled to be executed later by a queuing mechanism (a queue system like beanstalkd).
  * When a Job class is dispatched, it performs its specific job and dies.
  * Laravel's queue worker will process every Job as it's pushed onto the queue.
  
