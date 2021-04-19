@@ -6,11 +6,12 @@ title: Documentation
 - [Installation](#installation)
 - [Usage](#usage)
   - [Write PHP **docblock**](#write-php-docblock)
-  - [Run documentation generator](#run-documentation-generator)
-  - [Visit documentation URL's](#visit-docs-urls)
-  - [Shared response](#shared-response)
+  - [Run Documentation Generator](#run-documentation-generator)
+  - [Visit Documentation URL's](#visit-docs-urls)
+  - [Shared Response](#shared-response)
+- [Private Documentation Protection](#private-docs-protection)
 - [Documentation Customization](#documentation-customization)
-  - [Edit the default generated values in the templates:](#edit-the-default-generated-values-in-the-templates)
+  - [Edit Default Generated Values in Templates](#edit-default-generated-values-in-templates)
   - [Change the Documentations URL's](#change-the-documentations-urls)
   - [Edit the Documentation Header](#edit-the-documentation-header)
 
@@ -95,7 +96,7 @@ Route::post('clients/web/login', [Controller::class, 'proxyLoginForWebClient']);
 All the Endpoint `DocBlocks` MUST be written inside Routes files, otherwise they won't be loaded.
 :::
 
-### Run documentation generator {#run-documentation-generator}
+### Run Documentation Generator {#run-documentation-generator}
 
 Run the documentation generator command from the root directory:
 
@@ -129,7 +130,7 @@ If you get an error (`apidoc not found`),
     // 'executable' => 'apidoc',
 ```
 
-### Visit documentation URL's {#visit-docs-urls}
+### Visit Documentation URL's {#visit-docs-urls}
 
 Visit documentation URL's as shown in your terminal:
 
@@ -140,7 +141,7 @@ Visit documentation URL's as shown in your terminal:
 Every time you change the DocBlock of a Route file you need to run the `apiato:apidoc` command, to regenerate.
 :::
 
-### Shared response {#shared-response}
+### Shared Response {#shared-response}
 
 You can use shared responses to update the documentation faster, with less outdated responses and prevent duplicating the responses between routes.  
 
@@ -170,7 +171,19 @@ HTTP/1.1 200 OK
 * @apiUse UserSuccessSingleResponse
  ```
 
-## Documentation customization {#documentation-customization}
+## Private Documentation Protection {#private-docs-protection}
+:::note
+By default, This feature is **disabled** in local environment and Private docs are not protected.  
+You can change this by modifying the `protect-private-docs` configuration in `vendorSection-documentation` config file.
+:::
+
+Private documentations route is protection with the `auth:web` middleware. 
+In order to access it you need to have `admin` role or `access-private-docs` permission.
+To modify this behavior you can remove `hasDocAccess` from `check()` in `GetPrivateDocumentationRequest` and add your own role/permissions or update `HasDocAccessTrait`.
+
+Read Documentation Customization [Below](#documentation-customization):
+
+## Documentation Customization {#documentation-customization}
 
 :::caution Instructions
 
@@ -191,7 +204,7 @@ This container works out of the box perfectly but if you want to change its conf
 
 :::
 
-### Edit the default generated values in the templates: {#edit-the-default-generated-values-in-the-templates}
+### Edit Default Generated Values in Templates {#edit-default-generated-values-in-templates}
 
 Apiato by defaults generates 2 API documentations, each one has its own `apidoc.json` file. Both can be modified from the Documentation Containers in `Containers/VendorSection/Documentation/ApiDocJs/`
 
