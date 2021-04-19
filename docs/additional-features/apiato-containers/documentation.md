@@ -9,8 +9,9 @@ title: Documentation
   - [Run Documentation Generator](#run-documentation-generator)
   - [Visit Documentation URL's](#visit-docs-urls)
   - [Shared Response](#shared-response)
+- [Change Documentation Routes](#change-documentation-routes)
 - [Private Documentation Protection](#private-docs-protection)
-- [Documentation Customization](#documentation-customization)
+- [Documentation Container Customization](#documentation-container-customization)
   - [Edit Default Generated Values in Templates](#edit-default-generated-values-in-templates)
   - [Change the Documentations URL's](#change-the-documentations-urls)
   - [Edit the Documentation Header](#edit-the-documentation-header)
@@ -170,20 +171,28 @@ HTTP/1.1 200 OK
  ```php
 * @apiUse UserSuccessSingleResponse
  ```
+## Change Documentation Routes {#change-documentation-routes}
 
+You can change the documentation routes by adding `PUBLIC_DOCS_URL` & `PRIVATE_DOCS_URL` to `.env` file.
+
+For example:
+```dotenv
+PUBLIC_DOCS_URL=docs/public
+PRIVATE_DOCS_URL=docs/private
+```
 ## Private Documentation Protection {#private-docs-protection}
 :::note
-By default, This feature is **disabled** in local environment and Private docs are not protected.  
-You can change this by modifying the `protect-private-docs` configuration in `vendorSection-documentation` config file.
+By default, this feature is **disabled** in local environment and Private docs are not protected.  
+You can change this by adding `PROTECT_PRIVATE_DOCS=true` in `.env` file.
 :::
 
 Private documentations route is protection with the `auth:web` middleware. 
 In order to access it you need to have `admin` role or `access-private-docs` permission.
 To modify this behavior you can remove `hasDocAccess` from `check()` in `GetPrivateDocumentationRequest` and add your own role/permissions or update `HasDocAccessTrait`.
 
-Read Documentation Customization [Below](#documentation-customization):
+Read Documentation Customization [Below](#documentation-container-customization):
 
-## Documentation Customization {#documentation-customization}
+## Documentation Container Customization {#documentation-customization}
 
 :::caution Instructions
 
