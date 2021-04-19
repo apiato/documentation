@@ -91,6 +91,7 @@ module.exports = {
         'optional-components/factories',
         'optional-components/middlewares',
         'optional-components/configs',
+        'optional-components/helpers',
         'optional-components/commands',
         'optional-components/jobs',
         'optional-components/languages',
