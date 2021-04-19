@@ -3,6 +3,7 @@ title: Documentation
 ---
 
 - [Requirements](#requirements)
+- [Installation](#installation)
 - [Usage](#usage)
   - [Write PHP **docblock**](#write-php-docblock)
   - [Run documentation generator](#run-documentation-generator)
@@ -23,6 +24,16 @@ Apiato make writing and generating documentations very easy with the `php artisa
     - (`npm install apidoc`)
 
 - (Recommended) read the [Routes](../../main-components/routes) page first.
+
+## Installation {#installation}
+
+```shell
+composer require apiato/documentation-generator-container
+```
+
+:::tip
+This container is installed by default with an Apiato fresh installation.
+:::
 
 ## Usage {#usage}
 

@@ -152,6 +152,12 @@ Example Twitter Response:
 
 ## Support new Auth Provider{#support-new-auth-provide}
 
-1) Copy the container from `VendorSection` to a section of your project and fix the namespaces.
-2) Pick an Auth Provider from the supported providers by [Socialite](https://socialiteproviders.github.io/).
+:::caution Instructions
+This container works out of the box perfectly but if you want to change its configs or modify the codes you MUST follow these steps:
+
+1- Copy the container from `VendorSection` to `AppSection` (or any of your custom sections) of your project  
+2- Fix the namespaces  
+:::
+
+1) Pick an Auth Provider from the supported providers by [Socialite](https://socialiteproviders.github.io/).  
 2) Go to `app/Containers/YourSection/Socialauth/Tasks/FindUserSocialProfileTask.php` and support your provider.

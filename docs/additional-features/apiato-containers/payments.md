@@ -12,7 +12,7 @@ title: Payments
 
 ## Installation {#installation}
 ```shell
-composer require apiato/vendorSection-payment
+composer require apiato/payment-container
 ```
 Now run `php artisan migrate`
 
@@ -103,6 +103,13 @@ Furthermore, the gateways may add the response from the gateway to the `data` fi
 
 ## Developing own Payment Gateway Containers {#developing-own-payment-gateway-containers}
 
+:::caution Instructions
+This container works out of the box perfectly but if you want to change its configs or modify the codes you MUST follow these steps:
+
+1- Copy the container from `VendorSection` to `AppSection` (or any of your custom sections) of your project  
+2- Fix the namespaces  
+:::
+
 The `Payment` container acts as generic foundation to "plug in" different containers that interacts with specific
 payment gateways (e.g., `PayPal`, `Stripe`, ...). This section introduces, how these containers shall be implemented
 in order to be used via the generic `Payment` container.
@@ -141,8 +148,6 @@ That's all!
 ## Mocking the real payment call for Testing {#mocking-the-real-payment-call-for-testing}
 
 ```php
-<?php
-
 // mock the ChargeWithStripeService external API call
 $this->mockIt(ChargeWithStripeService::class)->shouldReceive('charge')->andReturn([
    'payment_method' => 'stripe',

@@ -2,6 +2,7 @@
 title: Debugger
 ---
 
+- [Installation](#installation)
 - [Enable requests logging](#enable-requests-logging)
 - [Usage](#usage)
 - [Debugger customization](#debugger-customization)
@@ -13,6 +14,16 @@ Apiato provides a simple and easy way to monitor and log all the HTTP requests c
 The request monitor can be very useful when testing and debugging your frontend Apps which consume your API. Especially when the frontend apps (Mobile, Web,...) are built by other developers who are far from you.
 
 The requests monitoring is provided via the`RequestsMonitorMiddleware` middleware.
+
+## Installation {#installation}
+
+```shell
+composer require apiato/debugger-container
+```
+
+:::tip
+This container is installed by default with an Apiato fresh installation.
+:::
 
 ## Enable requests logging {#enable-requests-logging}
 

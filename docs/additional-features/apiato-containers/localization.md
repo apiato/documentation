@@ -18,8 +18,14 @@ composer require apiato/localization-container
 
 ## Support new languages{#support-new-languages}
 
-1. Copy the container to the `AppSection` (or any of your custom sections) of your project then change the configs and add your language.
-2. All supported languages must be added to the `supported_languages` in `app/Containers/SECTION_NAME/Localization/Configs/vendorSection-localization.php`
+:::caution Instructions
+This container works out of the box perfectly but if you want to change its configs or modify the codes you MUST follow these steps:
+
+1- Copy the container from `VendorSection` to `AppSection` (or any of your custom sections) of your project  
+2- Fix the namespaces  
+:::
+
+All supported languages must be added to the `supported_languages` in `app/Containers/SECTION_NAME/Localization/Configs/vendorSection-localization.php`
    to prevent users from requesting unsupported languages, as follows:
 
 ```php
@@ -35,7 +41,7 @@ composer require apiato/localization-container
     ],
 ```
 
-3. Create new languages files:
+Create new languages files:
 
 Languages file can be placed in any container, not only the Localization Container.
 
