@@ -23,6 +23,17 @@
   padding: 0 var(--ifm-pre-padding);
 }
 
+html[data-theme='light'] .button {
+  color: white !important;
+}
+
+html[data-theme='light'] .button:hover {
+  color: #4457c2 !important;
+}
+
+html[data-theme='dark'] .button:hover {
+  color: #4457c2 !important;
+}
 
 .header-github-link:hover {
   opacity: 0.6;
