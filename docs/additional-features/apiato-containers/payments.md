@@ -161,4 +161,4 @@ $this->mockIt(ChargeWithPaypalService::class)->shouldReceive('charge')->andRetur
 ]);
 ```
 
-Checkout the [Tests Helpers](http://docs.apiato.io/) page for more information about Testing.
+Checkout the [Tests Helpers](../../miscellaneous/tests-helpers) page for more information about Testing.
