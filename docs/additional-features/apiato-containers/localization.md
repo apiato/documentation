@@ -19,12 +19,10 @@ composer require apiato/localization-container
 ## Support new languages{#support-new-languages}
 
 1. Copy the container to the `AppSection` (or any of your custom sections) of your project then change the configs and add your language.
-2. All supported languages must be added to the `supported_languages` in `app/Containers/SECTION_NAME/Localization/Configs/localization.php`
+2. All supported languages must be added to the `supported_languages` in `app/Containers/SECTION_NAME/Localization/Configs/vendorSection-localization.php`
    to prevent users from requesting unsupported languages, as follows:
 
 ```php
-<?php
-
     'supported_languages' => [
         'ar',
         'en' => [
@@ -53,10 +51,11 @@ language. It is not given, that the API responds in this language!
 
 When the `Accept-Language` header is missing, the default locale will be applied.
 
-> **Heads up!**
-> Please be sure that your client does not send an `Accept-Language` header automatically. Some REST clients
+:::note
+Please be sure that your client does not send an `Accept-Language` header automatically. Some REST clients
 (e.g., `POSTMAN`) automatically add header-fields based on the operating-systems settings. So your `Accept-Language` header
-may be set automatically without knowing!
+may be set automatically without you knowing!
+:::
 
 The API will answer with the applied language in the `Content-Language` header of the response.
 
@@ -73,19 +72,20 @@ The overall workflow of the Middleware is as follows:
 
 ## Translating Strings{#translating-strings}
 
-By default, all the Container translation files are namespaced to the Container name.
+By default, all the Container translation files are namespaced as the camelCase of its Section name + `@` + camelCase of its Container name.
 
-**Example:**
+#### Example
 
-If a Container named `Store` has `en` translation file called `notifications` that contains translation for `welcome`
-like "Welcome to our store :)". You can access this translation as follows `trans('store::notifications.welcome')`. If
-you remove the namespace (which is the lowercase of the container name) and try to access it like this
-`trans('notifications.welcome')` it will not find your translation and will print `notifications.welcome` only.
+If a translation file called `notifications` is inside `MySection` > `MyContainer` that contains translation for `welcome`
+like "Welcome to our store :)". You can access this translation as follows `__('mySection@myContainer::notifications.welcome')`. If
+you remove the namespace (part before `::`) and try to access it like this
+`__('notifications.welcome')` it will not find your translation and will print `notifications.welcome` only.
 
-> **Heads up!**
-> If you try to load a string for a language that is **not available** (e.g., there is no folder for this language), Apiato
+:::note
+If you try to load a string for a language that is **not available** (e.g., there is no folder for this language), Apiato
 will stick to the default one that is defined in `app.locale` config file. This is also true, if the requested locale
 is present in the `supported_languages` array from the configuration file.
+:::
 
 ## Disable Localization{#disable-localization}
 
