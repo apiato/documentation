@@ -1,41 +1,50 @@
 ---
-title: Software Architectural Patterns
+title: Software Architecture
 ---
 
-- [Porto](#porto)
-  * [Introduction](#introduction)
-  * [The Containers Layer](#porto-container-layer)
-    * [Create a new Container](#porto-new-container)
-      * [Option 1) Using the Code Generator](#porto-new-container-code-generator)
-      * [Option 2) Manually](#porto-new-container-manually)
-    + [Container Conventions](#containter-conventions)
-  * [The Ship Layer](#porto-ship-layer)
-  
+* [Introduction](#introduction)
+* [The Containers Layer](#porto-container-layer)
+  * [Create a new Container](#porto-new-container)
+    * [Option 1) Using the Code Generator](#porto-new-container-code-generator)
+    * [Option 2) Manually](#porto-new-container-manually)
+  + [Container Conventions](#containter-conventions)
+* [The Ship Layer](#porto-ship-layer)
 
-## Porto {#porto}
+
+## Porto SAP {#porto}
 
 ### Introduction {#introduction}
 
-Porto is the Apiato recommended architecture for building scalable API's with Apiato.
-However, it also supports building API's using the popular MVC architecture (with a little modifications). Apiato features are written using Porto, and can be used by any architecture.
+[Porto](https://github.com/Mahmoudz/Porto) is the recommended architecture for building apps on Apiato.
+
+Apiato also supports the popular MVC architecture (with a little modifications). The Apiato features are written using Porto, but can be used by any architecture.
+
+### About Porto
 
 Porto is an architecture that consists of 2 layers the **Containers** layer and **Ship** layer.
 
-The **Container** layer holds your application business logic code. Similar to Modular, DDD and Plugins architectures,
-Apiato separates the business logic into multiple folders called **Containers** while **Ship** layer holds
-the infrastructure code (your shared code between all Containers).
-Containers are grouped using [**Sections**](https://github.com/Mahmoudz/Porto#containers-sections) which is equivalent to Bounded Context in DDD architecture.
-By default, Apiato comes with two Sections: `AppSection` and `VendorSection`.
+The [**Container**](https://github.com/Mahmoudz/Porto#2-containers-layer) layer holds your application business logic code.
+While [**Ship**](https://github.com/Mahmoudz/Porto#1-ship-layer) layer holds the infrastructure code (your shared code between all Containers).
 
-The Apiato features themselves are developed using the Porto Software Architectural Pattern, so the features
-provided in Apiato live in Containers.
+Containers are grouped into [**Sections**](https://github.com/Mahmoudz/Porto#containers-sections) to easily move them around and reuse them _(A section is equivalent to a bounded context from the Domain-driven design)_.
 
-Spending 15 minutes, reading the [Porto Document](https://github.com/Mahmoudz/Porto) before getting started, is a great
+By default, Apiato comes with two Sections: 
+
+- **App Section**: The default section, containing all your containers. You can create additional sections whenever needed.
+- **Vendor Section**: for downloaded reusable containers. Similar to the vendor directory.    
+
+The Apiato features themselves are developed using Porto, so their code lives inside Containers.
+
+---
+
+Spending 30 minutes, reading the [Porto Document](https://github.com/Mahmoudz/Porto) before getting started, is a great
 investment of time.
+
+---
 
 ### The Containers Layer {#porto-container-layer}
 
-Read about the Containers layer [here](https://github.com/Mahmoudz/Porto#Containers-Layer)
+Read about the Containers layer [here](https://github.com/Mahmoudz/Porto#Containers-Layer).
 
 #### Create a new Container {#porto-new-container}
 
