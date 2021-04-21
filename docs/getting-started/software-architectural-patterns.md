@@ -1,5 +1,5 @@
 ---
-title: Software Architecture
+title: Architecture
 ---
 
 * [Introduction](#introduction)

@@ -1,5 +1,5 @@
 ---
-title: Conventions and Principles
+title: Conventions
 ---
 
 * [HTTP Methods usage in RESTful API's](#http-methods-usage-in-restful-apis)

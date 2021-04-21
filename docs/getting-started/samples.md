@@ -1,15 +1,15 @@
 ---
-title: Overview
+title: Samples
 ---
 
 * [The basic flow](#basic-flow)
-  * [Sample Route Endpoint](#sample-route-endpoint)
-  * [Controller Function](#controller-function)
-  * [Sample Action](#sample-action)
-  * [Sample User Response](#sample-user-response)
+* [Sample Route Endpoint](#sample-route-endpoint)
+* [Controller Function](#controller-function)
+* [Sample Action](#sample-action)
+* [Sample User Response](#sample-user-response)
 
 
-## The basic flow {#basic-flow}
+### The basic flow {#basic-flow}
 
 When an HTTP request is received, it first hits your predefined Endpoint (each endpoint live in its own Route file).
 

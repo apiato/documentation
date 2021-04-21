@@ -127,7 +127,7 @@ The `ApiatoProvider` is the one who calls `runLoadersBoot()` on startup. `Apiato
 
 ### How to create third-party Containers? {#how-to-create-third-party-containers}
 
-Read the [Container Installer Documentation](additional-features/container-installer).
+Read the [Container Installer Documentation](getting-started/container-installer).
 
 ### What is the default Username for authentication? {#what-is-the-default-username-for-authentication}
 
