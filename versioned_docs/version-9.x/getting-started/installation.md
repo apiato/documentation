@@ -3,7 +3,7 @@ title: Installation
 ---
 
 * [A) Apiato Installation](#App)
-	* [1) Code Setup](#Code-Setup)
+  * [Project Setup](#Project-Setup)
 		* [Option 1: Automatically via Composer](#App-Composer)
 		* [Option 2: Manually](#App-Git)
 	* [2) Database Setup](#Setup-Database)
@@ -21,7 +21,7 @@ title: Installation
 
 **Apiato** can be installed automatically with Composer (recommended) or manually (with Git or direct download):
 
-### 1) Code Setup {#Code-setup}
+### 1) Project Setup {#Project-Setup}
 
 #### 1.A) Automatically via Composer {#App-Composer}
 
