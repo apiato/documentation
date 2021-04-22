@@ -25,21 +25,25 @@ If you already have `php` and `composer` installed on your computer ([read requi
 composer create-project apiato/apiato my-api
 ```
 
-#### The Apiato Installer (recommended) {#apiato-installer}
+#### The Apiato Installer {#apiato-installer}
 
-Or, you may install the Apiato Installer as a global Composer dependency:
+Or, you may install the Apiato Installer as a global Composer dependency:  
 
 ```shell
 composer global require apiato/installer
 ```
 
-Then create a new Apiato project using Apiato installer:
-
+Then create a new Apiato project using Apiato Installer:
 ```shell
-laravel new my-api
+apiato new my-api
 ```
 
-:::info
+Advantages of using Apiato Installer:
+* After your project installed, you will be asked to choose containers you want to install in your fresh project.
+* You can install the latest stable version (by default), or the latest development version of Apiato using `--dev` option.
+* You can initial a new git repository for your project using `--git` option.
+
+:::caution
 Make sure to place Composer's system-wide vendor bin directory in your `$PATH` so the apiato executable can be located by your system. This directory exists in different locations based on your operating system; however, some common locations include:
 
 macOS: `$HOME/.composer/vendor/bin`
@@ -47,16 +51,16 @@ Windows: `%USERPROFILE%\AppData\Roaming\Composer\vendor\bin`
 GNU / Linux Distributions: `$HOME/.config/composer/vendor/bin` or `$HOME/.composer/vendor/bin`
 :::
 
-For convenience, the Laravel installer can also create a Git repository for your new project. To indicate that you want a Git repository to be created, pass the `--git` flag when creating a new project:
+For convenience, the Apiato installer can also create a Git repository for your new project. To indicate that you want a Git repository to be created, pass the `--git` flag when creating a new project:
 
 ```shell
-laravel new my-api --git
+apiato new my-api --git
 ```
 
 This command will initialize a new Git repository for your project and automatically commit the base Apiato skeleton. The `git` flag assumes you have properly installed and configured Git ([read requirements](../)). You can also use the `--branch` flag to set the initial branch name:
 
 ```shell
-laravel new my-api --git --branch="main"
+apiato new my-api --git --branch="main"
 ```
 
 ### Database Setup {#Setup-Database}
