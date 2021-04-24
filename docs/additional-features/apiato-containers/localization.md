@@ -80,6 +80,10 @@ The overall workflow of the Middleware is as follows:
 
 By default, all the Container translation files are namespaced as the camelCase of its Section name + `@` + camelCase of its Container name.
 
+:::note
+Translation files in **Ship** folder are exception to this and will be namespaced with the word "**ship**" instead of section name, e.g. `__('ship::notifications.welcome')`
+:::
+
 #### Example
 
 If a translation file called `notifications` is inside `MySection` > `MyContainer` that contains translation for `welcome`

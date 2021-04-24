@@ -6,7 +6,7 @@ title: Views
 * [Rules](#rules)
 * [Folder Structure](#folder-structure)
 * [Code Sample](#code-sample)
-- [Namespaces](#namespaces)
+* [Namespaces](#namespaces)
 
 ### Definition & Principles {#definition-principles}
 
@@ -70,3 +70,7 @@ class Controller extends WebController
 For example, a view named `welcome-page` inside `MySection` > `MyContainer` can be accessed like this: `view(mySection@myContainer::welcome-page)`
 
 If you try to access it without the namespace `view('just-welcome')`, it will not find your View.
+
+:::note
+View files in **Ship** folder are exception to this and will be namespaced with the word "**ship**" instead of section name, e.g. `view(ship::welcome-page)`
+:::
