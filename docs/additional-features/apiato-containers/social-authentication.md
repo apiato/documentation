@@ -157,6 +157,7 @@ This container works out of the box perfectly but if you want to change its conf
 
 1- Copy the container from `VendorSection` to `AppSection` (or any of your custom sections) of your project  
 2- Fix the namespaces  
+3- Remove `apiato/social-auth-container` dependency from project root composer.json  
 :::
 
 1) Pick an Auth Provider from the supported providers by [Socialite](https://socialiteproviders.github.io/).  

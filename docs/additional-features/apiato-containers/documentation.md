@@ -11,7 +11,7 @@ title: Documentation
   - [Shared Response](#shared-response)
 - [Change Documentation Routes](#change-documentation-routes)
 - [Private Documentation Protection](#private-docs-protection)
-- [Documentation Container Customization](#documentation-container-customization)
+- [Documentation Container Customization](#documentation-customization)
   - [Edit Default Generated Values in Templates](#edit-default-generated-values-in-templates)
   - [Change the Documentations URL's](#change-the-documentations-urls)
   - [Edit the Documentation Header](#edit-the-documentation-header)
@@ -195,13 +195,13 @@ Read Documentation Customization [Below](#documentation-container-customization)
 ## Documentation Container Customization {#documentation-customization}
 
 :::caution Instructions
-
 This container works out of the box perfectly but if you want to change its configs or modify the codes you MUST follow these steps:
 
-1- Copy the container from `VendorSection` to `AppSection` (or any of your custom sections) of your project<br/>
-2- Fix the namespaces<br/>
-3- Update `section_name` & `html_files` in container configs<br/>
-4- Update `apidoc.json` files in `ApiDocJs/private` & `public` folders and fix the `filename`<br/>
+1- Copy the container from `VendorSection` to `AppSection` (or any of your custom sections) of your project  
+2- Fix the namespaces  
+3- Remove `apiato/documentation-generator-container` dependency from project root composer.json  
+4- Update `section_name` & `html_files` in container configs  
+5- Update `apidoc.json` files in `ApiDocJs/private` & `public` folders and fix the `filename`  
 
 ```json
 {
@@ -210,7 +210,6 @@ This container works out of the box perfectly but if you want to change its conf
     }
 }
 ```
-
 :::
 
 ### Edit Default Generated Values in Templates {#edit-default-generated-values-in-templates}

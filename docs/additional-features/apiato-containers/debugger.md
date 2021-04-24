@@ -39,8 +39,9 @@ Log will be written to `storage/logs/debugger.log`
 
 This container works out of the box perfectly but if you want to change its configs or modify the codes you MUST follow these steps:
 
-1- Copy the container from `VendorSection` to `AppSection` (or any of your custom sections) of your project<br/>
-2- Fix the namespaces<br/>
+1- Copy the container from `VendorSection` to `AppSection` (or any of your custom sections) of your project  
+2- Fix the namespaces  
+3- Remove `apiato/debugger-container` dependency from project root composer.json  
 
 :::
 

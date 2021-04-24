@@ -23,6 +23,8 @@ This container works out of the box perfectly but if you want to change its conf
 
 1- Copy the container from `VendorSection` to `AppSection` (or any of your custom sections) of your project  
 2- Fix the namespaces  
+3- Remove `apiato/localization-container` dependency from project root composer.json  
+
 :::
 
 All supported languages must be added to the `supported_languages` in `app/Containers/SECTION_NAME/Localization/Configs/vendorSection-localization.php`
