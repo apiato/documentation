@@ -113,7 +113,7 @@ If you get an error (`apidoc not found`),
 
 1. Read about [container customization](#documentation-customization)
    
-2. Open the container config file `app/Containers/VendorSection/Documentation/Configs/vendorSection-documentation.php`
+2. Open the container config file `app/Containers/Vendor/Documentation/Configs/vendor-documentation.php`
 
 3. Edit the `executable` path to **`$(npm bin)/apidoc`** or to however you access the `apidoc` tool on your machine.
 
@@ -197,7 +197,7 @@ Read Documentation Customization [Below](#documentation-container-customization)
 :::caution Instructions
 This container works out of the box perfectly but if you want to change its configs or modify the codes you MUST follow these steps:
 
-1- Copy the container from `VendorSection` to `AppSection` (or any of your custom sections) of your project  
+1- Copy the container from `Vendor` to `AppSection` (or any of your custom sections) of your project  
 2- Fix the namespaces  
 3- Remove `apiato/documentation-generator-container` dependency from project root composer.json  
 4- Update `section_name` & `html_files` in container configs  
@@ -214,20 +214,20 @@ This container works out of the box perfectly but if you want to change its conf
 
 ### Edit Default Generated Values in Templates {#edit-default-generated-values-in-templates}
 
-Apiato by defaults generates 2 API documentations, each one has its own `apidoc.json` file. Both can be modified from the Documentation Containers in `Containers/VendorSection/Documentation/ApiDocJs/`
+Apiato by defaults generates 2 API documentations, each one has its own `apidoc.json` file. Both can be modified from the Documentation Containers in `Containers/Vendor/Documentation/ApiDocJs/`
 
 ### Change the Documentations URL's {#change-the-documentations-urls}
 
-Edit the config file of the Documentation Container `Containers/VendorSection/Documentation/Configs/vendorSection-documentation.php`
+Edit the config file of the Documentation Container `Containers/Vendor/Documentation/Configs/vendor-documentation.php`
 
 ### Edit the Documentation Header {#edit-the-documentation-header}
 
 The header is usually the Overview of your API. It contains Info about authenticating users, making requests, responses, potential errors, rate limiting, pagination, query parameters and anything you want.
 
-All this information is written in `app/Containers/VendorSection/Documentation/ApiDocJs/shared/header.template.md` file, and the same file is used as header for both private and public documentations.
+All this information is written in `app/Containers/Vendor/Documentation/ApiDocJs/shared/header.template.md` file, and the same file is used as header for both private and public documentations.
 
 To edit the content just open the markdown file in any markdown editor and edit it.
 
 You will notice some variables like `{{rate-limit}}` and `{{token-expires}}`. Those are replaced when running `apiato:apidoc` with real values from your application configuration files.
 
-Feel free to extend them to include more info about your API from the `app/Containers/VendorSection/Documentation/Tasks/RenderTemplatesTask.php` class.
+Feel free to extend them to include more info about your API from the `app/Containers/Vendor/Documentation/Tasks/RenderTemplatesTask.php` class.

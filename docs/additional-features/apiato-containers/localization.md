@@ -21,13 +21,13 @@ composer require apiato/localization-container
 :::caution Instructions
 This container works out of the box perfectly but if you want to change its configs or modify the codes you MUST follow these steps:
 
-1- Copy the container from `VendorSection` to `AppSection` (or any of your custom sections) of your project  
+1- Copy the container from `Vendor` to `AppSection` (or any of your custom sections) of your project  
 2- Fix the namespaces  
 3- Remove `apiato/localization-container` dependency from project root composer.json  
 
 :::
 
-All supported languages must be added to the `supported_languages` in `app/Containers/SECTION_NAME/Localization/Configs/vendorSection-localization.php`
+All supported languages must be added to the `supported_languages` in `app/Containers/SECTION_NAME/Localization/Configs/vendor-localization.php`
    to prevent users from requesting unsupported languages, as follows:
 
 ```php
@@ -47,7 +47,7 @@ Create new languages files:
 
 Languages file can be placed in any container, not only the Localization Container.
 
-Example languages files are included in the Localization Container at `app/Containers/VendorSection/Localization/Resources/Languages`.
+Example languages files are included in the Localization Container at `app/Containers/Vendor/Localization/Resources/Languages`.
 
 ## Select Request Language{#select-request-language}
 

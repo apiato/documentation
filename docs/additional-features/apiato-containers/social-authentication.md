@@ -110,7 +110,7 @@ oauth_token=1212&oauth_secret=3434
 
 Note: For Facebook send only the `oauth_token` which is named as `access_token` in the facebook response. For more
 details about the parameters checkout the generated documentation or
-visit `app/Containers/VendorSection/Socialauth/UI/API/Routes/AuthenticateAll.v1.private.php`
+visit `app/Containers/Vendor/Socialauth/UI/API/Routes/AuthenticateAll.v1.private.php`
 
 5) The endpoint above should return the User and his Personal Access Token.
 
@@ -155,7 +155,7 @@ Example Twitter Response:
 :::caution Instructions
 This container works out of the box perfectly but if you want to change its configs or modify the codes you MUST follow these steps:
 
-1- Copy the container from `VendorSection` to `AppSection` (or any of your custom sections) of your project  
+1- Copy the container from `Vendor` to `AppSection` (or any of your custom sections) of your project  
 2- Fix the namespaces  
 3- Remove `apiato/social-auth-container` dependency from project root composer.json  
 :::
