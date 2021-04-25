@@ -39,7 +39,7 @@ const features = [
       icon: faFileCode,
       description: (
         <>
-          API Documentations generator, to generate API docs from PHP Docblock (using ApiDocJS).
+          API Documentations generator, to generate API docs from PHP Docblock using ApiDocJS (provided by Documentation Container).
         </>
       ),
     },
@@ -95,7 +95,7 @@ const features = [
       icon: faTimes,
       description: (
         <>
-          Exception handleing with custom JSON errors responses (using Exceptions Formatters).
+          Exception handling with custom error responses.
         </>
       ),
     },
@@ -111,7 +111,7 @@ const features = [
       icon: faLanguage,
       description: (
         <>
-          Localization (easily switch between languages via request header field).
+          Localization - easily switch between languages via request header field (provided by Localization Container).
         </>
       ),
     },
@@ -135,7 +135,7 @@ const features = [
       icon: faMedkit,
       description: (
         <>
-          Http Requests/Response Monitor and DB Query Debugger (from the Debugger Container).
+          Http Requests/Response Monitor and DB Query Debugger (provided by Debugger Container).
         </>
       ),
     },
@@ -151,7 +151,7 @@ const features = [
       icon: faFacebook,
       description: (
         <>
-          Social Authentication supported out of the box "Facebook, Twitter, Google+" (Using Socalite).
+          Social Authentication supported out of the box "Facebook, Twitter, Google+" Using Laravel Socialite (provided by SocialAuth Container).
         </>
       ),
     },
@@ -191,7 +191,7 @@ const features = [
       icon: faMoneyBill,
       description: (
         <>
-          Support Stripe and WePay payment gateways (extandable to support other payment gatways).
+          Support Stripe payment gateway, extendable to support other payment gateways (provided by Payment Container).
         </>
       ),
     },
@@ -199,7 +199,7 @@ const features = [
       icon: faCogs,
       description: (
         <>
-          System and user level settings out of the box (by the Settings Container).
+          System and user level settings out of the box (provided by Settings Container).
         </>
       ),
     },
@@ -236,14 +236,6 @@ const features = [
       ),
     },
     {
-      icon: faDesktop,
-      description: (
-        <>
-          Ready Admin dashboard infrastructure with Login view (at admin.apiato.dev).
-        </>
-      ),
-    },
-    {
       icon: faMap,
       description: (
         <>
@@ -259,7 +251,7 @@ const features = [
         </>
       ),
     },
-  
+
   ];
 
   export default features
