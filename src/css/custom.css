@@ -31,6 +31,14 @@ html[data-theme='light'] .button:hover {
   color: #4457c2 !important;
 }
 
+.hero__title {
+  color: white;
+}
+
+.hero__subtitle {
+  color: white;
+}
+
 html[data-theme='dark'] .button:hover {
   color: #4457c2 !important;
 }
