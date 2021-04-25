@@ -287,9 +287,9 @@
         }
       ]
     },
-    "version-9.x/general/faq",
-    "version-9.x/general/contribution-guide",
-    "version-9.x/general/upgrade-guide",
+    "version-9.x/upgrade-guide",
+    "version-9.x/contribution-guide",
+    "version-9.x/faq",
     {
       "type": "link",
       "label": "Change Log",

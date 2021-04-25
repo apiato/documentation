@@ -149,7 +149,7 @@ However, if it's a generic package used by the entire framework and not a specif
 ### Laravel 5.5 Auto Discovery feature {#laravel-55-auto-discovery-feature}
 
 This feature is disabled in Apiato so far.
-More details [here](.././general/faq).
+More details [here](.././faq).
 
 ### Information about Laravel Service Providers {#information-about-laravel-service-providers}
 
@@ -170,4 +170,4 @@ Once extended the child Provider should be registered in its Container Main Prov
 
 This rule does not apply to the `RouteServiceProvider` since it's required by Apiato, this Provider is registered by the `ApiatoProvider`.
 
-Check [How Service Providers are auto-loaded](.././general/faq).
+Check [How Service Providers are auto-loaded](.././faq).
