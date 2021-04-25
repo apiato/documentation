@@ -146,6 +146,11 @@ module.exports = {
             'https://github.com/apiato/documentation/tree/master',
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
+          versions:{
+            current: {
+              label: `Next 🚧`,
+            },
+          }
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
