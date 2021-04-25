@@ -13,13 +13,7 @@ function Feature({ icon, description }) {
   return (
     <div className={clsx('col col--3', styles.feature)}>
       <div className={styles.featureIcon}>
-
-        <FontAwesomeIcon
-          icon={icon}
-          size={"3x"}
-          color={"#4457C1"}
-        />
-
+        <FontAwesomeIcon icon={icon} size={"3x"} color={"#4457C1"}/>
       </div>
       <p className={styles.featureDescription}>{description}</p>
     </div>
