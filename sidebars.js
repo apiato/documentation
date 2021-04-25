@@ -55,11 +55,6 @@ module.exports = {
             {
               'Community Containers': [
                 'additional-features/community-containers/overview',
-                {
-                  label: 'Example Container',
-                  type: 'link',
-                  href: 'https://github.com/johannesschobel/apiato-null'
-                },
               ],
             },
           ],
