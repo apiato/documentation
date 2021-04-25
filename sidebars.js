@@ -113,17 +113,13 @@ module.exports = {
         'miscellaneous/tasks-queuing',
       ],
     },
+    'upgrade-guide',
+    'contribution-guide',
+    'faq',
     {
-      'Prologue': [
-        'upgrade-guide',
-        'contribution-guide',
-        'faq',
-        {
-          label: 'Change Log',
-          type: 'link',
-          href: 'https://github.com/apiato/apiato/releases'
-        },
-      ]
+      label: 'Change Log',
+      type: 'link',
+      href: 'https://github.com/apiato/apiato/releases'
     },
   ],
 };
