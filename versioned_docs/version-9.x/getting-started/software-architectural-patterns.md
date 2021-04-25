@@ -41,7 +41,7 @@ However, it also supports building API's using the popular MVC architecture (wit
 
 *Apiato features are written using Porto, and can be used by any architecture.*
 
-Below you will see how you can both any of the architectures to build your project.
+Below you will see how you can use any of the architectures to build your project.
 
 ## Porto {#porto}
 
