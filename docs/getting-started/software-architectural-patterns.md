@@ -31,12 +31,12 @@ Porto is an architecture that consists of 2 layers the **Containers** layer and 
 
 The Containers layer consists of **Containers**. These containers are grouped into isolated **Sections**, to easily move them around.
 
-- [**A Container**](https://github.com/Mahmoudz/Porto#Containers) can be a **feature**, or can be a wrapper around a REST API resource, or anything else. A container is allowed to depend on other containers.
-- [**A Section**](https://github.com/Mahmoudz/Porto#Sections) (is a group of related containers), it can be **service** _(micro or bigger), or a sub-system within the main system, or antyhing else. A Section is not allowed to directly communicate with another service, except via Events or Commands.
+- [**A Container**](https://github.com/Mahmoudz/Porto#Containers) can be a **feature**, or can be a wrapper around a RESTful API resource, or anything else. A container is allowed to depend on other containers.
+- [**A Section**](https://github.com/Mahmoudz/Porto#Sections) (is a group of related containers), it can be **service** _(micro or bigger)_, or a sub-system within the main system, or antyhing else. A Section is not allowed to directly communicate with another service, except via Events or Commands.
 
 The default Apiato Sections:
 
-- **The App Section**: is the only default section Apiato provides, it contains all the default containers. You can create additional sections anytime, and rename them to anything you want. (ex: Inventory Service, Shipping Service, Order Service...)
+- **The App Section**: is the only default section Apiato provides, it contains all the default containers. You can create additional sections anytime, and rename them to anything you want. (ex: Inventory Section, Shipping Section, Order Section, Payment Section...)
 - **The Vendor**: is a special Section, it only contains installed and reusable Containers. Similar to the vendor directory at the root. Any Section is allowed to depend on the Vendor Section.
 
 ---
