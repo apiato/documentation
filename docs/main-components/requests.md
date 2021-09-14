@@ -92,20 +92,32 @@ class UpdateUserRequest extends Request
 #### Controller
 
 ```php
-public function handle(UpdateUserRequest $updateUserRequest)
+public function updateUser(UpdateUserRequest $updateUserRequest)
 {
-    $data = $updateUserRequest->all();
-    // or
-    $name = $updateUserRequest->name;
-    // or
-    $name = $updateUserRequest['name'];
+    ...
 }
 ```
 
 By just injecting the request class you already applied the validation and authorization rules.
 
-When you need to pass data to the Action, you should pass the request Object as it is to the Action parameter.
-
+When you need to pass data to the Action, you should pass the request Object as it is to the Action's `run()` method parameter.
+```php
+public function createAdmin(CreateAdminRequest $request)
+{
+    $admin = app(CreateAdminAction::class)->run($request);
+    ...
+}
+```
+You can also retrieve inputs from request like you do in Laravel
+```php
+public function run(CreateAdminRequest $request)
+{
+    $data = $updateUserRequest->all();
+    $name = $updateUserRequest->name;
+    $name = $updateUserRequest->input('name');
+    // etc...
+}
+```
 ## Request Properties {#request-properties}
 
 Apiato adds some new properties to the Request Class. Each of these properties are very useful for some situations, and let you achieve your goals faster and cleaner. Below we'll see a description for each property:
