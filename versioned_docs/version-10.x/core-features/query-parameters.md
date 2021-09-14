@@ -73,24 +73,24 @@ Read more about it [here](https://github.com/andersao/l5-repository#using-the-re
 
 The `?search=` parameter can be applied to any **`GET`** HTTP request.
 
-For the search to work you need to add `fieldSearchable` to the Repository of the Model.
-
-```php
+For the search to work you need to define which fields from the model can be searchable.  
+In your repository set $fieldSearchable with the name of the fields to be searchable or a relation to fields.
+```
 protected $fieldSearchable = [
     'name',
     'email',
-    // ...
-];
-
-// OR
-
-protected $fieldSearchable = [
-    'name'  => 'like',
-    'email' => '=',
-    // ...
+    'product.name'
 ];
 ```
+You can set the type of condition which will be used to perform the query, the default condition is "="
 
+```php
+protected $fieldSearchable = [
+    'name'=>'like',
+    'email', // Default Condition "="
+    'your_field'=>'condition'
+];
+```
 ```
 ?search=John
 ?search=name:John
