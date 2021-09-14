@@ -385,7 +385,7 @@ and
 3) And when user click on that link it will go to your front end app reset password page. And then from there you should get
    the user's new password and call the `/password-reset` endpoint with all the required fields to reset the password.
 
-::: Note  
+:::note  
 You must set up the email to get this function to work, however for testing purposes set the `MAIL_MAILER=log` in
 your `.env` file in order to the see the email content in the log file `storage/logs/laravel.log`.
 :::
