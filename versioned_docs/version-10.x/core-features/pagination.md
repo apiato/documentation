@@ -52,11 +52,6 @@ combined in order to get the next 100 resources:
 api.domain.test/endpoint?limit=100&page=2
 ```
 
-In order to allow clients to request all data that matches their criteria (e.g., search-criteria) and disable pagination,
-you can manually override the `$allowDisablePagination` property in your specific `Repository` class. A requester can then
-get all data (with no pagination applied) by requesting `api.domain.test/endpoint?limit=0`. This will return all matching
-entities.
-
 ### Change the default pagination limit {#change-the-default-pagination-limit}
 
 Open the `.env` file and set a number for `PAGINATION_LIMIT_DEFAULT`:
@@ -70,8 +65,18 @@ This is used in the `config/repository.php` which is the config file of the **L5
 ### Skip the Pagination Limit {#skip-the-pagination-limit}
 
 In order to allow clients to request all data that matches their criteria (e.g. search-criteria) and disable pagination,
-you can set `PAGINATION_SKIP=true` in `.env` file.
-A request can then get all data (with no pagination applied) by applying `limit=0`.  
+you can do it either project wide or per repository. After that a request can get all the data
+(with no pagination applied) by applying `limit=0`.
 
 This will return all matching entities:  
 `api.domain.test/endpoint?limit=0`
+
+### Project Wide
+Set `PAGINATION_SKIP=true` in `.env` file.
+
+### Per Repository
+Override the `$allowDisablePagination` property in your specific `Repository` class.
+
+:::note  
+Per repository configs override the global config and have precedence.  
+:::
