@@ -111,14 +111,14 @@ Route generated successfully.
 
 If you don't like the automatically generated code (or would like to adapt it to your specific needs) you can do this quite easily.
 
-The existing `Generators` allow to read `custom stubs` from the `app/Ship/Generators/CustomStubs` folder. The name of 
-file needs to be the same as in `vendor/apiato/core/Generator/Stubs`.
+The existing `Generators` allow to read `custom stubs` from the `app/Ship/Generators/CustomStubs` folder. The name of
+the file and the folder structure needs to be the same as in `vendor/apiato/core/Generator/Stubs`.
 
-Say, if you like to change the `config.stub`, simply copy the file to `app/Ship/Generators/CustomStubs/config.stub` and 
+Say, if you like to change the `action` -> `create.stub`, simply copy the file to `app/Ship/Generators/CustomStubs/actions/create.stub` and 
 start adapting it to your needs. 
 
-If you run the respective command (e.g., in this case `php artisan apiato:generate:configuration`) 
-this would read your specific `config.stub` file instead the pre-defined one!
+If you run the respective command (e.g., in this case `php artisan apiato:generate:action`) and choose `Create` type
+this would read your specific `create.stub` file instead of the pre-defined one!
 
 ## Contributing {#contributing}
 
