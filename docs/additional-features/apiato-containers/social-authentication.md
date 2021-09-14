@@ -11,12 +11,41 @@ title: Social Authentication
 Under the hood this container uses [Laravel Socialite](https://github.com/laravel/socialite).
 
 ## Installation{#installation}
+In the following instructions we assume we have a fresh **Apiato** installation.
 
 ```shell
 composer require apiato/social-auth-container
 ```
 Now run `php artisan migrate`
 
+Add this values to $fillable array in your `User` model
+
+```
+    protected $fillable = [
+        ...
+        'social_provider',
+        'social_nickname',
+        'social_id',
+        'social_token',
+        'social_token_secret',
+        'social_refresh_token',
+        'social_expires_in',
+        'social_avatar',
+        'social_avatar_original',
+        ...
+    ];
+```
+
+And update `UpdateUserAction.php` **sanitizeInput** method with this fields
+```
+    $sanitizedData = $request->sanitizeInput([
+        ...
+        'social_token',
+        'social_expires_in',
+        'social_refresh_token',
+        'social_token_secret',
+    ]);
+```
 Optionally add this to your user transformer to add social auth fields to your user repsonses:
 ```php
 'social_auth_provider' => $user->social_provider,
@@ -26,6 +55,9 @@ Optionally add this to your user transformer to add social auth fields to your u
         'avatar' => $user->social_avatar,
         'original' => $user->social_avatar_original,
 ```
+:::tip
+It is recommended to have 2 separate transformers (private & public) for the User e.g. `UserPrivateProfileTransformer` & `UserTransformer` and add above data to the private transformer not the public one. By doing it this way you can hide your User's personal data.
+:::
 
 ## Default Supported Auth Provide{#default-supported-auth-provide}
 
