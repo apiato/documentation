@@ -369,14 +369,19 @@ When email confirmation is enabled (value set to `true`), the API throws an exce
 
 ## Reset Password {#reset-password}
 
-Use the `/password-forgot` (`app/Containers/AppSection/User/UI/API/Routes/ForgotPassword.v1.public.php`)
-and `/password-reset`  (`app/Containers/AppSection/User/UI/API/Routes/ResetPassword.v1.public.php`)  endpoints.
+Use the  
+`/password/forgot` (`app/Containers/AppSection/User/UI/API/Routes/ForgotPassword.v1.public.php`)
+and  
+`/password/reset`  (`app/Containers/AppSection/User/UI/API/Routes/ResetPassword.v1.public.php`)  endpoints.
 
-First you need to send a request to the `/password-forgot` endpoint.
-It will email you a link and when you make a request to that link it will call the `/password-reset` endpoint.
-
-Note: For security reason, make sure the reset password URL is set in `app/Containers/AppSection/User/Configs/appSection-user.php`
-and given to the client App to be sent as parameter when calling the `/password-forgot`.
+#### Process Flow
+1) Add your web app reset password page url e.g. `http://myapp.com/reset-password` to the
+   `allowed-reset-password-urls` array of the `appSection-authentication`config.
+2) Call the `/password/forgot` endpoint with a **reset url** of your choice. It should be one of the urls in the `allowed-reset-password-urls` array.  
+   This endpoint will email user a link like this:  
+   `http://myapp.com/reset-password?email=mohammad.alavi1990@gmail.com&token=51f8d80182f3785648c9b9dc7162719d158fc418b3cca86c14963638ec83d663`
+3) And when user click on that link it will go to your front end app reset password page. And then from there you should get
+   the user's new password and call the `/password-reset` endpoint with all the required fields to reset the password.
 
 Note: You must set up the email to get this function to work, however for testing purposes set the `MAIL_DRIVER=log` in
 your `.env` file in order to the see the email content in the log file `storage/logs/laravel.log`.
