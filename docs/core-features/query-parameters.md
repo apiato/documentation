@@ -75,7 +75,7 @@ The `?search=` parameter can be applied to any **`GET`** HTTP request.
 
 For the search to work you need to define which fields from the model can be searchable.  
 In your repository set $fieldSearchable with the name of the fields to be searchable or a relation to fields.
-```
+```php
 protected $fieldSearchable = [
     'name',
     'email',
