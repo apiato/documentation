@@ -7,7 +7,6 @@ title: Authorization
 - [Assign Roles & Permission to the Testing User](#assign-roles-permission-to-the-testing-user)
 - [Seeding some users (Admins)](#seeding-some-users-admins)
 - [Roles & Permissions guards](#roles-permissions-guards)
-- [Permissions Inheriting with Levels](#permissions-inheriting-with-levels)
 
 Apiato provides a Role-Based Access Control (RBAC) through its Authorization Container.
 
@@ -83,28 +82,3 @@ Checkout each container **Seeders** directory `app/Containers/AppSection/{contai
 ## Roles & Permissions guards {#roles-permissions-guards}
 
 By default, Apiato uses a single guard called `web` for all it's roles and permissions, you can add/edit this behavior and support multiple guards at any time. Refer to the [laravel-permission](https://github.com/spatie/laravel-permission#using-multiple-guards) package for more details.
-
-## Permissions Inheriting with Levels {#permissions-inheriting-with-levels}
-
-When you create a role you can set an optional parameter, called `level`, which is set to `0` by default,
-The default seeded `admin` role has it set to `999`.
-
-Level allows inheriting permissions.
-Role with higher level is inheriting permission from roles with lower level.
-
-Below is a nice example of how it works:
-
-You have three roles: user, moderator and admin.
-User has a permission to read articles, moderator can manage comments and admin can create articles.
-User has a level 1, moderator level 2 and admin level 3.
-It means, moderator and administrator has also permission to read articles, but administrator can manage comments as well.
-
-```php
-if ($user->getRoleLevel() > 10) {
-    //
-}
-```
-
-If user has multiple roles, the `getRoleLevel()` method returns the highest one.
-
-If you don't need the permissions inheriting feature, simply ignore the optional level parameter when creating roles.
