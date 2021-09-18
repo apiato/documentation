@@ -21,10 +21,6 @@ The requests monitoring is provided via the`RequestsMonitorMiddleware` middlewar
 composer require apiato/debugger-container
 ```
 
-:::tip
-This container is installed by default with an Apiato fresh installation.
-:::
-
 ## Enable Requests Logging {#enable-requests-logging}
 
 Set `REQUESTS_DEBUG` and `APP_DEBUG` to true in `.env` file .
