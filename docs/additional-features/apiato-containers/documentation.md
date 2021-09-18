@@ -9,11 +9,12 @@ title: Documentation
   - [Run Documentation Generator](#run-documentation-generator)
   - [Visit Documentation URL's](#visit-docs-urls)
   - [Shared Response](#shared-response)
-- [Change Documentation Routes](#change-documentation-routes)
-- [Private Documentation Protection](#private-docs-protection)
 - [Documentation Container Customization](#documentation-customization)
-  - [Edit Default Generated Values in Templates](#edit-default-generated-values-in-templates)
+  - [Publishing Configs](#publish-configs)
+  - [Modifying the source code](#modify-code)
   - [Change the Documentations URL's](#change-the-documentations-urls)
+  - [Private Documentation Protection](#private-docs-protection)
+  - [Edit Default Generated Values in Templates](#edit-default-generated-values-in-templates)
   - [Edit the Documentation Header](#edit-the-documentation-header)
 
 Every great API needs a great Documentation.
@@ -93,8 +94,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('clients/web/login', [Controller::class, 'proxyLoginForWebClient']);
 ```
 
-:::note
-All the Endpoint `DocBlocks` MUST be written inside Routes files, otherwise they won't be loaded.
+:::note  
+All the Endpoint `DocBlocks` MUST be written inside Routes files, otherwise they won't be loaded.  
 :::
 
 ### Run Documentation Generator {#run-documentation-generator}
@@ -111,9 +112,9 @@ php artisan apiato:apidoc
 
 If you get an error (`apidoc not found`),
 
-1. Read about [container customization](#documentation-customization)
+1. [Publish the configs](#publish-configs)
    
-2. Open the container config file `app/Containers/Vendor/Documentation/Configs/vendor-documentation.php`
+2. Open the container config file `app/Ship/Configs/vendor-documentation.php`
 
 3. Edit the `executable` path to **`$(npm bin)/apidoc`** or to however you access the `apidoc` tool on your machine.
 
@@ -138,8 +139,8 @@ Visit documentation URL's as shown in your terminal:
 - Public (external) API at [http://apiato.test/docs](http://apiato.test/docs).
 - Private (internal) API at [http://apiato.test/docs/private](http://apiato.test/docs/private).
 
-:::note
-Every time you change the DocBlock of a Route file you need to run the `apiato:apidoc` command, to regenerate.
+:::note  
+Every time you change the DocBlock of a Route file you need to run the `apiato:apidoc` command, to regenerate.  
 :::
 
 ### Shared Response {#shared-response}
@@ -171,31 +172,17 @@ HTTP/1.1 200 OK
  ```php
 * @apiUse UserSuccessSingleResponse
  ```
-## Change Documentation Routes {#change-documentation-routes}
-
-You can change the documentation routes by adding `PUBLIC_DOCS_URL` & `PRIVATE_DOCS_URL` to `.env` file.
-
-For example:
-```dotenv
-PUBLIC_DOCS_URL=docs/public
-PRIVATE_DOCS_URL=docs/private
-```
-## Private Documentation Protection {#private-docs-protection}
-:::note
-By default, this feature is **disabled** in local environment and Private docs are not protected.  
-You can change this by adding `PROTECT_PRIVATE_DOCS=true` in `.env` file.
-:::
-
-Private documentations route is protection with the `auth:web` middleware. 
-In order to access it you need to have `admin` role or `access-private-docs` permission.
-To modify this behavior you can remove `hasDocAccess` from `check()` in `GetPrivateDocumentationRequest` and add your own role/permissions or update `HasDocAccessTrait`.
-
-Read Documentation Customization [Below](#documentation-container-customization):
 
 ## Documentation Container Customization {#documentation-customization}
 
-:::caution Instructions
-This container works out of the box perfectly but if you want to change its configs or modify the codes you MUST follow these steps:
+There are 2 ways you can customize this container: Using its configs or by modifying the source code.
+
+### Publishing configs {#publish-configs}
+```shell
+php artisan vendor:publish
+```
+
+### Modifying the source code {#modify-code}
 
 1- Copy the container from `Vendor` to `AppSection` (or any of your custom sections) of your project  
 2- Fix the namespaces  
@@ -212,13 +199,22 @@ This container works out of the box perfectly but if you want to change its conf
 ```
 :::
 
+### Change the Documentations URL's {#change-the-documentations-urls}
+[Publish the configs](#publish-configs) and change `types.public.url` & `types.private.url`.
+
+### Private Documentation Protection {#private-docs-protection}
+By default, this feature is **disabled** in local environment and **enabled** in production.  
+To change this behaviour [Publish the configs](#publish-configs) and change `protect-private-docs`.
+
+Private documentations route is protected with the `auth:web` middleware.
+You can grant users access to the protected docs by updating `access-private-docs-roles` &
+`access-private-docs-permission` values in documentation config.
+By default, users need `access-private-docs` permission to access private docs.
+
 ### Edit Default Generated Values in Templates {#edit-default-generated-values-in-templates}
 
-Apiato by defaults generates 2 API documentations, each one has its own `apidoc.json` file. Both can be modified from the Documentation Containers in `Containers/Vendor/Documentation/ApiDocJs/`
-
-### Change the Documentations URL's {#change-the-documentations-urls}
-
-Edit the config file of the Documentation Container `Containers/Vendor/Documentation/Configs/vendor-documentation.php`
+Apiato by defaults generates 2 API documentations, each one has its own `apidoc.json` file. Both can be modified from 
+the Documentation Container in `Containers/Vendor/Documentation/ApiDocJs/` and need [Source code modification](#modify-code).
 
 ### Edit the Documentation Header {#edit-the-documentation-header}
 
@@ -226,7 +222,7 @@ The header is usually the Overview of your API. It contains Info about authentic
 
 All this information is written in `app/Containers/Vendor/Documentation/ApiDocJs/shared/header.template.md` file, and the same file is used as header for both private and public documentations.
 
-To edit the content just open the markdown file in any markdown editor and edit it.
+To edit its content you need to [modify its source code](#modify-code) and open the markdown file in any markdown editor and edit it.
 
 You will notice some variables like `{{rate-limit}}` and `{{token-expires}}`. Those are replaced when running `apiato:apidoc` with real values from your application configuration files.
 
