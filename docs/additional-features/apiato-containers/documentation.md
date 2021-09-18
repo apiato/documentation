@@ -184,11 +184,11 @@ php artisan vendor:publish
 
 ### Modifying the source code {#modify-code}
 
-1- Copy the container from `Vendor` to `AppSection` (or any of your custom sections) of your project  
-2- Fix the namespaces  
-3- Remove `apiato/documentation-generator-container` dependency from project root composer.json  
-4- Update `section_name` & `html_files` in container configs  
-5- Update `apidoc.json` files in `ApiDocJs/private` & `public` folders and fix the `filename`  
+1. Copy the container from `Vendor` to `AppSection` (or any of your custom sections) of your project  
+2. Fix the namespaces  
+3. Remove `apiato/documentation-generator-container` dependency from project root composer.json  
+4. Update `section_name` & `html_files` in container configs  
+5. Update `apidoc.json` files in `ApiDocJs/private` & `public` folders and fix the `filename`  
 
 ```json
 {
@@ -197,7 +197,6 @@ php artisan vendor:publish
     }
 }
 ```
-:::
 
 ### Change the Documentations URL's {#change-the-documentations-urls}
 [Publish the configs](#publish-configs) and change `types.public.url` & `types.private.url`.
