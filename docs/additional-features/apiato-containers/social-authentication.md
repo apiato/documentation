@@ -67,10 +67,10 @@ It is recommended to have 2 separate transformers (private & public) for the Use
 
 ## How Social Authentication Works{#how-social-authentication-works}
 
-1. The Client (Mobile or Web) sends a request to the Social Auth Provider (Facebook, Twitter..).
-2. The Social Auth Provider returns a Code (Tokens).
-3. The Client makes a call to the server (our server) and passes the Code (Tokens) retrieved from the Provider.
-4. The Server fetches the user data from the Social Auth Provider using the received Code (Tokens).
+1. The Client (Mobile or Web) sends a request to the Social Auth Provider (Facebook, Twitter...).
+2. The Social Auth Provider returns a Token.
+3. The Client makes a call to the server (our server) and passes the Token.
+4. The Server fetches the user data from the Social Auth Provider using Token.
 5. The Server create new User from the collected social data and return the Authenticated User (If the user already
    created then it just returns it).
 
