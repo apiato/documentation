@@ -35,16 +35,7 @@ Add this values to $fillable array in your `User` model
         ...
     ];
 ```
-And update `UpdateUserAction.php` **sanitizeInput** method with this fields
-```
-    $sanitizedData = $request->sanitizeInput([
-        ...
-        'social_token',
-        'social_expires_in',
-        'social_refresh_token',
-        'social_token_secret',
-    ]);
-```
+
 Optionally add this to your user transformer to add social auth fields to your user repsonses:
 ```php
 'social_auth_provider' => $user->social_provider,
@@ -53,10 +44,13 @@ Optionally add this to your user transformer to add social auth fields to your u
     'social_avatar' => [
         'avatar' => $user->social_avatar,
         'original' => $user->social_avatar_original,
+    ]
 ```
 
-:::tip
-It is recommended to have 2 separate transformers (private & public) for the User e.g. `UserPrivateProfileTransformer` & `UserTransformer` and add above data to the private transformer not the public one. By doing it this way you can hide your User's personal data.
+:::tip  
+It is recommended to have 2 separate transformers (private & public) for the User e.g. `UserPrivateProfileTransformer` 
+& `UserTransformer` and add above data to the private transformer not the public one. By doing it this way you can hide
+your User's personal data.  
 :::
 
 ## Default Supported Auth Provide{#default-supported-auth-provide}
