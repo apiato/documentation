@@ -113,10 +113,8 @@ php artisan apiato:apidoc
 If you get an error (`apidoc not found`),
 
 1. [Publish the configs](#publish-configs)
-   
-2. Open the container config file `app/Ship/Configs/vendor-documentation.php`
 
-3. Edit the `executable` path to **`$(npm bin)/apidoc`** or to however you access the `apidoc` tool on your machine.
+2. Edit the `executable` path to **`$(npm bin)/apidoc`** or to however you access the `apidoc` tool on your machine.
 
 ```php    
     /*
@@ -180,7 +178,8 @@ There are 2 ways you can customize this container: Using its configs or by modif
 ### Publishing configs {#publish-configs}
 ```shell
 php artisan vendor:publish
-```
+```  
+Config file will be copied to `app/Ship/Configs/vendor-documentation.php`
 
 ### Modifying the source code {#modify-code}
 
