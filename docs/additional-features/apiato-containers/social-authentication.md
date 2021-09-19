@@ -72,14 +72,14 @@ your User's personal data.
 
 ## Setup Social Authentication{#Setup-Social-Authentication}
 
-1) Create an App on the supported Social Auth provider.
+1. Create an App on the supported Social Auth provider.
 
 - For Facebook: [https://developers.facebook.com/apps](https://developers.facebook.com/apps)
 - For Twitter: [https://apps.twitter.com/app](https://apps.twitter.com/app)
 - For
   Google: [https://console.developers.google.com/apis/credentials](https://console.developers.google.com/apis/credentials)
 
-2) For any supported provider you want to use, set Tokens and Secrets in the `.env`
+2. For any supported provider you want to use, set Tokens and Secrets in the `.env`
 ```
 AUTH_FACEBOOK_CLIENT_ID=
 AUTH_FACEBOOK_CLIENT_SECRET=
@@ -94,7 +94,7 @@ AUTH_GOOGLE_CLIENT_SECRET=
 AUTH_GOOGLE_CLIENT_REDIRECT=
 ```
 
-3) Make a request from your client to get the `oauth` info.  
+3. Make a request from your client to get the `oauth` info.  
 **Each Social provider returns different response and keys**
 
 Example Twitter Response:
@@ -119,21 +119,22 @@ Example Twitter Response:
 This step should be done by your client App, which could be a Web, Mobile or other kind of client Apps.  
 :::
 
-4) Use `auth/{provider}` route and the `oauth` info to make a call from your server to the Social Provider in order to 
+4. Use `auth/{provider}` route and the `oauth` info to make a call from your server to the Social Provider in order to 
 get the User info. For more details about the `auth/{provider}` route parameters checkout the generated documentation or
 visit `app/Containers/Vendor/Socialauth/UI/API/Routes/AuthenticateAll.v1.private.php`.
 
-5) The endpoint above should return the User and his Personal Access Token.
+5. The endpoint above should return the User and his Personal Access Token.
 
 Example Google Response:
 
 ```json
 {
     "data": {
-        // user data + additional social data if you have updated your transformer as mentioned above
+        // user data
         .
         .
         .
+        // additional social data if you have updated your transformer as mentioned above
         "social_auth_provider": "google",
         "social_id": "113834952367767922133",
         "social_avatar": {
@@ -162,11 +163,15 @@ Config file will be copied to `app/Ship/Configs/vendor-socialAuth.php`
 
 ### Support new Auth Provider {#support-new-auth-provide}
 1. Publish the configs
-2. Create your new auth provider by implementing `App\Containers\Vendor\SocialAuth\Contracts\SocialAuthProvider`  
-You can check out supported providers here `App\Containers\Vendor\SocialAuth\SocialAuthProviders` to get an idea about
-how to implement your provider.
+2. Create your new auth provider by implementing `App\Containers\Vendor\SocialAuth\Contracts\SocialAuthProvider` interface.  
+   To get an idea about how to implement your own provider you can check out supported providers here `App\Containers\Vendor\SocialAuth\SocialAuthProviders`.
 3. Add your new provider to `providers` array in the `vendor-socialAuth` config.
-
+```php
+    'providers' => [
+        ...
+        'something' => Location\Of\Your\Provider\SomthingSocialAuthProvider::class,
+    ],
+```
 ### Changing default used Repository, Transformer & DB user table name {#changing-defaults}
 This container depends on Apiato's default user repository, transformer & database user table name.
 If you changed those defaults you can update and provide them in the configs.
