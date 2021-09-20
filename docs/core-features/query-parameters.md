@@ -296,7 +296,7 @@ Some of them are built in house, or inherited from other packages such as Fracta
 
 2) Visit the documentation URL
 
-More details in the [API Docs Generator](../additional-features/apiato-containers/documentation) page.
+More details in the [API Docs Generator](../additional-features/documentation.md) page.
 
 ## More Information {#more-information}
 

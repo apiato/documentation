@@ -45,5 +45,5 @@ __('mySection@myContainer::messages.welcome');
 ```
 
 :::info Further reading
-More info at [Localization](../additional-features/apiato-containers/localization).
+More info at [Localization](../additional-features/localization.md).
 :::

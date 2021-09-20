@@ -49,7 +49,7 @@ documentation for more details.
 
 2) Use the generated client to call this oauth/token endpoint `http://api.apiato.test/v1/oauth/token`
 
-All the Auth Endpoints are documented. Go to [Documentation Generator Page](../additional-features/apiato-containers/documentation)
+All the Auth Endpoints are documented. Go to [Documentation Generator Page](../additional-features/documentation.md)
 to see how you can generate the API documentation, and read them.
 
 ## Quick Overview {#quick-overview}
@@ -392,4 +392,4 @@ your `.env` file in order to the see the email content in the log file `storage/
 
 ## Social Authentication {#social-authentication}
 
-For Social Authentication visit the [Social Authentication](../additional-features/apiato-containers/social-authentication) page.
+For Social Authentication visit the [Social Authentication](../additional-features/social-authentication.md) page.

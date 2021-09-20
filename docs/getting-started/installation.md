@@ -107,7 +107,7 @@ npm install
 
 2) Run `php artisan apiato:apidoc`
 
-##### Visit [API Docs Generator](../additional-features/apiato-containers/documentation) for more details.
+##### Visit [API Docs Generator](../additional-features/documentation.md) for more details.
 
 ### Testing Setup {#Testing}
 

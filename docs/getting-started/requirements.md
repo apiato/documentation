@@ -14,4 +14,4 @@ slug: /
 	 * Mbstring PHP Extension
 	 * Tokenizer PHP Extension
 	 * BCMath PHP Extension *(required when the Hash ID feature is enabled)*
-	 * Intl Extension *(required when you use the [Localization Container](../additional-features/apiato-containers/localization.md))*
+	 * Intl Extension *(required when you use the [Localization Container](../additional-features/localization.md))*
