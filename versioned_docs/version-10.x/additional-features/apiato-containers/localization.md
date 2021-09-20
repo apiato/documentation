@@ -3,6 +3,7 @@ title: Localization
 ---
 
 - [Installation](#installation)
+- [Creating new languages files](#create-new-languages-files)
 - [Support new languages](#support-new-languages)
 - [Select Request Language](#select-request-language)
 - [Translating Strings](#translating-strings)
@@ -15,6 +16,18 @@ title: Localization
 ```shell
 composer require apiato/localization-container
 ```
+## Creating new languages files {#create-new-languages-files}
+
+Languages file can be placed in any container, not only the Localization Container.  
+Place language files inside the `/Resources/Languages` folder of your container. For example 
+`app/Containers/SectionName/ContainerName/Resources/Languages`. You can also place general language files inside the
+`/Resources/Languages` folder of the `Ship`.
+
+::: note  
+Just create the `/Resources/Languages` folder if it does not exist.  
+:::
+
+Example languages files are included in the Localization Container at `app/Containers/Vendor/Localization/Resources/Languages`.
 
 ## Support new languages{#support-new-languages}
 
@@ -27,7 +40,7 @@ This container works out of the box perfectly but if you want to change its conf
 
 :::
 
-All supported languages must be added to the `supported_languages` in `app/Containers/SECTION_NAME/Localization/Configs/vendor-localization.php`
+All supported languages must be added to the `supported_languages` in `app/Containers/Vendor/Localization/Configs/vendor-localization.php`
    to prevent users from requesting unsupported languages, as follows:
 
 ```php
@@ -42,12 +55,6 @@ All supported languages must be added to the `supported_languages` in `app/Conta
         'fa',
     ],
 ```
-
-Create new languages files:
-
-Languages file can be placed in any container, not only the Localization Container.
-
-Example languages files are included in the Localization Container at `app/Containers/Vendor/Localization/Resources/Languages`.
 
 ## Select Request Language{#select-request-language}
 
@@ -101,7 +108,7 @@ is present in the `supported_languages` array from the configuration file.
 
 ## Disable Localization{#disable-localization}
 
-You will need to remove the Localization Middleware, by simply going to `app/Containers/SECTION_NAME/Localization/Providers/MainServiceProvider.php`
+You will need to remove the Localization Middleware, by simply going to `app/Containers/Vendor/Localization/Providers/MainServiceProvider.php`
 and remove/comment the `MiddlewareServiceProvider` from the `$serviceProviders` property. Or you can just completely remove the container.
 
 ## Get Available Localizations{#get-available-localizations}
