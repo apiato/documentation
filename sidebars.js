@@ -41,20 +41,11 @@ module.exports = {
           label: 'Additional Features',
           type: 'category',
           items: [
-            {
-              'Apiato Containers': [
-                'additional-features/apiato-containers/overview',
-                'additional-features/apiato-containers/documentation',
-                'additional-features/apiato-containers/social-authentication',
-                'additional-features/apiato-containers/localization',
-                'additional-features/apiato-containers/payments',
-              ],
-            },
-            {
-              'Community Containers': [
-                'additional-features/community-containers/overview',
-              ],
-            },
+            'additional-features/apiato-containers/overview',
+            'additional-features/apiato-containers/documentation',
+            'additional-features/apiato-containers/social-authentication',
+            'additional-features/apiato-containers/localization',
+            'additional-features/apiato-containers/payments',
           ],
         },
       ]
