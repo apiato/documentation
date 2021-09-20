@@ -140,12 +140,13 @@ Example Google Response:
 }
 ```
 
-::: tip  
+:::tip  
 For testing purposes Apiato provides two web endpoints
 1. `http://apiato.test/auth/{provider}/redirect` which act as a client (step 3 above)
 2. `http://apiato.test/auth/{provider}/callback` which you can use in your provider's developer dashboard for callback url.  
    Use those endpoints from your browser *(replace the provider with any of the supported providers `facebook`, `twitter`,...)*
    to get the `oauth` info and user data respectively.  
+
 :::
 
 ## Social Authentication Container Customization {#social-auth-customization}
