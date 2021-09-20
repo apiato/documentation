@@ -94,7 +94,7 @@ AUTH_GOOGLE_CLIENT_SECRET=
 AUTH_GOOGLE_CLIENT_REDIRECT=
 ```
 
-3. Make a request from your client to get the `oauth` info. (Each Social provider returns different response and keys)
+3. Make a request from your client to get the `oauth` info. (Each Social provider returns different response and keys).
 
 Example Twitter Response:
 
@@ -152,6 +152,14 @@ Example Google Response:
     }
 }
 ```
+
+::: tip  
+For testing purposes Apiato provides two web endpoints
+1. `http://apiato.test/auth/{provider}/redirect` which act as a client (step 3 above)
+2. `http://apiato.test/auth/{provider}/callback` which you can use in your provider's developer dashboard for callback url.  
+   Use those endpoints from your browser *(replace the provider with any of the supported providers `facebook`, `twitter`,...)*
+   to get the `oauth` info and user data respectively.  
+:::
 
 ## Social Authentication Container Customization {#social-auth-customization}
 You can customize this container by publishing its config and modifying its values
