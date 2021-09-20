@@ -94,8 +94,7 @@ AUTH_GOOGLE_CLIENT_SECRET=
 AUTH_GOOGLE_CLIENT_REDIRECT=
 ```
 
-3. Make a request from your client to get the `oauth` info.  
-**Each Social provider returns different response and keys**
+3. Make a request from your client to get the `oauth` info. (Each Social provider returns different response and keys)
 
 Example Twitter Response:
 
