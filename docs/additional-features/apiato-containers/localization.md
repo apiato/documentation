@@ -23,7 +23,7 @@ Place language files inside the `/Resources/Languages` folder of your container.
 `app/Containers/SectionName/ContainerName/Resources/Languages`. You can also place general language files inside the
 `/Resources/Languages` folder of the `Ship`.
 
-::: note  
+:::note  
 Just create the `/Resources/Languages` folder if it does not exist.  
 :::
 
