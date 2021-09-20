@@ -45,11 +45,9 @@ module.exports = {
               'Apiato Containers': [
                 'additional-features/apiato-containers/overview',
                 'additional-features/apiato-containers/documentation',
-                'additional-features/apiato-containers/debugger',
                 'additional-features/apiato-containers/social-authentication',
                 'additional-features/apiato-containers/localization',
                 'additional-features/apiato-containers/payments',
-                'additional-features/apiato-containers/settings',
               ],
             },
             {
