@@ -79,20 +79,7 @@ your User's personal data.
 - For
   Google: [https://console.developers.google.com/apis/credentials](https://console.developers.google.com/apis/credentials)
 
-2. For any supported provider you want to use, set Tokens and Secrets in the `.env`
-```
-AUTH_FACEBOOK_CLIENT_ID=
-AUTH_FACEBOOK_CLIENT_SECRET=
-AUTH_FACEBOOK_CLIENT_REDIRECT=
-
-AUTH_TWITTER_CLIENT_ID=
-AUTH_TWITTER_CLIENT_SECRET=
-AUTH_TWITTER_CLIENT_REDIRECT=
-
-AUTH_GOOGLE_CLIENT_ID=
-AUTH_GOOGLE_CLIENT_SECRET=
-AUTH_GOOGLE_CLIENT_REDIRECT=
-```
+2. For any supported provider you want to use, add their credentials to `config/services.php`. [read more](https://laravel.com/docs/8.x/socialite#configuration)
 
 3. Make a request from your client to get the `oauth` info. (Each Social provider returns different response and keys).
 
