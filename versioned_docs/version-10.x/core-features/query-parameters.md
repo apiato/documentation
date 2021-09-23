@@ -8,6 +8,7 @@ title: Query Parameters
     - [Search any field for multiple keywords](#search-any-field-for-multiple-keywords)
     - [Search in a specific field](#search-in-a-specific-field)
     - [Search in specific fields for multiple keywords](#search-in-specific-fields-for-multiple-keywords)
+    - [Search Hashed IDs](#search-hashed-ids)
     - [Define query condition](#define-query-condition)
     - [Define search fields for search](#define-search-fields-for-search)
     - [Define the query condition for search](#define-the-query-condition-for-search)
@@ -74,17 +75,6 @@ Read more about it [here](https://github.com/andersao/l5-repository#using-the-re
 If the [RequestCriteria](#using-the-request-criteria) is enabled on a route then the `?search=` parameter can be 
 applied to **`GET`** HTTP requests on that specific route.
 
-:::note About searching Hashed IDs  
-If you have [Hash ID](./hash-id) enabled, and you want to search a hashed field (e.g. user ID) `?search=id:XbPW7awNkzl83LD6`
-you need to tell the RequestCriteria to decode it before it can be searched.  
-Let's say we have this search query `?search=id:XbPW7awNkzl83LD6;parent_id:aYOxlpzRMwrX3gD7;some_hashed_id:NxOpZowo9GmjKqdR`.
-Then you have to update your `addRequestCriteria` method like this:
-```php
-   app(GetAllUsersTask::class)->addRequestCriteria(null, ['id', 'parent_id', 'some_hashed_id'])->run();
-```
-By default, the `id` field is decoded so if you use only `id` field, you do not need to do this and this works `?search=id:XbPW7awNkzl83LD6`.  
-:::  
-
 For the search to work you need to define which fields from the model can be searchable.  
 In your repository set $fieldSearchable with the name of the fields to be searchable or a relation to fields.
 ```php
@@ -130,6 +120,16 @@ api.domain.test/endpoint?search=field:keyword here
 ```
 api.domain.test/endpoint?search=field1:first field keyword;field2:second field keyword
 ```
+
+#### Search Hashed IDs {#search-hashed-ids}
+If you have [Hash ID](./hash-id) enabled, and you want to search a hashed field (e.g. user ID) `?search=id:XbPW7awNkzl83LD6`
+you need to tell the [RequestCriteria](#using-the-request-criteria) to decode it before it can be searched.  
+Let's say we have this search query `?search=id:XbPW7awNkzl83LD6;parent_id:aYOxlpzRMwrX3gD7;some_hashed_id:NxOpZowo9GmjKqdR`.
+Then you have to update your `addRequestCriteria` method like this:
+```php
+   app(GetAllUsersTask::class)->addRequestCriteria(null, ['id', 'parent_id', 'some_hashed_id'])->run();
+```
+By default, the `id` field is decoded so if you use only `id` field, you do not need to do this and this works `?search=id:XbPW7awNkzl83LD6`.
 
 #### Define query condition {#define-query-condition}
 
