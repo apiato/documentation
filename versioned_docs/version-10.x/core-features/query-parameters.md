@@ -129,7 +129,12 @@ Then you have to update your `addRequestCriteria` method like this:
 ```php
    app(GetAllUsersTask::class)->addRequestCriteria(null, ['id', 'parent_id', 'some_hashed_id'])->run();
 ```
-By default, the `id` field is decoded so if you use only `id` field, you do not need to do this and this works `?search=id:XbPW7awNkzl83LD6`.
+By default, two things will be decoded:  
+1. Single value search (e.g. `search=something`)  
+This will only be decoded if it is a hash id so `search=NxOpZowo9GmjKqdR` will become `search=1` but `search=something` will
+not be decoded and will stay same (`search=something`).
+2. The `id` field  
+If you use only `id` field, you do not need to do this and this works `?search=id:XbPW7awNkzl83LD6`.
 
 #### Define query condition {#define-query-condition}
 
