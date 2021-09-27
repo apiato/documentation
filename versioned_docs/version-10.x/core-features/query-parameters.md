@@ -134,7 +134,7 @@ By default, two things will be decoded:
 This will only be decoded if it is a hash id so `search=NxOpZowo9GmjKqdR` will become `search=1` but `search=something` will
 not be decoded and will stay same (`search=something`).
 2. The `id` field  
-If you use only `id` field, you do not need to do this and this works `?search=id:XbPW7awNkzl83LD6`.
+   If you are searching only by `id` field, you do not need to add it to decode array above. This will be decoded `?search=id:XbPW7awNkzl83LD6` automatically.
 
 #### Define query condition {#define-query-condition}
 
