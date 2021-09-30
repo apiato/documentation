@@ -1,27 +1,24 @@
 ---
 title: Upgrade Guide
 ---
-
-- [Upgrade from 9.0 to 10.0](#upgrade-apiato-from-version90To10)
-- [Upgrade from 8.0 to 9.0](#upgrade-apiato-from-version80To90)
-- [Upgrade from 7.4 to 8.0](#upgrade-apiato-from-version74To80)
-- [Upgrade from 7.3 to 7.4](#upgrade-apiato-from-version73To74)
-- [Upgrade from 7.2 to 7.3](#upgrade-apiato-from-version72To73)
-- [Upgrade from 7.1 to 7.2](#upgrade-apiato-from-version71To72)
-- [Upgrade from 7.0 to 7.1](#upgrade-apiato-from-version70To71)
-- [Upgrade from 5.0 to 7.0](#upgrade-apiato-from-version50To70)
-- [Upgrade from 4.1 to 5.0](#upgrade-apiato-from-version-41To50)
+- [Upgrade from 9.0 to 10.0](#upgrade-90To10)
+- [Upgrade from 8.0 to 9.0](#upgrade-80To90)
+- [Upgrade from 7.4 to 8.0](#upgrade-74To80)
+- [Upgrade from 7.3 to 7.4](#upgrade-73To74)
+- [Upgrade from 7.2 to 7.3](#upgrade-72To73)
+- [Upgrade from 7.1 to 7.2](#upgrade-71To72)
+- [Upgrade from 7.0 to 7.1](#upgrade-70To71)
+- [Upgrade from 5.0 to 7.0](#upgrade-50To70)
+- [Upgrade from 4.1 to 5.0](#upgrade-41To50)
 - [How to manually upgrade older versions to 4.1?](#how-to-manually-upgrade-older-versions-to-41)
 - [Manual Upgrading Guide](#Manual-Upgrading-Guide)
-- [Upcoming Release Notes](#Upcoming-Release)
 
-<a name="upgrade-apiato-from-version74To80"></a>
-## Upgrade from 9.0 to 10.0
+## Upgrade from 9.0 to 10.0 {#upgrade-90To10}
 
 Changes in v10 are so drastic that there was no way we could provide an upgrade guide for it.  
 We suggest that you see the [v10 release notes](https://github.com/apiato/apiato/releases/tag/v10.0.0) and upgrade your project using it.
 
-## Upgrade from 8.0 to 9.0
+## Upgrade from 8.0 to 9.0 {#upgrade-80To90}
 
 > Estimated upgrading time: 30 minutes.
 
@@ -32,9 +29,7 @@ You can view [all changes here](https://github.com/apiato/apiato/compare/8.0...9
 - Running `php artisan apiato` should return `9.0.0`
 - Running `php artisan -V` should return `7.*.*`
 
-
-<a name="upgrade-apiato-from-version74To80"></a>
-## Upgrade from 7.4 to 8.0
+## Upgrade from 7.4 to 8.0 {#upgrade-74To80}
 
 > Estimated upgrading time: 30 minutes.
 
@@ -44,8 +39,7 @@ You can view [all changes here](https://github.com/apiato/apiato/compare/8.0...9
 
 3) Use `.test` instead of `.develop` for the URL's.
 
-<a name="upgrade-apiato-from-version73To74"></a>
-## Upgrade from 7.3 to 7.4
+## Upgrade from 7.3 to 7.4 {#upgrade-73To74}
 
 > Estimated upgrading time: 30 minutes.
 
@@ -78,33 +72,25 @@ Manual Tasks to do:
 
 Use the [Manual Upgrading Guide](#Manual-Upgrading-Guide) below.
 
-<a name="upgrade-apiato-from-version72To73"></a>
-## Upgrade from 7.2 to 7.3
+## Upgrade from 7.2 to 7.3 {#upgrade-72To73}
 
 > Estimated upgrading time: 20 minutes.
 
 Use the [Manual Upgrading Guide](#Manual-Upgrading-Guide) below.
 
-<a name="upgrade-apiato-from-version71To72"></a>
-## Upgrade from 7.1 to 7.2
+## Upgrade from 7.1 to 7.2 {#upgrade-71To72}
 
 > Estimated upgrading time: 10 minutes.
 
 Use the [Manual Upgrading Guide](#Manual-Upgrading-Guide) below.
 
-
-<a name="upgrade-apiato-from-version70To71"></a>
-## Upgrade from 7.0 to 7.1
+## Upgrade from 7.0 to 7.1 {#upgrade-70To71}
 
 > Estimated upgrading time: 45 minutes.
 
 Use the [Manual Upgrading Guide](#Manual-Upgrading-Guide) below.
 
-
-
-
-<a name="upgrade-apiato-from-version50To70"></a>
-## Upgrade from 5.0 to 7.0
+## Upgrade from 5.0 to 7.0 {#upgrade-50To70}
 
 > Estimated upgrading time: 30 minutes.
 
@@ -123,18 +109,14 @@ Hint: You can do a git merge and solve the conflicts, if you don't want to manua
 Due to the nature and structure of Apiato applications, this features **is turned off**, because it messes up how `config` files are loaded
 in apiato. This means, that you still need to **manually** register 3rd-party `ServiceProviders` in the `ServiceProvider` of a `Container`. (This should be a temporary situation)
 
-
-
-<a name="upgrade-apiato-from-version-41To50"></a>
-## Upgrade from 4.1 to 5.0
+## Upgrade from 4.1 to 5.0 {#upgrade-41To50}
 
 > Estimated upgrading time: 15 minutes.
-
 
 This guide will show you how to freshly install the new Apiato 5.0, then migrate your old project (built with Apiato 4.1)
 to the freshly installed one (Apiato 5.0).
 
-*In the guide w'll be using the term **Old Project** (referring to your old project that was built with Apiato 4.1),
+*In the guide we'll be using the term **Old Project** (referring to your old project that was built with Apiato 4.1),
 and the term New **Project** (referring to the new freshly installed Apiato 5.0).*
 
 1) Download and install Apiato 5.0. See [Application Setup]({{ site.baseurl }}{% link _docs/getting-started/installation.md %}).
@@ -171,13 +153,11 @@ and the term New **Project** (referring to the new freshly installed Apiato 5.0)
 
 That's it :)
 
-<a name="how-to-manually-upgrade-older-versions-to-41"></a>
-## How to manually upgrade older versions to 4.1?
+## How to manually upgrade older versions to 4.1? {#how-to-manually-upgrade-older-versions-to-41}
 
 Use the [Manual Upgrading Guide](#Manual-Upgrading-Guide) below.
 
-<a name="Manual-Upgrading-Guide"></a>
-## Manual Upgrading Guide:
+## Manual Upgrading Guide {#Manual-Upgrading-Guide}
 
 > These commands and examples, are compatible with the Apiato 8.0 upgrade. You can just copy/past.
 
