@@ -54,7 +54,7 @@ In Laravel, you can create and register events in multiple way. Read [Laravel do
 Your custom `EventServiceProvider` needs to be registered in the containers `MainServiceProvider` as well.
 
 ## Broadcasting {#broadcasting}
-To define Broadcasting route go to `app/Ship/Boardcasts/Routes.php`.
+To define Broadcasting channels go to `app/Ship/Boardcasts/channels.php`.
 
 :::info Further reading
 More info at [Laravel Docs](https://laravel.com/docs/events).

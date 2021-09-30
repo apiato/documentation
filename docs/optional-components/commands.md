@@ -8,7 +8,7 @@ title: Commands
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
 * [Schedule Commands Execution](#Schedule-Commands-Execution)
-* [Define Consoles Routes](#define-consoles-routes)
+* [Define Consoles Closure Commands](#define-consoles-closure-commands)
 
 ### Definition {#definition}
 
@@ -75,9 +75,9 @@ php artisan hello:world
 
 To Schedule the execution of a Command checkout the [Tasks Scheduling](../miscellaneous/tasks-scheduling) page.
 
-### Define Consoles Routes {#define-consoles-routes}
+### Define Consoles Closure Commands {#define-consoles-closure-commands}
 
-To define Console route go to `app/Ship/Commands/Routes.php`.
+To define Console closure commands go to `app/Ship/Commands/closures.php`.
 
 :::info Further reading
 More info at [Laravel Docs](https://laravel.com/docs/artisan#writing-commands).
