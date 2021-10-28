@@ -57,7 +57,7 @@ class Demo extends Model
 
     public function user()
     {
-        return $this->belongsTo(\App\Containes\AppSection\User\Models\User::class);
+        return $this->belongsTo(\App\Containers\AppSection\User\Models\User::class);
     }
 }
 ```
