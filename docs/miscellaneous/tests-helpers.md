@@ -35,9 +35,9 @@ The `$endpoint = 'verb@uri';` property is where you define the endpoints you are
 ```php
 class RegisterUserTest extends ApiTestCase
 {
-    protected $endpoint = 'post@register';
-    protected $auth = false;
-    protected $access = [
+    protected string $endpoint = 'post@register';
+    protected bool $auth = false;
+    protected array $access = [
         'roles'       => '',
         'permissions' => '',
     ];
