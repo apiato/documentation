@@ -14,11 +14,10 @@ module.exports = {
   ],
   themeConfig: {
     hideableSidebar: true,
-    // announcementBar: {
-    //   id: 'v1-new-domain',
-    //   content:
-    //     '➡️ We are trying hard to move to version 10.0 of Apiato 🔄',
-    // },
+    announcementBar: {
+      id: 'announcementBar-2', // Increment on change
+      content: `⭐️ If you like Apiato, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/apiato/apiato">GitHub</a>`,
+    },
     navbar: {
       title: 'Apiato',
       logo: {
