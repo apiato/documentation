@@ -182,7 +182,7 @@ class DeleteUserRequest extends Request
 {
     protected array $access = [
         'permission' => 'delete-users|another-permissions',
-        'roles' => 'manger'
+        'roles' => 'manager'
     ];
 
     public function authorize(): bool
@@ -201,7 +201,7 @@ you can also use the `array notation`. The example from above would look like th
 ```php
     protected $access = [
             'permission' => ['delete-users', 'another-permissions'],
-            'roles' => ['manger'],
+            'roles' => ['manager'],
     ];
 ```
 
@@ -267,7 +267,7 @@ To do this, define those roles in `app/Ship/Configs/apiato.php` as follows:
 ],
 ```
 
-This will append the `admin` role to all roles access in every request object. Example: this `'roles' => 'manger'` becomes `'roles' => 'manger|admin'` (if the user is manager or admin "has any of the roles", will be allowed to access the endpoint function).
+This will append the `admin` role to all roles access in every request object. Example: this `'roles' => 'manager'` becomes `'roles' => 'manager|admin'` (if the user is manager or admin "has any of the roles", will be allowed to access the endpoint function).
 
 ## Request Helper Functions {#request-helper-functions}
 
