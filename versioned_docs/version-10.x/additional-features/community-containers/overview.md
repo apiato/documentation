@@ -24,3 +24,4 @@ Feel free to add your containers to this list.
 | ActivityLog | Log Activities of Users and Models | [GitHub](https://github.com/johannesschobel/apiato-activitylog) |
 | Note | A Container handling Notes (e.g., ToDo Lists) for Eloquent Models. | [GitHub](https://github.com/johannesschobel/apiato-notes) |
 | MFA | A Container to manage 2 Factor Authentication works with any Authenticator app. | [GitHub](https://github.com/Elshaden/apiato-otpkey.git) |
+| Sanctum |Implementation of Laravel Sanctum in Apiato. | [GitHub](https://github.com/Elshaden/apiato-sanctum.git) |
