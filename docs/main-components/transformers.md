@@ -177,8 +177,11 @@ You need to have `includeUser` and `includeTags` functions defined on the transf
 
 ## Transformer Available helper functions: {#transformer-available-helper-functions}
 
-- `user()` : returns current authenticated user object.
+- `user()`: returns current authenticated user object.
 
-- `ifAdmin($adminResponse, $clientResponse)` : merges normal client response with the admin extra or modified results, when current authenticated user is Admin. Look at the full examples above.
+- `ifAdmin($adminResponse, $clientResponse)`: merges normal client response with the admin extra or modified results, when current authenticated user is Admin. Look at the full examples above.
+
+- `nullableItem($model->something, new SomethingTransformer())`: It is a shorthand for `$model->something ? $this->item($model->something, new SomethingTransformer()) : $this->primitive(null)`  
+This helps in situations when you want to check if a relation is null and act base on that. So instead of writing something like the code above, you can just use this method which returns null if the relation doesn't exist.  
 
 For more information about the Transformers read [this](http://fractal.thephpleague.com/transformers/).
