@@ -16,7 +16,7 @@ title: Upgrade Guide
 
 ## Upgrade from 10.0 to 11.0 {#upgrade-10To11}
 
-WIP
+Please see the [v11 release notes](https://github.com/apiato/apiato/releases/tag/v11.0.0) and upgrade your project using it.
 
 ## Upgrade from 9.0 to 10.0 {#upgrade-90To10}
 
