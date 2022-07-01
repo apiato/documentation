@@ -26,11 +26,13 @@ To see the list of code generators type `php artisan` and look for `apiato`.
   php artisan apiato:generate:container:api    Create a Container for apiato from scratch (API Part)
   php artisan apiato:generate:container:web    Create a Container for apiato from scratch (WEB Part)
   php artisan apiato:generate:controller       Create a controller for a container
-  php artisan apiato:generate:event            Create a new Event class and its corresponding Handler
-  php artisan apiato:generate:eventhandler     Create a new EventHandler class
+  php artisan apiato:generate:event            Create a new Event class and (optionally) its corresponding Listener
   php artisan apiato:generate:exception        Create a new Exception class
+  php artisan apiato:generate:factory          Create a new Factory class
   php artisan apiato:generate:job              Create a new Job class
+  php artisan apiato:generate:listener         Create a new Event Listener class
   php artisan apiato:generate:mail             Create a new Mail class
+  php artisan apiato:generate:middleware       Create a new Middleware class
   php artisan apiato:generate:migration        Create an "empty" migration file for a Container
   php artisan apiato:generate:model            Create a new Model class
   php artisan apiato:generate:notification     Create a new Notification class
