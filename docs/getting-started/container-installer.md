@@ -16,13 +16,13 @@ For example, your `/composer.json` file may look something like this:
 ```json
 {
   "require": {
-    "apiato/settings-container": "^2.0.6"
+    "apiato/welcome-container": "^2.0.1"
   }
 }
 ```
 
 You just need to call `composer update` in order to install the respective packages. The package (e.g., the container)
-`apiato/settings-container` is then installed to the `app/Containers/VendorSection` folder. However, the developer of the package
+`apiato/settings-container` is then installed to the `app/Containers/Vendor` folder. However, the developer of the package
 needs to follow some basic guidelines listed below.
 :::caution Warning
 **Do not** modify content within a downloaded container, as it will be overwritten if you call `composer update`.
@@ -57,7 +57,7 @@ An example of such a `composer.json` file is shown below:
   "extra": {
     "apiato": {
       "container": {
-        "name": "Foo"   // The name of the container within the /app/Containers/VendorSection folder
+        "name": "Foo"   // The name of the container within the /app/Containers/Vendor folder
       }
     }
   }
@@ -68,5 +68,5 @@ An example of such a `composer.json` file is shown below:
 * You **must** add the respective `type : apiato-container` to the composer file. This way, the custom installer is used
 that allows installing/updating containers.
 * You **must** provide the key `extra.apiato.container.name`. This key indicates the name of the folder (e.g., container)
-when installing the package to the `/app/ContainersVendorSection` folder. In the shown example, the container would be installed to
-`app/Containers/VendorSection/Foo`.
+when installing the package to the `/app/Containers/Vendor` folder. In the shown example, the container would be installed to
+`app/Containers/Vendor/Foo`.

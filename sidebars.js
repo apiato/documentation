@@ -45,7 +45,6 @@ module.exports = {
             'additional-features/documentation',
             'additional-features/social-authentication',
             'additional-features/localization',
-            'additional-features/payments',
           ],
         },
       ]

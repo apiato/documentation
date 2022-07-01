@@ -32,22 +32,8 @@ Example languages files are included at `/lang`. (default Laravel translations)
 
 ## Support new languages{#support-new-languages}
 
-There are 2 ways you can customize this container and support new languages: Using its configs or by modifying the source code.
-
-### Publishing configs {#publish-configs}
-```shell
-php artisan vendor:publish
-```  
-Config file will be copied to `app/Ship/Configs/vendor-localization.php`
-
-### Modifying the source code {#modify-code}
-
-1- Copy the container from `Vendor` to `AppSection` (or any of your custom sections) of your project  
-2- Fix the namespaces  
-3- Remove `apiato/localization-container` dependency from project root composer.json  
-
 All supported languages must be added to the `supported_languages` array in the `vendor-localization.php` config file
-to prevent users from requesting unsupported languages.
+to prevent users from requesting unsupported languages. There are 2 ways to do this: Using the configs or by modifying the source code.
 
 ```php
     'supported_languages' => [
@@ -61,6 +47,18 @@ to prevent users from requesting unsupported languages.
         'fa',
     ],
 ```
+
+### Publishing configs {#publish-configs}
+```shell
+php artisan vendor:publish
+```  
+Config file will be copied to `app/Ship/Configs/vendor-localization.php`
+
+### Modifying the source code {#modify-code}
+
+1- Copy the container from `Vendor` to `AppSection` (or any of your custom sections) of your project  
+2- Fix the namespaces  
+3- Remove `apiato/localization-container` dependency from project root composer.json
 
 ## Select Request Language{#select-request-language}
 
