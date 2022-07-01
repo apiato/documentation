@@ -5,9 +5,10 @@ title: Localization
 - [Installation](#installation)
 - [Creating new languages files](#create-new-languages-files)
 - [Support new languages](#support-new-languages)
+  - [Publishing configs](#publish-configs)
+  - [Modifying the source code](#modify-code)
 - [Select Request Language](#select-request-language)
 - [Translating Strings](#translating-strings)
-- [Disable Localization](#disable-localization)
 - [Get Available Localizations](#get-available-localizations)
 - [Tests](#tests)
 
@@ -19,29 +20,34 @@ composer require apiato/localization-container
 ## Creating new languages files {#create-new-languages-files}
 
 Languages file can be placed in any container, not only the Localization Container.  
-Place language files inside the `/Resources/Languages` folder of your container. For example
-`app/Containers/SectionName/ContainerName/Resources/Languages`. You can also place general language files inside the
-`/Resources/Languages` folder of the `Ship`.
+Place language files inside the `/Languages` folder of your container. For example
+`app/Containers/SectionName/ContainerName/Languages`. You can also place general language files inside the
+`/Languages` folder of the `Ship`.
 
 :::note  
-Just create the `/Resources/Languages` folder if it does not exist.  
+Just create the `/Languages` folder if it does not exist.  
 :::
 
-Example languages files are included in the Localization Container at `app/Containers/Vendor/Localization/Resources/Languages`.
+Example languages files are included at `/lang`. (default Laravel translations)
 
 ## Support new languages{#support-new-languages}
 
-:::caution Instructions
-This container works out of the box perfectly but if you want to change its configs or modify the codes you MUST follow these steps:
+There are 2 ways you can customize this container and support new languages: Using its configs or by modifying the source code.
+
+### Publishing configs {#publish-configs}
+```shell
+php artisan vendor:publish
+```  
+Config file will be copied to `app/Ship/Configs/vendor-localization.php`
+
+### Modifying the source code {#modify-code}
 
 1- Copy the container from `Vendor` to `AppSection` (or any of your custom sections) of your project  
 2- Fix the namespaces  
 3- Remove `apiato/localization-container` dependency from project root composer.json  
 
-:::
-
-All supported languages must be added to the `supported_languages` in `app/Containers/Vendor/Localization/Configs/vendor-localization.php`
-to prevent users from requesting unsupported languages, as follows:
+All supported languages must be added to the `supported_languages` array in the `vendor-localization.php` config file
+to prevent users from requesting unsupported languages.
 
 ```php
     'supported_languages' => [
@@ -105,11 +111,6 @@ If you try to load a string for a language that is **not available** (e.g., ther
 will stick to the default one that is defined in `app.locale` config file. This is also true, if the requested locale
 is present in the `supported_languages` array from the configuration file.
 :::
-
-## Disable Localization{#disable-localization}
-
-You will need to remove the Localization Middleware, by simply going to `app/Containers/Vendor/Localization/Providers/MainServiceProvider.php`
-and remove/comment the `MiddlewareServiceProvider` from the `$serviceProviders` property. Or you can just completely remove the container.
 
 ## Get Available Localizations{#get-available-localizations}
 
