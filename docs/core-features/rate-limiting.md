@@ -15,16 +15,16 @@ To update these values go to `app/Ship/Configs/apiato.php` config file, or to th
 
 ```php
 'throttle' => [
-    'enabled' => env('API_RATE_LIMIT_ENABLED', true),
-    'attempts' => env('API_RATE_LIMIT_ATTEMPTS', '30'),
-    'expires' => env('API_RATE_LIMIT_EXPIRES', '1'),
+    'enabled' => env('GLOBAL_API_RATE_LIMIT_ENABLED', true),
+    'attempts' => env('GLOBAL_API_RATE_LIMIT_ATTEMPTS_PER_MIN', '30'),
+    'expires' => env('GLOBAL_API_RATE_LIMIT_EXPIRES_IN_MIN', '1'),
 ]
 ```
 
 ```php
-API_RATE_LIMIT_ENABLED=true
-API_RATE_LIMIT_ATTEMPTS=30
-API_RATE_LIMIT_EXPIRES=1
+GLOBAL_API_RATE_LIMIT_ENABLED=true
+GLOBAL_API_RATE_LIMIT_ATTEMPTS_PER_MIN=30
+GLOBAL_API_RATE_LIMIT_EXPIRES_IN_MIN=1
 ```
 
 For how many hits you can preform on an endpoint, you can always check the header:
@@ -36,6 +36,10 @@ X-RateLimit-Remaining →29
 
 ## Enable/Disable Rate Limiting: {#enable-disable-rate-limiting}
 
-The API rate limiting middleware is enabled and applied to all the Container Endpoints by default.
+The global API rate limiting middleware name is `api` and is enabled and applied to all the Container API Endpoints by default.
 
-To disable it set `API_RATE_LIMIT_ENABLED` to `false` in the `.env` file.
+### Disable on specific endpoint: 
+This middleware can be bypassed using `withoutMiddleware()` method on a specific route.
+
+### Disable on all endpoints (globally):
+To disable it set `GLOBAL_API_RATE_LIMIT_ENABLED` to `false` in the `.env` file.
