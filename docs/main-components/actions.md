@@ -5,6 +5,7 @@ title: Actions
 - [Rules](#rules)
 - [Folder Structure](#folder-structure)
 - [Code Sample](#code-sample)
+- [Transactional Run](#transactional-run)
 
 ### Definition & Principles {#definition-principles}
 
@@ -75,3 +76,26 @@ class DemoAction extends Action
 :::tip
 The same Action MAY be called by multiple Controllers (Web, Api, Cli).
 :::
+
+### Transactional Run {#transactional-run}
+
+Sometimes, you want to wrap a call into one `Database Transaction` (see
+[Laravel Documentation](https://laravel.com/docs/master/database#database-transactions)).
+
+Consider the following example: You want to create a new `Team` and automatically assign yourself (i.e., your own
+`User`) to this newly created `Team`. Your `CreateTeamAction` may call a dedicated `CreateTeamTask` and a
+`AssignMemberToTeamTask` afterwards.
+
+However, if the `AssignMemberToTeamTask` fails, for unknown reasons, you may want to "rollback" (i.e., remove) the
+newly created `Team` from the database in order to keep the database in a valid state.
+
+That's where `DB::transactions` comes into play!
+
+Apiato provides a `transactionalRun(...$arguments)` method which internally just wraps the `run()` method of the action in a `DB::Transaction` and passes all the parameters `as is` to it.
+
+If any `Exception` occurs during the execution of the `run()`, everything done in this context is
+automatically rolled-back from the database. However, respective operations on the file system (e.g., you may also
+have uploaded a profile picture for this `Team` already) need to be performed
+manually!
+
+Typically, you may want to use the `transactionalRun()` on the `Controller` level!
