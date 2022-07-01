@@ -34,12 +34,13 @@ To see the list of code generators type `php artisan` and look for `apiato`.
   php artisan apiato:generate:migration        Create an "empty" migration file for a Container
   php artisan apiato:generate:model            Create a new Model class
   php artisan apiato:generate:notification     Create a new Notification class
+  php artisan apiato:generate:policy           Create a new Policy class
   php artisan apiato:generate:readme           Create a README file for a Container
   php artisan apiato:generate:repository       Create a new Repository class
   php artisan apiato:generate:request          Create a new Request class
   php artisan apiato:generate:route            Create a new Route class
   php artisan apiato:generate:seeder           Create a new Seeder class
-  php artisan apiato:generate:serviceprovider  Create a ServiceProvider for a Container
+  php artisan apiato:generate:provider         Create a ServiceProvider, MiddlewareProvider or an EventProvider for a Container
   php artisan apiato:generate:subaction        Create a new SubAction class
   php artisan apiato:generate:task             Create a Task file for a Container
   php artisan apiato:generate:test:functional  Create a Functional Test file.
