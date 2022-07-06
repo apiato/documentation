@@ -9,6 +9,7 @@ title: Localization
   - [Modifying the source code](#modify-code)
 - [Select Request Language](#select-request-language)
 - [Translating Strings](#translating-strings)
+- [Enable/Disable Localization](#enable-disable-localization)
 - [Get Available Localizations](#get-available-localizations)
 - [Tests](#tests)
 
@@ -109,6 +110,9 @@ If you try to load a string for a language that is **not available** (e.g., ther
 will stick to the default one that is defined in `app.locale` config file. This is also true, if the requested locale
 is present in the `supported_languages` array from the configuration file.
 :::
+
+## Enable/Disable Localization{#enable-disable-localization}
+When using this container, Localization is **enabled** by default. To disable it set `LOCALIZATION_ENABLED` to `false` in the `.env` file. You can also change this behaviour in the [configs](#publish-configs). This will disable the localization middleware.
 
 ## Get Available Localizations{#get-available-localizations}
 
