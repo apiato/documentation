@@ -1,0 +1,313 @@
+{
+  "version-11.x/docs": [
+    {
+      "label": "Getting Started",
+      "type": "category",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-11.x/getting-started/requirements"
+        },
+        {
+          "type": "doc",
+          "id": "version-11.x/getting-started/installation"
+        },
+        {
+          "type": "doc",
+          "id": "version-11.x/getting-started/software-architectural-patterns"
+        },
+        {
+          "type": "doc",
+          "id": "version-11.x/getting-started/samples"
+        },
+        {
+          "type": "doc",
+          "id": "version-11.x/getting-started/requests"
+        },
+        {
+          "type": "doc",
+          "id": "version-11.x/getting-started/responses"
+        },
+        {
+          "type": "doc",
+          "id": "version-11.x/getting-started/conventions-and-principles"
+        },
+        {
+          "type": "doc",
+          "id": "version-11.x/getting-started/container-installer"
+        }
+      ],
+      "collapsible": true,
+      "collapsed": true
+    },
+    {
+      "type": "category",
+      "collapsed": true,
+      "collapsible": true,
+      "label": "Features",
+      "items": [
+        {
+          "label": "Core Features",
+          "type": "category",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-11.x/core-features/code-generator"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/core-features/authentication"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/core-features/authorization"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/core-features/user-registration"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/core-features/query-parameters"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/core-features/default-endpoints"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/core-features/hash-id"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/core-features/rate-limiting"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/core-features/data-caching"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/core-features/pagination"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/core-features/api-versioning"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/core-features/validation"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/core-features/etag"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/core-features/useful-commands"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/core-features/profiler"
+            }
+          ],
+          "collapsible": true,
+          "collapsed": true
+        },
+        {
+          "label": "Additional Features",
+          "type": "category",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-11.x/additional-features/overview"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/additional-features/documentation"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/additional-features/social-authentication"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/additional-features/localization"
+            }
+          ],
+          "collapsible": true,
+          "collapsed": true
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "collapsed": true,
+      "collapsible": true,
+      "label": "Components",
+      "items": [
+        {
+          "label": "Main Components",
+          "type": "category",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-11.x/main-components/routes"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/main-components/controllers"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/main-components/requests"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/main-components/actions"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/main-components/tasks"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/main-components/models"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/main-components/views"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/main-components/transformers"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/main-components/exceptions"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/main-components/subactions"
+            }
+          ],
+          "collapsible": true,
+          "collapsed": true
+        },
+        {
+          "label": "Optional Components",
+          "type": "category",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-11.x/optional-components/providers"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/optional-components/repositories"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/optional-components/criterias"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/optional-components/tests"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/optional-components/migrations"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/optional-components/seeders"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/optional-components/factories"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/optional-components/middlewares"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/optional-components/configs"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/optional-components/helpers"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/optional-components/commands"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/optional-components/jobs"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/optional-components/languages"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/optional-components/events"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/optional-components/mails"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/optional-components/notifications"
+            },
+            {
+              "type": "doc",
+              "id": "version-11.x/optional-components/values"
+            }
+          ],
+          "collapsible": true,
+          "collapsed": true
+        }
+      ]
+    },
+    {
+      "label": "Miscellaneous",
+      "type": "category",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-11.x/miscellaneous/tests-helpers"
+        },
+        {
+          "type": "doc",
+          "id": "version-11.x/miscellaneous/tasks-scheduling"
+        },
+        {
+          "type": "doc",
+          "id": "version-11.x/miscellaneous/tasks-queuing"
+        }
+      ],
+      "collapsible": true,
+      "collapsed": true
+    },
+    {
+      "type": "doc",
+      "id": "version-11.x/upgrade-guide"
+    },
+    {
+      "type": "doc",
+      "id": "version-11.x/contribution-guide"
+    },
+    {
+      "type": "doc",
+      "id": "version-11.x/faq"
+    },
+    {
+      "label": "Change Log",
+      "type": "link",
+      "href": "https://github.com/apiato/apiato/releases"
+    }
+  ]
+}
