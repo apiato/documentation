@@ -75,7 +75,7 @@ The Default Super User, has a default role `admin`.
 
 The `admin` default role **has no permissions given to it**.
 
-To give permissions to the `admin` role (or any other role), you can use the dedicated endpoints (from your custom Admin Interface) or use this command `php artisan apiato:permissions:toRole admin` to give it all the permissions in the system.
+To give permissions to the `admin` role (or any other role), you can use the dedicated endpoints (from your custom Admin Interface).
 
 Checkout each container **Seeders** directory `app/Containers/AppSection/{container-name}/Data/Seeders/`, to edit the default **Users**, **Roles** and **Permissions**.
 
