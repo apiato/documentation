@@ -1,4 +1,4 @@
-# Apiato Documentation
+# Apiato Persian Documentation
 
 Documentation repository for the [Apiato](https://github.com/apiato/apiato) project, served at [apiato.io](http://apiato.io).
 
