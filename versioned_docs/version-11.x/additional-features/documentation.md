@@ -16,6 +16,7 @@ title: Documentation
   - [Private Documentation Protection](#private-docs-protection)
   - [Edit Default Generated Values in Templates](#edit-default-generated-values-in-templates)
   - [Edit the Documentation Header](#edit-the-documentation-header)
+  - [Localization for Documentation Header](#localization-for-documentation-header)
 
 Every great API needs a great Documentation.
 
@@ -225,3 +226,15 @@ To edit its content you need to [modify its source code](#modify-code) and open 
 You will notice some variables like `{{rate-limit}}` and `{{token-expires}}`. Those are replaced when running `apiato:apidoc` with real values from your application configuration files.
 
 Feel free to extend them to include more info about your API from the `app/Containers/Vendor/Documentation/Tasks/RenderTemplatesTask.php` class.
+
+### Localization for Documentation Header {#localization-for-documentation-header}
+
+Default, the documentation title is in English `en` localization.
+
+See which locales are supported by going in `app/Containers/Vendor/Documentation/ApiDocJs/shared/`
+
+There will be some `header.template.{locale}.md` files in the folder.
+
+You can change the language by adding `APIDOC_LOCALE=ru` to the `.env` file.
+
+If you didn't find a file with your locale, you can create it. You need to [modify its source code](#modify-code) and create new file like `header.template.cn.md`
