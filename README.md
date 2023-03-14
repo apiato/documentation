@@ -1,39 +1,41 @@
-# Apiato Documentation
+# Website
 
-Documentation repository for the [Apiato](https://github.com/apiato/apiato) project, served at [apiato.io](http://apiato.io).
+This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
-<p align="center">
-   <img src="https://github.com/apiato/documentation/blob/master/images/apiato-icon-medium.png" alt="Apiato Logo"/>
-</p>
+### Installation
 
-This website is built using [Docusaurus 2](https://v2.docusaurus.io/), a modern static website generator.
-
-## Installation
-
-```console
-yarn install
+```
+$ yarn
 ```
 
-## Local Development
+### Local Development
 
-```console
-yarn start
+```
+$ yarn start
 ```
 
-This command starts a local development server and open up a browser window. Most changes are reflected live without having to restart the server.
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
-## Build
+### Build
 
-```console
-yarn build
+```
+$ yarn build
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-## Deployment
+### Deployment
 
-```console
-GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
+Using SSH:
+
+```
+$ USE_SSH=true yarn deploy
+```
+
+Not using SSH:
+
+```
+$ GIT_USER=<Your GitHub username> yarn deploy
 ```
 
 If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
