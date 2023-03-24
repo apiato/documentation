@@ -79,15 +79,6 @@ php artisan migrate
 php artisan db:seed
 ```
 
-3) Optional. By default, Apiato seeds a "Super User", given the default `admin` role (the role has no Permissions set
-to it).
-
-To give the `admin` role, access to all the seeded permissions in the system, run the following command, at any time.
-
-```
-php artisan apiato:permissions:toRole admin
-```
-
 ### OAuth 2.0 Setup {#Prepare-OAuth}
 
 1) Create encryption keys to generate secure access tokens and create "personal access" and "password grant" clients
