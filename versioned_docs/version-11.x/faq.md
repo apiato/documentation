@@ -23,7 +23,7 @@ have the freedom to structure your own project anyway you like, and still use al
 
 ### How to use my custom domain? {#how-to-use-my-custom-domain}
 
-Read the [installation guide](http://localhost:3000/docs/next/getting-started/installation#Development-Environment).
+Read the [installation guide](./getting-started/installation#Development-Environment).
 
 ### Where to put my frontend code? {#where-to-put-my-frontend-code}
 
