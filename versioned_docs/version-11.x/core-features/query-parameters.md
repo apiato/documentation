@@ -186,7 +186,7 @@ data you want back in the response.
 
 **Usage:**
 
-Return only ID and Name from that Model, (everything else will be returned as `null`).
+Return only ID and Status from that Model, (everything else will be returned as `null`).
 
 ```
 api.domain.test/endpoint?filter=id;status
