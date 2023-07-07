@@ -6,7 +6,7 @@ slug: /
 ### Requirements
 
 * [GIT](https://git-scm.com/downloads/)
-* [PHP](https://www.php.net/) >= 8.0.2
+* [PHP](https://www.php.net/) >= 8.1.0
 * [Composer](https://getcomposer.org/download/)
 * PHP Extensions:
 	 * OpenSSL PHP Extension
