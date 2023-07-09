@@ -10,7 +10,7 @@ title: Contribution Guide
 * [Security Vulnerabilities](#security-vulnerabilities)
 * [Coding Style](#coding-style)
   * [PHPDoc](#phpdoc)
-  * [StyleCI](#styleci)
+  * [GitHub Workflow](#github-workflow)
 * [Code of Conduct](#code-of-conduct)
 
 ## Bug Reports {#bug-reports}
@@ -77,7 +77,7 @@ All security vulnerabilities will be promptly addressed.
 
 ## Coding Style
 
-Apiato follows the [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) coding standard and the [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md) autoloading standard.
+Apiato follows the [PSR-12](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-12-extended-coding-style-guide.md) coding standard with [some modifications](https://github.com/apiato/apiato/blob/master/.php-cs-fixer.dist.php) and the [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md) autoloading standard.
 
 ### PHPDoc {#phpdoc}
 
@@ -131,10 +131,10 @@ please specify the generic type through the use of the `@param` or `@return` att
     }
 ```
 
-### StyleCI {#styleci}
+### GitHub Workflow {#github-workflow}
 
 Don't worry if your code styling isn't perfect!
-StyleCI](https://styleci.io/) will automatically merge any style fixes into the Apiato repository
+GitHub Actions will automatically merge any style fixes into the Apiato repository
 after pull requests are merged.
 This allows us to focus on the content of the contribution and not the code style.
 
