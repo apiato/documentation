@@ -15,19 +15,19 @@ Before creating your first Apiato project, you should ensure that your local mac
 If you are developing on macOS, PHP and Composer can be installed via [Homebrew](https://brew.sh/).
    
 After you have installed PHP and Composer, you may create a new Apiato project via the Composer create-project command:
-
 ```shell
 composer create-project apiato/apiato example-app
 ```
 
-Then Migrate and seed the Database:
+If you have your environment ready, continue with the following steps,
+else [set up your environment](#Development-Environment) first and then continue.
 
+Migrate and seed the Database:
 ```shell
 php artisan migrate --seed
 ```
 
 And create encryption keys:
-
 ```shell
 php artisan passport:install
 ```
@@ -35,13 +35,11 @@ php artisan passport:install
 ## Documentation {#Documentation}
 
 Install [ApiDocJs](http://apidocjs.com/) using NPM or your favorite dependency manager:
-
 ```shell
 npm install
 ```
 
 Then generate the API documentation:
-
 ```shell
 php artisan apiato:apidoc
 ```
@@ -53,7 +51,6 @@ Visit [API Docs Generator](../Pacakges/documentation.md) for more details.
 ## Testing {#Testing}
 
 Open `phpunit.xml` and make sure the environments are correct for your domain then run the tests.
-
 ```shell
 php vendor/bin/phpunit
 ```

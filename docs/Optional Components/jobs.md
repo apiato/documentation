@@ -7,7 +7,6 @@ title: Jobs
 * [Rules](#rules)
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
-* [Execute Jobs Execution](#execute-jobs-execution)
 
 ### Definition {#definition}
 
@@ -71,9 +70,6 @@ dispatch(new DemoJob($someData));
 // manually
 app(\Illuminate\Contracts\Bus\Dispatcher\Dispatcher::class)->dispatch(New DemoJob($someData));
 ```
-
-### Execute Jobs Execution {#execute-jobs-execution}
-For running your Jobs checkout the [Tasks Queuing](../Miscellaneous/tasks-queuing) page.
 
 :::info Further reading
 More info at [Laravel Docs](https://laravel.com/docs/queues).

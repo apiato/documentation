@@ -86,7 +86,7 @@ Example:
 $response = $this->injectId($admin->id)->makeCall();
 ```
 
-More details on the [Tests Helpers](../Miscellaneous/tests-helpers) page.
+More details on the [Tests Helpers](../Testing/tests-helpers) page.
 
 ## Availability {#availability}
 

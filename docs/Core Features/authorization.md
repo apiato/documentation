@@ -58,7 +58,7 @@ class DeleteUserRequest extends Request
 
 ## Assign Roles & Permission to the Testing User {#assign-roles-permission-to-the-testing-user}
 
-You will need to set `$access` property in your test class, check out the [Tests Helpers](../Miscellaneous/tests-helpers) page for more details.
+You will need to set `$access` property in your test class, check out the [Tests Helpers](../Testing/tests-helpers) page for more details.
 
 ## Seeding some users (Admins) {#seeding-some-users-admins}
 

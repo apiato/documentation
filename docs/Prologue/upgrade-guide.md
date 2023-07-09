@@ -1,6 +1,8 @@
 ---
+sidebar_position: 2
 title: Upgrade Guide
 ---
+- [Upgrade from 11.0 to 12.0](#upgrade-11To12)
 - [Upgrade from 10.0 to 11.0](#upgrade-10To11)
 - [Upgrade from 9.0 to 10.0](#upgrade-90To10)
 - [Upgrade from 8.0 to 9.0](#upgrade-80To90)
@@ -13,6 +15,10 @@ title: Upgrade Guide
 - [Upgrade from 4.1 to 5.0](#upgrade-41To50)
 - [How to manually upgrade older versions to 4.1?](#how-to-manually-upgrade-older-versions-to-41)
 - [Manual Upgrading Guide](#Manual-Upgrading-Guide)
+
+## Upgrade from 11.0 to 12.0 {#upgrade-11To12}
+
+WORK IN PROGRESS
 
 ## Upgrade from 10.0 to 11.0 {#upgrade-10To11}
 

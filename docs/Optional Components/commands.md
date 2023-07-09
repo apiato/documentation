@@ -7,7 +7,6 @@ title: Commands
 * [Rules](#rules)
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
-* [Schedule Commands Execution](#Schedule-Commands-Execution)
 * [Define Consoles Closure Commands](#define-consoles-closure-commands)
 
 ### Definition {#definition}
@@ -70,10 +69,6 @@ class HelloWorldCommand extends ConsoleCommand
 ```shell
 php artisan hello:world
 ```
-
-### Schedule Commands Execution {#Schedule-Commands-Execution}
-
-To Schedule the execution of a Command checkout the [Tasks Scheduling](../Miscellaneous/tasks-scheduling) page.
 
 ### Define Consoles Closure Commands {#define-consoles-closure-commands}
 
