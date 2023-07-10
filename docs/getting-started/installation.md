@@ -1,0 +1,176 @@
+---
+sidebar_position: 1
+title: Installation
+---
+
+* [Your First Apiato Project](#your-first-apiato-project)
+* [Development Environment](#Development-Environment)
+* [Initial Configuration](#initial-configuration)
+  * [Environment Based Configuration](#environment-based-configuration)
+  * [Databases & Migrations](#databases-and-migrations)
+  * [Authentication Configuration](#authentication-configuration)
+  * [Directory Permissions](#directory-permissions)
+* [Documentation Generation](#documentation-generation)
+* [Let's Play](#Play)
+* [Next Steps](#next-steps)
+
+## Your First Apiato Project {#your-first-apiato-project}
+
+Before creating your first Apiato project, you should ensure that your local machine has PHP and [Composer](https://getcomposer.org/) installed.
+If you are developing on macOS, PHP and Composer can be installed via [Homebrew](https://brew.sh/).
+   
+After you have installed PHP and Composer, you may create a new Apiato project via the Composer create-project command:
+```
+composer create-project apiato/apiato example-app
+```
+
+## Development Environment Setup {#Development-Environment}
+
+You can run **Apiato** in any environment that you can run Laravel.
+
+:::tip
+Visit [Laravel Installation](https://laravel.com/docs/10.x/installation#laravel-and-docker) for more details.
+:::
+
+## Initial Configuration {#initial-configuration}
+
+All the configuration files for the Laravel framework are stored in the `config` directory
+and all the configuration files for the Apiato framework are stored in the `app/Ship/Configs` directory.
+Each option is documented, so feel free to look through the files and get familiar with the options available to you.
+
+Apiato needs almost no additional configuration out of the box.
+You are free to get started developing!
+However, you may wish to review the `app/Ship/Configs/apiato.php` file and its documentation.
+It contains several options that you may wish to change according to your application.
+
+### Environment Based Configuration {#environment-based-configuration}
+
+Since many of Apiato's configuration option values may vary
+depending on whether your application is running on your local machine or on a production web server,
+many important configuration values are defined using the `.env` file that exists at the root of your application.
+
+Your `.env` file should not be committed to your application's source control,
+since each developer / server using your application could require a different environment configuration.
+Furthermore, this would be a security risk in the event an intruder gains access to your source control repository,
+since any sensitive credentials would get exposed.
+
+:::info
+For more information about the `.env` file and environment based configuration,
+check out the Laravel full [configuration documentation](https://laravel.com/docs/10.x/configuration).
+:::
+
+### Databases and Migrations {#databases-and-migrations}
+
+Now that you have created your Apiato application, you probably want to store some data in a database.
+By default,
+your application's `.env` configuration file specifies
+that Apiato will be interacting with a MySQL database and will access the database at `127.0.0.1`.
+If you are developing on macOS and need to install MySQL, Postgres,
+or Redis locally, you may find it convenient to utilize `DBngin`.
+
+If you do not want to install MySQL or Postgres on your local machine,
+you can always use a [SQLite](https://www.sqlite.org/index.html) database.
+SQLite is a small, fast, self-contained database engine.
+To get started, create a SQLite database by creating an empty SQLite file.
+Typically, this file will exist within the database directory of your Apiato application:
+
+```
+touch database/database.sqlite
+```
+
+Next, update your `.env` configuration file to use Laravel's sqlite database driver. You may remove the other database configuration options:
+```diff
++ DB_CONNECTION=sqlite 
+- DB_CONNECTION=mysql 
+- DB_HOST=127.0.0.1 
+- DB_PORT=3306 
+- DB_DATABASE=homestead 
+- DB_USERNAME=homestead 
+- DB_PASSWORD=secret
+```
+
+Once you have configured your SQLite database, you may run your application's [database migrations](https://laravel.com/docs/10.x/migrations),
+which will create your application's database tables:
+
+```
+php artisan migrate --seed
+```
+
+### Authentication Configuration {#authentication-configuration}
+
+Apiato uses [Laravel Passport](https://laravel.com/docs/passport) to issue OAuth2 tokens.
+Once you run the migrations, you should install the Passport keys:
+
+```
+php artisan passport:install
+```
+
+You will see something like this:
+```
+Personal access client created successfully.
+Client ID: 1
+Client secret: Mo45lC2zhZWcMfDGmCbsw1OfasdCrc3wqQAeeYAO
+Password grant client created successfully.
+Client ID: 2
+Client secret: nu8B2npfoR4hP6sWHaf90EvWUFe2EDYyJXGnCrso
+```
+
+Next you need to add the Password grant `CLIENT_ID` and `CLIENT_SECRET` to your `.env` file:
+```dotenv
+CLIENT_WEB_ID=2
+CLIENT_WEB_SECRET=nu8B2npfoR4hP6sWHaf90EvWUFe2EDYyJXGnCrso
+```
+
+### Directory Configuration {#directory-configuration}
+
+Apiato should always be served out of the root of the "web directory" configured for your web server.
+You should not attempt to serve a Apiato application out of a subdirectory of the "web directory".
+Attempting to do so could expose sensitive files present within your application.
+
+
+## Documentation Generation {#documentation-generation}
+
+Install [ApiDocJs](http://apidocjs.com/) using NPM or your favorite dependency manager:
+```
+npm install
+```
+
+Then generate the API documentation:
+```
+php artisan apiato:apidoc
+```
+
+:::tip
+Visit [API Docs Generator](../Pacakges/documentation.md) for more details.
+:::
+
+## Let's Play {#Play}
+
+Now let's see it in action
+
+Open your web browser and visit:
+
+http://apiato.test You should see an HTML page, with `Apiato` in the middle.  
+http://api.apiato.test You should see a response like this:
+```json
+["Welcome to Apiato"]
+```
+
+Open your HTTP client and call:
+
+http://api.apiato.test/ You should see a JSON response with message: `"Welcome to apiato."`  
+http://api.apiato.test/v1 You should see a JSON response with message: `"Welcome to apiato (API V1)."`
+
+## Next Steps {#next-steps}
+
+Now that you have created your Apiato project, you may be wondering what to learn next.
+First, we strongly recommend becoming familiar with how Apiato works by reading the following documentation:
+
+* [Apiato Architecture](../architectural-concepts.md)
+* [API Versioning](../core-features/api-versioning.md)
+* [Authentication](../core-features/authentication.md)
+* [Authorization](../core-features/authorization.md)
+* [Code Generators](../core-features/code-generator.md)
+* [Hash ID](../core-features/hash-id.md)
+* [Query Parameters](../core-features/query-parameters.md)
+* [Rate Limiting](../core-features/rate-limiting.md)

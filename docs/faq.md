@@ -66,7 +66,7 @@ Providers, inside the `$serviceProviders` and `$aliases` properties. However, so
 Aliases (application features used by all containers) CAN be registered on the Ship layer in
 `app/Ship/Providers/ShipProvider.php` inside the `$serviceProviders` and `$aliases` properties.
 
-Refer to the [Providers](Optional Components/providers) page for more details.
+Refer to the [Providers](optional-components/providers) page for more details.
 
 ### How to change the default API URL (Subdomain and Prefix)? {#how-to-change-the-default-api-url}
 
@@ -127,7 +127,7 @@ The `ApiatoProvider` is the one who calls `runLoadersBoot()` on startup. `Apiato
 
 ### How to create third-party Containers? {#how-to-create-third-party-containers}
 
-Read the [Container Installer Documentation](Getting Started/container-installer).
+Read the [Container Installer Documentation](getting-started/container-installer).
 
 ### What is the default Username for authentication? {#what-is-the-default-username-for-authentication}
 
