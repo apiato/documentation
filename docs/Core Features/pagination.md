@@ -20,7 +20,7 @@ api.domain.test/endpoint?page=200
 
 *Pagination object is always returned in **meta** when pagination is available on the endpoint.*
 
-```shell
+```
   "data": [...],
   "meta": {
     "pagination": {

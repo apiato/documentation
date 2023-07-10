@@ -31,7 +31,7 @@ Apiato make writing and generating documentations very easy with the `php artisa
 
 ## Installation {#installation}
 
-```shell
+```
 composer require apiato/documentation-generator-container
 ```
 
@@ -103,7 +103,7 @@ All the Endpoint `DocBlocks` MUST be written inside Routes files, otherwise they
 
 Run the documentation generator command from the root directory:
 
-```shell
+```
 
 php artisan apiato:apidoc
 
@@ -177,7 +177,7 @@ HTTP/1.1 200 OK
 There are 2 ways you can customize this container: Using its configs or by modifying the source code.
 
 ### Publishing configs {#publish-configs}
-```shell
+```
 php artisan vendor:publish
 ```  
 Config file will be copied to `app/Ship/Configs/vendor-documentation.php`

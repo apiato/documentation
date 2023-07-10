@@ -67,13 +67,13 @@ Same Seeder class is allowed to contain seeding for multiple `Models`.
 
 After registering the `Seeders` you can run this command:
 
-```shell
+```
 php artisan db:seed
 ```
 
 Migrate & seed at the same time
 
-```shell
+```
 php artisan migrate --seed
 ```
 
@@ -84,7 +84,7 @@ It's useful sometimes to create a big set of testing data. apiato facilitates th
 1. Open `app/Ship/Seeders/SeedTestingData.php` and write your testing data here.
 2. Run this command any time you want this data available (example at staging servers):
 
-```shell
+```
 php artisan apiato:seed-test
 ```
 

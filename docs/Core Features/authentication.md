@@ -103,7 +103,7 @@ and `grant_type=password`:
 
 **Request:**
 
-```shell
+```
 curl --request POST \
   --url http://api.apiato.test/v1/oauth/token \
   --header 'accept: application/json' \
@@ -185,7 +185,7 @@ addition to the `scope` and `grant_type=client_credentials`:
 
 Request:
 
-```shell
+```
 curl --request POST \
   --url http://api.apiato.test/v1/oauth/token \
   --header 'accept: application/json' \

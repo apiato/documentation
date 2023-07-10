@@ -16,7 +16,7 @@ Under the hood this container uses [Laravel Socialite](https://github.com/larave
 ## Installation{#installation}
 In the following instructions we assume we have a fresh **Apiato** installation.
 
-```shell
+```
 composer require apiato/social-auth-container
 ```
 Now run `php artisan migrate`
@@ -151,7 +151,7 @@ For testing purposes Apiato provides two web endpoints
 
 ## Social Authentication Container Customization {#social-auth-customization}
 You can customize this container by publishing its config and modifying its values
-```shell
+```
 php artisan vendor:publish
 ```  
 Config file will be copied to `app/Ship/Configs/vendor-socialAuth.php`

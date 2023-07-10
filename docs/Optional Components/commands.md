@@ -66,7 +66,7 @@ class HelloWorldCommand extends ConsoleCommand
 
 #### Usage from CLI (Terminal)
 
-```shell
+```
 php artisan hello:world
 ```
 

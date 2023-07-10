@@ -18,7 +18,7 @@ title: Localization
 Intl PHP Extension is required to use this feature.
 :::
 
-```shell
+```
 composer require apiato/localization-container
 ```
 ## Creating new languages files {#create-new-languages-files}
@@ -53,7 +53,7 @@ to prevent users from requesting unsupported languages. There are 2 ways to do t
 ```
 
 ### Publishing configs {#publish-configs}
-```shell
+```
 php artisan vendor:publish
 ```  
 Config file will be copied to `app/Ship/Configs/vendor-localization.php`
