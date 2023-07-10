@@ -7,8 +7,8 @@ tags:
 
 * [Porto SAP](#porto)
   * [Containers Layer](#containers)
-    * [Container](#container)
     * [Section](#section)
+    * [Container](#container)
   * [The Ship Layer](#ship)
 * [Typical Container Structure](#typical-container-structure)
 * [Default Sections](#default-sections)
@@ -25,69 +25,79 @@ to structure the application code.
 
 Porto's architecture consists of 2 layers. Containers and Ship.
 ## Containers {#containers}
-The Containers layer holds all your application business logic code.
+The Containers layer holds all your application business logic code and is divided into 2 main concepts:
+- Section
+- Container
+
+### Section {#section}
+A Section is a group of related Containers.
+It can be a service (micro or bigger), or a sub-system within the main system.
+> A Section is not allowed to directly communicate with another Section, except via Events or Commands.
 
 ### Container {#container}
 A Container is a group of related functionality. It can be a feature, or can be a wrapper around a RESTful API
 resource.
 > A Container is allowed to depend on other Containers in the same Section.
 
-### Section {#section}
-A Section is a group of related Containers. It can be a service (micro or bigger), or a sub-system within the
-main system.
-> A Section is not allowed to directly communicate with another Section, except via Events or Commands.
-
 ## Ship {#introduction}
 The Ship layer holds the infrastructure code (your shared code between all Containers).
 
-## Typical Container Structure {#typical-container-structure}
+## Typical Project Structure {#typical-container-structure}
 ```markdown
-Container
-    ├──  Actions
-    ├──  Tasks
-    ├──  Models
-    ├──  Values
-    ├──  Events
-    ├──  Listeners
-    ├──  Policies
-    ├──  Exceptions
-    ├──  Contracts
-    ├──  Traits
-    ├──  Jobs
-    ├──  Notifications
-    ├──  Providers
-    ├──  Configs
-    ├──  Mails
-    │    ├──  Templates	
-    ├──  Data
-    │    ├──  Migrations
-    │    ├──  Seeders
-    │    ├──  Factories
-    │    ├──  Criteria
-    │    ├──  Repositories
-    │    ├──  Validators
-    │    ├──  Transporters
-    │    └──  Rules
-    ├──  Tests
-    │    ├──  Unit
-    │    └──  Traits
-    └──  UI
-         ├──  API
-         │    ├──  Routes
-         │    ├──  Controllers
-         │    ├──  Requests
-         │    ├──  Transformers
-         │    └──  Tests
-         │       └──  Functional
-         ├──  WEB
-         │    ├──  Routes
-         │    ├──  Controllers
-         │    ├──  Requests
-         │    └──  Views
-         └──  CLI
-              ├──  Commands
-              └──  Tests
-                  └──  Functional
+app
+    └── Containers
+        └── SectionA
+        │   └── ContainerA
+        │   └── ContainerB
+        └── SectionB
+        │   └── ContainerA
+        └── SectionName
+            └── ContainerName
+                ├── Actions
+                ├── Tasks
+                ├── Models
+                ├── Values
+                ├── Events
+                ├── Listeners
+                ├── Policies
+                ├── Exceptions
+                ├── Contracts
+                ├── Traits
+                ├── Jobs
+                ├── Notifications
+                ├── Providers
+                ├── Configs
+                ├── Mails
+                │    ├── Templates	
+                ├── Data
+                │    ├── Migrations
+                │    ├── Seeders
+                │    ├── Factories
+                │    ├── Criteria
+                │    ├── Repositories
+                │    ├── Validators
+                │    ├── Transporters
+                │    └── Rules
+                ├── Tests
+                │    ├── Unit
+                │    └── Traits
+                └── UI
+                     ├── API
+                     │    ├── Routes
+                     │    ├── Controllers
+                     │    ├── Requests
+                     │    ├── Transformers
+                     │    └── Tests
+                     │       └── Functional
+                     ├── WEB
+                     │    ├── Routes
+                     │    ├── Controllers
+                     │    ├── Requests
+                     │    └── Views
+                     └── CLI
+                          ├── Commands
+                          └── Tests
+                              └── Functional
 ```
 
 ## Default Sections {#default-sections}
