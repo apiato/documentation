@@ -96,6 +96,12 @@ which will create your application's database tables:
 php artisan migrate --seed
 ```
 
+:::info Default User
+Apiato comes with a default (Super Admin) user that you can use to log in and test the API.
+
+Username: admin@admin.com  
+Password: admin
+:::
 ### Authentication Configuration {#authentication-configuration}
 
 Apiato uses [Laravel Passport](https://laravel.com/docs/passport) to issue OAuth2 tokens.
@@ -141,7 +147,7 @@ php artisan apiato:apidoc
 ```
 
 :::tip
-Visit [API Docs Generator](../Pacakges/documentation.md) for more details.
+Visit [API Docs Generator](../pacakges/documentation.md) for more details.
 :::
 
 ## Let's Play {#Play}
@@ -167,10 +173,11 @@ Now that you have created your Apiato project, you may be wondering what to lear
 First, we strongly recommend becoming familiar with how Apiato works by reading the following documentation:
 
 * [Apiato Architecture](../architectural-concepts.md)
-* [API Versioning](../core-features/api-versioning.md)
-* [Authentication](../core-features/authentication.md)
-* [Authorization](../core-features/authorization.md)
 * [Code Generators](../core-features/code-generator.md)
-* [Hash ID](../core-features/hash-id.md)
+* [Container Installer](../container-installer.md)
+* [API Versioning](../core-features/api-versioning.md)
+* [Authentication](../security/authentication.md)
+* [Authorization](../security/authorization.md)
+* [Hash ID](../security/hash-id.md)
 * [Query Parameters](../core-features/query-parameters.md)
-* [Rate Limiting](../core-features/rate-limiting.md)
+* [Rate Limiting](../security/rate-limiting.md)
