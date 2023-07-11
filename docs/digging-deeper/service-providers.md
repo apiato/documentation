@@ -1,5 +1,5 @@
 ---
-title: Providers
+title: Service Providers
 ---
 
 * [Definition](#definition)
@@ -23,29 +23,29 @@ They are the place where you register things like container bindings, event list
 
 ### Principles {#principles}
 
-- There are 2 types of Providers in a Container, the **Main Provider** and the **Additional (Job Specific) Providers** (EventsProvider, BroadcastsProvider, AuthProvider, MiddlewareProvider, RoutesProvider).
+- There are 2 types of Service Providers in a Container, the **Main Service Provider** and the **Additional (Job Specific) Service Providers** (EventsProvider, BroadcastsProvider, AuthProvider, MiddlewareProvider, RoutesProvider).
 
-- A Container MAY have one or many Providers and MAY have no Provider at all.
+- A Container MAY have one or many Service Providers and MAY have no Service Provider at all.
 
-- A Container CAN have only a single Main Provider.
+- A Container CAN have only a single Main Service Provider.
 
-- The Main Provider is where all the Job Specific Providers get registered.
+- The Main Service Provider is where all the Job Specific Service Providers get registered.
 
-- Third party packages Providers MUST be registered inside the Container Main service provider. (Same applies to Aliases).
+- Third party packages Service Providers MUST be registered inside the Container Main service provider. (Same applies to Aliases).
 
-- Providers CAN be registered on the Ship Main Provider, if they are general or are intended to be used by many containers. (Same applies to Aliases).
+- Service Providers CAN be registered on the Ship Main Service Provider, if they are general or are intended to be used by many containers. (Same applies to Aliases).
 
 ### Rules {#rules}
 
-- The Main Provider will be auto registered by the Ship Engine, so no need to register it manually anywhere.
+- The Main Service Provider will be auto registered by the Ship Engine, so no need to register it manually anywhere.
 
-- All Main Providers MUST extend from `App\Ship\Parents\Providers\MainProvider`.
+- All Main Service Providers MUST extend from `App\Ship\Parents\Providers\MainProvider`.
 
-- All other types of Providers (EventsProvider, BroadcastsProvider, AuthProvider, MiddlewareProvider, RoutesProvider) must extend from their parent providers `Ship/Parents/Providers/*`.
+- All other types of Service Providers (EventsProvider, BroadcastsProvider, AuthProvider, MiddlewareProvider, RoutesProvider) must extend from their parent providers `Ship/Parents/Providers/*`.
 
-- The Main Provider MUST be named `MainServiceProvider` in every container.
+- The Main Service Provider MUST be named `MainServiceProvider` in every container.
 
-- You should not register any Provider in the framework (`config/app.php`).
+- You should not register any Service Provider in the framework (`config/app.php`).
 
 ### Folder Structure {#folder-structure}
 
@@ -90,11 +90,12 @@ class MainServiceProvider extends MainProvider
 
 #### Container's Main Service Provider {#container-s-main-service-provider}
 
-No need to register the `MainService Provider` anywhere, it will be automatically registered, and it is responsible for registering all Container Additional (Job Specific) Providers.
+No need to register the `Main Service Provider` anywhere, it will be automatically registered,
+and it is responsible for registering all Container Additional (Job Specific) Service Providers.
 
 #### Container's Additional Service Providers {#container-s-additional-service-providers}
 
-You MAY add as many Additional Service Providers as you want in a Container. However, in order to get them loaded in the framework you MUST register them all in the `MainService Provider` as follows:
+You MAY add as many Additional Service Providers as you want in a Container. However, in order to get them loaded in the framework you MUST register them all in the `Main Service Provider` as follows:
 
 ```php
 public array $serviceProviders = [
@@ -130,9 +131,9 @@ Example: the **app/Containers/AppSection/Authentication/Providers/AuthProvider.p
 :::
 
 Those providers are not auto registered by default, thus writing any code there will not be available, unless you extend them.
-Once extended the child Provider should be registered in its Container Main Provider, which makes its parent available.
+Once extended the child Service Provider should be registered in its Container Main Service Provider, which makes its parent available.
 
-This rule does not apply to the `RouteServiceProvider` since it's required by Apiato, this Provider is registered by the `ShipProvider`.
+This rule does not apply to the `RouteServiceProvider` since it's required by Apiato, this Service Provider is registered by the `ShipProvider`.
 
 Check [How Service Providers are auto-loaded](../faq).
 

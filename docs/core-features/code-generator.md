@@ -42,7 +42,7 @@ To see the list of code generators type `php artisan` and look for `apiato`.
   php artisan apiato:generate:request          Create a new Request class
   php artisan apiato:generate:route            Create a new Route class
   php artisan apiato:generate:seeder           Create a new Seeder class
-  php artisan apiato:generate:provider         Create a ServiceProvider, MiddlewareProvider or an EventProvider for a Container
+  php artisan apiato:generate:provider         Create a ServiceProvider, MiddlewareServiceProvider or an EventServiceProvider for a Container
   php artisan apiato:generate:subaction        Create a new SubAction class
   php artisan apiato:generate:task             Create a Task file for a Container
   php artisan apiato:generate:test:functional  Create a Functional Test file.
