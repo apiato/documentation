@@ -82,4 +82,4 @@ class DeleteUserTest extends TestCase
 }
 ```
 
-> See the [Tests Helpers](../Testing/tests-helpers) Page
+> See the [Tests Helpers](../testing/tests-helpers) Page

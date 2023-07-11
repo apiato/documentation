@@ -66,4 +66,4 @@ For first-party clients you can use a proxy to add those fields on requests comi
 
 > (Facebook, Twitter, Google..)
 
-Checkout the [Social Authentication](../Pacakges/social-authentication.md) Page for how to Sign up with Social Account.
+Checkout the [Social Authentication](../pacakges/social-authentication.md) Page for how to Sign up with Social Account.

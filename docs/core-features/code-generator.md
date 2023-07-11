@@ -125,4 +125,4 @@ this would read your specific `create.stub` file instead of the pre-defined one!
 
 ## Contributing {#contributing}
 
-If you would like to add your own generators, please check out the [Contribution Guide](../Prologue/contribution-guide.md).
+If you would like to add your own generators, please check out the [Contribution Guide](../prologue/contribution-guide.md).

@@ -110,7 +110,7 @@ Apiato ships with 2 default Sections:
 It only contains installed and reusable Containers, Similar to the vendor directory at the root.  
 Any Section is allowed to depend on the Vendor Section.
 
-Read more about the [Container Installer](getting-started/container-installer.md) to learn how to install Vendor Containers.
+Read more about the [Container Installer](container-installer.md) to learn how to install Vendor Containers.
 :::
 
 
