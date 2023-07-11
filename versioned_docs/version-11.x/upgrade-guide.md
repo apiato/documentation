@@ -124,7 +124,7 @@ to the freshly installed one (Apiato 5.0).
 *In the guide we'll be using the term **Old Project** (referring to your old project that was built with Apiato 4.1),
 and the term New **Project** (referring to the new freshly installed Apiato 5.0).*
 
-1) Download and install Apiato 5.0. See [Application Setup]({{ site.baseurl }}{% link _docs/getting-started/installation.md %}).
+1) Download and install Apiato 5.0. See [Application Setup](getting-started/installation.md).
 
 2) Delete the Containers directory `app/Containers` from the new project.
 
@@ -169,19 +169,19 @@ Use the [Manual Upgrading Guide](#Manual-Upgrading-Guide) below.
 1) Checkout a new branch from your stable branch, to perform the upgrade.
 
 ```shell
-❯ git checkout -b upgrade-apiato
+git checkout -b upgrade-apiato
 ```
 
 2) Configure a new remote (upstream) that points to the official Apiato repository.
 
 ```shell
-❯ git remote add upstream https://github.com/apiato/apiato
+git remote add upstream https://github.com/apiato/apiato
 ```
 
 Verify the new upstream repository was added, by listing the current configured remote repositories.
 
 ```shell
-❯ git remote -vv
+git remote -vv
 
 origin      git@bitbucket.org:username/my-awesome-api.git (fetch)
 origin      git@bitbucket.org:username/my-awesome-api.git (push)
@@ -192,7 +192,7 @@ upstream    git@github.com:apiato/apiato.git (push)
 3) Checkout a new branch to hold the latest Apiato changes. *This branch will be merged into your `upgrade-apiato` branch created above.*
 
 ```shell
-❯ git checkout -b apiato-{version}
+git checkout -b apiato-{version}
 // Example:   git checkout -b apiato-8.0
 ```
 
@@ -201,17 +201,17 @@ upstream    git@github.com:apiato/apiato.git (push)
 *Replace `{upstream-branch-name}` with the [branch](https://github.com/apiato/apiato/branches) name you want to upgrade to (for example `8.0`).*
 
 ```shell
-❯ git fetch upstream {upstream-branch-name}
+git fetch upstream {upstream-branch-name}
 // Example:   git fetch upstream 8.0
 
-❯ git branch --set-upstream-to upstream/{upstream-branch-name}
+git branch --set-upstream-to upstream/{upstream-branch-name}
 // Example:   git branch --set-upstream-to upstream/8.0
 ```
 
 Verify your local branch is tracking the Apiato specified upstream branch.
 
 ```shell
-❯ git branch -vv
+git branch -vv
 
  apiato          77b4d945 [upstream/{upstream-branch-name}] ...
  master          77d302aa [origin/master] ...
@@ -220,20 +220,20 @@ Verify your local branch is tracking the Apiato specified upstream branch.
 5) Make this branch identical to the remote upstream branch
 
 ```shell
-❯ git reset --hard upstream/{upstream-branch-name}
+git reset --hard upstream/{upstream-branch-name}
 // Example:   git reset --hard upstream/8.0
 ```
 
 Verify this branch now contains the latest changes from the upstream branch.
 
 ```shell
-❯ git log
+git log
 ```
 
 6) Switch back to the `upgrade-apiato` branch
 
 ```shell
-❯ git checkout upgrade-apiato
+git checkout upgrade-apiato
 ```
 
 7) Now lets merge the 2 branches. This step can be done in two ways:
@@ -244,26 +244,26 @@ You can execute the next command with different different parameters, below are 
 
 A1: This will overwrite your changes with the upstream changes. (Try this first and if your tests failed then you can try the second one).
 ```shell
-❯ git merge --allow-unrelated-histories --strategy-option=theirs apiato-{version}
+git merge --allow-unrelated-histories --strategy-option=theirs apiato-{version}
 // Example:   git merge --allow-unrelated-histories --strategy-option=theirs apiato-8.0
 ```
 
 A2: This will let you solve all the conflicts manually. (Can be the most secure choice, but it's time consuming as well.)
 ```shell
-❯ git merge --allow-unrelated-histories apiato-{version}
+git merge --allow-unrelated-histories apiato-{version}
 // Example:   git merge --allow-unrelated-histories apiato-8.0
 ```
 
 **Option B**: Manually cherry pick the commits you likes to have:
 
 ```shell
-❯ git log {upstream-branch-name}
+git log {upstream-branch-name}
 ```
 
 (copy each commit ID, one by one)
 
 ```shell
-❯ git cherry-pick {commit-ID}
+git cherry-pick {commit-ID}
 ```
 
 (if you get any conflict solve it and keep moving)
@@ -277,16 +277,16 @@ A2: This will let you solve all the conflicts manually. (Can be the most secure 
 - You may need to fix the failing tests.
 
 ```shell
-❯ composer install  &&  vendor/bin/phpunit
+composer install  &&  vendor/bin/phpunit
 ```
 
 10) Finally, merge the upgrade-apiato (which contains the upgraded changes) with your stable branch (could be master).
 
 ```shell
-❯ git checkout master
-❯ git merge upgrade-apiato
+git checkout master
+git merge upgrade-apiato
 
-❯ php artisan -V
+php artisan -V
 ```
 
 Enjoy :)

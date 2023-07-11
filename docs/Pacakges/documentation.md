@@ -213,7 +213,7 @@ By default, users need `access-private-docs` permission to access private docs.
 ### Edit Default Generated Values in Templates {#edit-default-generated-values-in-templates}
 
 Apiato by defaults generates 2 API documentations, each one has its own `apidoc.json` file. Both can be modified from 
-the Documentation Container in `Containers/Vendor/Documentation/ApiDocJs/` and need [Source code modification](#modify-code).
+the Documentation Container in `Containers/Vendor/Documentation/ApiDocJs/` and need Source code modification.
 
 
 ### Edit the Documentation Header {#edit-the-documentation-header}
@@ -222,7 +222,7 @@ The header is usually the Overview of your API. It contains Info about authentic
 
 All this information is written in `app/Containers/Vendor/Documentation/ApiDocJs/shared/header.template.en.md` file, and the same file is used as header for both private and public documentations.
 
-To edit its content you need to [modify its source code](#modify-code) and open the markdown file in any markdown editor and edit it.
+To edit its content you need to modify its source code and open the markdown file in any markdown editor and edit it.
 
 You will notice some variables like `{{rate-limit}}` and `{{token-expires}}`. Those are replaced when running `apiato:apidoc` with real values from your application configuration files.
 
@@ -238,4 +238,4 @@ There will be some `header.template.{locale}.md` files in the folder.
 
 You can change the language by adding `APIDOC_LOCALE=ru` to the `.env` file.
 
-If you didn't find a file with your locale, you can create it. You need to [modify its source code](#modify-code) and create new file like `header.template.cn.md`
+If you didn't find a file with your locale, you can create it. You need to modify its source code and create new file like `header.template.cn.md`
