@@ -1,5 +1,5 @@
 ---
-title: Frequently Asked Questions
+title: FAQ
 ---
 
 * [How to change API URL?](#how-to-change-the-default-api-url)
