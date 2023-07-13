@@ -5,11 +5,6 @@ title: Hash ID
 Hashing your internal ID's is a very helpful feature for many security reasons,
 such as preventing your internal ID's from being exposed to the public, your competitors, and hackers.
 
-- [Enabling Hash ID](#enabling-hash-id)
-- [Usage](#usage)
-- [Configuration](#configuration)
-- [Testing](#testing)
-
 ## Enabling Hash ID {#enabling-hash-id}
 
 Set the `HASH_ID=true` in the `.env` file.
