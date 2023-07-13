@@ -2,94 +2,103 @@
 title: Hash ID
 ---
 
-- [Enable Hash ID](#enable-hash-id)
+Hashing your internal ID's is a very helpful feature for many security reasons,
+such as preventing your internal ID's from being exposed to the public, your competitors, and hackers.
+
+- [Enabling Hash ID](#enabling-hash-id)
 - [Usage](#usage)
 - [Configuration](#configuration)
 - [Testing](#testing)
-    - [for Parameter ID's](#for-parameter-ids)
-    - [for URL ID's](#for-url-ids)
-- [Availability](#availability)
 
-Hashing your internal ID's, is a very helpful feature for security reasons (to prevent some hack attacks) and business reasons (to hide the real total records from your competitors).
+## Enabling Hash ID {#enabling-hash-id}
 
-## Enable Hash ID {#enable-hash-id}
+Set the `HASH_ID=true` in the `.env` file.
 
 :::note
 BCMath PHP Extension is required to use this feature.
 :::
 
-Set the `HASH_ID=true` in the `.env` file.
-
-Also, with the feature make sure to always use the `getHashedKey()` on any model, whenever you need to return an ID (mainly from transformers) weather hashed ID or not.
-
-Example:
+:::tip
+Make sure to always use the `getHashedKey()` on any model,
+whenever you need to return an ID (mainly from [transformers](../the-basics/transformers))
+weather you are using Hash ID or not.
+If this feature is disabled (`HASH_ID=false`) the `getHashedKey()` will return the normal ID.
 
 ```php
 
 'id' => $user->getHashedKey(),
 
 ```
-
-Note: if the feature is set to false `HASH_ID=false` the `getHashedKey()` will return the normal ID.
+:::
 
 ## Usage {#usage}
 
-There are 2 ways an ID's can be passed to your system via the API:
+There are 3 ways to pass an ID to your system via the API:
 
-In URL example: `www.apiato.test/items/abcdef`.
+In URL:
+  
+```php
+www.apiato.test/items/abcdef
+```
 
-In parameters example: [GET] or [POST] `www.apiato.test/items?id=abcdef`.
+As query string:
+    
+```php
+www.apiato.test/items?id=abcdef
+```
 
-in both cases you will need to inform your API about what's coming form the Request class.
+Or as HTTP request body:
+    
+```json
+{
+    "id": "abcdef"
+}
+```
+Now you need to tell your API to [decode the ID](../the-basics/requests#request-properties) for you.
+This is done by setting the `$decode` and `$urlParameters` properties on your Request class.
+After setting those properties,
+the ID will be automatically decoded for you to apply validation rules on it or/and use it from your controller.
+> `$request->id` will return the decoded ID.
 
-Checkout the [Requests](../Main%20Components/requests) page. After setting the `$decode` and `$urlParameters` properties on your Request class, the ID will be automatically decoded for you to apply validation rules on it or/and use it from your controller. (`$request->id` will return the decoded ID)
-
+:::info
+Read more about [Requests](../the-basics/requests) to understand how to use them.
+:::
 
 ## Configuration {#configuration}
 
-You can change the default length and characters used in the ID from the config file `app/Ship/Configs/hashids.php`or in the `.env` file by editing the `HASH_ID_LENGTH` value.
+Hash ID configuration is done in the `app/Ship/Configs/hashids.php` config file.
+You can set the `HASH_ID_KEY` in the `.env` file to any random string.
+Apiato defaults to the `APP_KEY` should this not be set.
 
-You can set the `HASH_ID_KEY` in the `.env` file to any random string. You can generate this from any of the online random string generators, or run `head /dev/urandom | tr -dc 'A-Za-z0-9!"#$%&'\''()*+,-./:;<=>?@[\]^_{|}~' | head -c 32  ; echo` on the linux command-line. Apiato defaults to the `APP_KEY` should this not be set.
-
-The `HASH_ID_KEY` acts as the salt during hashing of the ID. This should never be changed in production as it renders all previously generated IDs impossible to decode.
+:::danger
+The `HASH_ID_KEY` acts as the salt during hashing of the ID. This should never be changed in production
+as it renders all previously generated IDs impossible to decode.
+:::
 
 ## Testing {#testing}
 
-In your tests you must hash the ID's before making the calls, because if you tell your Request class to decode an ID for you, it will throw an exception when the ID is not encoded.
-
-### for Parameter ID's {#for-parameter-ids}
-
-Always use `getHashedKey()` on your models when you want to get the ID
-
-Example:
+In your Functional tests, you must hash the ID's before making the calls,
+because if you tell your Request class to decode an ID for you, it will throw an exception when the ID is not encoded.
 
 ```php
+// endpoint: /users/{user_id}/roles
+
+$user = UserFactory::new()->create();
+// HTTP request body
 $data = [
     'roles_ids' => [
-        $role1->getHashedKey(),
-        $role2->getHashedKey(),
+        $roleA->getHashedKey(),
+        $roleB->getHashedKey(),
     ],
-    'user_id'   => $randomUser->getHashedKey(),
 ];
-$response = $this->makeCall($data);
+
+// URL ID's
+$this->injectId($user->id, skipEncoding: false, replace: '{user_id}')->makeCall($data);
+// or
+$this->injectId($user->getHashedKey(), skipEncoding: true, replace: '{user_id}')->makeCall($data);
 ```
 
-*Or you can do this manually `Hashids::encode($id);`. *
-
-### for URL ID's {#for-url-ids}
-
-You can use this helper function `injectId($id, $skipEncoding = false, $replace = '{id}')`.
-
-Example:
-
-```php
-$response = $this->injectId($admin->id)->makeCall();
-```
-
-More details on the [Tests Helpers](../testing/tests-helpers) page.
-
-## Availability {#availability}
-
-You can use the `Apiato\Core\Traits\HashIdTrait` on any model or class, in order to have the `encode` and `decode` functions.
-
-By default, you have access to these functions `$this->encode($id)` and  `$this->decode($id)` from all your Test classes and Controllers.
+:::tip
+`injectId()` is a [test helper function](../testing/tests-helpers)
+that will replace the `{user_id}` in the endpoint with the given ID.
+:::
