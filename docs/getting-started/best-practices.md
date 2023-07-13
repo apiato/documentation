@@ -11,21 +11,10 @@ Otherwise, we create problems for clients that use our APIs,
 which isn’t pleasant and detracts people from using our API.
 If we don’t follow commonly accepted conventions,
 then we confuse the maintainers of the API and the clients
-that use them since it’s different from what everyone expects.
+that use them since it is different from what everyone expects.
 
 In this article, we'll look at how to design REST APIs to be easy to understand for anyone consuming them, future-proof,
 and secure and fast since they serve data to clients that may be confidential.
-
-
-* [What is a REST API?](#what-is-a-rest-api)
-* [Accept and respond with JSON](#accept-and-respond-with-json)
-* [HTTP Methods usage in RESTful API's](#http-methods-usage-in-restful-apis)
-* [General principles for HTTP methods](#general-principles-for-http-methods)
-* [General guidelines and principles for RESTful URLs](#general-guidelines-and-principles-for-restful-urls)
-* [Use logical nesting on endpoints](#use-logical-nesting-on-endpoints)
-* [Good URL examples](#good-url-examples)
-* [Handle errors gracefully and return standard error codes](#handle-errors-gracefully-and-return-standard-error-codes)
-* [Naming Conventions for Routes & Actions](#naming-conventions-for-routes-and-actions)
 
 ## What is a REST API? {#what-is-a-rest-api}
 
