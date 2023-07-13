@@ -3,16 +3,6 @@ sidebar_position: 3
 title: Contribution Guide
 ---
 
-* [Bug Reports](#bug-reports)
-* [Support Questions](#support-questions)
-* [Core Development Discussion](#core-development-discussion)
-* [Which Branch?](#which-branch)
-* [Security Vulnerabilities](#security-vulnerabilities)
-* [Coding Style](#coding-style)
-  * [PHPDoc](#phpdoc)
-  * [GitHub Workflow](#github-workflow)
-* [Code of Conduct](#code-of-conduct)
-
 ## Bug Reports {#bug-reports}
 
 To encourage active collaboration, Apiato strongly encourages pull requests, not just bug reports.
