@@ -23,7 +23,7 @@ title: Query Parameters
 - [See the Query parameters from the User Developer perspective](#see-the-query-parameters-from-the-user-developer-perspective)
 - [More Information](#more-information)
 
-Users often need to control the response data, thus the apiato supports some useful and common query parameters:
+Users often need to control the response data, thus the Apiato supports some useful and common query parameters:
 
 ## Sorting & Ordering {#sorting-ordering}
 *(provided by the [L5 Repository](https://github.com/andersao/l5-repository))*

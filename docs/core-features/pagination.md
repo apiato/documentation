@@ -6,7 +6,7 @@ title: Pagination
 - [Change the default pagination limit](#change-the-default-pagination-limit)
 - [Skip the Pagination Limit](#skip-the-pagination-limit)
 
-For pagination apiato uses the [L5 Repository Package](https://packagist.org/packages/prettus/l5-repository) and the
+For pagination Apiato uses the [L5 Repository Package](https://packagist.org/packages/prettus/l5-repository) and the
 pagination gets applied whenever you use the `paginate` function on any model repository
 (example: `$stores = $this->storeRepository->paginate();`).
 

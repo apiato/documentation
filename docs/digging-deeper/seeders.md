@@ -79,7 +79,7 @@ php artisan migrate --seed
 
 ### Testing Seeder Command {#apiato-testing-seeder-command}
 
-It's useful sometimes to create a big set of testing data. apiato facilitates this task:
+It's useful sometimes to create a big set of testing data. Apiato facilitates this task:
 
 1. Open `app/Ship/Seeders/SeedTestingData.php` and write your testing data here.
 2. Run this command any time you want this data available (example at staging servers):

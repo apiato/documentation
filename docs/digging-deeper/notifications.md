@@ -103,7 +103,7 @@ $user->notify(new BirthdayReminderNotification($notificationMessage));
 
 ## Select Channels {#select-channels}
 
-To select a notification channel, apiato have the `app/Ship/Configs/notification.php` config file where you can define the array of supported channels "e.g. SMS, Email, WebPush...", to be used for all your notifications.
+To select a notification channel, Apiato have the `app/Ship/Configs/notification.php` config file where you can define the array of supported channels "e.g. SMS, Email, WebPush...", to be used for all your notifications.
 
 If you want to override the configuration for some notifications classes, or if you prefer to define the channels within each notification class itself,
 you can override the `via` function `public function via($notifiable)` in the notification class and define your channels. 
