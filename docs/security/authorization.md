@@ -44,7 +44,7 @@ class DeleteUserRequest extends Request
 
 ```
 
-**For detailed explanation of this example, please visit the [Requests](../Main%20Components/requests) Page.**
+**For detailed explanation of this example, please visit the [Requests](../the-basics/requests) Page.**
 
 ## Responses {#responses}
 
