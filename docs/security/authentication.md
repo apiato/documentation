@@ -1,26 +1,7 @@
 ---
+sidebar_position: 2
 title: Authentication
 ---
-
-- [API Authentication (OAuth 2.0)](#api-authentication-oauth-20)
-- [How to get Access Token using OAuth 2.0](#how-to-get-access-token-using-oauth-20)
-- [Quick Overview](#quick-overview)
-    - [A: For first-party clients](#first-party-clients)
-        - [Login with Proxy for first-party clients](#login-with-proxy-for-first-party-clients)
-        - [Login without Proxy for first-party clients](#login-without-proxy-for-first-party-clients)
-    - [B: For third-party clients](#third-party-clients)
-        - [Login without Proxy for third-party clients](#login-without-proxy-for-third-party-clients)
-- [Login With Custom Attributes](#login-with-custom-attributes)
-- [Logout](#logout)
-- [Responses](#responses)
-- [Change Tokens Expiration dates](#change-tokens-expiration-dates)
-- [Web Authentication](#web-authentication)
-- [Refresh Token](#refresh-token)
-  - [Refresh Token with proxy for first-party clients](#refresh-token-with-proxy-for-first-party-clients)
-  - [Refresh Token without proxy for first-party or third-party clients](#refresh-token-without-proxy-for-first-party-or-third-party-clients)
-- [Email Verification](#email-verification)
-- [Reset Password](#reset-password)
-- [Social Authentication](#social-authentication)
 
 Middlewares are the best solution to apply Authentication in your App.
 
@@ -358,56 +339,6 @@ Containing new Access Token and new Refresh Token.
 
 The request to `http://api.apiato.test/v1/oauth/token` should contain `grant_type=refresh_token`, the `client_id` &
 `client_secret`, in addition to the `refresh_token` and finally the `scope` which could be empty.
-
-## Email Verification {#email-verification}
-
-Email verification is enabled by default but no route is protected against unconfirmed user access. To let only confirmed users
-access a certain route you should add the `verified` middleware to that route. You can globally disable email verification by setting
-`'require_email_verification' => false,` in `App\Containers\AppSection\Authentication\Configs\appSection-authentication.php`.
-
-:::note  
-While email verification is disabled you **cannot** protect any route against unconfirmed user access by using `verified` middleware and this
-middleware is ignored.
-:::  
-
-When email verification is enabled and a user hits a protected endpoint, the API throws an exception, if the `User` is not yet `confirmed`.  
-
-#### Process Flow
-1) Add your web app email verification redirect page url e.g. `http://myapp.com/email/verify` to the
-   `allowed-verify-email-urls` array of the `appSection-authentication` config.  
-2) Send the email verification url to the user by calling the `/email/verification-notification` endpoint using your web app and pass one of the valid urls that you added in step 1 into the `verification_url` field of the endpoint.  
-3) An email verification link will be sent to the user's email which looks like this: `http://myapp.test/email/verify?url=http://api.myapi.test/v1/email/verify/XbPW7awNkzl83LD6/eaabd911e2e07ede6456d3bd5725c6d4a5c2dc0b?expires=1646913047&signature=232702865b8353c445b39c50397e66db33c74df80e3db5a7c0d46ef94c8ab6a9`  
-4) When the user click the link, he/she will be redirected to the url you specified before, in this case `http://myapp.com/email/verify` with the `url` query string   
-5) `url` is the complete url your web app needs to call to verify the user. So you just call this url and the user will be verified.  
-6) At this point you should get a `200` OK response and the user's email is verified.  
-
-:::note  
-If you are using a load balancer and having difficulty with the email verification link, e.g. app says the signature doesn't match, 
-set the `protected $proxies = '*'` in the `App\Ship\Middlewares\TrustProxies.php` or update it to match your needs.
-:::  
-
-## Reset Password {#reset-password}
-
-Use the  
-`/password/forgot` (`app/Containers/AppSection/User/UI/API/Routes/ForgotPassword.v1.public.php`)
-and  
-`/password/reset`  (`app/Containers/AppSection/User/UI/API/Routes/ResetPassword.v1.public.php`)  endpoints.
-
-#### Process Flow
-1) Add your web app reset password page url e.g. `http://myapp.com/reset-password` to the
-   `allowed-reset-password-urls` array of the `appSection-authentication`config.  
-  
-2) Call the `/password/forgot` endpoint with a **reset url** of your choice. It should be one of the urls in the `allowed-reset-password-urls` array.  
-   This endpoint will email user a link like this:  
-   `http://myapp.com/reset-password?email=mohammad.alavi1990@gmail.com&token=51f8d80182f3785648c9b9dc7162719d158fc418b3cca86c14963638ec83d663`  
-  
-3) And when user click on that link it will go to your front end app reset password page. And then from there you should get
-   the user's new password and call the `/password-reset` endpoint with all the required fields to reset the password.
-
-:::note  
-You must set up the email to get this function to work, however for testing purposes set the `MAIL_MAILER=log` in
-your `.env` file in order to the see the email content in the log file `storage/logs/laravel.log`.
-:::
 
 ## Social Authentication {#social-authentication}
 
