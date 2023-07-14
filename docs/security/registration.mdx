@@ -1,0 +1,52 @@
+---
+sidebar_position: 1
+title: Registration
+---
+import variables from '/variables.json';
+
+<span><b>Endpoint:</b> <code>{variables.defaults.baseUrl.api}/register</code></span>
+
+At minimum, you need to pass the `email` and `password` string values to the `register` endpoint. The `register` endpoint will return a `JSON` response containing the new user record if the registration was successful.
+
+## Register user by email and password {#register-users-by-email-and-password}
+
+:::note
+Don't forget to add `Accept: application/json` header to your request.
+:::
+
+#### Registration request:
+
+```json
+{
+  "email": "john@doe.com",
+  "password": "password",
+}
+```
+#### Registration response:
+
+```json
+{
+  "data": {
+    "object": "User",
+    "id": "XbPW7awNkzl83LD6",
+    "name": null,
+    "email": "john@doe.com",
+    "email_verified_at": null,
+    "gender": null,
+    "birth": null
+  },
+  "meta": {
+    "include": [
+        "roles",
+        "permissions"
+    ],
+    "custom": []
+  }
+}
+```
+
+## Register user by Social Account {#register-users-by-social-account}
+
+> (Facebook, Twitter, Google, etc...)
+
+Checkout the [Social Authentication](../pacakges/social-authentication.md) documentation.
