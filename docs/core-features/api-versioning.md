@@ -25,9 +25,9 @@ Automatically the endpoint inside that route file will be accessible by adding t
 
 Example:
 
-- `http://api.apiato.test/v1/register`
-- `http://api.apiato.test/v1/orders`
-- `http://api.apiato.test/v2/stores/123`
+- `https://api.apiato.test/v1/register`
+- `https://api.apiato.test/v1/orders`
+- `https://api.apiato.test/v2/stores/123`
 
 ## Version the API in header instead of URL{#version-the-api-in-header-instead-of-url}
 

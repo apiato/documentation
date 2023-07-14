@@ -174,7 +174,7 @@ testing data.
 
 For better debugging and development, you can open a runtime developer console while executing your test.
 
-Using [PsySH](http://psysh.org/) (interactive debugger and REPL "read-eval-print loop" for PHP). *The package is
+Using [PsySH](https://psysh.org/) (interactive debugger and REPL "read-eval-print loop" for PHP). *The package is
 required by the Laravel Tinker Package.*
 
 To use it set the breakpoint `eval(\Psy\sh());` anywhere you want in any Actions, Controllers, Tasks... and run your

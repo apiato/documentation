@@ -321,4 +321,4 @@ For more details on these parameters check out these links:
 
 - [l5-repository](https://github.com/andersao/l5-repository#example-the-criteria)
 
-- [Fractal Transformers](http://fractal.thephpleague.com/transformers/)
+- [Fractal Transformers](https://fractal.thephpleague.com/transformers/)

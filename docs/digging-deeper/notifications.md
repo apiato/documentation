@@ -108,7 +108,7 @@ To select a notification channel, Apiato have the `app/Ship/Configs/notification
 If you want to override the configuration for some notifications classes, or if you prefer to define the channels within each notification class itself,
 you can override the `via` function `public function via($notifiable)` in the notification class and define your channels. 
 
-Checkout [laravel notification channels](http://laravel-notification-channels.com) for list of supported integrations.
+Checkout [laravel notification channels](https://laravel-notification-channels.com) for list of supported integrations.
 
 ## Queueing a Notification {#queueing}
 

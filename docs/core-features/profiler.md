@@ -4,7 +4,7 @@ title: Profiler
 
 Profiling is very important to optimize the performance of your application, and help you better understand what happens when a request is received, as well as it can speed up the debugging process.
 
-Apiato uses the third-party package [laravel-debugbar](https://github.com/barryvdh/laravel-debugbar) (which uses the [PHP Debug Bar](http://phpdebugbar.com/)), to collect the profiling data.
+Apiato uses the third-party package [laravel-debugbar](https://github.com/barryvdh/laravel-debugbar) (which uses the [PHP Debug Bar](https://phpdebugbar.com/)), to collect the profiling data.
 
 By default, the **laravel-debugbar** package displays the profiling data in the browser.
 However, Apiato uses a middleware (`ProfilerMiddleware`) to append the profiling data to the response.  
@@ -68,7 +68,7 @@ However, Apiato uses a middleware (`ProfilerMiddleware`) to append the profiling
         "route": {
             "uri": "GET /",
             "middleware": "api, throttle:30,1",
-            "domain": "http://api.apiato.test",
+            "domain": "https://api.apiato.test",
             "as": "apis_root_page",
             "controller": "App\\Containers\\Welcome\\UI\\API\\Controllers\\Controller@apiRoot",
             "namespace": "App\\Containers\\Welcome\\UI\\API\\Controllers",

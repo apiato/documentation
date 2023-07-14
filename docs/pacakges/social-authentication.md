@@ -94,9 +94,9 @@ Example Twitter Response:
     "tokennickname": "John_Doe",
     "tokenname": "John Doe",
     "tokenemail": null,
-    "tokenavatar": "http://pbs.twimg.com/images/888/PENrcePC.jpg",
+    "tokenavatar": "https://pbs.twimg.com/images/888/PENrcePC.jpg",
     "tokenuser": "token",
-    "avatar_original": "http://pbs.twimg.com/images/999/PENrcePC.jpg"
+    "avatar_original": "https://pbs.twimg.com/images/999/PENrcePC.jpg"
   }
 }
 ```
@@ -142,8 +142,8 @@ Example Google Response:
 
 :::tip  
 For testing purposes Apiato provides two web endpoints
-1. `http://apiato.test/auth/{provider}/redirect` which act as a client (step 3 above)
-2. `http://apiato.test/auth/{provider}/callback` which you can use in your provider's developer dashboard for callback url.  
+1. `https://apiato.test/auth/{provider}/redirect` which act as a client (step 3 above)
+2. `https://apiato.test/auth/{provider}/callback` which you can use in your provider's developer dashboard for callback url.  
    Use those endpoints from your browser *(replace the provider with any of the supported providers `facebook`, `twitter`,...)*
    to get the `oauth` info and user data respectively.  
 

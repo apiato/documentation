@@ -14,7 +14,7 @@ title: Responses
 In Apiato you can define your own response payload or use one of the supported serializers.
 
 Currently, the supported serializers are (`ArraySerializer`, `DataArraySerializer` and `JsonApiSerializer`). As provided
-by [Fractal](http://fractal.thephpleague.com/transformers/).
+by [Fractal](https://fractal.thephpleague.com/transformers/).
 
 By default, Apiato uses `DataArraySerializer`. Below is an example of the response payload.
 
@@ -59,7 +59,7 @@ By default, Apiato uses `DataArraySerializer`. Below is an example of the respon
       "current_page": 999,
       "total_pages": 999,
       "links": {
-        "next": "http://api.apiato.test/v1/accounts?page=999"
+        "next": "https://api.apiato.test/v1/accounts?page=999"
       }
     }
   }
@@ -85,7 +85,7 @@ When data is paginated the response payload will contain a `meta` description ab
       "current_page": 999,
       "total_pages": 999,
       "links": {
-        "next": "http://api.apiato.test/v1/accounts?page=999"
+        "next": "https://api.apiato.test/v1/accounts?page=999"
       }
     }
   }
@@ -113,14 +113,14 @@ The Supported Serializers are
 * `DataArraySerializer`
 * `JsonApiSerializer`
 
-More details can be found at [Fractal](http://fractal.thephpleague.com/transformers/) and
+More details can be found at [Fractal](https://fractal.thephpleague.com/transformers/) and
 [Laravel Fractal Wrapper](https://github.com/spatie/laravel-fractal).
 
 In case of returning JSON Data (`JsonApiSerializer`), you may wish to check some JSON response standards:
 
 * [JSEND](https://labs.omniti.com/labs/jsend) (very basic)
-* [JSON API](http://jsonapi.org/format/) (very popular and well documented)
-* [HAL](http://stateless.co/hal_specification.html) (useful in case of hypermedia)
+* [JSON API](https://jsonapi.org/format/) (very popular and well documented)
+* [HAL](https://stateless.co/hal_specification.html) (useful in case of hypermedia)
 
 ### Resource Keys {#resource-keys}
 

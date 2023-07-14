@@ -16,7 +16,7 @@ that use them since it is different from what everyone expects.
 In this article, we'll look at how to design REST APIs to be easy to understand for anyone consuming them, future-proof,
 and secure and fast since they serve data to clients that may be confidential.
 
-## What is a REST API? {#what-is-a-rest-api}
+## What Is A RESTful API? {#what-is-a-restful-api}
 
 A REST API is an application programming interface architecture style
 that conforms to specific architectural constraints,
@@ -25,7 +25,7 @@ It is not a protocol or standard.
 While REST APIs can be accessed through a number of communication protocols, most commonly, they are called over HTTPS,
 so the guidelines below apply to REST API endpoints that will be called over the internet.
 
-## Accept and respond with JSON {#accept-and-respond-with-json}
+## Accept And Respond With JSON {#accept-and-respond-with-json}
 
 Even though [some people think REST should only return hypertext](https://htmx.org/essays/how-did-rest-come-to-mean-the-opposite-of-rest/)
 (including [Roy Fielding](https://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven) who created the term),
@@ -35,7 +35,7 @@ Almost every networked technology can use it:
 JavaScript has built-in methods to encode and decode JSON either through the Fetch API or another HTTP client.
 Server-side technologies have libraries that can decode JSON without doing much work.
 
-## HTTP Methods usage in RESTful API's {#http-methods-usage-in-restful-apis}
+## HTTP Methods Usage In RESTful API's {#http-methods-usage-in-restful-apis}
 
 The action should be indicated by the HTTP request method that we are making.
 
@@ -47,7 +47,7 @@ The action should be indicated by the HTTP request method that we are making.
 
 The verbs map to [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations.
 
-## General principles for HTTP methods {#general-principles-for-http-methods}
+## General Principles For HTTP Methods {#general-principles-for-http-methods}
 
 - Don't ever use GET to alter state; to prevent Googlebot from corrupting your data. And use GET as much as possible.
 - Don't use PUT unless you are updating an entire resource. And unless you can also legitimately do a GET on the same URI.
@@ -59,14 +59,14 @@ The verbs map to [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_d
 - Use PUT for classes of resources that are larger or hierarchical.
 - Use DELETE in preference to POST to remove resources.
 
-## General guidelines and principles for RESTful URLs {#general-guidelines-and-principles-for-restful-urls}
+## General Guidelines And Principles For RESTful URLs {#general-guidelines-and-principles-for-restful-urls}
 
 - A URL identifies a resource.
 - URLs should include nouns, not verbs.
 - Use plural nouns only for consistency (no singular nouns).
 - Use HTTP verbs (GET, POST, PUT, PATCH, DELETE) to operate on the collections and elements.
 - You should not need to go deeper than resource/identifier/resource.
-- Put the version number at the base of your URL, for example `http://api.apiato.test/v1/path/to/resource`.
+- Put the version number at the base of your URL, for example `https://api.apiato.test/v1/path/to/resource`.
 - If input data changes the logic of the endpoint, it should be passed in the URL. If not, it can go in the header. e.g., Auth Token.
 - Don't use query parameters to alter state.
 - Don't use mixed-case paths if you can help it; lowercase is best.
@@ -75,7 +75,7 @@ The verbs map to [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_d
 - Limit your URI space as much as possible. And keep path segments short.
 - Don't put metadata in the body of a response that should be in a header
 
-## Use logical nesting on endpoints {#use-logical-nesting-on-endpoints}
+## Use Logical Nesting On Endpoints {#use-logical-nesting-on-endpoints}
 
 When designing endpoints, it makes sense to group those that contain associated information.
 That is, if one object can contain another object, you should design the endpoint to reflect that.
@@ -87,32 +87,32 @@ mirroring your database structure in your endpoints to avoid giving attackers un
 For example, if we want an endpoint to get the comments for a news article,
 we should append the `/comments` path to the end of the `/articles` path.
 
-## Good URL examples {#good-url-examples}
+## Good URL Examples {#good-url-examples}
 
 With the two principles we discussed above in mind, let’s look at some examples of good URLs.
 
 - Get all Articles:
-	- `GET http://api.apiato.test/v1/articles`
+	- `GET https://api.apiato.test/v1/articles`
 - Find a single Article by its unique identifier (ID):
-	- `GET http://api.apiato.test/v1/articles/:articleId`
+	- `GET https://api.apiato.test/v1/articles/:articleId`
 - Find/Search Articles by one or more fields:
-	- `GET http://api.apiato.test/v1/articles?search=author:john`
-	- `GET http://api.apiato.test/v1/articles?search=author:john;color:white`
+	- `GET https://api.apiato.test/v1/articles?search=author:john`
+	- `GET https://api.apiato.test/v1/articles?search=author:john;color:white`
 - Order and Sort query result:
-	- `GET http://api.apiato.test/v1/articles?orderBy=created_at&sortedBy=desc`
-	- `GET http://api.apiato.test/v1/articles?search=author:john&orderBy=created_at&sortedBy=desc`
+	- `GET https://api.apiato.test/v1/articles?orderBy=created_at&sortedBy=desc`
+	- `GET https://api.apiato.test/v1/articles?search=author:john&orderBy=created_at&sortedBy=desc`
 - Specify optional fields:
-	- `GET http://api.apiato.test/v1/articles?filter=id;title;status`
-	- `GET http://api.apiato.test/v1/articles/:articleId?filter=id;title;status`
+	- `GET https://api.apiato.test/v1/articles?filter=id;title;status`
+	- `GET https://api.apiato.test/v1/articles/:articleId?filter=id;title;status`
 - Get all Comments belonging to an Article:
-	- `GET http://api.apiato.test/v1/articles/:articleId/comments`
+	- `GET https://api.apiato.test/v1/articles/:articleId/comments`
 - Include objects relationship (Comments/author) with the Article response:
-	- `GET http://api.apiato.test/v1/articles/:articleId?include=comments`
-	- `GET http://api.apiato.test/v1/articles/:articleId?include=comments,author`
+	- `GET https://api.apiato.test/v1/articles/:articleId?include=comments`
+	- `GET https://api.apiato.test/v1/articles/:articleId?include=comments,author`
 - Create new Article:
-	- `POST http://api.apiato.test/v1/articles`
+	- `POST https://api.apiato.test/v1/articles`
 - Add new Comment to an Article:
-	- `POST http://api.apiato.test/v1/articles/:articleId/comments`
+	- `POST https://api.apiato.test/v1/articles/:articleId/comments`
 
 In the code above, we use the GET method on the path `/articles/:articleId/comments`.
 We get `comments` on the article identified by `articleId` and then return it in the response.
@@ -124,7 +124,7 @@ Otherwise, it’s confusing to the user since this structure is generally accept
 The same principle also applies to the PUT, PATCH and DELETE endpoints.
 They can all use the same kind of nesting structure for the path names.
 
-## Handle errors gracefully and return standard error codes {#handle-errors-gracefully-and-return-standard-error-codes}
+## Handle Errors Gracefully And Return Standard Error Codes {#handle-errors-gracefully-and-return-standard-error-codes}
 
 To eliminate confusion for API users when an error occurs,
 we should handle errors gracefully and return HTTP response codes that indicate what kind of error occurred.
@@ -145,7 +145,7 @@ Common error HTTP status codes include:
 - 502 BAD GATEWAY Server received an invalid response from the upstream server while trying to fulfill the request.
 - 503 SERVICE UNAVAILABLE Service unavailable.
 
-## Naming Conventions for [Routes](../the-basics/routes) & [Actions](../the-basics/actions) {#naming-conventions-for-routes-and-actions}
+## Naming Conventions For [Routes](../the-basics/routes) & [Actions](../the-basics/actions) {#naming-conventions-for-routes-and-actions}
 
 - **GetAllResources**: to fetch all resources.
 - **FindResourceByID**: to search for a single resource by its unique identifier.

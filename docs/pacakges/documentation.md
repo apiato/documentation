@@ -24,7 +24,7 @@ Apiato make writing and generating documentations very easy with the `php artisa
 
 ## Requirements {#requirements}
 
-- Install [ApiDocJs](http://apidocjs.com/) in the project directory
+- Install [ApiDocJs](https://apidocjs.com/) in the project directory
     - (`npm install apidoc`)
 
 - (Recommended) read the [Routes](../Main%20Components/routes) page first.
@@ -45,7 +45,7 @@ This container is installed by default with an Apiato fresh installation.
 
 Write a PHP **docblock** on top of your endpoint like this:
 
-*For more info about the parameters check out [ApiDocJs](http://apidocjs.com/#install) documentation*
+*For more info about the parameters check out [ApiDocJs](https://apidocjs.com/#install) documentation*
 
 ```php
 /**
@@ -135,8 +135,8 @@ If you get an error (`apidoc not found`),
 
 Visit documentation URL's as shown in your terminal:
 
-- Public (external) API at [http://apiato.test/docs](http://apiato.test/docs).
-- Private (internal) API at [http://apiato.test/docs/private](http://apiato.test/docs/private).
+- Public (external) API at [https://apiato.test/docs](https://apiato.test/docs).
+- Private (internal) API at [https://apiato.test/docs/private](https://apiato.test/docs/private).
 
 :::note  
 Every time you change the DocBlock of a Route file you need to run the `apiato:apidoc` command, to regenerate.  

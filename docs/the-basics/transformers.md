@@ -186,4 +186,4 @@ You need to have `includeUser` and `includeTags` functions defined on the transf
 $model->something ? $this->item($model->something, new SomethingTransformer()) : $this->primitive(null)
 ```
 
-For more information about the Transformers read [this](http://fractal.thephpleague.com/transformers/).
+For more information about the Transformers read [this](https://fractal.thephpleague.com/transformers/).

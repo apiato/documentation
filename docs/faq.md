@@ -11,7 +11,7 @@ By default, Apiato uses `api.` as subdomain for all endpoints and adds only the 
 
 To change this from `api.apiato.test` to `apiato.test/api/`, do the following:
 
-1. Edit `.env`, change your api domain to `API_URL=http://apiato.test` instead of `API_URL=http://api.apiato.test` to
+1. Edit `.env`, change your api domain to `API_URL=https://apiato.test` instead of `API_URL=https://api.apiato.test` to
 remove the subdomain.
 2. Edit `app/Ship/Configs/apiato.php`, set prefix to `'prefix' => 'api/',`.
 3. Set `enable_version_prefix` to `false` in `app/Ship/Configs/apiato.php`.

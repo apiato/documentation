@@ -30,7 +30,7 @@ api.domain.test/endpoint?page=200
       "current_page": 22,
       "total_pages": 1111,
       "links": {
-        "previous": "http://api.domain.test/endpoint?page=21"
+        "previous": "https://api.domain.test/endpoint?page=21"
       }
     }
   }
