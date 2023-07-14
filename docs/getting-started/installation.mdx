@@ -2,23 +2,13 @@
 sidebar_position: 1
 title: Installation
 ---
-
-* [Your First Apiato Project](#your-first-apiato-project)
-* [Development Environment](#Development-Environment)
-* [Initial Configuration](#initial-configuration)
-  * [Environment Based Configuration](#environment-based-configuration)
-  * [Databases & Migrations](#databases-and-migrations)
-  * [Authentication Configuration](#authentication-configuration)
-  * [Directory Permissions](#directory-permissions)
-* [Documentation Generation](#documentation-generation)
-* [Let's Play](#Play)
-* [Next Steps](#next-steps)
+import variables from '/variables.json';
 
 ## Your First Apiato Project {#your-first-apiato-project}
 
 Before creating your first Apiato project, you should ensure that your local machine has PHP and [Composer](https://getcomposer.org/) installed.
 If you are developing on macOS, PHP and Composer can be installed via [Homebrew](https://brew.sh/).
-   
+
 After you have installed PHP and Composer, you may create a new Apiato project via the Composer create-project command:
 ```
 composer create-project apiato/apiato example-app
@@ -80,12 +70,12 @@ touch database/database.sqlite
 
 Next, update your `.env` configuration file to use Laravel's sqlite database driver. You may remove the other database configuration options:
 ```diff
-+ DB_CONNECTION=sqlite 
-- DB_CONNECTION=mysql 
-- DB_HOST=127.0.0.1 
-- DB_PORT=3306 
-- DB_DATABASE=homestead 
-- DB_USERNAME=homestead 
++ DB_CONNECTION=sqlite
+- DB_CONNECTION=mysql
+- DB_HOST=127.0.0.1
+- DB_PORT=3306
+- DB_DATABASE=homestead
+- DB_USERNAME=homestead
 - DB_PASSWORD=secret
 ```
 
@@ -99,8 +89,8 @@ php artisan migrate --seed
 :::info Default User
 Apiato comes with a default (Super Admin) user that you can use to log in and test the API.
 
-Username: admin@admin.com  
-Password: admin
++ <span>email: {variables.defaults.admin.email}</span>
++ <span>password: {variables.defaults.admin.password}</span>
 :::
 ### Authentication Configuration {#authentication-configuration}
 
@@ -156,7 +146,7 @@ Now let's see it in action
 
 Open your web browser and visit:
 
-http://apiato.test You should see an HTML page, with `Apiato` in the middle.  
+http://apiato.test You should see an HTML page, with `Apiato` in the middle.
 http://api.apiato.test You should see a response like this:
 ```json
 ["Welcome to Apiato"]
@@ -164,20 +154,20 @@ http://api.apiato.test You should see a response like this:
 
 Open your HTTP client and call:
 
-http://api.apiato.test/ You should see a JSON response with message: `"Welcome to apiato."`  
-http://api.apiato.test/v1 You should see a JSON response with message: `"Welcome to apiato (API V1)."`
+http://api.apiato.test/ You should see a JSON response with message: `"Welcome to apiato."`
+http://api.apiato.test/v1 You should see a JSON response with message: `"Welcome to Apiato (API V1)."`
 
 ## Next Steps {#next-steps}
 
 Now that you have created your Apiato project, you may be wondering what to learn next.
 First, we strongly recommend becoming familiar with how Apiato works by reading the following documentation:
-
+// THIS NEEDS TO BE UPDATED. I DONT THIS THIS LINK ARE GOOD FOR NEWBIES.
 * [Apiato Architecture](../architectural-concepts.md)
 * [Code Generators](../core-features/code-generator.md)
 * [Container Installer](../container-installer.md)
 * [API Versioning](../core-features/api-versioning.md)
 * [Authentication](../security/authentication.md)
-* [Authorization](../security/authorization.md)
+* [Authorization](../security/authorization.mdx)
 * [Hash ID](../security/hash-id.md)
 * [Query Parameters](../core-features/query-parameters.md)
 * [Rate Limiting](../security/rate-limiting.md)
