@@ -1,51 +1,55 @@
 ---
-sidebar_position: 3
-title: Architectural Concepts
+sidebar_position: 1
+title: Porto
 tags:
   - architecture
+  - porto
 ---
-
-* [Porto SAP](#porto)
-  * [Containers Layer](#containers)
-    * [Section](#section)
-    * [Container](#container)
-  * [The Ship Layer](#ship)
-* [Typical Container Structure](#typical-container-structure)
-* [Default Sections](#default-sections)
-
-:::tip
-Spending 30 minutes, reading the [Porto Document](https://github.com/Mahmoudz/Porto) before getting started, is a great
-investment of time.
-:::
-
-# Porto SAP {#porto}
 
 Apiato uses the [Porto](https://github.com/Mahmoudz/Porto) Software Architectural Pattern
 to structure the application code.
 
-Porto's architecture consists of 2 layers. Containers and Ship.
-## Containers {#containers}
-The Containers layer holds all your application business logic code and is divided into 2 main concepts:
+:::tip
+Investing 30 minutes in reading the [Porto Documentation](https://github.com/Mahmoudz/Porto) before getting started is highly recommended and can prove to be a
+valuable use of your time.
+The document serves as a comprehensive guide and resource for understanding the Apiato project.
+:::
+
+## Layers {#layers}
+
+Porto's architecture is based on two layers: Containers and Ship.
+
+### Containers {#containers}
+The Containers layer encompasses all the application's business logic code and consists of two primary concepts:
 - Section
 - Container
 
-### Section {#section}
-A Section is a group of related Containers.
-It can be a service (micro or bigger), or a sub-system within the main system.
-> A Section is not allowed to directly communicate with another Section, except via Events or Commands.
+#### Section {#section}
+A Section refers to a collection of related Containers.
+These Containers can represent various entities such as services
+(either micro or larger in scale) or subsystems within the main system.
 
-### Container {#container}
-A Container is a group of related functionality. It can be a feature, or can be a wrapper around a RESTful API
-resource.
-> A Container is allowed to depend on other Containers in the same Section.
+:::note
+A Section is not allowed to directly communicate with another Section, except via Events or Commands.
+:::
 
-## Ship {#introduction}
-The Ship layer holds the infrastructure code (your shared code between all Containers).
+#### Container {#container}
+A Container represents a cohesive set of related functionalities.
+It can be a specific feature or a wrapper around a RESTful API resource.
+
+:::note
+A Container is allowed to depend on other Containers in the same Section.
+:::
+
+### Ship {#introduction}
+The Ship layer contains the infrastructure code, which consists of shared code utilized by all Containers.
 
 ## Typical Project Structure {#typical-container-structure}
 ```markdown
 app
+    └── Ship // All shared code between all Containers
     └── Containers
+        └── Vendor // All installed and reusable Containers
         └── SectionA
         │   └── ContainerA
         │   └── ContainerB
@@ -76,7 +80,7 @@ app
                 │    ├── Criteria
                 │    ├── Repositories
                 │    ├── Validators
-                │    ├── Transporters
+                │    ├── Transporters // DTOs
                 │    └── Rules
                 ├── Tests
                 │    ├── Unit
@@ -106,12 +110,9 @@ Apiato ships with 2 default Sections:
 - **Vendor**: contains all the installed and reusable Containers.
 
 :::tip
-**Vendor** Section is a special Section.  
-It only contains installed and reusable Containers, Similar to the vendor directory at the root.  
-Any Section is allowed to depend on the Vendor Section.
+The **Vendor** section is a special Section within the Containers layer that holds installed and reusable Containers.
+It serves a similar purpose as the vendor directory located at the root.
+Any Section is permitted to depend on the Vendor Section, allowing for the utilization of its Containers.
 
-Read more about the [Container Installer](container-installer.md) to learn how to install Vendor Containers.
+Read more about the [Container Installer](../pacakges/overview.md) to learn how to install Vendor Containers.
 :::
-
-
-  
