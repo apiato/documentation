@@ -100,7 +100,7 @@ class DemoRepository extends Repository
 
 #### API Query Parameters Property {#api-query-parameters-property}
 
-To enable query parameters (`?search=text`,...) in your API you need to set the property `$fieldSearchable` on the Repository class, to instruct the querying on your model. More [details](../Core%20Features/query-parameters##using-the-request-criteria).
+To enable query parameters (`?search=text`,...) in your API you need to set the property `$fieldSearchable` on the Repository class, to instruct the querying on your model. More [details](../../core-features/query-parameters##using-the-request-criteria).
 
 ```php
 	protected $fieldSearchable = [

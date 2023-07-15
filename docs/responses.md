@@ -89,7 +89,7 @@ When data is paginated the response payload will contain a `meta` description ab
 
 Informs the User about what relationships can be included in the response. Example: `?include=tags,user`
 
-For more details read the `Relationships` section in the [Query Parameters](../Core%20Features/query-parameters#relationships-include) page.
+For more details read the `Relationships` section in the [Query Parameters](core-features/query-parameters#relationships-include) page.
 
 ### Change the default Response payload: {#change-default-response-payload}
 
@@ -128,9 +128,9 @@ the `App\Containers\AppSection\User\Models\User::class` is `User`.
 
 ### Error Responses formats {#error-response-formats}
 
-Visit each feature, e.g. the Authentication and there you will see how an unauthenticated response looks like, same
-for Authorization, Validation and so on.
+Visit each feature, e.g. the Authentication, and there you will see how an unauthenticated response looks like, the same
+for Authorization, Validation, and so on.
 
 ## Building a Responses from the Controller: {#building-response-from-controller}
 
-Checkout the [Controller response builder helper functions](../Main%20Components/controllers).
+Checkout the [Controller response builder helper functions](components/main-components/controllers).

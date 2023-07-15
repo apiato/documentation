@@ -59,7 +59,7 @@ Route::get('users', Controller::class)
 
 ## Protect your Endpoints: {#protect-your-endpoints}
 
-Checkout the [Authorization](../Core%20Features/authorization) Page.
+Checkout the [Authorization](../../security/authorization.mdx) Page.
 
 ## Difference between Public & Private routes files {#difference-between-public-private-route-files}
 

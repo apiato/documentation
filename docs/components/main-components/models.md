@@ -15,7 +15,7 @@ Read [**Porto SAP Documentation (#Models)**](https://github.com/Mahmoudz/Porto#M
 ### Rules {#rules}
 
 - All Models MUST extend from `App\Ship\Parents\Models\Model`.
-- If the name of a model differs from the Container name you have to implement `model()` method in the repository - [more details](../Optional%20Components/repositories#model-method-example).
+- If the name of a model differs from the Container name you have to implement `model()` method in the repository - [more details](../optional-components/repositories#model-method-example).
 
 ### Folder Structure {#folder-structure}
 

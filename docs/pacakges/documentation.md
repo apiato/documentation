@@ -28,7 +28,7 @@ Apiato make writing and generating documentations very easy with the `php artisa
 - Install [ApiDocJs](https://apidocjs.com/) in the project directory
     - (`npm install apidoc`)
 
-- (Recommended) read the [Routes](../Main%20Components/routes) page first.
+- (Recommended) read the [Routes](../components/main-components/routes) page first.
 
 ## Installation {#installation}
 

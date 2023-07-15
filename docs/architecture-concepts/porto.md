@@ -6,14 +6,10 @@ tags:
   - porto
 ---
 
-Apiato uses the [Porto](https://github.com/Mahmoudz/Porto) Software Architectural Pattern
-to structure the application code.
-
-:::tip
-Investing 30 minutes in reading the [Porto Documentation](https://github.com/Mahmoudz/Porto) before getting started is highly recommended and can prove to be a
-valuable use of your time.
-The document serves as a comprehensive guide and resource for understanding the Apiato project.
-:::
+Porto is a modern software architectural pattern that offers developers a comprehensive set of guidelines,
+principles, and patterns to organize their code in a highly maintainable and reusable way.
+The primary goal of Porto is to help developers create software that is scalable,
+flexible, and easy to maintain over time.
 
 ## Layers {#layers}
 
