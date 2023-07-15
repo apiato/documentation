@@ -19,7 +19,7 @@ composer create-project apiato/apiato example-app
 You can run **Apiato** in any environment that you can run Laravel.
 
 :::tip
-Visit [Laravel Installation](https://laravel.com/docs/10.x/installation#laravel-and-docker) for more details.
+Visit [Laravel Installation](https://laravel.com/docs/installation#laravel-and-docker) for more details.
 :::
 
 ## Initial Configuration {#initial-configuration}
@@ -46,10 +46,10 @@ since any sensitive credentials would get exposed.
 
 :::info
 For more information about the `.env` file and environment based configuration,
-check out the Laravel full [configuration documentation](https://laravel.com/docs/10.x/configuration).
+check out the Laravel full [configuration documentation](https://laravel.com/docs/configuration).
 :::
 
-### Databases and Migrations {#databases-and-migrations}
+### Databases & Migrations {#databases-and-migrations}
 
 Now that you have created your Apiato application, you probably want to store some data in a database.
 By default,
@@ -79,43 +79,28 @@ Next, update your `.env` configuration file to use Laravel's sqlite database dri
 - DB_PASSWORD=secret
 ```
 
-Once you have configured your SQLite database, you may run your application's [database migrations](https://laravel.com/docs/10.x/migrations),
+Once you have configured your SQLite database,
+you may run your application's [database migrations](https://laravel.com/docs/migrations),
 which will create your application's database tables:
 
 ```
-php artisan migrate --seed
+php artisan migrate
 ```
 
-:::info Default User
-Apiato comes with a default (Super Admin) user that you can use to log in and test the API.
+:::info Seed the Database
+Apiato comes with a default (Super Admin) user and some default roles and permissions.
+To seed the database with these default values, run the following command:
+```
+php artisan db:seed
+```
 
-+ <span>email: {variables.defaults.admin.email}</span>
-+ <span>password: {variables.defaults.admin.password}</span>
+Default user credentials:
+- <span>email: {variables.defaults.admin.email}</span>
+- <span>password: {variables.defaults.admin.password}</span>
 :::
 ### Authentication Configuration {#authentication-configuration}
 
-Apiato uses [Laravel Passport](https://laravel.com/docs/passport) to issue OAuth2 tokens.
-Once you run the migrations, you should install the Passport keys:
-
-```
-php artisan passport:install
-```
-
-You will see something like this:
-```
-Personal access client created successfully.
-Client ID: 1
-Client secret: Mo45lC2zhZWcMfDGmCbsw1OfasdCrc3wqQAeeYAO
-Password grant client created successfully.
-Client ID: 2
-Client secret: nu8B2npfoR4hP6sWHaf90EvWUFe2EDYyJXGnCrso
-```
-
-Next you need to add the Password grant `CLIENT_ID` and `CLIENT_SECRET` to your `.env` file:
-```dotenv
-CLIENT_WEB_ID=2
-CLIENT_WEB_SECRET=nu8B2npfoR4hP6sWHaf90EvWUFe2EDYyJXGnCrso
-```
+Visit [Authentication](../security/authentication.mdx) for more details.
 
 ### Directory Configuration {#directory-configuration}
 
@@ -126,7 +111,7 @@ Attempting to do so could expose sensitive files present within your application
 
 ## Documentation Generation {#documentation-generation}
 
-Install [ApiDocJs](http://apidocjs.com/) using NPM or your favorite dependency manager:
+Install [ApiDocJs](https://apidocjs.com/) using NPM or your favorite dependency manager:
 ```
 npm install
 ```
@@ -137,7 +122,7 @@ php artisan apiato:apidoc
 ```
 
 :::tip
-Visit [API Docs Generator](../pacakges/documentation.md) for more details.
+Visit [Documentation Generator](../pacakges/documentation.md) for more details.
 :::
 
 ## Let's Play {#Play}
@@ -146,28 +131,23 @@ Now let's see it in action
 
 Open your web browser and visit:
 
-http://apiato.test You should see an HTML page, with `Apiato` in the middle.
-http://api.apiato.test You should see a response like this:
+- https://apiato.test
+  You should see an HTML page, with `Apiato` in the middle.
+- https://api.apiato.test
+  You should see a response like this:
 ```json
 ["Welcome to Apiato"]
 ```
 
 Open your HTTP client and call:
 
-http://api.apiato.test/ You should see a JSON response with message: `"Welcome to apiato."`
-http://api.apiato.test/v1 You should see a JSON response with message: `"Welcome to Apiato (API V1)."`
+https://api.apiato.test/ You should see a JSON response with the message: `"Welcome to apiato."`
+https://api.apiato.test/v1 You should see a JSON response with the message: `"Welcome to Apiato (API V1)."`
 
 ## Next Steps {#next-steps}
 
 Now that you have created your Apiato project, you may be wondering what to learn next.
-First, we strongly recommend becoming familiar with how Apiato works by reading the following documentation:
-// THIS NEEDS TO BE UPDATED. I DONT THIS THIS LINK ARE GOOD FOR NEWBIES.
-* [Apiato Architecture](../architectural-concepts.md)
-* [Code Generators](../core-features/code-generator.md)
-* [Container Installer](../container-installer.md)
-* [API Versioning](../core-features/api-versioning.md)
-* [Authentication](../security/authentication.md)
-* [Authorization](../security/authorization.mdx)
-* [Hash ID](../security/hash-id.md)
-* [Query Parameters](../core-features/query-parameters.md)
-* [Rate Limiting](../security/rate-limiting.md)
+If you're looking for a place to start, you should check out the following resources:
+
+* [Apiato Architecture](../architecture-concepts/readme.md)
+* [Container Installer](../pacakges/readme.md)
