@@ -2,8 +2,8 @@
 sidebar_position: 3
 title: Authorization
 ---
-Apiato provides a Role-Based Access Control (RBAC) through its Authorization Container.
 
+Apiato provides a Role-Based Access Control (RBAC) through its Authorization Container.
 Behind the scenes,
 Apiato uses the [Laravel Permission](https://github.com/spatie/laravel-permission) package.
 
@@ -20,8 +20,9 @@ It works by attaching permissions to roles, and then attaching roles to users.
 The right place for step 4 is in the `Request` class, where you can check if the user has access to the endpoint or not.
 
 :::info Default Roles & Permissions
-By default, an admin role and some permissions are provided by Apiato.
-See `app/Containers/AppSection/Authorization/Data/Seeders/*` directory.
+Apiato comes with some default Roles and Permissions.
+You can find them in the `app/Containers/AppSection/Authorization/Data/Seeders/*` directory.
+You can use them as a starting point, or delete them and create your own.
 :::
 
 ## Example
