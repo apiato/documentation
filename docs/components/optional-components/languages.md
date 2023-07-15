@@ -45,5 +45,5 @@ __('mySection@myContainer::messages.welcome');
 ```
 
 :::info Further reading
-More info at [Localization](../pacakges/localization.md).
+More info at [Localization](../../pacakges/localization.md).
 :::

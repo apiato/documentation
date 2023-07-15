@@ -61,7 +61,7 @@ throw (new AccountFailedException())->withErrors(['email' => ['Email already in 
 ```
 
 #### Usage with errors and localization
-For localization, you can use the [Localization Container](../pacakges/localization.md)
+For localization, you can use the [Localization Container](../../pacakges/localization.md)
 ```php
 // translation strings are automatically translated if the translations are found.
 throw (new AccountFailedException())->withErrors(['email' => 'appSection@user::exceptions.email-taken']);

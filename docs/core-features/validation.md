@@ -4,7 +4,7 @@ title: Validation
 
 Apiato uses the powerful [Laravel validation](https://laravel.com/docs/validation) system.
 
-In Apiato, validation must be defined in [Request](../the-basics/requests) component, since every request might have different rules.
+In Apiato, validation must be defined in [Request](../components/main-components/requests) component, since every request might have different rules.
 
 Validation rules are automatically applied, once injecting the Request in the Controller.
 
@@ -77,4 +77,4 @@ Multiple Fields:
 }
 ```
 
-More details about requests in the [Requests](../the-basics/requests) Page.
+More details about requests in the [Requests](../components/main-components/requests) Page.
