@@ -2,13 +2,6 @@
 title: Responses
 ---
 
-* [Apiato Response](#response)
-* [Default Apiato Responses Payload](#default-response-payload)
-* [Change the default Response payload](#change-default-response-payload)
-* [Resource Keys](#resource-keys)
-* [Error Responses formats](#error-response-formats)
-* [Building a Responses from the Controller](#building-response-from-controller)
-
 ### Apiato Response {#response}
 
 In Apiato you can define your own response payload or use one of the supported serializers.

@@ -3,14 +3,42 @@ sidebar_position: 5
 title: Email Verification
 ---
 
-Email verification is enabled by default but no route is protected against unconfirmed user access. To let only confirmed users
-access a certain route you should add the `verified` middleware to that route. You can globally disable email verification by setting
-`'require_email_verification' => false,` in `App\Containers\AppSection\Authentication\Configs\appSection-authentication.php`.
+## Introduction {#introduction}
+
+Many web applications require users to verify their email addresses before using the application.
+Rather than forcing you to re-implement this feature by hand for each application you create,
+Apiato provides convenient built-in services for sending and verifying email verification requests.
+
+## Configuration {#configuration}
+
+To get started, verify that your `User` model implements the `MustVerifyEmail` contract.
+This should already be done for you by the `User` model that ships with Apiato.
+
+Next,
+enable the email verification feature in the `app\Containers\AppSection\Authentication\Configs\appSection-authentication` config file.
+
+### Sending Email Verification Notification {#sending-email-verification-notification}
+Given this feature is enabled,
+newly registered users will automatically be sent an email containing an email verification link.
+As you can see by examining your application's App\Providers\EventServiceProvider,
+Laravel already contains a SendEmailVerificationNotification listener
+that is attached to the Illuminate\Auth\Events\Registered event.
+This event listener will send the email verification link to the user.
+
+If you are manually implementing registration within your application instead of using a starter kit,
+you should ensure
+that you are dispatching the Illuminate\Auth\Events\Registered event after a user's registration is successful:
+
+When email verification is enabled,
+the API will send an email verification link to the user's email address when the user is created.
+To let only confirmed users
+access a certain route you should add the `verified` middleware to that route.
 
 :::note  
 While email verification is disabled you **cannot** protect any route against unconfirmed user access by using `verified` middleware and this
 middleware is ignored.
 :::
+
 
 When email verification is enabled and a user hits a protected endpoint, the API throws an exception, if the `User` is not yet `confirmed`.
 
