@@ -11,7 +11,19 @@
   /* font-family: Hind Siliguri; */
 }
 
+.heroTitle,
+.heroSubtitle,
+html[data-theme='light'] .heroButton {
+  color: white !important;
+}
+
+html[data-theme='dark'] .heroButton:hover,
+html[data-theme='light'] .heroButton:hover {
+  color: #4457c2 !important;
+}
+
 .heroBanner {
+  background-color: #4457c2;
   padding: 4rem 0;
   text-align: center;
   position: relative;
@@ -31,7 +43,6 @@
 }
 
 .features {
-  display: flex;
   align-items: center;
   padding: 2rem 0;
   width: 100%;
@@ -50,7 +61,7 @@
 .title {
   padding: 4rem 0 0 0;
   font-family: Martel, serif;
-  color: #5869c8;
+  color: #4457c2;
   text-align: center;
   position: relative;
   overflow: hidden;

@@ -11,7 +11,7 @@ import features from '../features'
 
 function Feature({ icon, description }) {
   return (
-    <div className={clsx('col col--3', styles.feature)}>
+    <div className={clsx('col col--3', styles.features)}>
       <div className={styles.featureIcon}>
         <FontAwesomeIcon icon={icon} size={"3x"} color={"#4457C1"}/>
       </div>
@@ -29,14 +29,11 @@ export default function Home() {
       description="Description will go into a meta tag in <head />">
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
         <div className="container">
-          <h1 className="hero__title">{siteConfig.title}</h1>
-          <p className="hero__subtitle">{siteConfig.tagline}</p>
-          <div className={styles.buttons}>
+          <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
+          <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
+          <div>
             <Link
-              className={clsx(
-                'button button--outline button--secondary button--lg',
-                styles.getStarted,
-              )}
+              className={clsx('button button--outline button--secondary button--lg', styles.heroButton)}
               to={useBaseUrl('docs/')}>
               Get Started
             </Link>

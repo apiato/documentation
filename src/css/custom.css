@@ -6,41 +6,22 @@
  */
 
 /* You can override the default Infima variables here. */
-:root {
-  --ifm-color-primary: #4457c2;
-  --ifm-color-primary-dark: #3a4cb2;
-  --ifm-color-primary-darker: #3748a8;
-  --ifm-color-primary-darkest: #2d3b8a;
-  --ifm-color-primary-light: #5869c8;
-  --ifm-color-primary-lighter: #6272cc;
-  --ifm-color-primary-lightest: #7f8cd5;
+:root {}
+
+html[data-theme='light'] code {
+  border: 0;
 }
 
-.docusaurus-highlight-code-line {
-  background-color: rgb(72, 77, 91);
-  display: block;
-  margin: 0 calc(-1 * var(--ifm-pre-padding));
-  padding: 0 var(--ifm-pre-padding);
+html[data-theme='light'] code,
+html[data-theme='dark'] code {
+  color: #eb4432;
+  padding: 0 0.125rem;
 }
 
-html[data-theme='light'] .button {
-  color: white !important;
-}
-
-html[data-theme='light'] .button:hover {
-  color: #4457c2 !important;
-}
-
-.hero__title {
-  color: white;
-}
-
-.hero__subtitle {
-  color: white;
-}
-
-html[data-theme='dark'] .button:hover {
-  color: #4457c2 !important;
+html[data-theme='light'] .admonition_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module code,
+html[data-theme='dark'] .admonition_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module code {
+  background-color: rgba(0, 0, 0, 0)!important;
+  border: 0;
 }
 
 .header-github-link:hover {
