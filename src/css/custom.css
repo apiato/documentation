@@ -12,10 +12,31 @@ html[data-theme='light'] code {
   border: 0;
 }
 
+html[data-theme='light'] main a:not(.table-of-contents__link, .breadcrumbs__link),
+html[data-theme='dark'] main a:not(.table-of-contents__link, .breadcrumbs__link) {
+  /*color: #eb4432;*/
+  text-decoration: underline;
+}
+
+html[data-theme='light'] main a.hash-link,
+html[data-theme='dark'] main a.hash-link {
+  /*color: #eb4432;*/
+}
+
 html[data-theme='light'] code,
 html[data-theme='dark'] code {
   color: #eb4432;
   padding: 0 0.125rem;
+}
+
+html[data-theme='light'] .pagination-nav,
+html[data-theme='dark'] .pagination-nav {
+  display: none;
+}
+
+html[data-theme='light'] main footer,
+html[data-theme='dark'] main footer {
+  margin-bottom: 3rem;
 }
 
 html[data-theme='light'] .admonition_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module code,
