@@ -11,7 +11,7 @@ title: Routes
 
 ### Definition & Principles {#definition-principles}
 
-Read [**Porto SAP Documentation (#Routes)**](https://github.com/Mahmoudz/Porto#Routes).
+Read [**Porto SAP Documentation (#Routes)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
 ### Rules {#rules}
 

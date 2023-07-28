@@ -10,7 +10,7 @@ title: Exceptions
 
 ### Definition & Principles {#definition-principles}
 
-Read [**Porto SAP Documentation (#Exceptions)**](https://github.com/Mahmoudz/Porto#Exceptions).
+Read [**Porto SAP Documentation (#Exceptions)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
 ### Rules {#rules}
 

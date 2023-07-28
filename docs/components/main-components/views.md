@@ -10,7 +10,7 @@ title: Views
 
 ### Definition & Principles {#definition-principles}
 
-Read [**Porto SAP Documentation (#Views)**](https://github.com/Mahmoudz/Porto#Views).
+Read [**Porto SAP Documentation (#Views)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
 ### Rules {#rules}
 

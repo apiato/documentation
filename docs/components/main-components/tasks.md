@@ -9,7 +9,7 @@ title: Tasks
 
 ### Definition & Principles {#definition-principles}
 
-Read [**Porto SAP Documentation (#Tasks)**](https://github.com/Mahmoudz/Porto#Tasks).
+Read [**Porto SAP Documentation (#Tasks)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
 ### Rules {#rules}
 

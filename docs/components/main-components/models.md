@@ -10,7 +10,7 @@ title: Models
 
 ### Definition & Principles {#definition-principles}
 
-Read [**Porto SAP Documentation (#Models)**](https://github.com/Mahmoudz/Porto#Models).
+Read [**Porto SAP Documentation (#Models)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
 ### Rules {#rules}
 

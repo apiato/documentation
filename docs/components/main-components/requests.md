@@ -40,7 +40,7 @@ include `Content-Type = application/json` in the request header.
 
 ### Definition & Principles {#definition-principles}
 
-Read [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmoudz/Porto#Requests).
+Read [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
 ### Rules {#rules}
 

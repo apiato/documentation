@@ -9,7 +9,7 @@ title: Sub Actions
 
 ### Definition & Principles {#definition-principles}
 
-Read [**Porto SAP Documentation (#Sub-Actions)**](https://github.com/Mahmoudz/Porto#Sub-Actions).
+Read [**Porto SAP Documentation (#Sub-Actions)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
 ### Rules {#rules}
 
