@@ -2,18 +2,9 @@
 title: Transformers
 ---
 
-* [Definition & Principles](#definition-principles)
-* [Rules](#rules)
-* [Folder Structure](#folder-structure)
-* [Code Samples](#code-samples)
-* [Relationships (include)](#relationships-include)
-    * [From Front-end](#from-front-end)
-    * [From Back-end](#from-back-end)
-* [Transformer Available helper functions:](#transformer-available-helper-functions)
-
 ### Definition & Principles {#definition-principles}
 
-Read [**Porto SAP Documentation (#Transformers)**](https://github.com/Mahmoudz/Porto#Transformers).
+Read [**Porto SAP Documentation (#Transformers)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
 ### Rules {#rules}
 
