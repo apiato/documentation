@@ -1,11 +1,10 @@
 ---
+sidebar_position: 1
 title: Actions
+tags:
+  - components
+  - main-components
 ---
-- [Definition & Principles](#definition-principles)
-- [Rules](#rules)
-- [Folder Structure](#folder-structure)
-- [Code Sample](#code-sample)
-- [Transactional Run](#transactional-run)
 
 ### Definition & Principles {#definition-principles}
 
@@ -17,15 +16,15 @@ Read [**Porto SAP Documentation (#Actions)**](https://github.com/Mahmoudz/Porto#
 
 ### Folder Structure {#folder-structure}
 
-```
- - app
-    - Containers
-        - {section-name}
-            - {container-name}
-                - Actions
-                    - CreateUserAction.php
-                    - DeleteUserAction.php
-                    - ...
+```markdown
+app
+└── Containers
+    └── SectionName
+        └── ContainerName
+            └── Actions
+                ├── CreateResourceAction.php
+                ├── DeleteResourceAction.php
+                └── ...
 ```
 
 ### Code Sample {#code-sample}
@@ -33,20 +32,28 @@ Read [**Porto SAP Documentation (#Actions)**](https://github.com/Mahmoudz/Porto#
 #### Action
 
 ```php
-class CreateAdminAction extends Action
+namespace App\Containers\AppSection\User\Actions;
+
+use ...
+use App\Ship\Parents\Actions\Action as ParentAction;
+
+class UpdateUserAction extends ParentAction
 {
-    public function run(string $email, string $password, string $name, bool $isClient = false): User
+    public function __construct(
+        private readonly UpdateUserTask $updateUserTask
+    ) {
+    }
+
+    public function run(UpdateUserRequest $request): User
     {
-        $admin = app(CreateUserByCredentialsTask::class)->run(
-            $isClient,
-            $email,
-            $password,
-            $name
-        );
+        $sanitizedData = $request->sanitizeInput([
+            'password',
+            'name',
+            'gender',
+            'birth',
+        ]);
 
-        app(AssignUserToRoleTask::class)->run($admin, ['admin']);
-
-        return $admin;
+        return $this->updateUserTask->run($sanitizedData, $request->id);
     }
 }
 ```
@@ -54,48 +61,40 @@ class CreateAdminAction extends Action
 #### Calling multiple Tasks
 
 ```php
-class DemoAction extends Action
+class DemoAction extends ParentAction
 {
-    public function run($xxx, $yyy, $zzz)
+    public function __construct(
+        private readonly DemoATask $demoATask,
+        private readonly DemoBTask $demoBTask
+    ) {
+    }
+    
+    public function run($xxx, $yyy, $zzz): void
     {
-        $foo = app(Sample111Task::class)->run($xxx, $yyy);
-        $bar = app(Sample222Task::class)->run($zzz);
+        $foo = $this->demoATask->run($xxx, $yyy);
+        $bar = $this->demoBTask->run($zzz);
     }
 }
 ```
 
-#### Usage from a Controller
-
-```php
-    public function deleteUser(DeleteUserRequest $request)
-    {
-        $user = app(DeleteUserAction::class)->run($request);
-        return $this->deleted($user);
-    }
-```
 :::tip
 The same Action MAY be called by multiple Controllers (Web, Api, Cli).
 :::
 
 ### Transactional Run {#transactional-run}
 
-Sometimes, you want to wrap a call into one `Database Transaction` (see
-[Laravel Documentation](https://laravel.com/docs/master/database#database-transactions)).
+In certain scenarios, you may need to wrap a specific call within a `Database Transaction` to ensure data integrity
+(see [Laravel Documentation](https://laravel.com/docs/master/database#database-transactions)).
 
-Consider the following example: You want to create a new `Team` and automatically assign yourself (i.e., your own
-`User`) to this newly created `Team`. Your `CreateTeamAction` may call a dedicated `CreateTeamTask` and a
-`AssignMemberToTeamTask` afterwards.
+Apiato offers a `transactionalRun(...$arguments)` method,
+which internally wraps the `run` method of the action within a `DB::Transaction` and passes all the parameters "as is"
+to it.
 
-However, if the `AssignMemberToTeamTask` fails, for unknown reasons, you may want to "rollback" (i.e., remove) the
-newly created `Team` from the database in order to keep the database in a valid state.
+The beauty of using the `transactionalRun` method is
+that if any `Exception` occurs during the execution of the `run` method,
+everything performed in this context is automatically rolled back from the database.
 
-That's where `DB::transactions` comes into play!
-
-Apiato provides a `transactionalRun(...$arguments)` method which internally just wraps the `run()` method of the action in a `DB::Transaction` and passes all the parameters `as is` to it.
-
-If any `Exception` occurs during the execution of the `run()`, everything done in this context is
-automatically rolled-back from the database. However, respective operations on the file system (e.g., you may also
-have uploaded a profile picture for this `Team` already) need to be performed
-manually!
-
-Typically, you may want to use the `transactionalRun()` on the `Controller` level!
+:::note
+Any file system operations
+(e.g., if you uploaded a profile picture for this `Team`) would need to be handled manually.
+:::
