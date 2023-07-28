@@ -43,63 +43,65 @@ The Ship layer contains the infrastructure code, which consists of shared code u
 ## Typical Project Structure {#typical-container-structure}
 ```markdown
 app
-    └── Ship // All shared code between all Containers
-    └── Containers
-        └── Vendor // All installed and reusable Containers
-        └── SectionA
-        │   └── ContainerA
-        │   └── ContainerB
-        └── SectionB
-        │   └── ContainerA
-        └── SectionName
-            └── ContainerName
-                ├── Actions
-                ├── Tasks
-                ├── Models
-                ├── Values
-                ├── Events
-                ├── Listeners
-                ├── Policies
-                ├── Exceptions
-                ├── Contracts
-                ├── Traits
-                ├── Jobs
-                ├── Notifications
-                ├── Providers
-                ├── Configs
-                ├── Mails
-                │    ├── Templates	
-                ├── Data
-                │    ├── Migrations
-                │    ├── Seeders
-                │    ├── Factories
-                │    ├── Criteria
-                │    ├── Repositories
-                │    ├── Validators
-                │    ├── Transporters // DTOs
-                │    └── Rules
-                ├── Tests
-                │    ├── Unit
-                │    └── Traits
-                └── UI
-                     ├── API
-                     │    ├── Routes
-                     │    ├── Controllers
-                     │    ├── Requests
-                     │    ├── Transformers
-                     │    └── Tests
-                     │       └── Functional
-                     ├── WEB
-                     │    ├── Routes
-                     │    ├── Controllers
-                     │    ├── Requests
-                     │    └── Views
-                     └── CLI
-                          ├── Commands
-                          └── Tests
-                              └── Functional
+├── Containers
+│   ├── SectionName
+│   │   └── ContainerName
+│   │       ├── Actions
+│   │       ├── Configs
+│   │       ├── Data
+│   │       │   ├── Factories
+│   │       │   ├── Migrations
+│   │       │   ├── Repositories
+│   │       │   └── Seeders
+│   │       ├── Mails
+│   │       │   └── Templates
+│   │       ├── Middlewares
+│   │       ├── Models
+│   │       ├── Notifications
+│   │       ├── Providers
+│   │       ├── Tasks
+│   │       ├── Tests
+│   │       │   └── Unit
+│   │       ├── Traits
+│   │       └── UI
+│   │           ├── API
+│   │           │   ├── Controllers
+│   │           │   ├── Requests
+│   │           │   ├── Routes
+│   │           │   ├── Tests
+│   │           │   │   └── Functional
+│   │           │   └── Transformers
+│   │           └── WEB
+│   │           │   ├── Controllers
+│   │           │   ├── Requests
+│   │           │   ├── Routes
+│   │           │   └── Views
+│   │           └── CLI
+│   │               └── Commands
+│   └── Vendor `// All installed and reusable Containers`
+│       ├── ContainerA
+│       └── ContainerB
+└── Ship `// All shared code between all Containers`
+    ├── Broadcasts
+    ├── Commands
+    ├── Configs
+    ├── Contracts
+    ├── Criterias
+    ├── Events
+    ├── Exceptions
+    ├── Generators
+    ├── Helpers
+    ├── Kernels
+    ├── Listeners
+    ├── Mails
+    ├── Middlewares
+    ├── Migrations
+    ├── Notifications
+    ├── Parents
+    ├── Providers
+    ├── Seeders
+    └── Tests
 ```
-
 ## Default Sections {#default-sections}
 Apiato ships with 2 default Sections:
 - **AppSection**: contains all the default Containers.
