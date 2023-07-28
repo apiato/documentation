@@ -22,7 +22,7 @@ Creating a bug report serves to help yourself and others start on the path of fi
 If you want to chip in,
 you can help out
 by fixing [any bugs
-listed in our issue trackers](https://github.com/apiato/apiato/issues).
+listed in our issue trackers](https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Aapiato).
 You must be authenticated with GitHub to view all of Apiato's issues.
 
 If you notice improper DocBlock, Psalm, or IDE warnings while using Apiato, do not create a GitHub issue.
