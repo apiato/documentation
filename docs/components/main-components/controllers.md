@@ -1,135 +1,196 @@
 ---
+sidebar_position: 2
 title: Controllers
+tags:
+  - component
+  - main-component
+  - controller
+  - action
+  - view
+  - request
+  - route
+  - transformer
 ---
-
-- [Definition & Principles](#definition-principles)
-- [Rules](#rules)
-- [Folder Structure](#folder-structure)
-- [Code Sample](#code-sample)
-- [Controller response builder helper functions](#controller-response-builder-helper-functions)
-  - [Some of the functions](#some-of-the-functions)
 
 ### Definition & Principles {#definition-principles}
 
-Read [**Porto SAP Documentation (#Controllers)**](https://github.com/Mahmoudz/Porto#Controllers).
+Read [**Porto SAP Documentation (#Controllers)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
 ### Rules {#rules}
 
-- All API Controller MUST extend from `App\Ship\Parents\Controllers\ApiController`.
-- All Web Controller MUST extend from `App\Ship\Parents\Controllers\WebController`.
-- Controllers should only call the the `run` method of Actions.
+- All API Controllers MUST extend from `App\Ship\Parents\Controllers\ApiController`.
+- All Web Controllers MUST extend from `App\Ship\Parents\Controllers\WebController`.
+- Controllers should only call the `run` or `transactionalRun` method of Actions.
 - Controllers should pass the Request object to the Action instead of passing data from the request.
 
 ### Folder Structure {#folder-structure}
 
-```
- - app
-    - Containers
-        - {section-name}
-            - {container-name}
-                - UI
-                    - API
-                        - Controllers
-                            - Controller.php
-                    - WEB
-                        - Controllers
-                            - Controller.php
+```markdown
+app
+└── Containers
+    └── SectionName
+        └── ContainerName
+            └── UI
+                ├── API
+                │   └── Controllers
+                └── WEB
+                    └── Controllers
 ```
 
 ### Code Sample {#code-sample}
 
-#### Web Controller
+#### API Controller
 
 ```php
-class Controller extends WebController
+use App\Ship\Parents\Controllers\ApiController;
+
+class Controller extends ApiController
 {
-    public function sayWelcome()
+    public function __construct(
+        private readonly SampleAction $sampleAction,
+    ) {
+    }
+    
+    public function __invoke(SampleRequest $request): JsonResponse
     {
-        return view('welcome');
+        $sample = $this->sampleAction->run($request);
+        
+        return $this->transform($sample, SampleTransformer::class);
     }
 }
 ```
 
-#### API Controller
+#### Web Controller
+
 
 ```php
-class Controller extends ApiController
+use App\Ship\Parents\Controllers\WebController;
+
+class Controller extends WebController
 {
-    public function registerUser(RegisterUserRequest $request)
+    public function show(): Factory|View|Application
     {
-        $user = app(RegisterUserAction::class)->run($request);
-        return $this->transform($user, UserTransformer::class);
+        return view('sectionName@containerName::view-name');
     }
 }
 ```
 
 :::tip
-In case you want to handle the same Action differently based on the UI type (e.g. API, Web, CLI) you can set the
+In case you want to handle the same Action differently based on the UI type (e.g., API, Web, CLI), you can set the
 UI on Action with `setUI()` method.
 
 ```php
-    app(WebLogoutAction::class)->setUI('Web')->run();
+$action = app(Action::class);
+$action->setUI('web');
 ```
 
 and get the UI in your Action with `getUI()` method.
 
 ```php
-    $this->getUI();
+$action->getUI(); // will return 'web'
 ```
 :::
 
-#### Usage from Routes Endpoint
+### Response Helpers Methods {#response-helpers}
+
+Apiato provides a set of helper methods to make your life easier when returning responses from your controllers.
+
+[transform](#transform)  
+[withMeta](#withMeta)  
+[json](#json)  
+[created](#created)  
+[deleted](#deleted)  
+[accepted](#accepted)  
+[noContent](#noContent)  
+
+#### transform {#transform}
+This function is incredibly useful and will be used in most cases.
+
+- The first required parameter accepts data as an object or a Collection of objects.
+- The second required parameter is the transformer class.
+- The third optional parameter allows you to specify the [includes](transformers#relationships-include) that should be returned in the response.
+- The fourth optional parameter lets you include metadata in the response. This metadata will be returned under the `meta` key in the `custom` key.
 
 ```php
-Route::post('login', Controller::class);
+// With Includes
+$this->transform($resouce, ResourceTransformer::class, ['foo', 'bar']);
 ```
+```php
+// With Meta
+$this->transform($resouce, ResourceTransformer::class, meta: ['foo' => 'bar', 'baz' => 1]);
 
-### Controller response builder helper functions {#controller-response-builder-helper-functions}
+// Response
+{
+  "data": {},
+  "meta": {
+    "include": [...],
+    "custom": {
+      "foo": "bar",
+      "baz": 1
+    },
+    "pagination": {}
+  }
+}
+```
+#### withMeta {#withMeta}
+This method enables you to add metadata to the response and it should be used in conjunction with the `transform` method.
+This is different from the `meta` parameter in the `transform` method.
+This metadata will be returned directly under the `meta` key.
 
-Many helper function are there to help you build your response faster, those helpers exist in
-the `vendor/apiato/core/Traits/ResponseTrait.php`.
-
-#### Some functions {#some-of-the-functions}
-
-**transform**
-This is the most useful function which you will be using in most cases.
-
-- First required parameter accepts data as object or Collection of objects.
-- Second required parameter is the transformer object
-- Third optional parameter take the includes that should be returned by the response, _($availableIncludes and
-  $defaultIncludes in the transformer class)_.
-- Fourth optional parameter accepts metadata to be injected in the response.
+You can use this method in conjunction with the `meta` parameter in the `transform` method.
 
 ```php
-// $user is a User Object
-return $this->transform($user, UserTransformer::class);
+$metaData = ['foo' => 999, 'bar'];
 
-// $orders is a Collection of Order Objects
-return $this->transform($orders, OrderTransformer::class, ['products', 'recipients', 'store', 'invoice']);
+$this->withMeta($metaData)->transform($sample, SampleTransformer::class, meta: ['foo' => 'bar', 'baz' => 1]);
+
+// Response
+{
+  "data": {},
+	"meta": {
+	  "foo": 999,
+	  "0": "bar",
+	  "include": [...],
+	  "custom": {
+	    "foo": "bar",
+	    "baz": 1
+	  },
+	  "pagination": {}
+  }
+}
 ```
 
-**withMeta**
-This function allows including metadata in the response.
-
+#### json {#json}
+This method allows you to pass an array of data that will be represented as JSON.
 ```php
-$metaData = ['total_credits', 10000];
-
-return $this->withMeta($metaData)->transform($receipt, ReceiptTransformer::class);
+$this->json($data)
 ```
 
-**json**
-This function allows passing array data to be represented as json.
-
+#### created {#created}
+This method allows you to return a response with a `201` status code.
 ```php
-return $this->json([
-    'foo': 'bar'
-])
+$this->created($data)
 ```
 
-**Other functions**
+#### deleted {#deleted}
+This method allows you to return a response with a `202` status code.
+```php
+$this->deleted($deletedModel)
 
-- accepted
-- deleted
-- noContent
-- // Some functions might not be documented, so refer to the `vendor/apiato/core/Traits/ResponseTrait.php` and see the
-  public functions.
+// Response
+{
+  "message": "Model (1) Deleted Successfully."
+}
+```
+
+#### accepted {#accepted}
+This method allows you to return a response with a `202` status code.
+```php
+$this->accepted($data)
+```
+
+#### noContent {#noContent}
+This method allows you to return a response with a `204` status code.
+```php
+$this->noContent()
+```
