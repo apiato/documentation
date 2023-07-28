@@ -2,13 +2,14 @@
 sidebar_position: 1
 title: Actions
 tags:
-  - components
-  - main-components
+  - component
+  - main-component
+  - action
 ---
 
 ### Definition & Principles {#definition-principles}
 
-Read [**Porto SAP Documentation (#Actions)**](https://github.com/Mahmoudz/Porto#Actions).
+Read [**Porto SAP Documentation (#Actions)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
 ### Rules {#rules}
 
