@@ -1,14 +1,13 @@
 ---
 sidebar_position: 1
 title: Routes
+tags:
+  - component
+  - main-component
+  - route
+  - controller
+  - request
 ---
-
-- [Definition & Principles](#definition-principles)
-- [Rules](#rules)
-- [Folder Structure](#folder-structure)
-- [Code Sample](#code-sample)
-- [Protect your Endpoints](#protect-your-endpoints)
-- [Difference between Public & Private routes files](#difference-between-public-private-route-files)
 
 ### Definition & Principles {#definition-principles}
 
@@ -16,51 +15,55 @@ Read [**Porto SAP Documentation (#Routes)**](https://github.com/Mahmoudz/Porto#d
 
 ### Rules {#rules}
 
-- API Route files MUST be named according to their API's version, exposure and functionality. e.g. `CreateOrder.v1.public.php`, `FulfillOrder.v2.public.php`, `CancelOrder.v1.private.php`...
-- Web Route files are pretty similar to API web files, but they can be named anything.
+- All Routes MUST be defined in the `app\Containers\{SectionName}\{ContainerName}\UI\{API|WEB}\Routes` directory.
+- Each Route file MUST contain only one Route.
+- API Route files should be named based on their API version, exposure level (public/private), and functionality.  
+  Examples of valid API Route file names:
+  - `CreateOrder.v1.public.php`
+  - `FulfillOrder.v2.public.php`
+  - `CancelOrder.v1.private.php`
+- Web Route files, can have any appropriate name.
 
 ### Folder Structure {#folder-structure}
 
-```
- - app
-    - Containers
-        - {section-name}
-            - {container-name}
-                - UI
-                    - API
-                       - Routes
-                          - CreateItem.v1.public.php
-                          - DeleteItem.v1.public.php
-                          - CreateItem.v2.public.php
-                          - DeleteItem.v1.private.php
-                          - ApproveItem.v1.private.php
-                          - ...
-                    - WEB
-                       - Routes
-                          - main.php
-                          - ...
+```markdown
+app
+└── Containers
+    └── Section
+        └── Container
+            └── UI
+                ├── API
+                │   └── Routes
+                │       ├── RouteA.v1.public.php
+                │       ├── RouteB.v2.public.php
+                │       ├── RouteC.v1.private.php
+                │       └── ...
+                └── WEB
+                    └── Routes
+                        ├── main.php
+                        └── ...
 ```
 
 ### Code Sample {#code-sample}
 
-#### Web & API route
 Routes are defined exactly like the way you defined them in Laravel.
 
 ```php
-Route::post('hello', Controller::class);
+use Illuminate\Support\Facades\Route;
+
+Route::post('/profile', Controller::class);
 ```
 
-#### Protected Route (API)
+## Public & Private Routes {#public-private-routes}
 
-```php
-Route::get('users', Controller::class)
-    ->middleware(['auth:api']);
-```
+Apiato supports two types of endpoints, `Public` and `Private`, out of the box.
+Maintaining this distinction enables the generation of separate documentations for each type,
+ensuring that your internal API remains private and secure.
 
-## Protect your Endpoints: {#protect-your-endpoints}
+#### Public Routes:
+- Accessible to third parties.
+- May or may not require authentication.
 
-Checkout the [Authorization](../../security/authorization.mdx) Page.
-
-## Difference between Public & Private routes files {#difference-between-public-private-route-files}
-
-Apiato has 2 types of endpoint, Public (External) mainly for third parties clients, and Private (Internal) for your own Apps. This will help to generate separate documentations for each and keep your internal API private.
+#### Private Routes:
+- Accessible only to your own apps.
+- May or may not require authentication.
