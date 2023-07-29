@@ -1,13 +1,12 @@
 ---
 sidebar_position: 6
 title: Models
+tags:
+  - component
+  - main-component
+  - model
+  - repository
 ---
-
-- [Definition & Principles](#definition-principles)
-- [Rules](#rules)
-- [Folder Structure](#folder-structure)
-- [Code Sample](#code-sample)
-- [Casts](#casts)
 
 ### Definition & Principles {#definition-principles}
 
@@ -17,59 +16,50 @@ Read [**Porto SAP Documentation (#Models)**](https://github.com/Mahmoudz/Porto#d
 
 - All Models MUST extend `App\Ship\Parents\Models\Model`.
 - The parent extension should be aliased as `ParentModel`.
-- If the name of a model differs from the Container name you have to implement `model()` method in the repository - [more details](../optional-components/repositories#model-method-example).
+
+:::note
+If the name of a model differs from the container name, you must implement the `model` method in the repository.
+This method allows you to specify the correct model class that should be used for the repository operations.
+
+For further information and a practical example, you can refer to the [Repository Documentation](../optional-components/repositories#model-method-example).
+:::
 
 ### Folder Structure {#folder-structure}
 
-```
- - App
-    - Containers
-        - {section-name}
-            - {container-name}
-                - Models
-                    - User.php
-                    - UserId.php
-                    - ...
+```markdown
+app
+└── Containers
+    └── Section
+        └── Container
+            └── Models
+                ├── Model.php
+                └── ...
 ```
 
 ### Code Sample {#code-sample}
 
 ```php
-class Demo extends Model
+use App\Ship\Parents\Models\Model as ParentModel;
+
+class Demo extends ParentModel
 {
-    protected $table = 'demos';
-
-    protected $fillable = [
-        'label',
-        'user_id'
-    ];
-
-    protected $hidden = [
-        'token',
-    ];
-
-    protected $casts = [
-        'total_credits'     => 'float',
-    ];
-
-    protected $dates = [
-        'created_at',
-        'updated_at',
-    ];
-
-    public function user()
-    {
-        return $this->belongsTo(\App\Containers\AppSection\User\Models\User::class);
-    }
+ ...
 }
 ```
 
-Notice the Demo Model has a relationship with User Model, which lives in another Container.
+:::note
+If your model does not extend the `App\Ship\Parents\Models\Model` class,
+it is essential to incorporate the `ModelTrait` trait into your model.
+By doing so, your model will benefit from various functionalities provided by the trait,
+such as hash ids and other features necessary for proper integration with the framework.
+:::
 
-### Casts {#casts}
+```php
+use Apiato\Core\Traits\ModelTrait;
 
-The casts attribute can be used to parse any of the model's attributes to a specific type. In the code sample below we can cast `total_credits` to `float`.
-
-More information about the applicable cast-types can be found in the laravel [eloquent-mutators](https://laravel.com/docs/eloquent-mutators) documentation.
-
-You can place any dates inside the `$dates` to parse those automatically.
+class Demo
+{
+    use ModelTrait;
+    ...
+}
+```
