@@ -81,7 +81,7 @@ $offer = $offerRepository->findWhere([
 //....
 ```
 
-#### Different Model and Container Name {#model-method-example}
+#### Different Model and Container Name {#different-model-and-container-name
 The `model()` method must be implemented when the model has different name than the container.
 
 ```php
