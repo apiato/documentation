@@ -12,8 +12,8 @@ html[data-theme='light'] code {
   border: 0;
 }
 
-html[data-theme='light'] main a:not(.table-of-contents__link, .breadcrumbs__link),
-html[data-theme='dark'] main a:not(.table-of-contents__link, .breadcrumbs__link) {
+html[data-theme='light'] main a:not(.table-of-contents__link, .breadcrumbs__link) div:not(.theme-doc-footer-tags-row),
+html[data-theme='dark'] main a:not(.table-of-contents__link, .breadcrumbs__link) div:not(.theme-doc-footer-tags-row){
   /*color: #eb4432;*/
   text-decoration: underline;
 }
