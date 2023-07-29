@@ -1,6 +1,10 @@
 ---
 sidebar_position: 9
 title: Exceptions
+tags:
+  - component
+  - main-component
+  - exceptions
 ---
 
 ### Definition & Principles {#definition-principles}
