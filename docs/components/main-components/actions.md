@@ -81,7 +81,7 @@ class DemoAction extends ParentAction
 The same Action MAY be called by multiple Controllers (Web, Api, Cli).
 :::
 
-### Transactional Run {#transactional-run}
+### Handling Transactions {#handling-transactions}
 
 In certain scenarios, you may need to wrap a specific call within a `Database Transaction` to ensure data integrity
 (see [Laravel Documentation](https://laravel.com/docs/master/database#database-transactions)).
@@ -96,5 +96,5 @@ everything performed in this context is automatically rolled back from the datab
 
 :::note
 Any file system operations
-(e.g., if you uploaded a profile picture for this `Team`) would need to be handled manually.
+(e.g., if you uploaded an image during this process) would need to be handled manually.
 :::
