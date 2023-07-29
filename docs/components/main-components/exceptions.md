@@ -4,7 +4,7 @@ title: Exceptions
 tags:
   - component
   - main-component
-  - exceptions
+  - exception
 ---
 
 ### Definition & Principles {#definition-principles}
