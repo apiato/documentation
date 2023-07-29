@@ -22,8 +22,8 @@ Read [**Porto SAP Documentation (#Views)**](https://github.com/Mahmoudz/Porto#de
 ```
  - app
     - Containers
-        - {section-name}
-            - {container-name}
+        - {Section}
+            - {Container}
                 - UI
                     - WEB
                         - Views

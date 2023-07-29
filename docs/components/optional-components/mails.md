@@ -31,8 +31,8 @@ The Mail component allows you to describe an email and send it whenever needed.
 ```
 - app
   - Containers
-    - {section-name}
-      - {container-name}
+    - {Section}
+      - {Container}
         - Mails
           - UserRegisteredMail.php
           - ...

@@ -36,8 +36,8 @@ If 2 seeders classes have the same name but live in different containers, one of
 ```
  - App
     - Containers
-        - {section-name}
-            - {container-name}
+        - {Section}
+            - {Container}
                  - Data
                     - Seeders
                         - ContainerNameRolesSeeder_1.php

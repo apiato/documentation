@@ -61,8 +61,8 @@ Read [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmoudz/Porto
 ```
  - app
     - Containers
-        - {section-name}
-            - {container-name}
+        - {Section}
+            - {Container}
                 - UI
                     - API
                         - Requests

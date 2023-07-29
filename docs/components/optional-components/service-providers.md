@@ -54,7 +54,7 @@ They are the place where you register things like container bindings, event list
 ```
  - app
      - Containers
-        - {section-name}
+        - {Section}
             - User
                 - Providers
                     - MainServiceProvider.php

@@ -29,8 +29,8 @@ title: Jobs
 ```
 - app
   - Containers
-    - {section-name}
-      - {container-name}
+    - {Section}
+      - {Container}
         - Jobs
           - DoSomethingJob.php
           - DoSomethingElseJob.php

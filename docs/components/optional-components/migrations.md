@@ -29,8 +29,8 @@ Migrations are the version control of your database. They are very useful for ge
 ```
    - app
       - Containers
-          - {section-name}
-              - {container-name}
+          - {Section}
+              - {Container}
                   - Data
                       - Migrations
                           - 2200_01_01_000001_create_something_table.php

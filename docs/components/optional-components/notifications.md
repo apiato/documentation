@@ -35,7 +35,7 @@ When using the Database channel, the notifications will be stored in a database 
 - app
   - Containers
     - {select-name}
-      - {container-name}
+      - {Container}
         - Notifications
           - UserRegisteredNotification.php
           - ...

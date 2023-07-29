@@ -22,8 +22,8 @@ Read [**Porto SAP Documentation (#Tasks)**](https://github.com/Mahmoudz/Porto#de
 ```
  - app
     - Containers
-        - {section-name}
-            - {container-name}
+        - {Section}
+            - {Container}
                 - Tasks
                     - ConfirmUserEmailTask.php
                     - GenerateEmailConfirmationUrlTask.php

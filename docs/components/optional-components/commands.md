@@ -32,8 +32,8 @@ title: Commands
 ```
 - app
   - Containers
-    - {section-name}
-      - {container-name}
+    - {Section}
+      - {Container}
         - UI
           - CLI
             - Commands

@@ -31,8 +31,8 @@ The two most essential Test types for this architecture are the Unit Tests and t
 ```
  - app
     - Containers
-        - {section-name}
-            - {container-name}
+        - {Section}
+            - {Container}
                 - Tests
                     - TestCase.php // the container test case
                     - Unit

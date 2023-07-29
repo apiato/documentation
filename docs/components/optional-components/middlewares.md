@@ -36,8 +36,8 @@ _For example the `jwt.auth` middleware "provided by the JWT package" should be r
 ```
  - App
   - Containers
-    - {section-name}
-      - {container-name}
+    - {Section}
+      - {Container}
         - Middlewares
         - WebAuthentication.php
       - Ship

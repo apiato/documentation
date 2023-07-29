@@ -31,8 +31,8 @@ title: Events
 ```
 - App
   - Containers
-    - {section-name}
-      - {container-name}
+    - {Section}
+      - {Container}
         - Events
           - SomethingHappenedEvent.php
           - ...

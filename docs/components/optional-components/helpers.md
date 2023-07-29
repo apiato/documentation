@@ -29,8 +29,8 @@ title: Helpers
 ```
 - App
   - Containers
-    - {section-name}
-      - {container-name}
+    - {Section}
+      - {Container}
         - Helpers
           - helpers.php
           - mix.php

@@ -29,8 +29,8 @@ Factories are mainly used from Tests.
 ```
  - app
     - Containers
-        - {section-name}
-            - {container-name}
+        - {Section}
+            - {Container}
                  - Data
                     - Factories
                         - UserFactory.php

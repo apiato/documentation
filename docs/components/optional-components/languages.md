@@ -24,8 +24,8 @@ Languages are not real Components, they are just files that holds translations.
 ```
 - app
   - Containers
-    - {section-name}
-      - {container-name}
+    - {Section}
+      - {Container}
         - Resources
           - Languages
             - en

@@ -31,8 +31,8 @@ Without using a Criteria class, you can add your query conditions to a Repositor
 ```
  - app
     - Containers
-        - {section-name}
-            - {container-name}
+        - {Section}
+            - {Container}
                 - Data
                     - Criterias
                       - ColourRedCriteria.php

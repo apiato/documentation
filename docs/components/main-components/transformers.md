@@ -19,8 +19,8 @@ Read [**Porto SAP Documentation (#Transformers)**](https://github.com/Mahmoudz/P
 ```
  - app
     - Containers
-        - {section-name}
-            - {container-name}
+        - {Section}
+            - {Container}
                 - UI
                     - API
                         - Transformers

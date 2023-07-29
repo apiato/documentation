@@ -24,8 +24,8 @@ We create Value Object when we need it to represent/serve/manipulate some data (
 ```
 - App
   - Containers
-    - {section-name}
-      - {container-name}
+    - {Section}
+      - {Container}
         - Values
           - Output.php
           - Region.php
