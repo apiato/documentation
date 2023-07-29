@@ -90,9 +90,7 @@ $action->getUI(); // will return 'web'
 ```
 :::
 
-### Response Helpers Methods {#response-helpers}
-
-Apiato provides a set of helper methods to make your life easier when returning responses from your controllers.
+### Response Helpers Methods {#response-helpers-methods}
 
 [transform](#transform)  
 [withMeta](#withMeta)  
