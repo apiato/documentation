@@ -1,12 +1,7 @@
 ---
+sidebar_position: 9
 title: Exceptions
 ---
-
-* [Definition & Principles](#definition-principles)
-* [Principles](#principles)
-* [Rules](#rules)
-* [Folder Structure](#folder-structure)
-* [Code Samples](#code-samples)
 
 ### Definition & Principles {#definition-principles}
 
