@@ -109,7 +109,7 @@ Apiato ships with 2 default Sections:
 
 :::tip
 The **Vendor** section is a special Section within the Containers layer that holds installed and reusable Containers.
-It serves a similar purpose as the vendor directory located at the root.
+It serves a similar purpose as the vendor folder located at the root.
 Any Section is permitted to depend on the Vendor Section, allowing for the utilization of its Containers.
 
 Read more about the [Container Installer](../pacakges/readme.md) to learn how to install Vendor Containers.
