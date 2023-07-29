@@ -28,13 +28,19 @@ Read [**Porto SAP Documentation (#Controllers)**](https://github.com/Mahmoudz/Po
 ```markdown
 app
 └── Containers
-    └── SectionName
-        └── ContainerName
+    └── Section
+        └── Container
             └── UI
                 ├── API
                 │   └── Controllers
+                │       ├── ControllerA.php
+                │       ├── ControllerB.php
+                │       └── ...
                 └── WEB
                     └── Controllers
+                        ├── ControllerA.php
+                        ├── ControllerB.php
+                        └── ...
 ```
 
 ### Code Sample {#code-sample}

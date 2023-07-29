@@ -45,7 +45,7 @@ The Ship layer contains the infrastructure code, which consists of shared code u
 app
 ├── Containers
 │   ├── SectionName
-│   │   └── ContainerName
+│   │   └── Container
 │   │       ├── Actions
 │   │       ├── Configs
 │   │       ├── Data

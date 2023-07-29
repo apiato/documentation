@@ -21,8 +21,8 @@ Read [**Porto SAP Documentation (#Actions)**](https://github.com/Mahmoudz/Porto#
 ```markdown
 app
 └── Containers
-    └── SectionName
-        └── ContainerName
+    └── Section
+        └── Container
             └── Actions
                 ├── CreateResourceAction.php
                 ├── DeleteResourceAction.php

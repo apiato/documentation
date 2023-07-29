@@ -23,8 +23,8 @@ Read [**Porto SAP Documentation (#Exceptions)**](https://github.com/Mahmoudz/Por
 ```markdown
 app
 ├── Containers
-│   └── SectionName
-│       └── ContainerName
+│   └── Section
+│       └── Container
 │           └── Exceptions
 │               ├── SpecificException.php
 │               ├── AnotherSpecificException.php
