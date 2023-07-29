@@ -16,6 +16,7 @@ Read [**Porto SAP Documentation (#Models)**](https://github.com/Mahmoudz/Porto#d
 ### Rules {#rules}
 
 - All Models MUST extend `App\Ship\Parents\Models\Model`.
+- The parent extension should be aliased as `ParentModel`.
 - If the name of a model differs from the Container name you have to implement `model()` method in the repository - [more details](../optional-components/repositories#model-method-example).
 
 ### Folder Structure {#folder-structure}

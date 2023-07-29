@@ -20,10 +20,8 @@ title: Commands
 ### Principles {#principles}
 
 - Containers MAY or MAY NOT have one or more Commands.
-
-- Every Command SHOULD call an Action to perform its job, and should not contain any business logic.
-
-- Ship may contain Application general Commands.
+- Every Command SHOULD call an Action to perform its job, and SHOULD NOT contain any business logic.
+- Ship MAY contain Application general Commands.
 
 ### Rules {#rules}
 

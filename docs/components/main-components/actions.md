@@ -14,6 +14,7 @@ Read [**Porto SAP Documentation (#Actions)**](https://github.com/Mahmoudz/Porto#
 ### Rules {#rules}
 
 - All Actions MUST extend `App\Ship\Parents\Actions\Action`.
+- The parent extension should be aliased as `ParentAction`.
 
 ### Folder Structure {#folder-structure}
 
@@ -29,8 +30,6 @@ app
 ```
 
 ### Code Sample {#code-sample}
-
-#### Action
 
 ```php
 namespace App\Containers\AppSection\User\Actions;

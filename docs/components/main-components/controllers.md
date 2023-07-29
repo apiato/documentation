@@ -62,7 +62,6 @@ class Controller extends ApiController
 
 #### Web Controller
 
-
 ```php
 use App\Ship\Parents\Controllers\WebController;
 
