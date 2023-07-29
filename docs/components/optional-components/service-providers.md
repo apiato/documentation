@@ -41,7 +41,7 @@ They are the place where you register things like container bindings, event list
 
 - All Main Service Providers MUST extend `App\Ship\Parents\Providers\MainProvider`.
 
-- All other types of Service Providers (EventsProvider, BroadcastsProvider, AuthProvider, MiddlewareProvider, RoutesProvider) must extend their parent providers `Ship/Parents/Providers/*`.
+- All other types of Service Providers (EventsProvider, BroadcastsProvider, AuthProvider, MiddlewareProvider, RoutesProvider) must extend their parent providers `App\Ship\Parents\Providers`.
 
 - The Main Service Provider MUST be named `MainServiceProvider` in every container.
 
@@ -116,8 +116,8 @@ However, if it's a generic package used by the entire framework and not a specif
 
 ### Information about Laravel Service Providers {#information-about-laravel-service-providers}
 
-By default, Laravel provides some service providers in its `app/providers` directory.
-In Apiato those providers have been renamed and moved to the Ship Layer `app/Ship/Parents/Providers/*`:
+By default, Laravel provides some service providers in its `App\providers` directory.
+In Apiato those providers have been renamed and moved to the Ship Layer `App\Ship\Parents\Providers`:
 
 - AppServiceProvider
 - RouteServiceProvider

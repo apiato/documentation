@@ -26,14 +26,14 @@ composer require apiato/localization-container
 
 Languages file can be placed in any container, not only the Localization Container.  
 Place language files inside the `/Languages` folder of your container. For example
-`app/Containers/SectionName/ContainerName/Languages`. You can also place general language files inside the
-`/Languages` folder of the `Ship`.
+`App\Containers\SectionName\ContainerName\Languages`. You can also place general language files inside the
+`App\Ship\Languages`.
 
 :::note  
-Just create the `/Languages` folder if it does not exist.  
+Just create the `Languages` folder if it does not exist.  
 :::
 
-Example languages files are included at `/lang`. (default Laravel translations)
+Example languages files are included at `\lang`. (default Laravel translations)
 
 ## Support new languages{#support-new-languages}
 

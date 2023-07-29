@@ -15,7 +15,7 @@ Read [**Porto SAP Documentation (#Actions)**](https://github.com/Mahmoudz/Porto#
 
 ### Rules {#rules}
 
-- All Actions MUST be defined in the `app\Containers\{SectionName}\{ContainerName}\Actions` folder.
+- All Actions MUST be defined in the `App\Containers\{SectionName}\{ContainerName}\Actions` folder.
 - All Actions MUST extend `App\Ship\Parents\Actions\Action`.
 - The parent extension should be aliased as `ParentAction`.
 

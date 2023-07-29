@@ -15,7 +15,7 @@ To get started, verify that your `User` model implements the `MustVerifyEmail` c
 This should already be done for you by the `User` model that ships with Apiato.
 
 Next,
-enable the email verification feature in the `app\Containers\AppSection\Authentication\Configs\appSection-authentication` config file.
+enable the email verification feature in the `app/Containers/AppSection/Authentication/Configs/appSection-authentication.php` config file.
 
 ### Sending Email Verification Notification {#sending-email-verification-notification}
 Given this feature is enabled,
@@ -53,5 +53,5 @@ When email verification is enabled and a user hits a protected endpoint, the API
 
 :::note  
 If you are using a load balancer and having difficulty with the email verification link, e.g. app says the signature doesn't match,
-set the `protected $proxies = '*'` in the `App\Ship\Middlewares\TrustProxies.php` or update it to match your needs.
+set the `protected $proxies = '*'` in the `app/Ship/Middlewares/TrustProxies.php` or update it to match your needs.
 :::  

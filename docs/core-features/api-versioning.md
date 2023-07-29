@@ -33,5 +33,5 @@ Example:
 
 First remove the URL version prefix:
 
-1. Edit `app/Ship/Configs/apiato.php`, set prefix to `'enable_version_prefix' => 'false',`.
+1. Edit `app/Ship/Configs/apiato.php`, set `enable_version_prefix` to  `false`.
 2. Implement the Header versioning anyway you prefer. (this is not implemented in Apiato yet. _Consider a contribution_).

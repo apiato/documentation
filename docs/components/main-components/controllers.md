@@ -18,7 +18,7 @@ Read [**Porto SAP Documentation (#Controllers)**](https://github.com/Mahmoudz/Po
 
 ### Rules {#rules}
 
-- All Controllers MUST be defined in the `app\Containers\{SectionName}\{ContainerName}\UI\{API|WEB}\Controllers` directory.
+- All Controllers MUST be defined in the `App\Containers\{SectionName}\{ContainerName}\UI\{API|WEB}\Controllers` directory.
 - All API Controllers MUST extend `App\Ship\Parents\Controllers\ApiController`.
 - All Web Controllers MUST extend `App\Ship\Parents\Controllers\WebController`.
 - Controllers MUST only call the `run` or `transactionalRun` method of Actions.

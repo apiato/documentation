@@ -108,14 +108,14 @@ Route generated successfully.
 
 #### Result {#result}
 
-`CreateCar.v1.public.php` file will be created in `App\Containers\AppSection\Car\UI\API\Routes\`
+`CreateCar.v1.public.php` file will be created in `App\Containers\AppSection\Car\UI\API\Routes`
 
 ## Custom Code Stubs (aka. Customizing the Generator) {#custom-code-stubs}
 
 If you don't like the automatically generated code (or would like to adapt it to your specific needs) you can do this quite easily.
 
-The existing `Generators` allow to read `custom stubs` from the `app/Ship/Generators/CustomStubs` folder. The name of
-the file and the folder structure needs to be the same as in `vendor/apiato/core/Generator/Stubs`.
+The existing `Generators` allow to read `custom stubs` from the `App\Ship\Generators\CustomStubs` folder. The name of
+the file and the folder structure needs to be the same as in `vendor\apiato\core\Generator\Stubs`.
 
 Say, if you like to change the `action` -> `create.stub`, simply copy the file to `app/Ship/Generators/CustomStubs/actions/create.stub` and 
 start adapting it to your needs. 

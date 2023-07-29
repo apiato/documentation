@@ -304,7 +304,7 @@ It's not recommended to keep skipping cache as it has bad impact on the performa
 
 ## Configuration {#configuration}
 
-Most of these parameters are provided by the L5 Repository and configurable from the `Ship/Configs/repository.php` file.
+Most of these parameters are provided by the L5 Repository and configurable from the `app/Ship/Configs/repository.php` file.
 Some of them are built in house, or inherited from other packages such as Fractal.
 
 ## See the Query parameters from the User Developer perspective {#see-the-query-parameters-from-the-user-developer-perspective}

@@ -117,7 +117,7 @@ To queue a notification you should use `Illuminate\Bus\Queueable` and implement 
 ## Use DB channel {#db-channel}
 
 Generally you need to generate the notification migration `php artisan notifications:table`, then run `php artisan migrate`, 
-however just running the migration command will do the job, since Apiato already adds the `_create_notifications_table.php` in the default migrations files directory `app/Ship/Migrations/`.
+however just running the migration command will do the job, since Apiato already adds the `_create_notifications_table.php` in the default migrations files directory `App\Ship\Migrations`.
 
 :::info Further reading
 More info at [Laravel Docs](https://laravel.com/docs/notifications).

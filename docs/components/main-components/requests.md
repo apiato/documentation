@@ -41,8 +41,8 @@ include `Content-Type = application/json` in the request header.
 > #### Heads Up!
 >
 > Normally you should include the `Accept : application/json` HTTP header when you call a JSON API. However, in Apiato
-> you can force your users to send `application/json` by setting `'force-accept-header' => true,` in
-> `app/Ship/Configs/apiato.php` or allow them to skip it completely by setting the `'force-accept-header' => false,`.
+> you can force your users to send `application/json` by setting `'force-accept-header' => true` in
+> `app/Ship/Configs/apiato.php` or allow them to skip it completely by setting the `'force-accept-header' => false`.
 > By default this flag is set to false.
 
 

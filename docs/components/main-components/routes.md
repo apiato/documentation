@@ -15,7 +15,7 @@ Read [**Porto SAP Documentation (#Routes)**](https://github.com/Mahmoudz/Porto#d
 
 ### Rules {#rules}
 
-- All Routes MUST be defined in the `app\Containers\{SectionName}\{ContainerName}\UI\{API|WEB}\Routes` directory.
+- All Routes MUST be defined in the `App\Containers\{SectionName}\{ContainerName}\UI\{API|WEB}\Routes` directory.
 - Each Route file MUST contain only one Route.
 - API Route files should be named based on their API version, exposure level (public/private), and functionality.  
   Examples of valid API Route file names:

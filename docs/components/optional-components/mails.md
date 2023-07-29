@@ -24,7 +24,7 @@ The Mail component allows you to describe an email and send it whenever needed.
 ### Rules {#rules}
 
 - All Notifications MUST extend `App\Ship\Parents\Mails\Mail`.
-- Email Templates must be placed inside the Mail directory in a Templates directory `app/Containers/{section}/{container}/Mails/Templates`.
+- Email Templates must be placed inside the Mail directory in a Templates directory `App\Containers\{section}\{container}\Mails\Templates`.
 
 ### Folder Structure {#folder-structure}
 

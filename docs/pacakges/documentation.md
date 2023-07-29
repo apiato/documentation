@@ -214,7 +214,7 @@ By default, users need `access-private-docs` permission to access private docs.
 ### Edit Default Generated Values in Templates {#edit-default-generated-values-in-templates}
 
 Apiato by defaults generates 2 API documentations, each one has its own `apidoc.json` file. Both can be modified from 
-the Documentation Container in `Containers/Vendor/Documentation/ApiDocJs/` and need Source code modification.
+the Documentation Container in `App\Containers\Vendor\Documentation\ApiDocJs` and need Source code modification.
 
 
 ### Edit the Documentation Header {#edit-the-documentation-header}
@@ -233,7 +233,7 @@ Feel free to extend them to include more info about your API from the `app/Conta
 
 Default, the documentation title is in English `en` localization.
 
-See which locales are supported by going in `app/Containers/Vendor/Documentation/ApiDocJs/shared/`
+See which locales are supported by going in `App\Containers\Vendor\Documentation\ApiDocJs\shared`
 
 There will be some `header.template.{locale}.md` files in the folder.
 
