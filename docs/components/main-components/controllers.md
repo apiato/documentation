@@ -20,8 +20,8 @@ Read [**Porto SAP Documentation (#Controllers)**](https://github.com/Mahmoudz/Po
 
 - All API Controllers MUST extend `App\Ship\Parents\Controllers\ApiController`.
 - All Web Controllers MUST extend `App\Ship\Parents\Controllers\WebController`.
-- Controllers should only call the `run` or `transactionalRun` method of Actions.
-- Controllers should pass the Request object to the Action instead of passing data from the request.
+- Controllers MUST only call the `run` or `transactionalRun` method of Actions.
+- Controllers SHOULD pass the Request object to the Action instead of passing data from the request.
 
 ### Folder Structure {#folder-structure}
 
@@ -133,7 +133,8 @@ $this->transform($resouce, ResourceTransformer::class, meta: ['foo' => 'bar', 'b
 }
 ```
 #### withMeta {#withMeta}
-This method enables you to add metadata to the response and it should be used in conjunction with the `transform` method.
+This method enables you to add metadata to the response,
+and it MUST be used in conjunction with the `transform` method.
 This is different from the `meta` parameter in the `transform` method.
 This metadata will be returned directly under the `meta` key.
 
