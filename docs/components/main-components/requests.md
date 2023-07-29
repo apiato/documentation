@@ -1,6 +1,13 @@
 ---
 sidebar_position: 3
 title: Requests
+tags:
+  - component
+  - main-component
+  - request
+  - route
+  - controller
+  - action
 ---
 
 ## Form content types (W3C) {#form-content-types}

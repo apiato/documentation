@@ -5,6 +5,8 @@ tags:
   - component
   - main-component
   - action
+  - controller
+  - request
 ---
 
 ### Definition & Principles {#definition-principles}
