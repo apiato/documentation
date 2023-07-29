@@ -52,7 +52,7 @@ class DemoException extends ParentException
 
 ### Helpers Methods {#helpers-methods}
 
-[withErrors](#withErrors)  
+[withErrors](#witherrors)  
 [debug](#debug)
 
 #### withErrors
