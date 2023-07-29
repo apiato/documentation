@@ -17,7 +17,7 @@ We create Value Object when we need it to represent/serve/manipulate some data (
 
 ### Rules {#rules}
 
-- All Models MUST extend from `App\Ship\Parents\Values\Value`.
+- All Models MUST extend `App\Ship\Parents\Values\Value`.
 
 ### Folder Structure {#folder-structure}
 

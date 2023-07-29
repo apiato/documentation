@@ -18,8 +18,8 @@ Read [**Porto SAP Documentation (#Controllers)**](https://github.com/Mahmoudz/Po
 
 ### Rules {#rules}
 
-- All API Controllers MUST extend from `App\Ship\Parents\Controllers\ApiController`.
-- All Web Controllers MUST extend from `App\Ship\Parents\Controllers\WebController`.
+- All API Controllers MUST extend `App\Ship\Parents\Controllers\ApiController`.
+- All Web Controllers MUST extend `App\Ship\Parents\Controllers\WebController`.
 - Controllers should only call the `run` or `transactionalRun` method of Actions.
 - Controllers should pass the Request object to the Action instead of passing data from the request.
 

@@ -45,7 +45,7 @@ Read [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmoudz/Porto
 
 ### Rules {#rules}
 
-- All Requests MUST extend from `App\Ship\Parents\Requests\Request`.
+- All Requests MUST extend `App\Ship\Parents\Requests\Request`.
 - A Request MUST have a `rules()` function, returning an array and `authorize()` function to check for authorization (can return true when no authorization required).
 
 ### Folder Structure {#folder-structure}

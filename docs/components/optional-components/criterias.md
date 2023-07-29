@@ -22,7 +22,7 @@ Without using a Criteria class, you can add your query conditions to a Repositor
 
 ### Rules {#rules}
 
-- All Criterias MUST extend from `App\Ship\Parents\Criterias\Criteria`.
+- All Criterias MUST extend `App\Ship\Parents\Criterias\Criteria`.
 
 - Every Criteria SHOULD have an `apply()` function.
 

@@ -39,9 +39,9 @@ They are the place where you register things like container bindings, event list
 
 - The Main Service Provider will be auto registered by the Ship Engine, so no need to register it manually anywhere.
 
-- All Main Service Providers MUST extend from `App\Ship\Parents\Providers\MainProvider`.
+- All Main Service Providers MUST extend `App\Ship\Parents\Providers\MainProvider`.
 
-- All other types of Service Providers (EventsProvider, BroadcastsProvider, AuthProvider, MiddlewareProvider, RoutesProvider) must extend from their parent providers `Ship/Parents/Providers/*`.
+- All other types of Service Providers (EventsProvider, BroadcastsProvider, AuthProvider, MiddlewareProvider, RoutesProvider) must extend their parent providers `Ship/Parents/Providers/*`.
 
 - The Main Service Provider MUST be named `MainServiceProvider` in every container.
 

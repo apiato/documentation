@@ -14,7 +14,7 @@ Read [**Porto SAP Documentation (#Sub-Actions)**](https://github.com/Mahmoudz/Po
 
 ### Rules {#rules}
 
-- All SubActions MUST extend from `App\Ship\Parents\Actions\SubAction`.
+- All SubActions MUST extend `App\Ship\Parents\Actions\SubAction`.
 
 ### Folder Structure {#folder-structure}
 

@@ -24,7 +24,7 @@ title: Events
 ### Rules {#rules}
 
 - Event classes CAN be placed inside the Containers in Events folders or on the Ship for the general Events.
-- All Events MUST extend from `App\Ship\Parents\Events\Event`.
+- All Events MUST extend `App\Ship\Parents\Events\Event`.
 
 ### Folder Structure {#folder-structure}
 

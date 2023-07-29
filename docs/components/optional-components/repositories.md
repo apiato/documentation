@@ -30,7 +30,7 @@ The Repository is used to separate the logic that retrieves the data and maps it
 
 ### Rules {#rules}
 
-- All Repositories MUST extend from `App\Ship\Parents\Repositories\Repository`. Extending from this class will give you access to methods like (`find`, `create`, `update` and much more).
+- All Repositories MUST extend `App\Ship\Parents\Repositories\Repository`. Extending from this class will give you access to methods like (`find`, `create`, `update` and much more).
 
 - Repository name should be same as it's model name (model: `Foo` -> repository: `FooRepository`).
 

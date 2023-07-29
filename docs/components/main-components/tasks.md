@@ -14,7 +14,7 @@ Read [**Porto SAP Documentation (#Tasks)**](https://github.com/Mahmoudz/Porto#de
 
 ### Rules {#rules}
 
-- All Tasks MUST extend from `App\Ship\Parents\Tasks\Task`.
+- All Tasks MUST extend `App\Ship\Parents\Tasks\Task`.
 
 ### Folder Structure {#folder-structure}
 

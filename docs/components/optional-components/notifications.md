@@ -27,7 +27,7 @@ When using the Database channel, the notifications will be stored in a database 
 
 ### Rules {#rules}
 
-- All Notifications MUST extend from `App\Ship\Parents\Notifications\Notification`.
+- All Notifications MUST extend `App\Ship\Parents\Notifications\Notification`.
 
 ### Folder Structure {#folder-structure}
 

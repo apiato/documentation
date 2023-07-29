@@ -10,9 +10,7 @@ Read [**Porto SAP Documentation (#Transformers)**](https://github.com/Mahmoudz/P
 ### Rules {#rules}
 
 - All API responses MUST be formatted via a Transformer.
-
-- Every Transformer SHOULD extend from `App\Ship\Parents\Transformers\Transformer`.
-
+- All Transformers MUST extend `App\Ship\Parents\Transformers\Transformer`.
 - Each Transformer MUST have a `transform()` function.
 
 ### Folder Structure {#folder-structure}
