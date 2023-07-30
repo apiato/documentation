@@ -20,7 +20,7 @@ Seeders are classes made to seed the database with real data, this data usually 
 
 - Seeders MUST be created in the Containers. (If the container is using a package that publishes a Seeder class, this class MUST be manually placed in the Container that make use of it. Do not rely on the package to place it in its right location).
 
-## Rules {#rules}
+## Rules
 
 - Seeders MUST be in the right directory inside the container to be loaded.
 - To avoid any conflict between containers seeders classes, you SHOULD always prepend the Seeders of each container with the container name. (Example: `UserPermissionsSeeder`, `ItemPermissionsSeeder`).
@@ -29,7 +29,7 @@ If 2 seeders classes have the same name but live in different containers, one of
 ::: 
 - If you wish to order the seeding of the classes, you can just append `_1`, `_2` to your classes.
 
-## Folder Structure {#folder-structure}
+## Folder Structure
 
 ```
  - App
@@ -43,7 +43,7 @@ If 2 seeders classes have the same name but live in different containers, one of
                         - ...
 ```
 
-## Code Example {#code-example}
+## Code Example
 
 #### Demo Seeder
 

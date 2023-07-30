@@ -23,11 +23,11 @@ title: Commands
 - Every Command SHOULD call an Action to perform its job, and SHOULD NOT contain any business logic.
 - Ship MAY contain Application general Commands.
 
-## Rules {#rules}
+## Rules
 
 - All Commands MUST extend the `App\Ship\Parents\Commands\ConsoleCommand` class.
 
-## Folder Structure {#folder-structure}
+## Folder Structure
 
 ```
 - app
@@ -45,7 +45,7 @@ title: Commands
       - ...
 ```
 
-## Code Example {#code-example}
+## Code Example
 
 #### A Simple Command
 

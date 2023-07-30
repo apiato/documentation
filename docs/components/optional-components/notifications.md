@@ -25,11 +25,11 @@ When using the Database channel, the notifications will be stored in a database 
 
 - Ship MAY contain Application general Notifications.
 
-## Rules {#rules}
+## Rules
 
 - All Notifications MUST extend the `App\Ship\Parents\Notifications\Notification` class.
 
-## Folder Structure {#folder-structure}
+## Folder Structure
 
 ```
 - app
@@ -45,7 +45,7 @@ When using the Database channel, the notifications will be stored in a database 
       - ...
 ```
 
-## Code Example {#code-example}
+## Code Example
 
 #### A Simple Notification
 

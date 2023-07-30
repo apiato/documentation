@@ -21,12 +21,12 @@ The Mail component allows you to describe an email and send it whenever needed.
 
 - Ship may contain general Mails.
 
-## Rules {#rules}
+## Rules
 
 - All Notifications MUST extend the `App\Ship\Parents\Mails\Mail` class.
 - Email Templates must be placed in `app/Containers/{section}/{container}/Mails/Templates`.
 
-## Folder Structure {#folder-structure}
+## Folder Structure
 
 ```
 - app
@@ -48,7 +48,7 @@ The Mail component allows you to describe an email and send it whenever needed.
       - ...
 ```
 
-## Code Example {#code-example}
+## Code Example
 
 #### A simple Mail
 

@@ -21,13 +21,13 @@ title: Events
 - Events can be fired from Actions and or Tasks. It's preferable to choose one place only. (Tasks are recommended).
 - Events SHOULD be created inside the Containers. However, general Events CAN be created in the Ship layer.
 
-## Rules {#rules}
+## Rules
 
 - Event classes MUST be placed in `app/Containers/{Section}/{Container}/Events`.
 - General Events MUST be placed in `app/Ship/Events`.
 - All Events MUST extend the `App\Ship\Parents\Events\Event` class.
 
-## Folder Structure {#folder-structure}
+## Folder Structure
 
 ```
 - App

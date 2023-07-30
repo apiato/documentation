@@ -19,11 +19,11 @@ Migrations are the version control of your database. They are very useful for ge
 - Migrations MUST be placed in `app/Containers/{Section}/{Container}/Data/Migrations` directory.
 - Migrations will be autoloaded by the framework.
 
-## Rules {#rules}
+## Rules
 
 - No need to publish the DB Migrations. Just run the `artisan migrate` command and Laravel will read the Migrations from the Containers.
 
-## Folder Structure {#folder-structure}
+## Folder Structure
 
 ```
    - app
@@ -36,7 +36,7 @@ Migrations are the version control of your database. They are very useful for ge
                           - ...
 ```
 
-## Code Example {#code-example}
+## Code Example
 
 #### User CreateDemoTable Migrations
 

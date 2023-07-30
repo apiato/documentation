@@ -21,7 +21,7 @@ In each Apiato container, there are two types of config files:
 - Your custom config files and third party packages config files MUST be placed in the Container, unless it's too generic then it MUST be placed on the Ship Layer.
 - Containers MAY have as many config files as they need.
 
-## Rules {#rules}
+## Rules
 
 - When publishing a third party package config file, move it manually to its container or `app/Ship/Configs` in case it is generic.
 - Framework config files (provided by Laravel) lives at the default `config` folder on the root of the project.
@@ -30,7 +30,7 @@ In each Apiato container, there are two types of config files:
   camelCase of its Section name + `-` + camelCase of its Container name, to prevent conflicts between third party packages and container specific packages.  
   For example, config file inside `MySection` > `MyContainer` should be named like this: `mySection-myContainer.php`
 
-## Folder Structure {#folder-structure}
+## Folder Structure
 
 ```
 - app
@@ -50,7 +50,7 @@ In each Apiato container, there are two types of config files:
   - ...
 ```
 
-## Code Example {#code-example}
+## Code Example
 
 #### Example simple Config file
 

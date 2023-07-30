@@ -20,11 +20,11 @@ title: Helpers
 - You can implement as many helper functions as you need, per helper file.
 - The framework will autoload all Helper files.
 
-## Rules {#rules}
+## Rules
 
 - Helpers MAY be placed in `app/Containers/{Section}/{Container}/Helpers` or `app/Ship/Helpers` for the general Helpers.
 
-## Folder Structure {#folder-structure}
+## Folder Structure
 
 ```
 - App

@@ -7,15 +7,15 @@ tags:
   - controller
 ---
 
-## Definition & Principles {#definition-principles}
+## Definition & Principles
 
 Read [**Porto SAP Documentation (#Views)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
-## Rules {#rules}
+## Rules
 
 - All Views MUST be placed in the `app/Containers/{Section}/{Container}/UI/WEB/Views` directory.
 
-## Folder Structure {#folder-structure}
+## Folder Structure
 
 ```markdown
 app
@@ -30,7 +30,7 @@ app
                         └── ...
 ```
 
-## Code Example {#code-example}
+## Code Example
 
 Views are defined exactly like the way you defined them in Laravel.
 

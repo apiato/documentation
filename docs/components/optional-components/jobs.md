@@ -20,11 +20,11 @@ title: Jobs
 
 - A Container MAY have more than one Job.
 
-## Rules {#rules}
+## Rules
 
 - All Jobs MUST extend the `App\Ship\Parents\Jobs\Job` class.
 
-## Folder Structure {#folder-structure}
+## Folder Structure
 
 ```
 - app
@@ -36,7 +36,7 @@ title: Jobs
           - DoSomethingElseJob.php
 ```
 
-## Code Example {#code-example}
+## Code Example
 
 #### DemoJob
 

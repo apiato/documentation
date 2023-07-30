@@ -22,12 +22,12 @@ The two most essential Test types for this architecture are the Unit Tests and t
 
 - Use Unit Tests to test Container Actions and Tasks are doing what's expected from them.
 
-## Rules {#rules}
+## Rules
 
 - All Container Test classes SHOULD extend a Container Internal TestCase class. e.g., `App\Containers\{section}\{container}\Tests\TestCase` class.
 - The Container **TestCase** MUST extend the `App\Ship\Parents\Tests\PhpUnit\TestCase` class.
 
-## Folder Structure {#folder-structure}
+## Folder Structure
 
 ```
  - app
@@ -60,7 +60,7 @@ The two most essential Test types for this architecture are the Unit Tests and t
                                 - ...
 ```
 
-## Code Example {#code-example}
+## Code Example
 
 ```php
 class DeleteUserTest extends TestCase

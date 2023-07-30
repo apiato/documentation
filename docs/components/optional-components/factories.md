@@ -20,11 +20,11 @@ Factories are mainly used from Tests.
 
 - Factories SHOULD be created in the Containers.
 
-## Rules {#rules}
+## Rules
 
 - All Factories MUST extend the `App\Ship\Parents\Factories\Factory` class.
 
-## Folder Structure {#folder-structure}
+## Folder Structure
 
 ```
  - app
@@ -37,7 +37,7 @@ Factories are mainly used from Tests.
                         - ...
 ```
 
-## Code Example {#code-example}
+## Code Example
 
 #### A User Model Factory
 

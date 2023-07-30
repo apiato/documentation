@@ -9,17 +9,17 @@ tags:
   - request
 ---
 
-## Definition & Principles {#definition-principles}
+## Definition & Principles
 
 Read [**Porto SAP Documentation (#Actions)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
-## Rules {#rules}
+## Rules
 
 - All Actions MUST be placed in the `app/Containers/{Section}/{Container}/Actions` directory.
 - All Actions MUST extend the `App\Ship\Parents\Actions\Action` class.
 - The parent extension SHOULD be aliased as `ParentAction`.
 
-## Folder Structure {#folder-structure}
+## Folder Structure
 
 ```markdown
 app
@@ -32,7 +32,7 @@ app
                 └── ...
 ```
 
-## Code Example {#code-example}
+## Code Example
 
 ```php
 use ...

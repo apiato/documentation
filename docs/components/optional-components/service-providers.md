@@ -35,7 +35,7 @@ They are the place where you register things like container bindings, event list
 
 - Service Providers CAN be registered on the Ship Main Service Provider, if they are general or are intended to be used by many containers. (Same applies to Aliases).
 
-## Rules {#rules}
+## Rules
 
 - The Main Service Provider will be auto registered by the Ship Engine, so no need to register it manually anywhere.
 - All Main Service Providers MUST extend the `App\Ship\Parents\Providers\MainProvider` class.
@@ -43,7 +43,7 @@ They are the place where you register things like container bindings, event list
 - The Main Service Provider MUST be named `MainServiceProvider` in every container.
 - You MUST not register any Service Provider in the framework (`config/app.php`).
 
-## Folder Structure {#folder-structure}
+## Folder Structure
 
 #### Example: User Container `Service Providers`
 
@@ -61,7 +61,7 @@ They are the place where you register things like container bindings, event list
 
 In this example above only the `AuthServiceProvider` and `EventsServiceProvider` needs to be registered in `MainServiceProvider`. While the `MainServiceProvider` will get automatically registered.
 
-## Code Example {#code-example}
+## Code Example
 
 #### Main Service Provider Example
 

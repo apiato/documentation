@@ -13,11 +13,11 @@ For more detailed information about transformers and their usage,
 you can refer to the [official documentation of Fractal](https://fractal.thephpleague.com/transformers/),
 which is the underlying library used for handling transformations in Apiato.
 
-## Definition & Principles {#definition-principles}
+## Definition & Principles
 
 Read [**Porto SAP Documentation (#Transformers)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
-## Rules {#rules}
+## Rules
 
 - All Transformers MUST be placed in the `app/Containers/{Section}/{Container}/UI/API/Transformers` directory.
 - All Transformers MUST extend the `App\Ship\Parents\Transformers\Transformer` class.
@@ -25,7 +25,7 @@ Read [**Porto SAP Documentation (#Transformers)**](https://github.com/Mahmoudz/P
 - All API responses MUST be formatted via a Transformer.
 - Every Transformer MUST have a `transform` method.
 
-## Folder Structure {#folder-structure}
+## Folder Structure
 
 ```markdown
 app
@@ -40,7 +40,7 @@ app
                         └── ...
 ```
 
-## Code Example {#code-example}
+## Code Example
 
 ```php
 use ...
@@ -145,7 +145,7 @@ public function includeAvatar(User $user): Item
 }
 ```
 
-## Helper Methods {#helper-methods}
+## Helper Methods
 
 ### ifAdmin
 

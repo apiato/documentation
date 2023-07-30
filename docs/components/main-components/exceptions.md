@@ -7,11 +7,11 @@ tags:
   - exception
 ---
 
-## Definition & Principles {#definition-principles}
+## Definition & Principles
 
 Read [**Porto SAP Documentation (#Exceptions)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
-## Rules {#rules}
+## Rules
 
 - All Container Specific Exceptions MUST be placed in the `app/Containers/{Section}/{Container}/Exceptions` directory.
 - All General Exceptions MUST be placed in the `app/Ship/Exceptions` directory.
@@ -19,7 +19,7 @@ Read [**Porto SAP Documentation (#Exceptions)**](https://github.com/Mahmoudz/Por
 - The parent extension SHOULD be aliased as `ParentException`.
 - Every Exception MUST have two properties `code` and `message`.
 
-## Folder Structure {#folder-structure}
+## Folder Structure
 
 ```markdown
 app
@@ -37,7 +37,7 @@ app
         └── ...
 ```
 
-## Code Example {#code-example}
+## Code Example
 
 You can override those values while throwing the error.
 
