@@ -30,7 +30,7 @@ and which method them:
 #### $endpoint {#endpoint}
 
 The `$endpoint = 'verb@uri'` property is used
-to define the endpoints you want to access when making a call using the `makeCall()` function.
+to define the endpoints you want to access when making a call using the `makeCall` method.
 
 ```php
 class RegisterUserTest extends ApiTestCase
@@ -64,15 +64,15 @@ class RegisterUserTest extends ApiTestCase
 }
 ```
 
-To override the value of the `endpoint` property in specific test methods, you can use the `endpoint()` method:
+To override the value of the `endpoint` property in a specific test method, you can use the `endpoint` method:
 ```php
 $this->endpoint('get@myEndpoint')->makeCall();
 ```
-To inject the ID in the endpoint, you can use the `injectId()` method:
+To inject the ID in the endpoint, you can use the `injectId` method:
 ```php
 $this->injectId($user->id)->makeCall();
 ```
-By using the `endpoint()` and `injectId()` methods,
+By using the `endpoint` and `injectId` methods,
 you can customize the endpoint and inject IDs as needed for specific test scenarios.
 
 #### $auth {#auth}
@@ -83,7 +83,7 @@ By default, the `$auth` property is set to true, meaning that authentication is 
 If you do not explicitly define the `$auth` property in your test class, it will be defaulted to true automatically.
 
 In the context of testing, when `$auth` is set to true,
-the `makeCall()` function will handle authentication by creating a testing user
+the `makeCall` method will handle authentication by creating a testing user
 (if one is not already available) and injecting their access token into the headers before making the API call.
 
 It's important to use `$auth = false` only for endpoints that do not require authentication,
@@ -91,7 +91,7 @@ such as registration or login endpoints.
 For protected endpoints that require authentication,
 it's recommended to keep `$auth` as true to ensure the proper handling of authentication during testing.
 
-To override the value of the `auth` property in specific test methods, you can use the `auth()` method:
+To override the value of the `auth` property in specific test methods, you can use the `auth` method:
 ```php
 $response = $this->auth(false)->makeCall();
 ```
@@ -100,7 +100,7 @@ $response = $this->auth(false)->makeCall();
 
 The `$access` property is used
 to define roles or permissions that you want to assign to your testing users within a test class.
-When you use the `getTestingUser()` method,
+When you use the `getTestingUser` method,
 the testing user instance will automatically inherit all the roles and permissions specified in the `$access` property.
 
 By setting the desired roles and permissions in the `$access` property,
@@ -116,7 +116,7 @@ protected array $access = [
 
 To override the value of the `access` property in specific test methods
 and assign different roles or permissions to the testing user,
-you can use the `getTestingUser()` method with the desired roles and permissions as the second argument:
+you can use the `getTestingUser` method with the desired roles and permissions as the second argument:
 ```php
 $this->getTestingUser(null, ['permissions' => 'jump', 'roles' => 'jumper']);
 ```
@@ -383,7 +383,8 @@ An instance of [Faker](https://github.com/FakerPHP/Faker) is automatically provi
 You can access it using `$this->faker`.
 
 :::caution Deprecation warning
-This feature is deprecated and will be removed in the next major release. You should use the `fake()` helper function instead.
+This feature is deprecated and will be removed in the next major release.
+You should use the Laravel's `fake` helper function instead.
 :::
 
 ## Create Live Testing Data {#create-live-testing-data}

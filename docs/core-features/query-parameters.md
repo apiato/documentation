@@ -67,7 +67,7 @@ class GetAllAdminsAction extends Action
     }
 }
 ```
-Using `removeRequestCriteria()` is only meaningful if you have applied RequestCriteria using below methods, otherwise RequestCriteria is not applied automatically thus you don't need to remove it if it is not needed.
+Using `removeRequestCriteria` method is only meaningful if you have applied RequestCriteria using below methods, otherwise RequestCriteria is not applied automatically thus you don't need to remove it if it is not needed.
 
 To use the Criteria in your repository, you can add a new criteria in the boot method of your repository, or directly use in your controller, in order to filter out only a few requests.
 Read more about it [here](https://github.com/andersao/l5-repository#using-the-requestcriteria).

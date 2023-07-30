@@ -15,10 +15,10 @@ BCMath PHP Extension is required to use this feature.
 :::
 
 :::tip
-Make sure to always use the `getHashedKey()` on any model,
+Make sure to always use the `getHashedKey` method on any model,
 whenever you need to return an ID (mainly from [transformers](../components/main-components/transformers))
 weather you are using Hash ID or not.
-If this feature is disabled (`HASH_ID=false`) the `getHashedKey()` will return the normal ID.
+If Hash ID feature is disabled, the `getHashedKey` method will return the normal ID.
 
 ```php
 
@@ -95,6 +95,6 @@ $this->injectId($user->getHashedKey(), skipEncoding: true, replace: '{user_id}')
 ```
 
 :::tip
-`injectId()` is a [test helper function](../testing.md)
+`injectId` method is a [test helper function](../testing.md)
 that will replace the `{any_hashed_id}` in the endpoint with the given ID.
 :::

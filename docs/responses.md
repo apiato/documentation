@@ -120,7 +120,8 @@ In case of returning JSON Data (`JsonApiSerializer`), you may wish to check some
 The transformer allows appending a `ResourceKey` to the transformed resource. You can set the `ResourceKey` in your
 response payload in 2 ways:
 
-1. Manually set it via the respective parameter in the `$this->transform()` call. Note that this will only set the
+1. Manually set it via the respective parameter in the `Controller::transform` method.
+   Note that this will only set the
 `top level` resource key and does not affect the resource keys from `included` resources!
 2. Specify it on the respective `Model`. By overriding $resourceKey, (`protected $resourceKey = 'FooBar';`).
 If no `$resourceKey` is defined at the `Model`, the `ShortClassName` is used as key. For example, the `ShortClassName` of

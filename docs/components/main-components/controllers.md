@@ -83,14 +83,14 @@ class Controller extends WebController
 
 :::tip
 In case you want to handle the same Action differently based on the UI type (e.g., API, Web, CLI), you can set the
-UI on Action with `setUI()` method.
+UI on Action with `setUI` method.
 
 ```php
 $action = app(Action::class);
 $action->setUI('web');
 ```
 
-and get the UI in your Action with `getUI()` method.
+and get the UI in your Action with `getUI` method.
 
 ```php
 $action->getUI(); // will return 'web'

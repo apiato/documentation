@@ -54,7 +54,7 @@ Read [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmoudz/Porto
 
 - All Requests MUST extend the `App\Ship\Parents\Requests\Request` class.
 - The parent extension should be aliased as `ParentRequest`.
-- A Request MUST have a `rules()` function, returning an array and `authorize()` function to check for authorization (can return true when no authorization required).
+- A Request MUST have a `rules` method, returning an array and an `authorize` method to check for authorization (can return true when no authorization required).
 
 ### Folder Structure {#folder-structure}
 
@@ -127,7 +127,7 @@ public function updateUser(UpdateUserRequest $updateUserRequest)
 
 By just injecting the request class you already applied the validation and authorization rules.
 
-When you need to pass data to the Action, you should pass the request Object as it is to the Action's `run()` method parameter.
+When you need to pass data to the Action, you should pass the request Object as is to the Action's `run` method parameter.
 ```php
 public function createAdmin(CreateAdminRequest $request)
 {
@@ -248,7 +248,7 @@ Checkout the [hasAccess](https://apiato.readme.io/docs/requests#section-hasacces
 
 The best way to add a custom authorize function is through a Trait, which can be added to your `Request` classes. In the example below we create a Trait named `IsAuthorPermissionTrait` with a single method called `isAuthor`.
 
-The `isAuthor()` method, in turn, calls a Task to verify that the current user is an author (e.g., if the user has the proper `Role` assigned).
+The `isAuthor` method, in turn, calls a Task to verify that the current user is an author (e.g., if the user has the proper `Role` assigned).
 
 ```php
 trait IsAuthorPermissionTrait
@@ -382,7 +382,7 @@ Consider the following Request data:
 ```
 
 This method lets you specify a list of `$fields` to be accessed and extracted from the `$request`. This is done using the
-DOT notation. Finally, call the `sanitizeInput()` method on the `$request`:
+DOT notation. Finally, call the `sanitizeInput` method on the `$request`:
 
 ```php
 $fields = [

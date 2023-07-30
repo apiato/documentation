@@ -12,7 +12,7 @@ Read [**Porto SAP Documentation (#Transformers)**](https://github.com/Mahmoudz/P
 - All Transformers MUST extend the `App\Ship\Parents\Transformers\Transformer` class.
 - The parent extension should be aliased as `ParentTransformer`.
 - All API responses MUST be formatted via a Transformer.
-- Every Transformer MUST have a `transform()` function.
+- Every Transformer MUST have a `transform` method.
 
 ### Folder Structure {#folder-structure}
 
@@ -166,9 +166,9 @@ protected $defaultIncludes = [
 
 You need to have `includeUser` and `includeTags` functions defined on the transformer. Look at the full examples above.
 
-## Transformer Available helper functions: {#transformer-available-helper-functions}
+## Transformer Available helper methods: {#transformer-available-helper-methods}
 
-- `user()`: returns current authenticated user object.
+- `user`: returns current authenticated user object.
 
 - `ifAdmin($adminResponse, $clientResponse)`: merges normal client response with the admin extra or modified results, when current authenticated user is Admin. Look at the full examples above.
 
