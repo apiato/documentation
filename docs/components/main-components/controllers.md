@@ -18,7 +18,7 @@ Read [**Porto SAP Documentation (#Controllers)**](https://github.com/Mahmoudz/Po
 
 ### Rules {#rules}
 
-- All Controllers MUST be placed in the `App\Containers\{Section}\{Container}\UI\{API|WEB}\Controllers` directory.
+- All Controllers MUST be placed in the `app/Containers/{Section}/{Container}/UI/{API|WEB}/Controllers` directory.
 - All API Controllers MUST extend the `App\Ship\Parents\Controllers\ApiController` class.
 - All Web Controllers MUST extend the `App\Ship\Parents\Controllers\WebController` class.
 - Controllers MUST only call the `run` or `transactionalRun` method of Actions.
