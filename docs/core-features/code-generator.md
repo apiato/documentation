@@ -108,7 +108,7 @@ Route generated successfully.
 
 #### Result {#result}
 
-`CreateCar.v1.public.php` file will be created in `App\Containers\AppSection\Car\UI\API\Routes`
+`CreateCar.v1.public.php` file will be created in `app/Containers/AppSection/Car/UI/API/Routes`
 
 ## Custom Code Stubs (aka. Customizing the Generator) {#custom-code-stubs}
 

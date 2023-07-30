@@ -232,7 +232,7 @@ Feel free to extend them to include more info about your API from the `app/Conta
 
 Default, the documentation title is in English `en` localization.
 
-See which locales are supported by going in `App\Containers\Vendor\Documentation\ApiDocJs\shared`
+See which locales are supported by going in `app/Containers/Vendor/Documentation/ApiDocJs/shared`
 
 There will be some `header.template.{locale}.md` files in the folder.
 
