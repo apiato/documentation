@@ -1,12 +1,13 @@
 ---
 sidebar_position: 5
 title: Tasks
+tags:
+  - component
+  - main-component
+  - task
+  - sub-action
+  - action
 ---
-
-- [Definition & Principles](#definition-principles)
-- [Rules](#rules)
-- [Folder Structure](#folder-structure)
-- [Code Sample](#code-sample)
 
 ### Definition & Principles {#definition-principles}
 
@@ -14,62 +15,34 @@ Read [**Porto SAP Documentation (#Tasks)**](https://github.com/Mahmoudz/Porto#de
 
 ### Rules {#rules}
 
+- All Tasks MUST be placed in `app/Containers/{Section}/{Container}/Tasks` directory.
 - All Tasks MUST extend the `App\Ship\Parents\Tasks\Task` class.
 - The parent extension SHOULD be aliased as `ParentTask`.
 
 ### Folder Structure {#folder-structure}
 
-```
- - app
-    - Containers
-        - {Section}
-            - {Container}
-                - Tasks
-                    - ConfirmUserEmailTask.php
-                    - GenerateEmailConfirmationUrlTask.php
-                    - SendConfirmationEmailTask.php
-                    - ValidateConfirmationCodeTask.php
-                    - SetUserEmailTask.php
-                    - ...
+```markdown
+app
+└── Containers
+    └── Section
+        └── Container
+            └── Tasks
+                ├── CreateResourceTask.php
+                ├── DeleteResourceTask.php
+                └── ...
 ```
 
 ### Code Sample {#code-sample}
 
-#### Task
-
 ```php
-class FindUserByIdTask extends Task
+use ...
+use App\Ship\Parents\Tasks\Task as ParentTask;
+
+class DemoTask extends ParentTask
 {
-    private $userRepository;
-
-    public function __construct(UserRepository $userRepository)
+    public function run(int $a, int $b): int
     {
-        $this->userRepository = $userRepository;
-    }
-
-    public function run($id)
-    {
-        try {
-            $user = $this->userRepository->find($id);
-        } catch (Exception $e) {
-            throw new UserNotFoundException();
-        }
-
-        return $user;
-    }
-}
-```
-
-#### Task usage from an Action
-
-```php
-class ValidateUserEmailByConfirmationCodeAction extends Action
-{
-    public function run($userId, $code)
-    {
-        app(ValidateConfirmationCodeTask::class)->run($userId, $code);
-        $user = app(FindUserByIdTask::class)->run($userId);
-        app(ConfirmUserEmailTask::class)->run($user);
+        return $a + $b;
     }
 }
 ```
