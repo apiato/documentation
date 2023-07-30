@@ -43,7 +43,7 @@ If 2 seeders classes have the same name but live in different containers, one of
                         - ...
 ```
 
-### Code Samples {#code-samples}
+### Code Example {#code-example}
 
 #### Demo Seeder
 

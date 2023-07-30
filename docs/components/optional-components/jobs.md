@@ -36,7 +36,7 @@ title: Jobs
           - DoSomethingElseJob.php
 ```
 
-### Code Samples {#code-samples}
+### Code Example {#code-example}
 
 #### DemoJob
 

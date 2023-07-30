@@ -47,7 +47,7 @@ app
                         └── ...
 ```
 
-### Code Sample {#code-sample}
+### Code Example {#code-example}
 
 Routes are defined exactly like the way you defined them in Laravel.
 

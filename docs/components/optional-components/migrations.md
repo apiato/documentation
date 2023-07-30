@@ -36,7 +36,7 @@ Migrations are the version control of your database. They are very useful for ge
                           - ...
 ```
 
-### Code Samples {#code-samples}
+### Code Example {#code-example}
 
 #### User CreateDemoTable Migrations
 

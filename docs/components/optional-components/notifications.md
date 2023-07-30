@@ -45,7 +45,7 @@ When using the Database channel, the notifications will be stored in a database 
       - ...
 ```
 
-### Code Samples {#code-samples}
+### Code Example {#code-example}
 
 #### A Simple Notification
 

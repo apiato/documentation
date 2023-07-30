@@ -50,7 +50,7 @@ In each Apiato container, there are two types of config files:
   - ...
 ```
 
-### Code Samples {#code-samples}
+### Code Example {#code-example}
 
 #### Example simple Config file
 

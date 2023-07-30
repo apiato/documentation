@@ -76,7 +76,7 @@ Read [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmoudz/Porto
                             - ...
 ```
 
-### Code Samples {#code-samples}
+### Code Example {#code-example}
 
 #### Request
 

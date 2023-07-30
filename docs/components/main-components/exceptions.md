@@ -37,7 +37,7 @@ app
         └── ...
 ```
 
-### Code Samples {#code-samples}
+### Code Example {#code-example}
 
 You can override those values while throwing the error.
 

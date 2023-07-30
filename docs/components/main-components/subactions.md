@@ -35,7 +35,7 @@ app
                 └── ...
 ```
 
-### Code Sample {#code-sample}
+### Code Example {#code-example}
 
 
 ```php

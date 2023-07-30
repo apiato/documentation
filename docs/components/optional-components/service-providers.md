@@ -61,7 +61,7 @@ They are the place where you register things like container bindings, event list
 
 In this example above only the `AuthServiceProvider` and `EventsServiceProvider` needs to be registered in `MainServiceProvider`. While the `MainServiceProvider` will get automatically registered.
 
-### Code Samples {#code-samples}
+### Code Example {#code-example}
 
 #### Main Service Provider Example
 

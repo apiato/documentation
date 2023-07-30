@@ -32,7 +32,7 @@ We create Value Object when we need it to represent/serve/manipulate some data (
           - ...
 ```
 
-### Code Sample {#code-sample}
+### Code Example {#code-example}
 
 ```php
 class Location extends Value

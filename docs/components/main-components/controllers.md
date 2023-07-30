@@ -44,7 +44,7 @@ app
                         └── ...
 ```
 
-### Code Sample {#code-sample}
+### Code Example {#code-example}
 
 #### API Controller
 
@@ -112,7 +112,7 @@ This method is incredibly useful and will be used in most cases.
 
 - The first required parameter accepts data as an object or a Collection of objects.
 - The second required parameter is the transformer class.
-- The third optional parameter allows you to specify the [includes](transformers#relationships-include) that should be returned in the response.
+- The third optional parameter allows you to specify the [includes](transformers#handling-relationships) that should be returned in the response.
 - The fourth optional parameter lets you include metadata in the response. This metadata will be returned under the `meta` key in the `custom` key.
 
 ```php

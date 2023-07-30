@@ -48,7 +48,7 @@ The Mail component allows you to describe an email and send it whenever needed.
       - ...
 ```
 
-### Code Samples {#code-samples}
+### Code Example {#code-example}
 
 #### A simple Mail
 

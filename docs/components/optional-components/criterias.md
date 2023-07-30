@@ -44,7 +44,7 @@ Without using a Criteria class, you can add your query conditions to a Repositor
             - ...
 ```
 
-### Code Samples {#code-samples}
+### Code Example {#code-example}
 
 #### A Shared Criteria
 

@@ -45,7 +45,7 @@ _For example the `jwt.auth` middleware "provided by the JWT package" should be r
             - VerifyCsrfToken.php
 ```
 
-### Code Sample {#code-sample}
+### Code Example {#code-example}
 
 #### Middleware Registration Inside the Container Example
 

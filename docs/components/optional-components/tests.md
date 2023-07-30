@@ -60,7 +60,7 @@ The two most essential Test types for this architecture are the Unit Tests and t
                                 - ...
 ```
 
-### Code Sample {#code-sample}
+### Code Example {#code-example}
 
 ```php
 class DeleteUserTest extends TestCase

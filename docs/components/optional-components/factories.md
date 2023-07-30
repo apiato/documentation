@@ -37,7 +37,7 @@ Factories are mainly used from Tests.
                         - ...
 ```
 
-### Code Samples {#code-samples}
+### Code Example {#code-example}
 
 #### A User Model Factory
 

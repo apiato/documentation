@@ -45,7 +45,7 @@ title: Commands
       - ...
 ```
 
-### Code Samples {#code-samples}
+### Code Example {#code-example}
 
 #### A Simple Command
 
