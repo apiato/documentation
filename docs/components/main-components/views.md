@@ -73,5 +73,5 @@ For example, a view named `welcome-page` inside `MySection` > `MyContainer` can 
 If you try to access it without the namespace `view('just-welcome')`, it will not find your View.
 
 :::note
-View files in **Ship** folder are exception to this and will be namespaced with the word "**ship**" instead of section name, e.g. `view(ship::welcome-page)`
+View files in the `app/Ship/views` directory are exception to this and will be namespaced with the word "**ship**" instead of section name, e.g. `view(ship::welcome-page)`
 :::

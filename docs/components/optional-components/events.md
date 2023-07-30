@@ -23,7 +23,8 @@ title: Events
 
 ### Rules {#rules}
 
-- Event classes CAN be placed inside the Containers in Events folders or on the Ship for the general Events.
+- Event classes MUST be placed in `app/Containers/{Section}/{Container}/Events`.
+- General Events MUST be placed in `app/Ship/Events`.
 - All Events MUST extend the `App\Ship\Parents\Events\Event` class.
 
 ### Folder Structure {#folder-structure}

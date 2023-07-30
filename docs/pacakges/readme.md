@@ -41,7 +41,7 @@ it on `Packagist` in order for it to be available via `Composer`. Please see a r
 to `GitHub` and release it via `Packagist`.
 
 In particular, the only thing that needs to be done, when developing a container is to provide a specific `composer.json`
-file within the main folder of the container.
+file in the root of the container directory.
 
 An example of such a `composer.json` file is shown below:
 
@@ -57,7 +57,7 @@ An example of such a `composer.json` file is shown below:
   "extra": {
     "apiato": {
       "container": {
-        "name": "Foo"   // The name of the container within the /app/Containers/Vendor folder
+        "name": "Foo"   // The name of the container in the app/Containers/Vendor directory
       }
     }
   }

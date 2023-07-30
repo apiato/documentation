@@ -189,7 +189,7 @@ Config file will be copied to `app/Ship/Configs/vendor-documentation.php`
 2. Fix the namespaces  
 3. Remove `apiato/documentation-generator-container` dependency from project root composer.json  
 4. Update `section_name` & `html_files` in container configs  
-5. Update `apidoc.json` files in `ApiDocJs/private` & `public` folders and fix the `filename`  
+5. Update `apidoc.private.json` & `apidoc.public.json` files in `ApiDocJs/Configs` and fix the `filename`  
 
 ```json
 {

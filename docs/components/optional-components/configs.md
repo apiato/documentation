@@ -23,8 +23,8 @@ In each Apiato container, there are two types of config files:
 
 ### Rules {#rules}
 
-- When publishing a third party package config file, move it manually to its container or to the Ship Configs folder in case it is generic.
-- Framework config files (provided by Laravel) lives at the default config directory on the root of the project.
+- When publishing a third party package config file, move it manually to its container or `app/Ship/Configs` in case it is generic.
+- Framework config files (provided by Laravel) lives at the default `config` folder on the root of the project.
 - You SHOULD NOT add any config file to the root `config` directory.
 - The container specific config file, MUST be named this way:  
   camelCase of its Section name + `-` + camelCase of its Container name, to prevent conflicts between third party packages and container specific packages.  

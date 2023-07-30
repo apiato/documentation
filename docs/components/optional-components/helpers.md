@@ -22,7 +22,7 @@ title: Helpers
 
 ### Rules {#rules}
 
-- Helpers CAN be placed inside the Containers in Helpers folder or on the Ship for the general Helpers.
+- Helpers MAY be placed in `app/Containers/{Section}/{Container}/Helpers` or `app/Ship/Helpers` for the general Helpers.
 
 ### Folder Structure {#folder-structure}
 

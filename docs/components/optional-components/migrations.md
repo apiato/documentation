@@ -16,8 +16,7 @@ Migrations are the version control of your database. They are very useful for ge
 
 ### Principles {#principles}
 
-- Migrations SHOULD be created inside the Containers folders.
-
+- Migrations MUST be placed in `app/Containers/{Section}/{Container}/Data/Migrations` directory.
 - Migrations will be autoloaded by the framework.
 
 ### Rules {#rules}
