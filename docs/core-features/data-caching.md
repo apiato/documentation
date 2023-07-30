@@ -26,4 +26,6 @@ To set cache settings on each repository, first the caching must be enabled, sec
 
 For more details about all the properties refer to [the L5 repository package documentation](https://github.com/andersao/l5-repository#cache-config).
 
-Note: you don't need to use the `CacheableRepository` trait or implement the `CacheableInterface` since they both exist on the Abstract repository class (`App\Ship\Parents\Repositories\Repository`).
+Note:
+you don't need to use the `CacheableRepository` trait
+or implement the `CacheableInterface` since they both exist in the `App\Ship\Parents\Repositories\Repository` class.

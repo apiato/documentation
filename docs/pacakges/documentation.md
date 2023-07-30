@@ -214,8 +214,7 @@ By default, users need `access-private-docs` permission to access private docs.
 ### Edit Default Generated Values in Templates {#edit-default-generated-values-in-templates}
 
 Apiato by defaults generates 2 API documentations, each one has its own `apidoc.json` file. Both can be modified from 
-the Documentation Container in `App\Containers\Vendor\Documentation\ApiDocJs` and need Source code modification.
-
+the Documentation Container in `app/Containers/Vendor/Documentation/ApiDocJs` and need Source code modification.
 
 ### Edit the Documentation Header {#edit-the-documentation-header}
 

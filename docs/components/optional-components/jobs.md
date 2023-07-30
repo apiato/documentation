@@ -22,7 +22,7 @@ title: Jobs
 
 ### Rules {#rules}
 
-- All Jobs MUST extend `App\Ship\Parents\Jobs\Job`.
+- All Jobs MUST extend the `App\Ship\Parents\Jobs\Job` class.
 
 ### Folder Structure {#folder-structure}
 

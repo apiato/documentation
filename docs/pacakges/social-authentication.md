@@ -160,7 +160,7 @@ Config file will be copied to `app/Ship/Configs/vendor-socialAuth.php`
 ### Support new Auth Provider {#support-new-auth-provide}
 1. Publish the configs
 2. Create your new auth provider by implementing `App\Containers\Vendor\SocialAuth\Contracts\SocialAuthProvider` interface.  
-   To get an idea about how to implement your own provider you can check out supported providers here `App\Containers\Vendor\SocialAuth\SocialAuthProviders`.
+   To get an idea about how to implement your own provider you can check out supported providers here `app/Containers/Vendor/SocialAuth/SocialAuthProviders`.
 3. Add your new provider to `providers` array in the `vendor-socialAuth` config.
 ```php
     'providers' => [

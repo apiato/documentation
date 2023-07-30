@@ -38,7 +38,7 @@ They are the place where you register things like container bindings, event list
 ### Rules {#rules}
 
 - The Main Service Provider will be auto registered by the Ship Engine, so no need to register it manually anywhere.
-- All Main Service Providers MUST extend `App\Ship\Parents\Providers\MainProvider` class.
+- All Main Service Providers MUST extend the `App\Ship\Parents\Providers\MainProvider` class.
 - All other types of Service Providers (EventsProvider, BroadcastsProvider, AuthProvider, MiddlewareProvider, RoutesProvider) must extend their parent providers located in `App\Ship\Parents\Providers`.
 - The Main Service Provider MUST be named `MainServiceProvider` in every container.
 - You should not register any Service Provider in the framework (`config/app.php`).

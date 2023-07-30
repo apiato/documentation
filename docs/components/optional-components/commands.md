@@ -25,7 +25,7 @@ title: Commands
 
 ### Rules {#rules}
 
-- All Commands MUST extend `App\Ship\Parents\Commands\ConsoleCommand`.
+- All Commands MUST extend the `App\Ship\Parents\Commands\ConsoleCommand` class.
 
 ### Folder Structure {#folder-structure}
 

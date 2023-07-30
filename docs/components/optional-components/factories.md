@@ -22,7 +22,7 @@ Factories are mainly used from Tests.
 
 ### Rules {#rules}
 
-- All Factories MUST extend `App\Ship\Parents\Factories\Factory`.
+- All Factories MUST extend the `App\Ship\Parents\Factories\Factory` class.
 
 ### Folder Structure {#folder-structure}
 
