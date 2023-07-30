@@ -24,7 +24,7 @@ You can enable and disable Middlewares as you wish.
 
 - If a Middleware is written inside a Container then it MUST be registered inside that Container.
 - To register Middlewares in a Container the container needs to have a `MiddlewareServiceProvider`, and like all other Container Providers it MUST be registered in the `MainServiceProvider` of that Container.
-- General Middlewares SHOULD live in the `app/Ship/Middlewares` directory and are registered in `App\Ship\Kernels\HttpKernel` class.
+- General Middlewares SHOULD live in `app/Ship/Middlewares` and are registered in the `App\Ship\Kernels\HttpKernel` class.
 
 - Third Party packages Middleware CAN be registered in Containers or on the Ship layer (wherever they make more sense).
 _For example the `jwt.auth` middleware "provided by the JWT package" should be registered in the Authentication Container (`app/Containers/AppSection/Authentication/Providers/MiddlewareServiceProvider.php`)_.

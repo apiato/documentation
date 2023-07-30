@@ -53,7 +53,8 @@ RequestCriteria is a standard Criteria implementation. It enables filters to per
 
 You can perform a dynamic search, filter the data and customize the queries.
 
-Apiato provides `addRequestCriteria()` & `removeRequestCriteria()` methods which are available in both `Actions` and `Tasks` provided by the `Apiato\Core\Traits\HasRequestCriteriaTrait`.  
+Apiato provides `addRequestCriteria` & `removeRequestCriteria` methods which are available in both
+`Actions` and `Tasks` provided by the `Apiato\Core\Traits\HasRequestCriteriaTrait` trait.  
 
 Usage example:
 ```php

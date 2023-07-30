@@ -109,7 +109,7 @@ By default Apiato is configured to use Log Driver `MAIL_DRIVER=log`, you can cha
 
 ## Queueing A Notification {#queueing}
 
-To queue a notification you should use `Illuminate\Bus\Queueable` and implement `Illuminate\Contracts\Queue\ShouldQueue`.
+To queue a notification you should use `Illuminate\Bus\Queueable` trait and implement the `Illuminate\Contracts\Queue\ShouldQueue` contract.
 
 :::info Further reading
 More info at [Laravel Docs](https://laravel.com/docs/mail).

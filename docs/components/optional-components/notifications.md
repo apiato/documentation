@@ -112,7 +112,8 @@ Checkout [laravel notification channels](https://laravel-notification-channels.c
 
 ## Queueing a Notification {#queueing}
 
-To queue a notification you should use `Illuminate\Bus\Queueable` and implement `Illuminate\Contracts\Queue\ShouldQueue`.
+To queue a notification you should use the `Illuminate\Bus\Queueable` trait
+and implement `Illuminate\Contracts\Queue\ShouldQueue` contract.
 
 ## Use DB channel {#db-channel}
 
