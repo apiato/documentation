@@ -1,180 +1,202 @@
 ---
 sidebar_position: 8
 title: Transformers
+tags:
+  - component
+  - main-component
+  - transformer
+  - controller
+  - model
 ---
 
-### Definition & Principles {#definition-principles}
+For more detailed information about transformers and their usage,
+you can refer to the [official documentation of Fractal](https://fractal.thephpleague.com/transformers/),
+which is the underlying library used for handling transformations in Apiato.
+
+## Definition & Principles {#definition-principles}
 
 Read [**Porto SAP Documentation (#Transformers)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
-### Rules {#rules}
+## Rules {#rules}
 
+- All Transformers MUST be placed in the `app/Containers/{Section}/{Container}/UI/API/Transformers` directory.
 - All Transformers MUST extend the `App\Ship\Parents\Transformers\Transformer` class.
 - The parent extension SHOULD be aliased as `ParentTransformer`.
 - All API responses MUST be formatted via a Transformer.
 - Every Transformer MUST have a `transform` method.
 
-### Folder Structure {#folder-structure}
+## Folder Structure {#folder-structure}
 
+```markdown
+app
+└── Containers
+    └── Section
+        └── Container
+            └── UI
+                └── API
+                    └── Transformers
+                        ├── TransformerA.php
+                        ├── TransformerB.php
+                        └── ...
 ```
- - app
-    - Containers
-        - {Section}
-            - {Container}
-                - UI
-                    - API
-                        - Transformers
-                            - UserTransformer.php
-                            - ...
-```
 
-### Code Samples {#code-samples}
-
-#### Reward Transformer with Country relation
+## Code Example {#code-example}
 
 ```php
-class ItemTransformer extends Transformer
+use ...
+use App\Ship\Parents\Transformers\Transformer as ParentTransformer;
+
+class UserTransformer extends ParentTransformer
 {
-    protected $availableIncludes = [
-        'images',
-    ];
+    protected $availableIncludes = [];
 
-    protected $defaultIncludes = [
-        'roles',
-    ];
+    protected $defaultIncludes = [];
 
-    public function transform(Item $item)
-    {
-        $response = [
-            'object'      => $item->getResourceKey(),
-            'id'          => $item->getHashedKey(),
-            'name'        => $item->name,
-            'description' => $item->description,
-            'price'       => (float)$item->price,
-            'weight'      => (float)$item->weight,
-            'created_at'  => $item->created_at,
-            'updated_at'  => $item->updated_at,
-            'readable_created_at' => $item->created_at->diffForHumans(),
-            'readable_updated_at' => $item->updated_at->diffForHumans(),
-        ];
-
-        // add more or modify data for Admins only
-        $response = $this->ifAdmin([
-            'real_id'    => $item->id,
-            'deleted_at' => $item->deleted_at,
-        ], $response);
-
-        return $response;
-    }
-
-    public function includeImages(Item $item)
-    {
-        return $this->collection($item->images, new ItemImageTransformer());
-    }
-
-    public function includeRoles(User $user)
-    {
-        return $this->collection($user->roles, new RoleTransformer());
-    }
-}
-```
-
-#### Usage from Controller (Single Item)
-
-```php
-$user = $this->getUser();
-
-$this->transform($user, UserTransformer::class);
-
-// more options are available
-```
-
-### Relationships (include) {#relationships-include}
-
-Loading relationships in Transformer (calling other Transformers):
-
-This can be done in 2 ways:
-
-1. By the User, he can specify what relations to return in response.
-
-2. By the Developer, define what relations to include at run time.
-
-#### From Front-end {#from-front-end}
-
-You can request data with their relationships directly from the API call using `include=tags,user` but first the Transformer need to have the `availableIncludes` defined with their functions like this:
-
-```php
-class AccountTransformer extends Transformer
-{
-    protected $availableIncludes = [
-        'tags',
-        'user',
-    ];
-
-    public function transform(Account $account)
+    public function transform(Model $model)
     {
         return [
-            'id'       => (int)$account->id,
-            'url'      => $account->url,
-            'username' => $account->username,
-            'secret'   => $account->secret,
-            'note'     => $account->note,
+            'object' => $model->getResourceKey(),
+            'id' => $model->getHashedKey(),
+            'another_field' => $model->anotherField,
         ];
-    }
-
-    public function includeTags(Account $account)
-    {
-        // use collection with `multi` relationship
-        return $this->collection($account->tags, new TagTransformer());
-    }
-
-    public function includeUser(Account $account)
-    {
-        // use `item` with single relationship
-        return $this->item($account->user, new UserTransformer());
     }
 }
 ```
 
-Now to get the `Tags` with the response when Accounts are requested pass the `?include=tags` parameter with the [GET] request.
+## Model Relationships {#resource-relationships}
 
-To get Tags with User use the comma separator: `?include=tags,user`.
+Model relationships can be included in the response either per API consumer request or by default.
 
-#### From Back-end {#from-back-end}
-
-From the controller you can dynamically set the `DefaultInclude` using (`setDefaultIncludes`) anytime you want.
-
-```php
-return $this->transform($rewards, ProductsTransformer::class)->setDefaultIncludes(['tags']);
-```
-
-You need to have `includeTags` method defined on the transformer. Look at the full examples above.
-
-If you want to include a relation with every response from this transformer you can define the relation directly in the transformer on (`$defaultIncludes`)
+To include relationships in the response,
+the Transformer must have the `availableIncludes` or `defaultIncludes` property defined,
+and the `include{RelationshipName}` method implemented.
+The method name MUST be in PascalCase format
+and match the relationship name as defined in the `availableIncludes` or `defaultIncludes` property.
+Additionally, the method name MUST be prefixed with the word `include`.
 
 ```php
 protected $availableIncludes = [
-    'users',
+    'categoryItem',
 ];
 
-protected $defaultIncludes = [
-    'tags',
-];
-
-// ..
+public function includeCategoryItem(Model $model)
+{
+    // Implementation of including the 'categoryItem' relationship in the response
+    // ...
+}
 ```
 
-You need to have `includeUser` and `includeTags` methods defined on the transformer. Look at the full examples above.
+### Include Per API Consumer Request {#include-per-api-consumer-request}
 
-## Transformer Available helper methods: {#transformer-available-helper-methods}
+To include a relationship in the response,
+you must first define the relationship in the `availableIncludes` property of the transformer.
 
-- `user`: returns current authenticated user object.
+In this example, the `UserTransformer` has the `roles` and `avatar` relationships defined as available includes.
 
-- `ifAdmin($adminResponse, $clientResponse)`: merges normal client response with the admin extra or modified results, when current authenticated user is Admin. Look at the full examples above.
+To request the `Roles` data along with the `User` resource,
+pass the `?include=roles` query parameter with the API request.
 
-- `nullableItem($model->something, new SomethingTransformer())`: it is a shorthand for 
+To request multiple relationship includes at once, use the comma separator, for example: `?include=roles,avatar`.
+
 ```php
-$model->something ? $this->item($model->something, new SomethingTransformer()) : $this->primitive(null)
+protected $availableIncludes = [
+    'roles',
+    'avatar',
+];
+
+public function includeRoles(User $user): Collection
+{
+    return $this->collection($user->roles, new RoleTransformer());
+}
+
+public function includeAvatar(User $user): Item
+{
+    return $this->item($user->avatar, new ImageTransformer());
+}
+```
+If the relationship is a collection, the `include{RelationshipName}` method should return a `Collection` object.
+If the relationship is a single model, the `include{RelationshipName}` method should return an `Item` object.
+You can use the `collection` and `item` methods to create the corresponding Fractal objects.
+
+By defining the `availableIncludes` and implementing the corresponding `include{RelationshipName}` methods,
+the API consumers can control which related data they want to include in the response,
+improving the flexibility and efficiency of your API.
+
+### Include By Default {#include-by-default}
+
+To automatically include a relationship in every response from the transformer,
+you can define the relationship directly in the transformer's `defaultIncludes` property.
+In this example, the `UserTransformer` has the `avatar` relationship defined as a default include.
+
+By setting default includes,
+the specified relationships will be automatically included in every response generated by this transformer,
+without the need for API consumers to explicitly request them.
+This can help simplify responses and reduce the number of additional API requests for related data,
+improving the overall efficiency of the API.
+
+```php
+protected $defaultIncludes = [
+    'avatar',
+];
+
+public function includeAvatar(User $user): Item
+{
+    return $this->item($user->avatar, new ImageTransformer());
+}
 ```
 
-For more information about the Transformers read [this](https://fractal.thephpleague.com/transformers/).
+## Helper Methods {#helper-methods}
+
+### ifAdmin
+
+The `ifAdmin` method is used
+to merge the normal client response with additional or modified results intended for admin users.
+
+```php
+public function transform(Model $model)
+{
+    $response = [
+        'object' => $model->getResourceKey(),
+        'id' => $model->getHashedKey(),
+        'another_field' => $model->anotherField,
+    ];
+
+    return $this->ifAdmin([
+        'real_id' => $model->id,
+        'created_at' => $model->created_at,
+        'updated_at' => $model->updated_at,
+        'readable_created_at' => $model->created_at->diffForHumans(),
+        'readable_updated_at' => $model->updated_at->diffForHumans(),
+    ], $response);
+}
+```
+
+### nullableItem
+
+The `nullableItem` method returns an item if the model has a specific relationship, otherwise, it returns `null`.
+
+```php
+use League\Fractal\Resource\Item;
+use League\Fractal\Resource\Primitive;
+
+public function includeRelation(Model $model): Primitive|Item
+{
+    return $this->nullableItem($model->relation, new RelationTransformer();
+}
+```
+
+If `$model->relation` is not null (meaning it has a related model),
+the method returns an item formatted using the specified transformer.
+Otherwise, it returns `null`.
+
+The `nullableItem` method is a shortcut for the following code:
+
+```php
+use League\Fractal\Resource\Item;
+use League\Fractal\Resource\Primitive;
+
+public function includeRelation(Model $model): Primitive|Item
+{
+    return $model->relation ? $this->item($model->relation, new RelationTransformer()) : $this->primitive(null)
+}
+```
