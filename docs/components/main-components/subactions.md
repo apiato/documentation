@@ -1,12 +1,16 @@
 ---
 sidebar_position: 10
 title: Sub Actions
+tags:
+  - component
+  - main-component
+  - sub-action
+  - action
+  - controller
+  - request
 ---
 
-- [Definition & Principles](#definition-principles)
-- [Rules](#rules)
-- [Folder Structure](#folder-structure)
-- [Code Sample](#code-sample)
+Every feature available for Actions, are also available in SubActions.
 
 ### Definition & Principles {#definition-principles}
 
@@ -14,36 +18,40 @@ Read [**Porto SAP Documentation (#Sub-Actions)**](https://github.com/Mahmoudz/Po
 
 ### Rules {#rules}
 
-- All SubActions MUST extend `App\Ship\Parents\Actions\SubAction`.
-- The parent extension should be aliased as `ParentSubAction`.
+- All SubActions MUST be placed in `app/Containers/{Section}/{Container}/Actions` directory.
+- All SubActions MUST extend the `App\Ship\Parents\Actions\SubAction` class.
+- The parent extension SHOULD be aliased as `ParentSubAction`.
 
 ### Folder Structure {#folder-structure}
 
-```
- - app
-    - Containers
-        - {section-name}
-            - {container-name}
-                - Actions
-                    - ValidateAddressSubAction.php
-                    - BuildOrderSubAction.php
-                    - ...
+```markdown
+app
+└── Containers
+    └── Section
+        └── Container
+            └── Actions
+                ├── ValidateAddressSubAction.php
+                ├── BuildOrderSubAction.php
+                └── ...
 ```
 
 ### Code Sample {#code-sample}
 
-#### ExampleSubAction
 
 ```php
-class ExampleSubAction extends SubAction
+use ...
+use App\Ship\Parents\Actions\SubAction as ParentSubAction;
+
+class DemoSubAction extends ParentSubAction
 {
-    public function run(SomeRequest $request)
+    public function __construct(
+        private readonly DemoTask $demoTask
+    ) {
+    }
+
+    public function run(array $data)
     {
-        app(SomeTask::class)->run($request);
+        return $this->demoTask->run($data);
     }
 }
 ```
-
-:::note
-Every feature available for Actions, are also available in SubActions.
-:::
