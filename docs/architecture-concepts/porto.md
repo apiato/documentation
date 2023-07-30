@@ -44,7 +44,7 @@ The Ship layer contains the infrastructure code, which consists of shared code u
 ```markdown
 app
 ├── Containers
-│   ├── SectionName
+│   ├── Section
 │   │   └── Container
 │   │       ├── Actions
 │   │       ├── Configs

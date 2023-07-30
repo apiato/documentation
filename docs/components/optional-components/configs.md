@@ -35,10 +35,10 @@ In each Apiato container, there are two types of config files:
 ```
 - app
   - Containers
-    {section-name}
-      - {container-name}
+    {Section}
+      - {Container}
         - Configs
-          - {section-name}-{container-name}.php
+          - {Section}-{Container}.php
           - package-config-file1.php
           - ...
   - Ship
@@ -55,7 +55,7 @@ In each Apiato container, there are two types of config files:
 #### Example simple Config file
 
 ```php
-// app/Containers/{SectionName}/{ContainerName}/Configs/{section-name}-{container-name}.php
+// app/Containers/{Section}/{Container}/Configs/{Section}-{Container}.php
 return [
 
     /*
@@ -69,8 +69,8 @@ return [
 ```
 You can access the respective configuration key like this:
 ```php
-$value = Config::get('{section-name}-{container-name}.namespace');     // returns 'App'
-$value = config('{section-name}-{container-name}.namespace');          // same, but using laravel helper function
+$value = Config::get('{Section}-{Container}.namespace');     // returns 'App'
+$value = config('{Section}-{Container}.namespace');          // same, but using laravel helper function
 ```
 
 :::info Further reading

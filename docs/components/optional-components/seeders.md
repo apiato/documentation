@@ -40,8 +40,8 @@ If 2 seeders classes have the same name but live in different containers, one of
             - {Container}
                  - Data
                     - Seeders
-                        - ContainerNameRolesSeeder_1.php
-                        - ContainerNamePermissionsSeeder_2.php
+                        - RolesSeeder_1.php
+                        - PermissionsSeeder_2.php
                         - ...
 ```
 
