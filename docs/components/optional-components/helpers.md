@@ -18,7 +18,7 @@ title: Helpers
 - Helpers SHOULD be created inside the Containers. However, general Helpers CAN be created in the Ship layer.
 - You can create as many helper files as you need, per container.
 - You can implement as many helper functions as you need, per helper file.
-- All Helper files will be autoloaded by the framework.
+- The framework will autoload all Helper files.
 
 ### Rules {#rules}
 

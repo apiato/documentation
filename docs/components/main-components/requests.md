@@ -200,7 +200,7 @@ class ConfirmUserEmailRequest extends Request
 
 The **$access** property allows the user to define a set of Roles and Permissions that can access this endpoint.
 
-The `$access` property is used by the `hasAccess` function defined below in the `authorize` function, to check if the user has the necessary Roles & Permissions to call this endpoint (basically access the controller function where this request object is injected).
+The `$access` property is used by the `hasAccess` method defined below in the `authorize` method, to check if the user has the necessary Roles & Permissions to call this endpoint (basically access the controller function where this request object is injected).
 
 Example:
 
@@ -232,13 +232,13 @@ you can also use the `array notation`. The example from above would look like th
     ];
 ```
 
-## How the authorize function work {#how-the-authorize-function-work}
+## How the authorize method work {#how-the-authorize-method-work}
 
-The `authorize` function is calling a `check` function which accepts an array of function names. Each of those functions returns boolean.
+The `authorize` method is calling a `check` method which accepts an array of method names. Each of those methods returns boolean.
 
-In the example above we are calling three functions `hasAccess`, `isOwner` and `isKing`.
+In the example above we are calling three methods `hasAccess`, `isOwner` and `isKing`.
 
-The separator `|` between the functions indicates an `OR` operation, so if any of the functions `hasAccess` or `isOwner` returns true the user will gain access and only when both return false the user will be prevented from accessing this endpoint.
+The separator `|` between the functions indicates an `OR` operation, so if any of the calls to `hasAccess` or `isOwner` returns true the user will gain access and only when both return false the user will be prevented from accessing this endpoint.
 
 On the other side if `isKing` *(a custom function could be written by you anywhere)* returned false no matter what all other functions returns, the user will be prevented from accessing this endpoint, because the default operation between all functions in the array is `AND`.
 
@@ -294,15 +294,13 @@ To do this, define those roles in `app/Ship/Configs/apiato.php` as follows:
 ],
 ```
 
-This will append the `admin` role to all roles access in every request object. Example: this `'roles' => 'manager'` becomes `'roles' => 'manager|admin'` (if the user is manager or admin "has any of the roles", will be allowed to access the endpoint function).
+This will append the `admin` role to all roles access in every request object. Example: this `'roles' => 'manager'` becomes `'roles' => 'manager|admin'` (if the user is manager or admin "has any of the roles", will be allowed to access the endpoint).
 
-## Request Helper Functions {#request-helper-functions}
-
-Apiato also provides some helpful functions by default, so you can use them whenever you need them.
+## Request Helper Methods {#request-helper-methods}
 
 ### **hasAccess** {#hasaccess}
 
-`hasAccess` function, decides if user has Access or not based on the `$access` property.
+`hasAccess` method, decides if user has Access or not based on the `$access` property.
 
 - If the user has any roles or permissions he will be given access.
 
@@ -312,7 +310,7 @@ Apiato also provides some helpful functions by default, so you can use them when
 
 ### **getInputByKey** {#getinputbykey}
 
-Get the data from within the `$request` by entering the name of the field. This function behaves like `$request->input('key.here')`,
+Get the data from within the `$request` by entering the name of the field. This method behaves like `$request->input('key.here')`,
 however, it works on the **decoded** values instead of the original data.
 
 Consider the following Request data in case you are passing `application/json` data instead of `x-www-form-urlencoded`:
@@ -427,8 +425,7 @@ $sanitizedData = $request->sanitizeInput([
 ### **mapInput** {#mapinput}
 
 Sometimes you might want to map input from the request to other fields in order to automatically pass it to a `Action`
-or `Task`. Of course, you can manually map those fields, but you can also rely on the `mapInput(array $fields)` helper
-function.
+or `Task`. Of course, you can manually map those fields, but you can also rely on the `mapInput` method.
 
 This helper, in turn, allows to "redefine" keys in the request for subsequent processing. Consider the following
 example request:

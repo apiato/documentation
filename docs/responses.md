@@ -134,4 +134,4 @@ for Authorization, Validation, and so on.
 
 ## Building a Responses from the Controller: {#building-response-from-controller}
 
-Checkout the [Controller response builder helper functions](components/main-components/controllers).
+Checkout the [Controller response helper methods](components/main-components/controllers).

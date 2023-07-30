@@ -7,7 +7,7 @@ title: Pagination
 - [Skip the Pagination Limit](#skip-the-pagination-limit)
 
 For pagination Apiato uses the [L5 Repository Package](https://packagist.org/packages/prettus/l5-repository) and the
-pagination gets applied whenever you use the `paginate` function on any model repository
+pagination gets applied whenever you use the `paginate` method on any model repository
 (example: `$stores = $this->storeRepository->paginate();`).
 
 `?page=` parameter can be applied to any **`GET`** HTTP request responsible for listing records (mainly for Paginated data).

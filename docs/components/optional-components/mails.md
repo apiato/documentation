@@ -97,13 +97,13 @@ $this->view('appSection@user::user-registered');
 
 ## Configure Emails {#configure-emails}
 
-Open the `.env` file and set the `from` mail and address. This will be used globally whenever the `from` function is not called in the Mail. 
+Open the `.env` file and set the `from` mail and address. This will be used globally whenever the `from` method is not called in the Mail. 
 
 ```env
 MAIL_FROM_ADDRESS=test@test.test
 MAIL_FROM_NAME="apiato"
 ```
-To use different email address in some classes add `->to($this->email, $this->name)` to the `build` function in your Mail class. 
+To use different email address in some classes add `->to($this->email, $this->name)` to the `build` method in your Mail class. 
 
 By default Apiato is configured to use Log Driver `MAIL_DRIVER=log`, you can change that from the `.env` file.
 

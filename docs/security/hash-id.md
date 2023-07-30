@@ -95,6 +95,6 @@ $this->injectId($user->getHashedKey(), skipEncoding: true, replace: '{user_id}')
 ```
 
 :::tip
-`injectId` method is a [test helper function](../testing.md)
+`injectId` method is a [test helper method](../testing.md)
 that will replace the `{any_hashed_id}` in the endpoint with the given ID.
 :::

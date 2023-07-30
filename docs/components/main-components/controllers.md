@@ -108,7 +108,7 @@ $action->getUI(); // will return 'web'
 [noContent](#noContent)  
 
 #### transform {#transform}
-This function is incredibly useful and will be used in most cases.
+This method is incredibly useful and will be used in most cases.
 
 - The first required parameter accepts data as an object or a Collection of objects.
 - The second required parameter is the transformer class.

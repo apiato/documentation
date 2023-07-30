@@ -148,7 +148,7 @@ From the controller you can dynamically set the `DefaultInclude` using (`setDefa
 return $this->transform($rewards, ProductsTransformer::class)->setDefaultIncludes(['tags']);
 ```
 
-You need to have `includeTags` function defined on the transformer. Look at the full examples above.
+You need to have `includeTags` method defined on the transformer. Look at the full examples above.
 
 If you want to include a relation with every response from this transformer you can define the relation directly in the transformer on (`$defaultIncludes`)
 
@@ -164,7 +164,7 @@ protected $defaultIncludes = [
 // ..
 ```
 
-You need to have `includeUser` and `includeTags` functions defined on the transformer. Look at the full examples above.
+You need to have `includeUser` and `includeTags` methods defined on the transformer. Look at the full examples above.
 
 ## Transformer Available helper methods: {#transformer-available-helper-methods}
 
