@@ -13,10 +13,10 @@ Read [**Porto SAP Documentation (#Exceptions)**](https://github.com/Mahmoudz/Por
 
 ### Rules {#rules}
 
-- All Exceptions MUST be placed in the `app/Containers/{Section}/{Container}/Exceptions` directory.
+- All Container Specific Exceptions MUST be placed in the `app/Containers/{Section}/{Container}/Exceptions` directory.
+- All General Exceptions MUST be placed in the `app/Ship/Exceptions` directory.
 - All Exceptions MUST extend the `App\Ship\Parents\Exceptions\Exception` class.
-- The parent extension should be aliased as `ParentException`.
-- Shared (general) Exceptions between all Containers MUST be placed in the `app/Ship/Exceptions` directory.
+- The parent extension SHOULD be aliased as `ParentException`.
 - Every Exception MUST have two properties `code` and `message`.
 
 ### Folder Structure {#folder-structure}

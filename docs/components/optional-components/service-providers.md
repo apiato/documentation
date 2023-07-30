@@ -41,7 +41,7 @@ They are the place where you register things like container bindings, event list
 - All Main Service Providers MUST extend the `App\Ship\Parents\Providers\MainProvider` class.
 - All other types of Service Providers (EventsProvider, BroadcastsProvider, AuthProvider, MiddlewareProvider, RoutesProvider) must extend their parent providers located in `App\Ship\Parents\Providers`.
 - The Main Service Provider MUST be named `MainServiceProvider` in every container.
-- You should not register any Service Provider in the framework (`config/app.php`).
+- You MUST not register any Service Provider in the framework (`config/app.php`).
 
 ### Folder Structure {#folder-structure}
 

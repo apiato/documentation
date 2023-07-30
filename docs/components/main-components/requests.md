@@ -53,7 +53,7 @@ Read [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmoudz/Porto
 ### Rules {#rules}
 
 - All Requests MUST extend the `App\Ship\Parents\Requests\Request` class.
-- The parent extension should be aliased as `ParentRequest`.
+- The parent extension SHOULD be aliased as `ParentRequest`.
 - A Request MUST have a `rules` method, returning an array and an `authorize` method to check for authorization (can return true when no authorization required).
 
 ### Folder Structure {#folder-structure}
