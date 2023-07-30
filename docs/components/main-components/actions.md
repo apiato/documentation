@@ -15,9 +15,9 @@ Read [**Porto SAP Documentation (#Actions)**](https://github.com/Mahmoudz/Porto#
 
 ### Rules {#rules}
 
-- All Actions MUST be defined in the `App\Containers\{Section}\{Container}\Actions` folder.
-- All Actions MUST extend `App\Ship\Parents\Actions\Action`.
-- The parent extension should be aliased as `ParentAction`.
+- All Actions MUST be placed in the `app/Containers/{Section}/{Container}/Actions` directory.
+- All Actions MUST extend the `App\Ship\Parents\Actions\Action` class.
+- The parent extension SHOULD be aliased as `ParentAction`.
 
 ### Folder Structure {#folder-structure}
 
@@ -35,28 +35,19 @@ app
 ### Code Sample {#code-sample}
 
 ```php
-namespace App\Containers\AppSection\User\Actions;
-
 use ...
 use App\Ship\Parents\Actions\Action as ParentAction;
 
-class UpdateUserAction extends ParentAction
+class DemoAction extends ParentAction
 {
     public function __construct(
-        private readonly UpdateUserTask $updateUserTask
+        private readonly DemoTask $demoTask
     ) {
     }
 
-    public function run(UpdateUserRequest $request): User
+    public function run(DemoRequest $request)
     {
-        $sanitizedData = $request->sanitizeInput([
-            'password',
-            'name',
-            'gender',
-            'birth',
-        ]);
-
-        return $this->updateUserTask->run($sanitizedData, $request->id);
+        return $this->demoTask->run();
     }
 }
 ```
@@ -64,6 +55,9 @@ class UpdateUserAction extends ParentAction
 #### Calling multiple Tasks
 
 ```php
+use ...
+use App\Ship\Parents\Actions\Action as ParentAction;
+
 class DemoAction extends ParentAction
 {
     public function __construct(
@@ -89,15 +83,13 @@ The same Action MAY be called by multiple Controllers (Web, Api, Cli).
 In certain scenarios, you may need to wrap a specific call within a `Database Transaction` to ensure data integrity
 (see [Laravel Documentation](https://laravel.com/docs/master/database#database-transactions)).
 
-Apiato offers a `transactionalRun(...$arguments)` method,
+Apiato offers a `transactionalRun` method,
 which internally wraps the `run` method of the action within a `DB::Transaction` and passes all the parameters "as is"
 to it.
 
 The beauty of using the `transactionalRun` method is
 that if any `Exception` occurs during the execution of the `run` method,
 everything performed in this context is automatically rolled back from the database.
-
-:::note
-Any file system operations
-(e.g., if you uploaded an image during this process) would need to be handled manually.
-:::
+However, it's important to note that not all operations may be automatically rolled back.
+For example, file system operations,
+such as uploading an image, are typically not covered by the database transaction and would need to be handled manually.
