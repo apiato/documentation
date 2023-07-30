@@ -114,7 +114,7 @@ Route generated successfully.
 
 If you don't like the automatically generated code (or would like to adapt it to your specific needs) you can do this quite easily.
 
-The existing `Generators` allow to read `custom stubs` from the `App\Ship\Generators\CustomStubs` folder. The name of
+The existing `Generators` allow to read `custom stubs` from the `app/Ship/Generators/CustomStubs` directory. The name of
 the file and the folder structure needs to be the same as in `vendor\apiato\core\Generator\Stubs`.
 
 Say, if you like to change the `action` -> `create.stub`, simply copy the file to `app/Ship/Generators/CustomStubs/actions/create.stub` and 

@@ -69,4 +69,4 @@ An example of such a `composer.json` file is shown below:
   that allows installing/updating containers.
 * You **must** provide the key `extra.apiato.container.name`. This key indicates the name of the folder (e.g., container)
   when installing the package to the `app/Containers/Vendor` directory. In the shown example, the container would be installed to
-  `App\Containers\Vendor\Foo`.
+  `app/Containers/Vendor/Foo`.
