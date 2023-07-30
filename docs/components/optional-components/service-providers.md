@@ -116,8 +116,8 @@ However, if it's a generic package used by the entire framework and not a specif
 
 ### Information about Laravel Service Providers {#information-about-laravel-service-providers}
 
-By default, Laravel provides some service providers in its `App\providers` directory.
-In Apiato those providers have been renamed and moved to the Ship Layer `App\Ship\Parents\Providers`:
+By default, Laravel provides some service providers in its `app/providers` directory.
+In Apiato those providers have been renamed and moved to the Ship Layer `app/Ship/Parents/Providers`:
 
 - AppServiceProvider
 - RouteServiceProvider
