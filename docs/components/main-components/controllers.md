@@ -12,19 +12,20 @@ tags:
   - transformer
 ---
 
-## Definition & Principles {#definition-principles}
+## Definition & Principles
 
 Read [**Porto SAP Documentation (#Controllers)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
-## Rules {#rules}
+## Rules
 
-- All Controllers MUST be placed in the `app/Containers/{Section}/{Container}/UI/{API|WEB}/Controllers` directory.
+- All API Controllers MUST be placed in the `app/Containers/{Section}/{Container}/UI/API/Controllers` directory.
+- All Web Controllers MUST be placed in the `app/Containers/{Section}/{Container}/UI/WEB/Controllers` directory.
 - All API Controllers MUST extend the `App\Ship\Parents\Controllers\ApiController` class.
 - All Web Controllers MUST extend the `App\Ship\Parents\Controllers\WebController` class.
 - Controllers MUST only call the `run` or `transactionalRun` method of Actions.
 - Controllers SHOULD pass the Request object to the Action instead of passing data from the request.
 
-## Folder Structure {#folder-structure}
+## Folder Structure
 
 ```markdown
 app
@@ -44,7 +45,7 @@ app
                         └── ...
 ```
 
-## Code Example {#code-example}
+## Code Example
 
 #### API Controller
 
