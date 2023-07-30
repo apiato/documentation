@@ -7,11 +7,11 @@ title: Languages
 - [Folder Structure](#folder-structure)
 - [Usage](#usage)
 
-### Definition {#definition}
+## Definition {#definition}
 
 Languages are not real Components, they are just files that holds translations.
 
-### Rules {#rules}
+## Rules {#rules}
 
 - Languages CAN be placed inside the Containers. However, the default laravel `resources/lang` languages files are still loaded and can be used as well.
 
@@ -19,7 +19,7 @@ Languages are not real Components, they are just files that holds translations.
   For example, translation key inside a translation file named `messages` inside `MySection` > `MyContainer` can be accessed like this: `__(mySection@myContainer::messages.welcome)`
 
 
-### Folder Structure {#folder-structure}
+## Folder Structure {#folder-structure}
 
 ```
 - app
@@ -36,7 +36,7 @@ Languages are not real Components, they are just files that holds translations.
               - users.php
 ```
 
-### Usage {#usage}
+## Usage {#usage}
 
 Nothing much to show here, here's how you use translated strings:
 

@@ -8,19 +8,19 @@ title: Middlewares
 * [Folder Structure](#folder-structure)
 * [Code Sample](#code-sample)
 
-### Definition {#definition}
+## Definition {#definition}
 
 Middleware provide a convenient mechanism for filtering HTTP requests entering your application.
 
 You can enable and disable Middlewares as you wish.
 
-### Principles {#principles}
+## Principles {#principles}
 
 - There are two types of Middlewares, General (applied on all the Routes by default) and Endpoints Middlewares (applied on some Endpoints).
 
 - The Middlewares CAN be placed in Ship layer or Container layer depending on its roles.
 
-### Rules {#rules}
+## Rules {#rules}
 
 - If a Middleware is written inside a Container then it MUST be registered inside that Container.
 - To register Middlewares in a Container the container needs to have a `MiddlewareServiceProvider`, and like all other Container Providers it MUST be registered in the `MainServiceProvider` of that Container.
@@ -29,7 +29,7 @@ You can enable and disable Middlewares as you wish.
 - Third Party packages Middleware CAN be registered in Containers or on the Ship layer (wherever they make more sense).
 _For example the `jwt.auth` middleware "provided by the JWT package" should be registered in the Authentication Container (`app/Containers/AppSection/Authentication/Providers/MiddlewareServiceProvider.php`)_.
   
-### Folder Structure {#folder-structure}
+## Folder Structure {#folder-structure}
 
 ```
  - App
@@ -45,7 +45,7 @@ _For example the `jwt.auth` middleware "provided by the JWT package" should be r
             - VerifyCsrfToken.php
 ```
 
-### Code Example {#code-example}
+## Code Example {#code-example}
 
 #### Middleware Registration Inside the Container Example
 

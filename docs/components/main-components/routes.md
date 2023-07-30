@@ -9,11 +9,11 @@ tags:
   - request
 ---
 
-### Definition & Principles {#definition-principles}
+## Definition & Principles {#definition-principles}
 
 Read [**Porto SAP Documentation (#Routes)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
-### Rules {#rules}
+## Rules {#rules}
 
 - All Routes MUST be placed in the `App\Containers\{Section}\{Container}\UI\{API|WEB}\Routes` directory.
 - Each Route file MUST contain only one Route.
@@ -27,7 +27,7 @@ Read [**Porto SAP Documentation (#Routes)**](https://github.com/Mahmoudz/Porto#d
 Web Route files, can have any appropriate name.
 :::
 
-### Folder Structure {#folder-structure}
+## Folder Structure {#folder-structure}
 
 ```markdown
 app
@@ -47,7 +47,7 @@ app
                         └── ...
 ```
 
-### Code Example {#code-example}
+## Code Example {#code-example}
 
 Routes are defined exactly like the way you defined them in Laravel.
 

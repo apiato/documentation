@@ -8,7 +8,7 @@ title: Factories
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
 
-### Definition {#definition}
+## Definition {#definition}
 
 Factories (are a short name for Model Factories).
 
@@ -16,15 +16,15 @@ Factories are used to generate some fake data with the help of Faker to be used 
 
 Factories are mainly used from Tests.
 
-### Principles {#principles}
+## Principles {#principles}
 
 - Factories SHOULD be created in the Containers.
 
-### Rules {#rules}
+## Rules {#rules}
 
 - All Factories MUST extend the `App\Ship\Parents\Factories\Factory` class.
 
-### Folder Structure {#folder-structure}
+## Folder Structure {#folder-structure}
 
 ```
  - app
@@ -37,7 +37,7 @@ Factories are mainly used from Tests.
                         - ...
 ```
 
-### Code Example {#code-example}
+## Code Example {#code-example}
 
 #### A User Model Factory
 

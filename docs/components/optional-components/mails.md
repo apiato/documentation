@@ -11,22 +11,22 @@ title: Mails
 * [Configure Emails](#configure-emails)
 * [Queueing](#queueing)
 
-### Definition {#definition}
+## Definition {#definition}
 
 The Mail component allows you to describe an email and send it whenever needed. 
 
-### Principles {#principles}
+## Principles {#principles}
 
 - Containers MAY or MAY NOT have one or more Mail.
 
 - Ship may contain general Mails.
 
-### Rules {#rules}
+## Rules {#rules}
 
 - All Notifications MUST extend the `App\Ship\Parents\Mails\Mail` class.
 - Email Templates must be placed in `app/Containers/{section}/{container}/Mails/Templates`.
 
-### Folder Structure {#folder-structure}
+## Folder Structure {#folder-structure}
 
 ```
 - app
@@ -48,7 +48,7 @@ The Mail component allows you to describe an email and send it whenever needed.
       - ...
 ```
 
-### Code Example {#code-example}
+## Code Example {#code-example}
 
 #### A simple Mail
 

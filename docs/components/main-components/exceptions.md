@@ -7,11 +7,11 @@ tags:
   - exception
 ---
 
-### Definition & Principles {#definition-principles}
+## Definition & Principles {#definition-principles}
 
 Read [**Porto SAP Documentation (#Exceptions)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
-### Rules {#rules}
+## Rules {#rules}
 
 - All Container Specific Exceptions MUST be placed in the `app/Containers/{Section}/{Container}/Exceptions` directory.
 - All General Exceptions MUST be placed in the `app/Ship/Exceptions` directory.
@@ -19,7 +19,7 @@ Read [**Porto SAP Documentation (#Exceptions)**](https://github.com/Mahmoudz/Por
 - The parent extension SHOULD be aliased as `ParentException`.
 - Every Exception MUST have two properties `code` and `message`.
 
-### Folder Structure {#folder-structure}
+## Folder Structure {#folder-structure}
 
 ```markdown
 app
@@ -37,7 +37,7 @@ app
         └── ...
 ```
 
-### Code Example {#code-example}
+## Code Example {#code-example}
 
 You can override those values while throwing the error.
 
@@ -51,12 +51,9 @@ class DemoException extends ParentException
 }
 ```
 
-### Helpers Methods {#helpers-methods}
+## Helpers Methods {#helpers-methods}
 
-[withErrors](#witherrors)  
-[debug](#debug)
-
-#### withErrors
+### withErrors
 
 ```php
 // Example 1
@@ -88,7 +85,7 @@ Response:
   }
 }
 ```
-#### debug
+### debug
 
 The `debug` method is used for logging error messages during debugging and development.
 The `debug` method accepts `string` or `\Exception` instance

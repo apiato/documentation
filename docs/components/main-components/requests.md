@@ -46,17 +46,17 @@ include `Content-Type = application/json` in the request header.
 > By default this flag is set to false.
 
 
-### Definition & Principles {#definition-principles}
+## Definition & Principles {#definition-principles}
 
 Read [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
-### Rules {#rules}
+## Rules {#rules}
 
 - All Requests MUST extend the `App\Ship\Parents\Requests\Request` class.
 - The parent extension SHOULD be aliased as `ParentRequest`.
 - A Request MUST have a `rules` method, returning an array and an `authorize` method to check for authorization (can return true when no authorization required).
 
-### Folder Structure {#folder-structure}
+## Folder Structure {#folder-structure}
 
 ```
  - app
@@ -76,7 +76,7 @@ Read [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmoudz/Porto
                             - ...
 ```
 
-### Code Example {#code-example}
+## Code Example {#code-example}
 
 #### Request
 

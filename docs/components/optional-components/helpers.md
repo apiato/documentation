@@ -8,23 +8,23 @@ title: Helpers
 - [Folder Structure](#folder-structure)
 - [Usage](#usage)
 
-### Definition {#definition}
+## Definition {#definition}
 
 - Helpers are global PHP functions that you can call from anywhere in your application.
 - Helper files are simple PHP files that hold functions.
 
-### Principles {#principles}
+## Principles {#principles}
 
 - Helpers SHOULD be created inside the Containers. However, general Helpers CAN be created in the Ship layer.
 - You can create as many helper files as you need, per container.
 - You can implement as many helper functions as you need, per helper file.
 - The framework will autoload all Helper files.
 
-### Rules {#rules}
+## Rules {#rules}
 
 - Helpers MAY be placed in `app/Containers/{Section}/{Container}/Helpers` or `app/Ship/Helpers` for the general Helpers.
 
-### Folder Structure {#folder-structure}
+## Folder Structure {#folder-structure}
 
 ```
 - App
@@ -43,7 +43,7 @@ title: Helpers
       - ...
 ```
 
-### Usage {#usage}
+## Usage {#usage}
 
 ```php
 if (!function_exists('add')) {

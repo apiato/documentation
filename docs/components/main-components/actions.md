@@ -9,17 +9,17 @@ tags:
   - request
 ---
 
-### Definition & Principles {#definition-principles}
+## Definition & Principles {#definition-principles}
 
 Read [**Porto SAP Documentation (#Actions)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
-### Rules {#rules}
+## Rules {#rules}
 
 - All Actions MUST be placed in the `app/Containers/{Section}/{Container}/Actions` directory.
 - All Actions MUST extend the `App\Ship\Parents\Actions\Action` class.
 - The parent extension SHOULD be aliased as `ParentAction`.
 
-### Folder Structure {#folder-structure}
+## Folder Structure {#folder-structure}
 
 ```markdown
 app
@@ -32,7 +32,7 @@ app
                 └── ...
 ```
 
-### Code Example {#code-example}
+## Code Example {#code-example}
 
 ```php
 use ...
@@ -78,7 +78,7 @@ class DemoAction extends ParentAction
 The same Action MAY be called by multiple Controllers (Web, Api, Cli).
 :::
 
-### Handling Transactions {#handling-transactions}
+## Handling Transactions {#handling-transactions}
 
 In certain scenarios, you may need to wrap a specific call within a `Database Transaction` to ensure data integrity
 (see [Laravel Documentation](https://laravel.com/docs/master/database#database-transactions)).

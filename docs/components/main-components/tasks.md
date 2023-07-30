@@ -9,17 +9,17 @@ tags:
   - action
 ---
 
-### Definition & Principles {#definition-principles}
+## Definition & Principles {#definition-principles}
 
 Read [**Porto SAP Documentation (#Tasks)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
-### Rules {#rules}
+## Rules {#rules}
 
 - All Tasks MUST be placed in `app/Containers/{Section}/{Container}/Tasks` directory.
 - All Tasks MUST extend the `App\Ship\Parents\Tasks\Task` class.
 - The parent extension SHOULD be aliased as `ParentTask`.
 
-### Folder Structure {#folder-structure}
+## Folder Structure {#folder-structure}
 
 ```markdown
 app
@@ -32,7 +32,7 @@ app
                 └── ...
 ```
 
-### Code Example {#code-example}
+## Code Example {#code-example}
 
 ```php
 use ...

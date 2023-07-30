@@ -13,7 +13,7 @@ title: Service Providers
   + [Third party packages Service Providers](#third-party-packages-service-providers)
 * [Information about Laravel Service Providers](#information-about-laravel-service-providers)
 
-### Definition {#definition}
+## Definition {#definition}
 
 Providers (are short names for Service Providers).
 
@@ -21,7 +21,7 @@ Providers are the central place of configuring and bootstrapping a Container.
 
 They are the place where you register things like container bindings, event listeners, middleware, routes, other providers, aliases... to the framework service container.
 
-### Principles {#principles}
+## Principles {#principles}
 
 - There are 2 types of Service Providers in a Container, the **Main Service Provider** and the **Additional (Job Specific) Service Providers** (EventsProvider, BroadcastsProvider, AuthProvider, MiddlewareProvider, RoutesProvider).
 
@@ -35,7 +35,7 @@ They are the place where you register things like container bindings, event list
 
 - Service Providers CAN be registered on the Ship Main Service Provider, if they are general or are intended to be used by many containers. (Same applies to Aliases).
 
-### Rules {#rules}
+## Rules {#rules}
 
 - The Main Service Provider will be auto registered by the Ship Engine, so no need to register it manually anywhere.
 - All Main Service Providers MUST extend the `App\Ship\Parents\Providers\MainProvider` class.
@@ -43,7 +43,7 @@ They are the place where you register things like container bindings, event list
 - The Main Service Provider MUST be named `MainServiceProvider` in every container.
 - You MUST not register any Service Provider in the framework (`config/app.php`).
 
-### Folder Structure {#folder-structure}
+## Folder Structure {#folder-structure}
 
 #### Example: User Container `Service Providers`
 
@@ -61,7 +61,7 @@ They are the place where you register things like container bindings, event list
 
 In this example above only the `AuthServiceProvider` and `EventsServiceProvider` needs to be registered in `MainServiceProvider`. While the `MainServiceProvider` will get automatically registered.
 
-### Code Example {#code-example}
+## Code Example {#code-example}
 
 #### Main Service Provider Example
 
@@ -82,7 +82,7 @@ class MainServiceProvider extends MainProvider
 }
 ```
 
-### Register Service Providers: {#register-service-providers}
+## Register Service Providers: {#register-service-providers}
 
 #### Container's Main Service Provider {#container-s-main-service-provider}
 
@@ -110,7 +110,7 @@ Same rule applies to **Aliases**.
 If a package requires registering its service provider in the `config/app.php`, you SHOULD register its service provider in the Main container where you are using it.
 However, if it's a generic package used by the entire framework and not a specific Container or feature. Then you can register that service provider in the `app/Ship/Providers/ShipProvider.php`, but never in the `config/app.php`.
 
-### Information about Laravel Service Providers {#information-about-laravel-service-providers}
+## Information about Laravel Service Providers {#information-about-laravel-service-providers}
 
 By default, Laravel provides some service providers in `app/providers`.
 In Apiato those providers have been renamed and moved to `app/Ship/Parents/Providers`:

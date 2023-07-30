@@ -9,15 +9,15 @@ title: Views
 * [Code Sample](#code-sample)
 * [Namespaces](#namespaces)
 
-### Definition & Principles {#definition-principles}
+## Definition & Principles {#definition-principles}
 
 Read [**Porto SAP Documentation (#Views)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
-### Rules {#rules}
+## Rules {#rules}
 
 - Views SHOULD be created inside the Containers, and they will be automatically available for use in the Web Controllers.
 
-### Folder Structure {#folder-structure}
+## Folder Structure {#folder-structure}
 
 ```
  - app
@@ -32,7 +32,7 @@ Read [**Porto SAP Documentation (#Views)**](https://github.com/Mahmoudz/Porto#de
                             - ...
 ```
 
-### Code Example {#code-example}
+## Code Example {#code-example}
 
 #### Welcome page View
 

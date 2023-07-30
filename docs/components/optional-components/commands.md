@@ -9,7 +9,7 @@ title: Commands
 * [Code Samples](#code-samples)
 * [Define Consoles Closure Commands](#define-consoles-closure-commands)
 
-### Definition {#definition}
+## Definition {#definition}
 
  * Commands are a Laravel artisan command. Laravel has its own default commands, and you can create your own as well.
  * Commands provide a way to interact with the Laravel app.
@@ -17,17 +17,17 @@ title: Commands
  * Commands could be Closure based or Classes.
  * "dispatch" is the term that is usually used to call a Command.
 
-### Principles {#principles}
+## Principles {#principles}
 
 - Containers MAY or MAY NOT have one or more Commands.
 - Every Command SHOULD call an Action to perform its job, and SHOULD NOT contain any business logic.
 - Ship MAY contain Application general Commands.
 
-### Rules {#rules}
+## Rules {#rules}
 
 - All Commands MUST extend the `App\Ship\Parents\Commands\ConsoleCommand` class.
 
-### Folder Structure {#folder-structure}
+## Folder Structure {#folder-structure}
 
 ```
 - app
@@ -45,7 +45,7 @@ title: Commands
       - ...
 ```
 
-### Code Example {#code-example}
+## Code Example {#code-example}
 
 #### A Simple Command
 
@@ -68,7 +68,7 @@ class HelloWorldCommand extends ConsoleCommand
 php artisan hello:world
 ```
 
-### Define Consoles Closure Commands {#define-consoles-closure-commands}
+## Define Consoles Closure Commands {#define-consoles-closure-commands}
 
 To define Console closure commands go to `app/Ship/Commands/closures.php`.
 

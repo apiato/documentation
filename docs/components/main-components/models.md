@@ -8,17 +8,17 @@ tags:
   - repository
 ---
 
-### Definition & Principles {#definition-principles}
+## Definition & Principles {#definition-principles}
 
 Read [**Porto SAP Documentation (#Models)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
-### Rules {#rules}
+## Rules {#rules}
 
 - All Models MUST be placed in the `app/Containers/{Section}/{Container}/Models` directory.
 - All Models MUST extend the `App\Ship\Parents\Models\Model` class.
 - The parent extension SHOULD be aliased as `ParentModel`.
 
-### Folder Structure {#folder-structure}
+## Folder Structure {#folder-structure}
 
 ```markdown
 app
@@ -30,7 +30,7 @@ app
                 └── ...
 ```
 
-### Code Example {#code-example}
+## Code Example {#code-example}
 
 ```php
 use App\Ship\Parents\Models\Model as ParentModel;
@@ -41,7 +41,7 @@ class Demo extends ParentModel
 }
 ```
 
-### Model Trait {#model-trait}
+## Model Trait {#model-trait}
 
 If your model does not extend the `App\Ship\Parents\Models\Model` class,
 it is essential to incorporate the `ModelTrait` trait into your model.

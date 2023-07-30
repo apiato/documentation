@@ -12,17 +12,17 @@ tags:
 
 Every feature available for Actions, are also available in SubActions.
 
-### Definition & Principles {#definition-principles}
+## Definition & Principles {#definition-principles}
 
 Read [**Porto SAP Documentation (#Sub-Actions)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
-### Rules {#rules}
+## Rules {#rules}
 
 - All SubActions MUST be placed in `app/Containers/{Section}/{Container}/Actions` directory.
 - All SubActions MUST extend the `App\Ship\Parents\Actions\SubAction` class.
 - The parent extension SHOULD be aliased as `ParentSubAction`.
 
-### Folder Structure {#folder-structure}
+## Folder Structure {#folder-structure}
 
 ```markdown
 app
@@ -35,7 +35,7 @@ app
                 └── ...
 ```
 
-### Code Example {#code-example}
+## Code Example {#code-example}
 
 
 ```php

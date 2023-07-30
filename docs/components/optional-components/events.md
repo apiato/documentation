@@ -9,25 +9,25 @@ title: Events
 - [Usage](#usage)
 - [Broadcasting](#broadcasting)
 
-### Definition {#definition}
+## Definition {#definition}
 
  - Events provide a simple observer implementation, allowing you to subscribe and listen for various events that occur in your application.
  - Events are classes that can be fired from anywhere in your application.
  - An event class will usually be bound to one, or many Events Listeners Classes or has those Listeners registered to listen to it.
  - "fire" is the term that is usually used to call an Event.
 
-### Principles {#principles}
+## Principles {#principles}
 
 - Events can be fired from Actions and or Tasks. It's preferable to choose one place only. (Tasks are recommended).
 - Events SHOULD be created inside the Containers. However, general Events CAN be created in the Ship layer.
 
-### Rules {#rules}
+## Rules {#rules}
 
 - Event classes MUST be placed in `app/Containers/{Section}/{Container}/Events`.
 - General Events MUST be placed in `app/Ship/Events`.
 - All Events MUST extend the `App\Ship\Parents\Events\Event` class.
 
-### Folder Structure {#folder-structure}
+## Folder Structure {#folder-structure}
 
 ```
 - App
@@ -48,7 +48,7 @@ title: Events
       - ...
 ```
 
-### Usage {#usage}
+## Usage {#usage}
 
 In Laravel, you can create and register events in multiple way. Read [Laravel documentation](https://laravel.com/docs/events) to learn more about Events. 
 

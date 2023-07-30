@@ -11,7 +11,7 @@ title: Notifications
 * [Queueing](#queueing)
 * [Use DB channel](#db-channel)
 
-### Definition {#definition}
+## Definition {#definition}
 
 Notifications allow you to inform the user about a state changes in your application.  
 
@@ -25,11 +25,11 @@ When using the Database channel, the notifications will be stored in a database 
 
 - Ship MAY contain Application general Notifications.
 
-### Rules {#rules}
+## Rules {#rules}
 
 - All Notifications MUST extend the `App\Ship\Parents\Notifications\Notification` class.
 
-### Folder Structure {#folder-structure}
+## Folder Structure {#folder-structure}
 
 ```
 - app
@@ -45,7 +45,7 @@ When using the Database channel, the notifications will be stored in a database 
       - ...
 ```
 
-### Code Example {#code-example}
+## Code Example {#code-example}
 
 #### A Simple Notification
 
