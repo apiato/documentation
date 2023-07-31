@@ -2,20 +2,10 @@
 title: Commands
 ---
 
-* [Definition](#definition)
-* [Principles](#principles)
-* [Rules](#rules)
-* [Folder Structure](#folder-structure)
-* [Code Samples](#code-samples)
-* [Define Consoles Closure Commands](#define-consoles-closure-commands)
-
 ## Definition {#definition}
 
- * Commands are a Laravel artisan command. Laravel has its own default commands, and you can create your own as well.
- * Commands provide a way to interact with the Laravel app.
- * A Command can be scheduled by a Task scheduler, like Cron Job or by the Laravel built-in wrapper of the Cron Job "laravel scheduler".
- * Commands could be Closure based or Classes.
- * "dispatch" is the term that is usually used to call a Command.
+Commands are a [Laravel Artisan](https://laravel.com/docs/artisan) feature.
+In addition to the commands provided with Artisan, you can also build your own custom commands.
 
 ## Principles {#principles}
 
@@ -25,53 +15,35 @@ title: Commands
 
 ## Rules
 
+- All container specific Commands MUST be placed in the `app/Containers/{Section}/{Container}/UI/CLI/Commands` directory.
+- All general Commands MUST be placed in the `app/Ship/Commands` directory.
 - All Commands MUST extend the `App\Ship\Parents\Commands\ConsoleCommand` class.
+- The parent extension SHOULD be aliased as `ConsoleCommand`.
 
 ## Folder Structure
 
-```
-- app
-  - Containers
-    - {Section}
-      - {Container}
-        - UI
-          - CLI
-            - Commands
-              - SayHelloCommand.php
-              - ...
-  - Ship
-    - Commands
-      - GeneralCommand.php
-      - ...
+```markdown
+app
+├── Containers
+│   └── Section
+│       └── Container
+│           └── UI
+│               └── CLI
+│                   └── Commands
+│                       ├── FirstCommand.php
+│                       ├── SecondCommand.php
+│                       └── ...
+└── Ship
+    └── Commands
+        ├── FirstCommand.php
+        ├── SecondCommand.php
+        └── ...
 ```
 
 ## Code Example
 
-#### A Simple Command
+Commands are defined exactly as you would define them in Laravel.
 
-```php
-class HelloWorldCommand extends ConsoleCommand
-{
-    protected $signature = 'hello:world';
-    protected $description = 'Hello World!';
+## Closure Commands
 
-    public function handle()
-    {
-        echo "Hello World :)\n";
-    }
-}
-```
-
-#### Usage from CLI (Terminal)
-
-```
-php artisan hello:world
-```
-
-## Define Consoles Closure Commands {#define-consoles-closure-commands}
-
-To define Console closure commands go to `app/Ship/Commands/closures.php`.
-
-:::info Further reading
-More info at [Laravel Docs](https://laravel.com/docs/artisan#writing-commands).
-:::
+You can define Console closure commands in `app/Ship/Commands/closures.php`.
