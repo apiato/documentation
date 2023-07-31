@@ -7,23 +7,17 @@ tags:
   - action
 ---
 
-## Definition
-
 Commands are a [Laravel Artisan](https://laravel.com/docs/artisan) feature.
 In addition to the commands provided with Artisan, you can also build your own custom commands.
 
-## Principles
-
-- Containers MAY or MAY NOT have one or more Commands.
-- Every Command SHOULD call an Action to perform its job, and SHOULD NOT contain any business logic.
-- Ship MAY contain Application general Commands.
-
 ## Rules
 
-- All container specific Commands MUST be placed in the `app/Containers/{Section}/{Container}/UI/CLI/Commands` directory.
+- All container-specific Commands MUST be placed in the `app/Containers/{Section}/{Container}/UI/CLI/Commands` directory.
 - All general Commands MUST be placed in the `app/Ship/Commands` directory.
 - All Commands MUST extend the `App\Ship\Parents\Commands\ConsoleCommand` class.
 - The parent extension SHOULD be aliased as `ConsoleCommand`.
+- Every Command SHOULD call an Action to perform its job, and SHOULD NOT contain any business logic.
+- Containers MAY or MAY NOT have one or more Commands.
 
 ## Folder Structure
 
