@@ -50,7 +50,7 @@ app
 
 ## Code Example
 
-Routes are defined exactly like the way you defined them in Laravel.
+Routes are defined exactly as you would define them in Laravel.
 
 ```php
 use Illuminate\Support\Facades\Route;
