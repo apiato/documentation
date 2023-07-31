@@ -11,7 +11,7 @@ title: Notifications
 * [Queueing](#queueing)
 * [Use DB channel](#db-channel)
 
-## Definition {#definition}
+## Definition
 
 Notifications allow you to inform the user about a state changes in your application.  
 
@@ -19,7 +19,7 @@ The Laravel notifications supports sending notifications across a variety of cha
 
 When using the Database channel, the notifications will be stored in a database to be displayed in your client interface.
 
-## Principles {#principles}
+## Principles
 
 - Containers MAY or MAY NOT have one or more Notification.
 

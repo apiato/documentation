@@ -8,13 +8,13 @@ title: Tests
 * [Folder Structure](#folder-structure)
 * [Code Sample](#code-sample)
 
-## Definition {#definition}
+## Definition
 
 Tests classes are created to test if the Application classes are working as expected.
 
 The two most essential Test types for this architecture are the Unit Tests and the Functional Tests. However, Integration and Acceptance Tests can be used as well.
 
-## Principles {#principles}
+## Principles
 
 - Containers MAY be covered by all types of Tests.
 

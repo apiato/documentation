@@ -13,7 +13,7 @@ title: Service Providers
   + [Third party packages Service Providers](#third-party-packages-service-providers)
 * [Information about Laravel Service Providers](#information-about-laravel-service-providers)
 
-## Definition {#definition}
+## Definition
 
 Providers (are short names for Service Providers).
 
@@ -21,7 +21,7 @@ Providers are the central place of configuring and bootstrapping a Container.
 
 They are the place where you register things like container bindings, event listeners, middleware, routes, other providers, aliases... to the framework service container.
 
-## Principles {#principles}
+## Principles
 
 - There are 2 types of Service Providers in a Container, the **Main Service Provider** and the **Additional (Job Specific) Service Providers** (EventsProvider, BroadcastsProvider, AuthProvider, MiddlewareProvider, RoutesProvider).
 

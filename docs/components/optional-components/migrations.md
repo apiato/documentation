@@ -8,13 +8,13 @@ title: Migrations
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
 
-## Definition {#definition}
+## Definition
 
 Migrations (are the short name for Database Migrations).
 
 Migrations are the version control of your database. They are very useful for generating and documenting the database tables.
 
-## Principles {#principles}
+## Principles
 
 - Migrations MUST be placed in `app/Containers/{Section}/{Container}/Data/Migrations` directory.
 - Migrations will be autoloaded by the framework.

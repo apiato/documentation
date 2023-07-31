@@ -8,7 +8,7 @@ title: Factories
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
 
-## Definition {#definition}
+## Definition
 
 Factories (are a short name for Model Factories).
 
@@ -16,7 +16,7 @@ Factories are used to generate some fake data with the help of Faker to be used 
 
 Factories are mainly used from Tests.
 
-## Principles {#principles}
+## Principles
 
 - Factories SHOULD be created in the Containers.
 

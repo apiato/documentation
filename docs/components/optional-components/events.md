@@ -9,14 +9,14 @@ title: Events
 - [Usage](#usage)
 - [Broadcasting](#broadcasting)
 
-## Definition {#definition}
+## Definition
 
  - Events provide a simple observer implementation, allowing you to subscribe and listen for various events that occur in your application.
  - Events are classes that can be fired from anywhere in your application.
  - An event class will usually be bound to one, or many Events Listeners Classes or has those Listeners registered to listen to it.
  - "fire" is the term that is usually used to call an Event.
 
-## Principles {#principles}
+## Principles
 
 - Events can be fired from Actions and or Tasks. It's preferable to choose one place only. (Tasks are recommended).
 - Events SHOULD be created inside the Containers. However, general Events CAN be created in the Ship layer.

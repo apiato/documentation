@@ -8,13 +8,13 @@ title: Criterias
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
 
-## Definition {#definition}
+## Definition
 
 Criterias are classes that hold and apply query condition when retrieving data from the database through a Repository.
 
 Without using a Criteria class, you can add your query conditions to a Repository or to a Model as scope, but with Criterias, your query conditions can be shared across multiple Models and Repositories. It allows you to define the query condition once and use it anywhere in the App.
 
-## Principles {#principles}
+## Principles
 
 - Every Container MAY have its own Criterias. However, shared Criterias SHOULD be created in the Ship layer.
 

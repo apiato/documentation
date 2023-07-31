@@ -10,13 +10,13 @@ title: Seeders
 * [Run the Seeders](#run-the-seeders)
 * [Testing seeder command](#apiato-testing-seeder-command)
 
-## Definition {#definition}
+## Definition
 
 Seeders (are a short name for Database Seeders).
 
 Seeders are classes made to seed the database with real data, this data usually should exist in the Application after the installation (Example: the default Users Roles and Permissions or the list of Countries).
 
-## Principles {#principles}
+## Principles
 
 - Seeders MUST be created in the Containers. (If the container is using a package that publishes a Seeder class, this class MUST be manually placed in the Container that make use of it. Do not rely on the package to place it in its right location).
 

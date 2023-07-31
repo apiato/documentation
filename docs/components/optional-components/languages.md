@@ -7,7 +7,7 @@ title: Languages
 - [Folder Structure](#folder-structure)
 - [Usage](#usage)
 
-## Definition {#definition}
+## Definition
 
 Languages are not real Components, they are just files that holds translations.
 

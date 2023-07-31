@@ -1,13 +1,18 @@
 ---
 title: Commands
+tags:
+  - component
+  - optional-component
+  - command
+  - action
 ---
 
-## Definition {#definition}
+## Definition
 
 Commands are a [Laravel Artisan](https://laravel.com/docs/artisan) feature.
 In addition to the commands provided with Artisan, you can also build your own custom commands.
 
-## Principles {#principles}
+## Principles
 
 - Containers MAY or MAY NOT have one or more Commands.
 - Every Command SHOULD call an Action to perform its job, and SHOULD NOT contain any business logic.

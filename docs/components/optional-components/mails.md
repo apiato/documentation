@@ -11,11 +11,11 @@ title: Mails
 * [Configure Emails](#configure-emails)
 * [Queueing](#queueing)
 
-## Definition {#definition}
+## Definition
 
 The Mail component allows you to describe an email and send it whenever needed. 
 
-## Principles {#principles}
+## Principles
 
 - Containers MAY or MAY NOT have one or more Mail.
 

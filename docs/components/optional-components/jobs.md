@@ -8,7 +8,7 @@ title: Jobs
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)
 
-## Definition {#definition}
+## Definition
 
  - Jobs are simple classes that can do one thing or multiple related things. 
  - Job is a name given to a class that is usually created to be queued (it's execution is usually deferred for later, after the execution of previous Jobs are completed).
@@ -16,7 +16,7 @@ title: Jobs
  - When a Job class is dispatched, it performs its specific job and dies.
  - Laravel's queue worker will process every Job as it's pushed onto the queue.
 
-## Principles {#principles}
+## Principles
 
 - A Container MAY have more than one Job.
 

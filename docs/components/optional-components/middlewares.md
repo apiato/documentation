@@ -8,13 +8,13 @@ title: Middlewares
 * [Folder Structure](#folder-structure)
 * [Code Sample](#code-sample)
 
-## Definition {#definition}
+## Definition
 
 Middleware provide a convenient mechanism for filtering HTTP requests entering your application.
 
 You can enable and disable Middlewares as you wish.
 
-## Principles {#principles}
+## Principles
 
 - There are two types of Middlewares, General (applied on all the Routes by default) and Endpoints Middlewares (applied on some Endpoints).
 
