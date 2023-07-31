@@ -6,13 +6,7 @@ tags:
   - config
 ---
 
-## Definition
-
 Configs are a Laravel feature.
-
-## Principles
-
-- Containers MAY have as many config files as they need.
 
 ## Rules
 
@@ -23,6 +17,7 @@ Configs are a Laravel feature.
 - The container-specific config file MUST be named following a specific convention:  
   `camelCase` of their Section name followed by `-` and then the `camelCase` of their Container name.
   For example: `mySection-myContainer.php`.
+- Containers MAY have as many config files as they need.
 
 :::info
 The container config name convention rule is in place to prevent conflicts between third-party packages'
