@@ -13,7 +13,7 @@ Read [**Porto SAP Documentation (#Views)**](https://github.com/Mahmoudz/Porto#de
 
 ## Rules
 
-- All container specific Views MUST be placed in the `app/Containers/{Section}/{Container}/UI/WEB/Views` directory.
+- All container-specific Views MUST be placed in the `app/Containers/{Section}/{Container}/UI/WEB/Views` directory.
 - All general Views MUST be placed in the `app/Ship/Views` directory.
 
 ## Folder Structure
