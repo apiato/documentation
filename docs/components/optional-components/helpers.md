@@ -1,46 +1,39 @@
 ---
 title: Helpers
+tags:
+  - component
+  - optional-component
+  - helper
 ---
 
-- [Definition](#definition)
-- [Principles](#principles)
-- [Rules](#rules)
-- [Folder Structure](#folder-structure)
-- [Usage](#usage)
+You have the option to create your own global "helper" PHP functions in designated directories, and Apiato will automatically autoload them for you.
 
-## Definition
-
-- Helpers are global PHP functions that you can call from anywhere in your application.
-- Helper files are simple PHP files that hold functions.
-
-## Principles
-
-- Helpers SHOULD be created inside the Containers. However, general Helpers CAN be created in the Ship layer.
-- You can create as many helper files as you need, per container.
-- You can implement as many helper functions as you need, per helper file.
-- The framework will autoload all Helper files.
+:::caution Deprecation Notice
+Please be aware that Container Helpers are deprecated and will be removed in the next major release.
+:::
 
 ## Rules
 
-- Helpers MAY be placed in `app/Containers/{Section}/{Container}/Helpers` or `app/Ship/Helpers` for the general Helpers.
+- All container-specific helpers MUST be placed in the `app/Containers/{Section}/{Container}/Helpers` directory.
+- All general helpers MUST be placed in the `app/Ship/Helpers` directory.
+- You MAY create as many helper files as you need per container.
 
 ## Folder Structure
 
-```
-- App
-  - Containers
-    - {Section}
-      - {Container}
-        - Helpers
-          - helpers.php
-          - mix.php
-          - ...
-
-  - Ship
-    - Helpers
-      - helpers.php
-      - mix.php
-      - ...
+```markdown
+app
+├── Containers
+│   └── Section
+│       └── Container
+│           └── Helpers
+│               ├── helpers.php
+│               ├── mix.php
+│               └── ...
+└── Ship
+    └── Helpers
+        ├── another-helper.php
+        ├── and-another.php
+        └── ...
 ```
 
 ## Usage {#usage}
