@@ -35,7 +35,7 @@ app
 
 Views are defined exactly as you would define them in Laravel.
 
-## Namespaces {#namespaces}
+## Namespaces
 
 All views are namespaced
 using the camelCase of their Section name followed by `@` and then the camelCase of their Container name.

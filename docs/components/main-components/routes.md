@@ -16,9 +16,9 @@ Read [**Porto SAP Documentation (#Routes)**](https://github.com/Mahmoudz/Porto#d
 ## Rules
 
 - All API Routes MUST be placed in the `app/Containers/{Section}/{Container}/UI/API/Routes` directory.
-- All API Routes MUST be placed in the `app/Containers/{Section}/{Container}/UI/WEB/Routes` directory.
+- All Web Routes MUST be placed in the `app/Containers/{Section}/{Container}/UI/WEB/Routes` directory.
 - Each Route file MUST contain only one Route.
-- API Route files MUST be named based on their API version, exposure level (public/private), and functionality.  
+- All API Route files MUST be named based on their API version, exposure level (public/private), and functionality.  
   Examples of valid API Route file names:
   - `CreateOrder.v1.public.php`
   - `FulfillOrder.v2.public.php`
@@ -52,7 +52,7 @@ app
 
 Routes are defined exactly as you would define them in Laravel.
 
-## Public & Private Routes {#public-private-routes}
+## Public & Private Routes
 
 Apiato supports two types of endpoints, `Public` and `Private`, out of the box.
 Maintaining this distinction enables the generation of separate documentations for each type,

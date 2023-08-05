@@ -63,7 +63,7 @@ class UserTransformer extends ParentTransformer
 }
 ```
 
-## Model Relationships {#resource-relationships}
+## Model Relationships
 
 Model relationships can be included in the response either per API consumer request or by default.
 
@@ -86,7 +86,7 @@ public function includeCategoryItem(Model $model)
 }
 ```
 
-### Include Per API Consumer Request {#include-per-api-consumer-request}
+### Include Per API Consumer Request
 
 To include a relationship in the response,
 you must first define the relationship in the `availableIncludes` property of the transformer.
@@ -122,7 +122,7 @@ By defining the `availableIncludes` and implementing the corresponding `include{
 the API consumers can control which related data they want to include in the response,
 improving the flexibility and efficiency of your API.
 
-### Include By Default {#include-by-default}
+### Include By Default
 
 To automatically include a relationship in every response from the transformer,
 you can define the relationship directly in the transformer's `defaultIncludes` property.

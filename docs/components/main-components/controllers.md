@@ -19,9 +19,9 @@ Read [**Porto SAP Documentation (#Controllers)**](https://github.com/Mahmoudz/Po
 ## Rules
 
 - All API Controllers MUST be placed in the `app/Containers/{Section}/{Container}/UI/API/Controllers` directory.
-- All Web Controllers MUST be placed in the `app/Containers/{Section}/{Container}/UI/WEB/Controllers` directory.
+- All web Controllers MUST be placed in the `app/Containers/{Section}/{Container}/UI/WEB/Controllers` directory.
 - All API Controllers MUST extend the `App\Ship\Parents\Controllers\ApiController` class.
-- All Web Controllers MUST extend the `App\Ship\Parents\Controllers\WebController` class.
+- All web Controllers MUST extend the `App\Ship\Parents\Controllers\WebController` class.
 - Controllers MUST only call the `run` or `transactionalRun` method of Actions.
 - Controllers SHOULD pass the Request object to the Action instead of passing data from the request.
 
@@ -98,9 +98,9 @@ $action->getUI(); // will return 'web'
 ```
 :::
 
-## Response Helpers Methods {#response-helpers-methods}
+## Response Helpers Methods
 
-### transform {#transform}
+### transform
 This method is incredibly useful and will be used in most cases.
 
 - The first required parameter accepts data as an object or a Collection of objects.
@@ -129,7 +129,7 @@ $this->transform($resouce, ResourceTransformer::class, meta: ['foo' => 'bar', 'b
   }
 }
 ```
-### withMeta {#withMeta}
+### withMeta
 This method enables you to add metadata to the response,
 and it MUST be used in conjunction with the `transform` method.
 This is different from the `meta` parameter in the `transform` method.
@@ -158,19 +158,19 @@ $this->withMeta($metaData)->transform($sample, SampleTransformer::class, meta: [
 }
 ```
 
-### json {#json}
+### json
 This method allows you to pass an array of data that will be represented as JSON.
 ```php
 $this->json($data)
 ```
 
-### created {#created}
+### created
 This method allows you to return a response with a `201` status code.
 ```php
 $this->created($data)
 ```
 
-### deleted {#deleted}
+### deleted
 This method allows you to return a response with a `202` status code.
 ```php
 $this->deleted($deletedModel)
@@ -181,13 +181,13 @@ $this->deleted($deletedModel)
 }
 ```
 
-### accepted {#accepted}
+### accepted
 This method allows you to return a response with a `202` status code.
 ```php
 $this->accepted($data)
 ```
 
-### noContent {#noContent}
+### noContent
 This method allows you to return a response with a `204` status code.
 ```php
 $this->noContent()

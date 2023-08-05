@@ -16,12 +16,12 @@ Read [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmoudz/Porto
 
 ## Rules
 
-- All API Requests MUST be placed in the `app/Containers/Section/Container/UI/API/Requests` directory.
-- All Web Requests MUST be placed in the `app/Containers/Section/Container/UI/WEB/Requests` directory.
+- All API Requests MUST be placed in the `app/Containers/{Section}/{Container}/UI/API/Requests` directory.
+- All web Requests MUST be placed in the `app/Containers/{Section}/{Container}/UI/WEB/Requests` directory.
 - All Requests MUST extend the `App\Ship\Parents\Requests\Request` class.
   - The parent extension SHOULD be aliased as `ParentRequest`.
-- A Request MUST have a `rules` method, returning an array of validation rules.
-- A Request MUST have an `authorize` method, returning a boolean value.
+- All Requests MUST have a `rules` method, returning an array of validation rules.
+- All Requests MUST have an `authorize` method, returning a boolean value.
 
 ## Folder Structure
 
@@ -105,10 +105,16 @@ You can also use the `array notation` to define multiple Roles and Permissions:
 
 ### decode
 
-The `decode` property is used for decoding Hashed ID's from the Request.
+### decode
 
-If you have enabled the HashID feature, most probably you are passing or allowing your users to pass Hashed (encoded) ID's into your application.
-These IDs need to be decoded somewhere and Apiato has a property on its Requests where you can specify those Hashed ID's in order to decode them before applying the validation rules.
+The `decode` property is used for decoding Hashed IDs from the Request.
+
+When you enable the [HashID](../../security/hash-id.md) feature,
+you likely allow users to pass Hashed IDs into your application.
+These IDs need to be decoded at some point,
+and Apiato provides a property on its Requests where you can specify those Hashed IDs.
+By doing so, Apiato will decode them before applying the validation rules,
+ensuring that the validation process works seamlessly with Hashed IDs.
 
 ```php
 class DemoRequest extends ParentRequest

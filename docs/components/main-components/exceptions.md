@@ -17,7 +17,7 @@ Read [**Porto SAP Documentation (#Exceptions)**](https://github.com/Mahmoudz/Por
 - All general Exceptions MUST be placed in the `app/Ship/Exceptions` directory.
 - All Exceptions MUST extend the `App\Ship\Parents\Exceptions\Exception` class.
   - The parent extension SHOULD be aliased as `ParentException`.
-- Every Exception MUST have two properties `code` and `message`.
+- Every Exception MUST have at least two properties: `code` and `message`.
 
 ## Folder Structure
 
@@ -51,7 +51,7 @@ class DemoException extends ParentException
 }
 ```
 
-## Helpers Methods {#helpers-methods}
+## Helpers Methods
 
 ### withErrors
 

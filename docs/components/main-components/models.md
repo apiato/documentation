@@ -36,7 +36,7 @@ app
 
 Models are defined exactly as you would define them in Laravel.
 
-## Model Trait {#model-trait}
+## Model Trait
 
 If your model does not extend the `App\Ship\Parents\Models\Model` or the `App\Ship\Parents\Models\UserModel` class,
 it is essential to incorporate the `ModelTrait` trait into your model.
