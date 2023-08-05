@@ -3,16 +3,41 @@ sidebar_position: 2
 title: Localization
 ---
 
-- [Installation](#installation)
-- [Creating new languages files](#create-new-languages-files)
-- [Support new languages](#support-new-languages)
-  - [Publishing configs](#publish-configs)
-  - [Modifying the source code](#modify-code)
-- [Select Request Language](#select-request-language)
-- [Translating Strings](#translating-strings)
-- [Enable/Disable Localization](#enable-disable-localization)
-- [Get Available Localizations](#get-available-localizations)
-- [Tests](#tests)
+Languages are not real Components, they are just files that holds translations.
+
+Laravel's localization features provide a convenient way to retrieve strings in various languages, allowing you to easily support multiple languages within your application.
+
+## Rules
+
+- Languages CAN be placed inside the Containers. However, the default laravel `resources/lang` languages files are still loaded and can be used as well.
+
+- All Translations are namespaced as the camelCase of its Section name + `@` + camelCase of its Container name.  
+  For example, translation key inside a translation file named `messages` inside `MySection` > `MyContainer` can be accessed like this: `__(mySection@myContainer::messages.welcome)`
+
+
+## Folder Structure
+
+```
+- app
+  - Containers
+    - {Section}
+      - {Container}
+        - Resources
+          - Languages
+            - en
+              - messages.php
+              - users.php
+            - ar
+              - messages.php
+              - users.php
+```
+
+## Usage {#usage}
+
+```php
+__('myS
+ection@myContainer::messages.welcome');
+```
 
 ## Installation{#installation}
 :::note
