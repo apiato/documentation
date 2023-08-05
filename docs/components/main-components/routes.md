@@ -52,12 +52,6 @@ app
 
 Routes are defined exactly as you would define them in Laravel.
 
-```php
-use Illuminate\Support\Facades\Route;
-
-Route::post('/profile', Controller::class);
-```
-
 ## Public & Private Routes {#public-private-routes}
 
 Apiato supports two types of endpoints, `Public` and `Private`, out of the box.
