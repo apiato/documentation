@@ -36,7 +36,7 @@ app
         └── ...
 ```
 
-## Usage {#usage}
+## Code Example
 
 ```php
 if (!function_exists('add')) {
