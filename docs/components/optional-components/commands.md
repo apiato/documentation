@@ -15,7 +15,7 @@ However, they come with additional rules and conventions specific to the Apiato.
 - All container-specific Commands MUST be placed in the `app/Containers/{Section}/{Container}/UI/CLI/Commands` directory.
 - All general Commands MUST be placed in the `app/Ship/Commands` directory.
 - All Commands MUST extend the `App\Ship\Parents\Commands\ConsoleCommand` class.
-- The parent extension SHOULD be aliased as `ConsoleCommand`.
+  - The parent extension SHOULD be aliased as `ConsoleCommand`.
 - Every Command SHOULD call an Action to perform its job, and SHOULD NOT contain any business logic.
 - Containers MAY or MAY NOT have one or more Commands.
 

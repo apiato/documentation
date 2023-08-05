@@ -21,7 +21,7 @@ Read [**Porto SAP Documentation (#Transformers)**](https://github.com/Mahmoudz/P
 
 - All Transformers MUST be placed in the `app/Containers/{Section}/{Container}/UI/API/Transformers` directory.
 - All Transformers MUST extend the `App\Ship\Parents\Transformers\Transformer` class.
-- The parent extension SHOULD be aliased as `ParentTransformer`.
+  - The parent extension SHOULD be aliased as `ParentTransformer`.
 - All API responses MUST be formatted via a Transformer.
 - Every Transformer MUST have a `transform` method.
 

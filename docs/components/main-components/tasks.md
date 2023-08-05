@@ -17,7 +17,7 @@ Read [**Porto SAP Documentation (#Tasks)**](https://github.com/Mahmoudz/Porto#de
 
 - All Tasks MUST be placed in `app/Containers/{Section}/{Container}/Tasks` directory.
 - All Tasks MUST extend the `App\Ship\Parents\Tasks\Task` class.
-- The parent extension SHOULD be aliased as `ParentTask`.
+  - The parent extension SHOULD be aliased as `ParentTask`.
 
 ## Folder Structure
 

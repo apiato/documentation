@@ -21,7 +21,7 @@ It allows you to define the query condition once and use it anywhere in the App.
 - All container-specific Criterias MUST be placed in the `app/Containers/{Section}/{Container}/Data/Criterias` directory.
 - All general Criterias MUST be placed in the `app/Ship/Criterias` directory.
 - All Criterias MUST extend the `App\Ship\Parents\Criterias\Criteria` class.
-- The parent extension SHOULD be aliased as `ParentCriteria`.
+  - The parent extension SHOULD be aliased as `ParentCriteria`.
 - Every Criteria MUST have an `apply` method.
 - A Criteria MUST not contain any extra code. If it needs data, the data MUST be passed to it.
 

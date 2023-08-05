@@ -19,7 +19,7 @@ Read [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmoudz/Porto
 - All API Requests MUST be placed in the `app/Containers/Section/Container/UI/API/Requests` directory.
 - All Web Requests MUST be placed in the `app/Containers/Section/Container/UI/WEB/Requests` directory.
 - All Requests MUST extend the `App\Ship\Parents\Requests\Request` class.
-- The parent extension SHOULD be aliased as `ParentRequest`.
+  - The parent extension SHOULD be aliased as `ParentRequest`.
 - A Request MUST have a `rules` method, returning an array of validation rules.
 - A Request MUST have an `authorize` method, returning a boolean value.
 
