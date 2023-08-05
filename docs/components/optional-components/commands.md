@@ -7,8 +7,8 @@ tags:
   - action
 ---
 
-Commands are a [Laravel Artisan](https://laravel.com/docs/artisan) feature.
-In addition to the commands provided with Artisan, you can also build your own custom commands.
+Apiato commands are just Laravel commands, and they function in the exact same way as regular Laravel commands.
+However, they come with additional rules and conventions specific to the Apiato.
 
 ## Rules
 
