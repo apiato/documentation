@@ -6,7 +6,8 @@ tags:
   - config
 ---
 
-Configs are a Laravel feature.
+Apiato configs are just Laravel configs, and they function in the exact same way as regular Laravel configs.
+However, they come with additional rules and conventions specific to the Apiato.
 
 ## Rules
 
