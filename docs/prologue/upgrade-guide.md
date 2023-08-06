@@ -6,4 +6,4 @@ title: Upgrade Guide
 
 ## Upgrade from 11.0 to 12.0 {#upgrade-11To12}
 
-WORK IN PROGRESS
+### WORK IN PROGRESS
