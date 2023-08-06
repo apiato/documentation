@@ -169,6 +169,6 @@ Config file will be copied to `app/Ship/Configs/vendor-socialAuth.php`
     ],
 ```
 ### Changing default used Repository, Transformer & DB user table name {#changing-defaults}
-This container depends on Apiato's default user repository, transformer & database user table name.
+This container depends on Apiato default user repository, transformer & database user table name.
 If you changed those defaults you can update and provide them in the configs.
 

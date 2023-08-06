@@ -5,7 +5,7 @@ title: Localization
 
 Languages are not real Components, they are just files that holds translations.
 
-Laravel's localization features provide a convenient way to retrieve strings in various languages, allowing you to easily support multiple languages within your application.
+Laravel localization features provide a convenient way to retrieve strings in various languages, allowing you to easily support multiple languages within your application.
 
 ## Rules
 

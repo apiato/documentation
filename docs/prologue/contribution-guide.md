@@ -23,7 +23,7 @@ If you want to chip in,
 you can help out
 by fixing [any bugs
 listed in our issue trackers](https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Aapiato).
-You must be authenticated with GitHub to view all of Apiato's issues.
+You must be authenticated with GitHub to view all of Apiato issues.
 
 If you notice improper DocBlock, Psalm, or IDE warnings while using Apiato, do not create a GitHub issue.
 Instead, please submit a pull request to fix the problem.
@@ -38,7 +38,7 @@ The Apiato source code is managed on GitHub, and there are repositories for each
 
 ## Support Questions {#support-questions}
 
-Apiato's GitHub issue trackers are not intended to provide Apiato help or support.
+Apiato GitHub issue trackers are not intended to provide Apiato help or support.
 Instead, use one of the following channels:
 
 - [GitHub Discussions](https://github.com/apiato/apiato/discussions)
