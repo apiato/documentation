@@ -1,37 +1,22 @@
 ---
 title: API Versioning
+tags:
+  - core-feature
+  - api
+  - route
 ---
 
-- [How it works](#how-it-works)
-- [Versioning API in header instead of URL](#version-the-api-in-header-instead-of-url)
+Apiato offers a convenient method to implement API versioning seamlessly.
+To enable API versioning,
+navigate to the `app/Ship/Configs/apiato.php` config file and set the `enable_version_prefix` to `true`.
 
-Since Laravel does not support API versioning, Apiato provide a very easy way to implement versioning for your API.
+Once enabled, you can create a new API endpoint and define its version number in the route file name.
+Follow this naming convention: `{endpoint-name}.{version-number}.{endpoint-visibility}.php`.
+By adhering to this naming convention,
+the endpoint inside the specified route file will automatically become accessible by appending the version number to the URL.
 
-### How it works {#how-it-works}
-
-**Create:**
-
-When creating a new API endpoint, specify the version number in the route file name following this naming format `{endpoint-name}.{version-number}.{documentation-name}.php`.
-
-Example:
-
-- `MakeOrder.v1.public.php`
-- `MakeOrder.v2.public.php`
-- `ListOrders.v1.private.php`
-
-**Use:**
-
-Automatically the endpoint inside that route file will be accessible by adding the version number to the URL.
-
-Example:
-
-- `https://api.apiato.test/v1/register`
-- `https://api.apiato.test/v1/orders`
-- `https://api.apiato.test/v2/stores/123`
-
-## Version the API in header instead of URL{#version-the-api-in-header-instead-of-url}
-
-First remove the URL version prefix:
-
-1. Edit `app/Ship/Configs/apiato.php`, set `enable_version_prefix` to  `false`.
-2. Implement the Header versioning anyway you prefer. (this is not implemented in Apiato yet. _Consider a contribution_).
+| Route File Name             | Route File Content                                            | Generated Route                            |
+|-----------------------------|---------------------------------------------------------------|--------------------------------------------|
+| `CreateOrder.v1.public.php` | `Route::post('orders', CreateOrderController::class);`        | [POST] `https://api.apiato.test/v1/orders` |
+| `CreateOrder.v2.public.php` | `Route::post('orders', AnotherCreateOrderController::class);` | [POST] `https://api.apiato.test/v2/orders` |
+| `ListOrders.v1.private.php` | `Route::get('orders', ListOrdersController::class);`          | [GET] `https://api.apiato.test/v1/orders`  |
