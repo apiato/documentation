@@ -56,10 +56,6 @@ After setting those properties,
 the ID will be automatically decoded for you to apply validation rules on it or/and use it from your controller.
 > `$request->id` will return the decoded ID.
 
-:::info
-Read more about [Requests](../components/main-components/requests) to understand how to use them.
-:::
-
 ## Configuration {#configuration}
 
 Hash ID configuration is done in the `app/Ship/Configs/hashids.php` config file.
@@ -69,32 +65,4 @@ Apiato defaults to the `APP_KEY` should this not be set.
 :::danger
 The `HASH_ID_KEY` acts as the salt during hashing of the ID. This should never be changed in production
 as it renders all previously generated IDs impossible to decode.
-:::
-
-## Testing {#testing}
-
-In your Functional tests, you must hash the ID's before making the calls,
-because if you tell your Request class to decode an ID for you, it will throw an exception when the ID is not encoded.
-
-```php
-// endpoint: /users/{user_id}/roles
-
-$user = UserFactory::new()->create();
-// HTTP request body
-$data = [
-    'roles_ids' => [
-        $roleA->getHashedKey(),
-        $roleB->getHashedKey(),
-    ],
-];
-
-// URL ID's
-$this->injectId($user->id, skipEncoding: false, replace: '{user_id}')->makeCall($data);
-// or
-$this->injectId($user->getHashedKey(), skipEncoding: true, replace: '{user_id}')->makeCall($data);
-```
-
-:::tip
-`injectId` method is a [test helper method](../testing.md)
-that will replace the `{any_hashed_id}` in the endpoint with the given ID.
 :::
