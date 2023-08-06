@@ -105,8 +105,6 @@ You can also use the `array notation` to define multiple Roles and Permissions:
 
 ### decode
 
-### decode
-
 The `decode` property is used for decoding Hashed IDs from the Request.
 
 When you enable the [HashID](../../security/hash-id.md) feature,

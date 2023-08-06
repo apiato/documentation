@@ -44,7 +44,7 @@ class RegisterUserRequest extends Request
     }
 ```
 
-## Responses {#responses}
+## Responses
 
 Validation Error response format:
 

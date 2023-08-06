@@ -9,7 +9,7 @@ Apiato uses [Laravel rate limiting feature](https://laravel.com/docs/rate-limiti
 This feature is only applied to API requests, and not to web requests and is _enabled_ by default.
 :::
 
-## How it works {#how-it-works}
+## How it works
 
 Given the rate limit window is `1` minute per endpoint,
 with individual calls allowing for `30` requests in each window each user is allowed

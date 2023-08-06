@@ -126,7 +126,7 @@ By default, all the Container translation files are namespaced as the camelCase 
 Translation files in **Ship** folder are exception to this and will be namespaced with the word "**ship**" instead of section name, e.g. `__('ship::notifications.welcome')`
 :::
 
-#### Example
+## Example
 
 If a translation file called `notifications` is inside `MySection` > `MyContainer` that contains translation for `welcome`
 like "Welcome to our store :)". You can access this translation as follows `__('mySection@myContainer::notifications.welcome')`. If
