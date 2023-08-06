@@ -79,7 +79,7 @@ your User's personal data.
 - For
   Google: [https://console.developers.google.com/apis/credentials](https://console.developers.google.com/apis/credentials)
 
-2. For any supported provider you want to use, add their credentials to `config/services.php`. [read more](https://laravel.com/docs/8.x/socialite#configuration)
+2. For any supported provider you want to use, add their credentials to `config/services.php`. [read more](https://laravel.com/docs/socialite#configuration)
 
 3. Make a request from your client to get the `oauth` info. (Each Social provider returns different response and keys).
 
