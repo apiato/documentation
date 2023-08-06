@@ -14,7 +14,6 @@ Laravel's localization features provide a convenient way to retrieve strings in 
 - All Translations are namespaced as the camelCase of its Section name + `@` + camelCase of its Container name.  
   For example, translation key inside a translation file named `messages` inside `MySection` > `MyContainer` can be accessed like this: `__(mySection@myContainer::messages.welcome)`
 
-
 ## Folder Structure
 
 ```

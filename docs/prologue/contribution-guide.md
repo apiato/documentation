@@ -58,7 +58,6 @@ please be willing to implement at least some of the code that would be needed to
 
 **Major** new features or features with breaking changes should always be sent to the `master` branch, which contains the upcoming release.
 
-
 ## Security Vulnerabilities {#security-vulnerabilities}
 
 If you discover a security vulnerability within Apiato,

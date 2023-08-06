@@ -128,7 +128,6 @@ However, Apiato uses a middleware (`ProfilerMiddleware`) to append the profiling
 }
 ```
 
-
 ### Configuration
 
 By default, the profiler feature is turned off. To turn it on edit the `.env` file and set `DEBUGBAR_ENABLED=true`.

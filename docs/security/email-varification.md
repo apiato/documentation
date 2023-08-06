@@ -39,7 +39,6 @@ While email verification is disabled you **cannot** protect any route against un
 middleware is ignored.
 :::
 
-
 When email verification is enabled and a user hits a protected endpoint, the API throws an exception, if the `User` is not yet `confirmed`.
 
 ## Process Flow

@@ -11,7 +11,6 @@ title: Social Authentication
   - [Support new Auth Provider](#support-new-auth-provide)
   - [Changing default used Repository, Transformer & DB user table name](#changing-defaults)
 
-
 Under the hood this container uses [Laravel Socialite](https://github.com/laravel/socialite).
 
 ## Installation{#installation}

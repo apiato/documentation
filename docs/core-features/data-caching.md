@@ -5,7 +5,6 @@ title: Data Caching
 - [Enable / Disable Eloquent Query Caching](#enable-disable-eloquent-query-caching)
 - [Change different caching settings](#change-different-caching-settings)
 
-
 ### Enable / Disable Eloquent Query Caching {#enable-disable-eloquent-query-caching}
 
 :::info

@@ -2,7 +2,6 @@
 title: Useful Commands
 ---
 
-
 You can list all available commands by running the following command:
 
 ```

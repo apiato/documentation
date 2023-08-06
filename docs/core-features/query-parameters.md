@@ -161,7 +161,6 @@ Checkout the Search Page for full implementation example.
 ?search=git&searchFields=url:like
 ```
 
-
 #### Search Join: {#search-join}
 By default, search makes its queries using the OR comparison operator for each query parameter.
 
