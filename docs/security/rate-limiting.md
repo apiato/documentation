@@ -16,7 +16,7 @@ with individual calls allowing for `30` requests in each window each user is all
 to make `30` calls per endpoint every `1` minute
 (for each unique access token).
 
-## Configuration {#configuration}
+## Configuration
 
 Rate limiting configuration is done in the `app/Ship/Configs/apiato.php` config file.
 

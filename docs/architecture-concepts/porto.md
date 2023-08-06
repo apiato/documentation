@@ -37,7 +37,7 @@ It can be a specific feature or a wrapper around a RESTful API resource.
 A Container is allowed to depend on other Containers in the same Section.
 :::
 
-### Ship {#introduction}
+### Ship
 The Ship layer contains the infrastructure code, which consists of shared code utilized by all Containers.
 
 ## Typical Project Structure {#typical-container-structure}

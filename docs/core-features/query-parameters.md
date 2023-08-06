@@ -302,7 +302,7 @@ To run a new query and force disabling the cache on certain endpoints, you can u
 
 It's not recommended to keep skipping cache as it has bad impact on the performance.
 
-## Configuration {#configuration}
+## Configuration
 
 Most of these parameters are provided by the L5 Repository and configurable from the `app/Ship/Configs/repository.php` file.
 Some of them are built in house, or inherited from other packages such as Fractal.

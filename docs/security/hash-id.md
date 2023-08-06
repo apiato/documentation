@@ -56,7 +56,7 @@ After setting those properties,
 the ID will be automatically decoded for you to apply validation rules on it or/and use it from your controller.
 > `$request->id` will return the decoded ID.
 
-## Configuration {#configuration}
+## Configuration
 
 Hash ID configuration is done in the `app/Ship/Configs/hashids.php` config file.
 You can set the `HASH_ID_KEY` in the `.env` file to any random string.

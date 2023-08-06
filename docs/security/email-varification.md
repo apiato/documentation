@@ -3,13 +3,13 @@ sidebar_position: 5
 title: Email Verification
 ---
 
-## Introduction {#introduction}
+## Introduction
 
 Many web applications require users to verify their email addresses before using the application.
 Rather than forcing you to re-implement this feature by hand for each application you create,
 Apiato provides convenient built-in services for sending and verifying email verification requests.
 
-## Configuration {#configuration}
+## Configuration
 
 To get started, verify that your `User` model implements the `MustVerifyEmail` contract.
 This should already be done for you by the `User` model that ships with Apiato.
