@@ -175,7 +175,7 @@ const config = {
         copyright: `Copyright © 2016 - ${new Date().getFullYear()}`,
       },
       prism: {
-        additionalLanguages: ['php'],
+        additionalLanguages: ['php', 'php-extras', 'bash', 'json', 'yaml', 'docker', 'diff'],
         theme: require('prism-react-renderer/themes/github'),
         darkTheme: require('prism-react-renderer/themes/dracula'),
       },
