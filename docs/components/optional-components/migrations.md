@@ -1,66 +1,38 @@
 ---
 title: Migrations
+tags:
+  - component
+  - optional-component
+  - migration
+  - seeder
 ---
 
-* [Definition](#definition)
-* [Principles](#principles)
-* [Rules](#rules)
-* [Folder Structure](#folder-structure)
-* [Code Samples](#code-samples)
-
-## Definition
-
-Migrations (are the short name for Database Migrations).
-
-Migrations are the version control of your database. They are very useful for generating and documenting the database tables.
-
-## Principles
-
-- Migrations MUST be placed in `app/Containers/{Section}/{Container}/Data/Migrations` directory.
-- Migrations will be autoloaded by the framework.
+Apiato migrations are just Laravel migrations,
+and they function in the exact same way as regular Laravel migrations.
+However, they come with additional rules and conventions specific to the Apiato.
 
 ## Rules
 
-- No need to publish the DB Migrations. Just run the `artisan migrate` command and Laravel will read the Migrations from the Containers.
+- All container-specific Migrations MUST be placed in the `app/Containers/{Section}/{Container}/Data/Migrations` directory.
+- All general Migrations MUST be placed in the `app/Ship/Migrations` directory.
 
 ## Folder Structure
 
-```
-   - app
-      - Containers
-          - {Section}
-              - {Container}
-                  - Data
-                      - Migrations
-                          - 2200_01_01_000001_create_something_table.php
-                          - ...
+```markdown
+app
+├── Containers
+│   └── Section
+│       └── Container
+│           └── Data
+│               └── Migrations
+│                   ├── 0000_01_01_000001_create_things_table.php
+│                   └── ...
+└── Ship
+    └── Migrations
+        ├── 0000_02_02_000002_create_another_things_table.php
+        └── ...
 ```
 
 ## Code Example
 
-#### User CreateDemoTable Migrations
-
-```php
-class CreateDemoTable extends Migration
-{
-    public function up()
-    {
-        Schema::create('demos', function (Blueprint $table) {
-            $table->increments('id');
-            // ...
-            $table->timestamps();
-            $table->softDeletes();
-        });
-    }
-
-    public function down()
-    {
-        Schema::drop('demos');
-    }
-}
-
-```
-
-:::info Further reading
-More info at [Laravel Docs](https://laravel.com/docs/migrations).
-:::
+Migrations are defined exactly as you would define them in Laravel.
