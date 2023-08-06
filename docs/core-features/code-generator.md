@@ -63,8 +63,6 @@ Note that **all** generators automatically inherit the options `--section`, `--c
 as well in the help page). Furthermore, a generator may have specific options as well (e.g., the `--ui` (user-interface)
 to generate something for).
 
-## Demo {#demo}
-
 #### Generating a Route (endpoint) file: {#generating-a-route-endpoint-file}
 ```text
 $ php artisan apiato:generate:route
