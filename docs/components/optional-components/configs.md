@@ -11,7 +11,7 @@ However, they come with additional rules and conventions specific to the Apiato.
 
 ## Rules
 
-- All custom and third-party packages config files MUST be placed in the `app/Containers/{Section}/{Container}/Configs` directory.
+- All custom container-specific and third-party package config files MUST be placed in the `app/Containers/{Section}/{Container}/Configs` directory.
 - All general config files MUST be placed in the `app/Ship/Configs` directory.
 - All Laravel config files MUST be kept in the `app/config` directory.
 - You MUST NOT add any config file to the root `config` directory.
