@@ -1,91 +1,92 @@
 ---
 title: Seeders
+tags:
+  - component
+  - optional-component
+  - seeder
+  - migration
 ---
 
-* [Definition](#definition)
-* [Principles](#principles)
-* [Rules](#rules)
-* [Folder Structure](#folder-structure)
-* [Code Samples](#code-samples)
-* [Run the Seeders](#run-the-seeders)
-* [Testing seeder command](#apiato-testing-seeder-command)
-
-## Definition
-
-Seeders (are a short name for Database Seeders).
-
-Seeders are classes made to seed the database with real data, this data usually should exist in the Application after the installation (Example: the default Users Roles and Permissions or the list of Countries).
-
-## Principles
-
-- Seeders MUST be created in the Containers. (If the container is using a package that publishes a Seeder class, this class MUST be manually placed in the Container that make use of it. Do not rely on the package to place it in its right location).
+Apiato seeders are just Laravel seeders,
+and they function in the exact same way as regular Laravel seeders.
+However, they come with additional rules and conventions specific to the Apiato.
 
 ## Rules
 
-- Seeders MUST be in the right directory inside the container to be loaded.
-- To avoid any conflict between containers seeders classes, you SHOULD always prepend the Seeders of each container with the container name. (Example: `UserPermissionsSeeder`, `ItemPermissionsSeeder`).
-:::note
-If 2 seeders classes have the same name but live in different containers, one of them will not be loaded. In these situations you can also prepend the seeder name with the section name
-::: 
-- If you wish to order the seeding of the classes, you can just append `_1`, `_2` to your classes.
+- All custom container-specific and third-party package Seeders MUST be placed in the `app/Containers/{Section}/{Container}/Data/Seeders` directory.
+- All custom (non-Laravel/package) Seeders MUST extend the `App\Ship\Parents\Seeders\Seeder` class.
 
 ## Folder Structure
 
-```
- - App
-    - Containers
-        - {Section}
-            - {Container}
-                 - Data
-                    - Seeders
-                        - RolesSeeder_1.php
-                        - PermissionsSeeder_2.php
-                        - ...
+```markdown
+app
+└── Containers
+    └── Section
+        └── Container
+            └── Data
+                └── Seeders
+                    ├── DemoSeeder_1.php
+                    ├── AnotherDemoSeeder_2.php
+                    └── ...
 ```
 
 ## Code Example
 
-#### Demo Seeder
+Seeders are defined exactly as you would define them in Laravel.
 
-```php
-class DemoSeeder_1 extends Seeder
-{
-    public function run()
-    {
-        app(CreateRoleTask::class)->run('admin', 'Administrator', 'Administrator Role', 999);
-        // ...
-    }
-}
-```
-:::note
-Same Seeder class is allowed to contain seeding for multiple `Models`.
-:::
+## Naming Conventions
 
-## Run the Seeders {#run-the-seeders}
+To avoid conflicts between containers' seeder classes, it is crucial to follow specific naming conventions.
+If two seeder classes have the same name but exist in different containers, Apiato will not be able to load one of them,
+leading to unintended consequences and potential data inconsistencies.
 
-After registering the `Seeders` you can run this command:
+To ensure smooth and error-free seeding, adhere to the following naming conventions:
 
-```
-php artisan db:seed
-```
+#### Prepend Container Name
 
-Migrate & seed at the same time
+Always prepend the seeders of each container with the container name.
+For example, if you have containers named `User` and `Item`,
+the seeder classes should be named `UserPermissionsSeeder` and `ItemPermissionsSeeder`, respectively.
 
-```
-php artisan migrate --seed
-```
+#### Prepend Section Name
 
-## Testing Seeder Command {#apiato-testing-seeder-command}
+In situations where two seeder classes have the same name but exist in different containers,
+manually prepend the seeder name with the section name to distinguish them.
 
-It's useful sometimes to create a big set of testing data. Apiato facilitates this task:
+## Loading Order
 
-1. Open `app/Ship/Seeders/SeedTestingData.php` and write your testing data here.
-2. Run this command any time you want this data available (example at staging servers):
+Apiato enables the loading of seeders in a specific order.
+To organize the seeding of classes, simply add `_1`, `_2`, and so on, to your class names.
+For instance, `UserPermissionsSeeder_1` will be loaded before `UserPermissionsSeeder_2`.
+
+1. By default, Laravel invokes the `run` method of the `database/seeders/DatabaseSeeder.php` class.
+2. The `run` method within `DatabaseSeeder` calls the `runLoadingSeeders` method of the `Apiato\Core\Loaders\SeederLoaderTrait.php` trait.
+3. The `runLoadingSeeders` method, in turn, loads all the seeders within each container following this sequence:
+   1. It first loads all the seeders whose names contain `_1`.
+   2. Subsequently, it proceeds to load seeders with names containing `_2`.
+   3. This pattern continues until it loads all seeders with names containing `_n`.
+   4. Lastly, any remaining seeders without the `_n` suffix are loaded.
+
+## Special Seeders
+
+### Testing
+
+For testing purposes, Apiato offers a special seeder class to seed testing data.
+You can find this seeder class at `app/Ship/Seeders/SeedTestingData.php`.
+It's important to note that this seeder is not loaded automatically by Apiato.
+Instead, you can manually trigger the seeding process by running the following command:
 
 ```
 php artisan apiato:seed-test
 ```
 
-:::info Further reading
-More info at [Laravel Docs](https://laravel.com/docs/seeding).
-:::
+### Deployment
+
+In addition to the testing seeder, Apiato also provides a special seeder class for production data seeding.
+You can locate this seeder class at `app/Ship/Seeders/SeedDeploymentData.php`.
+Similar to the testing seeder, the deployment seeder is not automatically loaded by Apiato.
+You can call this seeder and populate your database with production data by executing the following command:
+
+```
+php artisan apiato:seed-deployment
+```
