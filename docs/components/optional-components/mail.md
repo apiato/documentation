@@ -11,6 +11,12 @@ Apiato mails are just Laravel mails,
 and they function in the exact same way as regular Laravel mails.
 However, they come with additional rules and conventions specific to the Apiato.
 
+To generate new mails you may use the `apiato:generate:mail` interactive command.
+
+```
+php artisan apiato:generate:mail
+```
+
 ## Rules
 
 - All container-specific Mails MUST be placed in the `app/Containers/{Section}/{Container}/Mails` directory.

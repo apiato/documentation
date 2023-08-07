@@ -11,7 +11,7 @@ tags:
 
 Routes are responsible for mapping incoming HTTP requests to their corresponding controller functions.
 
-To generate new routes using Apiato code generator, you may use the `apiato:generate:route` interactive command.
+To generate new routes you may use the `apiato:generate:route` interactive command.
 
 ```
 php artisan apiato:generate:route

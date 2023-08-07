@@ -9,11 +9,11 @@ Apiato comes with a powerful code generator that can help you to generate all th
 Apiato code generator is valuable tool
 that can significantly accelerate the development process
 by automating the creation of boilerplate code based on user inputs.
-With code generator,
+For example, with the `apiato:generate:container` command,
 you can quickly generate a complete container with fully functional CRUD operations,
 complete with test coverage.
 
-To access the latest list of code generator commands, simply type the following in the terminal or command prompt:
+To access the latest list of code generator commands you may run the following command:
 
 ```
 php artisan list apiato:generate

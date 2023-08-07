@@ -11,6 +11,12 @@ Apiato migrations are just Laravel migrations,
 and they function in the exact same way as regular Laravel migrations.
 However, they come with additional rules and conventions specific to the Apiato.
 
+To generate new migrations you may use the `apiato:generate:migration` interactive command.
+
+```
+php artisan apiato:generate:migration
+```
+
 ## Rules
 
 - All container-specific Migrations MUST be placed in the `app/Containers/{Section}/{Container}/Data/Migrations` directory.

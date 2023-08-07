@@ -11,6 +11,12 @@ Apiato jobs are just Laravel jobs,
 and they function in the exact same way as regular Laravel jobs.
 However, they come with additional rules and conventions specific to the Apiato.
 
+To generate new jobs you may use the `apiato:generate:job` interactive command.
+
+```
+php artisan apiato:generate:job
+```
+
 ## Rules
 
 - All container-specific Jobs MUST be placed in the `app/Containers/{Section}/{Container}/Jobs` directory.

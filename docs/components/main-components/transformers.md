@@ -18,7 +18,7 @@ For more detailed information about transformers and their usage,
 you can refer to the [official documentation of Fractal](https://fractal.thephpleague.com/transformers/),
 which is the underlying library used for handling transformations in Apiato.
 
-To generate new transformers using Apiato code generator,
+To generate new transformers
 you may use the `apiato:generate:transformer` interactive command.
 
 ```

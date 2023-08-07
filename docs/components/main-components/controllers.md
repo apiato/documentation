@@ -21,7 +21,7 @@ Apiato implementation of controllers maintains the fundamental concept of the MV
 where controllers assume the role of the "C" (Controller) component.
 However, Apiato introduces a focused and predefined set of responsibilities for controllers,
 
-To generate new controllers using Apiato code generator,
+To generate new controllers
 you may use the `apiato:generate:controller` interactive command.
 
 ```

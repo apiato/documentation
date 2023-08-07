@@ -16,6 +16,12 @@ Value Objects are particularly well-suited for use with Laravel [attributes cast
 which allows us to cast a Value Object to a specific type,
 enabling seamless integration with Eloquent models and database operations.
 
+To generate new values you may use the `apiato:generate:value` interactive command.
+
+```
+php artisan apiato:generate:value
+```
+
 ## Rules
 
 - All container-specific Values MUST be placed in the `app/Containers/{section}/{container}/Values` directory.
