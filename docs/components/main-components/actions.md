@@ -9,6 +9,22 @@ tags:
   - request
 ---
 
+Actions serve as the embodiment of the application's Use Cases,
+encapsulating the various operations that users or software can execute within the application.
+
+To generate new actions using Apiato code generator, you may use the `apiato:generate:action` interactive command.
+
+```shell
+php artisan apiato:generate:action
+```
+
+Additionally, to retrieve a list of the existing actions in your Apiato application,
+use the `apiato:list:actions` command.
+
+```shell
+php artisan apiato:list:actions
+```
+
 ## Definition & Principles
 
 Read [**Porto SAP Documentation (#Actions)**](https://github.com/Mahmoudz/Porto#definitions--principles).

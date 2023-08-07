@@ -9,6 +9,25 @@ tags:
   - action
 ---
 
+Tasks are specialized classes that hold shared business logic,
+fostering code reuse and promoting efficient organization.
+They play a vital role
+in encapsulating functionalities that are utilized by multiple Actions
+spanning various Containers within your application.
+
+To generate new tasks using Apiato code generator, you may use the `apiato:generate:task` interactive command.
+
+```shell
+php artisan apiato:generate:task
+```
+
+Additionally, to retrieve a list of the existing tasks in your Apiato application,
+use the `apiato:list:tasks` command.
+
+```shell
+php artisan apiato:list:tasks
+```
+
 ## Definition & Principles
 
 Read [**Porto SAP Documentation (#Tasks)**](https://github.com/Mahmoudz/Porto#definitions--principles).

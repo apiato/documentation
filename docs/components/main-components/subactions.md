@@ -10,7 +10,18 @@ tags:
   - request
 ---
 
-Every feature available for Actions, are also available in SubActions.
+SubActions are designed to eliminate code duplication within Actions.
+They enable Actions to share a sequence of Tasks, thus promoting reusability.
+Similar to how Tasks enable Actions to share specific functionalities,
+SubActions serve to share a predefined set of Tasks.
+
+All the features and capabilities available for regular Actions are also applicable to SubActions.
+
+To generate new SubActions using Apiato code generator, you may use the `apiato:generate:subaction` interactive command.
+
+```
+php artisan apiato:generate:subaction
+```
 
 ## Definition & Principles
 

@@ -8,6 +8,17 @@ tags:
   - repository
 ---
 
+Models are responsible for representing the data of the application
+and providing an abstraction for interacting with that data.
+They encapsulate the business logic and rules associated with the data,
+as well as facilitate the communication with the underlying database.
+
+To generate new models using Apiato code generator, you may use the `apiato:generate:model` interactive command.
+
+```
+php artisan apiato:generate:model
+```
+
 ## Definition & Principles
 
 Read [**Porto SAP Documentation (#Models)**](https://github.com/Mahmoudz/Porto#definitions--principles).

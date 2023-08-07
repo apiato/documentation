@@ -12,6 +12,22 @@ tags:
   - transformer
 ---
 
+Controllers are tasked with two primary responsibilities:
+serving the requested data and constructing the corresponding response.
+As the intermediaries between incoming requests and outgoing responses,
+controllers efficiently manage the flow of information to ensure a seamless user experience.
+
+Apiato implementation of controllers maintains the fundamental concept of the MVC (Model-View-Controller) pattern,
+where controllers assume the role of the "C" (Controller) component.
+However, Apiato introduces a focused and predefined set of responsibilities for controllers,
+
+To generate new controllers using Apiato code generator,
+you may use the `apiato:generate:controller` interactive command.
+
+```
+php artisan apiato:generate:controller
+```
+
 ## Definition & Principles
 
 Read [**Porto SAP Documentation (#Controllers)**](https://github.com/Mahmoudz/Porto#definitions--principles).

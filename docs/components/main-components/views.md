@@ -7,6 +7,9 @@ tags:
   - controller
 ---
 
+Views offer a convenient mechanism for organizing HTML content in separate files.
+They facilitate the separation of your controller or application logic from the presentation logic.
+
 ## Definition & Principles
 
 Read [**Porto SAP Documentation (#Views)**](https://github.com/Mahmoudz/Porto#definitions--principles).

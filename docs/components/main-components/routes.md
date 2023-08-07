@@ -9,6 +9,14 @@ tags:
   - request
 ---
 
+Routes are responsible for mapping incoming HTTP requests to their corresponding controller functions.
+
+To generate new routes using Apiato code generator, you may use the `apiato:generate:route` interactive command.
+
+```
+php artisan apiato:generate:route
+```
+
 ## Definition & Principles
 
 Read [**Porto SAP Documentation (#Routes)**](https://github.com/Mahmoudz/Porto#definitions--principles).

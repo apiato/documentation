@@ -10,6 +10,16 @@ tags:
   - action
 ---
 
+Requests components are a way to interact with the current HTTP request
+being handled by your application as well as retrieve the input,
+cookies, and files that were submitted with the request.
+
+To generate new requests using Apiato code generator, you may use the `apiato:generate:request` interactive command.
+
+```
+php artisan apiato:generate:request
+```
+
 ## Definition & Principles
 
 Read [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmoudz/Porto#definitions--principles).

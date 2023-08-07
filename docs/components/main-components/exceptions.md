@@ -7,6 +7,14 @@ tags:
   - exception
 ---
 
+Exceptions are used to handle errors and exceptions in the application.
+
+To generate new exceptions using Apiato code generator, you may use the `apiato:generate:exception` interactive command.
+
+```
+php artisan apiato:generate:exception
+```
+
 ## Definition & Principles
 
 Read [**Porto SAP Documentation (#Exceptions)**](https://github.com/Mahmoudz/Porto#definitions--principles).
