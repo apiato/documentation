@@ -26,7 +26,6 @@ html[data-theme='dark'] main a.hash-link {
 html[data-theme='light'] code,
 html[data-theme='dark'] code {
   color: #eb4432;
-  padding: 0 0.125rem;
 }
 
 html[data-theme='light'] .pagination-nav,
