@@ -22,9 +22,10 @@ php artisan apiato:generate:factory
 ## Rules
 
 - Factory name MUST be the same as its corresponding model name and suffixed with `Factory`.
-- All Factories MUST be placed in the `app/Containers/{Section}/{Container}/Data/Factories` directory.
-- All Factories MUST extend the `App\Ship\Parents\Factories\Factory` class.
-  - The parent extension SHOULD be aliased as `ParentFactory`.
+- All Factories:
+  - MUST be placed in the `app/Containers/{Section}/{Container}/Data/Factories` directory.
+  - MUST extend the `App\Ship\Parents\Factories\Factory` class.
+    - The parent extension SHOULD be aliased as `ParentFactory`.
 
 ## Folder Structure
 

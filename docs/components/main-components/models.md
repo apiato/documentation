@@ -25,9 +25,10 @@ Read [**Porto SAP Documentation (#Models)**](https://github.com/Mahmoudz/Porto#d
 
 ## Rules
 
-- All Models MUST be placed in the `app/Containers/{Section}/{Container}/Models` directory.
-- All Models MUST extend the `App\Ship\Parents\Models\Model` class.
-  - The parent extension SHOULD be aliased as `ParentModel`.
+- All Models:
+  - MUST be placed in the `app/Containers/{Section}/{Container}/Models` directory.
+  - MUST extend the `App\Ship\Parents\Models\Model` class.
+    - The parent extension SHOULD be aliased as `ParentModel`.
 - All User Models MUST extend the `App\Ship\Parents\Models\UserModel` class.
   - The parent extension SHOULD be aliased as `ParentUserModel`.
 

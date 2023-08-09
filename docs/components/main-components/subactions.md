@@ -29,9 +29,10 @@ Read [**Porto SAP Documentation (#Sub-Actions)**](https://github.com/Mahmoudz/Po
 
 ## Rules
 
-- All SubActions MUST be placed in `app/Containers/{Section}/{Container}/Actions` directory.
-- All SubActions MUST extend the `App\Ship\Parents\Actions\SubAction` class.
-  - The parent extension SHOULD be aliased as `ParentSubAction`.
+- All SubActions:
+  - MUST be placed in `app/Containers/{Section}/{Container}/Actions` directory.
+  - MUST extend the `App\Ship\Parents\Actions\SubAction` class.
+    - The parent extension SHOULD be aliased as `ParentSubAction`.
 
 ## Folder Structure
 

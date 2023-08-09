@@ -31,9 +31,10 @@ Read [**Porto SAP Documentation (#Actions)**](https://github.com/Mahmoudz/Porto#
 
 ## Rules
 
-- All Actions MUST be placed in the `app/Containers/{Section}/{Container}/Actions` directory.
-- All Actions MUST extend the `App\Ship\Parents\Actions\Action` class.
-  - The parent extension SHOULD be aliased as `ParentAction`.
+- All Actions:
+  - MUST be placed in the `app/Containers/{Section}/{Container}/Actions` directory.
+  - MUST extend the `App\Ship\Parents\Actions\Action` class.
+    - The parent extension SHOULD be aliased as `ParentAction`.
 - The same Action MAY be called by multiple Controllers (API, Web, CLI)
 
 ## Folder Structure

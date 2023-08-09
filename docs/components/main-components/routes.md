@@ -23,18 +23,11 @@ Read [**Porto SAP Documentation (#Routes)**](https://github.com/Mahmoudz/Porto#d
 
 ## Rules
 
-- All API Routes MUST be placed in the `app/Containers/{Section}/{Container}/UI/API/Routes` directory.
+- All API Routes:
+  - MUST be placed in the `app/Containers/{Section}/{Container}/UI/API/Routes` directory.
+  - MUST follow a specific [naming convention](#api-routes).
 - All Web Routes MUST be placed in the `app/Containers/{Section}/{Container}/UI/WEB/Routes` directory.
 - Each Route file MUST contain only one Route.
-- All API Route files MUST be named based on their API version, exposure level (public/private), and functionality.  
-  Examples of valid API Route file names:
-  - `CreateOrder.v1.public.php`
-  - `FulfillOrder.v2.public.php`
-  - `CancelOrder.v1.private.php`
-
-:::note
-Web Route files, can have any appropriate name.
-:::
 
 ## Folder Structure
 
@@ -59,6 +52,21 @@ app
 ## Code Example
 
 Routes are defined exactly as you would define them in Laravel.
+
+## Route File Naming Convention
+
+### API Routes
+
+API Route files MUST be named based on their API version, exposure level (public/private), and functionality.
+
+#### Examples of valid API Route file names:
+- `CreateOrder.v1.public.php`
+- `FulfillOrder.v2.public.php`
+- `CancelOrder.v1.private.php`
+
+### Web Routes
+
+Web Route files can have any appropriate name.
 
 ## Public & Private Routes
 

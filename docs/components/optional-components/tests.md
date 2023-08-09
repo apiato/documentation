@@ -37,14 +37,18 @@ These types of tests provide the most confidence that your system as a whole is 
 
 ## Rules
 
-- All container-specific Unit tests MUST be placed in the `app/Containers/{Section}/{Container}/Tests/Unit` directory.
-- All general and `Ship` Unit tests MUST be placed in the `app/Ship/Tests/Unit` directory.
-- All API Functional tests MUST be placed in the `app/Containers/{Section}/{Container}/UI/API/Tests/Functional` directory.
-- All WEB Functional tests MUST be placed in the `app/Containers/{Section}/{Container}/UI/WEB/Tests/Functional` directory.
-- All container-specific Unit tests MUST extend the `App\Containers\{Section}\{Container}\Tests\UnitTestCase` class.
-- All general and `Ship` Unit tests MUST extend the `App\Ship\Tests\TestCase` class.
-- All API Functional tests MUST extend the `App\Containers\{Section}\{Container}\UI\API\Tests\ApiTestCase` class.
-- All WEB Functional tests MUST extend the `App\Containers\{Section}\{Container}\UI\WEB\Tests\WebTestCase` class.
+- All container-specific Unit tests:
+  - MUST be placed in the `app/Containers/{Section}/{Container}/Tests/Unit` directory.
+  - MUST extend the `App\Containers\{Section}\{Container}\Tests\UnitTestCase` class.
+- All `Ship` Unit tests:
+  - MUST be placed in the `app/Ship/Tests/Unit` directory.
+  - MUST extend the `App\Ship\Tests\TestCase` class.
+- All API Functional tests:
+  - MUST be placed in the `app/Containers/{Section}/{Container}/UI/API/Tests/Functional` directory.
+  - MUST extend the `App\Containers\{Section}\{Container}\UI\API\Tests\ApiTestCase` class.
+- All WEB Functional tests:
+  - MUST be placed in the `app/Containers/{Section}/{Container}/UI/WEB/Tests/Functional` directory.
+  - MUST extend the `App\Containers\{Section}\{Container}\UI\WEB\Tests\WebTestCase` class.
 - All TestCases MUST extend the `App\Ship\Parents\Tests\PhpUnit\TestCase` class. e.g.:
   - `App\Ship\Tests\TestCase`
   - `App\Containers\{Section}\{Container}\Tests\UnitTestCase`

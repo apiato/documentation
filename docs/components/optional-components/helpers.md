@@ -14,9 +14,9 @@ Please be aware that Container Helpers are deprecated and will be removed in the
 
 ## Rules
 
+- You MAY create as many helper files as you need per container.
 - All container-specific helpers MUST be placed in the `app/Containers/{Section}/{Container}/Helpers` directory.
 - All general helpers MUST be placed in the `app/Ship/Helpers` directory.
-- You MAY create as many helper files as you need per container.
 
 ## Folder Structure
 

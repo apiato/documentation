@@ -34,12 +34,16 @@ Read [**Porto SAP Documentation (#Controllers)**](https://github.com/Mahmoudz/Po
 
 ## Rules
 
-- All API Controllers MUST be placed in the `app/Containers/{Section}/{Container}/UI/API/Controllers` directory.
-- All web Controllers MUST be placed in the `app/Containers/{Section}/{Container}/UI/WEB/Controllers` directory.
-- All API Controllers MUST extend the `App\Ship\Parents\Controllers\ApiController` class.
-- All web Controllers MUST extend the `App\Ship\Parents\Controllers\WebController` class.
-- Controllers MUST only call the `run` or `transactionalRun` method of Actions.
-- Controllers SHOULD pass the Request object to the Action instead of passing data from the request.
+- All API Controllers:
+  - MUST be placed in the `app/Containers/{Section}/{Container}/UI/API/Controllers` directory.
+  - MUST extend the `App\Ship\Parents\Controllers\ApiController` class.
+  - MUST format their responses via a [Transformer](transformers).
+- All Web Controllers:
+  - MUST be placed in the `app/Containers/{Section}/{Container}/UI/WEB/Controllers` directory.
+  - MUST extend the `App\Ship\Parents\Controllers\WebController` class.
+- Controllers:
+  - MUST only call the `run` or `transactionalRun` method of Actions.
+  - SHOULD pass the Request object to the Action instead of passing data from the request.
 
 ## Folder Structure
 
@@ -75,7 +79,7 @@ class Controller extends ApiController
     ) {
     }
     
-    public function __invoke(SampleRequest $request): JsonResponse
+    public function __invoke(SampleRequest $request): array
     {
         $sample = $this->sampleAction->run($request);
         
