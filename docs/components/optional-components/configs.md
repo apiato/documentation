@@ -6,7 +6,7 @@ tags:
   - config
 ---
 
-Apiato configs are just Laravel configs, and they function in the exact same way as regular Laravel configs.
+Apiato configs are just Laravel configs, and they function in the exact same way as Laravel configs.
 However, they come with additional rules and conventions specific to the Apiato.
 
 To generate new configs
@@ -18,7 +18,7 @@ php artisan apiato:generate:configuration
 
 ## Rules
 
-- All custom container-specific and third-party package config files MUST be placed in the `app/Containers/{Section}/{Container}/Configs` directory.
+- All container-specific and third-party package config files MUST be placed in the `app/Containers/{Section}/{Container}/Configs` directory.
 - All general config files MUST be placed in the `app/Ship/Configs` directory.
 - All Laravel config files MUST be kept in the `app/config` directory.
 - You MUST NOT add any config file to the root `config` directory.

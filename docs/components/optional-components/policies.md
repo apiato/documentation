@@ -9,7 +9,7 @@ tags:
 ---
 
 Apiato policies are just Laravel policies,
-and they function in the exact same way as regular Laravel policies.
+and they function in the exact same way as Laravel policies.
 However, they come with additional rules and conventions specific to the Apiato.
 
 To generate new policies you may use the `apiato:generate:policy` interactive command.

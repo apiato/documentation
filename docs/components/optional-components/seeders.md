@@ -8,7 +8,7 @@ tags:
 ---
 
 Apiato seeders are just Laravel seeders,
-and they function in the exact same way as regular Laravel seeders.
+and they function in the exact same way as Laravel seeders.
 However, they come with additional rules and conventions specific to the Apiato.
 
 To generate new seeders you may use the `apiato:generate:seeder` interactive command.
@@ -19,8 +19,8 @@ php artisan apiato:generate:seeder
 
 ## Rules
 
-- All custom container-specific and third-party package Seeders MUST be placed in the `app/Containers/{Section}/{Container}/Data/Seeders` directory.
-- All custom (non-Laravel/package) Seeders MUST extend the `App\Ship\Parents\Seeders\Seeder` class.
+- All container-specific and third-party package Seeders MUST be placed in the `app/Containers/{Section}/{Container}/Data/Seeders` directory.
+- All non-Laravel or third-party package Seeders MUST extend the `App\Ship\Parents\Seeders\Seeder` class.
 
 ## Folder Structure
 

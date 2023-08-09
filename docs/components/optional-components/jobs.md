@@ -8,7 +8,7 @@ tags:
 ---
 
 Apiato jobs are just Laravel jobs,
-and they function in the exact same way as regular Laravel jobs.
+and they function in the exact same way as Laravel jobs.
 However, they come with additional rules and conventions specific to the Apiato.
 
 To generate new jobs you may use the `apiato:generate:job` interactive command.

@@ -8,7 +8,7 @@ tags:
 ---
 
 Apiato migrations are just Laravel migrations,
-and they function in the exact same way as regular Laravel migrations.
+and they function in the exact same way as Laravel migrations.
 However, they come with additional rules and conventions specific to the Apiato.
 
 To generate new migrations you may use the `apiato:generate:migration` interactive command.
