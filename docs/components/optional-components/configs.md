@@ -18,19 +18,11 @@ php artisan apiato:generate:configuration
 
 ## Rules
 
+- Containers MAY have as many config files as they need.
 - All container-specific and third-party package config files MUST be placed in the `app/Containers/{Section}/{Container}/Configs` directory.
 - All general config files MUST be placed in the `app/Ship/Configs` directory.
-- All Laravel config files MUST be kept in the `app/config` directory.
-- You MUST NOT add any config file to the root `config` directory.
-- The container-specific config file MUST be named following a specific convention:  
-  `camelCase` of their Section name followed by `-` and then the `camelCase` of their Container name.
-  For example: `mySection-myContainer.php`.
-- Containers MAY have as many config files as they need.
-
-:::info
-The container config name convention rule is in place to prevent conflicts between third-party packages'
-configs and container-specific configs.
-:::
+- All Laravel config files MUST be kept in the root `config` folder.
+- You MUST NOT add any non-Laravel or third-party config files to the root `config` folder.
 
 ## Folder Structure
 
@@ -56,3 +48,16 @@ app
 ## Code Example
 
 Configs are defined exactly as you would define them in Laravel.
+
+## Container Main Config File
+
+It is recommended that each container possesses a primary configuration file.
+While it is not obligatory,
+adhering to this practice prevents clashes between third-party package configurations and container-specific configurations.
+
+The primary configuration file of a container should be named in accordance with a certain convention:
+`camelCase` representation of the container's Section name,
+succeeded by `-`, and then the `camelCase` representation of the Container name.
+
+For instance, if you have a container named "MyContainer" within the "MySection"
+section, the configuration file would be named `mySection-myContainer.php`.
