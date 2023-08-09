@@ -8,6 +8,21 @@
 /* You can override the default Infima variables here. */
 :root {}
 
+html[data-theme='dark'] body main,
+html[data-theme='dark'] body aside {
+  /*background-color: #171717;*/
+  background-color: #161923;
+}
+
+a {
+  color: #75b6e7;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #278cda;
+}
+
 html[data-theme='light'] code {
   border: 0;
 }
@@ -28,6 +43,11 @@ html[data-theme='dark'] code {
   color: #eb4432;
 }
 
+html[data-theme='dark'] pre.prism-code,
+html[data-theme='dark'] code {
+  background-color: #252A37;
+}
+
 html[data-theme='light'] .pagination-nav,
 html[data-theme='dark'] .pagination-nav {
   display: none;
@@ -38,10 +58,91 @@ html[data-theme='dark'] main footer {
   margin-bottom: 3rem;
 }
 
+html[data-theme='light'] .footer,
+html[data-theme='dark'] .footer {
+  background-color: #091f2c;
+  border-top: 1px solid #404040;
+}
+
 html[data-theme='light'] .admonition_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module code,
 html[data-theme='dark'] .admonition_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module code {
   background-color: rgba(0, 0, 0, 0)!important;
   border: 0;
+}
+
+html[data-theme='dark'] .alert--info {
+  background-color: #004173;
+  border: 1px solid #004173;
+}
+
+html[data-theme='dark'] .alert--success {
+  background-color: #054b16;
+  border: 1px solid #054b16;
+}
+
+html[data-theme='dark'] .alert--success a {
+  color: #dff6dd;
+  font-weight: bold;
+}
+
+html[data-theme='dark'] .alert--success a:hover {
+  text-decoration: underline;
+  text-decoration-color: #dff6dd;
+}
+
+html[data-theme='dark'] .alert--secondary {
+  background-color: #3b2e58;
+  border: 1px solid #3b2e58;
+}
+
+html[data-theme='dark'] .alert--secondary a {
+  color: #efd9fd;
+  font-weight: bold;
+}
+
+html[data-theme='dark'] .alert--secondary a:hover {
+  text-decoration: underline;
+  text-decoration-color: #efd9fd;
+}
+
+html[data-theme='dark'] .alert--danger {
+  background-color: #630001;
+  border: 1px solid #630001;
+}
+
+html[data-theme='dark'] .alert--danger a {
+  color: #fde7e9;
+  font-weight: bold;
+}
+
+html[data-theme='dark'] .alert--danger a:hover {
+  text-decoration: underline;
+  text-decoration-color: #fde7e9;
+}
+
+html[data-theme='dark'] .alert--warning {
+  background-color: #5a4400;
+  border: 1px solid #5a4400;
+}
+
+html[data-theme='dark'] .alert--warning a {
+  color: #fff4cc;
+  font-weight: bold;
+}
+
+html[data-theme='dark'] .alert--warning a:hover {
+  text-decoration: underline;
+  text-decoration-color: #fff4cc;
+}
+
+.alert > div:first-of-type {
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}
+
+.alert span svg {
+  height: 1.1rem;
+  width: 1.1rem;
 }
 
 .header-github-link:hover {
