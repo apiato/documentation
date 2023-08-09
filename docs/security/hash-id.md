@@ -21,9 +21,7 @@ weather you are using Hash ID or not.
 If Hash ID feature is disabled, the `getHashedKey` method will return the normal ID.
 
 ```php
-
 'id' => $user->getHashedKey(),
-
 ```
 :::
 
