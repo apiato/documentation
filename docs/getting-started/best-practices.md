@@ -92,27 +92,27 @@ we should append the `/comments` path to the end of the `/articles` path.
 With the two principles we discussed above in mind, let’s look at some examples of good URLs.
 
 - Get all Articles:
-	- `GET https://api.apiato.test/v1/articles`
+	- `/articles`
 - Find a single Article by its unique identifier (ID):
-	- `GET https://api.apiato.test/v1/articles/:articleId`
+	- `/articles/:articleId`
 - Find/Search Articles by one or more fields:
-	- `GET https://api.apiato.test/v1/articles?search=author:john`
-	- `GET https://api.apiato.test/v1/articles?search=author:john;color:white`
+	- `/articles?search=author:john`
+	- `/articles?search=author:john;color:white`
 - Order and Sort query result:
-	- `GET https://api.apiato.test/v1/articles?orderBy=created_at&sortedBy=desc`
-	- `GET https://api.apiato.test/v1/articles?search=author:john&orderBy=created_at&sortedBy=desc`
+	- `/articles?orderBy=created_at&sortedBy=desc`
+	- `/articles?search=author:john&orderBy=created_at&sortedBy=desc`
 - Specify optional fields:
-	- `GET https://api.apiato.test/v1/articles?filter=id;title;status`
-	- `GET https://api.apiato.test/v1/articles/:articleId?filter=id;title;status`
+	- `/articles?filter=id;title;status`
+	- `/articles/:articleId?filter=id;title;status`
 - Get all Comments belonging to an Article:
-	- `GET https://api.apiato.test/v1/articles/:articleId/comments`
+	- `/articles/:articleId/comments`
 - Include objects relationship (Comments/author) with the Article response:
-	- `GET https://api.apiato.test/v1/articles/:articleId?include=comments`
-	- `GET https://api.apiato.test/v1/articles/:articleId?include=comments,author`
+	- `/articles/:articleId?include=comments`
+	- `/articles/:articleId?include=comments,author`
 - Create new Article:
-	- `POST https://api.apiato.test/v1/articles`
+	- `/articles`
 - Add new Comment to an Article:
-	- `POST https://api.apiato.test/v1/articles/:articleId/comments`
+	- `/articles/:articleId/comments`
 
 In the code above, we use the GET method on the path `/articles/:articleId/comments`.
 We get `comments` on the article identified by `articleId` and then return it in the response.
