@@ -53,7 +53,7 @@ ensuring the seamless functioning of your application's components.
 
 ## Folder Structure
 
-The highlighted section showcases the crucial service provider registration points:
+The highlighted sections showcase service provider registration points:
 
 - `MainServiceProvider.php` acts as the central registration point for custom service providers specific to a container.
 - `ShipProvider.php` acts as the central registration point for the Ship (general) service providers.
@@ -241,7 +241,7 @@ graph TB
       AnotherCustomServiceProvider
       BEP
       MiddlewareServiceProvider
-      end
+    end
     BMP
   end
     
@@ -250,7 +250,7 @@ graph TB
     subgraph AServiceProviders[Service Providers]
       CustomServiceProvider
       EventServiceProvider
-      end
+    end
     AMP
   end
   
