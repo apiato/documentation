@@ -1,62 +1,116 @@
 ---
 title: Events
+tags:
+  - component
+  - optional-component
+  - event
+  - listener
+  - service-provider
+  - action
+  - task
 ---
 
-- [Definition](#definition)
-- [Principles](#principles)
-- [Rules](#rules)
-- [Folder Structure](#folder-structure)
-- [Usage](#usage)
-- [Broadcasting](#broadcasting)
+Apiato events are just Laravel events, and they function in the exact same way as Laravel events.
+However, they come with additional rules and conventions specific to Apiato.
 
-## Definition
+To generate new events and listeners you may use the following interactive commands:
 
- - Events provide a simple observer implementation, allowing you to subscribe and listen for various events that occur in your application.
- - Events are classes that can be fired from anywhere in your application.
- - An event class will usually be bound to one, or many Events Listeners Classes or has those Listeners registered to listen to it.
- - "fire" is the term that is usually used to call an Event.
+```
+php artisan apiato:generate:event
+php artisan apiato:generate:listener
+```
 
-## Principles
+Additionally, you may also generate an event service provider using the `apiato:generate:provider` interactive command.
 
-- Events can be fired from Actions and or Tasks. It's preferable to choose one place only. (Tasks are recommended).
-- Events SHOULD be created inside the Containers. However, general Events CAN be created in the Ship layer.
+```
+php artisan apiato:generate:provider
+```
 
 ## Rules
 
-- Event classes MUST be placed in `app/Containers/{Section}/{Container}/Events`.
-- General Events MUST be placed in `app/Ship/Events`.
-- All Events MUST extend the `App\Ship\Parents\Events\Event` class.
+- All 
+  - Events MUST extend the `App\Ship\Parents\Events\Event` class.
+    - The parent extension SHOULD be aliased as `ParentEvent`.
+  - Listeners MUST extend the `App\Ship\Parents\Listeners\Listener` class.
+    - The parent extension SHOULD be aliased as `ParentListener`.
+- All container-specific
+  - Events MUST be placed in the `app/Containers/{Section}/{Container}/Events` directory.
+  - Listeners MUST be placed in the `app/Containers/{Section}/{Container}/Listeners` directory.
+
+[//]: # (  - Events & Listeners MUST be registered in their respective container's `App\Containers\{Section}\{Container}\Providers\EventServiceProvider` class.)
+- All general
+  - Events MUST be placed in the `app/Ship/Events` directory.
+  - Listeners MUST be placed in the `app/Ship/Listeners` directory.
+
+[//]: # (  - Events & Listeners MUST be registered in the `App\Ship\Providers\EventServiceProvider` class.)
+- Listeners CAN listen to all cross-container & cross-section events.
 
 ## Folder Structure
 
+```markdown
+app
+├── Containers
+│   └── Section
+│       └── Container
+│           ├── Events
+│           │   ├── SomethingHappenedEvent.php
+│           │   └── ...
+│           └── Listeners
+│               ├── SomethingHappenedListener.php
+│               └── ...
+└── Ship
+    ├── Events
+    │   ├── GlobalStateChangedEvent.php
+    │   └── ...
+    └── Listeners
+        ├── GlobalStateChangedListener.php
+        └── ...
 ```
-- App
-  - Containers
-    - {Section}
-      - {Container}
-        - Events
-          - SomethingHappenedEvent.php
-          - ...
-        - Listeners
-          - ListenToMusicListener.php
-          - ...
 
-  - Ship
-    - Events
-      - GlobalStateChanged.php
-      - SomethingBiiigHappenedEvent.php
-      - ...
+## Code Example
+
+Events and Listeners are defined exactly as you would define them in Laravel.
+
+## Registering Events & Listeners
+
+The registration of events and listeners depends on where you intend to respond to events.
+Listeners can be registered in both container and Ship.
+
+### In The Container
+
+Registering events and listeners in the container can be done
+by adding them to the `listen` array in the `App\Containers\{Section}\{Container}\Providers\EventServiceProvider` class.
+
+```php
+use ...
+use App\Ship\Parents\Providers\EventServiceProvider as ParentEventServiceProvider;
+
+class EventServiceProvider extends ParentEventServiceProvider
+{
+    protected $listen = [
+        OrderShipped::class => [
+            SendShipmentNotification::class,
+        ],
+    ];
+}
 ```
 
-## Usage {#usage}
+Remember to also register the `EventServiceProvider` in the container's `MainServiceProvider`:
 
-In Laravel, you can create and register events in multiple way. Read [Laravel documentation](https://laravel.com/docs/events) to learn more about Events. 
+```php
+use ...
+use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
 
-Your custom `EventServiceProvider` needs to be registered in the containers `MainServiceProvider` as well.
+class MainServiceProvider extends ParentMainServiceProvider
+{
+    protected array $serviceProviders = [
+        // ... Other service providers
+        EventServiceProvider::class,
+    ];
+}
+```
 
-## Broadcasting {#broadcasting}
-To define Broadcasting channels go to `app/Ship/Boardcasts/channels.php`.
+### In The Ship
 
-:::info Further reading
-More info at [Laravel Docs](https://laravel.com/docs/events).
-:::
+Registering events and listeners in the Ship can be done
+by adding them to the `listen` array in the `App\Ship\Providers\EventServiceProvider` class.
