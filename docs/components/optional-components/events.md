@@ -30,34 +30,46 @@ php artisan apiato:generate:listener
 - All container-specific
   - Events MUST be placed in the `app/Containers/{Section}/{Container}/Events` directory.
   - Listeners MUST be placed in the `app/Containers/{Section}/{Container}/Listeners` directory.
-
-[//]: # (  - Events & Listeners MUST be registered in their respective container's `App\Containers\{Section}\{Container}\Providers\EventServiceProvider` class.)
 - All general
   - Events MUST be placed in the `app/Ship/Events` directory.
   - Listeners MUST be placed in the `app/Ship/Listeners` directory.
-
-[//]: # (  - Events & Listeners MUST be registered in the `App\Ship\Providers\EventServiceProvider` class.)
 - Listeners CAN listen to all cross-container & cross-section events.
+- Events & Listeners MUST be registered in the location where you intend to handle that event.
+  - If you intend to handle an event in:
+    - A container, the Listener MUST be registered in `App\Containers\{Section}\{Container}\Providers\EventServiceProvider` class.
+    - The Ship, the Listener MUST be registered in `App\Ship\Providers\EventServiceProvider` class.
 
 ## Folder Structure
 
-```markdown
+The highlighted sections showcase event & listener registration points:
+
+```php
 app
 ├── Containers
 │   └── Section
 │       └── Container
 │           ├── Events
-│           │   ├── SomethingHappenedEvent.php
+│           │   ├── DemoEvent.php
 │           │   └── ...
-│           └── Listeners
-│               ├── SomethingHappenedListener.php
+│           ├── Listeners
+│           │   ├── DemoListener.php
+│           │   └── ...
+│           └── Providers
+                // highlight-start
+│               ├── EventServiceProvider.php
+                // highlight-end
 │               └── ...
 └── Ship
     ├── Events
-    │   ├── GlobalStateChangedEvent.php
+    │   ├── GlobalDemoEvent.php
     │   └── ...
-    └── Listeners
-        ├── GlobalStateChangedListener.php
+    ├── Listeners
+    │   ├── GlobalDemoListener.php
+    │   └── ...
+    └── Providers
+        // highlight-start
+        ├── EventServiceProvider.php
+        // highlight-end
         └── ...
 ```
 
@@ -115,3 +127,70 @@ class MainServiceProvider extends ParentMainServiceProvider
 
 Registering events and listeners in the Ship can be done
 by adding them to the `listen` array in the `App\Ship\Providers\EventServiceProvider` class.
+
+## Events & Listeners Registration Flow
+
+Consider the following folder structure:
+
+```php
+app
+├── Containers
+│   └── Section
+│       └── Container
+│           ├── Events
+│           │   ├── DemoEvent.php
+│           │   └── ...
+│           ├── Listeners
+│           │   ├── DemoListener.php
+│           │   └── ...
+│           └── Providers
+│               ├── EventServiceProvider.php
+│               ├── MainServiceProvider.php
+│               └── ...
+└── Ship
+    ├── Events
+    │   ├── GlobalDemoEvent.php
+    │   └── ...
+    ├── Listeners
+    │   ├── GlobalDemoListener.php
+    │   └── ...
+    └── Providers
+        ├── EventServiceProvider.php
+        ├── ShipProvider.php
+        └── ...
+```
+
+The following graph shows the registration flow of events and listeners:
+
+```mermaid
+graph LR
+  subgraph Container
+    MainServiceProvider
+    EventServiceProvider
+    DemoEvent
+    DemoListener
+  end
+  
+  MainServiceProvider -->|loads| EventServiceProvider
+  EventServiceProvider -->|registered in| MainServiceProvider
+  DemoEvent -->|registered in| EventServiceProvider
+  DemoListener -->|registered in| EventServiceProvider
+  
+  subgraph Ship
+    ShipProvider
+    ShipEventServiceProvider[EventServiceProvider]
+    GlobalDemoEvent
+    GlobalDemoListener
+  end
+
+  subgraph Application
+    SPLoader[[Service Provider Loader]]-- loads-->MainServiceProvider
+    SPLoader-- loads-->ShipProvider
+  end
+  
+  ShipProvider -->|loads| ShipEventServiceProvider
+  ShipEventServiceProvider -->|registered in| ShipProvider
+  GlobalDemoEvent -->|registered in| ShipEventServiceProvider
+  GlobalDemoListener -->|registered in| ShipEventServiceProvider
+```
+
