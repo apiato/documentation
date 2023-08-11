@@ -36,7 +36,7 @@ ensuring the seamless functioning of your application's components.
         - The parent extension SHOULD be aliased as `ParentMainServiceProvider`.
 - All container-specific Service Providers:
   - MUST be placed in the `app/Containers/{Section}/{Container}/Providers` directory.
-  - MUST be registered in their respective Container's `App\Containers\{Section}\{Container}\Providers\MainServiceProvider` class.
+  - MUST be registered in their respective container's `App\Containers\{Section}\{Container}\Providers\MainServiceProvider` class.
 - All general Service Providers:
   - MUST be placed in the `app/Ship/Providers` directory.
   - MUST be registered in the `App\Ship\Prviders\ShipProvider` class.
