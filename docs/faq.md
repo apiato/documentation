@@ -14,7 +14,7 @@ To change this from `api.apiato.test` to `apiato.test/api/`, do the following:
 1. Edit `.env`, change your api domain to `API_URL=https://apiato.test` instead of `API_URL=https://api.apiato.test` to
 remove the subdomain.
 2. Edit `app/Ship/Configs/apiato.php`, set prefix to `'prefix' => 'api/'`.
-3. Set `enable_version_prefix` to `false` in `app/Ship/Configs/apiato.php`.
+3. Set `enable_version_prefix` to `false` in the `app/Ship/Configs/apiato.php`.
 
 ### Where do I define my Composer dependencies? {#where-do-i-define-my-composer-dependencies}
 

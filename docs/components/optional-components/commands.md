@@ -45,4 +45,4 @@ Commands are defined exactly as you would define them in Laravel.
 
 ## Closure Commands
 
-You can define Console closure commands in `app/Ship/Commands/closures.php`.
+You can define your console closure commands in `app/Ship/Commands/closures.php`.
