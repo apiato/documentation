@@ -20,12 +20,6 @@ php artisan apiato:generate:event
 php artisan apiato:generate:listener
 ```
 
-Additionally, you may also generate an event service provider using the `apiato:generate:provider` interactive command.
-
-```
-php artisan apiato:generate:provider
-```
-
 ## Rules
 
 - All 
@@ -93,6 +87,13 @@ class EventServiceProvider extends ParentEventServiceProvider
         ],
     ];
 }
+```
+
+To generate an event service provider
+you may use the `apiato:generate:provider` interactive command:
+
+```
+php artisan apiato:generate:provider
 ```
 
 Remember to also register the `EventServiceProvider` in the container's `MainServiceProvider`:
