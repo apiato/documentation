@@ -77,7 +77,7 @@ app
 │               │       │   ├── DeleteUserTest.php
 │               │       │   └── ...
 │               │       └── ApiTestCase.php
-|               └── WEB
+│               └── WEB
 │                   └── Tests
 │                       ├── Functional
 │                       │   ├── LoginTest.php
