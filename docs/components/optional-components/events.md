@@ -130,6 +130,9 @@ by adding them to the `listen` array in the `App\Ship\Providers\EventServiceProv
 
 ## Events & Listeners Registration Flow
 
+If you are manually registering events and listeners and wish to comprehend the registration process,
+here is a breakdown of the registration flow.
+
 Consider the following folder structure:
 
 ```php
@@ -160,7 +163,7 @@ app
         └── ...
 ```
 
-The following graph shows the registration flow of events and listeners:
+The following diagram illustrates the registration flow of the events and listeners in the above folder structure:
 
 ```mermaid
 graph LR
