@@ -12,7 +12,7 @@ Apiato policies are just Laravel policies,
 and they function in the exact same way as Laravel policies.
 However, they come with additional rules and conventions specific to Apiato.
 
-To generate new policies you may use the `apiato:generate:policy` interactive command.
+To generate new policies you may use the `apiato:generate:policy` interactive command:
 
 ```
 php artisan apiato:generate:policy
@@ -41,9 +41,52 @@ app
 
 ## Code Example
 
-policies are defined exactly as you would define them in Laravel.
+Policies are defined exactly as you would define them in Laravel.
 
-## Policy Auto-Discovery
+## Registering Policies
+
+Once the policy class has been created, it needs to be registered.
+Registering policies is
+how we can inform Apiato which policy to use when authorizing actions against a given model type.
+
+Registering policies can be done
+by adding them to the `policies` array in the `App\Containers\{Section}\{Container}\Providers\AuthServiceProvider` class.
+
+```php
+use ...
+use App\Ship\Parents\Providers\AuthServiceProvider as ParentAuthProvider;
+
+class AuthServiceProvider extends ParentAuthProvider
+{
+    protected $policies = [
+        Post::class => PostPolicy::class,
+    ];
+}
+```
+
+To generate an event service provider
+you may use the `apiato:generate:provider` interactive command:
+
+```
+php artisan apiato:generate:provider
+```
+
+Remember to also register the `AuthServiceProvider` in the container's `MainServiceProvider`:
+
+```php
+use ...
+use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
+
+class MainServiceProvider extends ParentMainServiceProvider
+{
+    protected array $serviceProviders = [
+        // ... Other service providers
+        AuthServiceProvider::class,
+    ];
+}
+```
+
+### Policy Auto-Discovery
 
 Apiato offers a policy auto-discovery feature that eliminates the need for manual registration of model policies.
 This automatic discovery process relies on adhering to standard Apiato naming conventions for both models and policies.
