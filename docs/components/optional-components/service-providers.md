@@ -202,9 +202,13 @@ Do note that the `App\Ship\Parents\Providers\RouteServiceProvider` is a unique c
 Because it's required by Apiato, it is registered by the `App\Ship\Prviders\ShipProvider` and is loaded automatically.
 :::
 
-## Service Provider Registration Flow
+## Service Providers Registration Flow
+
+If you want to comprehend the service provider registration process,
+here is a breakdown of the registration flow.
 
 Consider the following folder structure:
+
 ```markdown
 app
 ├── Containers
@@ -230,7 +234,7 @@ app
         └── ...
 ```
 
-The following graph shows the registration flow of the service providers:
+The following diagram illustrates the registration flow of the service providers in the above folder structure:
 
 ```mermaid
 graph TB
