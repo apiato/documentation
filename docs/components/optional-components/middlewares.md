@@ -15,17 +15,10 @@ and they function in the exact same way as Laravel middlewares.
 However, they come with additional rules and conventions specific to Apiato.
 
 To generate new middlewares
-you may use the `apiato:generate:middleware` interactive command.
+you may use the `apiato:generate:middleware` interactive command:
 
 ```
 php artisan apiato:generate:middleware
-```
-
-Additionally,
-you may also generate a middleware service provider using the `apiato:generate:provider` interactive command.
-
-```
-php artisan apiato:generate:provider
 ```
 
 ## Rules
@@ -92,6 +85,13 @@ class MiddlewareServiceProvider extends ParentMiddlewareServiceProvider
 
     protected array $middlewareAliases = [];
 }
+```
+
+To generate a middleware service provider
+you may use the `apiato:generate:provider` interactive command:
+
+```
+php artisan apiato:generate:provider
 ```
 
 Remember to also register the `MiddlewareServiceProvider` in the container's `MainServiceProvider`:
