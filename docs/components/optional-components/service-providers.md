@@ -56,7 +56,7 @@ ensuring the seamless functioning of your application's components.
 The highlighted section showcases the crucial service provider registration points:
 
 - `MainServiceProvider.php` acts as the central registration point for custom service providers specific to a container.
-- `ShipProvider.php` acts as the central registration point for the Ship (global) service providers.
+- `ShipProvider.php` acts as the central registration point for the Ship (general) service providers.
 
 ```php
 app
@@ -109,6 +109,12 @@ class MainServiceProvider extends ParentMainServiceProvider
 
 ## Register Providers
 
+The registration process for a service provider varies depending on its intended scope within the application.
+Different places are designated for different levels of service provider usage.
+
+In essence, the decision of where to register a service provider boils down to two key factors:
+the scope of service provider usage and the logical location for its registration.
+
 ### Container Service Providers
 
 #### Main Service Provider
@@ -142,9 +148,10 @@ public array $aliases = [
 ];
 ```
 
-### Global Service Providers
+### General Service Providers
 
-Global service providers must be registered in the `App\Ship\Providers\ShipProvider` class.
+General service providers must be registered in the `App\Ship\Providers\ShipProvider` class.
+This can be done by adding the provider class name to the `serviceProviders` array.
 
 ```php
 public array $serviceProviders = [
@@ -157,12 +164,12 @@ public array $serviceProviders = [
 
 ### Third Party Service Providers
 
-When dealing with external packages that need service provider registration in `config/app.php`,
+When dealing with third-party packages that require service provider registration in `config/app.php`,
 you should follow these guidelines:
 
-- **Specific Container Usage**: If the package is used within a particular container, register its service provider in that container's `App\Containers\{Section}\{Container}\Providers\MainServiceProvider` class.
+- **Specific Container Usage**: If the package is used within a particular container, register its service provider in that container `App\Containers\{Section}\{Container}\Providers\MainServiceProvider` class.
 
-- **Framework-wide Usage**: If the package is generic and used throughout the entire framework, you can register its service provider in the `App\Ship\Prviders\ShipProvider` class. However, avoid registering it directly in `config/app.php`.
+- **Framework-wide Usage**: If the package is generic and used throughout the entire application, you can register its service provider in the `App\Ship\Prviders\ShipProvider` class. However, avoid registering it directly in `config/app.php`.
 
 ## Laravel Service Providers
 
@@ -217,7 +224,7 @@ app
 │               └── ...
 └── Ship
     └── Providers
-        ├── CustomGlobalServiceProvider.php ────────►────────┐
+        ├── CustomGeneralServiceProvider.php ────────►────────┐
         ├── RouteServiceProvider.php        ────────►────────┤
         ├── ShipProvider.php              ◄──registered─in─◄─┘
         └── ...
