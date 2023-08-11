@@ -8,7 +8,7 @@ tags:
 ---
 
 Apiato commands are just Laravel commands, and they function in the exact same way as Laravel commands.
-However, they come with additional rules and conventions specific to the Apiato.
+However, they come with additional rules and conventions specific to Apiato.
 
 ## Rules
 

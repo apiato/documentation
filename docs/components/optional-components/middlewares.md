@@ -12,7 +12,7 @@ tags:
 
 Apiato middlewares are just Laravel middlewares,
 and they function in the exact same way as Laravel middlewares.
-However, they come with additional rules and conventions specific to the Apiato.
+However, they come with additional rules and conventions specific to Apiato.
 
 To generate new middlewares
 you may use the `apiato:generate:middleware` interactive command.

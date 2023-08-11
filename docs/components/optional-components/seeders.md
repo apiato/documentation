@@ -9,7 +9,7 @@ tags:
 
 Apiato seeders are just Laravel seeders,
 and they function in the exact same way as Laravel seeders.
-However, they come with additional rules and conventions specific to the Apiato.
+However, they come with additional rules and conventions specific to Apiato.
 
 To generate new seeders you may use the `apiato:generate:seeder` interactive command.
 

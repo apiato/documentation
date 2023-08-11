@@ -11,7 +11,7 @@ tags:
 
 Apiato factories are just Laravel model factories,
 and they function in the exact same way as Laravel factories.
-However, they come with additional rules and conventions specific to the Apiato.
+However, they come with additional rules and conventions specific to Apiato.
 
 To generate new factories you may use the `apiato:generate:factory` interactive command.
 

@@ -10,7 +10,7 @@ tags:
 
 Apiato service providers are just Laravel service providers,
 and they function in the exact same way as Laravel service providers.
-However, they come with additional rules and conventions specific to the Apiato.
+However, they come with additional rules and conventions specific to Apiato.
 
 To generate new service providers
 you may use the `apiato:generate:provider` interactive command.

@@ -9,7 +9,7 @@ tags:
 
 Apiato mails are just Laravel mails,
 and they function in the exact same way as Laravel mails.
-However, they come with additional rules and conventions specific to the Apiato.
+However, they come with additional rules and conventions specific to Apiato.
 
 To generate new mails you may use the `apiato:generate:mail` interactive command.
 
