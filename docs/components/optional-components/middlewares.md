@@ -21,11 +21,18 @@ you may use the `apiato:generate:middleware` interactive command.
 php artisan apiato:generate:middleware
 ```
 
+Additionally,
+you may also generate a middleware service provider using the `apiato:generate:provider` interactive command.
+
+```
+php artisan apiato:generate:provider
+```
+
 ## Rules
 
 - All container-specific Middlewares:
   - MUST be placed in the `app/Containers/{Section}/{Container}/Middlewares` directory.
-  - MUST be registered in their respective Container's `App\Containers\{Section}\{Container}\Providers\MiddlewareServiceProvider` class.
+  - MUST be registered in their respective container's `App\Containers\{Section}\{Container}\Providers\MiddlewareServiceProvider` class.
 - All general Middlewares:
   - MUST be placed in the `app/Ship/Middlewares` directory.
   - MUST be registered in the `App\Ship\Kernels\HttpKernel` class.
@@ -68,7 +75,7 @@ the scope of middleware usage and the logical location for its registration.
 
 ### Container Middlewares
 
-If a middleware usage is specific to a Container,
+If a middleware usage is specific to a container,
 it must be registered in the `App\Containers\{Section}\{Container}\Providers\MiddlewareServiceProvider` class.
 
 ```php
@@ -87,7 +94,7 @@ class MiddlewareServiceProvider extends ParentMiddlewareServiceProvider
 }
 ```
 
-Remember to also register the middleware service provider in the container's MainServiceProvider:
+Remember to also register the `MiddlewareServiceProvider` in the container's `MainServiceProvider`:
 
 ```php
 use ...
