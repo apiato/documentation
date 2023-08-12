@@ -34,24 +34,29 @@ php artisan apiato:generate:middleware
 
 ## Folder Structure
 
-```markdown
+The highlighted sections showcase middleware registration points:
+
+```php
 app
 ├── Containers
 │   └── Section
 │       └── Container
 │           ├── Middlewares
-│           │   ├── YourMiddleware.php
+│           │   ├── DemoMiddleware.php
 │           │   └── ...
 │           └── Providers
+                // highlight-start
 │               ├── MiddlewareServiceProvider.php
+                // highlight-end
 │               └── ...
 └── Ship
     ├── Kernels
+        // highlight-start
     │   └── HttpKernel.php
+        // highlight-end
     └── Middlewares
-        ├── EncryptCookies.php
-        └── VerifyCsrfToken.php
-            └── ...
+        ├── AnotherMiddleware.php
+        └── ...
 ```
 
 ## Code Example
@@ -78,11 +83,8 @@ use App\Ship\Parents\Providers\MiddlewareServiceProvider as ParentMiddlewareServ
 class MiddlewareServiceProvider extends ParentMiddlewareServiceProvider
 {
     protected array $middlewares = [];
-
     protected array $middlewareGroups = [];
-
     protected array $middlewarePriority = [];
-
     protected array $middlewareAliases = [];
 }
 ```
@@ -121,3 +123,59 @@ you should follow these guidelines:
 - **Specific Container Usage**: If the package is used within a particular container, register its middleware in that container `App\Containers\{Section}\{Container}\Providers\MiddlewareServiceProvider` class.
 
 - **Framework-wide Usage**: If the package is generic and used throughout the entire application, you can register its middleware in the `App\Ship\Kernels\HttpKernel` class.
+
+## Middleware Registration Flow
+
+If you want to understand the middleware registration process,
+here is a breakdown of the registration flow.
+
+Consider the following folder structure:
+
+```php
+app
+├── Containers
+│   └── Section
+│       └── Container
+│           ├── Middlewares
+│           │   ├── DemoMiddleware.php ─►─┐
+│           │   └── ...                   │
+│           └── Providers                 ▼
+│               ├── MiddlewareServiceProvider.php ─────►─────┐
+│               ├── MainServiceProvider.php ◄─registered─in─◄┘
+│               └── ...
+└── Ship
+    ├── Kernels
+    │   ├── HttpKernel.php ◄─registered─in─◄┐
+    │   └── ...                             │
+    └── Middlewares                         │
+        ├── AnotherMiddleware.php ─────►────┘
+        └── ...
+```
+
+The following diagram illustrates the registration flow of middlewares in the above folder structure:
+
+```mermaid
+graph LR
+  subgraph Container
+    MainServiceProvider
+    MiddlewareServiceProvider
+    DemoMiddleware
+  end
+  
+  MainServiceProvider -->|loads| MiddlewareServiceProvider
+  MiddlewareServiceProvider -->|registered in| MainServiceProvider
+  DemoMiddleware -->|registered in| MiddlewareServiceProvider
+  
+  subgraph Ship
+    HttpKernel
+    ShipDemoMiddleware
+  end
+
+  subgraph Application
+    SPLoader[[Service Provider Loader]]-- loads-->MainServiceProvider
+    SPLoader-- loads-->HttpKernel
+  end
+  
+  HttpKernel -->|loads| ShipDemoMiddleware
+  ShipDemoMiddleware -->|registered in| HttpKernel
+```
