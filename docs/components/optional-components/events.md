@@ -61,10 +61,10 @@ app
 │               └── ...
 └── Ship
     ├── Events
-    │   ├── GlobalDemoEvent.php
+    │   ├── ShipDemoEvent.php
     │   └── ...
     ├── Listeners
-    │   ├── GlobalDemoListener.php
+    │   ├── ShipDemoListener.php
     │   └── ...
     └── Providers
         // highlight-start
@@ -141,25 +141,25 @@ app
 │   └── Section
 │       └── Container
 │           ├── Events
-│           │   ├── DemoEvent.php
-│           │   └── ...
-│           ├── Listeners
-│           │   ├── DemoListener.php
-│           │   └── ...
-│           └── Providers
-│               ├── EventServiceProvider.php
-│               ├── MainServiceProvider.php
+│           │   ├── DemoEvent.php ────►─┐
+│           │   └── ...                 │
+│           ├── Listeners               │
+│           │   ├── DemoListener.php ─►─┤
+│           │   └── ...                 │
+│           └── Providers               ▼
+│               ├── EventServiceProvider.php ─────────►─────────┐
+│               ├── MainServiceProvider.php ◄───registered─in─◄─┘
 │               └── ...
 └── Ship
     ├── Events
-    │   ├── GlobalDemoEvent.php
-    │   └── ...
-    ├── Listeners
-    │   ├── GlobalDemoListener.php
-    │   └── ...
-    └── Providers
-        ├── EventServiceProvider.php
-        ├── ShipProvider.php
+    │   ├── ShipDemoEvent.php ──►─┐
+    │   └── ...                   │
+    ├── Listeners                 │
+    │   ├── ShipDemoListener.php ►┤
+    │   └── ...                   │
+    └── Providers                 ▼
+        ├── EventServiceProvider.php ─────────►─────────┐
+        ├── ShipProvider.php        ◄───registered─in─◄─┘
         └── ...
 ```
 
@@ -182,8 +182,8 @@ graph LR
   subgraph Ship
     ShipProvider
     ShipEventServiceProvider[EventServiceProvider]
-    GlobalDemoEvent
-    GlobalDemoListener
+    ShipDemoEvent
+    ShipDemoListener
   end
 
   subgraph Application
@@ -193,7 +193,7 @@ graph LR
   
   ShipProvider -->|loads| ShipEventServiceProvider
   ShipEventServiceProvider -->|registered in| ShipProvider
-  GlobalDemoEvent -->|registered in| ShipEventServiceProvider
-  GlobalDemoListener -->|registered in| ShipEventServiceProvider
+  ShipDemoEvent -->|registered in| ShipEventServiceProvider
+  ShipDemoListener -->|registered in| ShipEventServiceProvider
 ```
 
