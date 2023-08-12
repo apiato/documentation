@@ -229,8 +229,8 @@ app
 └── Ship
     └── Providers
         ├── CustomGeneralServiceProvider.php ────────►────────┐
-        ├── RouteServiceProvider.php        ────────►────────┤
-        ├── ShipProvider.php              ◄──registered─in─◄─┘
+        ├── RouteServiceProvider.php         ────────►────────┤
+        ├── ShipProvider.php               ◄──registered─in─◄─┘
         └── ...
 ```
 
