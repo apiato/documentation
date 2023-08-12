@@ -204,7 +204,7 @@ Because it's required by Apiato, it is registered by the `App\Ship\Prviders\Ship
 
 ## Service Providers Registration Flow
 
-If you want to comprehend the service provider registration process,
+If you want to understand the service provider registration process,
 here is a breakdown of the registration flow.
 
 Consider the following folder structure:
@@ -234,7 +234,7 @@ app
         └── ...
 ```
 
-The following diagram illustrates the registration flow of the service providers in the above folder structure:
+The following diagram illustrates the registration flow of service providers in the above folder structure:
 
 ```mermaid
 graph TB
