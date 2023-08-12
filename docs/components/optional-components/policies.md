@@ -29,13 +29,20 @@ php artisan apiato:generate:policy
 
 ## Folder Structure
 
-```markdown
+The highlighted section showcases the policy registration point:
+
+```php
 app
 └── Containers
     └── Section
         └── Container
-            └── Policies
-                ├── UserPolicy.php
+            ├── Policies
+            │   ├── UserPolicy.php
+            │   └── ...
+            └── Providers
+                // highlight-start
+                ├── AuthServiceProvider.php
+                // highlight-end
                 └── ...
 ```
 
@@ -91,7 +98,51 @@ class MainServiceProvider extends ParentMainServiceProvider
 Apiato offers a policy auto-discovery feature that eliminates the need for manual registration of model policies.
 This automatic discovery process relies on adhering to standard Apiato naming conventions for both models and policies.
 
-By following the rules outlined above, you allow Apiato to automatically discover your policies. To summarize:
+By following the [rules](#rules) outlined above, you allow Apiato to automatically discover your policies.
+
+To summarize:
 
 - Policies must be stored within the `app/Containers/{section}/{container}/Policies` directory.
 - The policy name should mirror the corresponding model's name while appending a `Policy` suffix. For instance, a `User` model corresponds to a `UserPolicy` policy class.
+
+## Policy Registration Flow
+
+In case you are going to register your policies manually, and don't want to use the auto-discovery feature,
+you may want to understand the policy registration process.
+Here is a breakdown of the registration flow.
+
+Consider the following folder structure:
+
+```php
+app
+└── Containers
+    └── Section
+        └── Container
+            ├── Policies
+            │   ├── DemoPolicy.php ─►─┐
+            │   └── ...               │
+            └── Providers             ▼
+                ├── AuthServiceProvider.php ─────────►───────┐
+                ├── MainServiceProvider.php ◄─registered─in─◄┘
+                └── ...
+
+```
+
+The following diagram illustrates the registration flow of policies in the above folder structure:
+
+```mermaid
+graph LR
+  subgraph Container
+    MainServiceProvider
+    AuthServiceProvider
+    DemoPolicy
+  end
+  
+  MainServiceProvider -->|loads| AuthServiceProvider
+  AuthServiceProvider -->|registered in| MainServiceProvider
+  DemoPolicy -->|registered in| AuthServiceProvider
+
+  subgraph Application
+    SPLoader[[Service Provider Loader]]-- loads-->MainServiceProvider
+  end
+```
