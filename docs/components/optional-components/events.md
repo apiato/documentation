@@ -130,7 +130,7 @@ by adding them to the `listen` array in the `App\Ship\Providers\EventServiceProv
 
 ## Events & Listeners Registration Flow
 
-If you are manually registering events and listeners and wish to comprehend the registration process,
+If you are manually registering events and listeners and wish to understand the registration process,
 here is a breakdown of the registration flow.
 
 Consider the following folder structure:
@@ -163,7 +163,7 @@ app
         └── ...
 ```
 
-The following diagram illustrates the registration flow of the events and listeners in the above folder structure:
+The following diagram illustrates the registration flow of events and listeners in the above folder structure:
 
 ```mermaid
 graph LR
