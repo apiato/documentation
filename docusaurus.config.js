@@ -4,7 +4,7 @@
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Apiato',
-  tagline: "Build scalable APIs faster | With PHP and Laravel",
+  tagline: "Unearth Scale, Ignite Speed and Conquer Complexity",
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here

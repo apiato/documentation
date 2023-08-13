@@ -12,9 +12,34 @@
 }
 
 .heroTitle,
+.heroTaglineA,
+.heroTaglineB,
 .heroSubtitle,
 html[data-theme='light'] .heroButton {
   color: white !important;
+}
+
+.heroTitle {
+  font-size: 5em;
+}
+.heroTaglineA {
+  font-size: 4em;
+}
+
+
+.heroTaglineB {
+  font-size: 2.5em;
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+.heroSubtitle {
+  font-size: 1em;
+  margin-top: 1.5rem;
+}
+
+.heroButton {
+  margin-top: 1.8rem;
 }
 
 html[data-theme='dark'] .heroButton:hover,
