@@ -2,10 +2,7 @@
 title: Data Caching
 ---
 
-- [Enable / Disable Eloquent Query Caching](#enable-disable-eloquent-query-caching)
-- [Change different caching settings](#change-different-caching-settings)
-
-### Enable / Disable Eloquent Query Caching {#enable-disable-eloquent-query-caching}
+### Enable Eloquent Query Caching
 
 :::info
 This feature is **disabled** By default. 
@@ -15,7 +12,7 @@ To enable it, go to `app/Ship/Configs/repository.php` config file and set `cache
 
 More details can be found [here](https://github.com/andersao/l5-repository#cache-config).
 
-Users can skip the query caching and request new data by passing specific parameter to the Endpoint. Checkout its documentation [here](./query-parameters#skip-caching).
+Users can skip the query caching and request new data by passing specific parameter to the Endpoint. Checkout its documentation [here](query-parameters.md#skip-caching).
 
 ### Change different caching settings {#change-different-caching-settings}
 

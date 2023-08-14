@@ -123,7 +123,7 @@ api.domain.test/endpoint?search=field1:first field keyword;field2:second field k
 ```
 
 #### Search Hashed IDs {#search-hashed-ids}
-If you have [Hash ID](../security/hash-id.md) enabled, and you want to search a hashed field (e.g. user ID) `?search=id:XbPW7awNkzl83LD6`
+If you have [Hash ID](../../../security/hash-id.md) enabled, and you want to search a hashed field (e.g. user ID) `?search=id:XbPW7awNkzl83LD6`
 you need to tell the [RequestCriteria](#using-the-request-criteria) to decode it before it can be searched.  
 Let's say we have this search query `?search=id:XbPW7awNkzl83LD6;parent_id:aYOxlpzRMwrX3gD7;some_hashed_id:NxOpZowo9GmjKqdR`.
 Then you have to update your `addRequestCriteria` method like this:
@@ -313,7 +313,7 @@ Some of them are built in house, or inherited from other packages such as Fracta
 
 2) Visit the documentation URL
 
-More details in the [API Docs Generator](../pacakges/documentation.md) page.
+More details in the [API Docs Generator](../../../pacakges/documentation.md) page.
 
 ## More Information {#more-information}
 

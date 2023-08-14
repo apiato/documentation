@@ -27,26 +27,24 @@ It allows you to define the query condition once and use it anywhere in the App.
 
 ## Folder Structure
 
-```
- - app
-    - Containers
-        - {Section}
-            - {Container}
-                - Data
-                    - Criterias
-                      - ColourRedCriteria.php
-                      - RaceCarsCriteria.php
-                      - ...
-    - Ship
-        - Criterias
-            - CreatedTodayCriteria.php
-            - NotNullCriteria.php
-            - ...
+```markdown
+app
+├── Containers
+│   └── Section
+│       └── Container
+│           └── Data
+│               └── Criterias
+│                   ├── ColourRedCriteria.php
+│                   ├── RaceCarsCriteria.php
+│                   └── ...
+└── Ship
+    └── Criterias
+        ├── CreatedTodayCriteria.php
+        ├── NotNullCriteria.php
+        └── ...
 ```
 
 ## Code Example
-
-#### A Shared Criteria
 
 ```php
 class OrderByCreationDateDescendingCriteria extends Criteria
