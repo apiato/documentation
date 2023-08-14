@@ -6,6 +6,7 @@ tags:
   - main-component
   - transformer
   - controller
+  - response
   - model
 ---
 
@@ -64,12 +65,13 @@ class UserTransformer extends ParentTransformer
 
     protected $defaultIncludes = [];
 
-    public function transform(Model $model)
+    public function transform(User $user)
     {
         return [
-            'object' => $model->getResourceKey(),
-            'id' => $model->getHashedKey(),
-            'another_field' => $model->anotherField,
+            'object' => $user->getResourceKey(),
+            'id' => $user->getHashedKey(),
+            'name' => $user->name,
+            // ...
         ];
     }
 }
@@ -157,6 +159,76 @@ public function includeAvatar(User $user): Item
 }
 ```
 
+## Resource Key
+
+The transformer allows appending a resource key to the transformed resource.
+This is useful when you want to have a consistent response payload format for all your resources.
+
+### Setting the Resource Key
+
+You can set the resource key in your response payload in two ways:
+
+#### Via Model
+
+Specify the resource key on the respective model by setting the `resourceKey` property:
+
+```php
+class User extends ParentUserModel
+{
+    protected $resourceKey = 'User';
+}
+```
+
+#### Via Controller
+
+Manually set the resource key using the `resourceKey` parameter in the controller's `transform` method:
+
+```php
+$this->transform($model, ModelTransformer::class, resourceKey: 'User');
+```
+
+:::note
+It's important to note that setting the `resourceKey` using the `transform` method will only impact the `top level` resource key
+and will not affect the resource keys of `included` resources.
+:::
+
+### Getting the Resource Key
+
+Retrieve the resource key from the model by calling the `getResourceKey` method.
+
+If no `resourceKey` is defined on the model, the `getResourceKey` method will return the short class name of the model.
+For instance, if no resource key is defined for `App\Containers\AppSection\User\Models\User::class`,
+the default resource key will be `User`.
+
+#### Transformer Example
+```php
+class UserTransformer extends ParentTransformer
+{
+    // ...
+    public function transform(User $user)
+    {
+        return [
+            'object' => $user->getResourceKey(), // <-- here
+            'id' => $user->getHashedKey(),
+            'name' => $user->name,
+            // ...
+        ];
+    }
+    // ...
+}
+```
+
+#### Response Example
+```json
+{
+  "data": {
+    "object": "User", // <-- ResourceKey
+    "id": "XbPW7awNkzl83LD6",
+    "name": "Mohammad Alavi"
+  }
+}
+```
+
 ## Helper Methods
 
 ### ifAdmin
@@ -212,3 +284,61 @@ public function includeRelation(Model $model): Primitive|Item
     return $model->relation ? $this->item($model->relation, new RelationTransformer()) : $this->primitive(null)
 }
 ```
+
+## Response Payload
+
+You have the flexibility to define your own custom response payload or utilize one of the supported serializers.
+Serializer classes let you switch between various output formats with minimal effect on your Transformers.
+
+Current [supported serializers](https://fractal.thephpleague.com/serializers/):
+- `ArraySerializer`
+- `DataArraySerializer`
+- `JsonApiSerializer`
+
+To modify the default Fractal serializer,
+access the `app/Ship/Configs/fractal.php` configuration file
+and update the `default_serializer` setting to your preferred serializer.
+
+By default, Apiato uses `DataArraySerializer`.
+This serializer is not to everyone’s tastes, because it adds a `data` namespace to the output.
+A very basic response of the `DataArraySerializer` will look like this:
+
+```json
+{
+  "data": {
+    "object": "User",
+    "id": "XbPW7awNkzl83LD6",
+    "name": "Mohammad Alavi"
+  }
+}
+```
+
+The `DataArraySerializer` is handy because it allows space for `meta` data
+(like pagination, or totals) in both Items and Collections.
+
+```json
+{
+  "data": [ ... ],
+  "meta": {
+    "include": [
+      "xxx",
+      "yyy"
+    ],
+    "custom": [],
+    "pagination": {
+      "total": 999,
+      "count": 999,
+      "per_page": 999,
+      "current_page": 999,
+      "total_pages": 999,
+      "links": {
+        "next": "https://api.apiato.test/v1/accounts?page=999"
+      }
+    }
+  }
+}
+```
+
+:::info Further Reading
+For more detailed information, please refer to [Fractal](https://fractal.thephpleague.com/transformers/) and [Laravel Fractal Wrapper](https://github.com/spatie/laravel-fractal) documentations.
+:::
