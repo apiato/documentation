@@ -57,9 +57,10 @@ Routes are defined exactly as you would define them in Laravel.
 
 ### API Routes
 
-API Route files MUST be named based on their API version, exposure level (public/private), and functionality.
+API Route files MUST be named based on their functionality, API version and exposure level (public/private).
 
 #### Examples of valid API Route file names:
+
 - `CreateOrder.v1.public.php`
 - `FulfillOrder.v2.public.php`
 - `CancelOrder.v1.private.php`
@@ -68,11 +69,36 @@ API Route files MUST be named based on their API version, exposure level (public
 
 Web Route files can have any appropriate name.
 
+## API Versioning
+
+Apiato provides a streamlined approach to implementing API versioning within your application.
+This feature is enabled by default.
+
+If you wish to disable API versioning,
+navigate to the `app/Ship/Configs/apiato.php` configuration file and set the `enable_version_prefix` to `false`.
+
+Once API versioning is enabled,
+you can create new API endpoints and define their version numbers directly in the route file names.
+The route file names must adhere to the following naming convention:
+* `{endpoint-name}.{version-number}.{endpoint-visibility}.php`
+
+By following to this naming convention,
+the endpoint inside the specified route file will automatically become accessible by appending the version number to the URL.
+
+#### Some Examples:
+| Route File Name             | Route File Content                                            | Generated Route                            |
+|-----------------------------|---------------------------------------------------------------|--------------------------------------------|
+| `CreateOrder.v1.public.php` | `Route::post('orders', CreateOrderController::class);`        | [POST] `https://api.apiato.test/v1/orders` |
+| `CreateOrder.v2.public.php` | `Route::post('orders', AnotherCreateOrderController::class);` | [POST] `https://api.apiato.test/v2/orders` |
+| `ListOrders.v1.private.php` | `Route::get('orders', ListOrdersController::class);`          | [GET] `https://api.apiato.test/v1/orders`  |
+
+
 ## Public & Private Routes
 
 Apiato supports two types of endpoints, `Public` and `Private`, out of the box.
 Maintaining this distinction enables the generation of separate documentations for each type,
 ensuring that your internal API remains private and secure.
+This feature can be configured through the [Documentation Generator](../../pacakges/documentation.md) package.
 
 #### Public Routes:
 - Accessible to third parties.
