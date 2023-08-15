@@ -6,7 +6,7 @@ title: Hash ID
 Hashing your internal ID's is a very helpful feature for many security reasons,
 such as preventing your internal ID's from being exposed to the public, your competitors, and hackers.
 
-## Enabling Hash ID {#enabling-hash-id}
+## Enabling Hash ID
 
 Set the `HASH_ID=true` in the `.env` file.
 
@@ -14,7 +14,6 @@ Set the `HASH_ID=true` in the `.env` file.
 BCMath PHP Extension is required to use this feature.
 :::
 
-:::tip
 Make sure to always use the `getHashedKey` method on any model,
 whenever you need to return an ID (mainly from [transformers](../components/main-components/transformers))
 weather you are using Hash ID or not.
@@ -23,29 +22,28 @@ If Hash ID feature is disabled, the `getHashedKey` method will return the normal
 ```php
 'id' => $user->getHashedKey(),
 ```
-:::
 
-## Usage {#usage}
+## Usage
 
-There are 3 ways to pass an ID to your system via the API:
+There are three ways to pass an ID to your system via the API:
 
 In URL:
   
 ```php
-www.apiato.test/items/abcdef
+/items/XbPW7awNkzl83LD6
 ```
 
 As query string:
     
 ```php
-www.apiato.test/items?id=abcdef
+/items?id=XbPW7awNkzl83LD6
 ```
 
 Or as HTTP request body:
     
 ```json
 {
-    "id": "abcdef"
+    "id": "XbPW7awNkzl83LD6"
 }
 ```
 Now you need to tell your API to [decode the ID](../components/main-components/requests#request-properties) for you.
