@@ -4,9 +4,9 @@ title: Profiler
 
 Profiling is very important to optimize the performance of your application, and help you better understand what happens when a request is received, as well as it can speed up the debugging process.
 
-Apiato uses the third-party package [laravel-debugbar](https://github.com/barryvdh/laravel-debugbar) (which uses the [PHP Debug Bar](https://phpdebugbar.com/)), to collect the profiling data.
+Apiato uses the third-party package [Laravel Debugbar](https://github.com/barryvdh/laravel-debugbar), to collect the profiling data.
 
-By default, the **laravel-debugbar** package displays the profiling data in the browser.
+By default, the this package displays the profiling data in the browser.
 However, Apiato uses a middleware (`ProfilerMiddleware`) to append the profiling data to the response.  
 
 ### Sample Profiler response
