@@ -26,6 +26,7 @@ Read [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmoudz/Porto
 
 ## Rules
 
+- Validation rules MUST be defined in the `rules` method.
 - All API Requests MUST be placed in the `app/Containers/{Section}/{Container}/UI/API/Requests` directory.
 - All Web Requests MUST be placed in the `app/Containers/{Section}/{Container}/UI/WEB/Requests` directory.
 - All Requests:
@@ -44,13 +45,13 @@ app
             └── UI
                 ├── API
                 │   └── Requests
-                │       ├── RequestA.php
-                │       ├── RequestB.php
+                │       ├── CreateUserRequest.php
+                │       ├── DeleteUserRequest.php
                 │       └── ...
                 └── WEB
                     └── Requests
-                        ├── RequestA.php
-                        ├── RequestB.php
+                        ├── Login.php
+                        ├── Logout.php
                         └── ...
 ```
 
@@ -79,51 +80,104 @@ class DemoRequest extends ParentRequest
 }
 ```
 
+## Validation
+
+In Apiato,
+validation of incoming requests follows the
+Laravel [Form Request Validation](https://laravel.com/docs/validation#form-request-validation) approach.
+
+Validation rules are defined within the respective Request class.
+These rules are automatically enforced when a Request is injected into a Controller.
+
+Here's an example of a Request class with validation rules:
+
+```php
+use App\Ship\Parents\Requests\Request as ParentRequest;
+
+class RegisterUserRequest extends ParentRequest
+{
+    public function rules(): array
+    {
+        return [
+            'email'    => 'required|email|max:200|unique:users,email',
+            'password' => 'required|min:20|max:300',
+            'name'     => 'required|min:2|max:400',
+        ];
+    }
+
+}
+```
+
+And here's how you would use this Request class within a Controller:
+
+```php
+public function __invoke(RegisterUserRequest $request)
+{
+    $user = app(RegisterUserAction::class)->run($request);
+    
+    return $this->transform($user, UserTransformer::class);
+}
+```
+
+In this example,
+the validation rules defined in `RegisterUserRequest` will be automatically applied
+before the `__invoke` method is executed.
+If the validation fails, an appropriate error response will be generated.
+
 ## Request Properties {#request-properties}
 
-Apiato adds some new properties to the Request Class. Each of these properties are very useful for some situations, and let you achieve your goals faster and cleaner. Below we'll see a description for each property:
+Apiato introduces new properties to the Request Class that enhance its functionality.
 
 ### access
 
-The `access` property allows the user to define a set of Roles and Permissions that can access this endpoint.
-The `access` property is used by the `hasAccess` method defined below in the `authorize` method, to check if the user has the necessary Roles & Permissions to call this endpoint.
+The `access` property allows you to define Roles and Permissions that can access a specific endpoint.
+It's used by the `hasAccess` method to check if a user has the required Roles and Permissions to use that endpoint.
 
 ```php
 class DemoRequest extends ParentRequest
 {
     protected array $access = [
-        'permission' => 'delete-users|another-permissions',
+        'permissions' => 'delete-users',
         'roles' => 'manager'
     ];
 
     public function authorize(): bool
     {
         return $this->check([
-            'hasAccess|isOwner',
-            'isKing',
+            'hasAccess',
         ]);
     }
 }
 ```
 
-You can also use the `array notation` to define multiple Roles and Permissions:
+You can also use the `array notation` or `pipe` to define multiple Roles and Permissions.
+
 ```php
+class DemoRequest extends ParentRequest
+{
     protected $access = [
-            'permission' => ['delete-users', 'another-permissions'],
-            'roles' => ['manager'],
+        'permissions' => ['delete-users', 'another-permissions'],
+        'roles' => 'manager|admin',
     ];
+        
+    // ...
+}
 ```
+
+:::tip
+If there's no need to set any roles or permissions,
+you can simply set the `permissions` or `roles` property to an empty string `''`, an empty array `[]`, or `null`.
+:::
 
 ### decode
 
-The `decode` property is used for decoding Hashed IDs from the Request.
+The `decode` property is used to handle the decoding of Hashed IDs from the incoming Request.
 
-When you enable the [HashID](../../security/hash-id.md) feature,
-you likely allow users to pass Hashed IDs into your application.
-These IDs need to be decoded at some point,
-and Apiato provides a property on its Requests where you can specify those Hashed IDs.
-By doing so, Apiato will decode them before applying the validation rules,
-ensuring that the validation process works seamlessly with Hashed IDs.
+When you enable the [Hash ID](../../security/hash-id.md) feature, your application can receive Hashed IDs from users.
+These Hashed IDs need to be decoded before they can be effectively validated.
+Apiato facilitates this process
+by providing a property in its Requests class where you can specify which Hashed IDs need to be decoded.
+This ensures that the validation procedure seamlessly integrates with Hashed IDs.
 
 ```php
 class DemoRequest extends ParentRequest
@@ -132,18 +186,24 @@ class DemoRequest extends ParentRequest
         'user_id',
         'item_id',
     ];
+    
+    // ...
 }
 ```
 
 :::note
-Validations rules that relies on your ID like (`exists:users,id`)
-will not work unless you decode your ID before passing it to the validation.
+Keep in mind that validation rules relying on your ID, such as `exists:users,id`,
+will not function correctly unless you decode the ID before passing it to the validation process.
 :::
 
 ### urlParameters
 
-The `urlParameters` property is used for applying validation rules on the URL parameters:
-Laravel by default does not allow validating the URL parameters (`/stores/999/items`). In order to be able to apply validation rules on URL parameters you can simply define your URL parameters in the `$urlParameters` property. This will also allow you to access those parameters form the Controller in the same way you access the Request data.
+The `urlParameters` property simplifies the process of applying validation rules to URL parameters.
+
+By default, Laravel doesn't provide validation for URL parameters (`/stores/999/items`).
+However, by using the `urlParameters` property, you can enable validation for these parameters.
+By specifying the desired URL parameters within this property,
+you not only enable validation but also gain direct access to these parameters from the Request object.
 
 ```php
 // URL: /stores/{id}/items
@@ -163,40 +223,261 @@ class DemoRequest extends ParentRequest
 }
 ```
 
-## How The Authorize Method Work
+## Helper Methods
 
-The `authorize` method is calling a `check` method which accepts an array of method names. Each of those methods returns boolean.
+### check
 
-In the example above we are calling three methods `hasAccess`, `isOwner` and `isKing`.
-
-The separator `|` between the functions indicates an `OR` operation, so if any of the calls to `hasAccess` or `isOwner` returns true the user will gain access and only when both return false the user will be prevented from accessing this endpoint.
-
-On the other side if `isKing` *(a custom function could be written by you anywhere)* returned false no matter what all other functions returns, the user will be prevented from accessing this endpoint, because the default operation between all functions in the array is `AND`.
-
-Checkout the [hasAccess](https://apiato.readme.io/docs/requests#section-hasaccess) below.
-
-### Add Custom Authorize Functions
-
-The best way to add a custom authorize function is through a Trait, which can be added to your `Request` classes. In the example below we create a Trait named `IsAuthorPermissionTrait` with a single method called `isAuthor`.
-
-The `isAuthor` method, in turn, calls a Task to verify that the current user is an author (e.g., if the user has the proper `Role` assigned).
+The `check` method is used to authorize the user to access the endpoint.
+It accepts an array of methods names that will be called to check if the user has access or not.
+Each of those methods must return a boolean.
+Take a look at the following example:
 
 ```php
-trait IsAuthorPermissionTrait
+use App\Ship\Parents\Requests\Request as ParentRequest;
+
+class DemoRequest extends ParentRequest
 {
-    public function isAuthor()
+    use IsAuthorTrait;
+
+    // ...
+
+    public function authorize(): bool
     {
-        // The task needs to be implemented properly!
-        return app(CheckIfUserHasProperRoleTask::class)->run($this->user(), ['author']);
+        return $this->check([
+            'hasAccess|isOwner',
+            'isKing',
+        ]);
     }
 }
 ```
 
-Now, add the newly created Trait to the Request to use the `isAuthor` function in the authorization check.
+Here we are passing the the `hasAccess`, `isOwner` and `isKing` methods to the `check` method.
+Then the `check` method follows the following rules and checks if the user has access or not:
+
+- The separator `|` between the methods indicates an `OR` operation.
+- The default operation between all methods in the array is `AND`.
+
+So in the above example, the call to the `check` method will be translated to:
+
 ```php
-class FindUserByIdRequest extends Request
+return ($this->hasAccess() || $this->isOwner()) && $this->isKing();
+```
+
+And if the result of this operation is `true` then the user will be authorized to access the endpoint.
+
+:::note
+
+- `hasAccess` method is a [built-in authorization method](#hasaccess).
+- `isOwner` and `isKing` methods are [custom authorization methods](#custom-authorize-methods)
+
+:::
+
+### hasAccess
+
+The `hasAccess` method assesses a user's access rights based on the Request's `access` property.
+If the user has any of the specified Roles or Permissions, the method will return `true` otherwise it will
+return `false`.
+
+### sanitizeInput
+
+The `sanitizeInput` method is employed to cleanse request data before its utilization within the application.
+
+Particularly useful for `PATCH` requests,
+where you may want
+to submit only the fields
+intended for modification to minimize traffic or perform partial updates to the corresponding database resource.
+Traditional checks for the presence or absence of specific keys in the request can lead to extensive `if` blocks,
+such as:
+
+```php
+if ($request->has('data.name')) {
+   $data['name'] = $request->input('data.name');
+}
+```
+
+To circumvent these `if` blocks, you might utilize `array_filter($data)` to remove empty fields from the request.
+However, be aware that in PHP, both `false` and an empty string `''` are considered as `empty`.
+
+For streamlining data sanitization when using `application/json` instead of `x-www-form-urlencoded`,
+Apiato provides the convenient `sanitizeInput` method.
+
+Consider the following request:
+
+```json
 {
-    use IsAuthorPermissionTrait;
+  "data": {
+    "name": "Demo",
+    "description": "Some description",
+    "is_private": false,
+    "address": "",
+    "foo": {
+      "number": 1,
+      "bar": "bar"
+    }
+  },
+  "meta": "some meta data"
+}
+```
+
+The `sanitizeInput` method enables you to specify a list of fields,
+employing dot notation, to be accessed and extracted from the request.
+
+```php
+$data = $request->sanitizeInput([
+    'data.description',
+    'data.is_private',
+    'data.address',
+    'data.foo.number',
+    'email', // will be ignored
+    'meta',
+]);
+```
+
+The extracted data will appear as follows:
+
+```php
+[
+  "data" => [
+    "description" => "Some description"
+    "is_private" => false,
+    "address" => null, // empty string is converted to null by Laravel
+    "foo" => [
+      "number" => 1,
+    ]
+  ],
+  "meta" => "some meta data",
+]
+```
+
+Note that `email` is excluded from the sanitized array, as it was absent in the request.
+Additionally, any other fields not specified are omitted.
+In essence, the method filters the request, retaining only the defined values.
+
+You can also assign default values during the data sanitization process:
+
+```php
+$sanitizedData = $request->sanitizeInput([
+    'name' => 'John', // If name is not provided, the default value will be set
+    'product.company.address' => 'Somewhere in the world', // dot notation is supported
+    'email',
+    'password'
+]);
+```
+
+### getInputByKey
+
+The `getInputByKey` method retrieves data from the `request` by specifying the field name.
+Similar to `$request->input('key.here')`, this method operates on the `decoded` values instead of the original data.
+
+Consider the following request:
+
+```json
+{
+  "id": "XbPW7awNkzl83LD6"
+}
+```
+
+While `$request->input('id')` would return `"XbPW7awNkzl83LD6"`,
+`$request->getInputByKey('id')` would return the decoded value
+(e.g., `4`).
+
+Moreover, you can set a `default` value to be returned if the key is absent or unset, like this:
+
+```php
+$request->getInputByKey('data.name', 'Undefined')
+```
+
+### mapInput
+
+In certain cases, you might need to remap input from the request to different fields.
+While manual field mapping is possible, you can also leverage the `mapInput` method for this purpose.
+This helper method allows you to "redefine" keys within the request, making subsequent processing easier.
+
+Consider the following request:
+
+```json
+{
+  "data": {
+    "name": "John Doe"
+  }
+}
+```
+
+However, for processing purposes, you require the `username` field instead of `data.name`.
+
+You can use the helper as follows:
+
+```php
+$request->mapInput([
+    'data.name' => 'username',
+]);
+```
+
+The resulting structure would be:
+
+```json
+{
+  "username": "John Doe"
+}
+```
+
+And you can access the value as follows:
+
+```php
+$request->input('username');
+```
+
+### injectData
+
+The `injectData` method allows you to inject data into the request.
+This can be particularly helpful during testing
+when you wish to provide data directly to the request instead of sending it through the request body.
+
+```php
+$request = RegisterUserRequest::injectData($data);
+```
+
+### withUrlParameters
+
+The `withUrlParameters` method enables you to inject URL parameters into the request.
+This is especially useful when you need to include properties in the request that are not part of the request body
+but are required for the request to be processed.
+This method is often used in conjunction with the `injectData` method.
+
+```php
+$request = RegisterUserRequest::injectData($data)
+    ->withUrlParameters(['id' => 123]);
+```
+
+## Custom Authorize Methods {#custom-authorize-methods}
+
+The recommended approach for adding custom authorization functions is by using a Trait,
+which can be included in your Request classes.
+
+For instance,
+let's
+create an `IsAuthorTrait` Trait with a single method
+named `isAuthor` to determine if the current user holds the role of an author.
+
+```php
+trait IsAuthorTrait
+{
+    public function isAuthor(): bool
+    {
+        return $this->user()->hasRole('author');
+    }
+}
+```
+
+Subsequently, you can apply the `IsAuthorTrait` Trait to a Request class,
+allowing the utilization of the `isAuthor` function within the authorization process.
+
+```php
+use App\Ship\Parents\Requests\Request as ParentRequest;
+
+class DemoRequest extends ParentRequest
+{
+    use IsAuthorTrait;
 
     // ...
 
@@ -209,239 +490,30 @@ class FindUserByIdRequest extends Request
 }
 ```
 
-Now, the Request uses the newly created `isAuthor` method to check the proper access rights.
+## Bypass Authorization
 
-## Allow a Role to access every endpoint
-
-You can allow some Roles to access every endpoint in the system without having to define that role in each Request object.
-
-This is useful when you want to let users with `Admin` role access everything.
-
-To do this, define those roles in `app/Ship/Configs/apiato.php` as follows:
+To grant certain Roles access to all endpoints within the system without the need
+to define the role in each Request object,
+you can follow this approach.
+This is particularly beneficial when you want to provide unrestricted access to users with the `admin` role.
+To implement this, define the relevant roles in `app/Ship/Configs/apiato.php` as shown below:
 
 ```php
 'requests' => [
-    'allow-roles-to-access-all-routes' => ['admin',],
+    'allow-roles-to-access-all-routes' => ['admin'],
 ],
 ```
 
-This will append the `admin` role to all roles access in every request object. Example: this `'roles' => 'manager'` becomes `'roles' => 'manager|admin'` (if the user is manager or admin "has any of the roles", will be allowed to access the endpoint).
+## Force Accept Header
 
-## Helper Methods
+Typically, when making calls to a JSON API, you should include the `accept: application/json` HTTP header.
+In Apiato, you have the option to either enforce users to send this header or allow them to skip it.
 
-### hasAccess
+To enforce the `accept: application/json` header,
+navigate to the `app/Ship/Configs/apiato.php` configuration file and set the `force-accept-header` to `true`.
 
-`hasAccess` method, decides if user has Access or not based on the `access` property.
+Conversely, if you wish to allow users to skip this header, set `force-accept-header` to `false`.
 
-- If the user has any roles or permissions he will be given access.
-
-- If you need more or less roles/permissions just add `|` between each permission.
-
-- If you do not need to set a roles/permissions just set `'permission' => ''` or  `'permission' => null`.
-
-### getInputByKey
-
-Get the data from within the `request` by entering the name of the field. This method behaves like `$request->input('key.here')`,
-however, it works on the `decoded` values instead of the original data.
-
-```json
-{
-  "data" : {
-    "name"  : "foo",
-    "description" : "bar"
-  },
-  "id" : "a2423nadabada0"
-}
-```
-
-Calling `$request->input('id')` would return `"a2423nadabada0"`, however `$request->getInputByKey('id')` would return the
-decoded value (e.g., `4`).
-
-Furthermore, one can define a `default` value to be returned, if the key is not present (or not set), like so:
-`$request->getInputByKey('data.name', 'Undefined')`
-
-### sanitizeInput
-
-Especially for `PATCH` requests, if you like to submit only the fields, to be changed to the API in order to:
-
-a) minimize the traffic  
-b) partially update the respective resource
-
-Checking for the presence (or absence) of specific keys in the request typically results in huge `if` blocks, like so:
-
-```php
-if($request->has('data.name')) {
-   $data['name'] = $request->input('data.name'); // or use getInputByKey()
-}
-
-if($request->has('data.description')) {
-   $data['description'] = $request->input('data.description'); // or use getInputByKey()
-}
-```
-
-So to avoid those `if` blocks, you might use `array_filter($data)` in order to remove `empty` fields from the request.
-
-However, in PHP `false` and `''` _(empty string)_ are also considered `empty` (which is not what you want clearly).
-
-In order to simplify sanitizing `Request Data` when using `application/json` instead of `x-www-form-urlencoded`,
-apiato offers a convenient `sanitizeInput(array $fields)` method.
-
-Consider the following Request data:
-
-```json
-{
-	"data" : {
-		"is_private" : false,
-		"description" : "this is a rather long description text",
-		"a" : null,
-		"b" : 3453,
-		"foo" : {
-			"a" : "a",
-			"b" : "b",
-			"c" : 1234
-		},
-		"bar" : [
-		    "a", "b", "c"
-		]
-	}
-}
-```
-
-This method lets you specify a list of fields to be accessed and extracted from the request. This is done using the
-Dot notation. Finally, call the `sanitizeInput` method on the `$request`:
-
-```php
-$fields = [
-    'data.name',
-    'data.description',
-    'data.is_private',
-    'data.blabla',
-    'data.foo.c'
-];
-$data = $request->sanitizeInput($fields);
-```
-
-The extracted `$data` looks like this:
-
-```php
-[
-  "data" => [
-    "is_private" => false
-    "description" => "this is a rather long description text"
-    "foo" => [
-      "c" => 1234
-    ]
-  ]
-]
-```
-
-Note that `data.blabla` is not within the `data` array, as it was not present within the `$request`. Furthermore, all
-other fields from the `$request` are omitted as they are not specified. So basically, the method creates some kind of
-`filter` on the `$request`, only passing the defined values. Furthermore, the DOT Notation allows you to easily specify
-the fields to would like to pass through. This makes partially updating a resource quite easy!
-
-You can also set default values while sanitizing data from the request
-```php
-$sanitizedData = $request->sanitizeInput([
-    'name' => 'John', // if name is not provided then default value will be set
-    'product.company.address' => 'Somewhere in the world', // dot notation is also supported
-    'email',
-    'password'
-]);
-```
-
-### mapInput
-
-Sometimes you might want to map input from the request to other fields in order to automatically pass it to a `Action`
-or `Task`. Of course, you can manually map those fields, but you can also rely on the `mapInput` method.
-
-This helper, in turn, allows to "redefine" keys in the request for subsequent processing. Consider the following
-example request:
-
-```json
-{
-	"data" : {
-		"name" : "John Doe"
-	}
-}
-```
-
-Your Task to process this data, however, requests the field `data.name` as `data.username`. You can call the helper
-like this:
-```php
-$request->mapInput([
-    'data.name' => 'data.username',
-]);
-```
-
-The resulting structure would look like this:
-```json
-{
-	"data" : {
-		"username" : "John Doe"
-	}
-}
-```
-
-## Storing Data on the Request
-
-During the Request life-cycle you may want to store some data on the request object and pass it to other SubActions (or Tasks).
-
-To store some data on the request use:
-
-```php
-$request->keep(['someKey' => $someValue]);
-```
-
-To retrieve the data back at any time during the request life-cycle use:
-
-```php
-$someValue = $request->retrieve('someKey');
-```
-
-## Unit Testing for Actions (Request)
-
-Since we're passing Request objects to Actions. When writing unit tests we need to create fake Request just to pass it to the Action with some fake data.
-
-```php
-$request = RegisterUserRequest::injectData($data);
-```
-Example One:
-
-```php
-$data = [
-    'email'    => 'john@doe.test',
-    'name'     => 'John Doe',
-    'password' => 'so-secret',
-];
-
-// create request object with some data
-$request = RegisterUserRequest::injectData($data);
-
-// create instance of the Action
-$action = app(RegisterUserAction::class)->run($request);
-
-// do any kind of assertions..
-$this->assertInstanceOf(User::class, $user);
-```
-
-Example Two (With Authenticated User):
-
-```php
-$data = [
-   'store_id'  => $this->encode($store->id),
-   'items'     => $orderItems,
-   'recipient' => $receipient,
-];
-
-$user = User::factory()->create();
-
-$request = MakeOrderRequest::injectData($data, $user);
-
-$order = app(MakeOrderAction::class)->run($request);
-```
-
-Normally you should include the `Accept : application/json` HTTP header when you call a JSON API. However, in Apiato
-you can force your users to send `application/json` by setting `'force-accept-header' => true` in
-`app/Ship/Configs/apiato.php` or allow them to skip it completely by setting the `'force-accept-header' => false`.
-By default this flag is set to false.
+:::info
+Forcing the accept header is disabled by default.
+:::
