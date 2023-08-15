@@ -8,7 +8,7 @@ tags:
   - request
 ---
 
-Apiato policies are just Laravel policies,
+Apiato policies are just [Laravel Policies](https://laravel.com/docs/authorization),
 and they function in the exact same way as Laravel policies.
 However, they come with additional rules and conventions specific to Apiato.
 

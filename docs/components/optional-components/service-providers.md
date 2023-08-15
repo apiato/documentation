@@ -8,7 +8,7 @@ tags:
   - event
 ---
 
-Apiato service providers are just Laravel service providers,
+Apiato service providers are just [Laravel Service Providers](https://laravel.com/docs/providers),
 and they function in the exact same way as Laravel service providers.
 However, they come with additional rules and conventions specific to Apiato.
 

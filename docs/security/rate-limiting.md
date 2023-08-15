@@ -3,7 +3,8 @@ sidebar_position: 8
 title: Rate Limiting
 ---
 
-Apiato uses [Laravel rate limiting feature](https://laravel.com/docs/rate-limiting) to protect your API from abuse and to ensure stability.
+Apiato uses [Laravel Rate Limiting](https://laravel.com/docs/rate-limiting) feature
+to protect your API from abuse and to ensure stability.
 
 :::note
 This feature is only applied to API requests, and not to web requests and is _enabled_ by default.

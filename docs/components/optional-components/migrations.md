@@ -7,7 +7,7 @@ tags:
   - seeder
 ---
 
-Apiato migrations are just Laravel migrations,
+Apiato migrations are just [Laravel Migrations](https://laravel.com/docs/migrations),
 and they function in the exact same way as Laravel migrations.
 However, they come with additional rules and conventions specific to Apiato.
 

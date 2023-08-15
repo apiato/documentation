@@ -7,7 +7,8 @@ tags:
   - action
 ---
 
-Apiato commands are just Laravel commands, and they function in the exact same way as Laravel commands.
+Apiato commands are just [Laravel Commands](https://laravel.com/docs/artisan),
+and they function in the exact same way as Laravel commands.
 However, they come with additional rules and conventions specific to Apiato.
 
 ## Rules

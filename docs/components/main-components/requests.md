@@ -10,7 +10,7 @@ tags:
   - action
 ---
 
-Requests components are a way to interact with the current HTTP request
+[Requests](https://laravel.com/docs/requests) components are a way to interact with the current HTTP request
 being handled by your application as well as retrieve the input,
 cookies, and files that were submitted with the request.
 

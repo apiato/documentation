@@ -7,7 +7,7 @@ tags:
   - queue
 ---
 
-Apiato mails are just Laravel mails,
+Apiato mails are just [Laravel Mails](https://laravel.com/docs/mail),
 and they function in the exact same way as Laravel mails.
 However, they come with additional rules and conventions specific to Apiato.
 

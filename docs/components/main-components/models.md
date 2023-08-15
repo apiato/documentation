@@ -8,7 +8,7 @@ tags:
   - repository
 ---
 
-Models are responsible for representing the data of the application
+[Models](https://laravel.com/docs/eloquent) are responsible for representing the data of the application
 and providing an abstraction for interacting with that data.
 They encapsulate the business logic and rules associated with the data,
 as well as facilitate the communication with the underlying database.

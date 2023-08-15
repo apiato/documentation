@@ -7,7 +7,7 @@ tags:
   - migration
 ---
 
-Apiato seeders are just Laravel seeders,
+Apiato seeders are just [Laravel Seeders](https://laravel.com/docs/seeding),
 and they function in the exact same way as Laravel seeders.
 However, they come with additional rules and conventions specific to Apiato.
 

@@ -10,7 +10,7 @@ tags:
   - request
 ---
 
-Apiato middlewares are just Laravel middlewares,
+Apiato middlewares are just [Laravel Middlewares](https://laravel.com/docs/middleware),
 and they function in the exact same way as Laravel middlewares.
 However, they come with additional rules and conventions specific to Apiato.
 

@@ -12,7 +12,7 @@ tags:
   - transformer
 ---
 
-Controllers are tasked with two primary responsibilities:
+[Controllers](https://laravel.com/docs/controllers) are tasked with two primary responsibilities:
 serving the requested data and constructing the corresponding response.
 As the intermediaries between incoming requests and outgoing responses,
 controllers efficiently manage the flow of information to ensure a seamless user experience.

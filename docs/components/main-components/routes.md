@@ -9,7 +9,7 @@ tags:
   - request
 ---
 
-Routes are responsible for mapping incoming HTTP requests to their corresponding controller functions.
+[Routes](https://laravel.com/docs/routing) are responsible for mapping incoming HTTP requests to their corresponding controller functions.
 
 To generate new routes you may use the `apiato:generate:route` interactive command:
 

@@ -7,7 +7,7 @@ tags:
   - queue
 ---
 
-Apiato jobs are just Laravel jobs,
+Apiato jobs are just [Laravel Jobs](https://laravel.com/docs/queues),
 and they function in the exact same way as Laravel jobs.
 However, they come with additional rules and conventions specific to Apiato.
 
