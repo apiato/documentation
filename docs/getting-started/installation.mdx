@@ -117,6 +117,19 @@ Apiato should always be served out of the root of the "web directory" configured
 You should not attempt to serve a Apiato application out of a subdirectory of the "web directory".
 Attempting to do so could expose sensitive files present within your application.
 
+### Subdomain and API Version Prefix {#subdomain-and-api-version-prefix}
+
+By default, Apiato uses `api` as a subdomain for all endpoints and adds only the API version as a prefix,
+resulting in URLs like `api.apiato.test/v1`.
+However, you can change this behavior.
+
+For example, if you'd like to achieve urls like `apiato.test/api/`, follow these steps:
+
+1. Open your `.env` file and modify the API domain by updating the `API_URL` value from `http://api.apiato.test` to `http://apiato.test` to remove the subdomain.
+2. In the `app/Ship/Configs/apiato.php` configuration file:
+    - Set the `prefix` to `api/`.
+    - Set `enable_version_prefix` to `false`.
+
 ## Generating API Documentation
 
 Apiato includes a convenient [Documentation Generator](../pacakges/documentation.md) package that utilizes [ApiDocJs](https://apidocjs.com/) for API documentation generation.
@@ -133,22 +146,23 @@ php artisan apiato:apidoc
 
 ## Let's Play
 
-Now let's see Apiato in action.
+To witness Apiato in action,
+assuming you are using the default [Subdomain and API Version Prefix](#subdomain-and-api-version-prefix) configuration,
+you should be able to access the following URLs:
 
-Open your web browser and visit:
+- [http://apiato.test](http://apiato.test)
+-> You should see an HTML page displaying the text `Apiato` in the center.
 
-- https://apiato.test
-  You should see an HTML page, with `Apiato` in the middle.
-- https://api.apiato.test
-  You should see a response like this:
+- [http://api.apiato.test](http://api.apiato.test)
+-> You should receive a JSON response like this:
 ```json
 ["Welcome to Apiato"]
 ```
 
 Open your HTTP client and call:
 
-https://api.apiato.test/ You should see a JSON response with the message: `"Welcome to apiato."`
-https://api.apiato.test/v1 You should see a JSON response with the message: `"Welcome to Apiato (API V1)."`
+http://api.apiato.test/ You should see a JSON response with the message: `"Welcome to apiato."`
+http://api.apiato.test/v1 You should see a JSON response with the message: `"Welcome to Apiato (API V1)."`
 
 ## Next Steps {#next-steps}
 
