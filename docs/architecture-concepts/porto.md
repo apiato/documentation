@@ -11,16 +11,16 @@ principles, and patterns to organize their code in a highly maintainable and reu
 The primary goal of Porto is to help developers create software that is scalable,
 flexible, and easy to maintain over time.
 
-## Layers {#layers}
+## Layers
 
 Porto's architecture is based on two layers: Containers and Ship.
 
-### Containers {#containers}
+### Containers
 The Containers layer encompasses all the application's business logic code and consists of two primary concepts:
 - Section
 - Container
 
-#### Section {#section}
+#### Section
 A Section refers to a collection of related Containers.
 These Containers can represent various entities such as services
 (either micro or larger in scale) or subsystems within the main system.
@@ -40,7 +40,7 @@ A Container is allowed to depend on other Containers in the same Section.
 ### Ship
 The Ship layer contains the infrastructure code, which consists of shared code utilized by all Containers.
 
-## Typical Project Structure {#typical-container-structure}
+## Typical Project Structure
 ```markdown
 app
 ├── Containers
@@ -102,8 +102,8 @@ app
     ├── Seeders
     └── Tests
 ```
-## Default Sections {#default-sections}
-Apiato ships with 2 default Sections:
+## Default Sections
+Apiato ships with two default Sections:
 - **AppSection**: contains all the default Containers.
 - **Vendor**: contains all the installed and reusable Containers.
 
