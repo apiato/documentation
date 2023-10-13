@@ -332,7 +332,7 @@ The `DataArraySerializer` is handy because it allows space for `meta` data
       "current_page": 999,
       "total_pages": 999,
       "links": {
-        "next": "https://api.apiato.test/v1/accounts?page=999"
+        "next": "http://api.apiato.test/v1/accounts?page=999"
       }
     }
   }

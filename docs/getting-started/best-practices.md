@@ -66,7 +66,7 @@ The verbs map to [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_d
 - Use plural nouns only for consistency (no singular nouns).
 - Use HTTP verbs (GET, POST, PUT, PATCH, DELETE) to operate on the collections and elements.
 - You should not need to go deeper than resource/identifier/resource.
-- Put the version number at the base of your URL, for example `https://api.apiato.test/v1/path/to/resource`.
+- Put the version number at the base of your URL, for example `http://api.apiato.test/v1/path/to/resource`.
 - If input data changes the logic of the endpoint, it should be passed in the URL. If not, it can go in the header. e.g., Auth Token.
 - Don't use query parameters to alter state.
 - Don't use mixed-case paths if you can help it; lowercase is best.

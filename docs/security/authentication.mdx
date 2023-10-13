@@ -254,7 +254,7 @@ use Illuminate\Support\Facades\Http;
 $response = Http::withHeaders([
     'Accept' => 'application/json',
     'Authorization' => 'Bearer '.$accessToken,
-])->get('https://api.apiato.test/v1/users');
+])->get('http://api.apiato.test/v1/users');
 
 return $response->json();
 ```

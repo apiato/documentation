@@ -136,8 +136,8 @@ If you get an error (`apidoc not found`),
 
 Visit documentation URL's as shown in your terminal:
 
-- Public (external) API at [https://apiato.test/docs](https://apiato.test/docs).
-- Private (internal) API at [https://apiato.test/docs/private](https://apiato.test/docs/private).
+- Public (external) API at [http://apiato.test/docs](http://apiato.test/docs).
+- Private (internal) API at [http://apiato.test/docs/private](http://apiato.test/docs/private).
 
 :::note  
 Every time you change the DocBlock of a Route file you need to run the `apiato:apidoc` command, to regenerate.  

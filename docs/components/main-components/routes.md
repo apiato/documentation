@@ -88,9 +88,9 @@ the endpoint inside the specified route file will automatically become accessibl
 #### Some Examples:
 | Route File Name             | Route File Content                                            | Generated Route                            |
 |-----------------------------|---------------------------------------------------------------|--------------------------------------------|
-| `CreateOrder.v1.public.php` | `Route::post('orders', CreateOrderController::class);`        | [POST] `https://api.apiato.test/v1/orders` |
-| `CreateOrder.v2.public.php` | `Route::post('orders', AnotherCreateOrderController::class);` | [POST] `https://api.apiato.test/v2/orders` |
-| `ListOrders.v1.private.php` | `Route::get('orders', ListOrdersController::class);`          | [GET] `https://api.apiato.test/v1/orders`  |
+| `CreateOrder.v1.public.php` | `Route::post('orders', CreateOrderController::class);`        | [POST] `http://api.apiato.test/v1/orders` |
+| `CreateOrder.v2.public.php` | `Route::post('orders', AnotherCreateOrderController::class);` | [POST] `http://api.apiato.test/v2/orders` |
+| `ListOrders.v1.private.php` | `Route::get('orders', ListOrdersController::class);`          | [GET] `http://api.apiato.test/v1/orders`  |
 
 
 ## Public & Private Routes

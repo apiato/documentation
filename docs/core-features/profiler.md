@@ -68,7 +68,7 @@ However, Apiato uses a middleware (`ProfilerMiddleware`) to append the profiling
         "route": {
             "uri": "GET /",
             "middleware": "api, throttle:30,1",
-            "domain": "https://api.apiato.test",
+            "domain": "http://api.apiato.test",
             "as": "apis_root_page",
             "controller": "App\\Containers\\Welcome\\UI\\API\\Controllers\\Controller@apiRoot",
             "namespace": "App\\Containers\\Welcome\\UI\\API\\Controllers",
