@@ -101,7 +101,7 @@ class RegisterUserRequest extends ParentRequest
         return [
             'email'    => 'required|email|max:200|unique:users,email',
             'password' => 'required|min:20|max:300',
-            'name'     => 'required|min:2|max:400',
+            'name'     => ['required', 'min:2', 'max:400'],
         ];
     }
 
@@ -517,3 +517,27 @@ Conversely, if you wish to allow users to skip this header, set `force-accept-he
 :::info
 Forcing the accept header is disabled by default.
 :::
+
+
+## Etag
+
+The **ETag** or **entity tag** is part of HTTP, the protocol for the World Wide Web.
+It is one of several mechanisms that HTTP provides for Web cache validation,
+which allows a client to make conditional requests.
+This mechanism allows caches to be more efficient and saves bandwidth,
+as a Web server does not need to send a full response if the content has not changed.
+([Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag))
+
+Apiato offers support for Etag through the `Apiato\Core\Middlewares\HttpProcessETagHeadersMiddleware` middleware,
+which employs the Shallow technique.
+This middleware can be particularly valuable in reducing bandwidth usage for clients, especially on mobile devices.
+
+Please note that this feature is **disabled by default**. To enable it, follow these steps:
+
+1. Navigate to the `app/Ship/Configs/apiato.php` configuration file.
+2. Inside the configuration file, locate the `use-etag` configuration parameter.
+3. Set the `use-etag` parameter to `true`.
+
+Keep in mind that for this feature to function correctly, the client must include the `If-None-Match` HTTP header,
+which corresponds to the ETag value, in their request.
+
