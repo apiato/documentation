@@ -13,7 +13,7 @@ and they function in the exact same way as Laravel components.
 However, they come with additional rules and conventions specific to Apiato.
 
 :::info
-To lear more about Apiato components, check the [Components](../../architecture-concepts/components.md) section.
+To learn more about Apiato components, check the [Components](../../architecture-concepts/components.md) section.
 :::
 
 <DocCardList/>
