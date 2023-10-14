@@ -394,6 +394,7 @@ Apiato provides a variety of custom assertion methods that you may utilize when 
 
 [assertModelCastsIsEmpty](#assert-model-casts-is-empty)  
 [assertDatabaseTable](#assert-database-table)  
+[getGateMock](#get-gate-mock)  
 [inIds](#in-ids)
 
 > #### assertModelCastsIsEmpty {#assert-model-casts-is-empty}
@@ -438,6 +439,52 @@ where the column type is a string representing the expected data type of the col
 ```php
 $this->assertDatabaseTable('users', ['id' => 'bigint']);
 ```
+
+> #### getGateMock {#get-gate-mock}
+
+This assertion helps you to test whether the `Gate::allows` method is invoked with the correct arguments.
+
+Let's
+consider a scenario
+where a request class utilizes the `authorize` method
+to determine whether a user has the necessary permissions to access a particular resource.
+The primary objective is
+to test whether the `authorize` method correctly invokes the `Gate::allows` method with the appropriate arguments.
+
+```php
+// PUT '/users/{id}'
+
+// UpdateUserRequest.php
+public function authorize(Gate $gate): bool
+{
+    // Here, we check if the user's id sent in the request has the necessary permissions to 'update'.
+    return $gate->allows('update', [User::find($this->id)]);
+}
+
+// UpdateUserRequestTest.php  
+public function testAuthorizeMethodGateCall(): void
+{
+    $user = $this->getTestingUserWithoutAccess();
+    $request = UpdateUserRequest::injectData([], $user)
+        ->withUrlParameters(['id' => $user->id]);
+    // If the id is sent as a body parameter in the request, you can use the following:
+    // $request = UpdateUserRequest::injectData(['id' => $user->getHashedKey()], $ user);
+    
+    $gateMock = $this->getGateMock(policyMethodName: 'update', args: [
+        // Ensure you obtain a fresh model instance; using the $user variable directly will cause the test to fail.
+        User::find($user->id),
+    ]);
+    
+    $this->assertTrue($request->authorize($gateMock));
+}
+```
+
+In this code, we're examining the testing of the `authorize` method within a FormRequest class.
+The main objective is to confirm that it appropriately interacts with Laravel's Gate functionality.
+The test ensures that the `Gate::allows` method is invoked with the correct parameters,
+checking if users have the required permissions to perform updates.
+If the authorization logic is correctly implemented, this test should pass,
+ensuring that only users with the necessary permissions can perform updates.
 
 > #### inIds {#in-ids}
 
