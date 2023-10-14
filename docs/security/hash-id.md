@@ -62,3 +62,8 @@ Apiato defaults to the `APP_KEY` should this not be set.
 The `HASH_ID_KEY` acts as the salt during hashing of the ID. This should never be changed in production
 as it renders all previously generated IDs impossible to decode.
 :::
+
+
+## Route Model Binding
+
+Laravel [Route Model Binding](https://laravel.com/docs/routing#route-model-binding) feature is supported out of the box and Apiato will automatically decode the ID for you.
