@@ -1,19 +1,31 @@
 ---
+sidebar_position: 3
 title: Profiler
+tags:
+  - framework-feature
+  - profiler
 ---
 
-Profiling is very important to optimize the performance of your application, and help you better understand what happens when a request is received, as well as it can speed up the debugging process.
+Profiling is a crucial aspect of optimizing your application's performance
+and gaining a deeper insight into the request handling process.
+It can significantly expedite the debugging process.
 
-Apiato uses the third-party package [Laravel Debugbar](https://github.com/barryvdh/laravel-debugbar), to collect the profiling data.
+Apiato incorporates the third-party package [Laravel Debugbar](https://github.com/barryvdh/laravel-debugbar)
+to gather profiling data.
 
-By default, the this package displays the profiling data in the browser.
-However, Apiato uses a middleware (`ProfilerMiddleware`) to append the profiling data to the response.  
+By default, this package presents the profiling data directly in the browser.
+Nevertheless,
+Apiato employs the `Apiato\Core\Middlewares\Http\ProfilerMiddleware` to include the profiling data in the response.
 
-### Sample Profiler response
+The profiler feature is initially disabled by default.
+To enable it, you should edit the `.env` file and set `DEBUGBAR_ENABLED=true`.
 
+To customize and manage the profiler response,
+you'll need to make adjustments in the configuration file located at `app/Ship/Configs/debugbar.php`.
+
+The following is an example of the profiler response:
 ```json
 {
-    // Actual Response Here...
     "_profiler": {
         "__meta": {
             "id": "X167f293230e3457f1bbd95d9c82aba4a",
@@ -83,10 +95,6 @@ However, Apiato uses a middleware (`ProfilerMiddleware`) to append the profiling
             "accumulated_duration_str": "0μs",
             "statements": []
         },
-        "swiftmailer_mails": {
-            "count": 0,
-            "mails": []
-        },
         "logs": {
             "count": 3,
             "messages": [
@@ -127,9 +135,3 @@ However, Apiato uses a middleware (`ProfilerMiddleware`) to append the profiling
     }
 }
 ```
-
-### Configuration
-
-By default, the profiler feature is turned off. To turn it on edit the `.env` file and set `DEBUGBAR_ENABLED=true`.
-
-To control and modify the profiler response, you need to edit this config file `app/Ship/Configs/debugbar.php`.
