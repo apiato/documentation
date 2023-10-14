@@ -48,3 +48,8 @@ The choice of location depends on what is most relevant and convenient for your 
 
 Each Container has the option to include a `readme.md` file at its root, which serves to explain the Container's purpose and how to use it.
 
+To generate new readme files, you may use the `apiato:generate:readme` interactive command:
+
+```
+php artisan apiato:generate:readme
+```
