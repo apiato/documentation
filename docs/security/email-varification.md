@@ -8,7 +8,18 @@ To simplify this process, Apiato offers built-in services for sending and verify
 
 ## Configuration
 
-Before enabling email verification, ensure your application is set up to send email messages. You can find detailed information on email configuration in the [Laravel documentation](https://laravel.com/docs/mail).
+All the settings related to email verification are stored in the `app/Containers/AppSection/Authorization/Configs/appSection-authentication` configuration file.  
+
+Activate email verification
+by setting the `require_email_verification` option in the `appSection-authentication` configuration file to `true`.  
+
+Also, ensure that your application is configured to send email messages.
+
+:::tip
+Detailed information on email configuration can be found in the [Laravel documentation](https://laravel.com/docs/mail).
+:::
+
+Include your web app's email verification redirect page URL (e.g., `https://myapp.com/email/verify`) in the `allowed-verify-email-urls` array within the `appSection-authentication` config.
 
 ### Model Preparation
 
@@ -18,11 +29,6 @@ Confirm that your `User` model implements the `MustVerifyEmail` contract. The de
 
 Ensure your `users` table contains an `email_verified_at` column to store the email verification date and time.
 The migration for the `users` table, included with Apiato, already includes this column.
-
-### Enabling The Feature
-
-To enable email verification,
-set the `require_email_verification` option in the `appSection-authentication` configuration file to `true`.
 
 ## Routing
 
