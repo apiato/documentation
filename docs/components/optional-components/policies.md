@@ -146,3 +146,21 @@ graph LR
     SPLoader[[Service Provider Loader]]-- loads-->MainServiceProvider
   end
 ```
+
+## Helper Methods
+
+> This feature is available since Apiato v12.2.0.
+
+All models are equipped with the `owns` and `isOwnedBy` methods,
+made available through the `Apiato\Core\Traits\CanOwnTrait` trait.
+These methods offer a convenient way to determine if a model is owned by another model or if a model owns another model.
+
+These methods support all types of relationships, as demonstrated below:
+
+```php
+// Check if a user owns a post
+$user->owns($post);
+
+// Check if a post is owned by a user
+$post->isOwnedBy($user);
+```
