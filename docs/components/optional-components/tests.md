@@ -370,6 +370,12 @@ specifically for a particular test method.
 $this->endpoint('get@v1/register')->makeCall();
 ```
 
+:::note
+The order in which you call `endpoint` method is crucial.
+Make sure to call it before `injectId` method,
+or else `injectId` will not replace the ID in the overridden endpoint.
+:::
+
 > #### auth {#auth-method}
 
 The `auth` method allows you
