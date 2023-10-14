@@ -1,6 +1,9 @@
 ---
-sidebar_position: 8
+sidebar_position: 2
 title: Rate Limiting
+tags:
+  - framework-feature
+  - rate-limiting
 ---
 
 Apiato uses [Laravel Rate Limiting](https://laravel.com/docs/rate-limiting) feature
