@@ -1,7 +1,8 @@
 ---
+sidebar_position: 1
 title: Code Generator
 tags:
-  - core-feature
+  - framework-feature
   - code-generator
 ---
 
