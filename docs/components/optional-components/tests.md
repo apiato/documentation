@@ -25,10 +25,12 @@ php artisan apiato:generate:test:testcase
 
 ## Definitions
 
+---
 #### Unit tests
 Unit tests are tests that focus on a very small, isolated portion of your code.
 In fact, most unit tests probably focus on a single method.
 
+---
 #### Functional tests
 Functional tests may test a larger portion of your code,
 including how several objects interact with each other or even a full HTTP request to a JSON endpoint.
@@ -144,7 +146,8 @@ Apiato provides a set of helper methods that you can use to write expressive fun
 Certain test helper methods access properties defined in your test class to execute their tasks effectively.
 Below, we will explore these properties and their corresponding methods:
 
-> #### endpoint {#endpoint}
+---
+#### endpoint {#endpoint}
 
 The `endpoint` property is used
 to define the endpoints you want to access when making a call using the `makeCall` method.
@@ -171,7 +174,8 @@ class FindUserByIdTest extends ApiTestCase
 }
 ```
 
-> #### auth {#auth}
+---
+#### auth {#auth}
 
 The `auth` property is used to determine whether the endpoint being called requires authentication or not in your test class.
 If you do not explicitly define the `auth` property in your test class, it will be defaulted to `true` automatically.
@@ -200,7 +204,8 @@ class ListUsersTest extends ApiTestCase
 }
 ```
 
-> #### access
+---
+#### access
 
 The `access` property is used
 to define roles or permissions that you want to assign to your testing users within a test class.
@@ -245,7 +250,8 @@ class DeleteUserTest extends ApiTestCase
 [endpoint](#endpoint-method)  
 [auth](#auth-method)  
 
-> #### makeCall {#make-call}
+---
+#### makeCall {#make-call}
 
 To make a request to your application, you may invoke the `makeCall` method within your functional test.
 This method combines the functionalities of [Laravel HTTP test](https://laravel.com/docs/http-tests#testing-json-apis) helpers with the [properties](#properties)
@@ -266,7 +272,8 @@ $this->makeCall([
 $this->makeCall($data, $headers);
 ```
 
-> #### injectId {#inject-id}
+---
+#### injectId {#inject-id}
 
 The `injectId` method enables you to inject an ID into the endpoint you want to test within your functional tests.
 
@@ -310,7 +317,8 @@ $this->injectId($user->getHashedKey(), skipEncoding: true, replace: '{user_id}')
 By utilizing the `injectId` method, you can dynamically inject an ID into the endpoint,
 allowing you to test specific resources or scenarios that depend on resource identifiers.
 
-> #### getTestingUser {#get-testing-user}
+---
+#### getTestingUser {#get-testing-user}
 
 When you call `getTestingUser` method,
 it returns a testing user instance with randomly generated attributes and all the roles and permissions
@@ -349,7 +357,8 @@ you will need to update the `tests` configuration in `app/Ship/Configs/apiato.ph
 This configuration file allows you
 to specify your custom user model and the corresponding model factory state for testing.
 
-> #### getTestingUserWithoutAccess {#get-testing-user-without-access}
+---
+#### getTestingUserWithoutAccess {#get-testing-user-without-access}
 
 The `getTestingUserWithoutAccess` method allows you to obtain a testing user instance that doesn't have any assigned permissions or roles.
 It is a shortcut for `getTestingUser(null, null)`.
@@ -359,7 +368,8 @@ This skips all the roles and permissions defined in your test class `access` pro
 $user = $this->getTestingUserWithoutAccess();
 ```
 
-> #### endpoint {#endpoint-method}
+---
+#### endpoint {#endpoint-method}
 
 The `endpoint` method allows you to specify the endpoint you want to test within your functional tests.
 This method is especially useful
@@ -376,7 +386,8 @@ Make sure to call it before `injectId` method,
 or else `injectId` will not replace the ID in the overridden endpoint.
 :::
 
-> #### auth {#auth-method}
+---
+#### auth {#auth-method}
 
 The `auth` method allows you
 to specify the authentication status of the endpoint you want to test within your functional tests.
@@ -397,7 +408,8 @@ Apiato provides a variety of custom assertion methods that you may utilize when 
 [getGateMock](#get-gate-mock)  
 [inIds](#in-ids)
 
-> #### assertModelCastsIsEmpty {#assert-model-casts-is-empty}
+---
+#### assertModelCastsIsEmpty {#assert-model-casts-is-empty}
 
 The `assertModelCastsIsEmpty` method allows you to assert that the `casts` property of a model is empty.
 By default, the `casts` property of a model includes the `id` and,
@@ -428,7 +440,9 @@ By using the `assertModelCastsIsEmpty` method,
 you can verify that the `casts` property of a model does not contain any unexpected values,
 ensuring that the model's attributes are not automatically casted.
 
-> #### assertDatabaseTable {#assert-database-table}
+---
+#### assertDatabaseTable {#assert-database-table}
+> Available in v12.1.0 and above.
 
 This method is used
 to verify
@@ -440,7 +454,9 @@ where the column type is a string representing the expected data type of the col
 $this->assertDatabaseTable('users', ['id' => 'bigint']);
 ```
 
-> #### getGateMock {#get-gate-mock}
+---
+#### getGateMock {#get-gate-mock}
+> Available in v12.1.0 and above.
 
 This assertion helps you to test whether the `Gate::allows` method is invoked with the correct arguments.
 
@@ -486,7 +502,8 @@ checking if users have the required permissions to perform updates.
 If the authorization logic is correctly implemented, this test should pass,
 ensuring that only users with the necessary permissions can perform updates.
 
-> #### inIds {#in-ids}
+---
+#### inIds {#in-ids}
 
 The `inIds` method allows you to check if the given hashed ID exists within the provided model collection.
 
