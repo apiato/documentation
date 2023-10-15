@@ -123,60 +123,60 @@ const config = {
       },
       footer: {
         style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Getting Started',
-                to: '/docs',
-              },
-              {
-                label: 'Porto Architecture',
-                to: 'https://github.com/Mahmoudz/Porto#porto-software-architectural-pattern',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Discord Server',
-                href: 'https://discord.gg/ryPcV4KM5k',
-              },
-              {
-                label: 'GitHub Issues',
-                href: 'https://github.com/apiato/apiato/issues',
-              },
-            ],
-          },
-          {
-            title: 'Contributors',
-            items: [
-              {
-                label: 'Contribution Guide',
-                href: '/docs/contribution-guide',
-              },
-              {
-                label: 'Code of Conduct',
-                href: 'https://github.com/apiato/apiato/blob/9.0/CODE_OF_CONDUCT.md',
-              },
-            ],
-          },
-          {
-            title: 'Sponsors',
-            items: [
-              {
-                label: 'Our Sponsors',
-                href: 'https://github.com/apiato/apiato#sponsors',
-              },
-              {
-                label: 'Become a Sponsor',
-                href: 'https://opencollective.com/apiato',
-              },
-            ],
-          },
-        ],
+      //   links: [
+      //     {
+      //       title: 'Docs',
+      //       items: [
+      //         {
+      //           label: 'Getting Started',
+      //           to: '/docs',
+      //         },
+      //         {
+      //           label: 'Porto Architecture',
+      //           to: 'https://github.com/Mahmoudz/Porto#porto-software-architectural-pattern',
+      //         },
+      //       ],
+      //     },
+      //     {
+      //       title: 'Community',
+      //       items: [
+      //         {
+      //           label: 'Discord Server',
+      //           href: 'https://discord.gg/ryPcV4KM5k',
+      //         },
+      //         {
+      //           label: 'GitHub Issues',
+      //           href: 'https://github.com/apiato/apiato/issues',
+      //         },
+      //       ],
+      //     },
+      //     {
+      //       title: 'Contributors',
+      //       items: [
+      //         {
+      //           label: 'Contribution Guide',
+      //           href: '/docs/contribution-guide',
+      //         },
+      //         {
+      //           label: 'Code of Conduct',
+      //           href: 'https://github.com/apiato/apiato/blob/9.0/CODE_OF_CONDUCT.md',
+      //         },
+      //       ],
+      //     },
+      //     {
+      //       title: 'Sponsors',
+      //       items: [
+      //         {
+      //           label: 'Our Sponsors',
+      //           href: 'https://github.com/apiato/apiato#sponsors',
+      //         },
+      //         {
+      //           label: 'Become a Sponsor',
+      //           href: 'https://opencollective.com/apiato',
+      //         },
+      //       ],
+      //     },
+      //   ],
         copyright: `Copyright © 2016 - ${new Date().getFullYear()}`,
       },
       prism: {
