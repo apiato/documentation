@@ -94,14 +94,9 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'getting-started/requirements',
+            docId: 'getting-started/installation',
             position: 'left',
             label: 'Docs',
-          },
-          {
-            href: 'https://github.com/apiato/apiato',
-            position: 'right',
-            className: 'header-github-link'
           },
           {
             type: 'docsVersionDropdown',
@@ -113,6 +108,16 @@ const config = {
               //   label: 'All versions',
               // },
             ],
+          },
+          {
+            href: 'https://github.com/apiato/apiato',
+            position: 'right',
+            className: 'header-github-link'
+          },
+          {
+            href: 'https://discord.com/invite/ryPcV4KM5k',
+            position: 'right',
+            className: 'header-discord-link'
           },
         ],
       },
