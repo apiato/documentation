@@ -66,8 +66,8 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       announcementBar: {
-        id: 'announcementBar-2', // Increment on change
-        content: `⭐️ If you like Apiato, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/apiato/apiato">GitHub</a>`,
+        id: 'announcementBar-3', // Increment on change
+        content: `If you like Apiato, give it a ⭐️ on <a target="_blank" rel="noopener noreferrer" href="https://github.com/apiato/apiato">GitHub</a>`,
       },
       docs: {
         sidebar: {
