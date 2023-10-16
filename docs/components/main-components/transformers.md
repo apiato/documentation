@@ -77,43 +77,70 @@ class UserTransformer extends ParentTransformer
 }
 ```
 
-## Model Relationships
+## Including Relationships
 
-Model relationships can be included in the response either per API consumer request or by default.
+You can include model relationships for complex data structures using the `include` query parameter.
+These relationships can be included in the response either [per API consumer request](#include-per-api-consumer-request) or
+[by default](#include-by-default).
+The `include` parameter can be used on any endpoint
+that has [relationships defined](#defining-relationships) in its transformer.
 
-To include relationships in the response,
-the Transformer must have the `availableIncludes` or `defaultIncludes` property defined,
-and the `include{RelationshipName}` method implemented.
-The method name MUST be in PascalCase format
-and match the relationship name as defined in the `availableIncludes` or `defaultIncludes` property.
-Additionally, the method name MUST be prefixed with the word `include`.
+
+### Defining Relationships
+
+To define relationships in the transformer, follow these two steps:
+
+1. Define the relationship method in the transformer.
+2. Add the relationship to the `availableIncludes` or `defaultIncludes` property.
+
+- `availableIncludes` can be included in the response per API consumer request.
+- `defaultIncludes` are included in the response by default.
+
+:::note
+Any relationships not defined in the `availableIncludes` or `defaultIncludes` properties will be ignored.
+:::
+
+The relationship method should be named `include{RelationshipName}` and return a Fractal `Item` or `Collection` object.
+The `include{RelationshipName}` method will be called automatically by the Transformer
+when the relationship is requested.
+
+For example, let's assume we have a `User` model with a `roles` relationship.
+The `UserTransformer` would have an `includeRoles` method that returns a `Collection` object.
 
 ```php
-protected $availableIncludes = [
-    'categoryItem',
-];
-
-public function includeCategoryItem(Model $model)
+public function includeRoles(User $user): Collection
 {
-    // Implementation of including the 'categoryItem' relationship in the response
-    // ...
+    return $this->collection($user->roles, new RoleTransformer());
 }
 ```
 
-### Include Per API Consumer Request
-
-To include a relationship in the response,
-you must first define the relationship in the `availableIncludes` property of the transformer.
-
-In this example, the `UserTransformer` has the `roles` and `avatar` relationships defined as available includes.
-
-To request the `Roles` data along with the `User` resource,
-pass the `?include=roles` query parameter with the API request.
-
-To request multiple relationship includes at once, use the comma separator, for example: `?include=roles,avatar`.
+Now,
+the `roles` relationship can be included in the response
+by adding it to the `availableIncludes` or `defaultIncludes` property.
 
 ```php
-protected $availableIncludes = [
+protected array $availableIncludes = [
+    'roles',
+];
+
+// or
+
+protected array $defaultIncludes = [
+    'roles',
+];
+```
+
+### Include Per API Consumer Request
+In cases where you have multiple relationships for a model, such as `User` with `Roles` and `Avatar` relationships,
+you can include specific relationships in the response based on the API consumer's request.
+To enable this,
+you add the desired relationships to the `availableIncludes` property in the transformer
+and create corresponding methods for each relationship in the transformer to specify how to include that data.
+
+Here's an example using a `UserTransformer` with `roles` and `avatar` relationships added to the `availableIncludes` property:
+
+```php
+protected array $availableIncludes = [
     'roles',
     'avatar',
 ];
@@ -125,39 +152,88 @@ public function includeRoles(User $user): Collection
 
 public function includeAvatar(User $user): Item
 {
-    return $this->item($user->avatar, new ImageTransformer());
+    return $this->item($user->avatar, new AvatarTransformer());
 }
 ```
-If the relationship is a collection, the `include{RelationshipName}` method should return a `Collection` object.
-If the relationship is a single model, the `include{RelationshipName}` method should return an `Item` object.
-You can use the `collection` and `item` methods to create the corresponding Fractal objects.
+
+To request the `roles` data along with the `User` resource, you can pass the `include=roles` query parameter with the request:
+
+```
+api.apiato.test/v1/users?include=roles
+```
+
+This will include the `roles` data in the response:
+
+```json
+{
+  "data": [
+    {
+      "object": "User",
+      "id": "0one37vjk49rp5ym",
+      "roles": [
+        {
+          "object": "Role",
+          "id": "bmo7y84xpgeza06k"
+        },
+        // ...
+      ]
+    },
+    // ...
+  ]
+}
+```
+
+You can also include multiple relationships by separating them with a comma:
+
+```
+api.apiato.test/v1/users?include=roles,avatar
+```
+
+This includes both the `roles` and `avatar` relationships in the response.
+
+Nested includes are also possible.
+If, for instance, the `Avatar` model has a relationship with an `Image` object,
+you can request nested includes using dot notation:
+
+```
+api.apiato.test/v1/users?include=avatar,avatar.image
+```
+
+This includes the `Avatar` relationship with the `Image` nested under it in the response.
+
+It's important to note that for nested includes, the nested relationship must also be defined.
+In this example,
+the `AvatarTransformer` would need
+to have an `includeImage` method defined and the `image` relationship added to it's `availableIncludes` property.
 
 By defining the `availableIncludes` and implementing the corresponding `include{RelationshipName}` methods,
-the API consumers can control which related data they want to include in the response,
-improving the flexibility and efficiency of your API.
+you allow API consumers to specify which related data they want in the response,
+enhancing the flexibility and efficiency of your API.
 
 ### Include By Default
 
-To automatically include a relationship in every response from the transformer,
-you can define the relationship directly in the transformer's `defaultIncludes` property.
-In this example, the `UserTransformer` has the `avatar` relationship defined as a default include.
+To automatically include a relationship in every response generated by the transformer,
+you can define the relationship in the transformer's `defaultIncludes` property.
+This means
+that the specified relationship will be included by default without the need for API consumers to request it explicitly.
 
-By setting default includes,
-the specified relationships will be automatically included in every response generated by this transformer,
-without the need for API consumers to explicitly request them.
-This can help simplify responses and reduce the number of additional API requests for related data,
-improving the overall efficiency of the API.
+Here's an example using a `UserTransformer` where the `avatar` relationship is defined as a default include:
 
 ```php
-protected $defaultIncludes = [
+protected array $defaultIncludes = [
     'avatar',
 ];
 
 public function includeAvatar(User $user): Item
 {
-    return $this->item($user->avatar, new ImageTransformer());
+    return $this->item($user->avatar, new AvatarTransformer());
 }
 ```
+
+By setting the default includes in this manner,
+the `avatar` relationship will automatically be included in every response created by this transformer.
+This can simplify responses and reduce the need for additional API requests for related data,
+ultimately enhancing the efficiency and usability of your API.
 
 ## Resource Key
 
