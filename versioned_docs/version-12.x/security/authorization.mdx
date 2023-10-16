@@ -1,0 +1,69 @@
+---
+sidebar_position: 3
+title: Authorization
+tags:
+  - component
+  - optional-component
+  - authorization
+  - request
+  - policy
+---
+
+Apiato provides a Role-Based Access Control (RBAC) through its Authorization Container.
+Behind the scenes,
+Apiato uses the [Laravel Permission](https://github.com/spatie/laravel-permission) package.
+
+## How it works
+
+Authorization in Apiato is indeed straightforward and easy.
+It operates by linking permissions to roles and then assigning roles to users.
+
+To implement the authorization process, follow these steps:
+
+1. Create Roles and Permissions
+2. Attach Permissions to Roles
+3. Attach Roles and/or Permissions to Users
+4. Protect Endpoints with Permissions and/or Roles
+
+To [protect your endpoints](../components/main-components/requests.md#request-properties),
+you have to specify the required permissions and/or roles in the `Request` class.
+In doing so, you can check whether the current user has the necessary access rights to reach a particular endpoint.
+By verifying permissions and roles at the request level,
+you ensure that unauthorized users are denied access before any further processing takes place.
+
+:::info Default Roles & Permissions
+Apiato comes with some default Roles and Permissions.
+You can find them in `app/Containers/AppSection/Authorization/Data/Seeders`.
+You can use them as a starting point, or delete them and create your own.
+:::
+
+## Code Example
+
+Protecting the **delete user** endpoint with `delete-users` permission:
+```php
+use App\Ship\Parents\Requests\Request as ParentRequest;
+
+class DeleteUserRequest extends ParentRequest
+{
+    protected array $access = [
+        'permissions' => 'delete-users',
+        'roles' => '',
+    ];
+
+    public function authorize(): bool
+    {
+        return $this->check([
+            'hasAccess',
+        ]);
+    }
+}
+```
+
+Authorization failed JSON response:
+
+```json
+{
+  "message": "This action is unauthorized.",
+  "errors": []
+}
+```
