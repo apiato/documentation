@@ -24,7 +24,7 @@ php artisan apiato:generate:policy
   - MUST be placed in the `app/Containers/{section}/{container}/Policies` directory.
   - MUST extend the `App\Ship\Parents\Policies\Policy` class.
     - The parent extension SHOULD be aliased as `ParentPolicy`.
-  - MUST be named after the model they are associated with, followed by the `Policy` suffix. For instance, `UserPolicy.php`.
+  - SHOULD be named after the model they are associated with, followed by the `Policy` suffix. For instance, `UserPolicy.php`.
 
 
 ## Folder Structure
@@ -96,7 +96,7 @@ class MainServiceProvider extends ParentMainServiceProvider
 ### Policy Auto-Discovery
 
 Apiato offers a policy auto-discovery feature that eliminates the need for manual registration of model policies.
-This automatic discovery process relies on adhering to standard Apiato naming conventions for both models and policies.
+This automatic discovery process relies on adhering to standard Apiato naming conventions for policies.
 
 By following the [rules](#rules) outlined above, you allow Apiato to automatically discover your policies.
 
@@ -120,7 +120,7 @@ app
         └── Container
             ├── Policies
             │   ├── DemoPolicy.php ─►─┐
-            │   └── ...               │
+            │   └── ...               │                                                                                         
             └── Providers             ▼
                 ├── AuthServiceProvider.php ─────────►───────┐
                 ├── MainServiceProvider.php ◄─registered─in─◄┘
