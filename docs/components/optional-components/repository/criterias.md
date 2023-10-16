@@ -10,12 +10,24 @@ tags:
   - task
 ---
 
-This feature is provided by the [L5 Repositories](https://github.com/andersao/l5-repository) package.
+> To prevent overlap with the L5 Repository documentation, this page
+> exclusively delves into Apiato distinct features and configurations,
+> offering only a limited set of examples.
+> To learn more about Criterias and the L5 Repository package,
+> please refer to its [documentation](https://github.com/andersao/l5-repository).
 
-Criterias are classes that hold and apply query condition when retrieving data from the database through a Repository.
-Without using a Criteria class, you can add your query conditions to a Repository or to a Model as scope,
-but with Criterias, your query conditions can be shared across multiple Models and Repositories.
-It allows you to define the query condition once and use it anywhere in the App.
+Criterias are specialized classes designed to encapsulate
+and apply query conditions when fetching data from a database using a [Repository](repositories.md).
+Unlike adding query conditions directly to a Repository or as a scope within a Model,
+Criterias offer distinct advantages.
+
+With Criterias, you can define query conditions in a reusable and shareable way.
+This means
+that a single query condition can be defined once and then
+utilized across multiple Models and Repositories in your application.
+This approach offers the flexibility to create query conditions once
+and apply them consistently anywhere in your application,
+enhancing code reusability and maintainability.
 
 ## Rules
 
@@ -48,56 +60,53 @@ app
 ## Code Example
 
 ```php
-class OrderByCreationDateDescendingCriteria extends Criteria
+use App\Ship\Parents\Criterias\Criteria as ParentCriteria;
+use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
+
+class IsNullCriteria extends ParentCriteria
 {
+    public function __construct(
+        private readonly string $field
+    ) {
+    }
+
     public function apply($model, PrettusRepositoryInterface $repository)
     {
-        return $model->orderBy('created_at', 'desc');
+        return $model->whereNull($this->field);
     }
 }
 ```
 
-#### Usage from Task
+### Applying Criteria
+
+A Criteria can be applied to a Repository by using the `pushCriteria` method.
+
+```php
+public function __construct(
+    protected readonly UserRepository $repository
+) {
+}
+```
+
+The `pushCriteria` method accepts an instance of a Criteria class or a string with the Criteria class name.
 
 ```php
 public function run()
 {
-    $this->userRepository->pushCriteria(new OrderByCreationDateDescendingCriteria());
-    return  $this->userRepository->paginate();
+    $this->repository->pushCriteria(new IsNullCriteria('email'));
+    return $this->repository->paginate();
 }
 ```
 
-#### Criteria Accepting Data Input
+You can also apply multiple Criterias to a Repository by using the `pushCriteria` method multiple times.
 
 ```php
-class ThisUserCriteria extends Criteria
+public function run()
 {
-    private $userId;
-
-    public function __construct($userId)
-    {
-        $this->userId = $userId;
-    }
-
-    public function apply($model, PrettusRepositoryInterface $repository)
-    {
-        return $model->where('user_id', '=', $this->userId);
-    }
+    $this->repository->pushCriteria(new IsNullCriteria('email'));
+    $this->repository->pushCriteria(OrderByNameCriteria::class);
+    return $this->repository->paginate();
 }
 ```
 
-#### Passing Data from Task to Criteria
-
-```php
-public function run($user)
-{
-    $this->accountRepository->pushCriteria(new ThisUserCriteria($user->id));
-    return $this->accountRepository->paginate();
-}
-
-```
-
-:::info Further reading
-More info at [Laravel Docs](https://github.com/andersao/l5-repository#create-a-criteria).
-:::
 
