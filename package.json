@@ -7,7 +7,7 @@
     "remark": "remark",
     "remark:once": "npm run remark -- --quiet --frail --use remark-validate-links docs/",
     "remark:watch": "npm run remark -- --quiet --frail --use remark-validate-links --watch docs/",
-    "start": "concurrently \"npm run remark:watch\" \"npm run typecheck:watch\" \"docusaurus start\"",
+    "start": "concurrently \"npm run remark:watch\" \"docusaurus start\"",
     "build": "npm run remark:once && npm run typecheck && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
