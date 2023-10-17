@@ -1,0 +1,16 @@
+{
+  "defaults": {
+    "baseUrl": {
+      "app": "http://apiato.test",
+      "api": "http://api.apiato.test/v1"
+    },
+    "admin": {
+      "email": "admin@admin.com",
+      "password": "admin"
+    }
+  },
+  "examples": {
+    "email": "john@doe.com",
+    "password": "secret"
+  }
+}
