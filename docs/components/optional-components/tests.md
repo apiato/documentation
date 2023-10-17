@@ -142,7 +142,7 @@ such as `endpoint` and `makeCall`, please read to the following section.
 
 Apiato provides a set of helper methods that you can use to write expressive functional tests.
 
-### Properties {#properties}
+### Properties
 Certain test helper methods access properties defined in your test class to execute their tasks effectively.
 Below, we will explore these properties and their corresponding methods:
 
@@ -243,7 +243,6 @@ class DeleteUserTest extends ApiTestCase
 
 ### Methods {#methods}
 
-[makeCall](#make-call)  
 [injectId](#inject-id)  
 [getTestingUser](#get-testing-user)  
 [getTestingUserWithoutAccess](#get-testing-user-without-access)  
