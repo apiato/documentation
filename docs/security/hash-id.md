@@ -15,7 +15,7 @@ BCMath PHP Extension is required to use this feature.
 :::
 
 Make sure to always use the `getHashedKey` method on any model,
-whenever you need to return an ID (mainly from [transformers](../components/main-components/transformers))
+whenever you need to return an ID (mainly from [transformers](../components/main-components/transformers.md))
 weather you are using Hash ID or not.
 If Hash ID feature is disabled, the `getHashedKey` method will return the normal ID.
 
@@ -46,7 +46,7 @@ Or as HTTP request body:
     "id": "XbPW7awNkzl83LD6"
 }
 ```
-Now you need to tell your API to [decode the ID](../components/main-components/requests#request-properties) for you.
+Now you need to tell your API to [decode the ID](../components/main-components/requests.md#request-properties) for you.
 This is done by setting the `decode` and `urlParameters` properties on your Request class.
 After setting those properties,
 the ID will be automatically decoded for you to apply validation rules on it or/and use it from your controller.

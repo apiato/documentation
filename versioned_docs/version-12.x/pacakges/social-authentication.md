@@ -3,14 +3,6 @@ sidebar_position: 3
 title: Social Authentication
 ---
 
-- [Installation](#installation)
-- [Default Supported Auth Provide](#default-supported-auth-provide)
-- [How Social Authentication Works](#how-social-authentication-works)
-- [Setup Social Authentication](#Setup-Social-Authentication)
-- [Social Authentication Container Customization](#social-auth-customization)
-  - [Support new Auth Provider](#support-new-auth-provide)
-  - [Changing default used Repository, Transformer & DB user table name](#changing-defaults)
-
 Under the hood this container uses [Laravel Socialite](https://github.com/laravel/socialite).
 
 ## Installation{#installation}

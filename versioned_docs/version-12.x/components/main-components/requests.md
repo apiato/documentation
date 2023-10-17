@@ -124,7 +124,7 @@ the validation rules defined in `RegisterUserRequest` will be automatically appl
 before the `__invoke` method is executed.
 If the validation fails, an appropriate error response will be generated.
 
-## Request Properties {#request-properties}
+## Request Properties
 
 Apiato introduces new properties to the Request Class that enhance its functionality.
 
@@ -449,7 +449,7 @@ $request = RegisterUserRequest::injectData($data)
     ->withUrlParameters(['id' => 123]);
 ```
 
-## Custom Authorize Methods {#custom-authorize-methods}
+## Custom Authorize Methods
 
 The recommended approach for adding custom authorization functions is by using a Trait,
 which can be included in your Request classes.

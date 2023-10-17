@@ -77,7 +77,7 @@ to prevent users from requesting unsupported languages. There are 2 ways to do t
     ],
 ```
 
-### Publishing configs {#publish-configs}
+### Publishing configs
 ```
 php artisan vendor:publish
 ```  
@@ -140,7 +140,10 @@ is present in the `supported_languages` array from the configuration file.
 :::
 
 ## Enable/Disable Localization{#enable-disable-localization}
-When using this container, Localization is **enabled** by default. To disable it set `LOCALIZATION_ENABLED` to `false` in the `.env` file. You can also change this behaviour in the [configs](#publish-configs). This will disable the localization middleware.
+When using this container, Localization is **enabled** by default.
+To disable it set `LOCALIZATION_ENABLED` to `false` in the `.env` file.
+You can also change this behaviour in the [configs](#publishing-configs).
+This will disable the localization middleware.
 
 ## Get Available Localizations{#get-available-localizations}
 

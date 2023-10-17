@@ -25,7 +25,7 @@ but also minimizes code duplication throughout different segments of your applic
 In summary, a Container represents a cohesive set of related functionalities.
 It can be a specific feature or a wrapper around a RESTful API resource.
 
-To generate new containers along with all their [components](components#components),
+To generate new containers along with all their [components](components.md),
 you may use the `apiato:generate:container` interactive command:
 
 ```

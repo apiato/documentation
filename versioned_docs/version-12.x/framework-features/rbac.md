@@ -10,4 +10,4 @@ Apiato provides a Role-Based Access Control (RBAC) through its Authorization Con
 Behind the scenes,
 Apiato uses the [Laravel Permission](https://github.com/spatie/laravel-permission) package.
 
-You can read more about this feature in the [Authorization](../security/authorization) documentation.
+You can read more about this feature in the [Authorization](../security/authorization.mdx) documentation.

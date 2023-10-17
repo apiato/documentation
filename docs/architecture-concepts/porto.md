@@ -29,7 +29,7 @@ These Containers can represent various entities such as services
 A Section is not allowed to directly communicate with another Section, except via Events or Commands.
 :::
 
-#### Container {#container}
+#### Container
 A Container represents a cohesive set of related functionalities.
 It can be a specific feature or a wrapper around a RESTful API resource.
 

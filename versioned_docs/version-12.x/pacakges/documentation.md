@@ -3,22 +3,6 @@ sidebar_position: 1
 title: Documentation
 ---
 
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-  - [Write PHP **docblock**](#write-php-docblock)
-  - [Run Documentation Generator](#run-documentation-generator)
-  - [Visit Documentation URL's](#visit-docs-urls)
-  - [Shared Response](#shared-response)
-- [Documentation Container Customization](#documentation-customization)
-  - [Publishing Configs](#publish-configs)
-  - [Modifying the source code](#modify-code)
-  - [Change the Documentations URL's](#change-the-documentations-urls)
-  - [Private Documentation Protection](#private-docs-protection)
-  - [Edit Default Generated Values in Templates](#edit-default-generated-values-in-templates)
-  - [Edit the Documentation Header](#edit-the-documentation-header)
-  - [Localization for Documentation Header](#localization-for-documentation-header)
-
 Every great API needs a great Documentation.
 
 Apiato make writing and generating documentations very easy with the `php artisan apiato:apidoc` command.
@@ -26,9 +10,9 @@ Apiato make writing and generating documentations very easy with the `php artisa
 ## Requirements {#requirements}
 
 - Install [ApiDocJs](https://apidocjs.com/) in the project directory
-    - (`npm install apidoc`)
+  - (`npm install apidoc`)
 
-- (Recommended) read the [Routes](../components/main-components/routes) page first.
+- (Recommended) read the [Routes](../components/main-components/routes.md) page first.
 
 ## Installation {#installation}
 
@@ -114,7 +98,7 @@ php artisan apiato:apidoc
 
 If you get an error (`apidoc not found`),
 
-1. [Publish the configs](#publish-configs)
+1. [Publish the configs](#publishing-configs)
 
 2. Edit the `executable` path to **`$(npm bin)/apidoc`** or to however you access the `apidoc` tool on your machine.
 
@@ -145,7 +129,7 @@ Every time you change the DocBlock of a Route file you need to run the `apiato:a
 
 ### Shared Response {#shared-response}
 
-You can use shared responses to update the documentation faster, with less outdated responses and prevent duplicating the responses between routes.  
+You can use shared responses to update the documentation faster, with less outdated responses and prevent duplicating the responses between routes.
 
 Example: `_user.v1.public.php` will contain all responses (single, multiple...) of the User:
 
@@ -177,7 +161,7 @@ HTTP/1.1 200 OK
 
 There are 2 ways you can customize this container: Using its configs or by modifying the source code.
 
-### Publishing configs {#publish-configs}
+### Publishing configs
 ```
 php artisan vendor:publish
 ```  
@@ -185,11 +169,11 @@ Config file will be copied to `app/Ship/Configs/vendor-documentation.php`
 
 ### Modifying the source code {#modify-code}
 
-1. Copy the container from `Vendor` to `AppSection` (or any of your custom sections) of your project  
-2. Fix the namespaces  
-3. Remove `apiato/documentation-generator-container` dependency from project root composer.json  
-4. Update `section_name` & `html_files` in container configs  
-5. Update `apidoc.private.json` & `apidoc.public.json` files in `ApiDocJs/Configs` and fix the `filename`  
+1. Copy the container from `Vendor` to `AppSection` (or any of your custom sections) of your project
+2. Fix the namespaces
+3. Remove `apiato/documentation-generator-container` dependency from project root composer.json
+4. Update `section_name` & `html_files` in container configs
+5. Update `apidoc.private.json` & `apidoc.public.json` files in `ApiDocJs/Configs` and fix the `filename`
 
 ```json
 {
@@ -200,11 +184,11 @@ Config file will be copied to `app/Ship/Configs/vendor-documentation.php`
 ```
 
 ### Change the Documentations URL's {#change-the-documentations-urls}
-[Publish the configs](#publish-configs) and change `types.public.url` & `types.private.url`.
+[Publish the configs](#publishing-configs) and change `types.public.url` & `types.private.url`.
 
 ### Private Documentation Protection {#private-docs-protection}
 By default, this feature is **disabled** in local environment and **enabled** in production.  
-To change this behaviour [Publish the configs](#publish-configs) and change `protect-private-docs`.
+To change this behaviour [Publish the configs](#publishing-configs) and change `protect-private-docs`.
 
 Private documentations route is protected with the `auth:web` middleware.
 You can grant users access to the protected docs by updating `access-private-docs-roles` &
@@ -213,7 +197,7 @@ By default, users need `access-private-docs` permission to access private docs.
 
 ### Edit Default Generated Values in Templates {#edit-default-generated-values-in-templates}
 
-Apiato by defaults generates 2 API documentations, each one has its own `apidoc.json` file. Both can be modified from 
+Apiato by defaults generates 2 API documentations, each one has its own `apidoc.json` file. Both can be modified from
 the Documentation Container in `app/Containers/Vendor/Documentation/ApiDocJs` and need Source code modification.
 
 ### Edit the Documentation Header {#edit-the-documentation-header}
