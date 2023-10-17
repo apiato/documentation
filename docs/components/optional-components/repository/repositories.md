@@ -349,7 +349,7 @@ The response will include only the specified fields, as shown in the example res
 
 It's important to note that the transformer used to format the data is also filtered.
 This means that only the fields specified in the filter are present, and all other fields are excluded.
-This filtering also applies to all [relationships](#relationships) of the object.
+This filtering also applies to all [included relationships](../../main-components/transformers.md#including-relationships) of the object.
 
 ```json
 {
