@@ -18,5 +18,6 @@ jobs:
 
       - name: Test build
         run: |
+          git config --system --add safe.directory '*'
           npm ci
           npm run build
