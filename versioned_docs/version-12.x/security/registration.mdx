@@ -2,28 +2,36 @@
 sidebar_position: 1
 title: Registration
 ---
-import variables from '/variables.json';
 
-<span><code>POST {variables.defaults.baseUrl.api}/register</code></span>
-<div><br/></div>
+Apiato supports two default user registration methods:
 
-At minimum, you need to pass the `email` and `password` string values to the `register` endpoint. The `register` endpoint will return a `JSON` response containing the new user record if the registration was successful.
+1. [Register by Credentials](#register-by-credentials)
+2. [Register by Social Account](#register-by-social-account)
 
-## Register user by email and password {#register-users-by-email-and-password}
+You can also extend these methods or add new ones to customize your registration process.
 
-:::note
+## Register by Credentials
+
+To register a new user, send a `POST` request to the `/register` endpoint.
+
+```
+api.apiato.test/v1/register
+```
+
+:::tip
 Don't forget to add `Accept: application/json` header to your request.
 :::
 
-#### Registration request:
+The `/register` endpoint expects a string email address and a string password field.
 
 ```json
 {
-  "email": "john@doe.com",
-  "password": "password",
+  "email": "gandalg@the.grey",
+  "password": "password"
 }
 ```
-#### Registration response:
+
+You should receive a response similar to the following:
 
 ```json
 {
@@ -46,7 +54,7 @@ Don't forget to add `Accept: application/json` header to your request.
 }
 ```
 
-## Register user by Social Account {#register-users-by-social-account}
+## Register by Social Account
 
 > (Facebook, Twitter, Google, etc...)
 
