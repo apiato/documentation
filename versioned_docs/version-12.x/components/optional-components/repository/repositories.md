@@ -156,7 +156,7 @@ which tells you things like the total number of records, the number on the curre
 }
 ```
 
-### Setting Pagination Limits
+### Limiting Results Per Page
 
 You can control the number of results displayed on a single page using the `limit` parameter.
 
@@ -180,6 +180,16 @@ You can also combine the `limit` and `page` query parameters to access the next 
 
 ```
 api.apiato.test/v1/users?limit=100&page=2
+```
+
+### Maximum Pagination Limit
+
+You can also set the maximum number of resources
+that can be returned in a single page by setting the `maxPaginationLimit` property in your repository class.
+
+For example, to set the maximum number of resources to 20, you can do the following:
+```php
+protected $maxPaginationLimit = 20;
 ```
 
 ### Disabling Pagination
