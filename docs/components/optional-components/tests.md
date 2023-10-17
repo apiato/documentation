@@ -243,14 +243,15 @@ class DeleteUserTest extends ApiTestCase
 
 ### Methods {#methods}
 
-[injectId](#inject-id)  
-[getTestingUser](#get-testing-user)  
-[getTestingUserWithoutAccess](#get-testing-user-without-access)  
-[endpoint](#endpoint-method)  
-[auth](#auth-method)  
+[makeCall](#makecall)  
+[injectId](#injectid)  
+[getTestingUser](#getTestingUser)  
+[getTestingUserWithoutAccess](#getTestingUserWithoutAccess)  
+[endpoint](#endpoint)  
+[auth](#auth)
 
 ---
-#### makeCall {#make-call}
+#### makeCall
 
 To make a request to your application, you may invoke the `makeCall` method within your functional test.
 This method combines the functionalities of [Laravel HTTP test](https://laravel.com/docs/http-tests#testing-json-apis) helpers with the [properties](#properties)
@@ -272,7 +273,7 @@ $this->makeCall($data, $headers);
 ```
 
 ---
-#### injectId {#inject-id}
+#### injectId
 
 The `injectId` method enables you to inject an ID into the endpoint you want to test within your functional tests.
 
@@ -299,7 +300,7 @@ to provide the third parameter if your endpoint expects an id with a different n
 $this->injectId($articles->id)->injectId($user->id, replace: '{user_id}')->makeCall();
 ```
 
-When the [Hash ID](security/hash-id.md) feature is enabled,
+When the [Hash ID](../../security/hash-id.md) feature is enabled,
 the `injectId` method will automatically encode the provided ID before injecting it into the endpoint.
 However, you have the option to control this behavior by using the second parameter of the `injectId` method,
 `skipEncoding`.
@@ -317,7 +318,7 @@ By utilizing the `injectId` method, you can dynamically inject an ID into the en
 allowing you to test specific resources or scenarios that depend on resource identifiers.
 
 ---
-#### getTestingUser {#get-testing-user}
+#### getTestingUser
 
 When you call `getTestingUser` method,
 it returns a testing user instance with randomly generated attributes and all the roles and permissions
@@ -357,7 +358,7 @@ This configuration file allows you
 to specify your custom user model and the corresponding model factory state for testing.
 
 ---
-#### getTestingUserWithoutAccess {#get-testing-user-without-access}
+#### getTestingUserWithoutAccess
 
 The `getTestingUserWithoutAccess` method allows you to obtain a testing user instance that doesn't have any assigned permissions or roles.
 It is a shortcut for `getTestingUser(null, null)`.
@@ -368,7 +369,7 @@ $user = $this->getTestingUserWithoutAccess();
 ```
 
 ---
-#### endpoint {#endpoint-method}
+#### endpoint
 
 The `endpoint` method allows you to specify the endpoint you want to test within your functional tests.
 This method is especially useful
@@ -386,7 +387,7 @@ or else `injectId` will not replace the ID in the overridden endpoint.
 :::
 
 ---
-#### auth {#auth-method}
+#### auth
 
 The `auth` method allows you
 to specify the authentication status of the endpoint you want to test within your functional tests.
@@ -402,13 +403,13 @@ $this->auth(false)->makeCall();
 
 Apiato provides a variety of custom assertion methods that you may utilize when testing your application.
 
-[assertModelCastsIsEmpty](#assert-model-casts-is-empty)  
-[assertDatabaseTable](#assert-database-table)  
-[getGateMock](#get-gate-mock)  
-[inIds](#in-ids)
+[assertModelCastsIsEmpty](#assertModelCastsIsEmpty)  
+[assertDatabaseTable](#assertDatabaseTable)  
+[getGateMock](#getGateMock)  
+[inIds](#inIds)
 
 ---
-#### assertModelCastsIsEmpty {#assert-model-casts-is-empty}
+#### assertModelCastsIsEmpty
 
 The `assertModelCastsIsEmpty` method allows you to assert that the `casts` property of a model is empty.
 By default, the `casts` property of a model includes the `id` and,
@@ -440,7 +441,7 @@ you can verify that the `casts` property of a model does not contain any unexpec
 ensuring that the model's attributes are not automatically casted.
 
 ---
-#### assertDatabaseTable {#assert-database-table}
+#### assertDatabaseTable
 > Available in v12.1.0 and above.
 
 This method is used
@@ -454,7 +455,7 @@ $this->assertDatabaseTable('users', ['id' => 'bigint']);
 ```
 
 ---
-#### getGateMock {#get-gate-mock}
+#### getGateMock
 > Available in v12.1.0 and above.
 
 This assertion helps you to test whether the `Gate::allows` method is invoked with the correct arguments.
@@ -502,7 +503,7 @@ If the authorization logic is correctly implemented, this test should pass,
 ensuring that only users with the necessary permissions can perform updates.
 
 ---
-#### inIds {#in-ids}
+#### inIds
 
 The `inIds` method allows you to check if the given hashed ID exists within the provided model collection.
 
@@ -521,7 +522,7 @@ This method will be removed in the next major release and will not be available 
 Instead, it will be transformed into a helper function that you can utilize anywhere in your application.
 :::
 
-## Faker {#faker}
+## Faker
 
 An instance of [Faker](https://github.com/FakerPHP/Faker) is automatically provided in every test class, allowing you to generate fake data easily.
 You can access it using `$this->faker`.
@@ -531,7 +532,7 @@ This feature is deprecated and will be removed in the next major release.
 You should use the Laravel `fake` helper function instead.
 :::
 
-## Create Live Testing Data {#create-live-testing-data}
+## Create Live Testing Data
 
 To test your application using live testing data,
 such as creating items in an inventory, you can utilize the feature designed specifically for this purpose.
