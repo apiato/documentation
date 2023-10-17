@@ -6,57 +6,176 @@
  */
 
 /* You can override the default Infima variables here. */
-:root {
-  --ifm-color-primary: #4457c2;
-  --ifm-color-primary-dark: #3a4cb2;
-  --ifm-color-primary-darker: #3748a8;
-  --ifm-color-primary-darkest: #2d3b8a;
-  --ifm-color-primary-light: #5869c8;
-  --ifm-color-primary-lighter: #6272cc;
-  --ifm-color-primary-lightest: #7f8cd5;
+:root {}
+
+html[data-theme='dark'] body main,
+html[data-theme='dark'] body aside {
+  /*background-color: #171717;*/
+  background-color: #161923;
 }
 
-.docusaurus-highlight-code-line {
-  background-color: rgb(72, 77, 91);
-  display: block;
-  margin: 0 calc(-1 * var(--ifm-pre-padding));
-  padding: 0 var(--ifm-pre-padding);
+a {
+  color: #75b6e7;
+  text-decoration: none;
 }
 
-html[data-theme='light'] .button {
-  color: white !important;
+a:hover {
+  color: #278cda;
 }
 
-html[data-theme='light'] .button:hover {
-  color: #4457c2 !important;
+html[data-theme='light'] code {
+  border: 0;
 }
 
-.hero__title {
-  color: white;
+html[data-theme='light'] main a:not(.table-of-contents__link, .breadcrumbs__link) div:not(.theme-doc-footer-tags-row),
+html[data-theme='dark'] main a:not(.table-of-contents__link, .breadcrumbs__link) div:not(.theme-doc-footer-tags-row){
+  /*color: #eb4432;*/
+  text-decoration: underline;
 }
 
-.hero__subtitle {
-  color: white;
+html[data-theme='light'] main a.hash-link,
+html[data-theme='dark'] main a.hash-link {
+  /*color: #eb4432;*/
 }
 
-html[data-theme='dark'] .button:hover {
-  color: #4457c2 !important;
+html[data-theme='light'] code,
+html[data-theme='dark'] code {
+  color: #eb4432;
 }
 
-.header-github-link:hover {
-  opacity: 0.6;
+html[data-theme='dark'] pre.prism-code,
+html[data-theme='dark'] code {
+  background-color: #252A37;
 }
 
-.header-github-link:before {
+html[data-theme='light'] .pagination-nav,
+html[data-theme='dark'] .pagination-nav {
+  display: none;
+}
+
+html[data-theme='light'] main footer,
+html[data-theme='dark'] main footer {
+  margin-bottom: 3rem;
+}
+
+html[data-theme='light'] .footer,
+html[data-theme='dark'] .footer {
+  background-color: #091f2c;
+  border-top: 1px solid #404040;
+}
+
+html[data-theme='light'] .admonition_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module code,
+html[data-theme='dark'] .admonition_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module code {
+  background-color: rgba(0, 0, 0, 0)!important;
+  border: 0;
+}
+
+html[data-theme='dark'] .alert--info {
+  background-color: #004173;
+  border: 1px solid #004173;
+}
+
+html[data-theme='dark'] .alert--success {
+  background-color: #054b16;
+  border: 1px solid #054b16;
+}
+
+html[data-theme='dark'] .alert--success a {
+  color: #dff6dd;
+  font-weight: bold;
+}
+
+html[data-theme='dark'] .alert--success a:hover {
+  text-decoration: underline;
+  text-decoration-color: #dff6dd;
+}
+
+html[data-theme='dark'] .alert--secondary {
+  background-color: #3b2e58;
+  border: 1px solid #3b2e58;
+}
+
+html[data-theme='dark'] .alert--secondary a {
+  color: #efd9fd;
+  font-weight: bold;
+}
+
+html[data-theme='dark'] .alert--secondary a:hover {
+  text-decoration: underline;
+  text-decoration-color: #efd9fd;
+}
+
+html[data-theme='dark'] .alert--danger {
+  background-color: #630001;
+  border: 1px solid #630001;
+}
+
+html[data-theme='dark'] .alert--danger a {
+  color: #fde7e9;
+  font-weight: bold;
+}
+
+html[data-theme='dark'] .alert--danger a:hover {
+  text-decoration: underline;
+  text-decoration-color: #fde7e9;
+}
+
+html[data-theme='dark'] .alert--warning {
+  background-color: #5a4400;
+  border: 1px solid #5a4400;
+}
+
+html[data-theme='dark'] .alert--warning a {
+  color: #fff4cc;
+  font-weight: bold;
+}
+
+html[data-theme='dark'] .alert--warning a:hover {
+  text-decoration: underline;
+  text-decoration-color: #fff4cc;
+}
+
+.alert > div:first-of-type {
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}
+
+.alert span svg {
+  height: 1.1rem;
+  width: 1.1rem;
+}
+
+.header-github-link:hover, .header-discord-link:hover {
+  opacity: 0.7;
+}
+
+.header-github-link:before, .header-discord-link:before {
   content: '';
   width: 24px;
   height: 24px;
   display: flex;
+}
+
+.header-discord-link:before {
+  margin-top: 5px;
+}
+
+.header-github-link:before {
   background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
   no-repeat;
 }
 
 html[data-theme='dark'] .header-github-link:before {
   background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
+  no-repeat;
+}
+
+.header-discord-link:before {
+  background: url(https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a69f118df70ad7828d4_icon_clyde_blurple_RGB.svg)
+  no-repeat;
+}
+
+html[data-theme='dark'] .header-discord-link:before {
+  background: url(https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6ca814282eca7172c6_icon_clyde_white_RGB.svg)
   no-repeat;
 }

@@ -243,4 +243,4 @@ There will be some `header.template.{locale}.md` files in the folder.
 
 You can change the language by adding `APIDOC_LOCALE=ru` to the `.env` file.
 
-If you didn't find a file with your locale, you can create it. You need to [modify its source code](#modify-code) and create new file like `header.template.cn.md`
+If you didn't find a file with your locale, you can create it. You need to modify its source code and create new file like `header.template.cn.md`

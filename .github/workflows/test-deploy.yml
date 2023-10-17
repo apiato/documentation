@@ -4,8 +4,6 @@ on:
   pull_request:
     branches:
       - master
-    # Review gh actions docs if you want to further define triggers, paths, etc
-    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
 
 jobs:
   test-deploy:
@@ -15,10 +13,10 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 18.x
           cache: npm
 
-      - name: Install dependencies
-        run: npm ci
-      - name: Test build website
-        run: npm run build
+      - name: Test build
+        run: |
+          npm ci
+          npm run build

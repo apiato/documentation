@@ -1,13 +1,10 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
-
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Apiato',
-  tagline: "Build scalable APIs faster | With PHP and Laravel",
+  tagline: "Unearth Scale, Ignite Speed and Conquer Complexity",
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -60,12 +57,17 @@ const config = {
     ],
   ],
 
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       announcementBar: {
-        id: 'announcementBar-2', // Increment on change
-        content: `⭐️ If you like Apiato, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/apiato/apiato">GitHub</a>`,
+        id: 'announcementBar-3', // Increment on change
+        content: `If you like Apiato, give it a ⭐️ on <a target="_blank" rel="noopener noreferrer" href="https://github.com/apiato/apiato">GitHub</a>`,
       },
       docs: {
         sidebar: {
@@ -92,14 +94,9 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'getting-started/requirements',
+            docId: 'getting-started/installation',
             position: 'left',
             label: 'Docs',
-          },
-          {
-            href: 'https://github.com/apiato/apiato',
-            position: 'right',
-            className: 'header-github-link'
           },
           {
             type: 'docsVersionDropdown',
@@ -112,70 +109,80 @@ const config = {
               // },
             ],
           },
+          {
+            href: 'https://github.com/apiato/apiato',
+            position: 'right',
+            className: 'header-github-link'
+          },
+          {
+            href: 'https://discord.com/invite/ryPcV4KM5k',
+            position: 'right',
+            className: 'header-discord-link'
+          },
         ],
       },
       footer: {
         style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Getting Started',
-                to: '/docs',
-              },
-              {
-                label: 'Porto Architecture',
-                to: 'https://github.com/Mahmoudz/Porto#porto-software-architectural-pattern',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Discord Server',
-                href: 'https://discord.gg/ryPcV4KM5k',
-              },
-              {
-                label: 'GitHub Issues',
-                href: 'https://github.com/apiato/apiato/issues',
-              },
-            ],
-          },
-          {
-            title: 'Contributors',
-            items: [
-              {
-                label: 'Contribution Guide',
-                href: '/docs/contribution-guide',
-              },
-              {
-                label: 'Code of Conduct',
-                href: 'https://github.com/apiato/apiato/blob/9.0/CODE_OF_CONDUCT.md',
-              },
-            ],
-          },
-          {
-            title: 'Sponsors',
-            items: [
-              {
-                label: 'Our Sponsors',
-                href: 'https://github.com/apiato/apiato#sponsors',
-              },
-              {
-                label: 'Become a Sponsor',
-                href: 'https://opencollective.com/apiato',
-              },
-            ],
-          },
-        ],
+      //   links: [
+      //     {
+      //       title: 'Docs',
+      //       items: [
+      //         {
+      //           label: 'Getting Started',
+      //           to: '/docs',
+      //         },
+      //         {
+      //           label: 'Porto Architecture',
+      //           to: 'https://github.com/Mahmoudz/Porto#porto-software-architectural-pattern',
+      //         },
+      //       ],
+      //     },
+      //     {
+      //       title: 'Community',
+      //       items: [
+      //         {
+      //           label: 'Discord Server',
+      //           href: 'https://discord.gg/ryPcV4KM5k',
+      //         },
+      //         {
+      //           label: 'GitHub Issues',
+      //           href: 'https://github.com/apiato/apiato/issues',
+      //         },
+      //       ],
+      //     },
+      //     {
+      //       title: 'Contributors',
+      //       items: [
+      //         {
+      //           label: 'Contribution Guide',
+      //           href: '/docs/contribution-guide',
+      //         },
+      //         {
+      //           label: 'Code of Conduct',
+      //           href: 'https://github.com/apiato/apiato/blob/9.0/CODE_OF_CONDUCT.md',
+      //         },
+      //       ],
+      //     },
+      //     {
+      //       title: 'Sponsors',
+      //       items: [
+      //         {
+      //           label: 'Our Sponsors',
+      //           href: 'https://github.com/apiato/apiato#sponsors',
+      //         },
+      //         {
+      //           label: 'Become a Sponsor',
+      //           href: 'https://opencollective.com/apiato',
+      //         },
+      //       ],
+      //     },
+      //   ],
         copyright: `Copyright © 2016 - ${new Date().getFullYear()}`,
       },
       prism: {
-        additionalLanguages: ['php'],
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        additionalLanguages: ['php', 'php-extras', 'bash', 'json', 'yaml', 'docker', 'diff'],
+        theme: require('prism-react-renderer/themes/github'),
+        darkTheme: require('prism-react-renderer/themes/dracula'),
       },
     }),
 };

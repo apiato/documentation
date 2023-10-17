@@ -1,0 +1,268 @@
+---
+sidebar_position: 2
+title: Authentication
+---
+import variables from '/variables.json';
+
+Apiato utilizes the [Laravel Passport](https://laravel.com/docs/passport) package to provide a complete OAuth2 server.
+While this guide focuses on the `Password Grant`, you can use any other grant type supported by Passport.
+
+OAuth2 offers various methods of authentication, known as `grants`.
+To learn how to choose the best grant type for your needs,
+read [this](https://oauth2.thephpleague.com/authorization-server/which-grant/) article.
+
+:::caution Important
+This documentation assumes prior familiarity with OAuth2.
+If you're new to OAuth2,
+we recommend
+acquainting yourself with its general [terminology](https://oauth2.thephpleague.com/terminology/) and features before proceeding.
+:::
+
+:::tip
+To access a comprehensive list of available Passport endpoints,
+please refer to the `app/Containers/Authentication/UI/API/Routes/passport.v1.private.php` file.
+:::
+
+## Installation {#installation}
+
+To get started, you should execute the `passport:install` Artisan command.
+This command will create the encryption keys needed to generate secure access tokens.
+In addition, the command will create "personal access"
+and "password grant" clients which will be used to generate access tokens:
+
+```
+php artisan passport:install
+```
+
+You should see something like this:
+```
+Personal access client created successfully.
+Client ID: 1
+Client secret: Mo45lC2zhZWcMfDGmCbsw1OfasdCrc3wqQAeeYAO
+Password grant client created successfully.
+Client ID: 2
+Client secret: nu8B2npfoR4hP6sWHaf90EvWUFe2EDYyJXGnCrso
+```
+
+Next you need to add the Password grant `CLIENT_ID` and `CLIENT_SECRET` to your `.env` file:
+```dotenv
+CLIENT_WEB_ID=2
+CLIENT_WEB_SECRET=nu8B2npfoR4hP6sWHaf90EvWUFe2EDYyJXGnCrso
+```
+
+## Password Grant Tokens {#password-grant-tokens}
+
+The OAuth2 password grant allows your other first-party clients, such as a mobile application,
+to obtain an access token using an email address / username and password.
+This allows you to issue access tokens securely to your first-party clients
+without requiring your users to go through the entire OAuth2 authorization code redirect flow.
+
+### Creating A Password Grant Client {#creating-a-password-grant-client}
+
+Before your application can issue tokens via the password grant, you will need to create a password grant client.
+You may do this using the `passport:client` Artisan command with the `--password` option.
+If you have already run the `passport:install` command, you do not need to run this command:
+
+```
+php artisan passport:client --password
+```
+
+### Requesting Tokens {#requesting-tokens}
+
+<span><code>POST {variables.defaults.baseUrl.api}/oauth/token</code></span>
+<div><br/></div>
+
+Once you have created a password grant client,
+you may request an access token
+by issuing a `POST` request to the `/oauth/token` route with the user's email address and password.
+If the request is successful,
+you will receive an `access_token` and `refresh_token` in the JSON response from the server:
+
+```json
+// Request
+{
+  "grant_type": "password", // should always be "password"
+  "client_id": "client-id", // required
+  "client_secret": "client-secret", // required
+  "username": "john@doe.com",
+  "password": "secret",
+  "scope": "" // can be empty
+}
+```
+
+### Requesting Tokens Through The Proxy {#requesting-tokens-through-the-proxy}
+
+<span><code>POST {variables.defaults.baseUrl.api}/clients/web/login</code></span>
+<div><br/></div>
+
+By default, Apiato provides a single ready-to-use URL for your web client: `clients/web/login`.
+However, you can add additional URLs as needed for each of your trusted first-party client apps.
+For example, you could have URLs like `clients/mobile/login`.
+
+You may request an access token
+by issuing a `POST` request to the `/clients/web/login` route with the user's email address and password.
+If the request is successful,
+you will receive an `access_token` and `refresh_token` in the JSON response from the server:
+
+```json
+// Request
+{
+  "username": "john@doe.com",
+  "password": "secret"
+}
+```
+Behind the scenes, when a request is made to these endpoints,
+the corresponding client ID and secret are automatically appended to the request.
+This allows Apiato to make an additional call to your authentication server with all the necessary data.
+This approach eliminates the need for clients to send their ID and secret with each request,
+and it allows them to use their own URL, providing even more control over which client is accessing your server.
+The authentication server then returns the authentication response to the client, including the tokens.
+
+:::note
+You must manually extract the client credentials from the database
+and update your `.env` file with the appropriate credentials for each client.
+:::
+
+### Requesting Tokens With Custom Attributes {#requesting-tokens-with-custom-attributes}
+
+By default, Apiato enables users to request an access token using their email address.
+However,
+you may want
+to enhance this functionality to allow users to request an access token using other identifiers like their username,
+phone number, etc. Here's a guide on how to configure and utilize this feature:
+
+#### Database Adaptation:
+You will need to make adjustments to your database schema to accommodate the new fields.
+For example, you can add the `username` and `phone` fields to the `users` table.
+
+#### Task Modification:
+If you have a [Task](../components/main-components/tasks.md) responsible for creating a user object,
+such as the `CreateUserByCredentialsTask`, you need to update it to support the new fields.
+Additionally, this modification may also impact your registration logic,
+so ensure that you make the necessary adjustments there as well.
+
+#### Configuration File:
+1. Locate the `appSection-authentication` configuration file.
+It is typically found at `App\Containers\AppSection\Authentication\Configs\appSection-authentication`.
+
+2. Open the `appSection-authentication` configuration file and search for the `login.attributes` parameter.
+This parameter allows you to configure the login attributes based on your requirements.
+
+3. Modify the `login.attributes` parameter according to your needs.
+You can specify the login attributes that should be considered during the authentication process.
+For example, if you want to allow users to log in using their `email` and `phone`,
+update the `login.attributes` parameter as follows:
+
+```php
+'login' => [
+    'attributes' => [
+        'email' => ['email'],
+        'phone' => ['string', 'min:6', 'max:25'],
+    ],
+],
+```
+
+Now user can request a token using their email or phone number.
+```json
+// Request
+{
+  "username": "+1234567890",
+  "password": "secret"
+}
+```
+
+:::tip
+This feature is well documented in the configuration file.
+:::
+
+### Refresh Token {#refresh-token}
+
+If your application utilizes short-lived access tokens,
+users will need
+to refresh their access tokens
+using the refresh token that was provided to them when the access token was initially issued.
+
+There are two recommended methods to refresh the token:
+
+1. Proxy Endpoint (recommended for first-party clients):
+ <span><code>POST {variables.defaults.baseUrl.api}/clients/web/refresh</code></span>
+
+2. Proxy Endpoint (recommended for first-party clients):
+ <span><code>POST {variables.defaults.baseUrl.api}/oauth/token</code></span>
+
+#### Proxy Endpoint {#proxy-endpoint}
+
+<span>Apiato provides a default endpoint, <code>{variables.defaults.baseUrl.api}/clients/web/refresh</code>,
+specifically for the Web Client to refresh its token.
+You can create additional endpoints for each client as needed.
+This endpoint can be used in two ways:
+by manually passing the <code>refresh_token</code> to the endpoint or by including it in the request's <code>HttpCookie</code>.
+In either case, the server will respond with a new access token and refresh token.</span>
+
+#### Laravel Passport Endpoint {#laravel-passport-endpoint}
+
+You can find more information about the Laravel Passport refresh token endpoint [here](https://laravel.com/docs/passport#refreshing-tokens).
+
+### Revoking Tokens {#revoking-tokens}
+
+<span><code>POST {variables.defaults.baseUrl.api}/api/logout</code></span>
+<div><br/></div>
+
+You may revoke a token by using this endpoint
+and passing the token to be revoked in the header `Authorization: Bearer {token}`.
+
+## Protecting Routes {#protecting-routes}
+
+#### API
+To protect an API endpoint from being accessible by unauthenticated users, you can use the `auth:api` middleware.
+
+```php
+Route::get('secret/info', Controller::class)
+    ->middleware('auth:api');
+```
+
+All endpoints protected with the `auth:api` middleware can only be accessed
+by sending a valid access token along with the request.
+This ensures that only authenticated users with valid tokens are granted access to these endpoints.
+
+#### Web
+
+To secure a web endpoint and restrict access to authenticated users only, you can utilize the `auth:web` middleware.
+By applying the `auth:web` middleware to a specific endpoint or route,
+you ensure that only authenticated users can access it.
+This middleware verifies the user's authentication status based on their web session or cookie,
+making it suitable for web-based authentication and authorization.
+
+```php
+Route::get('private/page', Controller::class)
+    ->middleware('auth:web');
+```
+
+If authentication fails, users will be redirected to a login page by default.
+To modify the login page view,
+you can navigate to the `app/Ship/Providers/RouteServiceProvider.php` file and update the `LOGIN` constant.
+
+### Passing The Access Token {#passing-the-access-token}
+
+When calling routes that are protected by Passport,
+your application's API consumers should specify their access token as a `Bearer` token in the `Authorization` header of their request.
+For example, when using the Guzzle HTTP library:
+
+```php
+use Illuminate\Support\Facades\Http;
+
+$response = Http::withHeaders([
+    'Accept' => 'application/json',
+    'Authorization' => 'Bearer '.$accessToken,
+])->get('http://api.apiato.test/v1/users');
+
+return $response->json();
+```
+
+## Configuration
+
+Most of the configuration is done in the `app/Ships/Configs/apiato.php` file.
+
+## Social Authentication {#social-authentication}
+
+For Social Authentication visit the [Social Authentication](../pacakges/social-authentication.md) page.

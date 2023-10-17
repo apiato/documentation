@@ -4,8 +4,11 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
+    "remark": "remark",
+    "remark:once": "npm run remark -- --quiet --frail --use remark-validate-links docs/",
+    "remark:watch": "npm run remark -- --quiet --frail --use remark-validate-links --watch docs/",
+    "start": "concurrently \"npm run remark:watch\" \"docusaurus start\"",
+    "build": "npm run remark:once && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -14,8 +17,9 @@
     "write-heading-ids": "docusaurus write-heading-ids"
   },
   "dependencies": {
-    "@docusaurus/core": "2.3.1",
-    "@docusaurus/preset-classic": "2.3.1",
+    "@docusaurus/core": "^2.3.1",
+    "@docusaurus/preset-classic": "^2.3.1",
+    "@docusaurus/theme-mermaid": "^2.4.1",
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
     "@fortawesome/free-brands-svg-icons": "^6.3.0",
     "@fortawesome/free-regular-svg-icons": "^6.3.0",
@@ -28,7 +32,10 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "2.3.1"
+    "@docusaurus/module-type-aliases": "^2.3.1",
+    "concurrently": "^8.2.0",
+    "remark-cli": "^11.0.0",
+    "remark-validate-links": "^12.1.1"
   },
   "browserslist": {
     "production": [

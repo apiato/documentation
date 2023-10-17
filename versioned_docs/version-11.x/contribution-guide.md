@@ -128,7 +128,7 @@ the master branch and submit your PR there.
 Now you should have the following remotes:
 
 ```
-❯ git remote -vv
+git remote -vv
 origin      git@bitbucket.org:username/project-a.git (fetch)
 origin      git@bitbucket.org:username/project-a.git (push)
 upstream    git@github.com:username/apiato.git (fetch)
@@ -152,7 +152,7 @@ upstream    git@github.com:username/apiato.git (push)
 Now you should have the following branches:
 
 ```
-❯ git branch -vv
+git branch -vv
  apiato           77b4d945 [upstream/master] ...
  master           77d302aa [origin/master] ...
 ```
