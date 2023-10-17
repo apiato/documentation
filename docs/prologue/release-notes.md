@@ -19,6 +19,15 @@ However, we strive to always ensure you may update to a new major release in one
 
 For all Apiato releases, bug fixes are provided for 18 months and security fixes are provided for 2 years.
 
+| Version | PHP (*)   | Release          | Bug Fixes Until    | Security Fixes Until |
+|---------|-----------|------------------|--------------------|----------------------|
+| 10      | 7.3 - 8.1 | April 25th, 2021 | October 25th, 2022 | April 25th, 2023     |
+| 11      | 8.0 - 8.2 | April 27th, 2022 | October 27th, 2023 | April 27th, 2024     |
+| 12      | 8.1 - 8.2 | June 4th, 2023   | December 4th, 2024 | June 4th, 2025       |
+| 13      | 8.2       | Q1 2024          | August 5th, 2025   | February 3rd, 2026   |
+
+(*) Supported PHP versions
+
 ## Apiato 12
 
 **Full Changelog**: https://github.com/apiato/apiato/compare/v11.3.2...v12.0.0
