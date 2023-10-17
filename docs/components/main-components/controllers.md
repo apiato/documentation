@@ -14,12 +14,6 @@ tags:
 
 [Controllers](https://laravel.com/docs/controllers) are tasked with two primary responsibilities:
 serving the requested data and constructing the corresponding response.
-As the intermediaries between incoming requests and outgoing responses,
-controllers efficiently manage the flow of information to ensure a seamless user experience.
-
-Apiato implementation of controllers maintains the fundamental concept of the MVC (Model-View-Controller) pattern,
-where controllers assume the role of the "C" (Controller) component.
-However, Apiato introduces a focused and predefined set of responsibilities for controllers,
 
 To generate new controllers
 you may use the `apiato:generate:controller` interactive command:
@@ -37,7 +31,7 @@ Read [**Porto SAP Documentation (#Controllers)**](https://github.com/Mahmoudz/Po
 - All API Controllers:
   - MUST be placed in the `app/Containers/{Section}/{Container}/UI/API/Controllers` directory.
   - MUST extend the `App\Ship\Parents\Controllers\ApiController` class.
-  - MUST format their responses via a [Transformer](transformers).
+  - MUST format their responses via a [Transformer](transformers.md).
 - All Web Controllers:
   - MUST be placed in the `app/Containers/{Section}/{Container}/UI/WEB/Controllers` directory.
   - MUST extend the `App\Ship\Parents\Controllers\WebController` class.
@@ -125,7 +119,7 @@ This method is incredibly useful and will be used in most cases.
 
 - The first required parameter accepts data as an object or a Collection of objects.
 - The second required parameter is the transformer class.
-- The third optional parameter allows you to specify the [includes](transformers#handling-relationships) that should be returned in the response.
+- The third optional parameter allows you to specify the [includes](transformers.md#including-relationships) that should be returned in the response.
 - The fourth optional parameter lets you include metadata in the response. This metadata will be returned under the `meta` key in the `custom` key.
 
 ```php
