@@ -124,11 +124,11 @@ This method is incredibly useful and will be used in most cases.
 
 ```php
 // With Includes
-$this->transform($resouce, ResourceTransformer::class, ['foo', 'bar']);
+$this->transform($resource, ResourceTransformer::class, ['foo', 'bar']);
 ```
 ```php
 // With Meta
-$this->transform($resouce, ResourceTransformer::class, meta: ['foo' => 'bar', 'baz' => 1]);
+$this->transform($resource, ResourceTransformer::class, meta: ['foo' => 'bar', 'baz' => 1]);
 
 // Response
 {
