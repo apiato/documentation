@@ -47,7 +47,7 @@ Or as HTTP request body:
 }
 ```
 Now you need to tell your API to [decode the ID](../components/main-components/requests.md#request-properties) for you.
-This is done by setting the `decode` and `urlParameters` properties on your Request class.
+This is done by setting the `$decode` and `$urlParameters` properties on your Request class.
 After setting those properties,
 the ID will be automatically decoded for you to apply validation rules on it or/and use it from your controller.
 > `$request->id` will return the decoded ID.

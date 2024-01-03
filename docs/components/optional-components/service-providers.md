@@ -122,7 +122,7 @@ the scope of service provider usage and the logical location for its registratio
 A container `Main Service Provider` will be automatically registered by Apiato
 so manual registration isn't necessary.
 In turn,
-Main Service Providers will register all service providers listed in their `serviceProviders` property.
+Main Service Providers will register all service providers listed in their `$serviceProviders` property.
 
 #### Additional Service Providers
 
@@ -138,7 +138,7 @@ public array $serviceProviders = [
 ];
 ```
 
-You can also list aliases in the `aliases` property of the `App\Containers\{Section}\{Container}\Providers\MainServiceProvider` class.
+You can also list aliases in the `$aliases` property of the `App\Containers\{Section}\{Container}\Providers\MainServiceProvider` class.
 
 ```php
 public array $aliases = [

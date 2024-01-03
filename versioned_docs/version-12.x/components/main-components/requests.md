@@ -130,7 +130,7 @@ Apiato introduces new properties to the Request Class that enhance its functiona
 
 ### access
 
-The `access` property allows you to define Roles and Permissions that can access a specific endpoint.
+The `$access` property allows you to define Roles and Permissions that can access a specific endpoint.
 It's used by the `hasAccess` method to check if a user has the required Roles and Permissions to use that endpoint.
 
 ```php
@@ -166,12 +166,12 @@ class DemoRequest extends ParentRequest
 
 :::tip
 If there's no need to set any roles or permissions,
-you can simply set the `permissions` or `roles` property to an empty string `''`, an empty array `[]`, or `null`.
+you can simply set the `$permissions` or `$roles` property to an empty string `''`, an empty array `[]`, or `null`.
 :::
 
 ### decode
 
-The `decode` property is used to handle the decoding of Hashed IDs from the incoming Request.
+The `$decode` property is used to handle the decoding of Hashed IDs from the incoming Request.
 
 When you enable the [Hash ID](../../security/hash-id.md) feature, your application can receive Hashed IDs from users.
 These Hashed IDs need to be decoded before they can be effectively validated.
@@ -198,10 +198,10 @@ will not function correctly unless you decode the ID before passing it to the va
 
 ### urlParameters
 
-The `urlParameters` property simplifies the process of applying validation rules to URL parameters.
+The `$urlParameters` property simplifies the process of applying validation rules to URL parameters.
 
 By default, Laravel doesn't provide validation for URL parameters (`/stores/999/items`).
-However, by using the `urlParameters` property, you can enable validation for these parameters.
+However, by using the `$urlParameters` property, you can enable validation for these parameters.
 By specifying the desired URL parameters within this property,
 you not only enable validation but also gain direct access to these parameters from the Request object.
 
@@ -274,7 +274,7 @@ And if the result of this operation is `true` then the user will be authorized t
 
 ### hasAccess
 
-The `hasAccess` method assesses a user's access rights based on the Request's `access` property.
+The `hasAccess` method assesses a user's access rights based on the Request's `$access` property.
 If the user has any of the specified Roles or Permissions, the method will return `true` otherwise it will
 return `false`.
 

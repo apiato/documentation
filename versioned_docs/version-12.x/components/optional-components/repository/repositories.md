@@ -185,7 +185,7 @@ api.apiato.test/v1/users?limit=100&page=2
 ### Maximum Pagination Limit
 
 You can also set the maximum number of resources
-that can be returned in a single page by setting the `maxPaginationLimit` property in your repository class.
+that can be returned in a single page by setting the `$maxPaginationLimit` property in your repository class.
 
 For example, to set the maximum number of resources to 20, you can do the following:
 ```php

@@ -149,7 +149,7 @@ Below, we will explore these properties and their corresponding methods:
 ---
 #### endpoint {#endpoint}
 
-The `endpoint` property is used
+The `$endpoint` property is used
 to define the endpoints you want to access when making a call using the `makeCall` method.
 It is defined as a string in the following format: `method@url`.
 
@@ -177,8 +177,8 @@ class FindUserByIdTest extends ApiTestCase
 ---
 #### auth {#auth}
 
-The `auth` property is used to determine whether the endpoint being called requires authentication or not in your test class.
-If you do not explicitly define the `auth` property in your test class, it will be defaulted to `true` automatically.
+The `$auth` property is used to determine whether the endpoint being called requires authentication or not in your test class.
+If you do not explicitly define the `$auth` property in your test class, it will be defaulted to `true` automatically.
 
 In the context of testing, when `auth` is set to true,
 the `makeCall` method will handle authentication by creating a testing user
@@ -207,12 +207,12 @@ class ListUsersTest extends ApiTestCase
 ---
 #### access
 
-The `access` property is used
+The `$access` property is used
 to define roles or permissions that you want to assign to your testing users within a test class.
 When you use the `getTestingUser` method,
-the testing user instance will automatically inherit all the roles and permissions specified in the `access` property.
+the testing user instance will automatically inherit all the roles and permissions specified in the `$access` property.
 
-By setting the desired roles and permissions in the `access` property,
+By setting the desired roles and permissions in the `$access` property,
 you can conveniently configure the testing user with the necessary access rights for your test scenarios.
 This ensures that the testing user has the appropriate privileges when interacting with the application during testing.
 
@@ -322,7 +322,7 @@ allowing you to test specific resources or scenarios that depend on resource ide
 
 When you call `getTestingUser` method,
 it returns a testing user instance with randomly generated attributes and all the roles and permissions
-specified in the `access` property.
+specified in the `$access` property.
 This ensures that the testing user has the appropriate access rights for the defined roles and permissions.
 However,
 you also have the flexibility
@@ -330,7 +330,7 @@ to override these attributes and access rights by passing the desired values as 
 
 ```php
 // The testing user will be created with randomly generated attributes 
-// and will inherit the roles and permissions specified in the `access` property.
+// and will inherit the roles and permissions specified in the `$access` property.
 $user = $this->getTestingUser();
 
 // The testing user will be created with the provided attributes and access rights.
@@ -362,7 +362,7 @@ to specify your custom user model and the corresponding model factory state for 
 
 The `getTestingUserWithoutAccess` method allows you to obtain a testing user instance that doesn't have any assigned permissions or roles.
 It is a shortcut for `getTestingUser(null, null)`.
-This skips all the roles and permissions defined in your test class `access` property.
+This skips all the roles and permissions defined in your test class `$access` property.
 
 ```php
 $user = $this->getTestingUserWithoutAccess();
@@ -373,7 +373,7 @@ $user = $this->getTestingUserWithoutAccess();
 
 The `endpoint` method allows you to specify the endpoint you want to test within your functional tests.
 This method is especially useful
-when you need to override the default endpoint that is defined in the `endpoint` property of the test class,
+when you need to override the default endpoint that is defined in the `$endpoint` property of the test class,
 specifically for a particular test method.
 
 ```php
@@ -392,7 +392,7 @@ or else `injectId` will not replace the ID in the overridden endpoint.
 The `auth` method allows you
 to specify the authentication status of the endpoint you want to test within your functional tests.
 This method is especially useful
-when you need to override the default authentication status that is defined in the `auth` property of the test class,
+when you need to override the default authentication status that is defined in the `$auth` property of the test class,
 specifically for a particular test method.
 
 ```php
@@ -411,8 +411,8 @@ Apiato provides a variety of custom assertion methods that you may utilize when 
 ---
 #### assertModelCastsIsEmpty
 
-The `assertModelCastsIsEmpty` method allows you to assert that the `casts` property of a model is empty.
-By default, the `casts` property of a model includes the `id` and,
+The `assertModelCastsIsEmpty` method allows you to assert that the `$casts` property of a model is empty.
+By default, the `$casts` property of a model includes the `id` and,
 if the model is soft deletable, the `deleted_at`.
 This method excludes these default values from the assertion.
 
@@ -423,7 +423,7 @@ $this->assertModelCastsIsEmpty($model);
 ```
 
 In the code snippet above, `$model` represents the instance of the model you want to test.
-The `assertModelCastsIsEmpty` method will verify that the `casts` property of the model is empty,
+The `assertModelCastsIsEmpty` method will verify that the `$casts` property of the model is empty,
 ignoring the default `id` and `deleted_at` values.
 
 If you want to add additional values to the ignore list,
@@ -434,10 +434,10 @@ $this->assertModelCastsIsEmpty($model, ['value1', 'value2']);
 ```
 
 In this case, the assertion will ignore the `id`, `deleted_at`,
-`value1`, and `value2` values when verifying the `casts` property of the model.
+`value1`, and `value2` values when verifying the `$casts` property of the model.
 
 By using the `assertModelCastsIsEmpty` method,
-you can verify that the `casts` property of a model does not contain any unexpected values,
+you can verify that the `$casts` property of a model does not contain any unexpected values,
 ensuring that the model's attributes are not automatically casted.
 
 ---
