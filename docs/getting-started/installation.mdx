@@ -148,23 +148,15 @@ php artisan apiato:apidoc
 
 To witness Apiato in action,
 assuming you are using the default [Subdomain and API Version Prefix](#subdomain-and-api-version-prefix) configuration,
-you should be able to access the following URLs:
+you should be able to access the following URLs and see the following results:
 
-- [http://apiato.test](http://apiato.test)
--> You should see an HTML page displaying the text `Apiato` in the center.
+#### Web (Browser)
+- http://apiato.test -> Apiato welcome page.
+#### API (HTTP Client)
+- http://api.apiato.test -> `"Welcome to Apiato"`
+- http://api.apiato.test/v1 -> `"Welcome to Apiato (API V1)"`
 
-- [http://api.apiato.test](http://api.apiato.test)
--> You should receive a JSON response like this:
-```json
-["Welcome to Apiato"]
-```
-
-Open your HTTP client and call:
-
-http://api.apiato.test/ You should see a JSON response with the message: `"Welcome to apiato."`
-http://api.apiato.test/v1 You should see a JSON response with the message: `"Welcome to Apiato (API V1)."`
-
-## Next Steps {#next-steps}
+## Next Steps
 
 Now that you have created your Apiato project, you may be wondering what to learn next.
 If you're looking for a place to start, you should check out the following resources:
