@@ -39,23 +39,29 @@ These types of tests provide the most confidence that your system as a whole is 
 
 ## Rules
 
-- All container-specific Unit tests:
-  - MUST be placed in the `app/Containers/{Section}/{Container}/Tests/Unit` directory.
-  - MUST extend the `App\Containers\{Section}\{Container}\Tests\UnitTestCase` class.
+- All container-specific tests:
+  - MUST be placed in the `app/Containers/{Section}/{Container}/Tests` directory.
+  - Functional tests:
+    - MUST be placed in the `app/Containers/{Section}/{Container}/Tests/Functional` directory.
+    - API tests:
+      - MUST be placed in the `app/Containers/{Section}/{Container}/Tests/Functional/API` directory.
+      - MUST extend the `App\Containers\{Section}\{Container}\Tests\Functional\ApiTestCase` class.
+        - MUST extend the `App\Containers\{Section}\{Container}\Tests\FunctionalTestCase` class.
+          - MUST extend the `App\Containers\{Section}\{Container}\Tests\ContainerTestCase` class.
+    - CLI tests:
+      - MUST be placed in the `app/Containers/{Section}/{Container}/Tests/Functional/CLI` directory.
+      - MUST extend the `App\Containers\{Section}\{Container}\Tests\Functional\CliTestCase` class.
+        - MUST extend the `App\Containers\{Section}\{Container}\Tests\FunctionalTestCase` class.
+          - MUST extend the `App\Containers\{Section}\{Container}\Tests\ContainerTestCase` class.
+  - Unit tests:
+    - MUST be placed in the `app/Containers/{Section}/{Container}/Tests/Unit` directory.
+    - MUST extend the `App\Containers\{Section}\{Container}\Tests\UnitTestCase` class.
+      - MUST extend the `App\Containers\{Section}\{Container}\Tests\ContainerTestCase` class.
+    - Directory structure MUST exactly match the Container's directory structure.
 - All `Ship` Unit tests:
   - MUST be placed in the `app/Ship/Tests/Unit` directory.
-  - MUST extend the `App\Ship\Tests\TestCase` class.
-- All API Functional tests:
-  - MUST be placed in the `app/Containers/{Section}/{Container}/UI/API/Tests/Functional` directory.
-  - MUST extend the `App\Containers\{Section}\{Container}\UI\API\Tests\ApiTestCase` class.
-- All WEB Functional tests:
-  - MUST be placed in the `app/Containers/{Section}/{Container}/UI/WEB/Tests/Functional` directory.
-  - MUST extend the `App\Containers\{Section}\{Container}\UI\WEB\Tests\WebTestCase` class.
-- All TestCases MUST extend the `App\Ship\Parents\Tests\PhpUnit\TestCase` class. e.g.:
-  - `App\Ship\Tests\TestCase`
-  - `App\Containers\{Section}\{Container}\Tests\UnitTestCase`
-  - `App\Containers\{Section}\{Container}\UI\API\Tests\ApiTestCase`
-  - `App\Containers\{Section}\{Container}\UI\WEB\Tests\WebTestCase`
+  - MUST extend the `App\Ship\Tests\ShipTestCase` class.
+- All `ContainerTestCases` & `ShipTestCase` MUST extend the `App\Ship\Parents\Tests\PhpUnit\TestCase` class.
   - The parent extension SHOULD be aliased as `ParentTestCase`.
 
 ## Folder Structure
@@ -65,33 +71,43 @@ app
 ├── Containers
 │   └── Section
 │       └── Container
-│           ├── Tests
-│           │   ├── Unit
-│           │   │   ├── CreateUserActionTest.php
-│           │   │   ├── DeleteUserTaskTest.php
-│           │   │   └── ...
-│           │   └── UnitTestCase.php
-│           └── UI
-│               ├── API
-│               │   └── Tests
-│               │       ├── Functional
-│               │       │   ├── CreateUserTest.php
-│               │       │   ├── DeleteUserTest.php
+│           └── Tests
+│               ├── Functional
+│               │   ├── API
+│               │   │   ├── CreateUserTest.php
+│               │   │   └── ...
+│               │   ├── CLI
+│               │   │   ├── CreateAdminCommandTest.php
+│               │   │   └── ...
+│               │   ├── ApiTestCase.php
+│               │   └── CliTestCase.php
+│               ├── Unit 
+│               │   ├── Actions
+│               │   │   ├── CreateUserActionTest.php
+│               │   │   └── ...
+│               │   ├── AnotherDirectory
+│               │   │   ├── ...
+│               │   │   └── ...
+│               │   └── UI
+│               │       ├── API
+│               │       │   ├── Controllers
+│               │       │   ├── Requests
+│               │       │   ├── Transformers
 │               │       │   └── ...
-│               │       └── ApiTestCase.php
-│               └── WEB
-│                   └── Tests
-│                       ├── Functional
-│                       │   ├── LoginTest.php
-│                       │   ├── LogoutTest.php
-│                       │   └── ...
-│                       └── WebTestCase.php
+│               │       └── WEB
+│               │           ├── Controllers
+│               │           ├── Requests
+│               │           ├── Transformers
+│               │           └── ...
+│               ├── ContainerTestCase.php
+│               ├── FunctionalTestCase.php
+│               └── UnitTestCase.php
 └── Ship
     └── Tests
         ├── Unit
         │   ├── UrlRuleTest.php
         │   └── ...
-        └── TestCase.php
+        └── ShipTestCase.php
 ```
 
 ## Writing Tests
@@ -101,15 +117,16 @@ However, Functional tests follow a distinct approach.
 Here's an example of how to write functional tests:
 
 ```php
-namespace App\Containers\AppSection\User\UI\API\Tests\Functional;
+namespace App\Containers\AppSection\User\Tests\Functional\API;
 
-use App\Containers\AppSection\User\UI\API\Tests\ApiTestCase;
+use App\Containers\AppSection\User\Data\Factories\UserFactory;
+use App\Containers\AppSection\User\Tests\Functional\ApiTestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group user
- * @group api
- */
+#[Group('user')]
+#[CoversNothing]
 class FindUserByIdTest extends ApiTestCase
 {
     protected string $endpoint = 'get@v1/users/{id}';
@@ -147,7 +164,7 @@ Certain test helper methods access properties defined in your test class to exec
 Below, we will explore these properties and their corresponding methods:
 
 ---
-#### endpoint {#endpoint}
+#### endpoint
 
 The `$endpoint` property is used
 to define the endpoints you want to access when making a call using the `makeCall` method.
@@ -175,7 +192,7 @@ class FindUserByIdTest extends ApiTestCase
 ```
 
 ---
-#### auth {#auth}
+#### auth
 
 The `$auth` property is used to determine whether the endpoint being called requires authentication or not in your test class.
 If you do not explicitly define the `$auth` property in your test class, it will be defaulted to `true` automatically.
@@ -245,10 +262,10 @@ class DeleteUserTest extends ApiTestCase
 
 [makeCall](#makecall)  
 [injectId](#injectid)  
-[getTestingUser](#getTestingUser)  
-[getTestingUserWithoutAccess](#getTestingUserWithoutAccess)  
-[endpoint](#endpoint)  
-[auth](#auth)
+[getTestingUser](#gettestinguser)  
+[getTestingUserWithoutAccess](#gettestinguserwithoutaccess)  
+[endpoint](#endpoint-method)  
+[auth](#auth-method)  
 
 ---
 #### makeCall
@@ -369,7 +386,7 @@ $user = $this->getTestingUserWithoutAccess();
 ```
 
 ---
-#### endpoint
+#### endpoint {#method}
 
 The `endpoint` method allows you to specify the endpoint you want to test within your functional tests.
 This method is especially useful
@@ -387,7 +404,7 @@ or else `injectId` will not replace the ID in the overridden endpoint.
 :::
 
 ---
-#### auth
+#### auth {#method}
 
 The `auth` method allows you
 to specify the authentication status of the endpoint you want to test within your functional tests.

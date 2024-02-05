@@ -16,7 +16,7 @@ For example, your `/composer.json` file may look something like this:
 ```json
 {
   "require": {
-    "apiato/welcome-container": "^2.0.1"
+    "apiato/some-container": "^2.0.1"
   }
 }
 ```
