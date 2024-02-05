@@ -230,7 +230,7 @@ Here's an example of how to use RequestCriteria:
 use App\Containers\AppSection\User\Data\Repositories\UserRepository;
 use App\Ship\Parents\Tasks\Task as ParentTask;
 
-class GetAllUsersTask extends ParentTask
+class ListUsersTask extends ParentTask
 {
     public function __construct(
         protected readonly UserRepository $repository

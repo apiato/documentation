@@ -148,7 +148,7 @@ Common error HTTP status codes include:
 
 ## Naming Conventions For [Routes](../components/main-components/routes.md) & [Actions](../components/main-components/actions.md) {#naming-conventions-for-routes-and-actions}
 
-- **GetAllResources**: to fetch all resources.
+- **ListResources**: to fetch all resources.
 - **FindResourceByID**: to search for a single resource by its unique identifier.
 - **CreateResource**: to create a new resource.
 - **UpdateResource**: to update/edit existing resource.
