@@ -123,7 +123,7 @@ You must manually extract the client credentials from the database
 and update your `.env` file with the appropriate credentials for each client.
 :::
 
-### Requesting Tokens With Custom Attributes {#requesting-tokens-with-custom-attributes}
+### Requesting Tokens With Custom Fields
 
 By default, Apiato enables users to request an access token using their email address.
 However,
@@ -145,17 +145,17 @@ so ensure that you make the necessary adjustments there as well.
 1. Locate the `appSection-authentication` configuration file.
 It is typically found at `App\Containers\AppSection\Authentication\Configs\appSection-authentication`.
 
-2. Open the `appSection-authentication` configuration file and search for the `login.attributes` parameter.
-This parameter allows you to configure the login attributes based on your requirements.
+2. Open the `appSection-authentication` configuration file and search for the `login.fields` parameter.
+This parameter allows you to configure the login fields based on your requirements.
 
-3. Modify the `login.attributes` parameter according to your needs.
-You can specify the login attributes that should be considered during the authentication process.
+3. Modify the `login.fields` parameter according to your needs.
+You can specify the login fields that should be considered during the authentication process.
 For example, if you want to allow users to log in using their `email` and `phone`,
-update the `login.attributes` parameter as follows:
+update the `login.fields` parameter as follows:
 
 ```php
 'login' => [
-    'attributes' => [
+    'fields' => [
         'email' => ['email'],
         'phone' => ['string', 'min:6', 'max:25'],
     ],
