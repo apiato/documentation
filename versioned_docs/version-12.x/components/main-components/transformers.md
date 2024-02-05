@@ -307,30 +307,6 @@ class UserTransformer extends ParentTransformer
 
 ## Helper Methods
 
-### ifAdmin
-
-The `ifAdmin` method is used
-to merge the normal client response with additional or modified results intended for admin users.
-
-```php
-public function transform(Model $model)
-{
-    $response = [
-        'object' => $model->getResourceKey(),
-        'id' => $model->getHashedKey(),
-        'another_field' => $model->anotherField,
-    ];
-
-    return $this->ifAdmin([
-        'real_id' => $model->id,
-        'created_at' => $model->created_at,
-        'updated_at' => $model->updated_at,
-        'readable_created_at' => $model->created_at->diffForHumans(),
-        'readable_updated_at' => $model->updated_at->diffForHumans(),
-    ], $response);
-}
-```
-
 ### nullableItem
 
 The `nullableItem` method returns an item if the model has a specific relationship, otherwise, it returns `null`.
