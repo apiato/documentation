@@ -54,10 +54,10 @@ Place language files inside the `/Languages` folder of your container. For examp
 You can also place general language files in `app/Ship/Languages`.
 
 :::note  
-Just create the `Languages` folder if it does not exist.  
+Just create the `Languages` folder if it does not exist in your container or `app/Ship` folder.  
 :::
 
-Example languages files are included at `\lang`. (default Laravel translations)
+You can still use the default Laravel translations by placing language files in `/lang` folder.
 
 ## Support new languages{#support-new-languages}
 
