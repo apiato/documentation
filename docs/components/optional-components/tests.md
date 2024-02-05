@@ -386,7 +386,7 @@ $user = $this->getTestingUserWithoutAccess();
 ```
 
 ---
-#### endpoint {#endpoint-method}
+#### endpoint {#method}
 
 The `endpoint` method allows you to specify the endpoint you want to test within your functional tests.
 This method is especially useful
@@ -404,7 +404,7 @@ or else `injectId` will not replace the ID in the overridden endpoint.
 :::
 
 ---
-#### auth {#auth-method}
+#### auth {#method}
 
 The `auth` method allows you
 to specify the authentication status of the endpoint you want to test within your functional tests.
