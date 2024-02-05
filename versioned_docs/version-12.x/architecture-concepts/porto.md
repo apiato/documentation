@@ -61,17 +61,14 @@ app
 │   │       ├── Providers
 │   │       ├── Tasks
 │   │       ├── Tests
-│   │       │   └── Unit
 │   │       ├── Traits
 │   │       └── UI
 │   │           ├── API
 │   │           │   ├── Controllers
 │   │           │   ├── Requests
 │   │           │   ├── Routes
-│   │           │   ├── Tests
-│   │           │   │   └── Functional
 │   │           │   └── Transformers
-│   │           └── WEB
+│   │           ├── WEB
 │   │           │   ├── Controllers
 │   │           │   ├── Requests
 │   │           │   ├── Routes
