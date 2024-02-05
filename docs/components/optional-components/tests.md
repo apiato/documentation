@@ -147,7 +147,7 @@ Certain test helper methods access properties defined in your test class to exec
 Below, we will explore these properties and their corresponding methods:
 
 ---
-#### endpoint {#endpoint}
+#### endpoint
 
 The `$endpoint` property is used
 to define the endpoints you want to access when making a call using the `makeCall` method.
@@ -175,7 +175,7 @@ class FindUserByIdTest extends ApiTestCase
 ```
 
 ---
-#### auth {#auth}
+#### auth
 
 The `$auth` property is used to determine whether the endpoint being called requires authentication or not in your test class.
 If you do not explicitly define the `$auth` property in your test class, it will be defaulted to `true` automatically.
@@ -245,10 +245,10 @@ class DeleteUserTest extends ApiTestCase
 
 [makeCall](#makecall)  
 [injectId](#injectid)  
-[getTestingUser](#getTestingUser)  
-[getTestingUserWithoutAccess](#getTestingUserWithoutAccess)  
-[endpoint](#endpoint)  
-[auth](#auth)
+[getTestingUser](#gettestinguser)  
+[getTestingUserWithoutAccess](#gettestinguserwithoutaccess)  
+[endpoint](#endpoint-method)  
+[auth](#auth-method)  
 
 ---
 #### makeCall
@@ -369,7 +369,7 @@ $user = $this->getTestingUserWithoutAccess();
 ```
 
 ---
-#### endpoint
+#### endpoint {#endpoint-method}
 
 The `endpoint` method allows you to specify the endpoint you want to test within your functional tests.
 This method is especially useful
@@ -387,7 +387,7 @@ or else `injectId` will not replace the ID in the overridden endpoint.
 :::
 
 ---
-#### auth
+#### auth {#auth-method}
 
 The `auth` method allows you
 to specify the authentication status of the endpoint you want to test within your functional tests.
