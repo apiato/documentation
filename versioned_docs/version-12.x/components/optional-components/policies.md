@@ -148,8 +148,7 @@ graph LR
 ```
 
 ## Helper Methods
-
-> Available in v12.2.0 and above.
+> Available since Core v8.7.0
 
 All models are equipped with the `owns` and `isOwnedBy` methods,
 made available through the `Apiato\Core\Traits\CanOwnTrait` trait.

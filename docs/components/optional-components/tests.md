@@ -155,9 +155,7 @@ class FindUserByIdTest extends ApiTestCase
 To learn more about the properties and methods used,
 such as `endpoint` and `makeCall`, please read to the following section.
 
-## Functional Test Helpers
-
-Apiato provides a set of helper methods that you can use to write expressive functional tests.
+## Functional Tests
 
 ### Properties
 Certain test helper methods access properties defined in your test class to execute their tasks effectively.
@@ -423,7 +421,9 @@ Apiato provides a variety of custom assertion methods that you may utilize when 
 [assertModelCastsIsEmpty](#assertModelCastsIsEmpty)  
 [assertDatabaseTable](#assertDatabaseTable)  
 [getGateMock](#getGateMock)  
-[inIds](#inIds)
+[assertCriteriaPushedToRepository](#assertcriteriapushedtorepository)  
+[assertNoCriteriaPushedToRepository](#assertnocriteriapushedtorepository)  
+[allowAddRequestCriteriaInvocation](#allowaddrequestcriteriainvocation)
 
 ---
 #### assertModelCastsIsEmpty
@@ -459,7 +459,7 @@ ensuring that the model's attributes are not automatically casted.
 
 ---
 #### assertDatabaseTable
-> Available in v12.1.0 and above.
+> Available since Core v8.5.0
 
 This method is used
 to verify
@@ -473,7 +473,7 @@ $this->assertDatabaseTable('users', ['id' => 'bigint']);
 
 ---
 #### getGateMock
-> Available in v12.1.0 and above.
+> Available since Core v8.5.0
 
 This assertion helps you to test whether the `Gate::allows` method is invoked with the correct arguments.
 
@@ -520,6 +520,114 @@ If the authorization logic is correctly implemented, this test should pass,
 ensuring that only users with the necessary permissions can perform updates.
 
 ---
+#### assertCriteriaPushedToRepository
+> Available since Core v8.9.0
+
+Asserts that a criteria is pushed to a repository.
+
+In the following example, we want to test
+if the `UserIsAdminCriteria` is pushed to the `UserRepository` when the `ListUsersTask` is called with the `admin` method.
+
+```php
+public function testCanListAdminUsers(): void
+{
+    $this->assertCriteriaPushedToRepository(
+        UserRepository::class,
+        UserIsAdminCriteria::class,
+        ['admin' => true],
+    );
+    $task = app(ListUsersTask::class);
+
+    $task->admin();
+}
+```
+
+---
+#### assertNoCriteriaPushedToRepository
+> Available since Core v8.9.0
+
+Asserts that no criteria is pushed to a repository.
+
+In the following example, we want to test
+if no criteria is pushed to the `UserRepository` when the `ListUsersTask`'s `admin` method is called with a `null` value.
+
+```php
+public function testCanListAllUsers(): void
+{
+    $this->assertNoCriteriaPushedToRepository(UserRepository::class);
+    $task = app(ListUsersTask::class);
+
+    $task->admin(null);
+}
+```
+
+---
+#### allowAddRequestCriteriaInvocation
+> Available since Core v8.9.0
+
+Allow `addRequestCriteria` method invocation on the repository mock.
+This is particularly useful when you want to test a repository that uses the 
+[RequestCriteria](../optional-components/repository/repositories.md#requestcriteria).
+
+```php
+public function testCanListAdminUsers(): void
+{
+    $repositoryMock = $this->assertCriteriaPushedToRepository(
+        UserRepository::class,
+        UserIsAdminCriteria::class,
+        ['admin' => true],
+    );
+    // highlight-next-line
+    $this->allowAddRequestCriteriaInvocation($repositoryMock);
+    $task = app(ListUsersTask::class);
+
+    $task->admin();
+}
+```
+
+## Faker
+
+An instance of [Faker](https://github.com/FakerPHP/Faker) is automatically provided in every test class, allowing you to generate fake data easily.
+You can access it using `$this->faker`.
+
+:::caution Deprecation Notice
+This feature is deprecated and will be removed in the next major release.
+You should use the Laravel `fake` helper function instead.
+:::
+
+## Test Helper Methods
+
+Apiato provides a variety of helper methods that you may utilize when testing your application.
+
+[createSpyWithRepository](#createspywithrepository)  
+[inIds](#inIds)
+
+---
+#### createSpyWithRepository
+> Available since Core v8.9.0
+
+This method is useful when you want to test if a repository method is called within an Action, SubAction or a Task.
+
+In the following example,
+we want to test if the `run` method of the `CreateUserTask` is called within the `CreateUserAction`.
+
+```php
+public function testCanCreateUser(): void
+{
+    $data = [
+        'email' => 'gandalf@the.grey',
+        'password' => 'you-shall-not-pass',
+    ];
+    $taskSpy = $this->createSpyWithRepository(CreateUserTask::class, UserRepository::class);
+    $action = app(CreateUserAction::class);
+
+    $action->run($data);
+    
+    $taskSpy->shouldHaveReceived('run')->once()->with($data);
+}
+```
+
+---
 #### inIds
 
 The `inIds` method allows you to check if the given hashed ID exists within the provided model collection.
@@ -535,18 +643,7 @@ By leveraging the `inIds` method, you can streamline your testing process when w
 ensuring that the expected hashed IDs are present within your model collections.
 
 :::caution Deprecation Notice
-This method will be removed in the next major release and will not be available in the test file.
-Instead, it will be transformed into a helper function that you can utilize anywhere in your application.
-:::
-
-## Faker
-
-An instance of [Faker](https://github.com/FakerPHP/Faker) is automatically provided in every test class, allowing you to generate fake data easily.
-You can access it using `$this->faker`.
-
-:::caution Deprecation Notice
-This feature is deprecated and will be removed in the next major release.
-You should use the Laravel `fake` helper function instead.
+This method will be removed in the next major release and will not be available in test classes.
 :::
 
 ## Create Live Testing Data
