@@ -143,9 +143,7 @@ class DemoRequest extends ParentRequest
 
     public function authorize(): bool
     {
-        return $this->check([
-            'hasAccess',
-        ]);
+        return $this->hasAccess();
     }
 }
 ```
@@ -224,53 +222,6 @@ class DemoRequest extends ParentRequest
 ```
 
 ## Helper Methods
-
-### check
-
-The `check` method is used to authorize the user to access the endpoint.
-It accepts an array of methods names that will be called to check if the user has access or not.
-Each of those methods must return a boolean.
-Take a look at the following example:
-
-```php
-use App\Ship\Parents\Requests\Request as ParentRequest;
-
-class DemoRequest extends ParentRequest
-{
-    use IsAuthorTrait;
-
-    // ...
-
-    public function authorize(): bool
-    {
-        return $this->check([
-            'hasAccess|isOwner',
-            'isKing',
-        ]);
-    }
-}
-```
-
-Here we are passing the the `hasAccess`, `isOwner` and `isKing` methods to the `check` method.
-Then the `check` method follows the following rules and checks if the user has access or not:
-
-- The separator `|` between the methods indicates an `OR` operation.
-- The default operation between all methods in the array is `AND`.
-
-So in the above example, the call to the `check` method will be translated to:
-
-```php
-return ($this->hasAccess() || $this->isOwner()) && $this->isKing();
-```
-
-And if the result of this operation is `true` then the user will be authorized to access the endpoint.
-
-:::note
-
-- `hasAccess` method is a [built-in authorization method](#hasaccess).
-- `isOwner` and `isKing` methods are [custom authorization methods](#custom-authorize-methods)
-
-:::
 
 ### hasAccess
 
@@ -449,48 +400,7 @@ $request = RegisterUserRequest::injectData($data)
     ->withUrlParameters(['id' => 123]);
 ```
 
-## Custom Authorize Methods
-
-The recommended approach for adding custom authorization functions is by using a Trait,
-which can be included in your Request classes.
-
-For instance,
-let's
-create an `IsAuthorTrait` Trait with a single method
-named `isAuthor` to determine if the current user holds the role of an author.
-
-```php
-trait IsAuthorTrait
-{
-    public function isAuthor(): bool
-    {
-        return $this->user()->hasRole('author');
-    }
-}
-```
-
-Subsequently, you can apply the `IsAuthorTrait` Trait to a Request class,
-allowing the utilization of the `isAuthor` function within the authorization process.
-
-```php
-use App\Ship\Parents\Requests\Request as ParentRequest;
-
-class DemoRequest extends ParentRequest
-{
-    use IsAuthorTrait;
-
-    // ...
-
-    public function authorize(): bool
-    {
-        return $this->check([
-            'isAuthor',
-        ]);
-    }
-}
-```
-
-## Bypass Authorization
+## Bypassing Authorization
 
 To grant certain Roles access to all endpoints within the system without the need
 to define the role in each Request object,
