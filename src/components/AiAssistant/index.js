@@ -23,7 +23,8 @@ const AiAssistant = () => {
     }
   };
 
-  const searchAlgolia = (queryObject) => {
+  // TODO: this is not triggering the search, users need to add space or enter to trigger the search
+  const search = (queryObject) => {
     // Extract the query from the queryObject
     const query = queryObject.query;
 
@@ -43,27 +44,40 @@ const AiAssistant = () => {
       }
     };
 
-    // Function to type the query into the search input
-    const typeQuery = (inputElement, query) => {
+    // Function to simulate typing the query into the search input
+    const simulateTyping = (inputElement, query) => {
       inputElement.focus();
-      inputElement.value = query;
-      const inputEvent = new Event("input", { bubbles: true });
-      inputElement.dispatchEvent(inputEvent);
 
-      // Trigger a keyup event to ensure Algolia processes the input
-      const keyupEvent = new KeyboardEvent("keyup", {
-        bubbles: true,
-        cancelable: true,
-        key: "Enter",
-        code: "Enter",
-        keyCode: 13,
+      // Clear the input field
+      inputElement.value = "";
+      const clearEvent = new Event("input", { bubbles: true });
+      inputElement.dispatchEvent(clearEvent);
+
+      // Simulate typing each character
+      [...query].forEach((char, index) => {
+        setTimeout(() => {
+          inputElement.value += char;
+          const inputEvent = new Event("input", { bubbles: true });
+          inputElement.dispatchEvent(inputEvent);
+
+          // If it's the last character, trigger a keyup event
+          if (index === query.length - 1) {
+            const keyupEvent = new KeyboardEvent("keyup", {
+              bubbles: true,
+              cancelable: true,
+              key: char,
+              code: `Key${char.toUpperCase()}`,
+              keyCode: char.charCodeAt(0),
+            });
+            inputElement.dispatchEvent(keyupEvent);
+          }
+        }, index * 100); // Adjust typing speed as needed
       });
-      inputElement.dispatchEvent(keyupEvent);
     };
 
-    // Wait for the search input to be available and then type the query
+    // Wait for the search input to be available and then simulate typing the query
     waitForElement("input.DocSearch-Input", (searchBox) => {
-      typeQuery(searchBox, query);
+      simulateTyping(searchBox, query);
     });
   };
 
@@ -77,9 +91,9 @@ const AiAssistant = () => {
     const aiFunctions = [
       {
         function: {
-          handler: searchAlgolia,
+          handler: search,
           description:
-            "Search for a term using Algolia. If the user asks for search, always call this function. This is the default search bar in the documentation, powered by Algolia.",
+            "Search for anything in the docs, using Algolia. If the user asks for search, always call this function. This is the default search bar in the documentation, powered by Algolia.",
           parameters: {
             type: "object",
             properties: {
@@ -102,7 +116,8 @@ const AiAssistant = () => {
             properties: {
               page: {
                 type: "string",
-                description: "The page to navigate to. When asked to 'Get Started', always go to /docs/getting-started/installation.",
+                description:
+                  "The page to navigate to. When asked to 'Get Started', always go to /docs/getting-started/installation.",
                 enum: [
                   "/docs/prologue/release-notes",
                   "/docs/prologue/upgrade-guide",
