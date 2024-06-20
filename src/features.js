@@ -19,133 +19,73 @@ import {faTools} from "@fortawesome/free-solid-svg-icons/faTools";
 import {faHandsHelping} from "@fortawesome/free-solid-svg-icons/faHandsHelping";
 
 const features = [
-  {
-    icon: faBook,
-    description: (
-      <>
-        Detailed Documentation, with Examples, Definitions, Principles and Guidelines.
-      </>
-    ),
-  },
+
   {
     icon: faGears,
-    description: (
-      <>
-        Powerful Code Generator
-      </>
-    ),
+    description: "Code Generators",
   },
   {
     icon: faFileCode,
-    description: (
-      <>
-        API Documentations Generator <br/> (using APIDocJS)
-      </>
-    ),
+    description: "Documentation Generators",
   },
   {
     icon: faSortNumericUpAlt,
-    description: (
-      <>
-        API Versioning
-      </>
-    ),
+    description: "API Versioning",
   },
   {
     icon: faLock,
-    description: (
-      <>
-        OAuth2.0 Authentication <br/> (using Laravel Passport)
-      </>
-    ),
+    description: "OAuth2.0 Authentication",
   },
-  {
-    icon: faHashtag,
-    description: (
-      <>
-        Hash ID Support
-      </>
-    ),
-  },
+
   {
     icon: faUserLock,
-    description: (
-      <>
-        Role-Based Access Control (RBAC) <br/> (using Laravel Permission)
-      </>
-    ),
-  },
-  {
-    icon: faDatabase,
-    description: (
-      <>
-        Query Parameters <br/> (orderBy, sortedBy, etc...)
-      </>
-    ),
+    description: "Role-Based Access Control",
   },
   {
     icon: faArrowsLeftRight,
-    description: (
-      <>
-        Pagination, Limit & Offset
-      </>
-    ),
+    description: "Pagination Support",
   },
+
+
   {
     icon: faHdd,
-    description: (
-      <>
-        Data Caching
-      </>
-    ),
+    description: "Data Caching",
   },
   {
     icon: faTags,
-    description: (
-      <>
-        Shallow ETag Support
-      </>
-    ),
+    description: "ETag Support",
   },
   {
     icon: faTools,
-    description: (
-      <>
-        Performance Profiler
-      </>
-    ),
+    description: "Performance Profiler",
   },
   {
     icon: faLanguage,
-    description: (
-      <>
-        Localization
-      </>
-    ),
+    description: "Localization",
   },
   {
     icon: faFacebook,
-    description: (
-      <>
-        Social Authentication <br/> (using Laravel Socialite)
-      </>
-    ),
+    description: "Social Authentication",
   },
   {
     icon: faHandsHelping,
-    description: (
-      <>
-        Useful Tests Helpers
-      </>
-    ),
+    description: "Test Helpers",
   },
   {
     icon: faFileAlt,
-    description: (
-      <>
-        Multiple Response Payload Formats <br/> (JSON, Data Array & Pure Data)
-      </>
-    ),
+    description: "Multiple Response Formats",
+  },
+  {
+    icon: faDatabase,
+    description: "Query Parameters Support",
+  },
+  {
+    icon: faHashtag,
+    description: "Hash ID Support",
+  },
+  {
+    icon: faBook,
+    description: "Comprehensive Documentation",
   },
 ];
 

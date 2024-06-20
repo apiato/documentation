@@ -67,6 +67,12 @@ const AiAssistant = () => {
     });
   };
 
+  const switchVersion = (versionObject) => {
+    console.log("Version switcher...");
+    const version = versionObject.version;
+    history.replace(`/${version}`);
+  };
+
   useEffect(() => {
     const aiFunctions = [
       {
@@ -96,7 +102,7 @@ const AiAssistant = () => {
             properties: {
               page: {
                 type: "string",
-                description: "The page to navigate to.",
+                description: "The page to navigate to. When asked to 'Get Started', always go to /docs/getting-started/installation.",
                 enum: [
                   "/docs/prologue/release-notes",
                   "/docs/prologue/upgrade-guide",
@@ -185,6 +191,30 @@ const AiAssistant = () => {
           handler: switchTheme,
           description:
             "Turn On / Off the light. Change theme color. Switches between dark and light modes. Toggle the theme.",
+        },
+      },
+      {
+        function: {
+          handler: switchVersion,
+          description:
+            "Switch documentation to a different version. From the dropdown menu. This documentation has multiple versions. Switch between different versions.",
+          parameters: {
+            type: "object",
+            properties: {
+              version: {
+                type: "string",
+                description: "The version to switch to.",
+                enum: [
+                  "docs/next/prologue/release-notes",
+                  "docs/12.x/",
+                  "docs/11.x/",
+                  "docs/10.x/",
+                  "docs/9.x/",
+                ],
+              },
+            },
+            required: ["version"],
+          },
         },
       },
       // Add more functions here...

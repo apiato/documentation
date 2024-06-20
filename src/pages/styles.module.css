@@ -4,18 +4,24 @@
  * CSS files with the .module.css suffix will be treated as CSS modules
  * and scoped locally.
  */
- @font-face { font-family: Hind Siliguri; src: url('../fonts/HindSiliguri-Regular.ttf'); }
- @font-face { font-family: Martel; src: url('../fonts/Martel-Regular.ttf'); }
+/* @font-face {
+  font-family: Hind Siliguri;
+  src: url("../fonts/HindSiliguri-Regular.ttf");
+}
+@font-face {
+  font-family: Martel;
+  src: url("../fonts/Martel-Regular.ttf");
+} */
 
-*{
-  /* font-family: Hind Siliguri; */
+* {
+  font-family: "Lato", "Roboto", sans-serif;
 }
 
 .heroTitle,
 .heroTaglineA,
 .heroTaglineB,
 .heroSubtitle,
-html[data-theme='light'] .heroButton {
+html[data-theme="light"] .heroButton {
   color: white !important;
 }
 
@@ -25,7 +31,6 @@ html[data-theme='light'] .heroButton {
 .heroTaglineA {
   font-size: 4em;
 }
-
 
 .heroTaglineB {
   font-size: 2.5em;
@@ -40,11 +45,15 @@ html[data-theme='light'] .heroButton {
 
 .heroButton {
   margin-top: 1.8rem;
+  padding: 20px 40px;
+  font-size: 2em; 
+  background-color: #4e61c1;
 }
 
-html[data-theme='dark'] .heroButton:hover,
-html[data-theme='light'] .heroButton:hover {
-  color: #4457c2 !important;
+html[data-theme="dark"] .heroButton:hover,
+html[data-theme="light"] .heroButton:hover {
+  color: #d6d6d6; 
+  background-color: #3e51bf; 
 }
 
 .heroBanner {
@@ -73,7 +82,7 @@ html[data-theme='light'] .heroButton:hover {
   width: 100%;
 }
 
-.featureIcon{
+.featureIcon {
   margin: 1rem;
   text-align: center;
 }
@@ -85,11 +94,11 @@ html[data-theme='light'] .heroButton:hover {
 
 .title {
   padding: 4rem 0 0 0;
-  font-family: Martel, serif;
   color: #4457c2;
   text-align: center;
   position: relative;
   overflow: hidden;
+  font-size: 3em; 
 }
 
 .description {
@@ -98,4 +107,22 @@ html[data-theme='light'] .heroButton:hover {
   text-align: center;
   position: relative;
   overflow: hidden;
+}
+
+.sponsors {
+  background-color: #23294b; 
+  padding: 50px 0; 
+}
+html[data-theme="light"] .sponsors {
+  background-color: rgb(229, 229, 229);
+}
+
+.sponsorLogo {
+  width: 550px;
+  height: auto;
+  margin-bottom: 40px;
+}
+
+.sponsors p {
+  font-size: 18px;
 }

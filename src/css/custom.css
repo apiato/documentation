@@ -60,9 +60,9 @@ html[data-theme='dark'] main footer {
 
 html[data-theme='light'] .footer,
 html[data-theme='dark'] .footer {
-  background-color: #091f2c;
-  border-top: 1px solid #404040;
+  background-color: #171923;
 }
+
 
 html[data-theme='light'] .admonition_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module code,
 html[data-theme='dark'] .admonition_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module code {
