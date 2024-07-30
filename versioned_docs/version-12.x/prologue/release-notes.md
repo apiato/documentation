@@ -61,7 +61,7 @@ Route::get('profile', [GetAuthenticatedUserController::class, 'getAuthenticatedU
 \\ to
 Route::get('profile', GetAuthenticatedUserController::class);
 ```
-* All rotues are moved into the private documentation. e.g.
+* All routes are moved into the private documentation. e.g.
   `RefreshProxyForWebClient.v1.public.php` -> `RefreshProxyForWebClient.v1.private.php`
 * Added some getter methods to the [Request](https://github.com/apiato/core/blob/789606b41f1024c2da506bb6765d2fbfa85897cd/Abstracts/Requests/Request.php) including:
 ```
