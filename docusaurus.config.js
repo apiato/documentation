@@ -184,7 +184,7 @@ const config = {
         copyright: `Copyright © 2016 - ${new Date().getFullYear()}`,
       },
       prism: {
-        additionalLanguages: ['php', 'php-extras', 'bash', 'json', 'yaml', 'docker', 'diff'],
+        additionalLanguages: ['php', 'php-extras', 'phpdoc', 'git', 'bash', 'json', 'yaml', 'docker', 'diff'],
         theme: lightTheme,
         darkTheme: darkTheme,
       },
