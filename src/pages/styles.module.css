@@ -4,18 +4,20 @@
  * CSS files with the .module.css suffix will be treated as CSS modules
  * and scoped locally.
  */
-/* @font-face {
-  font-family: Hind Siliguri;
-  src: url("../fonts/HindSiliguri-Regular.ttf");
-}
-@font-face {
-  font-family: Martel;
-  src: url("../fonts/Martel-Regular.ttf");
-} */
 
-* {
-  font-family: "Lato", "Roboto", sans-serif;
-}
+/*@font-face {*/
+/*  font-family: Hind Siliguri;*/
+/*  src: url("../fonts/HindSiliguri-Regular.ttf");*/
+/*}*/
+
+/*@font-face {*/
+/*  font-family: Martel;*/
+/*  src: url("../fonts/Martel-Regular.ttf");*/
+/*}*/
+
+/** {*/
+/*  font-family: "Lato", "Roboto", sans-serif;*/
+/*}*/
 
 .heroTitle,
 .heroTaglineA,
@@ -46,14 +48,14 @@ html[data-theme="light"] .heroButton {
 .heroButton {
   margin-top: 1.8rem;
   padding: 20px 40px;
-  font-size: 2em; 
+  font-size: 2em;
   background-color: #4e61c1;
 }
 
 html[data-theme="dark"] .heroButton:hover,
 html[data-theme="light"] .heroButton:hover {
-  color: #d6d6d6; 
-  background-color: #3e51bf; 
+  color: #d6d6d6;
+  background-color: #3e51bf;
 }
 
 .heroBanner {
@@ -98,7 +100,7 @@ html[data-theme="light"] .heroButton:hover {
   text-align: center;
   position: relative;
   overflow: hidden;
-  font-size: 3em; 
+  font-size: 3em;
 }
 
 .description {
@@ -110,8 +112,8 @@ html[data-theme="light"] .heroButton:hover {
 }
 
 .sponsors {
-  background-color: #23294b; 
-  padding: 50px 0; 
+  background-color: #23294b;
+  padding: 50px 0;
 }
 html[data-theme="light"] .sponsors {
   background-color: rgb(229, 229, 229);
