@@ -67,11 +67,11 @@ endpoint will append the client credentials to your request and calls the Auth s
 > without proxy. (same apply to refreshing token).
 >
 > For first party apps:
-> - With Proxy << best and easiest way, (requires manually generating clients creating proxy endpoints for each client)
-> - Without Proxy << if your frontend is not exposing the client credentials, you can call the Auth server endpoints directly without proxy.
+> - With Proxy < best and easiest way, (requires manually generating clients creating proxy endpoints for each client)
+> - Without Proxy < if your frontend is not exposing the client credentials, you can call the Auth server endpoints directly without proxy.
 >
 > For third party apps:
-> - Without Proxy << you don't need a proxy for the third party clients as they usually integrate with your API from the backend side which protects the client credentials.
+> - Without Proxy < you don't need a proxy for the third party clients as they usually integrate with your API from the backend side which protects the client credentials.
 
 ## A: For first-party clients {#first-party-clients}
 

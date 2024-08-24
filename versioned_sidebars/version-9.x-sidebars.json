@@ -1,5 +1,5 @@
 {
-  "version-9.x/docs": [
+  "docs": [
     {
       "collapsed": true,
       "type": "category",
@@ -7,31 +7,31 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-9.x/getting-started/requirements"
+          "id": "getting-started/requirements"
         },
         {
           "type": "doc",
-          "id": "version-9.x/getting-started/installation"
+          "id": "getting-started/installation"
         },
         {
           "type": "doc",
-          "id": "version-9.x/getting-started/overview"
+          "id": "getting-started/overview"
         },
         {
           "type": "doc",
-          "id": "version-9.x/getting-started/requests"
+          "id": "getting-started/requests"
         },
         {
           "type": "doc",
-          "id": "version-9.x/getting-started/responses"
+          "id": "getting-started/responses"
         },
         {
           "type": "doc",
-          "id": "version-9.x/getting-started/software-architectural-patterns"
+          "id": "getting-started/software-architectural-patterns"
         },
         {
           "type": "doc",
-          "id": "version-9.x/getting-started/conventions-and-principles"
+          "id": "getting-started/conventions-and-principles"
         }
       ]
     },
@@ -42,95 +42,95 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-9.x/core-features/code-generator"
+          "id": "core-features/code-generator"
         },
         {
           "type": "doc",
-          "id": "version-9.x/core-features/api-docs-generator"
+          "id": "core-features/api-docs-generator"
         },
         {
           "type": "doc",
-          "id": "version-9.x/core-features/authentication"
+          "id": "core-features/authentication"
         },
         {
           "type": "doc",
-          "id": "version-9.x/core-features/authorization"
+          "id": "core-features/authorization"
         },
         {
           "type": "doc",
-          "id": "version-9.x/core-features/user-registration"
+          "id": "core-features/user-registration"
         },
         {
           "type": "doc",
-          "id": "version-9.x/core-features/social-authentication"
+          "id": "core-features/social-authentication"
         },
         {
           "type": "doc",
-          "id": "version-9.x/core-features/query-parameters"
+          "id": "core-features/query-parameters"
         },
         {
           "type": "doc",
-          "id": "version-9.x/core-features/default-endpoints"
+          "id": "core-features/default-endpoints"
         },
         {
           "type": "doc",
-          "id": "version-9.x/core-features/hash-id"
+          "id": "core-features/hash-id"
         },
         {
           "type": "doc",
-          "id": "version-9.x/core-features/localization"
+          "id": "core-features/localization"
         },
         {
           "type": "doc",
-          "id": "version-9.x/core-features/rate-limiting"
+          "id": "core-features/rate-limiting"
         },
         {
           "type": "doc",
-          "id": "version-9.x/core-features/requests-monitor"
+          "id": "core-features/requests-monitor"
         },
         {
           "type": "doc",
-          "id": "version-9.x/core-features/data-caching"
+          "id": "core-features/data-caching"
         },
         {
           "type": "doc",
-          "id": "version-9.x/core-features/pagination"
+          "id": "core-features/pagination"
         },
         {
           "type": "doc",
-          "id": "version-9.x/core-features/payments"
+          "id": "core-features/payments"
         },
         {
           "type": "doc",
-          "id": "version-9.x/core-features/system-settings"
+          "id": "core-features/system-settings"
         },
         {
           "type": "doc",
-          "id": "version-9.x/core-features/api-versioning"
+          "id": "core-features/api-versioning"
         },
         {
           "type": "doc",
-          "id": "version-9.x/core-features/validation"
+          "id": "core-features/validation"
         },
         {
           "type": "doc",
-          "id": "version-9.x/core-features/search-query-parameter"
+          "id": "core-features/search-query-parameter"
         },
         {
           "type": "doc",
-          "id": "version-9.x/core-features/etag"
+          "id": "core-features/etag"
         },
         {
           "type": "doc",
-          "id": "version-9.x/core-features/useful-commands"
+          "id": "core-features/useful-commands"
         },
         {
           "type": "doc",
-          "id": "version-9.x/core-features/admin-dashboard"
+          "id": "core-features/admin-dashboard"
         },
         {
           "type": "doc",
-          "id": "version-9.x/core-features/profiler"
+          "id": "core-features/profiler"
         }
       ]
     },
@@ -141,43 +141,43 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-9.x/main-components/routes"
+          "id": "main-components/routes"
         },
         {
           "type": "doc",
-          "id": "version-9.x/main-components/controllers"
+          "id": "main-components/controllers"
         },
         {
           "type": "doc",
-          "id": "version-9.x/main-components/requests"
+          "id": "main-components/requests"
         },
         {
           "type": "doc",
-          "id": "version-9.x/main-components/transporters"
+          "id": "main-components/transporters"
         },
         {
           "type": "doc",
-          "id": "version-9.x/main-components/actions"
+          "id": "main-components/actions"
         },
         {
           "type": "doc",
-          "id": "version-9.x/main-components/tasks"
+          "id": "main-components/tasks"
         },
         {
           "type": "doc",
-          "id": "version-9.x/main-components/models"
+          "id": "main-components/models"
         },
         {
           "type": "doc",
-          "id": "version-9.x/main-components/views"
+          "id": "main-components/views"
         },
         {
           "type": "doc",
-          "id": "version-9.x/main-components/transformers"
+          "id": "main-components/transformers"
         },
         {
           "type": "doc",
-          "id": "version-9.x/main-components/subactions"
+          "id": "main-components/subactions"
         }
       ]
     },
@@ -188,71 +188,71 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-9.x/optional-components/providers"
+          "id": "optional-components/providers"
         },
         {
           "type": "doc",
-          "id": "version-9.x/optional-components/repositories"
+          "id": "optional-components/repositories"
         },
         {
           "type": "doc",
-          "id": "version-9.x/optional-components/exceptions"
+          "id": "optional-components/exceptions"
         },
         {
           "type": "doc",
-          "id": "version-9.x/optional-components/criterias"
+          "id": "optional-components/criterias"
         },
         {
           "type": "doc",
-          "id": "version-9.x/optional-components/tests"
+          "id": "optional-components/tests"
         },
         {
           "type": "doc",
-          "id": "version-9.x/optional-components/migrations"
+          "id": "optional-components/migrations"
         },
         {
           "type": "doc",
-          "id": "version-9.x/optional-components/seeders"
+          "id": "optional-components/seeders"
         },
         {
           "type": "doc",
-          "id": "version-9.x/optional-components/factories"
+          "id": "optional-components/factories"
         },
         {
           "type": "doc",
-          "id": "version-9.x/optional-components/middlewares"
+          "id": "optional-components/middlewares"
         },
         {
           "type": "doc",
-          "id": "version-9.x/optional-components/configs"
+          "id": "optional-components/configs"
         },
         {
           "type": "doc",
-          "id": "version-9.x/optional-components/commands"
+          "id": "optional-components/commands"
         },
         {
           "type": "doc",
-          "id": "version-9.x/optional-components/jobs"
+          "id": "optional-components/jobs"
         },
         {
           "type": "doc",
-          "id": "version-9.x/optional-components/languages"
+          "id": "optional-components/languages"
         },
         {
           "type": "doc",
-          "id": "version-9.x/optional-components/events"
+          "id": "optional-components/events"
         },
         {
           "type": "doc",
-          "id": "version-9.x/optional-components/mails"
+          "id": "optional-components/mails"
         },
         {
           "type": "doc",
-          "id": "version-9.x/optional-components/notifications"
+          "id": "optional-components/notifications"
         },
         {
           "type": "doc",
-          "id": "version-9.x/optional-components/values"
+          "id": "optional-components/values"
         }
       ]
     },
@@ -263,33 +263,33 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-9.x/miscellaneous/magical-call"
+          "id": "miscellaneous/magical-call"
         },
         {
           "type": "doc",
-          "id": "version-9.x/miscellaneous/tests-helpers"
+          "id": "miscellaneous/tests-helpers"
         },
         {
           "type": "doc",
-          "id": "version-9.x/miscellaneous/tasks-scheduling"
+          "id": "miscellaneous/tasks-scheduling"
         },
         {
           "type": "doc",
-          "id": "version-9.x/miscellaneous/tasks-queuing"
+          "id": "miscellaneous/tasks-queuing"
         },
         {
           "type": "doc",
-          "id": "version-9.x/miscellaneous/container-installer"
+          "id": "miscellaneous/container-installer"
         },
         {
           "type": "doc",
-          "id": "version-9.x/miscellaneous/postman"
+          "id": "miscellaneous/postman"
         }
       ]
     },
-    "version-9.x/upgrade-guide",
-    "version-9.x/contribution-guide",
-    "version-9.x/faq",
+    "upgrade-guide",
+    "contribution-guide",
+    "faq",
     {
       "type": "link",
       "label": "Change Log",

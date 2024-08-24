@@ -1,40 +1,40 @@
 {
-  "version-11.x/docs": [
+  "docs": [
     {
       "label": "Getting Started",
       "type": "category",
       "items": [
         {
           "type": "doc",
-          "id": "version-11.x/getting-started/requirements"
+          "id": "getting-started/requirements"
         },
         {
           "type": "doc",
-          "id": "version-11.x/getting-started/installation"
+          "id": "getting-started/installation"
         },
         {
           "type": "doc",
-          "id": "version-11.x/getting-started/software-architectural-patterns"
+          "id": "getting-started/software-architectural-patterns"
         },
         {
           "type": "doc",
-          "id": "version-11.x/getting-started/samples"
+          "id": "getting-started/samples"
         },
         {
           "type": "doc",
-          "id": "version-11.x/getting-started/requests"
+          "id": "getting-started/requests"
         },
         {
           "type": "doc",
-          "id": "version-11.x/getting-started/responses"
+          "id": "getting-started/responses"
         },
         {
           "type": "doc",
-          "id": "version-11.x/getting-started/conventions-and-principles"
+          "id": "getting-started/conventions-and-principles"
         },
         {
           "type": "doc",
-          "id": "version-11.x/getting-started/container-installer"
+          "id": "getting-started/container-installer"
         }
       ],
       "collapsible": true,
@@ -52,63 +52,63 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-11.x/core-features/code-generator"
+              "id": "core-features/code-generator"
             },
             {
               "type": "doc",
-              "id": "version-11.x/core-features/authentication"
+              "id": "core-features/authentication"
             },
             {
               "type": "doc",
-              "id": "version-11.x/core-features/authorization"
+              "id": "core-features/authorization"
             },
             {
               "type": "doc",
-              "id": "version-11.x/core-features/user-registration"
+              "id": "core-features/user-registration"
             },
             {
               "type": "doc",
-              "id": "version-11.x/core-features/query-parameters"
+              "id": "core-features/query-parameters"
             },
             {
               "type": "doc",
-              "id": "version-11.x/core-features/default-endpoints"
+              "id": "core-features/default-endpoints"
             },
             {
               "type": "doc",
-              "id": "version-11.x/core-features/hash-id"
+              "id": "core-features/hash-id"
             },
             {
               "type": "doc",
-              "id": "version-11.x/core-features/rate-limiting"
+              "id": "core-features/rate-limiting"
             },
             {
               "type": "doc",
-              "id": "version-11.x/core-features/data-caching"
+              "id": "core-features/data-caching"
             },
             {
               "type": "doc",
-              "id": "version-11.x/core-features/pagination"
+              "id": "core-features/pagination"
             },
             {
               "type": "doc",
-              "id": "version-11.x/core-features/api-versioning"
+              "id": "core-features/api-versioning"
             },
             {
               "type": "doc",
-              "id": "version-11.x/core-features/validation"
+              "id": "core-features/validation"
             },
             {
               "type": "doc",
-              "id": "version-11.x/core-features/etag"
+              "id": "core-features/etag"
             },
             {
               "type": "doc",
-              "id": "version-11.x/core-features/useful-commands"
+              "id": "core-features/useful-commands"
             },
             {
               "type": "doc",
-              "id": "version-11.x/core-features/profiler"
+              "id": "core-features/profiler"
             }
           ],
           "collapsible": true,
@@ -120,19 +120,19 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-11.x/additional-features/overview"
+              "id": "additional-features/overview"
             },
             {
               "type": "doc",
-              "id": "version-11.x/additional-features/documentation"
+              "id": "additional-features/documentation"
             },
             {
               "type": "doc",
-              "id": "version-11.x/additional-features/social-authentication"
+              "id": "additional-features/social-authentication"
             },
             {
               "type": "doc",
-              "id": "version-11.x/additional-features/localization"
+              "id": "additional-features/localization"
             }
           ],
           "collapsible": true,
@@ -152,43 +152,43 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-11.x/main-components/routes"
+              "id": "main-components/routes"
             },
             {
               "type": "doc",
-              "id": "version-11.x/main-components/controllers"
+              "id": "main-components/controllers"
             },
             {
               "type": "doc",
-              "id": "version-11.x/main-components/requests"
+              "id": "main-components/requests"
             },
             {
               "type": "doc",
-              "id": "version-11.x/main-components/actions"
+              "id": "main-components/actions"
             },
             {
               "type": "doc",
-              "id": "version-11.x/main-components/tasks"
+              "id": "main-components/tasks"
             },
             {
               "type": "doc",
-              "id": "version-11.x/main-components/models"
+              "id": "main-components/models"
             },
             {
               "type": "doc",
-              "id": "version-11.x/main-components/views"
+              "id": "main-components/views"
             },
             {
               "type": "doc",
-              "id": "version-11.x/main-components/transformers"
+              "id": "main-components/transformers"
             },
             {
               "type": "doc",
-              "id": "version-11.x/main-components/exceptions"
+              "id": "main-components/exceptions"
             },
             {
               "type": "doc",
-              "id": "version-11.x/main-components/subactions"
+              "id": "main-components/subactions"
             }
           ],
           "collapsible": true,
@@ -200,71 +200,71 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-11.x/optional-components/providers"
+              "id": "optional-components/providers"
             },
             {
               "type": "doc",
-              "id": "version-11.x/optional-components/repositories"
+              "id": "optional-components/repositories"
             },
             {
               "type": "doc",
-              "id": "version-11.x/optional-components/criterias"
+              "id": "optional-components/criterias"
             },
             {
               "type": "doc",
-              "id": "version-11.x/optional-components/tests"
+              "id": "optional-components/tests"
             },
             {
               "type": "doc",
-              "id": "version-11.x/optional-components/migrations"
+              "id": "optional-components/migrations"
             },
             {
               "type": "doc",
-              "id": "version-11.x/optional-components/seeders"
+              "id": "optional-components/seeders"
             },
             {
               "type": "doc",
-              "id": "version-11.x/optional-components/factories"
+              "id": "optional-components/factories"
             },
             {
               "type": "doc",
-              "id": "version-11.x/optional-components/middlewares"
+              "id": "optional-components/middlewares"
             },
             {
               "type": "doc",
-              "id": "version-11.x/optional-components/configs"
+              "id": "optional-components/configs"
             },
             {
               "type": "doc",
-              "id": "version-11.x/optional-components/helpers"
+              "id": "optional-components/helpers"
             },
             {
               "type": "doc",
-              "id": "version-11.x/optional-components/commands"
+              "id": "optional-components/commands"
             },
             {
               "type": "doc",
-              "id": "version-11.x/optional-components/jobs"
+              "id": "optional-components/jobs"
             },
             {
               "type": "doc",
-              "id": "version-11.x/optional-components/languages"
+              "id": "optional-components/languages"
             },
             {
               "type": "doc",
-              "id": "version-11.x/optional-components/events"
+              "id": "optional-components/events"
             },
             {
               "type": "doc",
-              "id": "version-11.x/optional-components/mails"
+              "id": "optional-components/mails"
             },
             {
               "type": "doc",
-              "id": "version-11.x/optional-components/notifications"
+              "id": "optional-components/notifications"
             },
             {
               "type": "doc",
-              "id": "version-11.x/optional-components/values"
+              "id": "optional-components/values"
             }
           ],
           "collapsible": true,
@@ -278,15 +278,15 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-11.x/miscellaneous/tests-helpers"
+          "id": "miscellaneous/tests-helpers"
         },
         {
           "type": "doc",
-          "id": "version-11.x/miscellaneous/tasks-scheduling"
+          "id": "miscellaneous/tasks-scheduling"
         },
         {
           "type": "doc",
-          "id": "version-11.x/miscellaneous/tasks-queuing"
+          "id": "miscellaneous/tasks-queuing"
         }
       ],
       "collapsible": true,
@@ -294,15 +294,15 @@
     },
     {
       "type": "doc",
-      "id": "version-11.x/upgrade-guide"
+      "id": "upgrade-guide"
     },
     {
       "type": "doc",
-      "id": "version-11.x/contribution-guide"
+      "id": "contribution-guide"
     },
     {
       "type": "doc",
-      "id": "version-11.x/faq"
+      "id": "faq"
     },
     {
       "label": "Change Log",

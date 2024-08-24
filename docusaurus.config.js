@@ -1,6 +1,10 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
+const {themes} = require('prism-react-renderer');
+const lightTheme = themes.github;
+const darkTheme = themes.dracula;
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Apiato',
@@ -10,20 +14,20 @@ const config = {
   // Set the production url of your site here
   url: 'https://apiato.io/',
   // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  // For GitHub pages deployment, it often is '/<projectName>/'
   baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'apiato', // Usually your GitHub org/user name.
+  organizationName: 'apiato', // Usually your GitHub org/username.
   projectName: 'documentation', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
 
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
+  // Even if you don't use internationalization, you can use this field to set useful
+  // metadata like HTML lang.
+  // For example, if your site is Chinese, you may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -181,8 +185,8 @@ const config = {
       },
       prism: {
         additionalLanguages: ['php', 'php-extras', 'bash', 'json', 'yaml', 'docker', 'diff'],
-        theme: require('prism-react-renderer/themes/github'),
-        darkTheme: require('prism-react-renderer/themes/dracula'),
+        theme: lightTheme,
+        darkTheme: darkTheme,
       },
     }),
 };
