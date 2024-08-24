@@ -10,3 +10,11 @@ services:
       - .:/opt/docusaurus
     environment:
       - NODE_ENV=development
+  node: &node
+    image: node:lts
+    volumes:
+      - .:/opt/docusaurus
+    working_dir: /opt/docusaurus
+  npm:
+    <<: *node
+    entrypoint: [ "npm" ]
