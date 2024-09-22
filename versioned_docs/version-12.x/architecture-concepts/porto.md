@@ -6,7 +6,8 @@ tags:
   - porto
 ---
 
-[Porto SAP](https://mahmoudz.github.io/Porto/) is a modern software architectural pattern that offers developers a comprehensive set of guidelines,
+[Porto SAP](https://mahmoudz.github.io/Porto/) is a modern software architectural pattern
+that offers developers a comprehensive set of guidelines,
 principles, and patterns to organize their code in a highly maintainable and reusable way.
 The primary goal of Porto is to help developers create software that is scalable,
 flexible, and easy to maintain over time.
