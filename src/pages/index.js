@@ -7,7 +7,6 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import features from "../features";
-import sponsorLogo from "../../static/sponsors/sista-ai.png";
 
 function Feature({ icon, description }) {
   return (
@@ -74,28 +73,6 @@ export default function Home() {
             </div>
           </section>
         )}
-        <section className={styles.sponsors}>
-          <div className="container">
-            <div className="text--center">
-              <a
-                href="https://smart.sista.ai/?utm_source=docs_apiato&utm_medium=sponsor&utm_campaign=landing_page"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src={sponsorLogo}
-                  alt="Sponsor Logo"
-                  className={styles.sponsorLogo}
-                />
-              </a>
-              <p>
-                <strong>
-                  Turn Your App Smart with a Plug-and-Play AI Voice Assistant.
-                </strong>
-              </p>
-            </div>
-          </div>
-        </section>
       </main>
     </Layout>
   );
