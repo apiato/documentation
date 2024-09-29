@@ -646,18 +646,6 @@ $this->profileDatabaseExecutedQueries([
 ], fn() => $action->run($data));
 ```
 
-### Debugging
-
-After running the profiler, you can use the `dumpDatabaseQueries` method to dump the queries executed during the test. You can also use 
-`ddDatabaseQueries` to dump and die.
-
-```php
-$this->profileDatabaseQueries(fn() => $action->run($data));
-
-$this->dumpDatabaseQueries();
-$this->ddDatabaseQueries();
-```
-
 ## Faker
 
 An instance of [Faker](https://github.com/FakerPHP/Faker) is automatically provided in every test class, allowing you to generate fake data easily.
