@@ -585,6 +585,67 @@ public function testCanListAdminUsers(): void
 }
 ```
 
+## Database Query Count and Query Assertions
+
+Apiato includes functionality for testing database query efficiency and accuracy.
+
+### Running the profiler
+
+To enable the database query profiler, you can use the helper method directly before your act part. Stopping it is not
+necessary, however if your assert section contains database queries, not stopping it before the assert section will
+include those queries in the count.
+
+```php
+$this->startDatabaseQueryLog();
+$action->run($data);
+$this->stopDatabaseQueryLog();
+```
+
+### Assertions
+
+Use `assertDatabaseQueryCount` to assert the number of queries executed during the test.
+
+```php
+$this->assertDatabaseQueryCount(3);
+```
+
+Use `assertDatabaseExecutedQuery` and `assertDatabaseExecutedQueries` to assert the queries executed during the test. You can also use partial queries.
+
+```php
+$this->assertDatabaseExecutedQuery('select * from "users"');
+$this->assertDatabaseExecutedQueries([
+    'select * from "users" where "id" = ? limit 1',
+    'select * from "roles" where "id" = ? limit 1',
+    'insert into "role_user" ("role_id", "user_id") values (?, ?)',
+]);
+```
+
+### Using a wrapper
+
+You can also use helper methods to wrap your test code and automatically start and stop the profiler.
+
+```php
+$this->profileDatabaseQueries(fn() => $action->run($data));
+```
+
+You can also use the helpers to profile and assert the queries in one go.
+
+```php
+$this->profileDatbaseQueryCount(3, fn() => $action->run($data));
+```
+
+```php
+$this->profileDatabaseExecutedQuery('select * from "users"', fn() => $action->run($data));
+```
+
+```php
+$this->profileDatabaseExecutedQueries([
+    'select * from "users" where "id" = ? limit 1',
+    'select * from "roles" where "id" = ? limit 1',
+    'insert into "role_user" ("role_id", "user_id") values (?, ?)',
+], fn() => $action->run($data));
+```
+
 ## Faker
 
 An instance of [Faker](https://github.com/FakerPHP/Faker) is automatically provided in every test class, allowing you to generate fake data easily.
