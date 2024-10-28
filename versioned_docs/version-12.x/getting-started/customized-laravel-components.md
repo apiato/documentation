@@ -3,37 +3,53 @@ sidebar_position: 3
 title: Customized Laravel Components
 ---
 
-Apiato provides a refined organization for Laravel default class locations.
-Here, you can find the default Laravel components and their corresponding locations within Apiato.
+## Customized Laravel Component Locations in Apiato
 
-## Kernels
+Apiato organizes Laravel's core components differently for a more modular and refined structure. Below is a guide to the default Laravel components and their locations within Apiato.
 
-- **Http Kernel** is moved from `app/Http` to `app/Ship/Kernels` and renamed to `HttpKernel`.
+---
 
-- **Console Kernel** is moved from `app/Console` to `app/Ship/Kernels` and renamed to `ConsoleKernel`.
+### Kernels
 
-## Middlewares
+- **Http Kernel**  
+  - Moved from `app/Http` to `app/Ship/Kernels`  
+  - Renamed to `HttpKernel`
 
-- **Middlewares** are moved from `app/Http/Middleware` to `app/Ship/Middlewares`.
+- **Console Kernel**  
+  - Moved from `app/Console` to `app/Ship/Kernels`  
+  - Renamed to `ConsoleKernel`
 
-## Handler
+### Middlewares
 
-- Exception **Handler** is moved from `app/Exceptions` to `app/Ship/Exceptions/Handlers` and renamed to `ExceptionsHandler`.
+- **Middlewares**  
+  - Relocated from `app/Http/Middleware` to `app/Ship/Middlewares`
 
-## Providers
+### Exception Handler
 
-- For information about the new locations of **Providers**, please refer to [this link](../components/optional-components/service-providers.md#laravel-service-providers).
+- **Exception Handler**  
+  - Moved from `app/Exceptions` to `app/Ship/Exceptions/Handlers`  
+  - Renamed to `ExceptionsHandler`
+
+### Service Providers
+
+For information about the new locations of **Providers**, please refer to the [Service Providers Documentation](../components/optional-components/service-providers.md#laravel-service-providers).
+
+---
 
 ## Routes
 
-### Web and API
+### Web and API Routes
 
-Apiato introduces a new approach to route organization and does not use the default `routes/web.php` and `routes/api.php` files. Therefore, you won't find these files in Apiato. To learn more, please visit [this link](../components/main-components/routes.md).
+Apiato introduces an organized approach for route management, removing the default `routes/web.php` and `routes/api.php` files. To learn more about how routes are structured in Apiato, refer to the [Routing Documentation](../components/main-components/routes.md).
 
-### Channels
+### Additional Route Files
 
-- The **channels.php** file has been relocated from `routes` to `app/Ship/Broadcasts`.
+- **Channels**  
+  - The `channels.php` file has been moved from `routes` to `app/Ship/Broadcasts`.
 
-### Console
+- **Console Commands**  
+  - The `console.php` file has been moved from `routes` to `app/Ship/Commands` and renamed to `closures.php`.
 
-- The **console.php** file has been moved from `routes` to `app/Ship/Commands` and renamed to `closures.php`.
+---
+
+This new organization makes it easier to locate, maintain, and manage Apiato's core components while aligning with Laravel’s functionality.

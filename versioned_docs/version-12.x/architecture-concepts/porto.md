@@ -10,7 +10,7 @@ tags:
 that offers developers a comprehensive set of guidelines,
 principles, and patterns to organize their code in a highly maintainable and reusable way.
 The primary goal of Porto is to help developers create software that is scalable,
-flexible, and easy to maintain over time.
+flexible, and easy to maintain over time. [Read more](https://mahmoudz.github.io/Porto/docs/Intro).
 
 ## Layers
 

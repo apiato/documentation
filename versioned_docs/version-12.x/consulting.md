@@ -3,8 +3,15 @@ sidebar_position: 9
 title: Consulting
 ---
 
-### WORK IN PROGRESS
+### Consulting Services
 
-For consulting services, please contact us at <a href="mailto:mohammad.alavi1990@gmail.com">mohammad.alavi1990@gmail.com</a>.
+For organizations seeking expert guidance, strategic insights, or specialized support, our team of experienced professionals is here to help. Please reach out to our available core contributors for consultancy services.
 
-[//]: # (TODO: Add a description of the consulting services we offer.)
+#### Core Contributors
+
+| Availability | Name            | Contact                                                       |
+|--------------|-----------------|---------------------------------------------------------------|
+| Available    | Mohammad Alavi  | [mohammad.alavi1990@gmail.com](mailto:mohammad.alavi1990@gmail.com) |
+| Unavailable  | Moslem Deris    | [moslem.deris@gmail.com](mailto:moslem.deris@gmail.com)       |
+| Unavailable  | Mahmoud Zalt    | [mahmoud@zalt.me](mailto:mahmoud@zalt.me)                     |
+
