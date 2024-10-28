@@ -23,63 +23,63 @@ const AiAssistant = () => {
     }
   };
 
-  // TODO: this is not triggering the search, users need to add space or enter to trigger the search
-  const search = (queryObject) => {
-    // Extract the query from the queryObject
-    const query = queryObject.query;
+  // // TODO: this is not triggering the search, users need to add space or enter to trigger the search
+  // const search = (queryObject) => {
+  //   // Extract the query from the queryObject
+  //   const query = queryObject.query;
 
-    // Find the search button and click it to open the search interface
-    const searchButton = document.querySelector(".DocSearch-Button");
-    if (searchButton) {
-      searchButton.click();
-    }
+  //   // Find the search button and click it to open the search interface
+  //   const searchButton = document.querySelector(".DocSearch-Button");
+  //   if (searchButton) {
+  //     searchButton.click();
+  //   }
 
-    // Use a function to wait until an element is available in the DOM
-    const waitForElement = (selector, callback) => {
-      const element = document.querySelector(selector);
-      if (element) {
-        callback(element);
-      } else {
-        setTimeout(() => waitForElement(selector, callback), 100);
-      }
-    };
+  //   // Use a function to wait until an element is available in the DOM
+  //   const waitForElement = (selector, callback) => {
+  //     const element = document.querySelector(selector);
+  //     if (element) {
+  //       callback(element);
+  //     } else {
+  //       setTimeout(() => waitForElement(selector, callback), 100);
+  //     }
+  //   };
 
-    // Function to simulate typing the query into the search input
-    const simulateTyping = (inputElement, query) => {
-      inputElement.focus();
+  //   // Function to simulate typing the query into the search input
+  //   const simulateTyping = (inputElement, query) => {
+  //     inputElement.focus();
 
-      // Clear the input field
-      inputElement.value = "";
-      const clearEvent = new Event("input", { bubbles: true });
-      inputElement.dispatchEvent(clearEvent);
+  //     // Clear the input field
+  //     inputElement.value = "";
+  //     const clearEvent = new Event("input", { bubbles: true });
+  //     inputElement.dispatchEvent(clearEvent);
 
-      // Simulate typing each character
-      [...query].forEach((char, index) => {
-        setTimeout(() => {
-          inputElement.value += char;
-          const inputEvent = new Event("input", { bubbles: true });
-          inputElement.dispatchEvent(inputEvent);
+  //     // Simulate typing each character
+  //     [...query].forEach((char, index) => {
+  //       setTimeout(() => {
+  //         inputElement.value += char;
+  //         const inputEvent = new Event("input", { bubbles: true });
+  //         inputElement.dispatchEvent(inputEvent);
 
-          // If it's the last character, trigger a keyup event
-          if (index === query.length - 1) {
-            const keyupEvent = new KeyboardEvent("keyup", {
-              bubbles: true,
-              cancelable: true,
-              key: char,
-              code: `Key${char.toUpperCase()}`,
-              keyCode: char.charCodeAt(0),
-            });
-            inputElement.dispatchEvent(keyupEvent);
-          }
-        }, index * 100); // Adjust typing speed as needed
-      });
-    };
+  //         // If it's the last character, trigger a keyup event
+  //         if (index === query.length - 1) {
+  //           const keyupEvent = new KeyboardEvent("keyup", {
+  //             bubbles: true,
+  //             cancelable: true,
+  //             key: char,
+  //             code: `Key${char.toUpperCase()}`,
+  //             keyCode: char.charCodeAt(0),
+  //           });
+  //           inputElement.dispatchEvent(keyupEvent);
+  //         }
+  //       }, index * 100); // Adjust typing speed as needed
+  //     });
+  //   };
 
-    // Wait for the search input to be available and then simulate typing the query
-    waitForElement("input.DocSearch-Input", (searchBox) => {
-      simulateTyping(searchBox, query);
-    });
-  };
+  //   // Wait for the search input to be available and then simulate typing the query
+  //   waitForElement("input.DocSearch-Input", (searchBox) => {
+  //     simulateTyping(searchBox, query);
+  //   });
+  // };
 
   const switchVersion = (versionObject) => {
     console.log("Version switcher...");
@@ -89,23 +89,23 @@ const AiAssistant = () => {
 
   useEffect(() => {
     const aiFunctions = [
-      {
-        function: {
-          handler: search,
-          description:
-            "Search for anything in the docs, using Algolia. If the user asks for search, always call this function. This is the default search bar in the documentation, powered by Algolia.",
-          parameters: {
-            type: "object",
-            properties: {
-              query: {
-                type: "string",
-                description: "The term to search for.",
-              },
-            },
-            required: ["query"],
-          },
-        },
-      },
+      // {
+      //   function: {
+      //     handler: search,
+      //     description:
+      //       "Search for anything in the docs, using Algolia. If the user asks for search, always call this function. This is the default search bar in the documentation, powered by Algolia.",
+      //     parameters: {
+      //       type: "object",
+      //       properties: {
+      //         query: {
+      //           type: "string",
+      //           description: "The term to search for.",
+      //         },
+      //       },
+      //       required: ["query"],
+      //     },
+      //   },
+      // },
       {
         function: {
           handler: navigateToPage,
