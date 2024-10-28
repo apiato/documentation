@@ -202,6 +202,9 @@ const config = {
         theme: lightTheme,
         darkTheme: darkTheme,
       },
+      colorMode: {
+        defaultMode: 'dark',
+      },
     }),
 };
 
