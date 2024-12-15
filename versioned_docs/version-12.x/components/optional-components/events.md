@@ -81,15 +81,16 @@ Events and Listeners are defined exactly as you would define them in Laravel.
 ## Registering Events & Listeners
 
 The registration of events and listeners depends on where you intend to respond to events.
-Listeners can be registered in both container and Ship.
+Listeners can be registered in both Containers and Ship Events Service Providers.
 
-### In The Container
+### Manually Registering Events
+
+#### In The Container
 
 Registering events and listeners in the container can be done
 by adding them to the `listen` array in the `App\Containers\{Section}\{Container}\Providers\EventServiceProvider` class.
 
 ```php
-use ...
 use App\Ship\Parents\Providers\EventServiceProvider as ParentEventServiceProvider;
 
 class EventServiceProvider extends ParentEventServiceProvider
@@ -112,7 +113,6 @@ php artisan apiato:generate:provider
 Remember to also register the `EventServiceProvider` in the container's `MainServiceProvider`:
 
 ```php
-use ...
 use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
 
 class MainServiceProvider extends ParentMainServiceProvider
@@ -123,10 +123,34 @@ class MainServiceProvider extends ParentMainServiceProvider
 }
 ```
 
-### In The Ship
+#### In The Ship
 
 Registering events and listeners in the Ship can be done
 by adding them to the `listen` array in the `App\Ship\Providers\EventServiceProvider` class.
+
+### Event Discovery
+> Available since Core v8.15.0
+
+Instead of registering events and listeners manually in the `$listen` array of the `EventServiceProvider`s,
+you can enable Laravel's [automatic event discovery](https://laravel.com/docs/events#event-discovery).
+When event discovery is enabled,
+Apiato will automatically find
+and register your events and listeners
+by scanning your application's `app/Containers/{Section}/{Container}/Listeners` directory.
+In addition, any explicitly defined events listed in the `EventServiceProvider`s will still be registered.
+
+Event discovery is enabled by default,
+but you can disable it by overriding the `shouldDiscoverEvents` method of your Container's `EventServiceProvider`:
+
+```php
+/**
+ * Determine if events and listeners should be automatically discovered.
+ */
+public function shouldDiscoverEvents(): bool
+{
+    return false;
+}
+```
 
 ## Events & Listeners Registration Flow
 
