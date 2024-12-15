@@ -119,13 +119,6 @@ so manual registration isn't necessary.
 In turn,
 Main Service Providers will register all service providers listed in their `$serviceProviders` property.
 
-:::note
-If you override the `register` or the `boot` methods in your MainServiceProvider,
-you must also call the `parent::register()` or `parent::boot()` methods respectively,
-or the Service Providers listed in `$serviceProviders` will not be registered.
-The same applies to the `$aliases` property.
-:::
-
 #### Additional Service Providers
 
 To register a provider,
@@ -147,6 +140,12 @@ public array $aliases = [
     'AnotherCustomAlias' => AnotherCustomFacade::class,
 ];
 ```
+
+:::note
+If you override the `register` or the `boot` methods in any Service Provider,
+you must also call the `parent::register()` and `parent::boot()` methods respectively,
+to ensure that anything that needs to be registered or booted in the parent class is done so.
+:::
 
 ### General Service Providers
 
