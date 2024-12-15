@@ -88,22 +88,17 @@ app
 #### Main Service Provider:
 
 ```php
-use ...
 use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
 
 class MainServiceProvider extends ParentMainServiceProvider
 {
-    // This providers will be automatically registered
     public array $serviceProviders = [
         CustomServiceProvider::class,
         MiddlewareServiceProvider::class,
         PassportServiceProvider::class,
-        // ...
     ];
 
-    public array $aliases = [
-        // ...
-    ];
+    public array $aliases = [];
 }
 ```
 
@@ -124,6 +119,13 @@ so manual registration isn't necessary.
 In turn,
 Main Service Providers will register all service providers listed in their `$serviceProviders` property.
 
+:::note
+If you override the `register` or the `boot` methods in your MainServiceProvider,
+you must also call the `parent::register()` or `parent::boot()` methods respectively,
+or the Service Providers listed in `$serviceProviders` will not be registered.
+The same applies to the `$aliases` property.
+:::
+
 #### Additional Service Providers
 
 To register a provider,
@@ -134,7 +136,6 @@ public array $serviceProviders = [
     CustomServiceProvider::class,
     AnotherCustomServiceProvider::class,
     EventsServiceProvider::class,
-    // ...
 ];
 ```
 
@@ -144,7 +145,6 @@ You can also list aliases in the `$aliases` property of the `App\Containers\{Sec
 public array $aliases = [
     'CustomAlias' => CustomFacade::class,
     'AnotherCustomAlias' => AnotherCustomFacade::class,
-    // ...
 ];
 ```
 
@@ -158,7 +158,6 @@ public array $serviceProviders = [
     CustomServiceProvider::class,
     AnotherCustomServiceProvider::class,
     EventsServiceProvider::class,
-    // ...
 ];
 ```
 
