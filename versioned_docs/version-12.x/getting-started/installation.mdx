@@ -82,6 +82,18 @@ You can also create a new admin user with:
 ```
 php artisan apiato:create:admin
 ```
+### Authentication
+
+Next, you should execute the `passport:install` Artisan command.
+This command will create the encryption keys needed to generate secure access tokens.
+In addition, the command will create "personal access"
+and "password grant" clients which will be used to generate access tokens:
+
+```
+php artisan passport:install
+```
+
+Visit [Authentication](../security/authentication.mdx) for more details.
 
 ## API Documentation
 
