@@ -87,7 +87,6 @@ use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
 class MainServiceProvider extends ParentMainServiceProvider
 {
     protected array $serviceProviders = [
-        // ... Other service providers
         AuthServiceProvider::class,
     ];
 }
