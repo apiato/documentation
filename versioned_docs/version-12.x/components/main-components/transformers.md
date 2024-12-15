@@ -237,38 +237,27 @@ ultimately enhancing the efficiency and usability of your API.
 
 ## Resource Key
 
-The transformer allows appending a resource key to the transformed resource.
-This is useful when you want to have a consistent response payload format for all your resources.
+The resource key is a string that helps identify the object type in the response payload.
+A resource key is automatically generated based on the model's class name, but you can customize it as needed.
 
-### Setting the Resource Key
+### Custom Resource Key
 
-You can set the resource key in your response payload in two ways:
-
-#### Via Model
-
-Specify the resource key on the respective model by setting the `$resourceKey` property:
+You can set the resource key on the respective model
+by setting the `$resourceKey` property or overriding the `getResourceKey` method:
 
 ```php
 class User extends ParentUserModel
 {
     protected $resourceKey = 'User';
+    // or
+    public function getResourceKey(): string
+    {
+        return 'User';
+    }
 }
 ```
 
-#### Via Controller
-
-Manually set the resource key using the `resourceKey` parameter in the controller's `transform` method:
-
-```php
-$this->transform($model, ModelTransformer::class, resourceKey: 'User');
-```
-
-:::note
-It's important to note that setting the `resourceKey` using the `transform` method will only impact the `top level` resource key
-and will not affect the resource keys of `included` resources.
-:::
-
-### Getting the Resource Key
+### Usage in Transformers
 
 Retrieve the resource key from the model by calling the `getResourceKey` method.
 
@@ -278,19 +267,19 @@ the default resource key will be `User`.
 
 #### Transformer Example
 ```php
+use App\Containers\AppSection\User\Models\User;
+use App\Ship\Parents\Transformers\Transformer as ParentTransformer;
+
 class UserTransformer extends ParentTransformer
 {
-    // ...
     public function transform(User $user)
     {
         return [
             'object' => $user->getResourceKey(), // <-- here
             'id' => $user->getHashedKey(),
             'name' => $user->name,
-            // ...
         ];
     }
-    // ...
 }
 ```
 
