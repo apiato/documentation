@@ -3,101 +3,101 @@ sidebar_position: 2
 title: Localization
 ---
 
-Languages are not real Components, they are just files that holds translations.
+The Localization Container is built on top of Laravel's [localization](https://laravel.com/docs/localization) features
+and provides a convenient way to create and manage translations for your application.
 
-Laravel localization features provide a convenient way to retrieve strings in various languages, allowing you to easily support multiple languages within your application.
+## Requirements
 
-## Rules
+`Intl` PHP Extension is required to use this feature.
 
-- Languages CAN be placed inside the Containers. However, the default laravel `resources/lang` languages files are still loaded and can be used as well.
-
-- All Translations are namespaced as the camelCase of its Section name + `@` + camelCase of its Container name.  
-  For example, translation key inside a translation file named `messages` inside `MySection` > `MyContainer` can be accessed like this: `__(mySection@myContainer::messages.welcome)`
-
-## Folder Structure
-
-```
-- app
-  - Containers
-    - {Section}
-      - {Container}
-        - Resources
-          - Languages
-            - en
-              - messages.php
-              - users.php
-            - ar
-              - messages.php
-              - users.php
-```
-
-## Usage {#usage}
-
-```php
-__('myS
-ection@myContainer::messages.welcome');
-```
-
-## Installation{#installation}
-:::note
-Intl PHP Extension is required to use this feature.
-:::
+## Installation
 
 ```
 composer require apiato/localization-container
 ```
-## Creating new languages files {#create-new-languages-files}
 
-Languages file can be placed in any container, not only the Localization Container.  
-Place language files inside the `/Languages` folder of your container. For example
-`app/Containers/Section/Container/Languages`.
-You can also place general language files in `app/Ship/Languages`.
-
-:::note  
-Just create the `Languages` folder if it does not exist in your container or `app/Ship` folder.  
-:::
-
-You can still use the default Laravel translations by placing language files in `/lang` folder.
-
-## Support new languages{#support-new-languages}
-
-All supported languages must be added to the `supported_languages` array in the `vendor-localization.php` config file
-to prevent users from requesting unsupported languages. There are 2 ways to do this: Using the configs or by modifying the source code.
-
-```php
-    'supported_languages' => [
-        'ar',
-        'en' => [
-            'en-GB',
-            'en-US',
-        ],
-        'es',
-        'fr',
-        'fa',
-    ],
-```
-
-### Publishing configs
+## Publishing Configs
 ```
 php artisan vendor:publish
 ```  
-Config file will be copied to `app/Ship/Configs/vendor-localization.php`
+Config file will be placed at `app/Ship/Configs/vendor-localization.php`
 
-### Modifying the source code {#modify-code}
+## Folder Structure
 
-1- Copy the container from `Vendor` to `AppSection` (or any of your custom sections) of your project  
-2- Fix the namespaces  
-3- Remove `apiato/localization-container` dependency from project root composer.json
+```markdown
+app
+└── Containers
+    └── Section
+        └── Container
+            └── Languages
+                ├── en
+                │   ├── messages.php
+                │   ├── users.php
+                │   └── ...
+                ├── ar
+                │   ├── messages.php
+                │   ├── users.php
+                │   └── ...
+                └── ...
+```
 
-## Select Request Language{#select-request-language}
+## Usage
+
+All Translations are namespaced with the following pattern:
+```shell
+camelCase of its Section name + `@` + camelCase of its Container name
+```
+
+Let's say we have a `welcome` translation key in the `app/Containers/MySection/MyContainer/en/messages.php` file.
+
+You can retrieve this translation like this:
+```php
+__('mySection@myContainer::messages.welcome');
+```
+
+:::note
+Translation files in **Ship** folder are exception to this and will be namespaced with the word "**ship**"
+instead of section name, e.g. `__('ship::messages.welcome')`
+:::
+
+## Adding New Languages
+
+Language files can be placed in any container's `Languages` folder.
+You can also place general language files in `app/Ship/Languages`.
+The language files placed in the default Laravel `lang` folder are still loaded and can be used as well.
+
+These language folders work exactly the same way as the default Laravel `lang` folder.
+
+:::note
+Just create the `Languages` folder if it does not exist in your container or the `app/Ship` directory.  
+:::
+
+## Supporting New Languages
+
+All supported languages must be added to the `supported_languages` array in the `vendor-localization.php` config file
+to prevent users from requesting unsupported languages.
+
+```php
+'supported_languages' => [
+    'ar',
+    'en' => [
+        'en-GB',
+        'en-US',
+    ],
+    'es',
+    'fr',
+    'fa',
+],
+```
+
+## Requesting a Specific Language
 
 You can select the language of the response by adding the header `Accept-Language` to the request. By default, the
 `Accept-Language` is set to the language defined in `config/app.php` `locale`.
 
-Please note that `Accept-Language` only determines, that the client _would like_ to get the information in this specific
-language. It is not given, that the API responds in this language!
-
-When the `Accept-Language` header is missing, the default locale will be applied.
+Please note
+that the `Accept-Language` only declares that the client _would like_ to get the information in this specific language.
+It is not a given that the API responds in that language!
 
 :::note
 Please be sure that your client does not send an `Accept-Language` header automatically. Some REST clients
@@ -105,59 +105,55 @@ Please be sure that your client does not send an `Accept-Language` header automa
 may be set automatically without you knowing!
 :::
 
-The API will answer with the applied language in the `Content-Language` header of the response.
-
-If the requested language cannot be resolved (e.g. it is not defined) the API throws an `UnsupportedLanguageException` to tell
-the client about this.
+Now that we have a `Accept-Language` set,
+the API will answer with the applied language in the `Content-Language` header of the response.
+And if the requested language cannot be resolved (e.g., it is not defined),
+an `UnsupportedLanguageException` will be thrown.
 
 The overall workflow of the Middleware is as follows:
 1) Extract the `Accept-Language` field from the request header. If none is set, use the default locale from the config file
 2) Build a list of all supported localizations based on the configuration of the respective container. If a language
    (top level) contains regions (sub-level), order them like this: `['en-GB', 'en-US', 'en']` (the regions before languages,
    as regions are more specific)
-3) Check, if the value from 1) is within the list from 2). If the value is within this list, set it as application language,
-   if not throw an `Exception`.
+3) Check if the requested language is supported.
+   If the language is supported, set it as application language, if not throw an `Exception`.
 
-## Translating Strings{#translating-strings}
+## Enable/Disable Localization
 
-By default, all the Container translation files are namespaced as the camelCase of its Section name + `@` + camelCase of its Container name.
+To enable or disable the localization,
+you can set the `LOCALIZATION_ENABLED` environment variable in the `.env` file
+to `true` or `false` respectively.
+This can also be done in the `vendor-localization.php` config file.
 
-:::note
-Translation files in **Ship** folder are exception to this and will be namespaced with the word "**ship**" instead of section name, e.g. `__('ship::notifications.welcome')`
-:::
+## Retrieve Available Localizations
 
-## Example
+Available localizations can be retrieved via `GET /localizations` endpoint.
 
-If a translation file called `notifications` is inside `MySection` > `MyContainer` that contains translation for `welcome`
-like "Welcome to our store :)". You can access this translation as follows `__('mySection@myContainer::notifications.welcome')`. If
-you remove the namespace (part before `::`) and try to access it like this
-`__('notifications.welcome')` it will not find your translation and will print `notifications.welcome` only.
-
-:::note
-If you try to load a string for a language that is **not available** (e.g., there is no folder for this language), Apiato
-will stick to the default one that is defined in `app.locale` config file. This is also true, if the requested locale
-is present in the `supported_languages` array from the configuration file.
-:::
-
-## Enable/Disable Localization{#enable-disable-localization}
-When using this container, Localization is **enabled** by default.
-To disable it set `LOCALIZATION_ENABLED` to `false` in the `.env` file.
-You can also change this behaviour in the [configs](#publishing-configs).
-This will disable the localization middleware.
-
-## Get Available Localizations{#get-available-localizations}
-
-This container provides a convenient way to get all defined localizations. These localizations can be retrieved via `GET /localizations`
-by default. Note that this route only outputs the "top level" locales, like `en` from the example above. However, if
-specific regions (e.g., `en-US`) are defined, these will show up in the result as well.
-
-The `Transformer` for the localizations not only provide the `language` (e.g., `de`), but also outputs the name of the
-language in this specific language (e.g., `locale_name => Deutsch`). Furthermore, the language name is outputted in the
-applications default name (e.g., configured in `app.locale`). This would result in `default_name => German`.
-
-The same applies to the regions that are defined (e.g., `de-DE`). Consequently, this results in `locale_name => Deutschland`
-and `default_name = Germany`.
-
-## Tests{#tests}
-
-To change the default language in your tests requests. You can set the `env` language in the `phpunit.xml` file.
+You will get a response like this:
+```json
+{
+  "data": [
+    {
+      "object": "Localization",
+      "id": "de", // The language code (same as 'language.code')
+      "language": {
+        "code": "de", // The language code
+        "default_name": "German", // The language name in the application's default language
+        "locale_name": "Deutsch" // The language name in its native form
+        "regions": [
+          {
+            "code": "de-DE", // The region code
+            "default_name": "Germany", // The region name in the application's default language
+            "locale_name": "Deutschland" // The region name in its native form
+          },
+          {
+            "code": "de-AT", // The region code
+            "default_name": "Austria", // The region name in the application's default language
+            "locale_name": "Österreich" // The region name in its native form
+          }
+        ]
+      }
+    }
+  ]
+}
+```
