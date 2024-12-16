@@ -1,36 +1,51 @@
 ---
 sidebar_position: 1
 title: Documentation
+tags:
+  - package
 ---
 
-Every great API needs a great Documentation.
+:::info
+This package is installed by default with an Apiato fresh installation.
+:::
 
-Apiato make writing and generating documentations very easy with the `php artisan apiato:apidoc` command.
+The Documentation Generator Container is a package that generates API documentation for your API Endpoints.
+It uses [ApiDocJs](https://apidocjs.com/) to generate the documentation.
 
-## Requirements {#requirements}
+It is recommended
+to read about the `Public` and `Private` [routes](../components/main-components/routes.md#public--private-routes)
+before using this package.
 
-- Install [ApiDocJs](https://apidocjs.com/) in the project directory
-    - (`npm install apidoc`)
+## Requirements
 
-- (Recommended) read the [Routes](../components/main-components/routes.md) page first.
+This package depends on [ApiDocJs](https://apidocjs.com/).
+Make sure to install it in the project directory by running:
 
-## Installation {#installation}
-
+```shell
+npm install apidoc
 ```
+
+## Installation
+
+```shell
 composer require apiato/documentation-generator-container
 ```
 
-:::tip
-This container is installed by default with an Apiato fresh installation.
+## Publishing Configs
+```shell
+php artisan vendor:publish
+```  
+Config file will be placed at `app/Ship/Configs/vendor-documentation.php`
+
+## Usage
+
+### Write the DocBlocks
+
+Write the `DocBlocks` for your API Endpoints in your Route files.
+
+:::info
+For more info about the parameters check out [ApiDocJs](https://apidocjs.com/#install) documentation.
 :::
-
-## Usage {#usage}
-
-### Write PHP **docblock** {#write-php-docblock}
-
-Write a PHP **docblock** on top of your endpoint like this:
-
-*For more info about the parameters check out [ApiDocJs](https://apidocjs.com/#install) documentation*
 
 ```php
 /**
@@ -53,13 +68,11 @@ Write a PHP **docblock** on top of your endpoint like this:
  *       "id": "XbPW7awNkzl83LD6",
  *       "name": "Super Admin",
  *       "email": "admin@admin.com"
- *       ...
  *   }
  *
  * @apiErrorExample  {json}       Error-Response:
  *   {
  *      "message":"401 Credentials Incorrect.",
- *      "status_code":401
  *   }
  *
  * @apiErrorExample  {json}       Error-Response:
@@ -70,7 +83,6 @@ Write a PHP **docblock** on top of your endpoint like this:
  *            "The email field is required."
  *         ]
  *      },
- *      "status_code":422
  *   }
  */
 
@@ -84,142 +96,64 @@ Route::post('clients/web/login', Controller::class);
 All the Endpoint `DocBlocks` MUST be written inside Routes files, otherwise they won't be loaded.  
 :::
 
-### Run Documentation Generator {#run-documentation-generator}
+### Generate the Documentation
 
-Run the documentation generator command from the root directory:
+You can generate the API documentation by running the following command:
 
-```
-
+```shell
 php artisan apiato:apidoc
-
 ```
 
-#### Error: ApiDoc not found !!
-
-If you get an error (`apidoc not found`),
+:::info Error: ApiDoc not found
+If you get the `apidoc not found` error,
+you need to update the `executable` path in the `vendor-documentation.php` config file.
 
 1. [Publish the configs](#publishing-configs)
-
 2. Edit the `executable` path to **`$(npm bin)/apidoc`** or to however you access the `apidoc` tool on your machine.
 
 ```php    
-    /*
-    |--------------------------------------------------------------------------
-    | Executable
-    |--------------------------------------------------------------------------
-    |
-    | Specify how you run or access the `apidoc` tool on your machine.
-    |
-    */
+/*
+|--------------------------------------------------------------------------
+| Executable
+|--------------------------------------------------------------------------
+|
+| Specify how you run or access the `apidoc` tool on your machine.
+|
+*/
 
-    'executable' => 'node_modules/.bin/apidoc',
-    // 'executable' => 'apidoc',
+'executable' => 'node_modules/.bin/apidoc',
+// 'executable' => 'apidoc',
 ```
+:::
 
-### Visit Documentation URL's {#visit-docs-urls}
+### Visit Documentation URL's
 
-Visit documentation URL's as shown in your terminal:
+Visit the documentation URLs as shown in your terminal:
 
 - Public (external) API at [http://apiato.test/docs](http://apiato.test/docs).
 - Private (internal) API at [http://apiato.test/docs/private](http://apiato.test/docs/private).
 
-:::note  
-Every time you change the DocBlock of a Route file you need to run the `apiato:apidoc` command, to regenerate.  
+:::tip
+Don't forget to regenerate the documentation after making changes to the `DocBlocks`.
 :::
 
-### Shared Response {#shared-response}
-
-You can use shared responses to update the documentation faster, with less outdated responses and prevent duplicating the responses between routes.  
-
-Example: `_user.v1.public.php` will contain all responses (single, multiple...) of the User:
-
-```php
-/**
- * @apiDefine UserSuccessSingleResponse
- * @apiSuccessExample {json} Success-Response:
-HTTP/1.1 200 OK
-{
-   "data":{
-      "object":"User",
-      "id":eqwja3vw94kzmxr0,
-   },
-   "meta":{
-      "include":[],
-      "custom":[]
-   }
-}
- */
-```
-
-**Usage of the shared User response from any endpoint:**
-
- ```php
-* @apiUse UserSuccessSingleResponse
- ```
-
-## Documentation Container Customization {#documentation-customization}
-
-There are 2 ways you can customize this container: Using its configs or by modifying the source code.
-
-### Publishing configs
-```
-php artisan vendor:publish
-```  
-Config file will be copied to `app/Ship/Configs/vendor-documentation.php`
-
-### Modifying the source code {#modify-code}
-
-1. Copy the container from `Vendor` to `AppSection` (or any of your custom sections) of your project  
-2. Fix the namespaces  
-3. Remove `apiato/documentation-generator-container` dependency from project root composer.json  
-4. Update `section_name` & `html_files` in container configs  
-5. Update `apidoc.private.json` & `apidoc.public.json` files in `ApiDocJs/Configs` and fix the `filename`  
-
-```json
-{
-    "header": {
-        "filename": "Containers/NEW_SECTION_NAME/Documentation/UI/WEB/Views/documentation/header.md"
-    }
-}
-```
-
-### Change the Documentations URL's {#change-the-documentations-urls}
-[Publish the configs](#publishing-configs) and change `types.public.url` & `types.private.url`.
-
-### Private Documentation Protection {#private-docs-protection}
+## Private Documentation Protection
 By default, this feature is **disabled** in local environment and **enabled** in production.  
-To change this behaviour [Publish the configs](#publishing-configs) and change `protect-private-docs`.
+To change this behavior, [Publish the configs](#publishing-configs) and change `protect-private-docs`.
 
 Private documentations route is protected with the `auth:web` middleware.
-You can grant users access to the protected docs by updating `access-private-docs-roles` &
+You can grant users access to the protected docs by updating `access-private-docs-roles` and
 `access-private-docs-permission` values in documentation config.
 By default, users need `access-private-docs` permission to access private docs.
 
-### Edit Default Generated Values in Templates {#edit-default-generated-values-in-templates}
+## Documentation Header Localization
 
-Apiato by defaults generates 2 API documentations, each one has its own `apidoc.json` file. Both can be modified from 
-the Documentation Container in `app/Containers/Vendor/Documentation/ApiDocJs` and need Source code modification.
+The documentation header is in English `en` by default.
+To see the documentation header in another language, you can change the locale in the `.env` file.
 
-### Edit the Documentation Header {#edit-the-documentation-header}
+```shell
+APIDOC_LOCALE=ru
+```
 
-The header is usually the Overview of your API. It contains Info about authenticating users, making requests, responses, potential errors, rate limiting, pagination, query parameters and anything you want.
-
-All this information is written in `app/Containers/Vendor/Documentation/ApiDocJs/shared/header.template.en.md` file, and the same file is used as header for both private and public documentations.
-
-To edit its content you need to modify its source code and open the markdown file in any markdown editor and edit it.
-
-You will notice some variables like `{{rate-limit}}` and `{{token-expires}}`. Those are replaced when running `apiato:apidoc` with real values from your application configuration files.
-
-Feel free to extend them to include more info about your API from the `app/Containers/Vendor/Documentation/Tasks/RenderTemplatesTask.php` class.
-
-### Localization for Documentation Header {#localization-for-documentation-header}
-
-Default, the documentation title is in English `en` localization.
-
-See which locales are supported by going in `app/Containers/Vendor/Documentation/ApiDocJs/shared`
-
-There will be some `header.template.{locale}.md` files in the folder.
-
-You can change the language by adding `APIDOC_LOCALE=ru` to the `.env` file.
-
-If you didn't find a file with your locale, you can create it. You need to modify its source code and create new file like `header.template.cn.md`
+To see the list of supported locales, check the `app/Containers/Vendor/Documentation/ApiDocJs/shared` folder.
+If you want to add a new language, you can create a new file in the `shared` folder and submit a PR.
