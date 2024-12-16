@@ -1,6 +1,8 @@
 ---
 sidebar_position: 2
 title: Localization
+tags:
+  - package
 ---
 
 The Localization Container is built on top of Laravel's [localization](https://laravel.com/docs/localization) features
@@ -12,12 +14,12 @@ and provides a convenient way to create and manage translations for your applica
 
 ## Installation
 
-```
+```shell
 composer require apiato/localization-container
 ```
 
 ## Publishing Configs
-```
+```shell
 php artisan vendor:publish
 ```  
 Config file will be placed at `app/Ship/Configs/vendor-localization.php`
