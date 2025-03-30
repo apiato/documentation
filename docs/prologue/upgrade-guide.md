@@ -432,49 +432,54 @@ The following methods have been removed from requests:
 `sanitizeInput` has been renamed to `sanitize`.
 
 ## Error Handling
-
-Most Apiato custom error-handling logic has been removed.
+All Apiato custom error-handling logics has been removed.
 
 ### Removed Methods on Exceptions
-
 - `debug`
 - `withErrors`
 - `getErrors`
 
-These methods were previously part of the [Core Exception](https://github.com/apiato/core/blob/8.x/src/Abstracts/Exceptions/Exception.php). They are no longer available.
+### ExceptionsHandler
 
-### `ExceptionsHandler`
+The custom `App\Ship\Exceptions\Handlers\ExceptionsHandler` is no longer used.
 
-`App\Ship\Exceptions\Handlers\ExceptionsHandler` is no longer used. Remove it and configure your exception handling in `bootstrap/app.php`.
+Remove this class and configure exception handling in `bootstrap/app.php` file.
 
 ### HTTP vs. Non-HTTP Exceptions
+Exceptions are now divided into two groups: **HTTP Exceptions** and **Non-HTTP Exceptions**.
 
-Exceptions are now split into two categories: HTTP and non-HTTP.
+Create a parent HTTP exception class in `app/Ship/Parents/Exceptions/HttpException.php`:
 
-1. Create a `HttpException` class in `app/Ship/Parents/Exceptions`:
-   ```php
-   namespace App\Ship\Parents\Exceptions;
+```php
+namespace App\Ship\Parents\Exceptions;
 
-   use Apiato\Core\Exceptions\HttpException as AbstractException;
+use Apiato\Core\Exceptions\HttpException as AbstractException;
 
-   abstract class HttpException extends AbstractException
-   {
-   }
-   ```
-   You now have two parent classes: `Exception` (non-HTTP) and `HttpException` (HTTP).
+abstract class HttpException extends AbstractException {}
+```
+   
+You now have two parent classes: `Exception` (non-HTTP) and `HttpException` (HTTP).
 
-2. Make sure your HTTP exceptions extend `App\Ship\Parents\Exceptions\HttpException`, and your non-HTTP exceptions extend `App\Ship\Parents\Exceptions\Exception`.
+Update your custom exceptions:
+- Extend `App\Ship\Parents\Exceptions\HttpException` for HTTP errors.
+- Extend `App\Ship\Parents\Exceptions\Exception` for non-HTTP errors.
 
 ### Exception Instantiation
 
-Many exceptions now require constructor parameters. For example, calling `new NotFoundHttpException()` with no arguments no longer works. You might need to pass `$message` or `$code`.
+Exceptions now require mandatory constructor parameters.
+For example, calling `new NotFoundHttpException()` with no arguments no longer works.
+You have to pass the `$message` and the `$code` arguments.
 
-If this is cumbersome, see [Apiato Rector Rules](#upgrade-utilities) for automatic refactoring.
+Refactor your exception instantiations accordingly.
 
-### Removed Exceptions
+:::tip Automate this process using Rector
+See [Upgrade Utilities](#upgrade-utilities) for automatic refactoring utilities.
+:::
 
-All exceptions under `Apiato\Core\Exceptions` have been removed. If you used them directly, remove and replace them:
+### Removed Core Exceptions
+All exceptions under the `Apiato\Core\Exceptions` namespace have been removed.
 
+Remove their usages from your application.
 - `Apiato\Core\Exceptions\AuthenticationException`
 - `Apiato\Core\Exceptions\GeneratorErrorException`
 - `Apiato\Core\Exceptions\IncorrectIdException`
@@ -486,9 +491,9 @@ All exceptions under `Apiato\Core\Exceptions` have been removed. If you used the
 - `Apiato\Core\Exceptions\WrongConfigurationsException`
 - `Apiato\Core\Exceptions\WrongEndpointFormatException`
 
-**Note**: Apiato now returns `401` instead of `403` when a user is unauthenticated (matching Laravel’s default behavior).
-
----
+:::note
+Apiato now returns `401` instead of `403` when a user is unauthenticated (matching Laravel’s default behavior).
+:::
 
 ## Response
 
