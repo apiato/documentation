@@ -252,17 +252,17 @@ All service providers’ `register` and `boot` methods are now invoked independe
 
 ## Laravel Passport
 
-### Migration Changes
+### Migration Adjustments
+Passport 12.0 no longer loads its own migrations automatically.
 
-Passport 12.0 no longer loads its migrations by default. You must manually copy them from Apiato’s [13.x branch](https://github.com/apiato/apiato/tree/13.x/app/Containers/AppSection/Authentication/Data/Migrations) into your project:
+Copy Passport migrations from the [Apiato 13.x branch](https://github.com/apiato/apiato/tree/13.x/app/Containers/AppSection/Authentication/Data/Migrations) into your application
+(create the `Data/Migrations` directory if it doesn’t exist).
 
-1. Create a `Data/Migrations` directory if you don’t already have one:  
-   `app/Containers/AppSection/Authentication/Data/Migrations`
-2. Copy the Passport migrations from the 13.x branch to that directory.
+### Enabling the Password Grant Type
 
-### Password Grant Type
+As of Passport 12.0, the password grant is disabled by default.
 
-As of Passport 12.0, the **password grant type is disabled** by default. Enable it by calling `Passport::enablePasswordGrant()` in the `boot` method of one of your application’s service providers:
+Enable it by calling `enablePasswordGrant` in the `boot` method of one of your service providers:
 
 ```php
 public function boot(): void
@@ -270,8 +270,6 @@ public function boot(): void
     Passport::enablePasswordGrant();
 }
 ```
-
----
 
 ## Carbon 3
 
