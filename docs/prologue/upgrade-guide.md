@@ -287,9 +287,9 @@ To fix it, explicitly cast the string to an integer:
 Passport::tokensExpireIn(Carbon::now()->addMinutes((int)config('apiato.api.expires-in')));
 ```
 
+:::info
 Review Carbon’s [release notes](https://github.com/briannesbitt/Carbon/releases/tag/3.0.0) and [documentation](https://carbon.nesbot.com/docs/#api-carbon-3) for more details.
-
----
+:::
 
 ## Value Objects
 
