@@ -293,24 +293,25 @@ Review Carbon’s [release notes](https://github.com/briannesbitt/Carbon/release
 
 ## Value Objects
 
-### Removed Trait
+### HasResourceKeyTrait
 
-`Apiato\Core\Traits\HasResourceKeyTrait` has been removed from the Core Value Object (`Apiato\Core\Values\Value`).
+`Apiato\Core\Traits\HasResourceKeyTrait` has been removed from the Core Value Object (`Apiato\Core\Values\Value`) and renamed to `Apiato\Http\Resources\HasResourceKey`.
 
-- If you relied on the `getResourceKey` method, add that trait and the `Apiato\Http\Resources\ResourceKeyAware` interface to your **Ship Parent VO** class:
+If your Value Objects are relying on the `HasResourceKeyTrait`,
+you need to refactor them to use the new `HasResourceKey` trait and implement the `ResourceKeyAware` interface.
 
-  ```php
-  use Apiato\Core\Values\Value as AbstractValue;
-  use Apiato\Http\Resources\HasResourceKey;
-  use Apiato\Http\Resources\ResourceKeyAware;
-  
-  abstract class Value extends AbstractValue implements ResourceKeyAware
-  {
-      use HasResourceKey;
-  }
-  ```
+```php
+use Apiato\Core\Values\Value as AbstractValue;
+use Apiato\Http\Resources\HasResourceKey;
+use Apiato\Http\Resources\ResourceKeyAware;
 
-### Readonly
+abstract class Value extends AbstractValue implements ResourceKeyAware
+{
+    use HasResourceKey;
+}
+```
+
+### Readonly Value Objects
 
 Value Objects are now `readonly`.
 
