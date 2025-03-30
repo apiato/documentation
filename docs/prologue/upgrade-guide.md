@@ -319,37 +319,44 @@ Add the `readonly` keyword to your parent Value Object class and all Value Objec
 
 ## Testing
 
-Apiato has simplified its testing approach so you can test using “the Laravel way.” Many custom Apiato test methods have been removed:
+The testing utilities provided by Apiato have been simplified to embrace Laravel’s testing approach.
 
+The following methods are no longer available:
 - `makeCall`
 - `injectId`
 - `endpoint`
-- ...and others
+- ...and others TODO add other methods
 
-If you have a large codebase and need a gradual upgrade, use the [Apiato Legacy Bridge](#upgrade-utilities). It includes tools to restore old functionality temporarily.
+:::tip
+For a gradual upgrade in large codebases, refer to the [Apiato Legacy Bridge](#upgrade-utilities).
+:::
 
-### `LazilyRefreshDatabase`
+### LazilyRefreshDatabase Trait
 
-The `LazilyRefreshDatabase` trait is no longer forced in the Core parent TestCase. If you want to use it, explicitly add it to `App\Ship\Parents\Tests\TestCase`.
+The `LazilyRefreshDatabase` trait has been removed from the Core parent TestCase.
 
----
+Add `LazilyRefreshDatabase` to your `App\Ship\Parents\Tests\TestCase` if you require this functionality.
 
 ## Request
 
-If your codebase is large and you need to upgrade gradually, the [Apiato Legacy Bridge](#upgrade-utilities) can help.
+:::tip
+For a gradual upgrade in large codebases, refer to the [Apiato Legacy Bridge](#upgrade-utilities).
+:::
 
 ### Authorization
 
 All custom authorization properties and methods have been removed:
-
 - `$access`
 - `hasAccess`
 - `hasAnyPermissionAccess`
 - `hasAnyRoleAccess`
 - `check`
 
-If `$access` was on your Request class, it has no effect now. Refactor your requests to use [Laravel Policies](https://laravel.com/docs/11.x/authorization#creating-policies):
+Use [Laravel Policies](https://laravel.com/docs/11.x/authorization#creating-policies) for authorization.
 
+Remove the `$access` property from your request classes.
+
+**Example Conversion:**
 ```php
 // before
 use App\Ship\Parents\Requests\Request as ParentRequest;
@@ -382,51 +389,47 @@ final class DeleteUserRequest extends ParentRequest
 
 ### URL Parameter Validation
 
-`$urlParameters` and its getter (`getUrlParametersArray`) are removed. **Url parameters no longer appear in `rules()`.**
+The `$urlParameters` property and the `getUrlParametersArray` method have been removed.
+URL parameters are no longer available for validation in the `rules` method.
 
-- Remove any URL parameter validation you perform in `rules()`.
-- Remove the `$urlParameters` property.
+- Remove validations based on URL parameters.
+- Remove any reference to the `$urlParameters` property.
 - Remove calls to `getUrlParametersArray`.
 
-When a user provides a bad URL parameter, they’ll now receive a `404 Not Found` instead of a `422 Unprocessable Entity`.
+:::note
+Note that invalid URL parameters now result in a 404 error rather than a 422 error.
+:::
 
 ### Hashed ID Decoding
 
-The `$decode` property still decodes URL parameters automatically, **even though** `$urlParameters` is gone:
+The `$decode` property now also decodes URL parameters automatically.
 
 ```php
 // before
-protected array $decode = [
-    'id',
-];
-
-// was required
-protected array $urlParameters = [
-    'id',
-];
+protected array $decode = ['id'];
+protected array $urlParameters = ['id'];
 
 // after
-protected array $decode = [
-    'id',
-];
-
-// $urlParameters is no longer needed
+protected array $decode = ['id'];
+// $urlParameters is no longer needed and
+// $request->id will return the decoded value.
 ```
 
+TODO: are decoded values still available in the all() method? Or they have to be pulled from the route?
 You can still retrieve decoded URL parameters via `$request->id`, `$request->input('id')`, or `$request->route('id')`.
 
 ### Removed Methods
+TODO: check that we haven't missed any methods.
 
+The following methods have been removed from requests:
 - `injectData`
 - `withUrlParameters`
 - `mapInput`
 - `getInputByKey`
 
-### `sanitizeInput` Method
+### Sanitization Method
 
-`sanitizeInput` has been **renamed** to `sanitize`.
-
----
+`sanitizeInput` has been renamed to `sanitize`.
 
 ## Error Handling
 
