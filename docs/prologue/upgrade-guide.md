@@ -305,7 +305,7 @@ use Apiato\Core\Values\Value as AbstractValue;
 use Apiato\Http\Resources\HasResourceKey;
 use Apiato\Http\Resources\ResourceKeyAware;
 
-abstract class Value extends AbstractValue implements ResourceKeyAware
+abstract readonly class Value extends AbstractValue implements ResourceKeyAware
 {
     use HasResourceKey;
 }
@@ -313,23 +313,9 @@ abstract class Value extends AbstractValue implements ResourceKeyAware
 
 ### Readonly Value Objects
 
-Value Objects are now `readonly`.
+`Apiato\Core\Values\Value` is now declared as `readonly`.
 
-Add the `readonly` keyword to your parent Value object in `App\Ship\Parents\Values`:
-
-```php
-use Apiato\Core\Values\Value as AbstractValue;
-
-// Before
-abstract class Value extends AbstractValue {}
-
-// After
-abstract readonly class Value extends AbstractValue {}
-```
-
-Refactor all Value Objects that extend the parent Value object to also include `readonly`.
-
----
+Add the `readonly` keyword to your parent Value Object class and all Value Objects that extend it.
 
 ## Testing
 
