@@ -473,7 +473,7 @@ You have to pass the `$message` and the `$code` arguments.
 Refactor your exception instantiations accordingly.
 
 :::tip Automate this process using Rector
-See [Upgrade Utilities](#upgrade-utilities) for automatic refactoring utilities.
+See [Upgrade Utilities](#upgrade-utilities) for automated refactoring utilities.
 :::
 
 ### Removed Core Exceptions
@@ -497,11 +497,18 @@ Apiato now returns `401` instead of `403` when a user is unauthenticated (matchi
 
 ## Response
 
-### Transforming Responses
+### Transformation
 
-The `$this->transform` method in API Controllers is removed. Use the **`Apiato\Support\Facades\Response`** facade instead.
+The `$this->transform` method in API Controllers is removed. Use the `Apiato\Support\Facades\Response` facade instead.
 
+TODO: write the docs and link it here
 Its API closely mirrors the old `$this->transform` methods. Refer to the new `Response` facade documentation for details.
+
+- Replace all `$this->transform` calls with the Response facade.
+- Update your `app/Ship/Configs/fractal.php` file to use the Apiato Response class
+  ```php
+  'fractal_class' => \Apiato\Http\Response::class
+  ```
 
 **Example**:
 ```php
@@ -514,18 +521,13 @@ use Apiato\Support\Facades\Response;
 return Response::create($data, Transformer::class);
 ```
 
-You can automate these changes using the [TransformMethodToResponseCreateRector](#upgrade-utilities).
+:::tip Automate this process using Rector
+See [Upgrade Utilities](#upgrade-utilities) for automated refactoring utilities.
+:::
 
-### Fractal
+### Filtering
 
-In `app/Ship/Configs/fractal.php`, update the `fractal_class` to:
-
-```php
-'fractal_class' => \Apiato\Http\Response::class
-```
-
-### Filtering Responses
-
+TODO: write the docs and link it here
 The approach for filtering responses has changed. Refer to the new documentation on filtering responses, then update your code accordingly.
 
 ---
