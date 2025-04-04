@@ -620,8 +620,6 @@ Apiato no longer uses Laravel’s `database/seeders/DatabaseSeeder.php`. Instead
 - Remove `database/seeders/DatabaseSeeder.php` if present.
 - Move your seeding logic into `Ship` or `Container` seeder classes.
 
----
-
 ## Removed Items
 
 - `Apiato\Core\Abstracts\Middlewares\Http\ProfilerMiddleware`
