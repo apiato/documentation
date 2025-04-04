@@ -571,17 +571,16 @@ use the [Legacy Bridge](#upgrade-utilities).
 
 ## Hash IDs
 
-`Apiato\Core\Traits\HashIdTrait` is removed. Use the `hashids()` helper function directly:
+`Apiato\Core\Traits\HashIdTrait` is removed. Use the `hashids()` helper function instead.
 
 - `$this->decode(...)` → `hashids()->decode(...)`
 - `$this->encode(...)` → `hashids()->encode(...)`
 - `Hashids::decode(...)` → `hashids()->decode(...)`
 - `Hashids::encode(...)` → `hashids()->encode(...)`
 
-**Important**:  
+:::warning
 `decode` now can return an `int` or an `array` depending on the input. Previously, it always returned an array.
-
----
+:::
 
 ## Jobs
 
