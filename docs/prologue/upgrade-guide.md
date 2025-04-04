@@ -91,10 +91,8 @@ In addition, update the following class name or namespace changes:
 | `Apiato\Core\Abstracts\Middlewares\Http\ProcessETagHeadersMiddleware`  | `Apiato\Http\Middleware\ProcessETag`         |
 | `Apiato\Core\Abstracts\Middlewares\Http\ValidateJsonContent`           | `Apiato\Http\Middleware\ValidateJsonContent` |
 | `Apiato\Core\Abstracts\Providers\MainServiceProvider`                  | `Apiato\Core\Providers\ServiceProvider`      |
-| `Apiato\Core\Abstracts\Tests\PhpUnit\TestCase`                         | `Apiato\Core\Testing\TestCase`               |
 
 ### Model Changes
-
 
 - `Apiato\Core\Contracts\HasResourceKey` → `Apiato\Http\Resources\ResourceKeyAware`
 - `Apiato\Core\Traits\ModelTrait` → `Apiato\Core\Models\InteractsWithApiato`
@@ -327,15 +325,18 @@ The following methods are no longer available:
 - `endpoint`
 - ...and others TODO add other methods
 
-:::tip
-For a gradual upgrade in large codebases, refer to the [Apiato Legacy Bridge](#upgrade-utilities).
-:::
+### TestCase
+The `Apiato\Core\Abstracts\Tests\PhpUnit\TestCase` class namespace has changed to `Apiato\Core\Testing\TestCase`.
 
 ### LazilyRefreshDatabase Trait
 
 The `LazilyRefreshDatabase` trait has been removed from the Core parent TestCase.
 
 Add `LazilyRefreshDatabase` to your `App\Ship\Parents\Tests\TestCase` if you require this functionality.
+
+:::tip
+For a gradual upgrade in large codebases, refer to the [Apiato Legacy Bridge](#upgrade-utilities).
+:::
 
 ## Request
 
