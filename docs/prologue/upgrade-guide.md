@@ -11,6 +11,85 @@ Follow the official [Laravel 11 upgrade guide](https://laravel.com/docs/11.x/upg
 
 This guide will walk you through upgrading Apiato and your project to the latest versions.
 
+## Upgrade Utilities
+
+### Legacy Bridge
+
+The Legacy Bridge is a set of utilities to help you gradually upgrade your codebase.
+
+TODO: extract this doc to the legacy bridge repo and link the repo here.
+
+#### Testing
+
+To access removed testing methods, use the `TestCaseTrait` in your parent TestCase class:
+
+```php
+namespace App\Ship\Parents\Tests;
+
+use Apiato\Core\Testing\TestCase as AbstractTestCase;
+use App\Ship\Compatibility\Testing\TestCaseTrait; TODO change this after package is released
+use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
+
+abstract class TestCase extends AbstractTestCase
+{
+    use LazilyRefreshDatabase;
+    use TestCaseTrait {
+        TestCaseTrait::afterRefreshingDatabase insteadof LazilyRefreshDatabase;
+    }
+}
+```
+
+#### Request
+
+To access removed Request methods, use the `RequestTrait` in your parent Request class:
+
+```php
+namespace App\Ship\Parents\Requests;
+
+use Apiato\Core\Requests\Request as AbstractRequest;
+use App\Ship\Compatibility\RequestTrait; TODO change this after package is released
+
+abstract class Request extends AbstractRequest
+{
+    use RequestTrait;
+}
+```
+
+### Rector Rules
+
+Apiato provides custom Rector rules to help automate some aspects of the upgrade process.
+
+TODO: extract this doc to the rector rules repo and link the repo here.
+
+#### Setup
+
+Use [Rector](https://getrector.com) for automated refactoring. You can install custom Apiato rules via:
+
+For more details, see the Rector documentation and any instructions in the [Apiato Rector rules repository](https://openforests.atlassian.net/wiki/spaces/EL/pages/3181445160/Upgrade+Guide#Rector-Rules).
+
+```bash
+composer require --dev mohammad-alavi/apiato-rector:dev-latest
+```
+
+Also ensure you have Rector itself:
+
+```bash
+composer require --dev rector/rector
+```
+
+#### `RefactorHttpExceptionRector`
+
+Helps refactor exception classes to the new HTTP exception signature.
+
+```php
+->withConfiguredRule(RefactorHttpExceptionRector::class, [
+    'parent_class' => \App\Ship\Parents\Exceptions\HttpException::class,
+]);
+```
+#### `TransformMethodToResponseCreateRector`
+
+Converts `$this->transform(...)` calls to `Response::create(...)`.
+
 ## Updating Dependencies
 
 ### PHP 8.2.0 Required
@@ -626,72 +705,3 @@ Consider renaming these directories for consistency with the new Apiato structur
 ### Added Items
 
 - Copy the new `ValidateAppId` middleware from [Apiato 13.x](https://github.com/apiato/apiato/blob/13.x/app/Ship/Middleware/ValidateAppId.php) into `app/Ship/Middleware` if you need this feature.
-
-## Upgrade Utilities
-
-### Legacy Bridge
-
-If you need to gradually transition away from removed Apiato features, the Legacy Bridge can temporarily restore them.
-
-#### Testing
-
-Add `TestCaseTrait` to your parent TestCase:
-
-```php
-namespace App\Ship\Parents\Tests;
-
-use Apiato\Core\Testing\TestCase as AbstractTestCase;
-use App\Ship\Compatibility\Testing\TestCaseTrait;
-use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
-
-abstract class TestCase extends AbstractTestCase
-{
-    use LazilyRefreshDatabase;
-    use TestCaseTrait {
-        TestCaseTrait::afterRefreshingDatabase insteadof LazilyRefreshDatabase;
-    }
-}
-```
-
-#### Request
-
-Add `RequestTrait` to your parent Request to keep removed methods:
-
-```php
-namespace App\Ship\Parents\Requests;
-
-use Apiato\Core\Requests\Request as AbstractRequest;
-use App\Ship\Compatibility\RequestTrait;
-
-abstract class Request extends AbstractRequest
-{
-    use RequestTrait;
-}
-```
-
-### Rector Rules
-
-Use [Rector](https://getrector.com) for automated refactoring. You can install custom Apiato rules via:
-
-```bash
-composer require --dev mohammad-alavi/apiato-rector:dev-latest
-```
-
-Also ensure you have Rector itself:
-
-```bash
-composer require --dev rector/rector
-```
-
-- **`RefactorHttpExceptionRector`**  
-  Helps refactor exception classes to the new HTTP exception signature.
-
-```php
-->withConfiguredRule(RefactorHttpExceptionRector::class, [
-    'parent_class' => \App\Ship\Parents\Exceptions\HttpException::class,
-]);
-```
-- **`TransformMethodToResponseCreateRector`**  
-  Converts `$this->transform(...)` calls to `Response::create(...)`.
-
-For more details, see the Rector documentation and any instructions in the [Apiato Rector rules repository](https://openforests.atlassian.net/wiki/spaces/EL/pages/3181445160/Upgrade+Guide#Rector-Rules).
