@@ -536,52 +536,38 @@ The approach for filtering responses has changed. Refer to the new documentation
 
 Some repository methods are strongly typed or behave differently.
 
-### `boot()`
+#### `boot` Method
 
-`boot` now has a `void` return type:
+`boot` now has a `void` return type.
 
-```php
-public function boot(): void
-{
-    // ...
-}
-```
+If you have overridden the `boot` method, adjust your method signature accordingly.
 
-### `getById` → `findOrFail`
+#### `getById` Method
 
 `getById` has been renamed to `findOrFail`.
 
-### `delete`
+#### `delete` Method
 
-`delete` returns `bool` or throws an exception. If you have overridden `delete`, add the `bool` return type:
+`delete` method now returns `bool` or throws an exception.
 
-```php
-public function delete($id): bool
-{
-    // ...
-}
-```
+If you have overridden the `delete` method, adjust your method signature accordingly.
 
-### `create`
+#### `create` Method
 
 `create` now throws `Apiato\Core\Repositories\Exceptions\ResourceCreationFailed` instead of `\Exception`.
 
-### `update`
+#### `update` Method
 
 `update` now throws `Apiato\Core\Repositories\Exceptions\ResourceNotFound` instead of `\Illuminate\Database\Eloquent\ModelNotFoundException`.
 
-### `find`
+#### `find` Method
 
 `find` now returns `null` if no result is found (mirroring Laravel’s default `find` behavior). Previously, it might have thrown an exception.
 
-- Refactor calls to `find` into `findOrFail`, or
-- Retain old behavior by using the Apiato Legacy Bridge.
-
-### Keeping Old Behavior
-
-To keep the old behavior of the `find`, `create`, and `update` methods, use the [Legacy Bridge](#upgrade-utilities) `RepositoryTrait`.
-
----
+:::info Maintaining Previous Behavior
+To maintain the previous behavior of the `find`, `create`, and `update` methods,
+use the [Legacy Bridge](#upgrade-utilities).
+:::
 
 ## Hash IDs
 
