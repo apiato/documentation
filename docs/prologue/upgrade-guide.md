@@ -607,32 +607,11 @@ abstract class Job extends AbstractJob implements ShouldQueue
 
 ## Validation
 
-`no_spaces` is no longer included by default. If you used it, you can:
+The custom `no_spaces` validation rule has been removed.
 
-- Remove references to it, or
-- Register it manually in your own service provider.  
-  You can find the source [here](https://github.com/apiato/core/blob/8.x/src/Traits/ValidationTrait.php).
+Remove its usage or register it manually in the boot method of your service provider.
 
-**Example**:
-```php
-use Illuminate\Support\Facades\Validator;
-use App\Ship\Parents\Providers\ServiceProvider;
-
-class MyServiceProvider extends ServiceProvider
-{
-    public function boot(): void
-    {
-        Validator::extend('no_spaces', function ($attribute, $value) {
-            return preg_match('/^\S*$/u', $value);
-        }, 'String should not contain space.');
-
-        // Example of other custom validations...
-        Validator::extend('unique_composite', ...);
-    }
-}
-```
-
----
+See the [source code](https://github.com/apiato/core/blob/8.x/src/Traits/ValidationTrait.php) for reference.
 
 ## Database Seeding
 
