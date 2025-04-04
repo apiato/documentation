@@ -72,70 +72,11 @@ run the command a second time to ensure that all dependencies are correctly inst
 composer update
 ```
 
-## Namespaces & Class Renames
-
-Several Core namespaces and class names have changed:
+## Abstract Namespace
 
 The Core abstract classes have been relocated from `Apiato\Core\Abstracts` to `Apiato\Core`.
 
-Old: `Apiato\Core\Abstracts`  
-New: `Apiato\Core`
-
-In addition, update the following class name or namespace changes:  
-
-| From                                                                   | To                                           |
-|:-----------------------------------------------------------------------|:---------------------------------------------|
-| `Apiato\Core\Abstracts\Commands\ConsoleCommand`                        | `Apiato\Core\Console\Command`                |
-| `Apiato\Core\Abstracts\Criterias`                                      | `Apiato\Core\Criteria`                       |
-| `Apiato\Core\Abstracts\Middlewares`                                    | `Apiato\Core\Middleware`                     |
-| `Apiato\Core\Abstracts\Middlewares\Http\ProcessETagHeadersMiddleware`  | `Apiato\Http\Middleware\ProcessETag`         |
-| `Apiato\Core\Abstracts\Middlewares\Http\ValidateJsonContent`           | `Apiato\Http\Middleware\ValidateJsonContent` |
-| `Apiato\Core\Abstracts\Providers\MainServiceProvider`                  | `Apiato\Core\Providers\ServiceProvider`      |
-
-### Model Changes
-
-- `Apiato\Core\Contracts\HasResourceKey` → `Apiato\Http\Resources\ResourceKeyAware`
-- `Apiato\Core\Traits\ModelTrait` → `Apiato\Core\Models\InteractsWithApiato`
-
-  **Example**:
-  ```php
-  // before
-  use Apiato\Core\Contracts\HasResourceKey;
-  use Apiato\Core\Traits\ModelTrait;
-  
-  class MyModel extends NotApiatoModel implements HasResourceKey {
-      use ModelTrait;
-  }
-
-  // after
-  use Apiato\Core\Models\InteractsWithApiato;
-  use Apiato\Http\Resources\ResourceKeyAware;
-  
-  class MyModel extends NotApiatoModel implements ResourceKeyAware {
-      use InteractsWithApiato;
-  }
-  ```
-
-- `Apiato\Core\Traits\HasResourceKeyTrait` → `Apiato\Http\Resources\HasResourceKey`
-
-  **Example**:
-  ```php
-  // before
-  use Apiato\Core\Contracts\HasResourceKey;
-  use Apiato\Core\Traits\HasResourceKeyTrait;
-  
-  class MyModel implements HasResourceKey {
-      use HasResourceKeyTrait;
-  }
-
-  // after
-  use Apiato\Http\Resources\HasResourceKey;
-  use Apiato\Http\Resources\ResourceKeyAware;
-
-  class MyModel implements ResourceKeyAware {
-      use HasResourceKey;
-  }
-  ```
+Existing classes extending these abstract classes should be updated accordingly.
 
 ## App Configuration
 
@@ -176,10 +117,15 @@ return Application::configure(basePath: $basePath)
     ->withCommands($apiato->commands())
     ->withExceptions(static function (Exceptions $exceptions) {})
     ->create();
-
 ```
 
 ## Service Providers
+
+The `Apiato\Core\Abstracts\Providers\MainServiceProvider` class has been removed.
+
+Existing service providers extending this class should be refactored
+to extend `Apiato\Core\Providers\ServiceProvider` instead.
+e.g, `App\Ship\Parents\Providers\ServiceProvider`
 
 ### Autoloading
 
@@ -248,6 +194,20 @@ All service providers’ `register` and `boot` methods are now invoked independe
   to `bootstrap/app.php` file as per [Laravel’s middleware registration documentation](https://laravel.com/docs/11.x/middleware#registering-middleware).
   Then, remove your old `MiddlewareServiceProvider` classes.
 
+## Middleware
+
+The following classes have been moved or renamed:
+| From | To |
+|:-----------------------------------------------------------------------|:---------------------------------------------|
+| `Apiato\Core\Abstracts\Middlewares`                                    | `Apiato\Core\Middleware`                     |
+| `Apiato\Core\Abstracts\Middlewares\Http\ProcessETagHeadersMiddleware`  | `Apiato\Http\Middleware\ProcessETag`         |
+| `Apiato\Core\Abstracts\Middlewares\Http\ValidateJsonContent`           | `Apiato\Http\Middleware\ValidateJsonContent` |
+
+The `Apiato\Core\Abstracts\Middlewares\Http\ProfilerMiddleware` class has been removed.
+
+The `Apiato\Core\Middleware\Http\Authenticate` class has been removed.
+Use `Illuminate\Auth\Middleware\Authenticate` instead.
+
 ## Laravel Passport
 
 ### Migration Adjustments
@@ -256,7 +216,7 @@ Passport 12.0 no longer loads its own migrations automatically.
 Copy Passport migrations from the [Apiato 13.x branch](https://github.com/apiato/apiato/tree/13.x/app/Containers/AppSection/Authentication/Data/Migrations) into your application
 (create the `Data/Migrations` directory if it doesn’t exist).
 
-### Enabling the Password Grant Type
+### Password Grant
 
 As of Passport 12.0, the password grant is disabled by default.
 
@@ -289,31 +249,34 @@ Passport::tokensExpireIn(Carbon::now()->addMinutes((int)config('apiato.api.expir
 Review Carbon’s [release notes](https://github.com/briannesbitt/Carbon/releases/tag/3.0.0) and [documentation](https://carbon.nesbot.com/docs/#api-carbon-3) for more details.
 :::
 
+## ModelTrait
+
+The `Apiato\Core\Traits\ModelTrait` trait has been renamed
+and moved to `Apiato\Core\Models\InteractsWithApiato`.
+
+## ResourceKey
+
+#### `HasResourceKey` Interface {#hasResourceKeyInterface}
+
+The `Apiato\Core\Contracts\HasResourceKey` interface has been renamed
+and moved to `Apiato\Http\Resources\ResourceKeyAware`.
+
+#### `HasResourceKey` Trait {#hasResourceKeyTrait}
+
+The `Apiato\Core\Traits\HasResourceKeyTrait` trait has been renamed
+and moved to `Apiato\Http\Resources\HasResourceKey`.
+
 ## Value Objects
 
-### HasResourceKeyTrait
-
-`Apiato\Core\Traits\HasResourceKeyTrait` has been removed from the Core Value Object (`Apiato\Core\Values\Value`) and renamed to `Apiato\Http\Resources\HasResourceKey`.
-
-If your Value Objects are relying on the `HasResourceKeyTrait`,
-you need to refactor them to use the new `HasResourceKey` trait and implement the `ResourceKeyAware` interface.
-
-```php
-use Apiato\Core\Values\Value as AbstractValue;
-use Apiato\Http\Resources\HasResourceKey;
-use Apiato\Http\Resources\ResourceKeyAware;
-
-abstract readonly class Value extends AbstractValue implements ResourceKeyAware
-{
-    use HasResourceKey;
-}
-```
-
-### Readonly Value Objects
-
-`Apiato\Core\Values\Value` is now declared as `readonly`.
+`Apiato\Core\Values\Value` abstract class is now declared as `readonly`.
 
 Add the `readonly` keyword to your parent Value Object class and all Value Objects that extend it.
+
+[HasResourceKeyTrait](#hasResourceKeyTrait) has been removed from the Core Value Object (`Apiato\Core\Values\Value`).
+
+If your Value Objects are relying on the `HasResourceKeyTrait`,
+you need to refactor them to use the new [HasResourceKey](#hasResourceKeyTrait) trait
+and implement the [ResourceKeyAware](#hasResourceKeyInterface) interface.
 
 ## Testing
 
@@ -325,18 +288,19 @@ The following methods are no longer available:
 - `endpoint`
 - ...and others TODO add other methods
 
-### TestCase
+:::tip
+For a gradual upgrade in large codebases, refer to the [Apiato Legacy Bridge](#upgrade-utilities).
+:::
+
+#### `TestCase` Class
+
 The `Apiato\Core\Abstracts\Tests\PhpUnit\TestCase` class namespace has changed to `Apiato\Core\Testing\TestCase`.
 
-### LazilyRefreshDatabase Trait
+#### `LazilyRefreshDatabase` Trait
 
 The `LazilyRefreshDatabase` trait has been removed from the Core parent TestCase.
 
 Add `LazilyRefreshDatabase` to your `App\Ship\Parents\Tests\TestCase` if you require this functionality.
-
-:::tip
-For a gradual upgrade in large codebases, refer to the [Apiato Legacy Bridge](#upgrade-utilities).
-:::
 
 ## Request
 
@@ -531,8 +495,6 @@ See [Upgrade Utilities](#upgrade-utilities) for automated refactoring utilities.
 TODO: write the docs and link it here
 The approach for filtering responses has changed. Refer to the new documentation on filtering responses, then update your code accordingly.
 
----
-
 ## Repository
 
 Some repository methods are strongly typed or behave differently.
@@ -569,6 +531,10 @@ If you have overridden the `delete` method, adjust your method signature accordi
 To maintain the previous behavior of the `find`, `create`, and `update` methods,
 use the [Legacy Bridge](#upgrade-utilities).
 :::
+
+### Criteria
+
+The `Apiato\Core\Abstracts\Criteria` class has been moved to `Apiato\Core\Criteria`.
 
 ## Hash IDs
 
@@ -621,27 +587,21 @@ Apiato no longer uses Laravel’s `database/seeders/DatabaseSeeder.php`. Instead
 - Remove `database/seeders/DatabaseSeeder.php` if present.
 - Move your seeding logic into `Ship` or `Container` seeder classes.
 
-## Removed Items
+## Commands
 
-- `Apiato\Core\Abstracts\Middlewares\Http\ProfilerMiddleware`
-- `Apiato\Core\Middleware\Http\Authenticate`  
-  Use `Illuminate\Auth\Middleware\Authenticate` instead.
-
----
-
-## Added Items
-
-- Copy the new `ValidateAppId` middleware from [Apiato 13.x](https://github.com/apiato/apiato/blob/13.x/app/Ship/Middleware/ValidateAppId.php) into `app/Ship/Middleware` if you need this feature.
-
----
+The `Apiato\Core\Abstracts\Commands\ConsoleCommand` class has been renamed
+and moved to `Apiato\Core\Console\Command`.
 
 ## Miscellaneous
 
-We recommend reviewing changes in [apiato/apiato](https://github.com/apiato/apiato) and [apiato/core](https://github.com/apiato/core) repositories between versions 12.x and 13.x, using GitHub’s comparison tools. Not all changes are mandatory. Some involve configuration or comments you may wish to sync:
+We recommend
+reviewing changes in [apiato/apiato](https://github.com/apiato/apiato) and [apiato/core](https://github.com/apiato/core) repositories between versions 12.x and 13.x and 8.x and 13.x respectively,
+using GitHub’s comparison tools.
+Not all changes are mandatory.
+Some involve configuration or comments you may wish to sync:
 
 - [Comparison for apiato/apiato](https://github.com/apiato/apiato/compare/12.x...13.x)
-
----
+- [Comparison for apiato/core](https://github.com/apiato/core/compare/8.x...13.x)
 
 ## Optional
 
@@ -663,20 +623,9 @@ Consider renaming these directories for consistency with the new Apiato structur
 // e.g., makeCall, transform method usage, setUp methods from older versions, etc.
 ```
 
-### Project Root Files
+### Added Items
 
-Sync your project’s root files with Apiato [13.x](https://github.com/apiato/apiato/tree/13.x), then check your changes with Git. This may include:
-
-- `/configs`
-- `artisan`
-- `package.json`
-- `phpunit.xml`
-- `vite.config.js`
-- …and more.
-
-Add any new files (e.g., `tailwind.config.js`) that your project may be missing.
-
----
+- Copy the new `ValidateAppId` middleware from [Apiato 13.x](https://github.com/apiato/apiato/blob/13.x/app/Ship/Middleware/ValidateAppId.php) into `app/Ship/Middleware` if you need this feature.
 
 ## Upgrade Utilities
 
