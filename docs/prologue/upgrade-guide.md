@@ -686,11 +686,11 @@ composer require --dev rector/rector
 - **`RefactorHttpExceptionRector`**  
   Helps refactor exception classes to the new HTTP exception signature.
 
-  ```php
-  ->withConfiguredRule(RefactorHttpExceptionRector::class, [
-      'parent_class' => \App\Ship\Parents\Exceptions\HttpException::class,
-  ]);
-  ```
+```php
+->withConfiguredRule(RefactorHttpExceptionRector::class, [
+    'parent_class' => \App\Ship\Parents\Exceptions\HttpException::class,
+]);
+```
 - **`TransformMethodToResponseCreateRector`**  
   Converts `$this->transform(...)` calls to `Response::create(...)`.
 
