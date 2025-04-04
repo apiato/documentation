@@ -584,7 +584,9 @@ use the [Legacy Bridge](#upgrade-utilities).
 
 ## Jobs
 
-`Apiato\Core\Jobs\Job` no longer implements interfaces or traits. Move them to your Ship’s parent Job class if needed. For example:
+The Core Job class (Apiato\Core\Jobs\Job) no longer includes any traits or implements interfaces.
+
+Add necessary traits and interfaces in your Ship’s parent Job class. For example:
 
 ```php
 namespace App\Ship\Parents\Jobs;
@@ -602,8 +604,6 @@ abstract class Job extends AbstractJob implements ShouldQueue
     use SerializesModels;
 }
 ```
-
----
 
 ## Validation
 
