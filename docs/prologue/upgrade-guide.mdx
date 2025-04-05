@@ -97,45 +97,66 @@ Converts `$this->transform(...)` calls to `Response::create(...)`.
 PHP 8.2.0 or greater is now required.
 
 ### Composer Dependencies
+Perform these steps to update your dependencies.
 
-Perform these steps to update your dependencies:
+#### Remove First-Party Apiato Packages
+Delete all Apiato first-party packages in `app/Containers/Vendor` to avoid dependency conflicts.
+These packages will be reinstalled after running `composer update`.
 
-1. **Remove First-Party Apiato Packages**
-   Delete all Apiato first-party packages in `app/Containers/Vendor` to avoid dependency conflicts.
-   These packages will be reinstalled after running `composer update`.
-2. **Consolidate Dependencies**  
-   If the following dependencies are defined in the Ship or any Container `composer.json` file,
-   move them to your application’s root `composer.json` file:
-   - `apiato/core`
-   - `laravel/passport`
-3. **Update Dependency Versions**  
-   In your root `composer.json` file, update the versions as follows:
-   - `apiato/core` to `^13.0`
-   - `laravel/passport` to `^12.0`
-   - `spatie/laravel-permission` to `^6.0`
-   - `nunomaduro/collision` to `^8.1`
-   - `apiato/documentation-generator-container` to `^4.0`
-   - `apiato/localization` to `x` (if installed)
-   - `apiato/social-auth` to `x` (if installed)
-   - `phpunit/phpunit` to `^11.0`
-   - `barryvdh/laravel-ide-helper` to `^3.0`
-   - `vimeo/psalm` to `^6.0`  
+#### Consolidate Dependencies
+If the following dependencies are defined in the Ship or any Container `composer.json` file,
+move them to your application’s root `composer.json` file:
+- `apiato/core`
+- `laravel/passport`
+
+#### Update Dependency Versions
+Update the following dependencies in your `composer.json` files:
+
+require
+  - `apiato/core` to `^13.0`
+  - `laravel/passport` to `^12.0`
+  - `spatie/laravel-permission` to `^6.0`
+  - `apiato/documentation-generator-container` to `^4.0`
+  - `apiato/localization` to `x` (if installed) TODO
+  - `apiato/social-auth` to `x` (if installed) TODO
+
+require-dev
+  - `nunomaduro/collision` to `^8.1`
+  - `phpunit/phpunit` to `^11.0`
+  - `barryvdh/laravel-ide-helper` to `^3.0`
+  - `vimeo/psalm` to `^6.0`
      Don’t forget to also update `psalm` plugins if you have them:
      ```json
      "psalm/plugin-laravel": "^3.0",
      "psalm/plugin-mockery": "^1.2",
      "psalm/plugin-phpunit": "^0.19.2",
      ```
-4. **Remove Unnecessary Dependencies**  
-   Remove these dependencies from your root `composer.json` file:
-   - `spatie/laravel-ignition`  (Laravel now provides its own error page)
-   - All Apiato-specific dependencies no longer required as they are now managed via `apiato/core`, including:
-     - PHP extensions: `ext-curl`, `ext-gettext`, `ext-imagick`, `ext-mbstring`, `ext-openssl`, `ext-pdo`, `ext-sodium`, `ext-tokenizer`
-     - Packages: `guzzlehttp/guzzle`, `laravel/framework`, `laravel/tinker`
-5. **Review Package Upgrade Guides**  
-   Check the upgrade guides for each dependency to be aware of additional breaking changes:
-   - [phpunit/phpunit](https://github.com/sebastianbergmann/phpunit/blob/11.0.0/ChangeLog-11.0.md#1100---2024-02-02)
-   - [spatie/laravel-permission](https://spatie.be/docs/laravel-permission/v6/upgrading)
+
+#### Remove Unnecessary Dependencies
+Remove these dependencies from your root `composer.json` file:
+
+`spatie/laravel-ignition`  (Laravel now provides its own error page)
+
+Following dependencies are also no longer required as they are now either managed by `apiato/core` or Laravel Framework itself.
+
+PHP extensions
+- `ext-curl`
+- `ext-gettext`
+- `ext-mbstring`
+- `ext-openssl`
+- `ext-pdo`
+- `ext-sodium`
+- `ext-tokenizer`
+
+Packages
+- `guzzlehttp/guzzle`
+- `laravel/framework`
+- `laravel/tinker`
+
+#### Review Package Upgrade Guides
+Check the upgrade guides for each dependency to be aware of additional breaking changes:
+- [phpunit/phpunit](https://github.com/sebastianbergmann/phpunit/blob/11.0.0/ChangeLog-11.0.md#1100---2024-02-02)
+- [spatie/laravel-permission](https://spatie.be/docs/laravel-permission/v6/upgrading)
 
 Remove the existing `vendor` directory for a clean start:
 ```bash
@@ -155,7 +176,7 @@ composer update
 
 The Core abstract classes have been relocated from `Apiato\Core\Abstracts` to `Apiato\Core`.
 
-Existing classes extending these abstract classes should be updated accordingly.
+Update your codebase to use this new namespace.
 
 ## App Configuration
 
@@ -257,7 +278,7 @@ All service providers’ `register` and `boot` methods are now invoked independe
 
 #### AuthServiceProvider
 - Removed: `Apiato\Core\Abstracts\Providers\AuthServiceProvider`
-- Action: 
+- Action:
   - If you were manually registering policies outside Laravel’s policy discovery, follow the [Laravel manual registration guide](https://laravel.com/docs/11.x/authorization#manually-registering-policies).
   - Move any custom registrations from `AuthServiceProvider` to another service provider.
   - Remove all classes extending the old `AuthServiceProvider`.
@@ -501,7 +522,7 @@ use Apiato\Core\Exceptions\HttpException as AbstractException;
 
 abstract class HttpException extends AbstractException {}
 ```
-   
+
 You now have two parent classes: `Exception` (non-HTTP) and `HttpException` (HTTP).
 
 Update your custom exceptions:
