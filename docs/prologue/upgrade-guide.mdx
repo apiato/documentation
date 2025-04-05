@@ -17,7 +17,7 @@ This guide will walk you through upgrading Apiato and your project to the latest
 
 The Legacy Bridge is a set of utilities to help you gradually upgrade your codebase.
 
-TODO: extract this doc to the legacy bridge repo and link the repo here.
+TODO: extract this doc to the legacy bridge repo and link the repo here. Also update the referenced class namespaces.
 
 #### Testing
 
@@ -57,38 +57,61 @@ abstract class Request extends AbstractRequest
 
 ### Rector Rules
 
-Apiato provides custom Rector rules to help automate some aspects of the upgrade process.
+Apiato provides custom [Rector](https://getrector.com) rules to help automate some aspects of the upgrade process.
 
-TODO: extract this doc to the rector rules repo and link the repo here.
+TODO: extract this doc to the rector rules repo and link the repo here. Also update the referenced class namespaces.
+
+For more details, see the Rector documentation and instructions in the [Apiato Rector rules repository](https://openforests.atlassian.net/wiki/spaces/EL/pages/3181445160/Upgrade+Guide#Rector-Rules).
 
 #### Setup
 
-Use [Rector](https://getrector.com) for automated refactoring. You can install custom Apiato rules via:
-
-For more details, see the Rector documentation and any instructions in the [Apiato Rector rules repository](https://openforests.atlassian.net/wiki/spaces/EL/pages/3181445160/Upgrade+Guide#Rector-Rules).
-
 ```bash
-composer require --dev mohammad-alavi/apiato-rector:dev-latest
+composer require --dev mohammad-alavi/apiato-rector dev-latest
 ```
 
-Also ensure you have Rector itself:
+Also ensure you have Rector itself installed:
 
 ```bash
 composer require --dev rector/rector
 ```
 
-#### `RefactorHttpExceptionRector`
+#### Rules
 
+#### `TransformMethodToResponseFacadeRector`
+Converts `$this->transform(...)` calls to `Response::create(...)`.
+
+```php
+use MohammadAlavi\ApiatoRector\Rules\TransformMethodToResponseFacadeRector;
+use Rector\Config\RectorConfig;
+
+return RectorConfig::configure()
+    ->withPaths([
+        __DIR__ . '/app',
+        __DIR__ . '/config',
+    ])
+    ->withImportNames(true, false, false, true)
+    ->withRules([
+        TransformMethodToResponseFacadeRector::class,
+    ]);
+```
+
+#### `RefactorHttpExceptionRector`
 Helps refactor exception classes to the new HTTP exception signature.
 
 ```php
-->withConfiguredRule(RefactorHttpExceptionRector::class, [
-    'parent_class' => \App\Ship\Parents\Exceptions\HttpException::class,
-]);
-```
-#### `TransformMethodToResponseCreateRector`
+use MohammadAlavi\ApiatoRector\Rules\RefactorHttpExceptionRector;
+use Rector\Config\RectorConfig;
 
-Converts `$this->transform(...)` calls to `Response::create(...)`.
+return RectorConfig::configure()
+    ->withPaths([
+        __DIR__ . '/app',
+        __DIR__ . '/config',
+    ])
+    ->withImportNames(true, false, false, true)
+    ->withConfiguredRule(RefactorHttpExceptionRector::class, [
+        'parent_class' => \App\Ship\Parents\Exceptions\HttpException::class,
+    ]);
+```
 
 ## Updating Dependencies
 
@@ -180,10 +203,13 @@ Update your codebase to use this new namespace.
 
 ## App Configuration
 
-Laravel 11 and Apiato 13 now use a configuration class for setup.
+Laravel 11 and Apiato 13 configurations are simplified, and both now provide a fluid API for configuration.
+
 Replace the contents of `bootstrap/app.php` file with the following as a base, and customize it as needed:
 
 ```php
+<?php
+
 use Apiato\Foundation\Apiato;
 use Apiato\Http\Middleware\ProcessETag;
 use Apiato\Http\Middleware\ValidateJsonContent;
@@ -219,13 +245,57 @@ return Application::configure(basePath: $basePath)
     ->create();
 ```
 
-## Service Providers
+Move any custom middleware registrations from `app/Ship/Kernels/HttpKernel.php` to the `bootstrap/app.php` file.
 
+Move any custom configurations from `app/Ship/Kernels/ConsoleKernel.php` and `App\Ship\Kernels\HttpKernel` to the `bootstrap/app.php` file.
+
+Remove `App\Ship\Kernels\HttpKernel` and `App\Ship\Kernels\ConsoleKernel` classes.
+
+## Testing
+
+#### `TestCase` Class
+The `Apiato\Core\Abstracts\Tests\PhpUnit\TestCase` class namespace has changed to `Apiato\Core\Testing\TestCase`.
+
+#### `LazilyRefreshDatabase` Trait
+The `Illuminate\Foundation\Testing\LazilyRefreshDatabase` trait has been removed from the Core TestCase.
+
+Add `LazilyRefreshDatabase` to your `App\Ship\Parents\Tests\TestCase` if you want this functionality.
+
+#### Removed Methods
+The testing utilities provided by Apiato have been simplified to embrace Laravel’s testing approach.
+
+The following methods are no longer available:
+- `getTestingUser`
+- `getTestingUserWithoutAccess`
+- `makeCall`
+- `injectId`
+- `endpoint`
+- `getAuth`
+- `setResponseObjectAndContent`
+- `getResponseContentArray`
+- `getResponseContent`
+- `setResponseContent`
+- `getResponseContentObject`
+- `auth`
+- `url`
+- etc...
+
+:::tip
+For a gradual upgrade in large codebases, refer to the [Apiato Legacy Bridge](#upgrade-utilities).
+:::
+
+[HasResourceKeyTrait](#has-resource-key-trait) has been removed from the Core Value Object (`Apiato\Core\Values\Value`).
+
+If your Value Objects are relying on the `HasResourceKeyTrait`,
+you need to refactor them to use the new [HasResourceKey](#has-resource-key-trait) trait
+and implement the [ResourceKeyAware](#has-resource-key-interface) interface.
+
+## Service Providers
 The `Apiato\Core\Abstracts\Providers\MainServiceProvider` class has been removed.
 
 Existing service providers extending this class should be refactored
-to extend `Apiato\Core\Providers\ServiceProvider` instead.
-e.g, `App\Ship\Parents\Providers\ServiceProvider`
+to extend `Apiato\Core\Providers\ServiceProvider` class instead.
+e.g, `App\Ship\Parents\Providers\ServiceProvider` class.
 
 ### Autoloading
 
@@ -237,6 +307,36 @@ Any parent providers under `app/Ship/Parents/Providers` will **NOT** be register
 If you need to do something in a provider’s `register` or `boot` methods,
 extend those providers in a Container or Ship `Providers` directory.
 :::
+
+### Specific Provider Changes
+
+#### AuthServiceProvider
+The `Apiato\Core\Abstracts\Providers\AuthServiceProvider` class has been removed.
+
+- If you were manually registering policies outside Laravel’s policy discovery, follow the [Laravel manual registration guide](https://laravel.com/docs/11.x/authorization#manually-registering-policies).
+- Refactor all service providers extending the following service providers to extend `App\Ship\Parents\Providers\ServiceProvider`:
+  - `App\Ship\Parents\Providers\AuthServiceProvider`
+  - `Apiato\Core\Abstracts\Providers\AuthServiceProvider`
+  - `Illuminate\Foundation\Support\Providers\AuthServiceProvider`
+- Move any custom registrations from `App\Ship\Parents\Providers\AuthServiceProvider` to another service provider and then remove it.
+
+#### MiddlewareServiceProvider
+The `Apiato\Core\Abstracts\Providers\MiddlewareServiceProvider` class has been removed.
+
+Migrate your middleware configurations
+to the `bootstrap/app.php` file as per [Laravel’s middleware registration documentation](https://laravel.com/docs/11.x/middleware#registering-middleware).
+Then, remove your old `MiddlewareServiceProvider` classes.
+
+#### BroadcastServiceProvider
+- Removed: `Apiato\Core\Abstracts\Providers\BroadcastServiceProvider`
+- Action:
+Remove your custom `App\Ship\Parents\Providers\BroadcastServiceProvider` and configure channels in `bootstrap/app.php`
+as shown [above](#app-configuration).
+
+### Parent Method Calls
+
+You no longer need to call `parent::register()` or `parent::boot()` in your service providers.
+All service providers’ `register` and `boot` methods are now invoked independently.
 
 ### Removed Properties
 
@@ -263,37 +363,6 @@ public function register(): void
 }
 ```
 
-### Parent Method Calls
-
-You no longer need to call `parent::register()` or `parent::boot()` in your service providers.
-All service providers’ `register` and `boot` methods are now invoked independently.
-
-### Specific Provider Changes
-
-#### BroadcastServiceProvider
-- Removed: `Apiato\Core\Abstracts\Providers\BroadcastServiceProvider`
-- Action:
-  Remove your custom `App\Ship\Parents\Providers\BroadcastServiceProvider` and configure channels in `bootstrap/app.php`
-  as shown [above](#app-configuration).
-
-#### AuthServiceProvider
-- Removed: `Apiato\Core\Abstracts\Providers\AuthServiceProvider`
-- Action:
-  - If you were manually registering policies outside Laravel’s policy discovery, follow the [Laravel manual registration guide](https://laravel.com/docs/11.x/authorization#manually-registering-policies).
-  - Move any custom registrations from `AuthServiceProvider` to another service provider.
-  - Remove all classes extending the old `AuthServiceProvider`.
-  - Refactor any service providers extending the following service providers to extend `App\Ship\Parents\Providers\ServiceProvider`:
-    - `App\Ship\Parents\Providers\AuthServiceProvider`
-    - `Apiato\Core\Providers\AuthServiceProvider`
-    - `Illuminate\Foundation\Support\Providers\AuthServiceProvider`
-
-#### MiddlewareServiceProvider
-- Removed: `Apiato\Core\Abstracts\Providers\MiddlewareServiceProvider`
-- Action:
-  Migrate any middleware configurations
-  to `bootstrap/app.php` file as per [Laravel’s middleware registration documentation](https://laravel.com/docs/11.x/middleware#registering-middleware).
-  Then, remove your old `MiddlewareServiceProvider` classes.
-
 ## Middleware
 
 The following classes have been moved or renamed:
@@ -307,6 +376,29 @@ The `Apiato\Core\Abstracts\Middlewares\Http\ProfilerMiddleware` class has been r
 
 The `Apiato\Core\Middleware\Http\Authenticate` class has been removed.
 Use `Illuminate\Auth\Middleware\Authenticate` instead.
+
+## Resource Key
+
+#### `HasResourceKey` Interface {#has-resource-key-interface}
+
+The `Apiato\Core\Contracts\HasResourceKey` interface has been renamed
+and moved to `Apiato\Http\Resources\ResourceKeyAware`.
+
+#### `HasResourceKey` Trait {#has-resource-key-trait}
+
+The `Apiato\Core\Traits\HasResourceKeyTrait` trait has been renamed
+and moved to `Apiato\Http\Resources\HasResourceKey`.
+
+## ModelTrait
+
+The `Apiato\Core\Abstracts\Traits\ModelTrait` trait has been renamed
+and moved to `Apiato\Core\Models\InteractsWithApiato`.
+
+## Value Objects
+
+`Apiato\Core\Values\Value` abstract class is now declared as `readonly`.
+
+Add the `readonly` keyword to your parent Value Object class and all Value Objects that extend it.
 
 ## Laravel Passport
 
@@ -326,6 +418,37 @@ Enable it by calling `enablePasswordGrant` in the `boot` method of one of your s
 public function boot(): void
 {
     Passport::enablePasswordGrant();
+}
+```
+
+### Deferrable Provider
+Remove the `Illuminate\Contracts\Support\DeferrableProvider` from the service provider that configures Passport.
+
+For example
+```php
+// before
+use App\Ship\Parents\Providers\ServiceProvider as ParentAuthServiceProvider;
+use Illuminate\Contracts\Support\DeferrableProvider;
+use Laravel\Passport\Passport;
+
+class AuthServiceProvider extends ParentAuthServiceProvider implements DeferrableProvider
+{
+    public function boot(): void
+    {
+        Passport::enablePasswordGrant();
+    }
+}
+
+// after
+use App\Ship\Parents\Providers\ServiceProvider as ParentAuthServiceProvider;
+use Laravel\Passport\Passport;
+
+class AuthServiceProvider extends ParentAuthServiceProvider
+{
+    public function boot(): void
+    {
+        Passport::enablePasswordGrant();
+    }
 }
 ```
 
@@ -349,60 +472,22 @@ Passport::tokensExpireIn(Carbon::now()->addMinutes((int)config('apiato.api.expir
 Review Carbon’s [release notes](https://github.com/briannesbitt/Carbon/releases/tag/3.0.0) and [documentation](https://carbon.nesbot.com/docs/#api-carbon-3) for more details.
 :::
 
-## ModelTrait
-
-The `Apiato\Core\Traits\ModelTrait` trait has been renamed
-and moved to `Apiato\Core\Models\InteractsWithApiato`.
-
-## Resource Key
-
-#### `HasResourceKey` Interface {#has-resource-key-interface}
-
-The `Apiato\Core\Contracts\HasResourceKey` interface has been renamed
-and moved to `Apiato\Http\Resources\ResourceKeyAware`.
-
-#### `HasResourceKey` Trait {#has-resource-key-trait}
-
-The `Apiato\Core\Traits\HasResourceKeyTrait` trait has been renamed
-and moved to `Apiato\Http\Resources\HasResourceKey`.
-
-## Value Objects
-
-`Apiato\Core\Values\Value` abstract class is now declared as `readonly`.
-
-Add the `readonly` keyword to your parent Value Object class and all Value Objects that extend it.
-
-[HasResourceKeyTrait](#has-resource-key-trait) has been removed from the Core Value Object (`Apiato\Core\Values\Value`).
-
-If your Value Objects are relying on the `HasResourceKeyTrait`,
-you need to refactor them to use the new [HasResourceKey](#has-resource-key-trait) trait
-and implement the [ResourceKeyAware](#has-resource-key-interface) interface.
-
-## Testing
-
-The testing utilities provided by Apiato have been simplified to embrace Laravel’s testing approach.
-
-The following methods are no longer available:
-- `makeCall`
-- `injectId`
-- `endpoint`
-- ...and others TODO add other methods
-
-:::tip
-For a gradual upgrade in large codebases, refer to the [Apiato Legacy Bridge](#upgrade-utilities).
-:::
-
-#### `TestCase` Class
-
-The `Apiato\Core\Abstracts\Tests\PhpUnit\TestCase` class namespace has changed to `Apiato\Core\Testing\TestCase`.
-
-#### `LazilyRefreshDatabase` Trait
-
-The `LazilyRefreshDatabase` trait has been removed from the Core parent TestCase.
-
-Add `LazilyRefreshDatabase` to your `App\Ship\Parents\Tests\TestCase` if you require this functionality.
-
 ## Request
+
+### Removed Methods
+
+The following methods have been removed from requests:
+- `injectData`
+- `withUrlParameters`
+- `getAccessArray`
+- `getDecodeArray`
+- `getUrlParametersArray`
+- `hasAccess`
+- `hasAnyPermissionAccess`
+- `hasAnyRoleAccess`
+- `check`
+- `mapInput`
+- `getInputByKey`
 
 :::tip
 For a gradual upgrade in large codebases, refer to the [Apiato Legacy Bridge](#upgrade-utilities).
@@ -410,18 +495,17 @@ For a gradual upgrade in large codebases, refer to the [Apiato Legacy Bridge](#u
 
 ### Authorization
 
-All custom authorization properties and methods have been removed:
-- `$access`
+Custom authorization features have been removed and `$access` property is no longer used.
+
+- Use [Laravel Policies](https://laravel.com/docs/11.x/authorization#creating-policies) for authorization.
+- Remove the `$access` property from your request classes.
+
 - `hasAccess`
 - `hasAnyPermissionAccess`
 - `hasAnyRoleAccess`
 - `check`
 
-Use [Laravel Policies](https://laravel.com/docs/11.x/authorization#creating-policies) for authorization.
-
-Remove the `$access` property from your request classes.
-
-**Example Conversion:**
+#### Example Conversion:
 ```php
 // before
 use App\Ship\Parents\Requests\Request as ParentRequest;
@@ -483,16 +567,7 @@ protected array $decode = ['id'];
 TODO: are decoded values still available in the all() method? Or they have to be pulled from the route?
 You can still retrieve decoded URL parameters via `$request->id`, `$request->input('id')`, or `$request->route('id')`.
 
-### Removed Methods
-TODO: check that we haven't missed any methods.
-
-The following methods have been removed from requests:
-- `injectData`
-- `withUrlParameters`
-- `mapInput`
-- `getInputByKey`
-
-### Sanitization Method
+### Input Sanitization
 
 `sanitizeInput` has been renamed to `sanitize`.
 
@@ -567,13 +642,14 @@ Apiato now returns `401` instead of `403` when a user is unauthenticated (matchi
 The `$this->transform` method in API Controllers is removed. Use the `Apiato\Support\Facades\Response` facade instead.
 
 TODO: write the docs and link it here
+
 Its API closely mirrors the old `$this->transform` methods. Refer to the new `Response` facade documentation for details.
 
-- Replace all `$this->transform` calls with the Response facade.
-- Update your `app/Ship/Configs/fractal.php` file to use the Apiato Response class
+Update your `app/Ship/Configs/fractal.php` file to use the Apiato Response class
   ```php
   'fractal_class' => \Apiato\Http\Response::class
   ```
+Replace all `$this->transform` calls with the Response facade.
 
 **Example**:
 ```php
@@ -634,7 +710,7 @@ use the [Legacy Bridge](#upgrade-utilities).
 
 ### Criteria
 
-The `Apiato\Core\Abstracts\Criteria` class has been moved to `Apiato\Core\Criteria`.
+The `Apiato\Core\Abstracts\Criterias` class has been moved to `Apiato\Core\Criteria`.
 
 ## Hash IDs
 
