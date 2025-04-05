@@ -104,7 +104,7 @@ Perform these steps to update your dependencies:
    Delete all Apiato first-party packages in `app/Containers/Vendor` to avoid dependency conflicts.
    These packages will be reinstalled after running `composer update`.
 2. **Consolidate Dependencies**  
-   If the following dependencies are defined in any Ship or Container `composer.json` file,
+   If the following dependencies are defined in the Ship or any Container `composer.json` file,
    move them to your application’s root `composer.json` file:
    - `apiato/core`
    - `laravel/passport`
@@ -333,14 +333,14 @@ Review Carbon’s [release notes](https://github.com/briannesbitt/Carbon/release
 The `Apiato\Core\Traits\ModelTrait` trait has been renamed
 and moved to `Apiato\Core\Models\InteractsWithApiato`.
 
-## ResourceKey
+## Resource Key
 
-#### `HasResourceKey` Interface {#hasResourceKeyInterface}
+#### `HasResourceKey` Interface {#has-resource-key-interface}
 
 The `Apiato\Core\Contracts\HasResourceKey` interface has been renamed
 and moved to `Apiato\Http\Resources\ResourceKeyAware`.
 
-#### `HasResourceKey` Trait {#hasResourceKeyTrait}
+#### `HasResourceKey` Trait {#has-resource-key-trait}
 
 The `Apiato\Core\Traits\HasResourceKeyTrait` trait has been renamed
 and moved to `Apiato\Http\Resources\HasResourceKey`.
@@ -351,11 +351,11 @@ and moved to `Apiato\Http\Resources\HasResourceKey`.
 
 Add the `readonly` keyword to your parent Value Object class and all Value Objects that extend it.
 
-[HasResourceKeyTrait](#hasResourceKeyTrait) has been removed from the Core Value Object (`Apiato\Core\Values\Value`).
+[HasResourceKeyTrait](#has-resource-key-trait) has been removed from the Core Value Object (`Apiato\Core\Values\Value`).
 
 If your Value Objects are relying on the `HasResourceKeyTrait`,
-you need to refactor them to use the new [HasResourceKey](#hasResourceKeyTrait) trait
-and implement the [ResourceKeyAware](#hasResourceKeyInterface) interface.
+you need to refactor them to use the new [HasResourceKey](#has-resource-key-trait) trait
+and implement the [ResourceKeyAware](#has-resource-key-interface) interface.
 
 ## Testing
 
