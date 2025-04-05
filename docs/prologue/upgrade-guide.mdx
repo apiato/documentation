@@ -327,6 +327,33 @@ Migrate your middleware configurations
 to the `bootstrap/app.php` file as per [Laravel’s middleware registration documentation](https://laravel.com/docs/11.x/middleware#registering-middleware).
 Then, remove your old `MiddlewareServiceProvider` classes.
 
+Let's
+say you have customized Laravel's `Illuminate\Auth\Middleware\RedirectIfAuthenticated` middleware
+and registered it in your `MiddlewareServiceProvider`:
+
+```php
+class MiddlewareServiceProvider extends ParentMiddlewareServiceProvider
+{
+    protected array $middlewareAliases = [
+        'guest' => RedirectIfAuthenticated::class,
+    ];
+}
+```
+
+You can now configure it in `bootstrap/app.php` like this:
+```php
+return Application::configure(basePath: $basePath)
+    ...
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->api(
+            replace: [
+                'guest' => RedirectIfAuthenticated::class,
+            ]
+        );
+    ...
+    ->create();
+```
+
 #### BroadcastServiceProvider
 - Removed: `Apiato\Core\Abstracts\Providers\BroadcastServiceProvider`
 - Action:
