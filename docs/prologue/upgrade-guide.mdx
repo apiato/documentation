@@ -404,6 +404,9 @@ The `Apiato\Core\Abstracts\Middlewares\Http\ProfilerMiddleware` class has been r
 The `Apiato\Core\Middleware\Http\Authenticate` class has been removed.
 Use `Illuminate\Auth\Middleware\Authenticate` instead.
 
+Custom middleware like `ProcessETag` and `ValidateJsonContent` must now be registered in the `bootstrap/app.php` file.
+Take a look at the [App Configuration](#app-configuration) section for details.
+
 ## Resource Key
 
 #### `HasResourceKey` Interface {#has-resource-key-interface}
