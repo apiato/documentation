@@ -752,7 +752,8 @@ The `Apiato\Core\Abstracts\Criterias` class has been moved to `Apiato\Core\Crite
 - `Hashids::encode(...)` → `hashids()->encode(...)`
 
 :::warning
-`decode` now can return an `int` or an `array` depending on the input. Previously, it always returned an array.
+`decode` method now returns an `int` or an `array` depending on the input.
+Previously, it always returned an `array`.
 :::
 
 ## Jobs
@@ -808,27 +809,3 @@ Some involve configuration or comments you may wish to sync:
 
 - [Comparison for apiato/apiato](https://github.com/apiato/apiato/compare/12.x...13.x)
 - [Comparison for apiato/core](https://github.com/apiato/core/compare/8.x...13.x)
-
-## Optional
-
-### Namespaces
-
-Consider renaming these directories for consistency with the new Apiato structure:
-
-- `app/Ship/Middlewares` → `app/Ship/Middleware`
-- `app/Ship/Parents/Middlewares` → `app/Ship/Parents/Middleware`
-
-### Testing
-
-- Use Laravel’s `fake()` helper for generating fake data instead of `$this->faker`.
-- Remove old Apiato-specific code from `App\Ship\Parents\Tests\TestCase`. Keep any custom logic you still need.
-
-**Example**:
-```php
-// Remove all code that's no longer necessary for Apiato testing
-// e.g., makeCall, transform method usage, setUp methods from older versions, etc.
-```
-
-### Added Items
-
-- Copy the new `ValidateAppId` middleware from [Apiato 13.x](https://github.com/apiato/apiato/blob/13.x/app/Ship/Middleware/ValidateAppId.php) into `app/Ship/Middleware` if you need this feature.
