@@ -750,10 +750,15 @@ The `Apiato\Core\Abstracts\Criterias` class has been moved to `Apiato\Core\Crite
 - `$this->encode(...)` → `hashids()->encode(...)`
 - `Hashids::decode(...)` → `hashids()->decode(...)`
 - `Hashids::encode(...)` → `hashids()->encode(...)`
+- etc...
 
 :::warning
 `decode` method now returns an `int` or an `array` depending on the input.
 Previously, it always returned an `array`.
+:::
+
+:::info
+`HashIdTrait` was being used in the Controller and Request class.
 :::
 
 ## Jobs
@@ -798,6 +803,25 @@ Apiato no longer uses Laravel’s `database/seeders/DatabaseSeeder.php`. Instead
 
 The `Apiato\Core\Abstracts\Commands\ConsoleCommand` class has been renamed
 and moved to `Apiato\Core\Console\Command`.
+
+## Notifications
+The `notification.channels` configuration has been removed.
+
+You can no longer add a notification channel to all notifications
+by adding it to the `notification.channels` array in the configuration file.
+
+```php
+abstract class Notification extends LaravelNotification
+{
+    // This method has been removed from the parent class
+    public function via($notifiable): array
+    {
+        return config('notification.channels');
+    }
+}
+```
+
+If you depend on this feature, you can add the removed method to your parent notification class.
 
 ## Miscellaneous
 
