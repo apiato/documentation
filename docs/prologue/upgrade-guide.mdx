@@ -312,6 +312,10 @@ Custom middleware like `ProcessETag` and `ValidateJsonContent` must now be regis
 Take a look at the [App Configuration](#app-configuration) section for details.
 
 ## Resource Key
+If you have custom models that don't extend the `App\Ship\Parents\Models` models,
+you need to implement the `Apiato\Http\Resources\ResourceKeyAware` interface
+and use the `Apiato\Http\Resources\HasResourceKey` trait.
+e.g., `App\Containers\AppSection\Authorization\Models\Roles`.
 
 #### `HasResourceKey` Interface {#has-resource-key-interface}
 The `Apiato\Core\Contracts\HasResourceKey` interface has been renamed
@@ -329,6 +333,11 @@ and moved to `Apiato\Core\Models\InteractsWithApiato`.
 `Apiato\Core\Values\Value` abstract class is now declared as `readonly`.
 
 Add the `readonly` keyword to your parent Value Object class and all Value Objects that extend it.
+
+## Models
+Models `$resourceKey` property is no longer used.
+
+If you were customizing the resource key in your models, you can now do so by overriding the `getResourceKey` method.
 
 ## Laravel Passport
 
@@ -675,6 +684,13 @@ Apiato no longer uses Laravel’s `database/seeders/DatabaseSeeder.php`. Instead
 
 - Remove `database/seeders/DatabaseSeeder.php` if present.
 - Move your seeding logic into `Ship` or `Container` seeder classes.
+
+
+These commands have been removed:
+- `apiato:seed-deploy`
+- `apiato:seed-test`
+
+Create your own custom command to seed your database.
 
 ## Commands
 The `Apiato\Core\Abstracts\Commands\ConsoleCommand` class has been renamed
