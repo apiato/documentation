@@ -4,11 +4,9 @@ title: Upgrade Guide
 ---
 
 #### Upgrading Laravel to 11.0 from 10.x
-
 Follow the official [Laravel 11 upgrade guide](https://laravel.com/docs/11.x/upgrade) to update your codebase accordingly.
 
 #### Upgrading Apiato to 13.0 from 12.x and Core to 13.0 from 8.x
-
 This guide will walk you through upgrading Apiato and your project to the latest versions.
 
 ## Upgrade Utilities
@@ -28,7 +26,6 @@ Learn more about [Rector](https://getrector.com)
 ## Updating Dependencies
 
 ### PHP 8.2.0 Required
-
 PHP 8.2.0 or greater is now required.
 
 ### Composer Dependencies
@@ -109,13 +106,11 @@ composer update
 ```
 
 ## Abstract Namespace
-
 The Core abstract classes have been relocated from `Apiato\Core\Abstracts` to `Apiato\Core`.
 
 Update your codebase to use this new namespace.
 
 ## App Configuration
-
 Laravel 11 and Apiato 13 configurations are simplified, and both now provide a fluid API for configuration.
 
 Replace the contents of `bootstrap/app.php` file with the following as a base, and customize it as needed:
@@ -211,7 +206,6 @@ to extend `Apiato\Core\Providers\ServiceProvider` class instead.
 e.g, `App\Ship\Parents\Providers\ServiceProvider` class.
 
 ### Autoloading
-
 All providers within the `Providers` directories of Containers and Ship are now autoloaded.
 There is no longer a requirement to have a specifically named `MainServiceProvider` service provider per container.
 
@@ -274,12 +268,10 @@ Remove your custom `App\Ship\Parents\Providers\BroadcastServiceProvider` and con
 as shown [above](#app-configuration).
 
 ### Parent Method Calls
-
 You no longer need to call `parent::register()` or `parent::boot()` in your service providers.
 All service providers’ `register` and `boot` methods are now invoked independently.
 
 ### Removed Properties
-
 The `$serviceProviders` and `$aliases` properties have been removed.
 Refactor your service providers to register or alias dependencies within the `register` and `boot` methods.
 
@@ -304,7 +296,6 @@ public function register(): void
 ```
 
 ## Middleware
-
 The following classes have been moved or renamed:
 | From | To |
 |:-----------------------------------------------------------------------|:---------------------------------------------|
@@ -323,22 +314,18 @@ Take a look at the [App Configuration](#app-configuration) section for details.
 ## Resource Key
 
 #### `HasResourceKey` Interface {#has-resource-key-interface}
-
 The `Apiato\Core\Contracts\HasResourceKey` interface has been renamed
 and moved to `Apiato\Http\Resources\ResourceKeyAware`.
 
 #### `HasResourceKey` Trait {#has-resource-key-trait}
-
 The `Apiato\Core\Traits\HasResourceKeyTrait` trait has been renamed
 and moved to `Apiato\Http\Resources\HasResourceKey`.
 
 ## ModelTrait
-
 The `Apiato\Core\Abstracts\Traits\ModelTrait` trait has been renamed
 and moved to `Apiato\Core\Models\InteractsWithApiato`.
 
 ## Value Objects
-
 `Apiato\Core\Values\Value` abstract class is now declared as `readonly`.
 
 Add the `readonly` keyword to your parent Value Object class and all Value Objects that extend it.
@@ -352,7 +339,6 @@ Copy Passport migrations from the [Apiato 13.x branch](https://github.com/apiato
 (create the `Data/Migrations` directory if it doesn’t exist).
 
 ### Password Grant
-
 As of Passport 12.0, the password grant is disabled by default.
 
 Enable it by calling `enablePasswordGrant` in the `boot` method of one of your service providers:
@@ -396,7 +382,6 @@ class AuthServiceProvider extends ParentAuthServiceProvider
 ```
 
 ## Carbon 3
-
 In Carbon v3, PHPDoc annotations have been converted to real types. Methods that previously accepted different argument types may now throw a `TypeError`.
 
 For instance, this example will now throw an error if `config('apiato.api.expires-in')` returns a string:
@@ -418,7 +403,6 @@ Review Carbon’s [release notes](https://github.com/briannesbitt/Carbon/release
 ## Request
 
 ### Removed Methods
-
 The following methods have been removed from requests:
 - `injectData`
 - `withUrlParameters`
@@ -437,7 +421,6 @@ For a gradual upgrade in large codebases, refer to the [Apiato Legacy Bridge](#u
 :::
 
 ### Authorization
-
 Custom authorization features have been removed and `$access` property is no longer used.
 
 - Use [Laravel Policies](https://laravel.com/docs/11.x/authorization#creating-policies) for authorization.
@@ -480,7 +463,6 @@ final class DeleteUserRequest extends ParentRequest
 ```
 
 ### URL Parameter Validation
-
 The `$urlParameters` property and the `getUrlParametersArray` method have been removed.
 URL parameters are no longer available for validation in the `rules` method.
 
@@ -493,7 +475,6 @@ Note that invalid URL parameters now result in a 404 error rather than a 422 err
 :::
 
 ### Hashed ID Decoding
-
 The `$decode` property now also decodes URL parameters automatically.
 
 ```php
@@ -511,7 +492,6 @@ TODO: are decoded values still available in the all() method? Or they have to be
 You can still retrieve decoded URL parameters via `$request->id`, `$request->input('id')`, or `$request->route('id')`.
 
 ### Input Sanitization
-
 `sanitizeInput` has been renamed to `sanitize`.
 
 ## Error Handling
@@ -523,7 +503,6 @@ All Apiato custom error-handling logics has been removed.
 - `getErrors`
 
 ### ExceptionsHandler
-
 The custom `App\Ship\Exceptions\Handlers\ExceptionsHandler` is no longer used.
 
 Remove this class and configure exception handling in `bootstrap/app.php` file.
@@ -548,7 +527,6 @@ Update your custom exceptions:
 - Extend `App\Ship\Parents\Exceptions\Exception` for non-HTTP errors.
 
 ### Exception Instantiation
-
 Exceptions now require mandatory constructor parameters.
 For example, calling `new NotFoundHttpException()` with no arguments no longer works.
 You have to pass the `$message` and the `$code` arguments.
@@ -581,7 +559,6 @@ Apiato now returns `401` instead of `403` when a user is unauthenticated (matchi
 ## Response
 
 ### Transformation
-
 The `$this->transform` method in API Controllers is removed. Use the `Apiato\Support\Facades\Response` facade instead.
 
 TODO: write the docs and link it here
@@ -610,40 +587,32 @@ See [Upgrade Utilities](#upgrade-utilities) for automated refactoring utilities.
 :::
 
 ### Filtering
-
 TODO: write the docs and link it here
 The approach for filtering responses has changed. Refer to the new documentation on filtering responses, then update your code accordingly.
 
 ## Repository
-
 Some repository methods are strongly typed or behave differently.
 
 #### `boot` Method
-
 `boot` now has a `void` return type.
 
 If you have overridden the `boot` method, adjust your method signature accordingly.
 
 #### `getById` Method
-
 `getById` has been renamed to `findOrFail`.
 
 #### `delete` Method
-
 `delete` method now returns `bool` or throws an exception.
 
 If you have overridden the `delete` method, adjust your method signature accordingly.
 
 #### `create` Method
-
 `create` now throws `Apiato\Core\Repositories\Exceptions\ResourceCreationFailed` instead of `\Exception`.
 
 #### `update` Method
-
 `update` now throws `Apiato\Core\Repositories\Exceptions\ResourceNotFound` instead of `\Illuminate\Database\Eloquent\ModelNotFoundException`.
 
 #### `find` Method
-
 `find` now returns `null` if no result is found (mirroring Laravel’s default `find` behavior). Previously, it might have thrown an exception.
 
 :::info Maintaining Previous Behavior
@@ -652,11 +621,9 @@ use the [Legacy Bridge](#upgrade-utilities).
 :::
 
 ### Criteria
-
 The `Apiato\Core\Abstracts\Criterias` class has been moved to `Apiato\Core\Criteria`.
 
 ## Hash IDs
-
 `Apiato\Core\Traits\HashIdTrait` is removed. Use the `hashids()` helper function instead.
 
 - `$this->decode(...)` → `hashids()->decode(...)`
@@ -675,7 +642,6 @@ Previously, it always returned an `array`.
 :::
 
 ## Jobs
-
 The Core Job class (Apiato\Core\Jobs\Job) no longer includes any traits or implements interfaces.
 
 Add the necessary traits and interfaces in your Ship’s parent Job class. For example:
@@ -698,7 +664,6 @@ abstract class Job extends AbstractJob implements ShouldQueue
 ```
 
 ## Validation
-
 The custom `no_spaces` validation rule has been removed.
 
 Remove its usage or register it manually in the boot method of your service provider.
@@ -706,14 +671,12 @@ Remove its usage or register it manually in the boot method of your service prov
 See the [source code](https://github.com/apiato/core/blob/8.x/src/Traits/ValidationTrait.php) for reference.
 
 ## Database Seeding
-
 Apiato no longer uses Laravel’s `database/seeders/DatabaseSeeder.php`. Instead, place your seeders in the Ship or any Container’s `database/seeders` directory:
 
 - Remove `database/seeders/DatabaseSeeder.php` if present.
 - Move your seeding logic into `Ship` or `Container` seeder classes.
 
 ## Commands
-
 The `Apiato\Core\Abstracts\Commands\ConsoleCommand` class has been renamed
 and moved to `Apiato\Core\Console\Command`.
 
@@ -737,7 +700,6 @@ abstract class Notification extends LaravelNotification
 If you depend on this feature, you can add the removed method to your parent notification class.
 
 ## Miscellaneous
-
 We recommend
 reviewing changes in [apiato/apiato](https://github.com/apiato/apiato) and [apiato/core](https://github.com/apiato/core) repositories between versions 12.x and 13.x and 8.x and 13.x respectively,
 using GitHub’s comparison tools.
