@@ -17,8 +17,8 @@ However, they come with additional rules and conventions specific to Apiato.
 To generate new events and listeners you may use the following interactive commands:
 
 ```
-php artisan apiato:generate:event
-php artisan apiato:generate:listener
+php artisan apiato:make:event
+php artisan apiato:make:listener
 ```
 
 ## Rules
@@ -104,10 +104,10 @@ class EventServiceProvider extends ParentEventServiceProvider
 ```
 
 To generate an event service provider
-you may use the `apiato:generate:provider` interactive command:
+you may use the `apiato:make:provider` interactive command:
 
 ```
-php artisan apiato:generate:provider
+php artisan apiato:make:provider
 ```
 
 Remember to also register the `EventServiceProvider` in the container's `MainServiceProvider`:

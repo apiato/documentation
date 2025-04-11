@@ -10,10 +10,10 @@ Apiato configs are just Laravel configs, and they function in the exact same way
 However, they come with additional rules and conventions specific to Apiato.
 
 To generate new configs
-you may use the `apiato:generate:configuration` interactive command:
+you may use the `apiato:make:configuration` interactive command:
 
 ```
-php artisan apiato:generate:configuration
+php artisan apiato:make:configuration
 ```
 
 ## Rules

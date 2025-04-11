@@ -9,10 +9,10 @@ tags:
 
 Exceptions are used to handle errors and exceptions in the application.
 
-To generate new exceptions you may use the `apiato:generate:exception` interactive command:
+To generate new exceptions you may use the `apiato:make:exception` interactive command:
 
 ```
-php artisan apiato:generate:exception
+php artisan apiato:make:exception
 ```
 
 ## Definition & Principles

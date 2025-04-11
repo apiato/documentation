@@ -20,10 +20,10 @@ you can refer to the [official documentation of Fractal](https://fractal.thephpl
 which is the underlying library used for handling transformations in Apiato.
 
 To generate new transformers
-you may use the `apiato:generate:transformer` interactive command:
+you may use the `apiato:make:transformer` interactive command:
 
 ```
-php artisan apiato:generate:transformer
+php artisan apiato:make:transformer
 ```
 
 ## Definition & Principles

@@ -18,9 +18,9 @@ You can refer to Laravel documentation on [HTTP tests](https://laravel.com/docs/
 To generate new tests you may use the following interactive commands:
 
 ```
-php artisan apiato:generate:test:unit
-php artisan apiato:generate:test:functional
-php artisan apiato:generate:test:testcase
+php artisan apiato:make:test:unit
+php artisan apiato:make:test:functional
+php artisan apiato:make:test:testcase
 ```
 
 ## Definitions
@@ -645,23 +645,3 @@ ensuring that the expected hashed IDs are present within your model collections.
 :::caution Deprecation Notice
 This method will be removed in the next major release and will not be available in test classes.
 :::
-
-## Create Live Testing Data
-
-To test your application using live testing data,
-such as creating items in an inventory, you can utilize the feature designed specifically for this purpose.
-It allows for the automatic generation of testing data,
-which can be helpful during staging or when real people are testing your application.
-
-To create your live testing data, navigate to the `app/Ship/Seeder/SeedTestingData.php` seeder class.
-Within this class, you can define the logic and data generation process for your testing data.
-
-Once you have defined your testing data,
-you can run the following command in your terminal:
-
-```
-php artisan apiato:seed-test
-```
-
-This command triggers the seeding process specifically for testing data,
-populating your application with the generated data.

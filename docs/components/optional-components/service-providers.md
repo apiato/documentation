@@ -13,10 +13,10 @@ and they function in the exact same way as Laravel service providers.
 However, they come with additional rules and conventions specific to Apiato.
 
 To generate new service providers
-you may use the `apiato:generate:provider` interactive command:
+you may use the `apiato:make:provider` interactive command:
 
 ```
-php artisan apiato:generate:provider
+php artisan apiato:make:provider
 ```
 
 There are two distinct types of service providers within a container:

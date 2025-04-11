@@ -12,10 +12,10 @@ Apiato policies are just [Laravel Policies](https://laravel.com/docs/authorizati
 and they function in the exact same way as Laravel policies.
 However, they come with additional rules and conventions specific to Apiato.
 
-To generate new policies you may use the `apiato:generate:policy` interactive command:
+To generate new policies you may use the `apiato:make:policy` interactive command:
 
 ```
-php artisan apiato:generate:policy
+php artisan apiato:make:policy
 ```
 
 ## Rules
@@ -72,10 +72,10 @@ class AuthServiceProvider extends ParentAuthProvider
 ```
 
 To generate an event service provider
-you may use the `apiato:generate:provider` interactive command:
+you may use the `apiato:make:provider` interactive command:
 
 ```
-php artisan apiato:generate:provider
+php artisan apiato:make:provider
 ```
 
 Remember to also register the `AuthServiceProvider` in the container's `MainServiceProvider`:

@@ -11,10 +11,10 @@ Apiato migrations are just [Laravel Migrations](https://laravel.com/docs/migrati
 and they function in the exact same way as Laravel migrations.
 However, they come with additional rules and conventions specific to Apiato.
 
-To generate new migrations you may use the `apiato:generate:migration` interactive command:
+To generate new migrations you may use the `apiato:make:migration` interactive command:
 
 ```
-php artisan apiato:generate:migration
+php artisan apiato:make:migration
 ```
 
 ## Rules

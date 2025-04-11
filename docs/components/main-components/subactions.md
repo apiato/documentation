@@ -17,10 +17,10 @@ SubActions serve to share a predefined set of Tasks.
 
 All the features and capabilities available for regular Actions are also applicable to SubActions.
 
-To generate new SubActions you may use the `apiato:generate:subaction` interactive command:
+To generate new SubActions you may use the `apiato:make:subaction` interactive command:
 
 ```
-php artisan apiato:generate:subaction
+php artisan apiato:make:subaction
 ```
 
 ## Definition & Principles

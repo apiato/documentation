@@ -26,10 +26,10 @@ In summary, a Container represents a cohesive set of related functionalities.
 It can be a specific feature or a wrapper around a RESTful API resource.
 
 To generate new containers along with all their [components](components.md),
-you may use the `apiato:generate:container` interactive command:
+you may use the `apiato:make:container` interactive command:
 
 ```
-php artisan apiato:generate:container
+php artisan apiato:make:container
 ```
 
 ## Composer Dependencies
@@ -48,8 +48,8 @@ The choice of location depends on what is most relevant and convenient for your 
 
 Each Container has the option to include a `readme.md` file at its root, which serves to explain the Container's purpose and how to use it.
 
-To generate new readme files, you may use the `apiato:generate:readme` interactive command:
+To generate new readme files, you may use the `apiato:make:readme` interactive command:
 
 ```
-php artisan apiato:generate:readme
+php artisan apiato:make:readme
 ```

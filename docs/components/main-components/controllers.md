@@ -16,10 +16,10 @@ tags:
 serving the requested data and constructing the corresponding response.
 
 To generate new controllers
-you may use the `apiato:generate:controller` interactive command:
+you may use the `apiato:make:controller` interactive command:
 
 ```
-php artisan apiato:generate:controller
+php artisan apiato:make:controller
 ```
 
 ## Definition & Principles

@@ -11,10 +11,14 @@ tags:
 
 [Routes](https://laravel.com/docs/routing) are responsible for mapping incoming HTTP requests to their corresponding controller functions.
 
-To generate new routes you may use the `apiato:generate:route` interactive command:
+Apiato introduces a new approach to route organization
+and does not use the default `routes/web.php` and `routes/api.php` files.
+Therefore, you won't find these files in Apiato.
+
+To generate new routes, you may use the `apiato:make:route` interactive command:
 
 ```
-php artisan apiato:generate:route
+php artisan apiato:make:route
 ```
 
 ## Definition & Principles

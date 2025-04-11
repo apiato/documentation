@@ -13,10 +13,10 @@ Apiato factories are just [Laravel Factories](https://laravel.com/docs/eloquent-
 and they function in the exact same way as Laravel factories.
 However, they come with additional rules and conventions specific to Apiato.
 
-To generate new factories you may use the `apiato:generate:factory` interactive command:
+To generate new factories you may use the `apiato:make:factory` interactive command:
 
 ```
-php artisan apiato:generate:factory
+php artisan apiato:make:factory
 ```
 
 ## Rules

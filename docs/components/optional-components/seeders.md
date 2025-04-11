@@ -11,10 +11,10 @@ Apiato seeders are just [Laravel Seeders](https://laravel.com/docs/seeding),
 and they function in the exact same way as Laravel seeders.
 However, they come with additional rules and conventions specific to Apiato.
 
-To generate new seeders you may use the `apiato:generate:seeder` interactive command:
+To generate new seeders you may use the `apiato:make:seeder` interactive command:
 
 ```
-php artisan apiato:generate:seeder
+php artisan apiato:make:seeder
 ```
 
 ## Rules
@@ -72,27 +72,3 @@ For instance, `UserPermissionsSeeder_1` will be loaded before `UserPermissionsSe
    2. Subsequently, it proceeds to load seeders with names containing `_2`.
    3. This pattern continues until it loads all seeders with names containing `_n`.
    4. Lastly, any remaining seeders without the `_n` suffix are loaded.
-
-## Special Seeders
-
-### Testing
-
-For testing purposes, Apiato offers a special seeder class to seed testing data.
-You can find this seeder class at `app/Ship/Seeders/SeedTestingData.php`.
-It's important to note that this seeder is not loaded automatically by Apiato.
-Instead, you can manually trigger the seeding process by running the following command:
-
-```
-php artisan apiato:seed-test
-```
-
-### Deployment
-
-In addition to the testing seeder, Apiato also provides a special seeder class for production data seeding.
-You can locate this seeder class at `app/Ship/Seeders/SeedDeploymentData.php`.
-Similar to the testing seeder, the deployment seeder is not automatically loaded by Apiato.
-You can call this seeder and populate your database with production data by executing the following command:
-
-```
-php artisan apiato:seed-deployment
-```
