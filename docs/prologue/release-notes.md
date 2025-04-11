@@ -35,7 +35,7 @@ See the **Full Changelog**: https://github.com/apiato/core/compare/v12.0.0...v13
 
 Possible breaking changes are document in the [upgrade guide](https://apiato.io/docs/prologue/upgrade-guide).
 
-See the Core changelog.
+See the Core changelog. TODO: add link
 
 TODO add link to docs for every new thing that has a docs page.
 Also move the docs written under them to their respective doc page.
