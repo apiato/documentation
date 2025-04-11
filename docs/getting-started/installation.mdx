@@ -130,14 +130,7 @@ Attempting to do so could expose sensitive files present within your application
 
 By default, Apiato uses `api` as a subdomain for all endpoints and adds only the API version as a prefix,
 resulting in URLs like `api.apiato.test/v1`.
-However, you can change this behavior.
-
-For example, if you'd like to achieve urls like `apiato.test/api/`, follow these steps:
-
-1. Open your `.env` file and modify the API domain by updating the `API_URL` value from `http://api.apiato.test` to `http://apiato.test` to remove the subdomain.
-2. In the `app/Ship/Configs/apiato.php` configuration file:
-    - Set the `prefix` to `api/`.
-    - Set `enable_version_prefix` to `false`.
+However, you can customize this behavior using the [Apiato configuration](../framework-features/advance-configuration.mdx) class.
 
 ## Generating API Documentation
 
@@ -171,6 +164,5 @@ Now that you have created your Apiato project, you may be wondering what to lear
 If you're looking for a place to start, you should check out the following resources:
 
 * [Apiato Architecture](../architecture-concepts/readme.md)
-* [Customized Laravel Components](customized-laravel-components.md)
 * [Framework Features](../framework-features/index.md)
 * [Container Installer](../pacakges/readme.md)
