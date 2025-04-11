@@ -11,7 +11,7 @@ while minor and patch releases may be released as often as every week.
 Minor and patch releases should never contain breaking changes.
 
 When referencing the Apiato framework or its components from your application or package,
-you should always use a version constraint such as `^12.0`,
+you should always use a version constraint such as `^13.0`,
 since major releases of Apiato do include breaking changes.
 However, we strive to always ensure you may update to a new major release in one day or less.
 
@@ -24,56 +24,86 @@ For all Apiato releases, bug fixes are provided for 18 months and security fixes
 | 10      | 7.3 - 8.1 | April 25th, 2021 | October 25th, 2022 | April 25th, 2023     |
 | 11      | 8.0 - 8.2 | April 27th, 2022 | October 27th, 2023 | April 27th, 2024     |
 | 12      | 8.1 - 8.2 | June 4th, 2023   | December 4th, 2024 | June 4th, 2025       |
-| 13      | 8.2       | Q1 2024          | August 5th, 2025   | February 3rd, 2026   |
+| 13      | 8.2 - 8.4 | April 13th, 2025 | October 27th, 2026 | April 27th, 2027     |
 
 (*) Supported PHP versions
 
-## Apiato 12
+## Apiato 13
 
-**Full Changelog**: https://github.com/apiato/apiato/compare/v11.3.2...v12.0.0
+A lot of files have been moved around, renamed or removed.
+See the **Full Changelog**: https://github.com/apiato/core/compare/v12.0.0...v13.0.0.
 
-#### PHP 8.1
-Apiato 12.x requires a minimum PHP version of 8.1.
+Possible breaking changes are document in the [upgrade guide](https://apiato.io/docs/prologue/upgrade-guide).
 
-### Breaking Changes
+See the Core changelog.
 
-* Upgraded to Laravel v10 (All Laravel files (e.g. configs, .env, etc...) are now synced with the latest Laravel changes)
-* Updated Composer dependencies to their latest version
-* Laravel Passport route registration & customization has changed. Passport routes are now reside in a dedicated [route file](https://github.com/apiato/apiato/blob/3d368c0ead610bfd9d5566ad7652419346732e53/app/Containers/AppSection/Authentication/UI/API/Routes/Passport.v1.private.php) (Instead of registering them in the provider).
-* Middleware `$routeMiddleware` field is renamed to `$middlewareAliases`
-* Trimmed down the TestCase by removing some useless traits including:
-```
-TestsMockHelperTrait
-TestsResponseHelperTrait
-```
-* `encode()` method return value has changed -> In case of unencodable value (e.g. `null`), now returns `null` instead of `''`
-* `decode()` method return value has changed -> In case of undecodable value (e.g. `null`), now returns `null` instead of `[]`
-* [StateKeeperTrait](https://github.com/apiato/core/blob/cbf2acacf42ee442db5a301773c26944a049bfc1/Traits/StateKeeperTrait.php) is removed from `Request`
+TODO add link to docs for every new thing that has a docs page.
+Also move the docs written under them to their respective doc page.
 
-### None Breaking Changes
+## Notable Changes
+* update min PHP version to `^8.2`
+* update min Laravel version to `^11.23`
+* allow configuration using a config class (Similar to Laravel)
+* allow publishing `apiato.php` configs
+* rename generate command from `apiato:generate` to `apiato:make`
+* add `Apiato\Support\Facades\Response` facade which provides:
+  * eager loading requested includes
+  * improved filtering of the response
+  * excluding includes
+* add `Collection::containsDecodedHash` macro
+* add `Collection::decode` macro
+* add `Config::unset` macro
+* add `apiato` helper function
+* add `shared_path` helper function
+* add `hashids` helper function
+* add `ValidateAppId` middleware
 
-* Everything is refactored to use `constructor` injection instead of directly using the Service Container like so `app(CreateUserByCredentialsTask::class)->run()`
-* Added more tests and refactored the rest
-* Switched to `invokable` controllers
-```php
-\\ from
-Route::get('profile', [GetAuthenticatedUserController::class, 'getAuthenticatedUser']);
-\\ to
-Route::get('profile', GetAuthenticatedUserController::class);
-```
-* All rotues are moved into the private documentation. e.g.
-  `RefreshProxyForWebClient.v1.public.php` -> `RefreshProxyForWebClient.v1.private.php`
-* Added some getter methods to the [Request](https://github.com/apiato/core/blob/789606b41f1024c2da506bb6765d2fbfa85897cd/Abstracts/Requests/Request.php) including:
-```
-withUrlParameters()
-getAccessArray()
-getDecodeArray()
-getUrlParametersArray()
-```
-* Added a `TestAssertionHelperTrait` to the TestCase which provides some usefull assertions
+### Configs
 
-### Bug Fixes
-* `withMeta()` method on [ResponseTrait](https://github.com/apiato/core/blob/789606b41f1024c2da506bb6765d2fbfa85897cd/Traits/ResponseTrait.php) now correctly includes added meta data
-* Calling invokable controllers from routes [#174](https://github.com/apiato/core/issues/174)
-* Exception when try to generate an WEB CRUD Controller from generator [#171](https://github.com/apiato/core/issues/171)
-* PHP 8.1 warning on passing null to explode [#176](https://github.com/apiato/core/issues/176)
+#### Removed
+* `app/Ship/Configs/notification.php` config file
+* `apiato.api.prefix`  
+  configure via Apiato::config
+* `apiato.api.enable_version_prefix`  
+  configure via Apiato::config
+* `apiato.requests.allow-roles-to-access-all-routes`
+* `apiato.requests.force-valid-includes`
+* `apiato.requests.params`
+* `apiato.seeders`
+* `apiato.tests`
+* `appSection-authentication.require_email_verification`
+* `appSection-authentication.email_verification_link_expiration_time_in_minute`  
+  Apiato now uses Laravel email verification. Use `MustVerifyEmail` interface. read Laravel docs to learn more about how to and available configs.
+* `appSection-authentication.login`  
+  login with multiple field feature has been removed
+* `appSection-authentication.allowed-reset-password-urls`
+* `appSection-authentication.allowed-verify-email-urls`
+
+#### Changed
+* `apiato.api.expires-in` renamed and moved to `appSection-authentication.tokens-expire-in`
+* `apiato.api.refresh-expires-in` renamed and moved to `appSection-authentication.refresh-tokens-expire-in`
+* `apiato.throttle` renamed to `apiato.rate-limiter`
+
+#### Added
+* `apiato.defaults.app`
+* `apiato.rate-limiter.name`
+* `apiato.apps.web.url`
+
+### Commands
+
+#### Removed
+* `apiato`  
+  use `php artisan about` instead
+* `apiato:seed-deploy`
+* `apiato:seed-test`
+
+### Misc
+
+#### Removed
+* `Apiato\Core\Middlewares\Http\ProfilerMiddleware` middleware class
+* `no_spaces` [custom validation rule](https://github.com/apiato/core/blob/8.x/src/Traits/ValidationTrait.php)
+* `uncamelize` helper function
+* all custom test assertions (except [assertDatabaseTable](https://github.com/apiato/core/blob/065c8e7600048c2d0c3168993d99535511eb418c/src/Traits/TestTraits/PhpUnit/TestAssertionHelperTrait.php#L77))
+
+### Error Handling
+Error handling is completely reworked. See to the [upgrade guide](https://apiato.io/docs/prologue/upgrade-guide) for more Details.
