@@ -44,19 +44,6 @@ app
 
 Notifications are defined exactly as you would define them in Laravel.
 
-## Default Notification Channels
-
-In Apiato, you have the ability to set default notification channels that will be used for all your notifications.
-This configuration can be found in the `notification.php` file located in the `app/Ship/Configs` directory.
-
-By specifying default notification channels in this configuration file,
-you establish a consistent choice of channels for your notifications throughout the application.
-
-However, should you need to customize the notification channels for specific notification classes,
-or if you prefer to define channels on a per-notification basis,
-you can do so by overriding the `via` method within the respective notification class.
-This allows you to tailor the channel selection based on individual notification requirements or use cases.
-
 ## Database Notifications Migration
 
 When setting up database notifications,
@@ -68,4 +55,4 @@ However, Apiato already provides a migration file
 named `xxxx_xx_xx_xxxxxx_create_notifications_table.php` in the `app/Ship/Migrations` directory.
 As a result, you don't need to manually generate the migration file.
 You can directly run the migrations using the `php artisan migrate` command,
-and the notifications table will be created for you.
+and the `notifications` table will be created for you.
