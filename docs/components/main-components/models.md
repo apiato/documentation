@@ -51,16 +51,17 @@ Models are defined exactly as you would define them in Laravel.
 ## Model Trait
 
 If your model does not extend the `App\Ship\Parents\Models\Model` or the `App\Ship\Parents\Models\UserModel` class,
-it is essential to incorporate the `ModelTrait` trait into your model.
+it is essential to implement the `ResourceKeyAware` interface
+and use the `InteractsWithApiato` trait in your model.
 By doing so, your model will benefit from various functionalities provided by the trait,
 such as hash ids and other features necessary for proper integration with the framework.
 
 ```php
-use Apiato\Core\Traits\ModelTrait;
+use Apiato\Core\Models\InteractsWithApiato;
+use Apiato\Http\Resources\ResourceKeyAware;
 
-class Demo
+class Demo implements ResourceKeyAware
 {
-    use ModelTrait;
-    ...
+    use InteractsWithApiato;
 }
 ```
