@@ -48,7 +48,7 @@ app
 
 Models are defined exactly as you would define them in Laravel.
 
-## Model Trait
+## Custom Models {#custom-models}
 
 If your model does not extend the `App\Ship\Parents\Models\Model` or the `App\Ship\Parents\Models\UserModel` class,
 it is essential to implement the `ResourceKeyAware` interface
