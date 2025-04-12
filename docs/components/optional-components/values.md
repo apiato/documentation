@@ -45,7 +45,7 @@ app
 ## Code Example
 
 ```php
-class Location extends Value
+readonly class Location extends Value
 {
     public function __construct(
         public float $latitude,
