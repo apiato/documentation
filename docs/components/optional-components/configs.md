@@ -19,10 +19,10 @@ php artisan apiato:make:configuration
 ## Rules
 
 - Containers MAY have as many config files as they need.
-- All container-specific and third-party package config files MUST be placed in the `app/Containers/{Section}/{Container}/Configs` directory.
+- All container-specific config files MUST be placed in the `app/Containers/{Section}/{Container}/Configs` directory.
 - All general config files MUST be placed in the `app/Ship/Configs` directory.
 - All Laravel config files MUST be kept in the root `config` folder.
-- You MUST NOT add any non-Laravel or third-party config files to the root `config` folder.
+- You MUST NOT add any config files to the root `config` folder.
 
 ## Folder Structure
 
