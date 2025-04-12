@@ -50,43 +50,8 @@ app
 
 ## Code Example
 
-```php
-use ...
-use App\Ship\Parents\Mails\Mail as ParentAction;
-
-class WelcomeMail extends ParentMail ShouldQueue
-{
-    use Queueable;
-
-    public function __construct(protected User $recipient)
-    {
-    }
-
-    public function build()
-    {
-        return $this->view('appSection@user::welcome')
-            ->to($this->user->email, $this->user->name)
-            ->with([
-                'name' => $this->user->name,
-            ]);
-    }
-}
-```
+Mails are defined exactly as you would define them in Laravel.
 
 ## Template Namespaces
 
-All templates are namespaced
-using the camelCase of their Section name followed by `@` and then the camelCase of their Container name.
-
-For example,
-if you have a template named `welcome` in the `app/Containers/MySection/MyContainer/Mails/Templates` directory,
-you can access it like this: `view(mySection@myContainer::welcome)`.
-
-Attempting to access the template without the namespace,
-such as `view('welcome')`, will result in the template not being found.
-
-An exception to this namespace convention is for template files
-located in the `app/Ship/Mails/Templates` directory.
-These templates will be namespaced using the word `ship` instead of the Section and Container names.
-
-For example, you would access such a template like this: `view(ship::welcome)`.
+Refer to [Views](../main-components/views/#namespaces) documentation for more information on template namespaces.
