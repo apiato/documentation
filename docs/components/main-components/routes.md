@@ -90,8 +90,8 @@ By following to this naming convention,
 the endpoint inside the specified route file will automatically become accessible by appending the version number to the URL.
 
 #### Some Examples:
-| Route File Name             | Route File Content                                            | Generated Route                            |
-|-----------------------------|---------------------------------------------------------------|--------------------------------------------|
+| Route File Name             | Route File Content                                            | Generated Route                           |
+|-----------------------------|---------------------------------------------------------------|-------------------------------------------|
 | `CreateOrder.v1.public.php` | `Route::post('orders', CreateOrderController::class);`        | [POST] `http://api.apiato.test/v1/orders` |
 | `CreateOrder.v2.public.php` | `Route::post('orders', AnotherCreateOrderController::class);` | [POST] `http://api.apiato.test/v2/orders` |
 | `ListOrders.v1.private.php` | `Route::get('orders', ListOrdersController::class);`          | [GET] `http://api.apiato.test/v1/orders`  |
