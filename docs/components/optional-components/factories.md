@@ -58,7 +58,7 @@ As a result, Apiato follows a different convention to locate the appropriate fac
 Apiato will look for factories in `app/Containers/{Section}/{Container}/Data/Factories` directories
 that has a class name matching the model name and is suffixed with `Factory`.
 
-If these conventions do not apply to your particular application or factory, you may configure the factory discovery
+If these conventions do not apply to your particular application, you may configure the factory discovery
 via the [Apiato Configuration](../../framework-features/advance-configuration.mdx#factories) class.
 
 :::note Custom Models
