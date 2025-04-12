@@ -9,7 +9,7 @@ tags:
 
 Exceptions are used to handle errors and exceptions in the application.
 
-To generate new exceptions you may use the `apiato:make:exception` interactive command:
+To generate new exceptions, you may use the `apiato:make:exception` interactive command:
 
 ```
 php artisan apiato:make:exception
@@ -25,7 +25,6 @@ Read [**Porto SAP Documentation (#Exceptions)**](https://github.com/Mahmoudz/Por
 - All general Exceptions MUST be placed in the `app/Ship/Exceptions` directory.
 - All Exceptions MUST extend the `App\Ship\Parents\Exceptions\Exception` class.
   - The parent extension SHOULD be aliased as `ParentException`.
-- Every Exception MUST have at least two properties: `code` and `message`.
 
 ## Folder Structure
 
