@@ -98,7 +98,7 @@ the endpoint inside the specified route file will automatically become accessibl
 
 ### Configuration
 
-You can configure the API versioning feature
+You can customize the API versioning and routing behavior
 using the [Apiato Configuration](../../framework-features/advance-configuration.mdx#routing) class.
 
 ## Public & Private Routes
