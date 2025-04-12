@@ -14,7 +14,7 @@ tags:
 being handled by your application as well as retrieve the input,
 cookies, and files that were submitted with the request.
 
-To generate new requests you may use the `apiato:make:request` interactive command:
+To generate new requests, you may use the `apiato:make:request` interactive command:
 
 ```
 php artisan apiato:make:request
@@ -124,114 +124,62 @@ the validation rules defined in `RegisterUserRequest` will be automatically appl
 before the `__invoke` method is executed.
 If the validation fails, an appropriate error response will be generated.
 
-## Request Properties
-
 Apiato introduces new properties to the Request Class that enhance its functionality.
 
-### access
-
-The `$access` property allows you to define Roles and Permissions that can access a specific endpoint.
-It's used by the `hasAccess` method to check if a user has the required Roles and Permissions to use that endpoint.
-
-```php
-class DemoRequest extends ParentRequest
-{
-    protected array $access = [
-        'permissions' => 'delete-users',
-        'roles' => 'manager'
-    ];
-
-    public function authorize(): bool
-    {
-        return $this->hasAccess();
-    }
-}
-```
-
-You can also use the `array notation` or `pipe` to define multiple Roles and Permissions.
-
-```php
-class DemoRequest extends ParentRequest
-{
-    protected $access = [
-        'permissions' => ['delete-users', 'another-permissions'],
-        'roles' => 'manager|admin',
-    ];
-        
-    // ...
-}
-```
-
-:::tip
-If there's no need to set any roles or permissions,
-you can simply set the `$permissions` or `$roles` property to an empty string `''`, an empty array `[]`, or `null`.
-:::
-
-### decode
+## Hash ID Decoding
+When you enable the [Hash ID](../../security/hash-id.md) feature, your application can receive Hashed IDs from users.
+These Hashed IDs need to be decoded before they can be used.
 
 The `$decode` property is used to handle the decoding of Hashed IDs from the incoming Request.
-
-When you enable the [Hash ID](../../security/hash-id.md) feature, your application can receive Hashed IDs from users.
-These Hashed IDs need to be decoded before they can be effectively validated.
-Apiato facilitates this process
-by providing a property in its Requests class where you can specify which Hashed IDs need to be decoded.
-This ensures that the validation procedure seamlessly integrates with Hashed IDs.
+It is an array that contains the names of the fields in the Request that should be decoded.
+When the Request is processed, Apiato will automatically decode these fields for you.
 
 ```php
 class DemoRequest extends ParentRequest
 {
     protected array $decode = [
-        'user_id',
-        'item_id',
+        'author_id',
+        'ids.*',
+        'authors.*.id',
     ];
-    
-    // ...
 }
+
+// Example usage
+// In all cases, the author_id fields will be automatically decoded
+$request->input('author_id');
+$request->all('author_id');
+$request->author_id
+
+// Nested fields are also supported
+$request->input('ids');
+$request->input('authors.*.id')
 ```
 
-:::note
-Keep in mind that validation rules relying on your ID, such as `exists:users,id`,
-will not function correctly unless you decode the ID before passing it to the validation process.
-:::
-
-### urlParameters
-
-The `$urlParameters` property simplifies the process of applying validation rules to URL parameters.
-
-By default, Laravel doesn't provide validation for URL parameters (`/stores/999/items`).
-However, by using the `$urlParameters` property, you can enable validation for these parameters.
-By specifying the desired URL parameters within this property,
-you not only enable validation but also gain direct access to these parameters from the Request object.
+You can also decode route parameters.
+But the decoded values will not be available via `input` or `all`.
+Instead, you can access them using the `route` method.
 
 ```php
-// URL: /stores/{id}/items
-// GET /stores/999/items
+// endpoint
+/users/{id}
+
+// request
 class DemoRequest extends ParentRequest
 {
-    protected array $urlParameters = [
+    protected array $decode = [
         'id',
     ];
-
-    public function rules(): array
-    {
-        return [
-            'id'   => 'integer', // url parameter
-        ];
-    }
 }
+
+// usage
+$request->route('id');
 ```
 
 ## Helper Methods
 
-### hasAccess
+### sanitize
 
-The `hasAccess` method assesses a user's access rights based on the Request's `$access` property.
-If the user has any of the specified Roles or Permissions, the method will return `true` otherwise it will
-return `false`.
-
-### sanitizeInput
-
-The `sanitizeInput` method is employed to cleanse request data before its utilization within the application.
+The `sanitize` method is employed to cleanse request data before its utilization within the application.
 
 Particularly useful for `PATCH` requests,
 where you may want
@@ -250,7 +198,7 @@ To circumvent these `if` blocks, you might utilize `array_filter($data)` to remo
 However, be aware that in PHP, both `false` and an empty string `''` are considered as `empty`.
 
 For streamlining data sanitization when using `application/json` instead of `x-www-form-urlencoded`,
-Apiato provides the convenient `sanitizeInput` method.
+Apiato provides the convenient `sanitize` method.
 
 Consider the following request:
 
@@ -270,11 +218,11 @@ Consider the following request:
 }
 ```
 
-The `sanitizeInput` method enables you to specify a list of fields,
+The `sanitize` method enables you to specify a list of fields,
 employing dot notation, to be accessed and extracted from the request.
 
 ```php
-$data = $request->sanitizeInput([
+$data = $request->sanitize([
     'data.description',
     'data.is_private',
     'data.address',
@@ -307,7 +255,7 @@ In essence, the method filters the request, retaining only the defined values.
 You can also assign default values during the data sanitization process:
 
 ```php
-$sanitizedData = $request->sanitizeInput([
+$sanitizedData = $request->sanitize([
     'name' => 'John', // If name is not provided, the default value will be set
     'product.company.address' => 'Somewhere in the world', // dot notation is supported
     'email',
