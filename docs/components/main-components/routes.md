@@ -75,11 +75,10 @@ Web Route files can have any appropriate name.
 
 ## API Versioning
 
-Apiato provides a streamlined approach to implementing API versioning within your application.
-This feature is enabled by default.
+This feature is `enabled` by default.
 
-If you wish to disable API versioning,
-navigate to the `app/Ship/Configs/apiato.php` configuration file and set the `enable_version_prefix` to `false`.
+Apiato provides a streamlined approach to implementing API versioning within your application.
+You can manage multiple versions of your API by creating separate route files for each version.
 
 Once API versioning is enabled,
 you can create new API endpoints and define their version numbers directly in the route file names.
@@ -96,6 +95,11 @@ the endpoint inside the specified route file will automatically become accessibl
 | `CreateOrder.v2.public.php` | `Route::post('orders', AnotherCreateOrderController::class);` | [POST] `http://api.apiato.test/v2/orders` |
 | `ListOrders.v1.private.php` | `Route::get('orders', ListOrdersController::class);`          | [GET] `http://api.apiato.test/v1/orders`  |
 
+
+### Configuration
+
+You can configure the API versioning feature
+using the [Apiato Configuration](../../framework-features/advance-configuration.mdx#routing) class.
 
 ## Public & Private Routes
 
