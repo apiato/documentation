@@ -44,7 +44,7 @@ app
 
 Factories are defined exactly as you would define them in Laravel.
 
-## Model & Factory Discovery Conventions
+## Model & Factory Discovery
 
 When you use a factory, Laravel relies on conventions to determine the appropriate factory for the model.
 By default,
@@ -54,20 +54,15 @@ that has a class name matching the model name and is suffixed with `Factory`.
 However, in the case of Apiato, factories are distributed across the Containers,
 and they are not all within the same namespace.
 As a result, Apiato follows a different convention to locate the appropriate factory for a model.
-This is achieved by utilizing the `Apiato\Core\Traits\FactoryLocatorTrait` trait,
-which is incorporated into the `Apiato\Core\Traits\ModelTrait` trait used by all Apiato models.
 
-Therefore,
-if your model does not extend the `App\Ship\Parents\Models\Model` or the `App\Ship\Parents\Models\UserModel` class,
-it is essential to include the `ModelTrait` trait in your model.
-By doing so, Apiato will be able to locate the appropriate factory and use it for the model when needed.
+Apiato will look for factories in `app/Containers/{Section}/{Container}/Data/Factories` directories
+that has a class name matching the model name and is suffixed with `Factory`.
 
-```php
-use Apiato\Core\Traits\ModelTrait;
+If these conventions do not apply to your particular application or factory, you may configure the factory discovery
+via the [Apiato Configuration](../../framework-features/advance-configuration.mdx#factories) class.
 
-class Demo
-{
-    use ModelTrait;
-    ...
-}
-```
+:::note Custom Models
+Apiato factory discovery feature depends on some features available in Apiato models.
+If your model does not extend the `App\Ship\Parents\Models\Model` or the `App\Ship\Parents\Models\UserModel` class,
+refer to the [Custom Models](../../components/main-components/models/#custom-models) section for more information.
+:::
