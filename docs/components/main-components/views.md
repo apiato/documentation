@@ -56,3 +56,7 @@ These views will be namespaced using the word `ship` instead of the Section and 
 
 For example, you would access such a view like this: `view(ship::welcome-page)`.
 
+### Configuration
+
+You can customize the view namespacing and loading paths
+using the [Apiato Configuration](../../framework-features/advance-configuration.mdx#views) class.
