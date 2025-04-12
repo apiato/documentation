@@ -205,8 +205,8 @@ Existing service providers extending this class should be refactored
 to extend `Apiato\Core\Providers\ServiceProvider` class instead.
 e.g, `App\Ship\Parents\Providers\ServiceProvider` class.
 
-### Autoloading
-All providers within the `Providers` directories of Containers and Ship are now autoloaded.
+### Automatic Registration
+All providers within the `Providers` directories of Containers and Ship are now automatically registered.
 There is no longer a requirement to have a specifically named `MainServiceProvider` service provider per container.
 
 :::note
