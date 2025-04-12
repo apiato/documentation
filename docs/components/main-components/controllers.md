@@ -37,7 +37,6 @@ Read [**Porto SAP Documentation (#Controllers)**](https://github.com/Mahmoudz/Po
   - MUST extend the `App\Ship\Parents\Controllers\WebController` class.
 - Controllers:
   - MUST only call the `run` or `transactionalRun` method of Actions.
-  - SHOULD pass the Request object to the Action instead of passing data from the request.
 
 ## Folder Structure
 
@@ -96,113 +95,28 @@ class Controller extends WebController
 }
 ```
 
-:::tip
-In case you want to handle the same Action differently based on the UI type (e.g., API, Web, CLI), you can set the
-UI on Action with `setUI` method.
+## Response
 
-```php
-$action = app(Action::class);
-$action->setUI('web');
-```
+You can use the `Apiato\Support\Facades\Response` facade to create a new response object.
 
-and get the UI in your Action with `getUI` method.
+The `Response` class extends `Spatie\Fractal\Fractal` to enhance its functionality for API responses.
+It adds methods for resource key management, meta information, and standardized HTTP responses.
 
-```php
-$action->getUI(); // will return 'web'
-```
+:::info Further Reading
+For more detailed information,
+please refer to [Fractal](https://fractal.thephpleague.com/transformers/) and [Laravel Fractal Wrapper](https://github.com/spatie/laravel-fractal) documentations.
 :::
 
-## Response Helpers Methods
-
-### transform
-This method is incredibly useful and will be used in most cases.
-
-- The first required parameter accepts data as an object or a Collection of objects.
-- The second required parameter is the transformer class.
-- The third optional parameter allows you to specify the [includes](transformers.md#including-relationships) that should be returned in the response.
-- The fourth optional parameter lets you include metadata in the response. This metadata will be returned under the `meta` key in the `custom` key.
+Here are some examples of how to use the `Response` facade:
 
 ```php
-// With Includes
-$this->transform($resource, ResourceTransformer::class, ['foo', 'bar']);
-```
-```php
-// With Meta
-$this->transform($resource, ResourceTransformer::class, meta: ['foo' => 'bar', 'baz' => 1]);
+Response::create($user)->transformWith(UserTransformer::class)->json(null, 200);
 
-// Response
-{
-  "data": {},
-  "meta": {
-    "include": [...],
-    "custom": {
-      "foo": "bar",
-      "baz": 1
-    },
-    "pagination": {}
-  }
-}
-```
-### withMeta
-This method enables you to add metadata to the response,
-and it MUST be used in conjunction with the `transform` method.
-This is different from the `meta` parameter in the `transform` method.
-This metadata will be returned directly under the `meta` key.
+Response::create()->transformWith(UserTransformer::class)->ok($user);
 
-You can use this method in conjunction with the `meta` parameter in the `transform` method.
+Response::create($user, UserTransformer::class)->created();
 
-```php
-$metaData = ['foo' => 999, 'bar'];
+Response::create($user, UserTransformer::class)->parseIncludes(['permissions'])->toArray();
 
-$this->withMeta($metaData)->transform($sample, SampleTransformer::class, meta: ['foo' => 'bar', 'baz' => 1]);
-
-// Response
-{
-  "data": {},
-	"meta": {
-	  "foo": 999,
-	  "0": "bar",
-	  "include": [...],
-	  "custom": {
-	    "foo": "bar",
-	    "baz": 1
-	  },
-	  "pagination": {}
-  }
-}
-```
-
-### json
-This method allows you to pass an array of data that will be represented as JSON.
-```php
-$this->json($data)
-```
-
-### created
-This method allows you to return a response with a `201` status code.
-```php
-$this->created($data)
-```
-
-### deleted
-This method allows you to return a response with a `202` status code.
-```php
-$this->deleted($deletedModel)
-
-// Response
-{
-  "message": "Model (1) Deleted Successfully."
-}
-```
-
-### accepted
-This method allows you to return a response with a `202` status code.
-```php
-$this->accepted($data)
-```
-
-### noContent
-This method allows you to return a response with a `204` status code.
-```php
-$this->noContent()
+Response::ok();
 ```
