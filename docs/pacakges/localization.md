@@ -136,7 +136,7 @@ You will get a response like this:
 {
   "data": [
     {
-      "object": "Localization",
+      "type": "Localization",
       "id": "de", // The language code (same as 'language.code')
       "language": {
         "code": "de", // The language code
