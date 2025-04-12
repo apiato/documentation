@@ -30,19 +30,13 @@ ensuring the seamless functioning of your application's components.
 - You MUST NOT register any Service Provider in the `config/app.php` (except Laravel default service providers).
 - Each Container:
   - MAY have one or many Service Providers.
-  - MUST have a `Main Service Provider` -> `App\Containers\{Section}\{Container}\Providers\MainServiceProvider` class.
-      - MUST be named `MainServiceProvider`.
-      - MUST extend the `App\Ship\Parents\Providers\MainServiceProvider` class.
-        - The parent extension SHOULD be aliased as `ParentMainServiceProvider`.
 - All container-specific Service Providers:
   - MUST be placed in the `app/Containers/{Section}/{Container}/Providers` directory.
-  - MUST be registered in their respective container's `App\Containers\{Section}\{Container}\Providers\MainServiceProvider` class.
 - All general Service Providers:
   - MUST be placed in the `app/Ship/Providers` directory.
-  - MUST be registered in the `App\Ship\Prviders\ShipProvider` class.
-- All non-Laravel or third-party package Service Providers:
-  - MUST extend the `App\Ship\Parents\Providers\MainServiceProvider` class.
-  - The parent extension SHOULD be aliased as `ParentMainServiceProvider`.
+- All Service Providers:
+  - MUST extend the `App\Ship\Parents\Providers\ServiceProvider` class.
+  - The parent extension SHOULD be aliased as `ParentServiceProvider`.
 - When using Laravel [default service providers](#laravel-service-providers):
   - `AuthServiceProvider` MUST extend `App\Ship\Parents\Providers\AuthServiceProvider`.
   - `BroadcastServiceProvider` MUST extend `App\Ship\Parents\Providers\BroadcastServiceProvider`.
@@ -55,8 +49,8 @@ ensuring the seamless functioning of your application's components.
 
 The highlighted sections showcase service provider registration points:
 
-- `MainServiceProvider.php` acts as the central registration point for custom service providers specific to a container.
-- `ShipProvider.php` acts as the central registration point for the Ship (general) service providers.
+- `ServiceProvider.php` acts as the central registration point for custom service providers specific to a container.
+- `ShipServiceProvider.php` acts as the central registration point for the Ship (general) service providers.
 
 ```php
 app
@@ -68,7 +62,7 @@ app
 │               ├── BroadcastServiceProvider.php
 │               ├── EventServiceProvider.php
                 // highlight-start
-│               ├── MainServiceProvider.php
+│               ├── ServiceProvider.php
                 // highlight-end
 │               ├── MiddlewareServiceProvider.php
 │               ├── RouteServiceProvider.php
@@ -78,7 +72,7 @@ app
     └── Providers
         ├── RouteServiceProvider.php
         // highlight-start
-        ├── ShipProvider.php
+        ├── ShipServiceProvider.php
         // highlight-end
         └── ...
 ```
@@ -88,9 +82,9 @@ app
 #### Main Service Provider:
 
 ```php
-use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
+use App\Ship\Parents\Providers\ServiceProvider as ParentServiceProvider;
 
-class MainServiceProvider extends ParentMainServiceProvider
+class ServiceProvider extends ParentServiceProvider
 {
     public array $serviceProviders = [
         CustomServiceProvider::class,
@@ -122,7 +116,7 @@ Main Service Providers will register all service providers listed in their `$ser
 #### Additional Service Providers
 
 To register a provider,
-add the provider's class name to the `serviceProviders` array in the `App\Containers\{Section}\{Container}\Providers\MainServiceProvider` class.
+add the provider's class name to the `serviceProviders` array in the `App\Containers\{Section}\{Container}\Providers\ServiceProvider` class.
 
 ```php
 public array $serviceProviders = [
@@ -132,7 +126,7 @@ public array $serviceProviders = [
 ];
 ```
 
-You can also list aliases in the `$aliases` property of the `App\Containers\{Section}\{Container}\Providers\MainServiceProvider` class.
+You can also list aliases in the `$aliases` property of the `App\Containers\{Section}\{Container}\Providers\ServiceProvider` class.
 
 ```php
 public array $aliases = [
@@ -149,7 +143,7 @@ to ensure that anything that needs to be registered or booted in the parent clas
 
 ### General Service Providers
 
-General service providers must be registered in the `App\Ship\Providers\ShipProvider` class.
+General service providers must be registered in the `App\Ship\Providers\ShipServiceProvider` class.
 This can be done by adding the provider class name to the `serviceProviders` array.
 
 ```php
@@ -165,9 +159,9 @@ public array $serviceProviders = [
 When dealing with third-party packages that require service provider registration in `config/app.php`,
 you should follow these guidelines:
 
-- **Specific Container Usage**: If the package is used within a particular container, register its service provider in that container `App\Containers\{Section}\{Container}\Providers\MainServiceProvider` class.
+- **Specific Container Usage**: If the package is used within a particular container, register its service provider in that container `App\Containers\{Section}\{Container}\Providers\ServiceProvider` class.
 
-- **Framework-wide Usage**: If the package is generic and used throughout the entire application, you can register its service provider in the `App\Ship\Prviders\ShipProvider` class. However, avoid registering it directly in `config/app.php`.
+- **Framework-wide Usage**: If the package is generic and used throughout the entire application, you can register its service provider in the `App\Ship\Prviders\ShipServiceProvider` class. However, avoid registering it directly in `config/app.php`.
 
 ## Laravel Service Providers
 
@@ -178,8 +172,8 @@ have been restructured in Apiato to reside in the `app/Ship/Parents/Providers` d
 
 Here's the mapping of Laravel's default service providers to their new locations in Apiato:
 
-- `App\Providers\AppServiceProvider` → `App\Ship\Parents\Providers\MainServiceProvider`
-  - Note: Laravel `AppServiceProvider` is renamed to `MainServiceProvider` in Apiato.
+- `App\Providers\AppServiceProvider` → `App\Ship\Parents\Providers\ServiceProvider`
+  - Note: Laravel `AppServiceProvider` is renamed to `ServiceProvider` in Apiato.
 - `App\Providers\AuthServiceProvider` → `App\Ship\Parents\Providers\AuthServiceProvider`
 - `App\Providers\BroadcastServiceProvider` → `App\Ship\Parents\Providers\BroadcastServiceProvider`
 - `App\Providers\EventServiceProvider` → `App\Ship\Parents\Providers\EventServiceProvider`
@@ -192,12 +186,12 @@ the `App\Containers\AppSection\Authentication\Providers\AuthServiceProvider` cla
 
 Those providers are not auto registered by default,
 thus writing any code there will not be available, unless you extend them.
-Once extended, the child Service Provider should be registered in its container `MainServiceProvider`,
+Once extended, the child Service Provider should be registered in its container `ServiceProvider`,
 which makes it available.
 
 :::note 
 Do note that the `App\Ship\Parents\Providers\RouteServiceProvider` is a unique case.
-Because it's required by Apiato, it is registered by the `App\Ship\Prviders\ShipProvider` and is loaded automatically.
+Because it's required by Apiato, it is registered by the `App\Ship\Prviders\ShipServiceProvider` and is loaded automatically.
 :::
 
 ## Service Providers Registration Flow
@@ -215,20 +209,20 @@ app
 │       │   └── Providers
 │       │       ├── CustomServiceProvider.php ─────────►────────┐
 │       │       ├── EventServiceProvider.php  ─────────►────────┤
-│       │       ├── MainServiceProvider.php  ◄──registered─in─◄─┘
+│       │       ├── ServiceProvider.php  ◄──registered─in─◄─┘
 │       │       └── ...
 │       └── ContainerB
 │           └── Providers
 │               ├── AnotherCustomServiceProvider.php ────────►────────┐
 │               ├── EventServiceProvider.php         ────────►────────┤
-│               ├── MainServiceProvider.php        ◄──registered─in─◄─┤
+│               ├── ServiceProvider.php        ◄──registered─in─◄─┤
 │               ├── MiddlewareServiceProvider.php    ────────►────────┘
 │               └── ...
 └── Ship
     └── Providers
         ├── CustomGeneralServiceProvider.php ────────►────────┐
         ├── RouteServiceProvider.php         ────────►────────┤
-        ├── ShipProvider.php               ◄──registered─in─◄─┘
+        ├── ShipServiceProvider.php               ◄──registered─in─◄─┘
         └── ...
 ```
 
@@ -237,7 +231,7 @@ The following diagram illustrates the registration flow of service providers in 
 ```mermaid
 graph TB
   subgraph ContainerB[Container B]
-    BMP[MainServiceProvider]
+    BMP[ServiceProvider]
     BEP[EventServiceProvider]
     subgraph BServiceProviders[Service Providers]
       AnotherCustomServiceProvider
@@ -248,7 +242,7 @@ graph TB
   end
     
   subgraph ContainerA[Container A]
-    AMP[MainServiceProvider]
+    AMP[ServiceProvider]
     subgraph AServiceProviders[Service Providers]
       CustomServiceProvider
       EventServiceProvider
