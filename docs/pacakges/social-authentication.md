@@ -142,7 +142,7 @@ For testing purposes Apiato provides two web endpoints
 :::
 
 ## Social Authentication Container Customization {#social-auth-customization}
-You can customize this container by publishing its config and modifying its values
+You may customize this container by publishing its config and modifying its values
 ```
 php artisan vendor:publish
 ```  
