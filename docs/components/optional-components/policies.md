@@ -12,7 +12,7 @@ Apiato policies are just [Laravel Policies](https://laravel.com/docs/authorizati
 and they function in the exact same way as Laravel policies.
 However, they come with additional rules and conventions specific to Apiato.
 
-To generate new policies you may use the `apiato:make:policy` interactive command:
+To generate new policies, you may use the `apiato:make:policy` interactive command:
 
 ```
 php artisan apiato:make:policy
@@ -29,68 +29,19 @@ php artisan apiato:make:policy
 
 ## Folder Structure
 
-The highlighted section showcases the policy registration point:
-
 ```php
 app
 └── Containers
     └── Section
         └── Container
-            ├── Policies
-            │   ├── UserPolicy.php
-            │   └── ...
-            └── Providers
-                // highlight-start
-                ├── AuthServiceProvider.php
-                // highlight-end
+            └── Policies
+                ├── UserPolicy.php
                 └── ...
 ```
 
 ## Code Example
 
 Policies are defined exactly as you would define them in Laravel.
-
-## Registering Policies
-
-Once the policy class has been created, it needs to be registered.
-Registering policies is
-how we can inform Apiato which policy to use when authorizing actions against a given model type.
-
-Registering policies can be done
-by adding them to the `policies` array in the `App\Containers\{Section}\{Container}\Providers\AuthServiceProvider` class.
-
-```php
-use ...
-use App\Ship\Parents\Providers\AuthServiceProvider as ParentAuthProvider;
-
-class AuthServiceProvider extends ParentAuthProvider
-{
-    protected $policies = [
-        Post::class => PostPolicy::class,
-    ];
-}
-```
-
-To generate an event service provider
-you may use the `apiato:make:provider` interactive command:
-
-```
-php artisan apiato:make:provider
-```
-
-Remember to also register the `AuthServiceProvider` in the container's `MainServiceProvider`:
-
-```php
-use ...
-use App\Ship\Parents\Providers\MainServiceProvider as ParentMainServiceProvider;
-
-class MainServiceProvider extends ParentMainServiceProvider
-{
-    protected array $serviceProviders = [
-        AuthServiceProvider::class,
-    ];
-}
-```
 
 ### Policy Auto-Discovery
 
@@ -103,62 +54,3 @@ To summarize:
 
 - Policies must be stored within the `app/Containers/{section}/{container}/Policies` directory.
 - The policy name should mirror the corresponding model's name while appending a `Policy` suffix. For instance, a `User` model corresponds to a `UserPolicy` policy class.
-
-## Policy Registration Flow
-
-In case you are going to register your policies manually, and don't want to use the auto-discovery feature,
-you may want to understand the policy registration process.
-Here is a breakdown of the registration flow.
-
-Consider the following folder structure:
-
-```php
-app
-└── Containers
-    └── Section
-        └── Container
-            ├── Policies
-            │   ├── DemoPolicy.php ─►─┐
-            │   └── ...               │                                                                                         
-            └── Providers             ▼
-                ├── AuthServiceProvider.php ─────────►───────┐
-                ├── MainServiceProvider.php ◄─registered─in─◄┘
-                └── ...
-
-```
-
-The following diagram illustrates the registration flow of policies in the above folder structure:
-
-```mermaid
-graph LR
-  subgraph Container
-    MainServiceProvider
-    AuthServiceProvider
-    DemoPolicy
-  end
-  
-  MainServiceProvider -->|loads| AuthServiceProvider
-  AuthServiceProvider -->|registered in| MainServiceProvider
-  DemoPolicy -->|registered in| AuthServiceProvider
-
-  subgraph Application
-    SPLoader[[Service Provider Loader]]-- loads-->MainServiceProvider
-  end
-```
-
-## Helper Methods
-> Available since Core v8.7.0
-
-All models are equipped with the `owns` and `isOwnedBy` methods,
-made available through the `Apiato\Core\Traits\CanOwnTrait` trait.
-These methods offer a convenient way to determine if a model is owned by another model or if a model owns another model.
-
-These methods support all types of relationships, as demonstrated below:
-
-```php
-// Check if a user owns a post
-$user->owns($post);
-
-// Check if a post is owned by a user
-$post->isOwnedBy($user);
-```
