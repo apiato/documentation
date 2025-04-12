@@ -175,9 +175,7 @@ class DemoRequest extends ParentRequest
 $request->route('id');
 ```
 
-## Helper Methods
-
-### sanitize
+## Sanitizing Input
 
 The `sanitize` method is employed to cleanse request data before its utilization within the application.
 
@@ -261,105 +259,6 @@ $sanitizedData = $request->sanitize([
     'email',
     'password'
 ]);
-```
-
-### getInputByKey
-
-The `getInputByKey` method retrieves data from the `request` by specifying the field name.
-Similar to `$request->input('key.here')`, this method operates on the `decoded` values instead of the original data.
-
-Consider the following request:
-
-```json
-{
-  "id": "XbPW7awNkzl83LD6"
-}
-```
-
-While `$request->input('id')` would return `"XbPW7awNkzl83LD6"`,
-`$request->getInputByKey('id')` would return the decoded value
-(e.g., `4`).
-
-Moreover, you can set a `default` value to be returned if the key is absent or unset, like this:
-
-```php
-$request->getInputByKey('data.name', 'Undefined')
-```
-
-### mapInput
-
-In certain cases, you might need to remap input from the request to different fields.
-While manual field mapping is possible, you can also leverage the `mapInput` method for this purpose.
-This helper method allows you to "redefine" keys within the request, making subsequent processing easier.
-
-Consider the following request:
-
-```json
-{
-  "data": {
-    "name": "John Doe"
-  }
-}
-```
-
-However, for processing purposes, you require the `username` field instead of `data.name`.
-
-You can use the helper as follows:
-
-```php
-$request->mapInput([
-    'data.name' => 'username',
-]);
-```
-
-The resulting structure would be:
-
-```json
-{
-  "username": "John Doe"
-}
-```
-
-And you can access the value as follows:
-
-```php
-$request->input('username');
-```
-
-### injectData
-
-The `injectData` method allows you to inject data into the request.
-This can be particularly helpful during testing
-when you wish to provide data directly to the request instead of sending it through the request body.
-
-```php
-$request = RegisterUserRequest::injectData($data);
-```
-
-### withUrlParameters
-
-The `withUrlParameters` method enables you to inject URL parameters into the request.
-This is especially useful when you need to include properties in the request that are not part of the request body
-but are required for the request to be processed.
-This method is often used in conjunction with the `injectData` method.
-
-```php
-$request = RegisterUserRequest::injectData($data)
-    ->withUrlParameters(['id' => 123]);
-```
-
-## Bypassing Authorization
-
-To grant certain Roles access to all endpoints within the system without the need
-to define the role in each Request object,
-you can follow this approach.
-This is particularly beneficial when you want to provide unrestricted access to users with the `admin` role.
-To implement this, define the relevant roles in `app/Ship/Configs/apiato.php` as shown below:
-
-```php
-'requests' => [
-    'allow-roles-to-access-all-routes' => ['admin'],
-],
 ```
 
 ## Force Accept Header
