@@ -68,7 +68,7 @@ class UserTransformer extends ParentTransformer
     public function transform(User $user)
     {
         return [
-            'object' => $user->getResourceKey(),
+            'type' => $user->getResourceKey(),
             'id' => $user->getHashedKey(),
             'name' => $user->name,
             // ...
@@ -168,11 +168,11 @@ This will include the `roles` data in the response:
 {
   "data": [
     {
-      "object": "User",
+      "type": "User",
       "id": "0one37vjk49rp5ym",
       "roles": [
         {
-          "object": "Role",
+          "type": "Role",
           "id": "bmo7y84xpgeza06k"
         },
         // ...
@@ -238,18 +238,15 @@ ultimately enhancing the efficiency and usability of your API.
 ## Resource Key
 
 The resource key is a string that helps identify the object type in the response payload.
-A resource key is automatically generated based on the model's class name, but you can customize it as needed.
-
-### Custom Resource Key
-
-You can set the resource key on the respective model
-by setting the `$resourceKey` property or overriding the `getResourceKey` method:
+A resource key is automatically generated based on the model's class name,
+but you can customize it by overriding the `getResourceKey` method:
 
 ```php
-class User extends ParentUserModel
+use Apiato\Http\Resources\ResourceKeyAware;
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model implements ResourceKeyAware
 {
-    protected $resourceKey = 'User';
-    // or
     public function getResourceKey(): string
     {
         return 'User';
@@ -261,10 +258,6 @@ class User extends ParentUserModel
 
 Retrieve the resource key from the model by calling the `getResourceKey` method.
 
-If no `resourceKey` is defined on the model, the `getResourceKey` method will return the short class name of the model.
-For instance, if no resource key is defined for `App\Containers\AppSection\User\Models\User::class`,
-the default resource key will be `User`.
-
 #### Transformer Example
 ```php
 use App\Containers\AppSection\User\Models\User;
@@ -275,7 +268,7 @@ class UserTransformer extends ParentTransformer
     public function transform(User $user)
     {
         return [
-            'object' => $user->getResourceKey(), // <-- here
+            'type' => $user->getResourceKey(), // <-- here
             'id' => $user->getHashedKey(),
             'name' => $user->name,
         ];
@@ -287,7 +280,7 @@ class UserTransformer extends ParentTransformer
 ```json
 {
   "data": {
-    "object": "User", // <-- ResourceKey
+    "type": "User", // <-- ResourceKey
     "id": "XbPW7awNkzl83LD6",
     "name": "Mohammad Alavi"
   }
@@ -347,7 +340,7 @@ A very basic response of the `DataArraySerializer` will look like this:
 ```json
 {
   "data": {
-    "object": "User",
+    "type": "User",
     "id": "XbPW7awNkzl83LD6",
     "name": "Mohammad Alavi"
   }
