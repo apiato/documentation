@@ -80,6 +80,9 @@ This feature is `enabled` by default.
 Apiato provides a streamlined approach to implementing API versioning within your application.
 You can manage multiple versions of your API by creating separate route files for each version.
 
+You may customize the API versioning behavior
+using the [Apiato Configuration](../../framework-features/advance-configuration.mdx#routing) class.
+
 Once API versioning is enabled,
 you can create new API endpoints and define their version numbers directly in the route file names.
 The route file names must adhere to the following naming convention:
@@ -94,12 +97,6 @@ the endpoint inside the specified route file will automatically become accessibl
 | `CreateOrder.v1.public.php` | `Route::post('orders', CreateOrderController::class);`        | [POST] `http://api.apiato.test/v1/orders` |
 | `CreateOrder.v2.public.php` | `Route::post('orders', AnotherCreateOrderController::class);` | [POST] `http://api.apiato.test/v2/orders` |
 | `ListOrders.v1.private.php` | `Route::get('orders', ListOrdersController::class);`          | [GET] `http://api.apiato.test/v1/orders`  |
-
-
-### Configuration
-
-You can customize the API versioning and routing behavior
-using the [Apiato Configuration](../../framework-features/advance-configuration.mdx#routing) class.
 
 ## Public & Private Routes
 
