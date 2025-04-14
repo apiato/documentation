@@ -22,7 +22,7 @@ There are two main elements to handle the email verification process:
 - Frontend URL 
   - Define a route in your frontend app to handle the email verification link.
 - API Configuration 
-  - Configure your frontend app's email verification URL by either creating a new [App](../framework-features/apps)
+  - Configure your frontend app's email verification URL by either creating a new [App](../digging-deeper/apps.md)
   or using the existing `App\Ship\Apps\Web` app.
 
 Next,
@@ -53,4 +53,4 @@ The email verification process flow is as follows:
 7. The API verifies the user's email and returns a `200 OK` response.
 
 ## Email Verification URL
-You may instruct the API to use a different URL for email verification by using the Apiato [Apps](../framework-features/apps) feature.
+You may instruct the API to use a different URL for email verification by using the Apiato [Apps](../digging-deeper/apps.md) feature.

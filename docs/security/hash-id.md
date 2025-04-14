@@ -24,7 +24,7 @@ If Hash ID feature is disabled, the `getHashedKey` method will return the normal
 ```
 
 :::tip
-You may use the [hashids](../framework-features/helpers#hashids) helper function to access the Hash ID instance.
+You may use the [hashids](../digging-deeper/helpers.md#hashids) helper function to access the Hash ID instance.
 :::
 
 ## Usage
