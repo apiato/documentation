@@ -3,51 +3,35 @@ sidebar_position: 5
 title: Email Verification
 ---
 
-Many web applications require users to verify their email addresses before using the application.
-To simplify this process, Apiato offers built-in services for sending and verifying email verification requests.
+Apiato provides an email verification feature out of the box
+using the [Laravel's built-in email verification](https://laravel.com/docs/verification) functionality.
 
-## Configuration
-
-All the settings related to email verification are stored in the `app/Containers/AppSection/Authorization/Configs/appSection-authentication` configuration file.  
-
-Activate email verification
-by setting the `require_email_verification` option in the `appSection-authentication` configuration file to `true`.  
-
-Also, ensure that your application is configured to send email messages.
-
-:::tip
-Detailed information on email configuration can be found in the [Laravel documentation](https://laravel.com/docs/mail).
-:::
-
-Include your web app's email verification redirect page URL (e.g., `https://myapp.com/email/verify`) in the `allowed-verify-email-urls` array within the `appSection-authentication` config.
-
-### Model Preparation
-
-Confirm that your `User` model implements the `MustVerifyEmail` contract. The default `User` model in Apiato typically includes this requirement.
-
-### Database Preparation
-
-Ensure your `users` table contains an `email_verified_at` column to store the email verification date and time.
-The migration for the `users` table, included with Apiato, already includes this column.
+## Model Preparation
+All you need to do to enable email verification is
+to verify that your `User` model implements the `Illuminate\Contracts\Auth\MustVerifyEmail` contract.
 
 ## Routing
 
 ### The Email Verification Notice
-
 If you've enabled email verification,
 the API will automatically send an email verification link to the user's provided email address upon user creation.
 
 ### The Email Verification Handler
+There are two main elements to handle the email verification process:
 
-Define a route to handle requests when the user clicks the email verification link sent via email.
-Apiato includes a route for this purpose, `email/verify/{id}/{hash}`.
+- Frontend URL 
+  - Define a route in your frontend app to handle the email verification link.
+- API Configuration 
+  - Configure your frontend app's email verification URL by either creating a new [App](../framework-features/apps)
+  or using the existing `App\Ship\Apps\Web` app.
+
+Next,
+read the [Process Flow](#process-flow) section to understand how this ties into the overall email verification process.
 
 ### Resending The Verification Email
-
 To resend the email verification link, use the `/email/verification-notification` endpoint.
 
 ### Protecting Routes
-
 Apply the `verified` middleware to restrict access to certain routes for confirmed users.
 When email verification is enabled, unverified users trying to access protected endpoints will trigger an exception,
 prompting them to confirm their email address.
@@ -57,22 +41,16 @@ the `verified` middleware won't protect routes against unconfirmed users and wil
 
 ## Process Flow
 
-1. Add your web app's email verification redirect page URL (e.g., `https://myapp.com/email/verify`) to the `allowed-verify-email-urls` array in the `appSection-authentication` config.
+Let's assume you have a frontend app with a URL like `https://myapp.com/verify-email`.
+The email verification process flow is as follows:
 
-2. Send the email verification URL to the user by calling the `/email/verification-notification` endpoint using your web app. Pass one of the valid URLs added in step 1 to the `verification_url` field of the endpoint.
+1. The user registers or updates their email address.
+2. The API sends an email verification link to the user's email address. It includes a link like this: `https://myapp.com/verify-email?verification_url=https://api.myapi.com/v1/email/verify/123/d2aG21sCc112k3`.
+3. The user clicks the link in the email.
+4. The link redirects the user to the specified (Frontend) URL in the email.
+5. The URL contains a `verification_url` query string parameter.
+6. The frontend app makes a `POST` request to the `verification_url` to verify the user's email.
+7. The API verifies the user's email and returns a `200 OK` response.
 
-3. An email verification link will be sent to the user's email, resembling this format:
-   `https://myapp.test/email/verify?url=https://api.myapi.test/v1/email/verify/XbPW7awNkzl83LD6/eaabd911e2e07ede6456d3bd5725c6d4a5c2dc0b?expires=1646913047&signature=232702865b8353c445b39c50397e66db33c74df80e3db5a7c0d46ef94c8ab6a9`.
-
-4. When the user clicks the link, they'll be redirected to the URL specified in step 1, e.g., `https://myapp.com/email/verify`, with the `url` query string.
-
-5. The `url` is the complete URL your web app needs to call to verify the user. Simply make a request to this URL, and the user will be verified.
-
-6. At this point, you should receive a `200` OK response, confirming the user's email verification.
-
-:::note  
-If you encounter issues with the email verification link, such as a mismatched signature,
-when using a load balancer,
-set the `protected $proxies = '*'` in the
-`app/Ship/Middlewares/TrustProxies.php` or customize it according to your needs.
-:::
+## Email Verification URL
+You may instruct the API to use a different URL for email verification by using the Apiato [Apps](../framework-features/apps) feature.
