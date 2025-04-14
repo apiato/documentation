@@ -23,6 +23,10 @@ If Hash ID feature is disabled, the `getHashedKey` method will return the normal
 'id' => $user->getHashedKey(),
 ```
 
+:::tip
+You may use the [hashids](../framework-features/helpers#hashids) helper function to access the Hash ID instance.
+:::
+
 ## Usage
 
 There are three ways to pass an ID to your system via the API:
@@ -66,4 +70,5 @@ as it renders all previously generated IDs impossible to decode.
 
 ## Route Model Binding
 
-Laravel [Route Model Binding](https://laravel.com/docs/routing#route-model-binding) feature is supported out of the box and Apiato will automatically decode the ID for you.
+Laravel [Route Model Binding](https://laravel.com/docs/routing#route-model-binding) feature is supported out of the box,
+and Apiato will automatically decode the ID for you.
