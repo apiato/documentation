@@ -15,10 +15,10 @@ They play a vital role
 in encapsulating functionalities that are utilized by multiple Actions
 spanning various Containers within your application.
 
-To generate new tasks you may use the `apiato:generate:task` interactive command:
+To generate new tasks you may use the `apiato:make:task` interactive command:
 
 ```shell
-php artisan apiato:generate:task
+php artisan apiato:make:task
 ```
 
 Additionally, to retrieve a list of the existing tasks in your Apiato application,

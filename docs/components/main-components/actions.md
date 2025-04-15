@@ -12,10 +12,10 @@ tags:
 Actions serve as the embodiment of the application's Use Cases,
 encapsulating the various operations that users or software can execute within the application.
 
-To generate new actions you may use the `apiato:generate:action` interactive command:
+To generate new actions you may use the `apiato:make:action` interactive command:
 
 ```shell
-php artisan apiato:generate:action
+php artisan apiato:make:action
 ```
 
 Additionally, to retrieve a list of the existing actions in your Apiato application,

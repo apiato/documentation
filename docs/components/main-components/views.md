@@ -38,7 +38,7 @@ app
 
 Views are defined exactly as you would define them in Laravel.
 
-## Namespaces
+## Namespaces {#namespaces}
 
 All views are namespaced
 using the camelCase of their Section name followed by `@` and then the camelCase of their Container name.
@@ -56,3 +56,7 @@ These views will be namespaced using the word `ship` instead of the Section and 
 
 For example, you would access such a view like this: `view(ship::welcome-page)`.
 
+### Configuration
+
+You may customize the view namespacing and loading paths
+using the [Apiato Configuration](../../framework-features/advance-configuration.mdx#views) class.

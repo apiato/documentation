@@ -27,16 +27,16 @@ create clean and organized codebases
 by abstracting the intricacies of data access and manipulation from the core business logic.
 
 To generate new repositories
-you may use the `apiato:generate:repository` interactive command:
+you may use the `apiato:make:repository` interactive command:
 
 ```
-php artisan apiato:generate:repository
+php artisan apiato:make:repository
 ```
 
-You can also generate a model and its repository at the same time by using the `apiato:generate:model` interactive command:
+You can also generate a model and its repository at the same time by using the `apiato:make:model` interactive command:
 
 ```
-php artisan apiato:generate:model
+php artisan apiato:make:model
 ```
 
 ## Rules
