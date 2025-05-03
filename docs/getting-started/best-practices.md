@@ -146,7 +146,7 @@ Common error HTTP status codes include:
 - 502 BAD GATEWAY Server received an invalid response from the upstream server while trying to fulfill the request.
 - 503 SERVICE UNAVAILABLE Service unavailable.
 
-## Naming Conventions For [Routes](../components/main-components/routes.md) & [Actions](../components/main-components/actions.md) {#naming-conventions-for-routes-and-actions}
+## Naming Conventions For [Routes](../components/main-components/routes.mdx) & [Actions](../components/main-components/actions.md) {#naming-conventions-for-routes-and-actions}
 
 - **ListResources**: to fetch all resources.
 - **FindResourceByID**: to search for a single resource by its unique identifier.

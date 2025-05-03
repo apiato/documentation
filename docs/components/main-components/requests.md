@@ -127,7 +127,7 @@ If the validation fails, an appropriate error response will be generated.
 Apiato introduces new properties to the Request Class that enhance its functionality.
 
 ## Hash ID Decoding
-When you enable the [Hash ID](../../security/hash-id.md) feature, your application can receive Hashed IDs from users.
+When you enable the [Hash ID](../../security/hash-id.mdx) feature, your application can receive Hashed IDs from users.
 These Hashed IDs need to be decoded before they can be used.
 
 The `$decode` property is used to handle the decoding of Hashed IDs from the incoming Request.

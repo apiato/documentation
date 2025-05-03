@@ -13,7 +13,7 @@ The Documentation Generator Container is a package that generates API documentat
 It uses [ApiDocJs](https://apidocjs.com/) to generate the documentation.
 
 It is recommended
-to read about the `Public` and `Private` [routes](../components/main-components/routes.md#public--private-routes)
+to read about the `Public` and `Private` [routes](../components/main-components/routes.mdx#public--private-routes)
 before using this package.
 
 ## Requirements

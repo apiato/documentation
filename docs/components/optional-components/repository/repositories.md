@@ -320,7 +320,7 @@ You can use the `search` parameter in various ways:
 
 #### Searching with Hashed IDs
 
-If you have [Hash ID](../../../security/hash-id.md) enabled and want to search a hashed field,
+If you have [Hash ID](../../../security/hash-id.mdx) enabled and want to search a hashed field,
 like a user ID, you need to instruct the `RequestCriteria` to decode it before performing the search.
 
 For example,
