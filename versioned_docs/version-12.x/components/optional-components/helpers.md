@@ -6,11 +6,8 @@ tags:
   - helper
 ---
 
-You have the option to create your own global "helper" PHP functions in designated directories, and Apiato will automatically autoload them for you.
-
-:::caution Deprecation Notice
-Please be aware that Container Helpers are deprecated and will be removed in the next major release.
-:::
+You can create your own global "helper" PHP functions in designated directories,
+and Apiato will automatically autoload them for you.
 
 ## Rules
 
