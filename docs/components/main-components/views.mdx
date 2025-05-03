@@ -38,6 +38,14 @@ app
 
 Views are defined exactly as you would define them in Laravel.
 
+### View Loading
+Apiato is configured
+to load all view files in the `app/Containers/{Section}/{Container}/UI/WEB/Views`,
+`app/Ship/Mails/Templates` and `app/Ship/Views` directories.
+
+If the default configuration does not suit your needs,
+you can customize it via the [Apiato Configuration](../../framework-features/advance-configuration.mdx#views) class.
+
 ## Namespaces {#namespaces}
 
 All views are namespaced
@@ -56,7 +64,5 @@ These views will be namespaced using the word `ship` instead of the Section and 
 
 For example, you would access such a view like this: `view(ship::welcome-page)`.
 
-### Configuration
-
-You may customize the view namespacing and loading paths
-using the [Apiato Configuration](../../framework-features/advance-configuration.mdx#views) class.
+You may customize the namespace resolution logic
+via the [Apiato Configuration](../../framework-features/advance-configuration.mdx#views) class.
