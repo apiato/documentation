@@ -51,5 +51,8 @@ Apiato enables the loading of seeders in a specific order.
 To organize the seeding of classes, simply add `_1`, `_2`, and so on, to your class names.
 For instance, `UserPermissionsSeeder_1` will be loaded before `UserPermissionsSeeder_2`.
 
-You may customize the sorting resolution logic
-using the [Apiato Configuration](../../framework-features/advance-configuration.mdx#seeders) class.
+### Configuration
+Apiato is configured to load all seeder files in the `app/Containers/{Section}/{Container}/Data/Seeders` directory.
+
+If the default configuration does not suit your needs, you can customize it
+via the [Apiato Configuration](../../framework-features/advance-configuration.mdx#seeders) class.
