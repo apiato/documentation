@@ -57,6 +57,13 @@ app
 
 Routes are defined exactly as you would define them in Laravel.
 
+## Route Loading
+Apiato is configured
+to load all route files in the `app/Containers/{Section}/{Container}/UI/API/Routes` and `app/Containers/{Section}/{Container}/UI/WEB/Routes` directories.
+
+If the default configuration does not suit your needs,
+you can customize it via the [Apiato Configuration](../../framework-features/advance-configuration.mdx#routing) class.
+
 ## Route File Naming Convention
 
 ### API Routes
@@ -80,13 +87,13 @@ This feature is `enabled` by default.
 Apiato provides a streamlined approach to implementing API versioning within your application.
 You can manage multiple versions of your API by creating separate route files for each version.
 
-You may customize the API versioning behavior
-using the [Apiato Configuration](../../framework-features/advance-configuration.mdx#routing) class.
-
 Once API versioning is enabled,
 you can create new API endpoints and define their version numbers directly in the route file names.
 The route file names must adhere to the following naming convention:
 * `{endpoint-name}.{version-number}.{endpoint-visibility}.php`
+
+You may customize the API versioning resolution logic
+via the [Apiato Configuration](../../framework-features/advance-configuration.mdx#routing) class.
 
 By following this naming convention,
 the endpoint inside the specified route file will automatically become accessible by appending the version number to the URL.
