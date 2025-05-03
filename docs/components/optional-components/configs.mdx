@@ -61,3 +61,10 @@ succeeded by `-`, and then the `camelCase` representation of the Container name.
 
 For instance, if you have a container named "MyContainer" within the "MySection"
 section, the configuration file would be named `mySection-myContainer.php`.
+
+## Configuration
+Apiato is configured
+to load all config files in the `app/Containers/{Section}/{Container}/Configs` and `app/Ship/Configs` directories.
+
+If the default configuration does not suit your needs, you can customize it
+via the [Apiato Configuration](../../framework-features/advance-configuration.mdx#configs) class.
