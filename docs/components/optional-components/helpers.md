@@ -45,7 +45,8 @@ if (!function_exists('add')) {
 ```
 
 ## Autoloading
-Apiato will automatically autoload all helper files in the `app/Containers/{Section}/{Container}/Helpers` and `app/Ship/Helpers` directories.
+Apiato is configured
+to autoload all helper files in the `app/Containers/{Section}/{Container}/Helpers` and `app/Ship/Helpers` directories.
 
-If these conventions do not apply to your particular application, you may configure the autoloading
+If the default configuration does not suit your needs, you can customize it
 via the [Apiato Configuration](../../framework-features/advance-configuration.mdx#helpers) class.
