@@ -38,7 +38,7 @@ If no base path is provided, Apiato will attempt to determine it from:
 Sets the path for shared components (defaults to `app/Ship`).
 
 ```php
-$builder->useSharedPath('/path/to/shared');
+Apiato::configure()->useSharedPath('/path/to/shared');
 ```
 
 ## Resource Loading Methods
@@ -50,9 +50,9 @@ Each of these methods accepts directory paths or glob patterns.
 Registers configuration file paths.
 
 ```php
-$builder->withConfigs(
+Apiato::configure()->withConfigs(
     shared_path('Configs'),
-    '/app/Containers/ExampleSection/ExampleContainer/Configs'
+    '/app/Containers/ExampleSection/ExampleContainer/Configs',
 );
 ```
 
@@ -61,9 +61,9 @@ $builder->withConfigs(
 Registers event discovery paths.
 
 ```php
-$builder->withEvents(
+Apiato::configure()->withEvents(
     shared_path('Listeners'),
-    '/app/Containers/ExampleSection/ExampleContainer/Listeners'
+    '/app/Containers/ExampleSection/ExampleContainer/Listeners',
 );
 ```
 
@@ -72,9 +72,9 @@ $builder->withEvents(
 Registers console command paths.
 
 ```php
-$builder->withCommands(
+Apiato::configure()->withCommands(
     shared_path('Commands'),
-    '/app/Containers/ExampleSection/ExampleContainer/UI/CLI/Commands'
+    '/app/Containers/ExampleSection/ExampleContainer/UI/CLI/Commands',
 );
 ```
 
@@ -83,9 +83,9 @@ $builder->withCommands(
 Registers helper file paths.
 
 ```php
-$builder->withHelpers(
+Apiato::configure()->withHelpers(
     shared_path('Helpers'),
-    '/app/Containers/ExampleSection/ExampleContainer/Helpers'
+    '/app/Containers/ExampleSection/ExampleContainer/Helpers',
 );
 ```
 
@@ -94,9 +94,9 @@ $builder->withHelpers(
 Registers migration paths.
 
 ```php
-$builder->withMigrations(
+Apiato::configure()->withMigrations(
     shared_path('Migrations'),
-    '/app/Containers/ExampleSection/ExampleContainer/Data/Migrations'
+    '/app/Containers/ExampleSection/ExampleContainer/Data/Migrations',
 );
 ```
 
@@ -109,27 +109,27 @@ These methods accept optional callbacks for advanced configuration:
 Configures service provider loading.
 
 ```php
-$builder->withProviders(function (Provider $provider) {
-    $provider->loadFrom(
-        shared_path('Providers'),
-        '/app/Containers/ExampleSection/ExampleContainer/Providers'
+Apiato::configure()
+    ->withProviders(
+        function (\Apiato\Foundation\Configuration\Provider $provider) {
+            $provider->loadFrom(
+                shared_path('Providers'),
+                '/app/Containers/ExampleSection/ExampleContainer/Providers',
+            );
+
+            $provider->replace([
+                OldProvider::class => NewProvider::class,
+            ]);
+
+            $provider->merge([
+                CustomProvider::class,
+            ]);
+
+            $provider->except([
+                UnwantedProvider::class,
+            ]);
+        },
     );
-
-    // Replace providers
-    $provider->replace([
-        OldProvider::class => NewProvider::class,
-    ]);
-
-    // Merge additional providers
-    $provider->merge([
-        CustomProvider::class,
-    ]);
-
-    // Exclude providers
-    $provider->except([
-        UnwantedProvider::class,
-    ]);
-});
 ```
 
 ### withSeeders {#seeders}
@@ -137,15 +137,20 @@ $builder->withProviders(function (Provider $provider) {
 Configures database seeder loading.
 
 ```php
-$builder->withSeeders(function (Seeding $seeding) {
-    $seeding->loadFrom('/app/Containers/ExampleSection/ExampleContainer/Data/Seeders');
+Apiato::configure()
+    ->withSeeders(
+        function (\Apiato\Foundation\Configuration\Seeding $seeding) {
+            $seeding->loadFrom(
+                '/app/Containers/ExampleSection/ExampleContainer/Data/Seeders',
+            );
 
-    // Custom seeder sorting
-    $seeding->sortUsing(function (array $classMapGroupedByDirectory) {
-        // Custom sorting logic
-        return $sortedClassNames;
-    });
-});
+            // Custom seeder sorting
+            $seeding->sortUsing(function (array $classMapGroupedByDirectory) {
+                // Custom sorting logic
+                return $sortedClassNames;
+            });
+        },
+    );
 ```
 
 ### withTranslations
@@ -153,17 +158,20 @@ $builder->withSeeders(function (Seeding $seeding) {
 Configures translation loading.
 
 ```php
-$builder->withTranslations(function (Localization $localization) {
-    $localization->loadFrom(
-        shared_path('Languages'),
-        '/app/Containers/ExampleSection/ExampleContainer/Languages'
-    );
+Apiato::configure()
+    ->withTranslations(
+        function (\Apiato\Foundation\Configuration\Localization $localization) {
+            $localization->loadFrom(
+                shared_path('Languages'),
+                '/app/Containers/ExampleSection/ExampleContainer/Languages',
+            );
 
-    // Custom namespace builder
-    $localization->buildNamespaceUsing(function (string $path) {
-        return $namespace;
-    });
-});
+            // Custom namespace builder
+            $localization->buildNamespaceUsing(function (string $path) {
+                return $namespace;
+            });
+        },
+    );
 ```
 
 ### withViews {#views}
@@ -171,18 +179,21 @@ $builder->withTranslations(function (Localization $localization) {
 Configures view loading.
 
 ```php
-$builder->withViews(function (View $view) {
-    $view->loadFrom(
-        shared_path('Views'),
-        shared_path('Mails/Templates'),
-        '/app/Containers/ExampleSection/ExampleContainer/UI/WEB/Views'
-    );
+Apiato::configure()
+    ->withViews(
+        function (\Apiato\Foundation\Configuration\View $view) {
+            $view->loadFrom(
+                shared_path('Views'),
+                shared_path('Mails/Templates'),
+                '/app/Containers/ExampleSection/ExampleContainer/UI/WEB/Views',
+            );
 
-    // Custom namespace builder
-    $view->buildNamespaceUsing(function (string $path) {
-        return $namespace;
-    });
-});
+            // Custom namespace builder
+            $view->buildNamespaceUsing(function (string $path) {
+                return $namespace;
+            });
+        },
+    );
 ```
 
 ### withRouting {#routing}
@@ -190,19 +201,22 @@ $builder->withViews(function (View $view) {
 Configures API and web routing.
 
 ```php
-$builder->withRouting(function (Routing $routing) {
-    $routing->prefixApiUrlsWith('api/')
-        ->loadApiRoutesFrom('/app/Containers/ExampleSection/ExampleContainer/UI/API/Routes')
-        ->loadWebRoutesFrom('/app/Containers/ExampleSection/ExampleContainer/UI/WEB/Routes');
+Apiato::configure()
+    ->withRouting(
+        function (\Apiato\Foundation\Configuration\Routing $routing) {
+            $routing->prefixApiUrlsWith('api/')
+                ->loadApiRoutesFrom('/app/Containers/ExampleSection/ExampleContainer/UI/API/Routes')
+                ->loadWebRoutesFrom('/app/Containers/ExampleSection/ExampleContainer/UI/WEB/Routes');
 
-    // Disable API version auto-prefixing
-    $routing->disableApiVersionAutoPrefix();
+            // Disable API version auto-prefixing
+            $routing->disableApiVersionAutoPrefix();
 
-    // Custom API version resolver
-    $routing->resolveApiVersionUsing(function (string $file) {
-        return $version;
-    });
-});
+            // Custom API version resolver
+            $routing->resolveApiVersionUsing(function (string $file) {
+                return $version;
+            });
+        },
+    );
 ```
 
 ### withFactories {#factories}
@@ -210,11 +224,14 @@ $builder->withRouting(function (Routing $routing) {
 Configures model factory resolution.
 
 ```php
-$builder->withFactories(function (Factory $factory) {
-    $factory->resolveFactoryNameUsing(function (string $modelName) {
-        return $factoryClassName;
-    });
-});
+Apiato::configure()
+    ->withFactories(
+        function (\Apiato\Foundation\Configuration\Factory $factory) {
+            $factory->resolveFactoryNameUsing(function (string $modelName) {
+                return $factoryClassName;
+            });
+        },
+    );
 ```
 
 ### withRepositories
@@ -222,11 +239,14 @@ $builder->withFactories(function (Factory $factory) {
 Configures repository-model binding.
 
 ```php
-$builder->withRepositories(function (Repository $repository) {
-    $repository->resolveModelNameUsing(function (string $repositoryName) {
-        return $modelClassName;
-    });
-});
+Apiato::configure()
+    ->withRepositories(
+        function (\Apiato\Foundation\Configuration\Repository $repository) {
+            $repository->resolveModelNameUsing(function (string $repositoryName) {
+                return $modelClassName;
+            });
+        },
+    );
 ```
 
 ### create
@@ -234,10 +254,10 @@ $builder->withRepositories(function (Repository $repository) {
 Finalizes the configuration and returns the Apiato instance.
 
 ```php
-$apiato = $builder->create();
+$apiato = Apiato::configure()->create();
 ```
 
-## Complete Example
+## Example
 
 ```php
 $basePath = dirname(__DIR__);
@@ -247,24 +267,7 @@ $apiato = Apiato::configure(basePath: $basePath)
     ->withConfigs(
         shared_path('Configs'),
         ...glob($basePath . '/app/Containers/*/*/Configs', GLOB_ONLYDIR)
-    )
-    ->withEvents(
-        shared_path('Listeners'),
-        ...glob($basePath . '/app/Containers/*/*/Listeners', GLOB_ONLYDIR)
-    )
-    ->withCommands(
-        shared_path('Commands'),
-        ...glob($basePath . '/app/Containers/*/*/UI/CLI/Commands', GLOB_ONLYDIR)
-    )
-    ->withHelpers(
-        shared_path('Helpers'),
-        ...glob($basePath . '/app/Containers/*/*/Helpers', GLOB_ONLYDIR)
-    )
-    ->withMigrations(
-        shared_path('Migrations'),
-        ...glob($basePath . '/app/Containers/*/*/Data/Migrations', GLOB_ONLYDIR)
-    )
-    ->withRouting(function (Routing $routing) use ($basePath) {
+    )->withRouting(function (Routing $routing) use ($basePath) {
         $routing->prefixApiUrlsWith('api/')
             ->loadApiRoutesFrom(
                 ...glob($basePath . '/app/Containers/*/*/UI/API/Routes', GLOB_ONLYDIR)
@@ -272,8 +275,6 @@ $apiato = Apiato::configure(basePath: $basePath)
             ->loadWebRoutesFrom(
                 ...glob($basePath . '/app/Containers/*/*/UI/WEB/Routes', GLOB_ONLYDIR)
             );
-    })
-    ->withFactories()
-    ->withRepositories()
+    })->withFactories()
     ->create();
 ```
