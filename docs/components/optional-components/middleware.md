@@ -1,5 +1,5 @@
 ---
-title: Middlewares
+title: Middleware
 tags:
   - component
   - optional-component
@@ -10,8 +10,8 @@ tags:
   - request
 ---
 
-Apiato middlewares are just [Laravel Middlewares](https://laravel.com/docs/middleware),
-and they function in the exact same way as Laravel middlewares.
+Apiato middleware are just [Laravel Middleware](https://laravel.com/docs/middleware),
+and they function in the exact same way as Laravel middleware.
 However, they come with additional rules and conventions specific to Apiato.
 
 To generate new middleware,
@@ -23,11 +23,11 @@ php artisan apiato:make:middleware
 
 ## Rules
 
-- All container-specific Middlewares:
-  - MUST be placed in the `app/Containers/{Section}/{Container}/Middlewares` directory.
-- All general Middlewares:
-  - MUST be placed in the `app/Ship/Middlewares` directory.
-- All Middlewares MUST extend the `App\Ship\Parents\Middlewares\Middleware` class.
+- All container-specific Middleware:
+  - MUST be placed in the `app/Containers/{Section}/{Container}/Middleware` directory.
+- All general Middleware:
+  - MUST be placed in the `app/Ship/Middleware` directory.
+- All Middleware MUST extend the `App\Ship\Parents\Middleware\Middleware` class.
   - The parent extension SHOULD be aliased as `ParentMiddleware`.
 
 ## Folder Structure
@@ -37,15 +37,15 @@ app
 ├── Containers
 │   └── Section
 │       └── Container
-│           └── Middlewares
+│           └── Middleware
 │               ├── DemoMiddleware.php
 │               └── ...
 └── Ship
-    └── Middlewares
+    └── Middleware
         ├── AnotherMiddleware.php
         └── ...
 ```
 
 ## Code Example
 
-Middlewares are defined exactly as you would define them in Laravel.
+Middleware are defined exactly as you would define them in Laravel.
