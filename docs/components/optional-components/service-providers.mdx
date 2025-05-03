@@ -61,10 +61,12 @@ Service Providers are defined exactly as you would define them in Laravel.
 
 ## Service Providers Registration
 Normally, service providers are registered in the `bootstrap/providers.php` file.
-However, in Apiato, this is handled automatically.
-
-All providers within the `Providers` directories of Containers and Ship are automatically registered.
+However, Apiato is configured
+to load all service provider files in the `app/Containers/{Section}/{Container}/Providers` and `app/Ship/Providers` directories.
 This means you don't need to manually register them in the `bootstrap/providers.php` file.
+
+If the default configuration does not suit your needs,
+you can customize it via the [Apiato Configuration](../../framework-features/advance-configuration.mdx#providers) class.
 
 #### Third-Party Service Providers
 
