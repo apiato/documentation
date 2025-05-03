@@ -137,11 +137,11 @@ Common error HTTP status codes include:
 - 200 OK Server successfully returned the requested data.
 - 201 CREATED Server successfully created or modified the requested resource.
 - 204 NO CONTENT Server successfully deleted the requested resource.
-- 400 INVALID REQUEST The request was invalid or cannot be served. The exact error should be explained in the error payload. E.g. „The JSON is not valid“.
+- 400 INVALID REQUEST The request was invalid or cannot be served. The exact error should be explained in the error payload. e.g., "The JSON is not valid."
 - 401 UNAUTHORIZED The request requires an user authentication.
 - 403 FORBIDDEN The server understood the request, but is refusing it or the access is not allowed.
 - 404 NOT FOUND There is no resource behind the URI.
-- 422 Unprocessable Entity Should be used if the server cannot process the enitity, e.g. if an image cannot be formatted or mandatory fields are missing in the payload.
+- 422 Unprocessable Entity Should be used if the server cannot process the entity, e.g., if an image cannot be formatted or mandatory fields are missing in the payload.
 - 500 INTERNAL SERVER ERROR Internal Server Error.
 - 502 BAD GATEWAY Server received an invalid response from the upstream server while trying to fulfill the request.
 - 503 SERVICE UNAVAILABLE Service unavailable.
