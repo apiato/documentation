@@ -11,7 +11,7 @@ Apiato mails are just [Laravel Mails](https://laravel.com/docs/mail),
 and they function in the exact same way as Laravel mails.
 However, they come with additional rules and conventions specific to Apiato.
 
-To generate new mails you may use the `apiato:generate:mail` interactive command:
+To generate new mails, you may use the `apiato:generate:mail` interactive command:
 
 ```
 php artisan apiato:generate:mail

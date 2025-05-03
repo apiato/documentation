@@ -11,7 +11,7 @@ Apiato jobs are just [Laravel Jobs](https://laravel.com/docs/queues),
 and they function in the exact same way as Laravel jobs.
 However, they come with additional rules and conventions specific to Apiato.
 
-To generate new jobs you may use the `apiato:make:job` interactive command:
+To generate new jobs, you may use the `apiato:make:job` interactive command:
 
 ```
 php artisan apiato:make:job

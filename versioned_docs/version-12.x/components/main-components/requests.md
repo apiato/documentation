@@ -14,7 +14,7 @@ tags:
 being handled by your application as well as retrieve the input,
 cookies, and files that were submitted with the request.
 
-To generate new requests you may use the `apiato:generate:request` interactive command:
+To generate new requests, you may use the `apiato:generate:request` interactive command:
 
 ```
 php artisan apiato:generate:request

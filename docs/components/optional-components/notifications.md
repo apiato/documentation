@@ -11,7 +11,7 @@ Apiato notifications are just [Laravel Notifications](https://laravel.com/docs/n
 and they function in the exact same way as Laravel notifications.
 However, they come with additional rules and conventions specific to Apiato.
 
-To generate new notifications you may use the `apiato:make:notification` interactive command:
+To generate new notifications, you may use the `apiato:make:notification` interactive command:
 
 ```
 php artisan apiato:make:notification

@@ -13,7 +13,7 @@ and providing an abstraction for interacting with that data.
 They encapsulate the business logic and rules associated with the data,
 as well as facilitate the communication with the underlying database.
 
-To generate new models you may use the `apiato:generate:model` interactive command:
+To generate new models, you may use the `apiato:generate:model` interactive command:
 
 ```
 php artisan apiato:generate:model

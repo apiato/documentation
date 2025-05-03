@@ -14,7 +14,7 @@ Apiato events are just [Laravel Events](https://laravel.com/docs/events),
 and they function in the exact same way as Laravel events.
 However, they come with additional rules and conventions specific to Apiato.
 
-To generate new events and listeners you may use the following interactive commands:
+To generate new events and listeners, you may use the following interactive commands:
 
 ```
 php artisan apiato:generate:event

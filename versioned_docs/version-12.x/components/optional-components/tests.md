@@ -15,7 +15,7 @@ Apiato enhances the testing experience by including convenient helper methods.
 These methods enable you to write expressive tests for your applications, further enhancing the testing process.
 You can refer to Laravel documentation on [HTTP tests](https://laravel.com/docs/http-tests) for more information on the available testing methods.
 
-To generate new tests you may use the following interactive commands:
+To generate new tests, you may use the following interactive commands:
 
 ```
 php artisan apiato:generate:test:unit

@@ -12,7 +12,7 @@ Apiato policies are just [Laravel Policies](https://laravel.com/docs/authorizati
 and they function in the exact same way as Laravel policies.
 However, they come with additional rules and conventions specific to Apiato.
 
-To generate new policies you may use the `apiato:generate:policy` interactive command:
+To generate new policies, you may use the `apiato:generate:policy` interactive command:
 
 ```
 php artisan apiato:generate:policy
