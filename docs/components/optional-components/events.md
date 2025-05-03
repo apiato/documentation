@@ -34,7 +34,7 @@ php artisan apiato:make:listener
 - All general
   - Events MUST be placed in the `app/Ship/Events` directory.
   - Listeners MUST be placed in the `app/Ship/Listeners` directory.
-- Listeners CAN listen to all cross-container & cross-section events.
+- Listeners CAN listen to all cross-container and cross-section events.
 - Events & Listeners MUST be registered in the location where you intend to handle that event. (unless using [event discovery](https://laravel.com/docs/events#event-discovery))
   - If you intend to handle an event in:
     - A container, the Listener MUST be registered in `App\Containers\{Section}\{Container}\Providers\EventServiceProvider` class.
@@ -88,3 +88,10 @@ Apiato will automatically find
 and register your events and listeners
 by scanning your application's `app/Containers/{Section}/{Container}/Listeners` directory.
 In addition, any explicitly defined events listed your `EventServiceProvider`s will still be registered.
+
+#### Configuration
+Apiato is configured
+to load all event files in the `app/Containers/{Section}/{Container}/Listeners` and `app/Ship/Listeners` directories.
+
+If the default configuration does not suit your needs, you can customize it
+via the [Apiato Configuration](../../framework-features/advance-configuration.mdx#events) class.
