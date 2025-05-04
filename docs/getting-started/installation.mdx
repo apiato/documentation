@@ -126,11 +126,14 @@ Apiato should always be served out of the root of the "web directory" configured
 You should not attempt to serve a Apiato application out of a subdirectory of the "web directory".
 Attempting to do so could expose sensitive files present within your application.
 
-### Subdomain and API Version Prefix {#subdomain-and-api-version-prefix}
+### API URL Configuration {#url-configuration}
 
-By default, Apiato uses `api` as a subdomain for all endpoints and adds only the API version as a prefix,
-resulting in URLs like `api.apiato.test/v1`.
-However, you can customize this behavior using the [Apiato configuration](../framework-features/advance-configuration.mdx) class.
+Apiato is configured to use the `api` subdomain for all endpoints,
+In addition, it adds the API version as a prefix to the endpoint path,
+resulting in URLs like `http://api.apiato.test/v1`.
+
+If the default configuration does not suit your needs,
+you can customize it via the [Apiato Configuration](../framework-features/advance-configuration.mdx#routing) class.
 
 ## Generating API Documentation
 
@@ -149,7 +152,7 @@ php artisan apiato:apidoc
 ## Let's Play
 
 To witness Apiato in action,
-assuming you are using the default [Subdomain and API Version Prefix](#subdomain-and-api-version-prefix) configuration,
+assuming you are using the default [Subdomain and API Version Prefix](#url-configuration) configuration,
 you should be able to access the following URLs and see the following results:
 
 #### Web (Browser)
