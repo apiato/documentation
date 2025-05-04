@@ -119,3 +119,20 @@ This feature can be configured through the [Documentation Generator](../../pacak
 #### Private Routes:
 - Accessible only to your own apps.
 - May or may not require authentication.
+
+## Rate Limiting
+Apiato uses the [Laravel Rate Limiting](https://laravel.com/docs/rate-limiting) feature
+and comes with a default `api` rate limiter.
+The `api` rate limiter is only applied to API routes and not to web routes and is _enabled_ by default.
+
+### Disable Rate Limiting
+The `api` rate limiter can be disabled on specific routes or globally via the [configs](#configuration) class.
+To disable rate limiting on a specific route, you can use the `withoutMiddleware` method.
+
+```php
+Route::post('orders', CreateOrderController::class)
+    ->withoutMiddleware('throttle:api');
+```
+
+### Configuration
+Rate limiting configuration is done in the `app/Ship/Configs/apiato.php` config file.
