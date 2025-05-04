@@ -715,19 +715,19 @@ abstract class Notification extends LaravelNotification
 
 If you depend on this feature, you can add the removed method to your parent notification class.
 
-## API Prefix
+## API URL Configuration
 
-## Subdomain
-The `apiato.api.subdomain` configuration option has been removed.
+### Path Prefix
+The `apiato.api.prefix` configuration option has been removed.
 
-You can now configure subdomains in the `bootstrap/app.php` file,
-using the `Apiato` configuration class `withRouting` method. TODO add doc link
+You can now configure the path prefix
+using the [Apiato configuration](../framework-features/advance-configuration.mdx#routing).
 
-## Version Prefix
+### Version Prefix
 The `apiato.api.enable_version_prefix` configuration option has been removed.
 
-You can now configure version prefixes in the `bootstrap/app.php` file,
-using the `Apiato` configuration class `withRouting` method. TODO add doc link
+You can now configure the path prefix
+using the [Apiato configuration](../framework-features/advance-configuration.mdx#routing).
 
 ## Miscellaneous
 We recommend
