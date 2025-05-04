@@ -53,7 +53,6 @@ app
 ## Code Example
 
 ```php
-use ...
 use App\Ship\Parents\Actions\Action as ParentAction;
 
 class DemoAction extends ParentAction
@@ -73,7 +72,6 @@ class DemoAction extends ParentAction
 #### Calling multiple Tasks
 
 ```php
-use ...
 use App\Ship\Parents\Actions\Action as ParentAction;
 
 class DemoAction extends ParentAction
