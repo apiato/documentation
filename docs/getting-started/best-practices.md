@@ -110,9 +110,9 @@ With the two principles we discussed above in mind, let’s look at some example
 - Include objects relationship (Comments/author) with the Article response:
 	- `/articles/:articleId?include=comments`
 	- `/articles/:articleId?include=comments,author`
-- Create new Article:
+- Create a new Article:
 	- `/articles`
-- Add new Comment to an Article:
+- Add a new Comment to an Article:
 	- `/articles/:articleId/comments`
 
 In the code above, we use the GET method on the path `/articles/:articleId/comments`.
