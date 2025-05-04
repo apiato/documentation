@@ -31,14 +31,9 @@ For all Apiato releases, bug fixes are provided for 18 months and security fixes
 ## Apiato 13
 
 A lot of files have been moved around, renamed or removed.
-See the **Full Changelog**: https://github.com/apiato/core/compare/v12.0.0...v13.0.0.
+See the full changelog for [Apiato](https://github.com/apiato/core/compare/v12.0.0...v13.0.0) and [Core](https://github.com/apiato/core/compare/v8.0.0...v13.0.0).
 
-Possible breaking changes are document in the [upgrade guide](https://apiato.io/docs/prologue/upgrade-guide).
-
-See the Core changelog. TODO: add link
-
-TODO add link to docs for every new thing that has a docs page.
-Also move the docs written under them to their respective doc page.
+Possible breaking changes are documented in the [upgrade guide](https://apiato.io/docs/prologue/upgrade-guide).
 
 ## Notable Changes
 * update min PHP version to `^8.2`
@@ -46,7 +41,7 @@ Also move the docs written under them to their respective doc page.
 * allow configuration using a config class (Similar to Laravel)
 * allow publishing `apiato.php` configs
 * rename generate command from `apiato:generate` to `apiato:make`
-* add `Apiato\Support\Facades\Response` facade which provides:
+* add [Response](../digging-deeper/response.mdx) facade which provides:
   * eager loading requested includes
   * improved filtering of the response
   * excluding includes
