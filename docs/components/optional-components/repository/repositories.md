@@ -316,7 +316,7 @@ like a user ID, you need to instruct the `RequestCriteria` to decode it before p
 For example,
 if you have a search query like this:
 ```
-`?search=id:XbPW7awNkzl83LD6;parent_id:aYOxlpzRMwrX3gD7;some_hashed_id:NxOpZowo9GmjKqdR`
+?search=id:XbPW7awNkzl83LD6;parent_id:aYOxlpzRMwrX3gD7;some_hashed_id:NxOpZowo9GmjKqdR
 ```
 You should update your `addRequestCriteria` method as follows:
 
