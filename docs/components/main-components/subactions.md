@@ -50,7 +50,6 @@ app
 ## Code Example
 
 ```php
-use ...
 use App\Ship\Parents\Actions\SubAction as ParentSubAction;
 
 class DemoSubAction extends ParentSubAction
