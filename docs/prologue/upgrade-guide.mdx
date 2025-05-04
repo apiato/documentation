@@ -475,7 +475,7 @@ final class DeleteUserRequest extends ParentRequest
 The `$urlParameters` property and the `getUrlParametersArray` method have been removed.
 URL parameters are no longer available for validation in the `rules` method.
 
-- Remove validations based on URL parameters.
+- Remove the validations that are based on the URL parameters.
 - Remove any reference to the `$urlParameters` property.
 - Remove calls to `getUrlParametersArray`.
 
@@ -484,21 +484,23 @@ Note that invalid URL parameters now result in a 404 error rather than a 422 err
 :::
 
 ### Hashed ID Decoding
-The `$decode` property now also decodes URL parameters automatically.
+In addition to the previous behavior, the `$decode` property can now decode route parameters.
+The catch is that the decoded route parameters will not be available via `input` or `all` methods.
+Instead, you can access them via `route` method.
 
 ```php
-// before
-protected array $decode = ['id'];
-protected array $urlParameters = ['id'];
+// endpoint
+/users/{id}
 
-// after
-protected array $decode = ['id'];
-// $urlParameters is no longer needed and
-// $request->id will return the decoded value.
+// request
+class DemoRequest extends ParentRequest
+{
+    protected array $decode = ['id'];
+}
+
+// usage
+$id = $request->route('id');
 ```
-
-TODO: are decoded values still available in the all() method? Or they have to be pulled from the route?
-You can still retrieve decoded URL parameters via `$request->id`, `$request->input('id')`, or `$request->route('id')`.
 
 ### Input Sanitization
 `sanitizeInput` has been renamed to `sanitize`.
