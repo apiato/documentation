@@ -15,7 +15,7 @@ tags:
 [Controllers](https://laravel.com/docs/controllers) are tasked with two primary responsibilities:
 serving the requested data and constructing the corresponding response.
 
-To generate new controllers
+To generate new controllers,
 you may use the `apiato:make:controller` interactive command:
 
 ```
@@ -61,22 +61,19 @@ app
 ## Code Example
 
 #### API Controller
+You can use the [Response](../../digging-deeper/response.mdx) facade to create a new response object.
 
 ```php
+use Apiato\Support\Facades\Response;
 use App\Ship\Parents\Controllers\ApiController;
 
 class Controller extends ApiController
 {
-    public function __construct(
-        private readonly SampleAction $sampleAction,
-    ) {
-    }
-    
-    public function __invoke(SampleRequest $request): array
+    public function __invoke(SampleRequest $request, SampleAction $sampleAction)
     {
-        $sample = $this->sampleAction->run($request);
+        $sample = $sampleAction->run($request);
         
-        return $this->transform($sample, SampleTransformer::class);
+        return Response::create($sample, SampleTransformer::class);
     }
 }
 ```
@@ -88,35 +85,9 @@ use App\Ship\Parents\Controllers\WebController;
 
 class Controller extends WebController
 {
-    public function show(): Factory|View|Application
+    public function show()
     {
         return view('sectionName@containerName::view-name');
     }
 }
-```
-
-## Response
-
-You can use the `Apiato\Support\Facades\Response` facade to create a new response object.
-
-The `Response` class extends `Spatie\Fractal\Fractal` to enhance its functionality for API responses.
-It adds methods for resource key management, meta information, and standardized HTTP responses.
-
-:::info Further Reading
-For more detailed information,
-please refer to [Fractal](https://fractal.thephpleague.com/transformers/) and [Laravel Fractal Wrapper](https://github.com/spatie/laravel-fractal) documentations.
-:::
-
-Here are some examples of how to use the `Response` facade:
-
-```php
-Response::create($user)->transformWith(UserTransformer::class)->json(null, 200);
-
-Response::create()->transformWith(UserTransformer::class)->ok($user);
-
-Response::create($user, UserTransformer::class)->created();
-
-Response::create($user, UserTransformer::class)->parseIncludes(['permissions'])->toArray();
-
-Response::ok();
 ```

@@ -1,0 +1,30 @@
+---
+sidebar_position: 50
+title: Response
+tags:
+  - digging-deeper
+  - response
+---
+
+The `Apiato\Support\Facades\Response` facade is a powerful tool to create API responses.
+It extends `Spatie\Fractal\Fractal` and enhances its functionality by
+adding methods for resource key management, meta-information, and standardized HTTP responses.
+
+:::info Further Reading
+For more detailed information,
+please refer to [Fractal](https://fractal.thephpleague.com/transformers/) and [Laravel Fractal Wrapper](https://github.com/spatie/laravel-fractal) documentations.
+:::
+
+Here are some examples of how to use the `Response` facade:
+
+```php
+Response::create($user)->transformWith(UserTransformer::class)->json(null, 200);
+
+Response::create()->transformWith(UserTransformer::class)->ok($user);
+
+Response::create($user, UserTransformer::class)->created();
+
+Response::create($user, UserTransformer::class)->parseIncludes(['permissions'])->toArray();
+
+Response::ok();
+```

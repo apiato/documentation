@@ -568,11 +568,8 @@ Apiato now returns `401` instead of `403` when a user is unauthenticated (matchi
 ## Response
 
 ### Transformation
-The `$this->transform` method in API Controllers is removed. Use the `Apiato\Support\Facades\Response` facade instead.
-
-TODO: write the docs and link it here
-
-Its API closely mirrors the old `$this->transform` methods. Refer to the new `Response` facade documentation for details.
+The `transform` method in API Controllers is removed.
+Use the [Response](../digging-deeper/response.mdx) facade instead.
 
 Update your `app/Ship/Configs/fractal.php` file to use the Apiato Response class
 ```php
