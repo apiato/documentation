@@ -63,9 +63,7 @@ Also move the docs written under them to their respective doc page.
 #### Removed
 * `app/Ship/Configs/notification.php` config file
 * `apiato.api.prefix`  
-  configure via Apiato::config
 * `apiato.api.enable_version_prefix`  
-  configure via Apiato::config
 * `apiato.requests.allow-roles-to-access-all-routes`
 * `apiato.requests.force-valid-includes`
 * `apiato.requests.params`
