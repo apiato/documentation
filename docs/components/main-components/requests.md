@@ -156,7 +156,7 @@ $request->input('authors.*.id')
 ```
 
 You can also decode route parameters.
-But the decoded values will not be available via `input` or `all`.
+But the decoded values will not be available via `input` or `all` methods.
 Instead, you can access them using the `route` method.
 
 ```php
@@ -166,9 +166,7 @@ Instead, you can access them using the `route` method.
 // request
 class DemoRequest extends ParentRequest
 {
-    protected array $decode = [
-        'id',
-    ];
+    protected array $decode = ['id'];
 }
 
 // usage
