@@ -56,7 +56,6 @@ app
 ## Code Example
 
 ```php
-use ...
 use App\Ship\Parents\Transformers\Transformer as ParentTransformer;
 
 class UserTransformer extends ParentTransformer
@@ -84,7 +83,6 @@ These relationships can be included in the response either [per API consumer req
 [by default](#include-by-default).
 The `include` parameter can be used on any endpoint
 that has [relationships defined](#defining-relationships) in its transformer.
-
 
 ### Defining Relationships
 
