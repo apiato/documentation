@@ -55,7 +55,6 @@ app
 ## Code Example
 
 ```php
-use ...
 use App\Ship\Parents\Tasks\Task as ParentTask;
 
 class DemoTask extends ParentTask
