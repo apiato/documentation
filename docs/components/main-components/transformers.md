@@ -231,6 +231,15 @@ the `avatar` relationship will automatically be included in every response creat
 This can simplify responses and reduce the need for additional API requests for related data,
 ultimately enhancing the efficiency and usability of your API.
 
+### Configuration
+You can configure the `includes` settings in the `config/fractal.php` file.
+```php
+'auto_includes' => [
+    'enabled' => true,
+    'request_key' => 'include',
+],
+```
+
 ## Excluding Relationships
 You can exclude relationships from the response by using the `exclude` query parameter.
 
@@ -260,6 +269,15 @@ This will exclude the `Image` relationship nested under the `Avatar` in the resp
 :::info Precedence
 The `exclude` query parameter takes precedence over the `include` query parameter and the [default includes](#include-by-default).
 :::
+
+### Configuration
+You can configure the `excludes` settings in the `config/fractal.php` file.
+```php
+'auto_excludes' => [
+    'enabled' => true,
+    'request_key' => 'exclude',
+],
+```
 
 ## Resource Key
 
