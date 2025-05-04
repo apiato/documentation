@@ -26,7 +26,7 @@ Repositories help
 create clean and organized codebases
 by abstracting the intricacies of data access and manipulation from the core business logic.
 
-To generate new repositories
+To generate new repositories,
 you may use the `apiato:make:repository` interactive command:
 
 ```
@@ -79,46 +79,36 @@ class UserRepository extends ParentRepository
 ```
 
 ## Configuration
+All the configuration options for this feature are located in the `app/Ship/Configs/repository.php` config file.
 
-All the configuration options for the this feature are located in the `app/Ship/Configs/repository.php` config file.
+## Binding Models
+Once you have created a repository, you need to associate it with its corresponding model.
+You can either let Apiato automatically discover the model or manually bind the model to the repository.
 
-## Linking Repositories & Models
+### Model Discovery
+By default,
+Apiato automatically discovers and associates your repositories with their corresponding models as long
+as the model and repository follow standard Apiato naming [conventions](#rules).
 
-Once you have created a repository, you need to link it to its corresponding model.
-If you have followed the repository naming [rules](#rules) outlined above,
-Apiato will automatically link your repositories to their corresponding models.
+However, if these conventions do not apply to your particular application, you may configure the model discovery logic
+via the [Apiato Configuration](../../../framework-features/advance-configuration.mdx#repositories) class.
 
-However, if you have not followed the rules, and your repository name differs from the model name,
-you must implement the `model` method in the repository.
-
-This method allows you to specify the correct model class that should be used for the repository operations.
+### Manual Model Binding
+If you prefer to manually bind the model to the repository,
+you can do so by implementing the `model` method in your repository class.
+This method should return the fully qualified class name of the model.
 
 ```php
 use App\Ship\Parents\Repositories\Repository as ParentRepository;
 
 class DemoRepository extends ParentRepository
 {
-    // ...
-    
     public function model(): string
     {
         return AnotherDemo::class;
     }
 }
 ```
-
-### Repositories & Models Auto-Linking
-
-Apiato offers a repository auto-linking feature that eliminates the need for manual linking of repositories & models.
-This automatic linking process relies on adhering to standard Apiato naming conventions for repositories.
-
-By following the repository naming [rules](#rules) outlined above,
-you allow Apiato to automatically link your repositories to their corresponding models.
-
-To summarize:
-
-- Repositories must be stored within the `app/Containers/{section}/{container}/Data/Repositories` directory.
-- The repository name should mirror the corresponding model's name while appending a `Repository` suffix. For instance, a `User` model corresponds to a `UserRepository` repository class.
 
 ## Pagination {#pagination}
 
@@ -250,7 +240,7 @@ that using the `removeRequestCriteria` method is only relevant if you have previ
 If it hasn't been applied, there is no need to remove it,
 as RequestCriteria is not automatically applied unless explicitly used.
 
-### Sorting & Ordering
+### Sorting and Ordering
 
 You can use the `orderBy` and `sortedBy` parameters to sort the data in the response.
 
