@@ -36,35 +36,41 @@ Let's say we have an endpoint that returns a user resource with the following st
     "type": "User",
     "id": "0one37vjk49rp5ym",
     "email": "gandalf@the.grey",
-    "products": [
-      {
-        "type": "Product",
-        "id": "bmo7y84xpgeza06k",
-        "status": "pending"
-      },
-      {
-        "type": "Product",
-        "id": "o0wzxbg0q4k7jp9d",
-        "status": "fulfilled"
-      }
-    ],
+    "products": {
+      "data": [
+        {
+          "type": "Product",
+          "id": "bmo7y84xpgeza06k",
+          "status": "pending"
+        },
+        {
+          "type": "Product",
+          "id": "o0wzxbg0q4k7jp9d",
+          "status": "fulfilled"
+        }
+      ]
+    },
     "store": {
       "data": {
         "type": "Store",
         "id": "r6lbekg8rv5ozyad"
       }
     },
-    "recipients": [
-      {
-        "type": "Recipient",
-        "id": "r6lbekg8rv5ozyad",
-        "contact": {
-          "type": "Contact",
-          "address": "123 Main St",
-          "city": "Gotham"
+    "recipients": {
+      "data": [
+        {
+          "type": "Recipient",
+          "id": "r6lbekg8rv5ozyad",
+          "contact": {
+            "data": {
+              "type": "Contact",
+              "address": "123 Main St",
+              "city": "Gotham"
+            }
+          }
         }
-      }
-    ]
+      ]
+    }
   }
 }
 ```
@@ -80,23 +86,27 @@ The response will be filtered to include only the specified fields:
   "data": {
     "type": "User",
     "email": "gandalf@the.grey",
-    "products": [
-      {
-        "status": "pending"
-      },
-      {
-        "status": "fulfilled"
-      }
-    ],
-    "recipients": [
-      {
-        "id": "r6lbekg8rv5ozyad",
-        "contact": {
-          "address": "123 Main St",
-          "city": "Gotham"
+    "products": {
+      "data": [
+        {
+          "status": "pending"
+        },
+        {
+          "status": "fulfilled"
         }
-      }
-    ]
+      ]
+    },
+    "recipients": {
+      "data": [
+        {
+          "id": "r6lbekg8rv5ozyad",
+          "contact": {
+            "address": "123 Main St",
+            "city": "Gotham"
+          }
+        }
+      ]
+    }
   }
 }
 ```
