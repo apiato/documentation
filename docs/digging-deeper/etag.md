@@ -1,8 +1,8 @@
 ---
-sidebar_position: 6
+sidebar_position: 50
 title: Etag
 tags:
-  - framework-feature
+  - digging-deeper
   - etag
 ---
 

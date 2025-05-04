@@ -1,5 +1,5 @@
 ---
-title: Framework Features
+title: Digging Deeper
 ---
 
 import DocCardList from '@theme/DocCardList';

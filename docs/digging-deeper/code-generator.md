@@ -1,8 +1,8 @@
 ---
-sidebar_position: 3
+sidebar_position: 20
 title: Code Generator
 tags:
-  - framework-feature
+  - digging-deeper
   - code-generator
 ---
 

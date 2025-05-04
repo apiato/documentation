@@ -1,8 +1,8 @@
 ---
-sidebar_position: 1
+sidebar_position: 40
 title: Helpers
 tags:
-  - framework-feature
+  - digging-deeper
   - helpers
 ---
 

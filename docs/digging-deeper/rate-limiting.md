@@ -1,16 +1,16 @@
 ---
-sidebar_position: 2
+sidebar_position: 60
 title: Rate Limiting
 tags:
-  - framework-feature
+  - digging-deeper
   - rate-limiting
 ---
 
-Apiato uses [Laravel Rate Limiting](https://laravel.com/docs/rate-limiting) feature
+Apiato uses the [Laravel Rate Limiting feature ](https://laravel.com/docs/rate-limiting)
 to protect your API from abuse and to ensure stability.
 
 :::note
-This feature is only applied to API requests, and not to web requests and is _enabled_ by default.
+This feature is only applied to API requests and not to web requests and is _enabled_ by default.
 :::
 
 ## How it works
