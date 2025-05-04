@@ -419,28 +419,3 @@ You can skip the cache for a specific request by adding the `?skipCache=true` qu
 ```
 
 > It's not recommended to skip the cache, but it's useful for testing purposes.
-
-## Additional Methods
-
-Apiato extends the L5 Repository package by adding a few more methods to the repository class.
-
-[pushCriteriaWith](#pushcriteriawith)  
-[findById](#findbyid)  
-[getById](#getbyid)  
-[findMany](#findmany)
-
-#### pushCriteriaWith
-
-This method is a wrapper around the `pushCriteria` method. It accepts data to be passed to the criteria class and allows for easier testing.
-
-#### findById
-
-This method is a wrapper around the `find` method. But it returns `null` if the record is not found.
-
-#### getById
-
-This method is a wrapper around the `find` method. But it throws a `NotFoundException` if the record is not found.
-
-#### findMany
-
-This method is a wrapper around the `find` method. But it returns an empty collection if no records are found.
