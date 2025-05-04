@@ -211,7 +211,7 @@ RequestCriteria is a standard Criteria implementation
 that enables filters to be applied to the repository based on parameters sent in the request.
 It allows for dynamic searches, data filtering, and query customization.
 
-To utilize RequestCriteria, you need to apply it to the repository.
+To use RequestCriteria, you need to apply it to the repository.
 Apiato provides two methods, `addRequestCriteria` and `removeRequestCriteria`, which are available on all repositories.
 
 Here's an example of how to use RequestCriteria:
