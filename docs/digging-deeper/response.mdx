@@ -19,12 +19,84 @@ Here are some examples of how to use the `Response` facade:
 
 ```php
 Response::create($user)->transformWith(UserTransformer::class)->json(null, 200);
-
 Response::create()->transformWith(UserTransformer::class)->ok($user);
-
 Response::create($user, UserTransformer::class)->created();
-
 Response::create($user, UserTransformer::class)->parseIncludes(['permissions'])->toArray();
-
 Response::ok();
+```
+
+### Filtering {#filtering}
+When using the `Response` facade, you can filter the response data using the `fields` query parameter.
+This allows you to specify which fields you want to include in the response.
+
+Let's say we have an endpoint that returns a user resource with the following structure:
+```json
+{
+  "data": {
+    "type": "User",
+    "id": "0one37vjk49rp5ym",
+    "email": "gandalf@the.grey",
+    "products": [
+      {
+        "type": "Product",
+        "id": "bmo7y84xpgeza06k",
+        "status": "pending"
+      },
+      {
+        "type": "Product",
+        "id": "o0wzxbg0q4k7jp9d",
+        "status": "fulfilled"
+      }
+    ],
+    "store": {
+      "data": {
+        "type": "Store",
+        "id": "r6lbekg8rv5ozyad"
+      }
+    },
+    "recipients": [
+      {
+        "type": "Recipient",
+        "id": "r6lbekg8rv5ozyad",
+        "contact": {
+          "type": "Contact",
+          "address": "123 Main St",
+          "city": "Gotham"
+        }
+      }
+    ]
+  }
+}
+```
+
+If we specify the following query parameters in our request:
+```
+api.apiato.test/v1/users?fields[User]=type,email,products,recipients&fields[Product]=status&fields[Recipient]=id,contact&fields[Contact]=address,city
+```
+
+The response will be filtered to include only the specified fields:
+```json
+{
+  "data": {
+    "type": "User",
+    "email": "gandalf@the.grey",
+    "products": [
+      {
+        "status": "pending"
+      },
+      {
+        "status": "fulfilled"
+      }
+    ],
+    "recipients": [
+      {
+        "id": "r6lbekg8rv5ozyad",
+        "contact": {
+          "address": "123 Main St",
+          "city": "Gotham"
+        }
+      }
+    ]
+  }
+}
 ```

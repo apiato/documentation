@@ -103,8 +103,8 @@ With the two principles we discussed above in mind, let’s look at some example
 	- `/articles?orderBy=created_at&sortedBy=desc`
 	- `/articles?search=author:john&orderBy=created_at&sortedBy=desc`
 - Specify optional fields:
-	- `/articles?filter=id;title;status`
-	- `/articles/:articleId?filter=id;title;status`
+	- `/articles?fields[Article]=id,title,status`
+	- `/articles/:articleId?fields[Article]=id,title,status`
 - Get all Comments belonging to an Article:
 	- `/articles/:articleId/comments`
 - Include objects relationship (Comments/author) with the Article response:

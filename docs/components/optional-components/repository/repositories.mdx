@@ -206,7 +206,6 @@ Per-repository configurations take precedence and override the global settings.
 :::
 
 ## RequestCriteria
-
 RequestCriteria is a standard Criteria implementation
 that enables filters to be applied to the repository based on parameters sent in the request.
 It allows for dynamic searches, data filtering, and query customization.
@@ -322,68 +321,6 @@ You should update your `addRequestCriteria` method as follows:
 
 ```php
 $this->repository->addRequestCriteria(['id', 'parent_id', 'some_hashed_id'])->all();
-```
-
-### Filtering
-
-The `filter` parameter can be used in any HTTP request to control the response size by specifying the data you want in the response.
-
-For example, to retrieve only the `id` and `status` fields from a Model, you can use the `filter` parameter like this:
-
-```
-api.apiato.test/v1/users?filter=id;status
-```
-
-The response will include only the specified fields, as shown in the example response:
-
-```json
-{
-  "data": [
-    {
-      "id": "0one37vjk49rp5ym",
-      "status": "approved"
-    }
-  ]
-}
-```
-
-It's important to note that the transformer used to format the data is also filtered.
-This means that only the fields specified in the filter are present, and all other fields are excluded.
-This filtering also applies to all [included relationships](../../main-components/transformers.md#including-relationships) of the object.
-
-```json
-{
-  "data": [
-    {
-      "id": "0one37vjk49rp5ym",
-      "status": "approved",
-      "products": {
-        "data": [
-          {
-            "id": "bmo7y84xpgeza06k",
-            "status": "pending"
-          },
-          {
-            "id": "o0wzxbg0q4k7jp9d",
-            "status": "fulfilled"
-          }
-        ]
-      },
-      "recipients": {
-        "data": [
-          {
-            "id": "r6lbekg8rv5ozyad"
-          }
-        ]
-      },
-      "store": {
-        "data": {
-          "id": "r6lbekg8rv5ozyad"
-        }
-      }
-    }
-  ]
-}
 ```
 
 ## Caching
