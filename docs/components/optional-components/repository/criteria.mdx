@@ -17,7 +17,7 @@ tags:
 > please refer to its [documentation](https://github.com/andersao/l5-repository).
 
 Criteria are specialized classes designed to encapsulate
-and apply query conditions when fetching data from a database using a [Repository](repositories.md).
+and apply query conditions when fetching data from a database using a [Repository](repositories.mdx).
 Unlike adding query conditions directly to a Repository or as a scope within a Model,
 Criteria offer distinct advantages.
 
@@ -78,35 +78,18 @@ class IsNullCriteria extends ParentCriteria
 ```
 
 ### Applying Criteria
-
 A Criteria can be applied to a Repository by using the `pushCriteria` method.
-
-```php
-public function __construct(
-    protected readonly UserRepository $repository
-) {
-}
-```
-
 The `pushCriteria` method accepts an instance of a Criteria class or a string with the Criteria class name.
-
-```php
-public function run()
-{
-    $this->repository->pushCriteria(new IsNullCriteria('email'));
-    return $this->repository->paginate();
-}
-```
-
 You can also apply multiple Criteria to a Repository by using the `pushCriteria` method multiple times.
 
 ```php
 public function run()
 {
-    $this->repository->pushCriteria(new IsNullCriteria('email'));
-    $this->repository->pushCriteria(OrderByNameCriteria::class);
-    return $this->repository->paginate();
+    $repository = app(UserRepository::class);
+
+    $repository->pushCriteria(new IsNullCriteria('email'));
+    $repository->pushCriteria(OrderByNameCriteria::class);
+
+    return $repository->paginate();
 }
 ```
-
-
