@@ -31,7 +31,7 @@ Read [**Porto SAP Documentation (#Controllers)**](https://github.com/Mahmoudz/Po
 - All API Controllers:
   - MUST be placed in the `app/Containers/{Section}/{Container}/UI/API/Controllers` directory.
   - MUST extend the `App\Ship\Parents\Controllers\ApiController` class.
-  - MUST format their responses via a [Transformer](transformers.md).
+  - MUST format their responses via a [Transformer](transformers.mdx).
 - All Web Controllers:
   - MUST be placed in the `app/Containers/{Section}/{Container}/UI/WEB/Controllers` directory.
   - MUST extend the `App\Ship\Parents\Controllers\WebController` class.
