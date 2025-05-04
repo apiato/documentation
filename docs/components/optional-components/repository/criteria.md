@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Criterias
+title: Criteria
 tags:
   - component
   - optional-component
@@ -16,24 +16,24 @@ tags:
 > To learn more about Criterias and the L5 Repository package,
 > please refer to its [documentation](https://github.com/andersao/l5-repository).
 
-Criterias are specialized classes designed to encapsulate
+Criteria are specialized classes designed to encapsulate
 and apply query conditions when fetching data from a database using a [Repository](repositories.md).
 Unlike adding query conditions directly to a Repository or as a scope within a Model,
-Criterias offer distinct advantages.
+Criteria offer distinct advantages.
 
-With Criterias, you can define query conditions in a reusable and shareable way.
+With Criteria, you can define query conditions in a reusable and shareable way.
 This means
 that a single query condition can be defined once and then
-utilized across multiple Models and Repositories in your application.
+used across multiple Models and Repositories in your application.
 This approach offers the flexibility to create query conditions once
 and apply them consistently anywhere in your application,
 enhancing code reusability and maintainability.
 
 ## Rules
 
-- All container-specific Criterias MUST be placed in the `app/Containers/{Section}/{Container}/Data/Criterias` directory.
-- All general Criterias MUST be placed in the `app/Ship/Criterias` directory.
-- All Criterias MUST extend the `App\Ship\Parents\Criterias\Criteria` class.
+- All container-specific Criteria MUST be placed in the `app/Containers/{Section}/{Container}/Data/Criterias` directory.
+- All general Criteria MUST be placed in the `app/Ship/Criteria` directory.
+- All Criteria MUST extend the `App\Ship\Parents\Criteria\Criteria` class.
   - The parent extension SHOULD be aliased as `ParentCriteria`.
 - Every Criteria MUST have an `apply` method.
 - A Criteria MUST not contain any extra code. If it needs data, the data MUST be passed to it.
@@ -46,12 +46,12 @@ app
 │   └── Section
 │       └── Container
 │           └── Data
-│               └── Criterias
+│               └── Criteria
 │                   ├── ColourRedCriteria.php
 │                   ├── RaceCarsCriteria.php
 │                   └── ...
 └── Ship
-    └── Criterias
+    └── Criteria
         ├── CreatedTodayCriteria.php
         ├── NotNullCriteria.php
         └── ...
@@ -60,7 +60,7 @@ app
 ## Code Example
 
 ```php
-use App\Ship\Parents\Criterias\Criteria as ParentCriteria;
+use App\Ship\Parents\Criteria\Criteria as ParentCriteria;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
 class IsNullCriteria extends ParentCriteria
@@ -98,7 +98,7 @@ public function run()
 }
 ```
 
-You can also apply multiple Criterias to a Repository by using the `pushCriteria` method multiple times.
+You can also apply multiple Criteria to a Repository by using the `pushCriteria` method multiple times.
 
 ```php
 public function run()
