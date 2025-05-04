@@ -492,13 +492,11 @@ Instead, you can access them via `route` method.
 // endpoint
 /users/{id}
 
-// request
 class DemoRequest extends ParentRequest
 {
     protected array $decode = ['id'];
 }
 
-// usage
 $id = $request->route('id');
 ```
 
@@ -577,19 +575,16 @@ TODO: write the docs and link it here
 Its API closely mirrors the old `$this->transform` methods. Refer to the new `Response` facade documentation for details.
 
 Update your `app/Ship/Configs/fractal.php` file to use the Apiato Response class
-  ```php
-  'fractal_class' => \Apiato\Http\Response::class
-  ```
-Replace all `$this->transform` calls with the Response facade.
+```php
+'fractal_class' => \Apiato\Http\Response::class
+```
 
-**Example**:
+Replace all `$this->transform` calls with the Response facade.
 ```php
 // before
 return $this->transform($data, Transformer::class);
 
 // after
-use Apiato\Support\Facades\Response;
-
 return Response::create($data, Transformer::class);
 ```
 
