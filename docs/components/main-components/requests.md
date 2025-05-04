@@ -20,7 +20,7 @@ To generate new requests, you may use the `apiato:make:request` interactive comm
 php artisan apiato:make:request
 ```
 
-## Definition & Principles
+## Definition and Principles
 
 Read [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 

@@ -25,7 +25,7 @@ use the `apiato:list:actions` command.
 php artisan apiato:list:actions
 ```
 
-## Definition & Principles
+## Definition and Principles
 
 Read [**Porto SAP Documentation (#Actions)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 

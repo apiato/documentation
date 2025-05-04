@@ -19,7 +19,7 @@ To generate new models, you may use the `apiato:make:model` interactive command:
 php artisan apiato:make:model
 ```
 
-## Definition & Principles
+## Definition and Principles
 
 Read [**Porto SAP Documentation (#Models)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 

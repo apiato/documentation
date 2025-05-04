@@ -23,7 +23,7 @@ To generate new SubActions, you may use the `apiato:make:subaction` interactive 
 php artisan apiato:make:subaction
 ```
 
-## Definition & Principles
+## Definition and Principles
 
 Read [**Porto SAP Documentation (#Sub-Actions)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 

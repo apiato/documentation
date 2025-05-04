@@ -59,7 +59,7 @@ These types of tests provide the most confidence that your system as a whole is 
 - All `Ship` Unit tests:
   - MUST be placed in the `app/Ship/Tests/Unit` directory.
   - MUST extend the `App\Ship\Tests\ShipTestCase` class.
-- All `ContainerTestCases` & `ShipTestCase` MUST extend the `App\Ship\Parents\Tests\PhpUnit\TestCase` class.
+- All `ContainerTestCases` and `ShipTestCase` MUST extend the `App\Ship\Parents\Tests\PhpUnit\TestCase` class.
   - The parent extension SHOULD be aliased as `ParentTestCase`.
 
 ## Folder Structure

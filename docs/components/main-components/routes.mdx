@@ -21,7 +21,7 @@ To generate new routes, you may use the `apiato:make:route` interactive command:
 php artisan apiato:make:route
 ```
 
-## Definition & Principles
+## Definition and Principles
 
 Read [**Porto SAP Documentation (#Routes)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
@@ -105,7 +105,7 @@ the endpoint inside the specified route file will automatically become accessibl
 | `CreateOrder.v2.public.php` | `Route::post('orders', AnotherCreateOrderController::class);` | [POST] `http://api.apiato.test/v2/orders` |
 | `ListOrders.v1.private.php` | `Route::get('orders', ListOrdersController::class);`          | [GET] `http://api.apiato.test/v1/orders`  |
 
-## Public & Private Routes
+## Public and Private Routes
 
 Apiato supports two types of endpoints, `Public` and `Private`, out of the box.
 Maintaining this distinction enables the generation of separate documentations for each type,

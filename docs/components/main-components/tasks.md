@@ -28,7 +28,7 @@ use the `apiato:list:tasks` command.
 php artisan apiato:list:tasks
 ```
 
-## Definition & Principles
+## Definition and Principles
 
 Read [**Porto SAP Documentation (#Tasks)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 

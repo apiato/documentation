@@ -26,7 +26,7 @@ you may use the `apiato:make:transformer` interactive command:
 php artisan apiato:make:transformer
 ```
 
-## Definition & Principles
+## Definition and Principles
 
 Read [**Porto SAP Documentation (#Transformers)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 
@@ -174,11 +174,9 @@ This will include the `roles` data in the response:
         {
           "type": "Role",
           "id": "bmo7y84xpgeza06k"
-        },
-        // ...
+        }
       ]
-    },
-    // ...
+    }
   ]
 }
 ```

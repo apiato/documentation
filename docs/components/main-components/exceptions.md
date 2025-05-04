@@ -15,7 +15,7 @@ To generate new exceptions, you may use the `apiato:make:exception` interactive 
 php artisan apiato:make:exception
 ```
 
-## Definition & Principles
+## Definition and Principles
 
 Read [**Porto SAP Documentation (#Exceptions)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 

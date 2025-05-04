@@ -22,7 +22,7 @@ you may use the `apiato:make:controller` interactive command:
 php artisan apiato:make:controller
 ```
 
-## Definition & Principles
+## Definition and Principles
 
 Read [**Porto SAP Documentation (#Controllers)**](https://github.com/Mahmoudz/Porto#definitions--principles).
 

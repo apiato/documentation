@@ -3,7 +3,7 @@ sidebar_position: 80
 title: Consulting
 ---
 
-## Dedicated Support & Consultancy Services
+## Dedicated Support and Consultancy Services
 
 Need help with your Apiato project?
 Whether you’re an individual developer or part of an organization,

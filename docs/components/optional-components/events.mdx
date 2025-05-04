@@ -23,7 +23,7 @@ php artisan apiato:make:listener
 
 ## Rules
 
-- All 
+- All
   - Events MUST extend the `App\Ship\Parents\Events\Event` class.
     - The parent extension SHOULD be aliased as `ParentEvent`.
   - Listeners MUST extend the `App\Ship\Parents\Listeners\Listener` class.
@@ -35,14 +35,14 @@ php artisan apiato:make:listener
   - Events MUST be placed in the `app/Ship/Events` directory.
   - Listeners MUST be placed in the `app/Ship/Listeners` directory.
 - Listeners CAN listen to all cross-container and cross-section events.
-- Events & Listeners MUST be registered in the location where you intend to handle that event. (unless using [event discovery](https://laravel.com/docs/events#event-discovery))
+- Events and Listeners MUST be registered in the location where you intend to handle that event. (unless using [event discovery](https://laravel.com/docs/events#event-discovery))
   - If you intend to handle an event in:
     - A container, the Listener MUST be registered in `App\Containers\{Section}\{Container}\Providers\EventServiceProvider` class.
     - The Ship, the Listener MUST be registered in `App\Ship\Providers\EventServiceProvider` class.
 
 ## Folder Structure
 
-The highlighted sections showcase event & listener registration points:
+The highlighted sections showcase event and listener registration points:
 
 ```php
 app
