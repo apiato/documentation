@@ -42,9 +42,6 @@ Possible breaking changes are documented in the [upgrade guide](https://apiato.i
 * allow publishing `apiato.php` configs
 * rename generate command from `apiato:generate` to `apiato:make`
 * add [Response](../digging-deeper/response.mdx) facade which provides:
-  * eager loading requested includes
-  * improved filtering of the response
-  * excluding includes
 * add `Collection::containsDecodedHash` macro
 * add `Collection::decode` macro
 * add `Config::unset` macro
