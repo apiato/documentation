@@ -110,3 +110,12 @@ The response will be filtered to include only the specified fields:
   }
 }
 ```
+
+#### Configuration
+You can configure the filter settings in the `config/fractal.php` file.
+```php
+'auto_fieldsets' => [
+    'enabled' => true,
+    'request_key' => 'fields',
+],
+```
