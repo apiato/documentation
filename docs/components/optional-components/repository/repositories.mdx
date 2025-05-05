@@ -373,3 +373,21 @@ public function shouldEagerLoadIncludes(): bool
 :::note
 Apiato does not automatically eager-load the [default includes](../../main-components/transformers.mdx#include-by-default).
 :::
+
+### Considerations
+The `include` parameter must correspond to a valid relationship on the model.
+Apiato will automatically infer the correct relation name from the specified `include`.
+
+If the `include` parameter does not match any relationship on the model,
+Apiato will not throw an error and the relationship will not be loaded.
+
+Here are some examples of how the `include` parameter is mapped to the relationship name:
+
+| Include Name      | Guessed Relation Name |
+|-------------------|-----------------------|
+| user-address      | userAddress           |
+| user_address      | userAddress           |
+| userAddress       | userAddress           |
+| user-address-city | userAddressCity       |
+| user_address_city | userAddressCity       |
+| userAddressCity   | userAddressCity       |
