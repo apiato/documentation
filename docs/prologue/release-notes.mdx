@@ -30,67 +30,14 @@ For all Apiato releases, bug fixes are provided for 18 months and security fixes
 
 ## Apiato 13
 
-A lot of files have been moved around, renamed or removed.
-See the full changelog for [Apiato](https://github.com/apiato/core/compare/v12.0.0...v13.0.0) and [Core](https://github.com/apiato/core/compare/v8.0.0...v13.0.0).
+Apiato 13 represents a fundamental shift towards leveraging Laravel's native implementations
+rather than maintaining custom solutions.
+This strategic realignment enhances maintainability, reduces technical debt
+and provides a more familiar experience for Laravel developers.
+Key native features now used include:
 
-Possible breaking changes are documented in the [upgrade guide](https://apiato.io/docs/prologue/upgrade-guide).
-
-## Notable Changes
-* update min PHP version to `^8.2`
-* update min Laravel version to `^11.23`
-* allow configuration using a [configuration class](../digging-deeper/advance-configuration.mdx) (Similar to Laravel)
-* allow publishing `apiato.php` configs
-* rename generate command from `apiato:generate` to `apiato:make`
-* add [Response](../the-basics/response.mdx) facade
-* [simplify url generation](../the-basics/apps.md) for multi-frontend apps
-* add new [helper](../digging-deeper/helpers.md) functions
-* add new [macros](../digging-deeper/macros.mdx)
-
-### Configs
-
-#### Removed
-* `app/Ship/Configs/notification.php` config file
-* `apiato.api.prefix`
-* `apiato.api.enable_version_prefix`
-* `apiato.requests.allow-roles-to-access-all-routes`
-* `apiato.requests.force-valid-includes`
-* `apiato.requests.params`
-* `apiato.seeders`
-* `apiato.tests`
-* `appSection-authentication.require_email_verification`
-* `appSection-authentication.email_verification_link_expiration_time_in_minute`
-  Apiato now uses Laravel email verification. Use `MustVerifyEmail` interface. read Laravel docs to learn more about how to and available configs.
-* `appSection-authentication.login`
-  login with multiple field feature has been removed
-* `appSection-authentication.allowed-reset-password-urls`
-* `appSection-authentication.allowed-verify-email-urls`
-
-#### Changed
-* `apiato.api.expires-in` renamed and moved to `appSection-authentication.tokens-expire-in`
-* `apiato.api.refresh-expires-in` renamed and moved to `appSection-authentication.refresh-tokens-expire-in`
-* `apiato.throttle` renamed to `apiato.rate-limiter`
-
-#### Added
-* `apiato.defaults.app`
-* `apiato.rate-limiter.name`
-* `apiato.apps.web.url`
-
-### Commands
-
-#### Removed
-* `apiato`
-  use `php artisan about` instead
-* `apiato:seed-deploy`
-* `apiato:seed-test`
-
-### Misc
-
-#### Removed
-* `Apiato\Core\Middlewares\Http\ProfilerMiddleware` middleware class
-* `no_spaces` [custom validation rule](https://github.com/apiato/core/blob/8.x/src/Traits/ValidationTrait.php)
-* `uncamelize` helper function
-* all custom test assertions (except [assertDatabaseTable](https://github.com/apiato/core/blob/065c8e7600048c2d0c3168993d99535511eb418c/src/Traits/TestTraits/PhpUnit/TestAssertionHelperTrait.php#L77))
-
-### Error Handling
-Error handling is completely reworked.
-See the [upgrade guide](https://apiato.io/docs/prologue/upgrade-guide) for more Details.
+* [Authorization](https://laravel.com/docs/authorization)
+* [Email Verification](https://laravel.com/docs/verification)
+* [Password Reset](https://laravel.com/docs/verification#password-reset)
+* [Error Handling](https://laravel.com/docs/errors)
+* [Testing](https://laravel.com/docs/http-tests)
