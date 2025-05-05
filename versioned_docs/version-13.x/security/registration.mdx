@@ -1,0 +1,63 @@
+---
+sidebar_position: 1
+title: Registration
+---
+
+Apiato supports two default user registration methods:
+
+1. [Register by Credentials](#register-by-credentials)
+2. [Register by Social Account](#register-by-social-account)
+
+You can also extend these methods or add new ones to customize your registration process.
+
+## Register by Credentials
+
+To register a new user, send a `POST` request to the `/register` endpoint.
+
+```
+api.apiato.test/v1/register
+```
+
+:::tip
+Don't forget to add `Accept: application/json` header to your request.
+:::
+
+The `/register` endpoint expects a string email address and a string password field.
+
+```json
+{
+  "email": "gandalg@the.grey",
+  "password": "password"
+}
+```
+
+You should receive a response similar to the following:
+
+```json
+{
+  "data": {
+    "type": "User",
+    "id": "XbPW7awNkzl83LD6",
+    "name": null,
+    "email": "john@doe.com",
+    "email_verified_at": null,
+    "gender": null,
+    "birth": null
+  },
+  "meta": {
+    "include": [
+        "roles",
+        "permissions"
+    ],
+    "custom": []
+  }
+}
+```
+
+[//]: # (## Register by Social Account)
+
+[//]: # ()
+[//]: # (> &#40;Facebook, Twitter, Google, etc...&#41;)
+
+[//]: # ()
+[//]: # (Checkout the [Social Authentication]&#40;../pacakges/social-authentication.md&#41; documentation.)

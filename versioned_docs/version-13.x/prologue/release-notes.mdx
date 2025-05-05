@@ -1,0 +1,43 @@
+---
+sidebar_position: 1
+title: Release Notes
+---
+
+## Versioning Scheme
+
+Apiato and its other first-party packages follow [Semantic Versioning](https://semver.org/).
+Major framework releases are released every year (~Q1),
+while minor and patch releases may be released as often as every week.
+Minor and patch releases should never contain breaking changes.
+
+When referencing the Apiato framework or its components from your application or package,
+you should always use a version constraint such as `^13.0`,
+since major releases of Apiato do include breaking changes.
+However, we strive to always ensure you may update to a new major release in one day or less.
+
+## Support Policy {#support-policy}
+
+For all Apiato releases, bug fixes are provided for 18 months and security fixes are provided for 2 years.
+
+| Version | PHP (*)   | Release          | Bug Fixes Until    | Security Fixes Until |
+|---------|-----------|------------------|--------------------|----------------------|
+| 10      | 7.3 - 8.1 | April 25th, 2021 | October 25th, 2022 | April 25th, 2023     |
+| 11      | 8.0 - 8.2 | April 27th, 2022 | October 27th, 2023 | April 27th, 2024     |
+| 12      | 8.1 - 8.2 | June 4th, 2023   | December 4th, 2024 | June 4th, 2025       |
+| 13      | 8.2 - 8.4 | May 5th, 2025    | November 5th, 2026 | May 5th, 2027        |
+
+(*) Supported PHP versions
+
+## Apiato 13
+
+Apiato 13 represents a fundamental shift towards leveraging Laravel's native implementations
+rather than maintaining custom solutions.
+This strategic realignment enhances maintainability, reduces technical debt
+and provides a more familiar experience for Laravel developers.
+Key native features now used include:
+
+* [Authorization](https://laravel.com/docs/authorization)
+* [Email Verification](https://laravel.com/docs/verification)
+* [Password Reset](https://laravel.com/docs/verification#password-reset)
+* [Error Handling](https://laravel.com/docs/errors)
+* [Testing](https://laravel.com/docs/http-tests)

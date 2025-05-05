@@ -1,0 +1,58 @@
+---
+title: Seeders
+tags:
+  - component
+  - optional-component
+  - seeder
+  - migration
+---
+
+Apiato seeders are just [Laravel Seeders](https://laravel.com/docs/seeding),
+and they function in the exact same way as Laravel seeders.
+However, they come with additional rules and conventions specific to Apiato.
+
+To generate new seeders, you may use the `apiato:make:seeder` interactive command:
+
+```
+php artisan apiato:make:seeder
+```
+
+## Rules
+
+- All container-specific Seeders MUST be placed in the `app/Containers/{Section}/{Container}/Data/Seeders` directory.
+- All Seeders MUST extend the `App\Ship\Parents\Seeders\Seeder` class.
+
+## Folder Structure
+
+```markdown
+app
+└── Containers
+    └── Section
+        └── Container
+            └── Data
+                └── Seeders
+                    ├── DemoSeeder_1.php
+                    ├── AnotherDemoSeeder_2.php
+                    └── ...
+```
+
+## Code Example
+
+Seeders are defined exactly as you would define them in Laravel.
+
+#### Prepend Section Name
+
+In situations where two seeder classes have the same name but exist in different containers,
+manually prepend the seeder name with the section name to distinguish them.
+
+## Loading Order
+
+Apiato enables the loading of seeders in a specific order.
+To organize the seeding of classes, simply add `_1`, `_2`, and so on, to your class names.
+For instance, `UserPermissionsSeeder_1` will be loaded before `UserPermissionsSeeder_2`.
+
+### Configuration
+Apiato is configured to load all seeder files in the `app/Containers/{Section}/{Container}/Data/Seeders` directory.
+
+If the default configuration does not suit your needs, you can customize it
+via the [Apiato Configuration](../../digging-deeper/advance-configuration.mdx#seeders) class.

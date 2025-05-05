@@ -1,0 +1,57 @@
+---
+title: Mail
+tags:
+  - component
+  - optional-component
+  - mail
+  - queue
+---
+
+Apiato mails are just [Laravel Mails](https://laravel.com/docs/mail),
+and they function in the exact same way as Laravel mails.
+However, they come with additional rules and conventions specific to Apiato.
+
+To generate new mails, you may use the `apiato:make:mail` interactive command:
+
+```
+php artisan apiato:make:mail
+```
+
+## Rules
+
+- All container-specific Mails MUST be placed in the `app/Containers/{Section}/{Container}/Mails` directory.
+- All container-specific email templates MUST be placed in the `app/Containers/{Section}/{Container}/Mails/Templates` directory.
+- All general Mails MUST be placed in the `app/Ship/Mails` directory.
+- All general email templates MUST be placed in the `app/Ship/Mails/Templates` directory.
+- All Mails MUST extend the `App\Ship\Parents\Mails\Mail` class.
+  - The parent extension SHOULD be aliased as `ParentMail`.
+
+## Folder Structure
+
+```markdown
+app
+├── Containers
+│   └── Section
+│       └── Container
+│           └── Mails
+│               ├── ForgetPassword.php
+│               ├── ...
+│               └── Templates
+│                   ├── forgot-password.blade.php
+│                   └── ...
+└── Ship
+    └── Mails
+        └── Newsletter.php
+            ├── ...
+            └── Templates
+                ├── newsletter.blade.php
+                └── ...
+```
+
+## Code Example
+
+Mails are defined exactly as you would define them in Laravel.
+
+## Template Namespaces
+
+Refer to [Views](../main-components/views/#namespaces) documentation for more information on template namespaces.

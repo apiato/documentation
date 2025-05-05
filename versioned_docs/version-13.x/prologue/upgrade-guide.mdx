@@ -1,0 +1,736 @@
+---
+sidebar_position: 2
+title: Upgrade Guide
+---
+
+#### Upgrading Laravel to 11.0 from 10.x
+Follow the official [Laravel 11 upgrade guide](https://laravel.com/docs/11.x/upgrade) to update your codebase accordingly.
+
+#### Upgrading Apiato to 13.0 from 12.x and Core to 13.0 from 8.x
+This guide will walk you through upgrading Apiato and your project to the latest versions.
+
+## Upgrade Utilities
+
+### Legacy Bridge
+The [Legacy Bridge](https://github.com/apiato/legacy-bridge) is a set of utilities
+to help you gradually upgrade your codebase.
+
+### Rector Rules
+Apiato provides a set of [custom Rector rules](https://github.com/mohammad-alavi/apiato-rector)
+to help automate some aspects of the upgrade process.
+
+:::info Rector
+Learn more about [Rector](https://getrector.com)
+:::
+
+## Updating Dependencies
+
+### PHP 8.2.0 Required
+PHP 8.2.0 or greater is now required.
+
+### Composer Dependencies
+Perform these steps to update your dependencies.
+
+#### Remove First-Party Apiato Packages
+Delete all Apiato first-party packages in `app/Containers/Vendor` to avoid dependency conflicts.
+These packages will be reinstalled after running `composer update`.
+
+#### Consolidate Dependencies
+If the following dependencies are defined in the Ship or any Container `composer.json` file,
+move them to your application’s root `composer.json` file:
+- `apiato/core`
+- `laravel/passport`
+- `spatie/laravel-permission`
+
+#### Update Dependency Versions
+Update the following dependencies in your `composer.json` files:
+
+require
+  - `apiato/core` to `^13.0`
+  - `laravel/passport` to `^12.0`
+  - `spatie/laravel-permission` to `^6.0`
+  - `apiato/documentation-generator-container` to `^4.0`
+
+[//]: # (  - `apiato/localization` to `^3.0` &#40;if installed&#41; TODO)
+[//]: # (  - `apiato/social-auth` to `^4.0` &#40;if installed&#41; TODO)
+
+require-dev
+  - `nunomaduro/collision` to `^8.1`
+  - `phpunit/phpunit` to `^11.0`
+  - `barryvdh/laravel-ide-helper` to `^3.0`
+  - `vimeo/psalm` to `^6.0`
+     Don’t forget to also update `psalm` plugins if you have them:
+     ```json
+     "psalm/plugin-laravel": "^3.0",
+     "psalm/plugin-mockery": "^1.2",
+     "psalm/plugin-phpunit": "^0.19.2",
+     ```
+
+#### Remove Unnecessary Dependencies
+Remove these dependencies from your root `composer.json` file:
+
+`spatie/laravel-ignition`  (Laravel now provides its own error page)
+
+Following dependencies are also no longer required as they are now either managed by `apiato/core` or Laravel Framework itself.
+
+PHP extensions
+- `ext-curl`
+- `ext-gettext`
+- `ext-mbstring`
+- `ext-openssl`
+- `ext-pdo`
+- `ext-sodium`
+- `ext-tokenizer`
+
+Packages
+- `guzzlehttp/guzzle`
+- `laravel/framework`
+- `laravel/tinker`
+
+#### Review Package Upgrade Guides
+Check the upgrade guides for each dependency to be aware of additional breaking changes:
+- [phpunit/phpunit](https://github.com/sebastianbergmann/phpunit/blob/11.0.0/ChangeLog-11.0.md#1100---2024-02-02)
+- [spatie/laravel-permission](https://spatie.be/docs/laravel-permission/v6/upgrading)
+
+Remove the existing `vendor` directory for a clean start:
+```bash
+rm -rf vendor
+```
+Pull in the latest dependencies:
+```bash
+composer update
+```
+Because of the merging behavior of `wikimedia/composer-merge-plugin`,
+run the command a second time to ensure that all dependencies are correctly installed:
+```bash
+composer update
+```
+
+## Abstract Namespace
+The Core abstract classes have been relocated from `Apiato\Core\Abstracts` to `Apiato\Core`.
+
+Update your codebase to use this new namespace.
+
+## App Configuration
+Laravel 11 and Apiato 13 configurations are simplified, and both now provide a fluid API for configuration.
+
+Replace the contents of `bootstrap/app.php` file with the following as a base, and customize it as needed:
+
+```php
+<?php
+
+use Apiato\Foundation\Apiato;
+use Apiato\Http\Middleware\ProcessETag;
+use Apiato\Http\Middleware\ValidateJsonContent;
+use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Configuration\Exceptions;
+use Illuminate\Foundation\Configuration\Middleware;
+
+$basePath = dirname(__DIR__);
+$apiato = Apiato::configure(basePath: $basePath)->create();
+
+return Application::configure(basePath: $basePath)
+    ->withProviders($apiato->providers())
+    ->withEvents($apiato->events())
+    ->withRouting(
+        web: $apiato->webRoutes(),
+        channels: __DIR__ . '/../app/Ship/Broadcasts/channels.php',
+        health: '/up',
+        then: static fn () => $apiato->registerApiRoutes(),
+    )
+    ->withMiddleware(function (Middleware $middleware) {
+        // Previously applied via app/Ship/Kernels/HttpKernel class
+        $middleware->api(append: [
+            ValidateJsonContent::class,
+            ProcessETag::class,
+        ]);
+
+        // Uncomment and adjust these if using web routes:
+        // $middleware->redirectUsersTo(fn ($request): string => action(HomePageController::class));
+        // $middleware->redirectGuestsTo(fn ($request): string => action([LoginController::class, 'showForm']));
+    })
+    ->withCommands($apiato->commands())
+    ->withExceptions(static function (Exceptions $exceptions) {})
+    ->create();
+```
+
+Move any custom middleware registrations from `app/Ship/Kernels/HttpKernel.php` to the `bootstrap/app.php` file.
+
+Move any custom configurations from `app/Ship/Kernels/ConsoleKernel.php` and `App\Ship\Kernels\HttpKernel` to the `bootstrap/app.php` file.
+
+Remove `App\Ship\Kernels\HttpKernel` and `App\Ship\Kernels\ConsoleKernel` classes.
+
+## Testing
+
+#### `TestCase` Class
+The `Apiato\Core\Abstracts\Tests\PhpUnit\TestCase` class namespace has changed to `Apiato\Core\Testing\TestCase`.
+
+#### `LazilyRefreshDatabase` Trait
+The `Illuminate\Foundation\Testing\LazilyRefreshDatabase` trait has been removed from the Core TestCase.
+
+Add `LazilyRefreshDatabase` to your `App\Ship\Parents\Tests\TestCase` if you want this functionality.
+
+#### Removed Methods
+The testing utilities provided by Apiato have been simplified to embrace Laravel’s testing approach.
+
+The following methods are no longer available:
+- `getTestingUser`
+- `getTestingUserWithoutAccess`
+- `makeCall`
+- `injectId`
+- `endpoint`
+- `getAuth`
+- `setResponseObjectAndContent`
+- `getResponseContentArray`
+- `getResponseContent`
+- `setResponseContent`
+- `getResponseContentObject`
+- `auth`
+- `url`
+- etc...
+
+:::tip
+For a gradual upgrade in large codebases, refer to the [Apiato Legacy Bridge](#upgrade-utilities).
+:::
+
+[HasResourceKeyTrait](#has-resource-key-trait) has been removed from the Core Value Object (`Apiato\Core\Values\Value`).
+
+If your Value Objects are relying on the `HasResourceKeyTrait`,
+you need to refactor them to use the new [HasResourceKey](#has-resource-key-trait) trait
+and implement the [ResourceKeyAware](#has-resource-key-interface) interface.
+
+## Service Providers
+The `Apiato\Core\Abstracts\Providers\MainServiceProvider` class has been removed.
+
+Existing service providers extending this class should be refactored
+to extend `Apiato\Core\Providers\ServiceProvider` class instead.
+e.g, `App\Ship\Parents\Providers\ServiceProvider` class.
+
+### Automatic Registration
+All providers within the `Providers` directories of Containers and Ship are now automatically registered.
+There is no longer a requirement to have a specifically named `MainServiceProvider` service provider per container.
+
+:::note
+Any parent providers under `app/Ship/Parents/Providers` will **NOT** be registered automatically.
+If you need to do something in a provider’s `register` or `boot` methods,
+extend those providers in a Container or Ship `Providers` directory.
+:::
+
+### Specific Provider Changes
+
+#### AuthServiceProvider
+The `Apiato\Core\Abstracts\Providers\AuthServiceProvider` class has been removed.
+
+- If you were manually registering policies outside Laravel’s policy discovery, follow the [Laravel manual registration guide](https://laravel.com/docs/11.x/authorization#manually-registering-policies).
+- Refactor all service providers extending the following service providers to extend `App\Ship\Parents\Providers\ServiceProvider`:
+  - `App\Ship\Parents\Providers\AuthServiceProvider`
+  - `Apiato\Core\Abstracts\Providers\AuthServiceProvider`
+  - `Illuminate\Foundation\Support\Providers\AuthServiceProvider`
+- Move any custom registrations from `App\Ship\Parents\Providers\AuthServiceProvider` to another service provider and then remove it.
+
+#### MiddlewareServiceProvider
+The `Apiato\Core\Abstracts\Providers\MiddlewareServiceProvider` class has been removed.
+
+Migrate your middleware configurations
+to the `bootstrap/app.php` file as per [Laravel’s middleware registration documentation](https://laravel.com/docs/11.x/middleware#registering-middleware).
+Then, remove your old `MiddlewareServiceProvider` classes.
+
+Let's
+say you have customized Laravel's `Illuminate\Auth\Middleware\RedirectIfAuthenticated` middleware
+and registered it in your `MiddlewareServiceProvider`:
+
+```php
+class MiddlewareServiceProvider extends ParentMiddlewareServiceProvider
+{
+    protected array $middlewareAliases = [
+        'guest' => RedirectIfAuthenticated::class,
+    ];
+}
+```
+
+You can now configure it in `bootstrap/app.php` like this:
+```php
+return Application::configure(basePath: $basePath)
+    ...
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->api(
+            replace: [
+                'guest' => RedirectIfAuthenticated::class,
+            ]
+        );
+    ...
+    ->create();
+```
+
+#### BroadcastServiceProvider
+- Removed: `Apiato\Core\Abstracts\Providers\BroadcastServiceProvider`
+- Action:
+Remove your custom `App\Ship\Parents\Providers\BroadcastServiceProvider` and configure channels in `bootstrap/app.php`
+as shown [above](#app-configuration).
+
+### Parent Method Calls
+You no longer need to call `parent::register()` or `parent::boot()` in your service providers.
+All service providers’ `register` and `boot` methods are now invoked independently.
+
+### Removed Properties
+The `$serviceProviders` and `$aliases` properties have been removed.
+Refactor your service providers to register or alias dependencies within the `register` and `boot` methods.
+
+```php
+// before
+public array $serviceProviders = [
+    ThirdPartyServiceProvider::class,
+];
+
+public array $aliases = [
+    'something' => ThirdPartyServiceProvider::class,
+];
+
+// after
+public function register(): void
+{
+    // Reminder: providers under Containers or Ship are autoloaded
+    // and don't need to be registered manually.
+    $this->app->register(ThirdPartyServiceProvider::class);
+    $this->app->alias(ThirdPartyServiceProvider::class, 'something');
+}
+```
+
+## Middleware
+The following classes have been moved or renamed:
+| From | To |
+|:-----------------------------------------------------------------------|:---------------------------------------------|
+| `Apiato\Core\Abstracts\Middlewares`                                    | `Apiato\Core\Middleware`                     |
+| `Apiato\Core\Abstracts\Middlewares\Http\ProcessETagHeadersMiddleware`  | `Apiato\Http\Middleware\ProcessETag`         |
+| `Apiato\Core\Abstracts\Middlewares\Http\ValidateJsonContent`           | `Apiato\Http\Middleware\ValidateJsonContent` |
+
+The `Apiato\Core\Abstracts\Middlewares\Http\ProfilerMiddleware` class has been removed.
+
+The `Apiato\Core\Middleware\Http\Authenticate` class has been removed.
+Use `Illuminate\Auth\Middleware\Authenticate` instead.
+
+Custom middleware like `ProcessETag` and `ValidateJsonContent` must now be registered in the `bootstrap/app.php` file.
+Take a look at the [App Configuration](#app-configuration) section for details.
+
+## Resource Key
+If you have custom models that don't extend the `App\Ship\Parents\Models` models,
+you need to implement the `Apiato\Http\Resources\ResourceKeyAware` interface
+and use the `Apiato\Http\Resources\HasResourceKey` trait.
+e.g., `App\Containers\AppSection\Authorization\Models\Roles`.
+
+#### `HasResourceKey` Interface {#has-resource-key-interface}
+The `Apiato\Core\Contracts\HasResourceKey` interface has been renamed
+and moved to `Apiato\Http\Resources\ResourceKeyAware`.
+
+#### `HasResourceKey` Trait {#has-resource-key-trait}
+The `Apiato\Core\Traits\HasResourceKeyTrait` trait has been renamed
+and moved to `Apiato\Http\Resources\HasResourceKey`.
+
+## ModelTrait
+The `Apiato\Core\Abstracts\Traits\ModelTrait` trait has been renamed
+and moved to `Apiato\Core\Models\InteractsWithApiato`.
+
+## Value Objects
+`Apiato\Core\Values\Value` abstract class is now declared as `readonly`.
+
+Add the `readonly` keyword to your parent Value Object class and all Value Objects that extend it.
+
+## Models
+Models `$resourceKey` property is no longer used.
+
+If you were customizing the resource key in your models, you can now do so by overriding the `getResourceKey` method.
+
+## Laravel Passport
+
+### Migration Adjustments
+Passport 12.0 no longer loads its own migrations automatically.
+
+Copy Passport migrations from the [Apiato 13.x branch](https://github.com/apiato/apiato/tree/13.x/app/Containers/AppSection/Authentication/Data/Migrations) into your application
+(create the `Data/Migrations` directory if it doesn’t exist).
+
+### Password Grant
+As of Passport 12.0, the password grant is disabled by default.
+
+Enable it by calling `enablePasswordGrant` in the `boot` method of one of your service providers:
+
+```php
+public function boot(): void
+{
+    Passport::enablePasswordGrant();
+}
+```
+
+### Deferrable Provider
+Remove the `Illuminate\Contracts\Support\DeferrableProvider` from the service provider that configures Passport.
+
+For example
+```php
+// before
+use App\Ship\Parents\Providers\ServiceProvider as ParentAuthServiceProvider;
+use Illuminate\Contracts\Support\DeferrableProvider;
+use Laravel\Passport\Passport;
+
+class AuthServiceProvider extends ParentAuthServiceProvider implements DeferrableProvider
+{
+    public function boot(): void
+    {
+        Passport::enablePasswordGrant();
+    }
+}
+
+// after
+use App\Ship\Parents\Providers\ServiceProvider as ParentAuthServiceProvider;
+use Laravel\Passport\Passport;
+
+class AuthServiceProvider extends ParentAuthServiceProvider
+{
+    public function boot(): void
+    {
+        Passport::enablePasswordGrant();
+    }
+}
+```
+
+## Carbon 3
+In Carbon v3, PHPDoc annotations have been converted to real types. Methods that previously accepted different argument types may now throw a `TypeError`.
+
+For instance, this example will now throw an error if `config('apiato.api.expires-in')` returns a string:
+
+```php
+Passport::tokensExpireIn(Carbon::now()->addMinutes(config('apiato.api.expires-in')));
+```
+
+To fix it, explicitly cast the string to an integer:
+
+```php
+Passport::tokensExpireIn(Carbon::now()->addMinutes((int)config('apiato.api.expires-in')));
+```
+
+:::info
+Review Carbon’s [release notes](https://github.com/briannesbitt/Carbon/releases/tag/3.0.0) and [documentation](https://carbon.nesbot.com/docs/#api-carbon-3) for more details.
+:::
+
+## Request
+
+### Removed Methods
+The following methods have been removed from requests:
+- `injectData`
+- `withUrlParameters`
+- `getAccessArray`
+- `getDecodeArray`
+- `getUrlParametersArray`
+- `hasAccess`
+- `hasAnyPermissionAccess`
+- `hasAnyRoleAccess`
+- `check`
+- `mapInput`
+- `getInputByKey`
+
+:::tip Gradual Upgrade
+For a gradual upgrade in large codebases, refer to the [Apiato Legacy Bridge](#upgrade-utilities).
+:::
+
+### Authorization
+Custom authorization features have been removed and `$access` property is no longer used.
+
+- Use [Laravel Policies](https://laravel.com/docs/11.x/authorization#creating-policies) for authorization.
+- Remove the `$access` property from your request classes.
+
+- `hasAccess`
+- `hasAnyPermissionAccess`
+- `hasAnyRoleAccess`
+- `check`
+
+#### Example Conversion:
+```php
+// before
+use App\Ship\Parents\Requests\Request as ParentRequest;
+
+final class DeleteUserRequest extends ParentRequest
+{
+    protected array $access = [
+        'permissions' => 'delete',
+        'roles' => '',
+    ];
+
+    public function authorize(): bool
+    {
+        return $this->check(['hasAccess']);
+    }
+}
+
+// after
+use App\Containers\AppSection\User\Models\User;
+use App\Ship\Parents\Requests\Request as ParentRequest;
+
+final class DeleteUserRequest extends ParentRequest
+{
+    public function authorize(): bool
+    {
+        return $this->user()->can('delete', [User::class]);
+    }
+}
+```
+
+### URL Parameter Validation
+The `$urlParameters` property and the `getUrlParametersArray` method have been removed.
+URL parameters are no longer available for validation in the `rules` method.
+
+- Remove the validations that are based on the URL parameters.
+- Remove any reference to the `$urlParameters` property.
+- Remove calls to `getUrlParametersArray`.
+
+:::note
+Note that invalid URL parameters now result in a 404 error rather than a 422 error.
+:::
+
+### Hashed ID Decoding
+In addition to the previous behavior, the `$decode` property can now decode route parameters.
+The catch is that the decoded route parameters will not be available via `input` or `all` methods.
+Instead, you can access them via `route` method.
+
+```php
+// endpoint
+/users/{id}
+
+class DemoRequest extends ParentRequest
+{
+    protected array $decode = ['id'];
+}
+
+$id = $request->route('id');
+```
+
+### Input Sanitization
+`sanitizeInput` has been renamed to `sanitize`.
+
+## Error Handling
+All Apiato custom error-handling logics has been removed.
+
+### Removed Methods on Exceptions
+- `debug`
+- `withErrors`
+- `getErrors`
+
+### ExceptionsHandler
+The custom `App\Ship\Exceptions\Handlers\ExceptionsHandler` is no longer used.
+
+Remove this class and configure exception handling in `bootstrap/app.php` file.
+
+### HTTP vs. Non-HTTP Exceptions
+Exceptions are now divided into two groups: **HTTP Exceptions** and **Non-HTTP Exceptions**.
+
+Create a parent HTTP exception class in `app/Ship/Parents/Exceptions/HttpException.php`:
+
+```php
+namespace App\Ship\Parents\Exceptions;
+
+use Apiato\Core\Exceptions\HttpException as AbstractException;
+
+abstract class HttpException extends AbstractException {}
+```
+
+You now have two parent classes: `Exception` (non-HTTP) and `HttpException` (HTTP).
+
+Update your custom exceptions:
+- Extend `App\Ship\Parents\Exceptions\HttpException` for HTTP errors.
+- Extend `App\Ship\Parents\Exceptions\Exception` for non-HTTP errors.
+
+### Exception Instantiation
+Exceptions now require mandatory constructor parameters.
+For example, calling `new NotFoundHttpException()` with no arguments no longer works.
+You have to pass the `$message` and the `$code` arguments.
+
+Refactor your exception instantiations accordingly.
+
+:::tip Automated Refactoring
+See [Rector Rules](#rector-rules) for automated refactoring utilities.
+:::
+
+### Removed Core Exceptions
+All exceptions under the `Apiato\Core\Exceptions` namespace have been removed.
+
+Remove their usages from your application.
+- `Apiato\Core\Exceptions\AuthenticationException`
+- `Apiato\Core\Exceptions\GeneratorErrorException`
+- `Apiato\Core\Exceptions\IncorrectIdException`
+- `Apiato\Core\Exceptions\InvalidTransformerException`
+- `Apiato\Core\Exceptions\MissingJSONHeaderException`
+- `Apiato\Core\Exceptions\MissingTestEndpointException`
+- `Apiato\Core\Exceptions\UndefinedMethodException`
+- `Apiato\Core\Exceptions\UnsupportedFractalIncludeException`
+- `Apiato\Core\Exceptions\WrongConfigurationsException`
+- `Apiato\Core\Exceptions\WrongEndpointFormatException`
+
+:::note
+Apiato now returns `401` instead of `403` when a user is unauthenticated (matching Laravel’s default behavior).
+:::
+
+## Response
+
+### Transformation
+The `transform` method in API Controllers is removed.
+Use the [Response](../the-basics/response.mdx) facade instead.
+
+Update your `app/Ship/Configs/fractal.php` file to use the Apiato Response class
+```php
+'fractal_class' => \Apiato\Http\Response::class
+```
+
+Replace all `$this->transform` calls with the Response facade.
+```php
+// before
+return $this->transform($data, Transformer::class);
+
+// after
+return Response::create($data, Transformer::class);
+```
+
+:::tip Automate this process using Rector
+See [Upgrade Utilities](#upgrade-utilities) for automated refactoring utilities.
+:::
+
+### Filtering
+The approach to filtering responses has changed.
+Check out its [documentation](../the-basics/response.mdx#filtering) and update your code accordingly.
+
+## Repository
+Some repository methods are strongly typed or behave differently.
+
+#### `boot` Method
+`boot` now has a `void` return type.
+
+If you have overridden the `boot` method, adjust your method signature accordingly.
+
+#### `getById` Method
+`getById` has been renamed to `findOrFail`.
+
+#### `delete` Method
+`delete` method now returns `bool` or throws an exception.
+
+If you have overridden the `delete` method, adjust your method signature accordingly.
+
+#### `create` Method
+`create` now throws `Apiato\Core\Repositories\Exceptions\ResourceCreationFailed` instead of `\Exception`.
+
+#### `update` Method
+`update` now throws `Apiato\Core\Repositories\Exceptions\ResourceNotFound` instead of `\Illuminate\Database\Eloquent\ModelNotFoundException`.
+
+#### `find` Method
+`find` now returns `null` if no result is found (mirroring Laravel’s default `find` behavior). Previously, it might have thrown an exception.
+
+:::info Maintaining Previous Behavior
+To maintain the previous behavior of the `find`, `create`, and `update` methods,
+use the [Legacy Bridge](#upgrade-utilities).
+:::
+
+### Criteria
+The `Apiato\Core\Abstracts\Criterias` class has been moved to `Apiato\Core\Criteria`.
+
+## Hash IDs
+`Apiato\Core\Traits\HashIdTrait` is removed.
+
+Previously, you could use `$this->decode(...)` and `$this->encode(...)` methods in the Controller and Request classes
+to decode and encode hash IDs.
+Now, you need to use the `hashids` helper function instead.
+
+Use the `hashids()` helper function instead.
+- `$this->decode(...)` → `hashids()->decode(...)`
+- `$this->encode(...)` → `hashids()->encode(...)`
+- `Hashids::decode(...)` → `hashids()->decode(...)`
+- `Hashids::encode(...)` → `hashids()->encode(...)`
+- etc...
+
+:::warning
+`decode` method now returns an `int` or an `array` depending on the input.
+Previously, it always returned an `array`.
+:::
+
+## Jobs
+The Core Job class (`Apiato\Core\Jobs\Job`) no longer includes any traits or implements interfaces.
+
+Add the necessary traits and interfaces in your Ship’s parent Job class. For example:
+```php
+namespace App\Ship\Parents\Jobs;
+
+use Apiato\Core\Jobs\Job as AbstractJob;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Queue\Queueable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+
+abstract class Job extends AbstractJob implements ShouldQueue
+{
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
+}
+```
+
+## Validation
+The custom `no_spaces` validation rule has been removed.
+
+Remove its usage or register it manually in the boot method of your service provider.
+
+See the [source code](https://github.com/apiato/core/blob/8.x/src/Traits/ValidationTrait.php) for reference.
+
+## Database Seeding
+Apiato no longer uses Laravel’s `database/seeders/DatabaseSeeder.php`. Instead, place your seeders in the Ship or any Container’s `database/seeders` directory:
+
+- Remove `database/seeders/DatabaseSeeder.php` if present.
+- Move your seeding logic into `Ship` or `Container` seeder classes.
+
+The `apiato:seed-deploy` and `apiato:seed-test` commands have been moved from the `Core` to the `Apiato`.
+So they will be only available in new Apiato projects.
+
+To use them in your existing project, either:
+- Create your own custom command to seed your database.
+- Or copy the `apiato:seed-deploy` and `apiato:seed-test` commands from the [Apiato 13.x branch](https://github.com/apiato/apiato/tree/13.x/app/Ship/Commands) into your application.
+  - Remember to also copy the `app/Ship/Seeders` [directory](https://github.com/apiato/apiato/tree/13.x/app/Ship/Seeders).
+
+## Commands
+The `Apiato\Core\Abstracts\Commands\ConsoleCommand` class has been renamed
+and moved to `Apiato\Core\Console\Command`.
+
+## Notifications
+The `notification.channels` configuration has been removed.
+
+You can no longer add a notification channel to all notifications
+by adding it to the `notification.channels` array in the configuration file.
+
+```php
+abstract class Notification extends LaravelNotification
+{
+    // This method has been removed from the parent class
+    public function via($notifiable): array
+    {
+        return config('notification.channels');
+    }
+}
+```
+
+If you depend on this feature, you can add the removed method to your parent notification class.
+
+## API URL Configuration
+
+### Path Prefix
+The `apiato.api.prefix` configuration option has been removed.
+
+You can now configure the path prefix
+using the [Apiato configuration](../digging-deeper/advance-configuration.mdx#routing).
+
+### Version Prefix
+The `apiato.api.enable_version_prefix` configuration option has been removed.
+
+You can now configure the version prefix
+using the [Apiato configuration](../digging-deeper/advance-configuration.mdx#routing).
+
+## Uncamelize Function
+The `uncamelize` helper function has been removed.
+
+## Miscellaneous
+We recommend
+reviewing changes in [apiato/apiato](https://github.com/apiato/apiato) and [apiato/core](https://github.com/apiato/core) repositories between versions [12.x and 13.x](https://github.com/apiato/apiato/compare/12.x...13.x) and [8.x and 13.x](https://github.com/apiato/core/compare/8.x...13.x) respectively,
+using GitHub’s comparison tools.
+Not all changes are mandatory.
+Some involve configuration or comments you may wish to sync.
