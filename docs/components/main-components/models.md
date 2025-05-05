@@ -45,8 +45,45 @@ app
 ```
 
 ## Code Example
-
 Models are defined exactly as you would define them in Laravel.
+
+
+## Resource Key {#resource-key}
+The resource key is a string that helps identify the resource type.
+Typically, it is used in the JSON API response to indicate the type of resource being returned.
+
+```php
+use App\Containers\AppSection\User\Models\User;
+use App\Ship\Parents\Transformers\Transformer as ParentTransformer;
+
+class UserTransformer extends ParentTransformer
+{
+    public function transform(User $user)
+    {
+        return [
+            'type' => $user->getResourceKey(),
+            'id' => $user->getHashedKey(),
+            'name' => $user->name,
+        ];
+    }
+}
+```
+
+A resource key is automatically generated based on the model's class name,
+but you can customize it by overriding the `getResourceKey` method:
+
+```php
+use Apiato\Http\Resources\ResourceKeyAware;
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model implements ResourceKeyAware
+{
+    public function getResourceKey(): string
+    {
+        return 'User';
+    }
+}
+```
 
 ## Custom Models {#custom-models}
 

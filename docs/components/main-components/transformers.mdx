@@ -281,58 +281,6 @@ You can configure the `excludes` settings in the `config/fractal.php` file.
 ],
 ```
 
-## Resource Key
-
-The resource key is a string that helps identify the object type in the response payload.
-A resource key is automatically generated based on the model's class name,
-but you can customize it by overriding the `getResourceKey` method:
-
-```php
-use Apiato\Http\Resources\ResourceKeyAware;
-use Illuminate\Database\Eloquent\Model;
-
-class User extends Model implements ResourceKeyAware
-{
-    public function getResourceKey(): string
-    {
-        return 'User';
-    }
-}
-```
-
-### Usage in Transformers
-
-Retrieve the resource key from the model by calling the `getResourceKey` method.
-
-#### Transformer Example
-```php
-use App\Containers\AppSection\User\Models\User;
-use App\Ship\Parents\Transformers\Transformer as ParentTransformer;
-
-class UserTransformer extends ParentTransformer
-{
-    public function transform(User $user)
-    {
-        return [
-            'type' => $user->getResourceKey(), // <-- here
-            'id' => $user->getHashedKey(),
-            'name' => $user->name,
-        ];
-    }
-}
-```
-
-#### Response Example
-```json
-{
-  "data": {
-    "type": "User", // <-- ResourceKey
-    "id": "XbPW7awNkzl83LD6",
-    "name": "Mohammad Alavi"
-  }
-}
-```
-
 ## Helper Methods
 
 ### nullableItem

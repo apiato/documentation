@@ -29,6 +29,13 @@ Response::ok();
 When using the `Response` facade, you can filter the response data using the `fields` query parameter.
 This allows you to specify which fields you want to include in the response.
 
+The `fields` query parameter is structured as follows:
+```
+fields[ResourceKey]=field1,field2
+```
+Where [ResourceKey](../components/main-components/models#resource-key) is the key of the resource you want to filter,
+and `field1`, `field2` are the fields you want to include in the response.
+
 Let's say we have an endpoint that returns a user resource with the following structure:
 ```json
 {
