@@ -3,7 +3,7 @@ title: Overview
 ---
 
 Apiato ships with a few pre-defined and pre-configured containers.
-Some of these containers, for example, [Documentation](documentation.mdxx),
+Some of these containers, for example, [Documentation](documentation.mdx),
 are installed by default with a fresh Apiato project.
 
 ### Downloading and Installing Containers {#downloading-and-installing-containers}
