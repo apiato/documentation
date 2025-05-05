@@ -5,7 +5,7 @@ title: Best Practices
 
 REST APIs are one of the most common kinds of web interfaces available today.
 They allow various clients, including browser apps, to communicate with services via the REST API.
-Therefore, it’s very important to design REST APIs properly so that we won’t run into problems down the road.
+Therefore, it’s crucial to design REST APIs properly so that we won’t run into problems down the road.
 We have to take into account security, performance, and ease of use for API consumers.
 
 Otherwise, we create problems for clients that use our APIs,
