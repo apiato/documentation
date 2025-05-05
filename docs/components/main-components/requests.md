@@ -173,9 +173,9 @@ class DemoRequest extends ParentRequest
 $request->route('id');
 ```
 
-## Sanitizing Input
+## Sanitizing Input {#sanitizing-input}
 
-The `sanitize` method is employed to cleanse request data before its utilization within the application.
+The `sanitize` method can be used to cleanse request data.
 
 Particularly useful for `PATCH` requests,
 where you may want
