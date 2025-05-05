@@ -42,4 +42,5 @@ If you are using GitHub pages for hosting, this command is a convenient way to b
 
 ## Acknowledgements
 Thanks to [JetBrains](https://www.jetbrains.com) for sponsoring this project with their amazing tools and IDEs.
-<img style="max-width: 300px; margin: 30px" src="https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.png" alt="JetBrains logo.">
+
+<img style="width: 300px" src="https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.png" alt="JetBrains logo.">
