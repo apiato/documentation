@@ -2,7 +2,7 @@
 sidebar_position: 10
 title: Apps
 tags:
-  - digging-deeper
+  - the-basics
   - apps
 ---
 

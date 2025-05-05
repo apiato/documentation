@@ -2,7 +2,7 @@
 sidebar_position: 30
 title: Code Generator
 tags:
-  - digging-deeper
+  - the-basics
   - code-generator
 ---
 
