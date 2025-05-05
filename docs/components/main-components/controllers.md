@@ -61,7 +61,7 @@ app
 ## Code Example
 
 #### API Controller
-You can use the [Response](../../digging-deeper/response.mdx) facade to create a new response object.
+You can use the [Response](../../the-basics/response.mdx) facade to create a new response object.
 
 ```php
 use Apiato\Support\Facades\Response;

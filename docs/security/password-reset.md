@@ -22,7 +22,7 @@ There are two main elements to handle the password reset process:
 - Frontend URL 
   - Define a route in your frontend app to handle the password reset link.
 - API Configuration 
-  - Configure your frontend app's password reset URL by either creating a new [App](../digging-deeper/apps.md)
+  - Configure your frontend app's password reset URL by either creating a new [App](../the-basics/apps.md)
   or using the existing `App\Ship\Apps\Web` app.
 
 Next,
@@ -41,4 +41,4 @@ The password reset process flow is as follows:
 7. The API resets the user's password and returns a `200 OK` response.
 
 ## Password Reset URL
-You may instruct the API to use a different URL for password reset by using the Apiato [Apps](../digging-deeper/apps.md) feature.
+You may instruct the API to use a different URL for password reset by using the Apiato [Apps](../the-basics/apps.md) feature.
