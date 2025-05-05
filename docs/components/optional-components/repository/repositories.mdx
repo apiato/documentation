@@ -358,7 +358,7 @@ You can skip the cache for a specific request by adding the `?skipCache=true` qu
 
 ## Eager Loading Includes {#eager-loading}
 By default,
-Apiato automatically eager loads the relationships
+Apiato automatically eager-loads the relationships
 specified by the [include](../../main-components/transformers.mdx#include-relationships) query parameter.
 This preloads the requested related data to optimize performance.
 
@@ -371,5 +371,5 @@ public function shouldEagerLoadIncludes(): bool
 ```
 
 :::note
-Apiato does not automatically eager load the [default includes](../../main-components/transformers.mdx#include-by-default).
+Apiato does not automatically eager-load the [default includes](../../main-components/transformers.mdx#include-by-default).
 :::
