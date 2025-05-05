@@ -346,7 +346,6 @@ and use the `CacheableRepositoryTrait` trait in your repository class to enable 
 However, Apiato already implements these two requirements in the parent `Repository` class,
 :::
 
-
 ### Skipping Cache
 
 You can skip the cache for a specific request by adding the `?skipCache=true` query parameter to the request URL.
@@ -356,3 +355,21 @@ You can skip the cache for a specific request by adding the `?skipCache=true` qu
 ```
 
 > It's not recommended to skip the cache, but it's useful for testing purposes.
+
+## Eager Loading Includes {#eager-loading}
+By default,
+Apiato automatically eager loads the relationships
+specified by the [include](../../main-components/transformers.mdx#include-relationships) query parameter.
+This preloads the requested related data to optimize performance.
+
+You can disable this feature by overriding the `shouldEagerLoadIncludes` method in your repository class.
+```php
+public function shouldEagerLoadIncludes(): bool
+{
+    return false;
+}
+```
+
+:::note
+Apiato does not automatically eager load the [default includes](../../main-components/transformers.mdx#include-by-default).
+:::

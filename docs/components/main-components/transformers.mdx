@@ -76,13 +76,21 @@ class UserTransformer extends ParentTransformer
 }
 ```
 
-## Including Relationships
-
+## Including Relationships {#include-relationships}
 You can include model relationships for complex data structures using the `include` query parameter.
 These relationships can be included in the response either [per API consumer request](#include-per-api-consumer-request) or
 [by default](#include-by-default).
 The `include` parameter can be used on any endpoint
 that has [relationships defined](#defining-relationships) in its transformer.
+
+### Configuration
+You can configure the `includes` settings in the `config/fractal.php` file.
+```php
+'auto_includes' => [
+    'enabled' => true,
+    'request_key' => 'include',
+],
+```
 
 ### Defining Relationships
 
@@ -231,14 +239,8 @@ the `avatar` relationship will automatically be included in every response creat
 This can simplify responses and reduce the need for additional API requests for related data,
 ultimately enhancing the efficiency and usability of your API.
 
-### Configuration
-You can configure the `includes` settings in the `config/fractal.php` file.
-```php
-'auto_includes' => [
-    'enabled' => true,
-    'request_key' => 'include',
-],
-```
+### Eager Loading
+Read more about eager loading in the [Repositories](../optional-components/repository/repositories.mdx#eager-loading) section.
 
 ## Excluding Relationships
 You can exclude relationships from the response by using the `exclude` query parameter.
