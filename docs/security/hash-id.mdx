@@ -15,7 +15,7 @@ BCMath PHP Extension is required to use this feature.
 :::
 
 Make sure to always use the `getHashedKey` method on any model,
-whenever you need to return an ID (mainly from [transformers](../components/main-components/transformers.md))
+whenever you need to return an ID (mainly from [transformers](../components/main-components/transformers.mdx))
 weather you are using Hash ID or not.
 If Hash ID feature is disabled, the `getHashedKey` method will return the normal ID.
 
@@ -32,19 +32,19 @@ You may use the [hashids](../digging-deeper/helpers.md#hashids) helper function 
 There are three ways to pass an ID to your system via the API:
 
 In URL:
-  
+
 ```php
 /items/XbPW7awNkzl83LD6
 ```
 
 As query string:
-    
+
 ```php
 /items?id=XbPW7awNkzl83LD6
 ```
 
 Or as HTTP request body:
-    
+
 ```json
 {
     "id": "XbPW7awNkzl83LD6"
