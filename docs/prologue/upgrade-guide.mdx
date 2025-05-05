@@ -426,7 +426,7 @@ The following methods have been removed from requests:
 - `mapInput`
 - `getInputByKey`
 
-:::tip
+:::tip Gradual Upgrade
 For a gradual upgrade in large codebases, refer to the [Apiato Legacy Bridge](#upgrade-utilities).
 :::
 
@@ -543,8 +543,8 @@ You have to pass the `$message` and the `$code` arguments.
 
 Refactor your exception instantiations accordingly.
 
-:::tip Automate this process using Rector
-See [Upgrade Utilities](#upgrade-utilities) for automated refactoring utilities.
+:::tip Automated Refactoring
+See [Rector Rules](#rector-rules) for automated refactoring utilities.
 :::
 
 ### Removed Core Exceptions
@@ -592,7 +592,7 @@ See [Upgrade Utilities](#upgrade-utilities) for automated refactoring utilities.
 
 ### Filtering
 The approach to filtering responses has changed.
-Check out [its documentation](../digging-deeper/response.mdx) and update your code accordingly.
+Check out its [documentation](../digging-deeper/response.mdx#filtering) and update your code accordingly.
 
 ## Repository
 Some repository methods are strongly typed or behave differently.
@@ -628,8 +628,13 @@ use the [Legacy Bridge](#upgrade-utilities).
 The `Apiato\Core\Abstracts\Criterias` class has been moved to `Apiato\Core\Criteria`.
 
 ## Hash IDs
-`Apiato\Core\Traits\HashIdTrait` is removed. Use the `hashids()` helper function instead.
+`Apiato\Core\Traits\HashIdTrait` is removed.
 
+Previously, you could use `$this->decode(...)` and `$this->encode(...)` methods in the Controller and Request classes
+to decode and encode hash IDs.
+Now, you need to use the `hashids` helper function instead.
+
+Use the `hashids()` helper function instead.
 - `$this->decode(...)` → `hashids()->decode(...)`
 - `$this->encode(...)` → `hashids()->encode(...)`
 - `Hashids::decode(...)` → `hashids()->decode(...)`
@@ -641,15 +646,10 @@ The `Apiato\Core\Abstracts\Criterias` class has been moved to `Apiato\Core\Crite
 Previously, it always returned an `array`.
 :::
 
-:::info
-`HashIdTrait` was being used in the Controller and Request class.
-:::
-
 ## Jobs
-The Core Job class (Apiato\Core\Jobs\Job) no longer includes any traits or implements interfaces.
+The Core Job class (`Apiato\Core\Jobs\Job`) no longer includes any traits or implements interfaces.
 
 Add the necessary traits and interfaces in your Ship’s parent Job class. For example:
-
 ```php
 namespace App\Ship\Parents\Jobs;
 
@@ -680,12 +680,13 @@ Apiato no longer uses Laravel’s `database/seeders/DatabaseSeeder.php`. Instead
 - Remove `database/seeders/DatabaseSeeder.php` if present.
 - Move your seeding logic into `Ship` or `Container` seeder classes.
 
+The `apiato:seed-deploy` and `apiato:seed-test` commands have been moved from the `Core` to the `Apiato`.
+So they will be only available in new Apiato projects.
 
-These commands have been removed:
-- `apiato:seed-deploy`
-- `apiato:seed-test`
-
-Create your own custom command to seed your database.
+To use them in your existing project, either:
+- Create your own custom command to seed your database.
+- Or copy the `apiato:seed-deploy` and `apiato:seed-test` commands from the [Apiato 13.x branch](https://github.com/apiato/apiato/tree/13.x/app/Ship/Commands) into your application.
+  - Remember to also copy the `app/Ship/Seeders` [directory](https://github.com/apiato/apiato/tree/13.x/app/Ship/Seeders).
 
 ## Commands
 The `Apiato\Core\Abstracts\Commands\ConsoleCommand` class has been renamed
@@ -726,10 +727,7 @@ using the [Apiato configuration](../digging-deeper/advance-configuration.mdx#rou
 
 ## Miscellaneous
 We recommend
-reviewing changes in [apiato/apiato](https://github.com/apiato/apiato) and [apiato/core](https://github.com/apiato/core) repositories between versions 12.x and 13.x and 8.x and 13.x respectively,
+reviewing changes in [apiato/apiato](https://github.com/apiato/apiato) and [apiato/core](https://github.com/apiato/core) repositories between versions [12.x and 13.x](https://github.com/apiato/apiato/compare/12.x...13.x) and [8.x and 13.x](https://github.com/apiato/core/compare/8.x...13.x) respectively,
 using GitHub’s comparison tools.
 Not all changes are mandatory.
-Some involve configuration or comments you may wish to sync:
-
-- [Comparison for apiato/apiato](https://github.com/apiato/apiato/compare/12.x...13.x)
-- [Comparison for apiato/core](https://github.com/apiato/core/compare/8.x...13.x)
+Some involve configuration or comments you may wish to sync.
