@@ -24,7 +24,7 @@ php artisan apiato:make:controller
 
 ## Definition and Principles
 
-Read [**Porto SAP Documentation (#Controllers)**](https://github.com/Mahmoudz/Porto#definitions--principles).
+Read [**Porto SAP Documentation (#Controllers)**](https://mahmoudz.github.io/Porto/docs/category/main-components).
 
 ## Rules
 

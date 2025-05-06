@@ -7,8 +7,8 @@ tags:
   - component
 ---
 
-In the Container layer of [Porto](porto.md#container),
-you will find a comprehensive range of [predefined Components](https://github.com/Mahmoudz/Porto#components),
+In the Container layer of [Porto](https://mahmoudz.github.io/Porto/docs/Layers/Containers%20Layer),
+you will find a comprehensive range of [predefined Components](https://mahmoudz.github.io/Porto/docs/category/components),
 each with its specific responsibility.
 It is imperative to organize all your code within these Components to ensure proper structure and organization.
 
@@ -31,7 +31,3 @@ Components in Porto are categorized into two types: Main Components and Optional
 [Optional Components](../components/optional-components/index.md) offer additional functionality
 that can be incorporated into the Container.
 Their usage is discretionary, depending on specific requirements.
-
-:::tip
-To learn more about how all this fits together, read the [Request Lifecycle](./request-lifecycle.md) page.
-:::

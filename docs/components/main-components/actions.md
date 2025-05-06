@@ -27,7 +27,7 @@ php artisan apiato:list:actions
 
 ## Definition and Principles
 
-Read [**Porto SAP Documentation (#Actions)**](https://github.com/Mahmoudz/Porto#definitions--principles).
+Read [**Porto SAP Documentation (#Actions)**](https://mahmoudz.github.io/Porto/docs/category/main-components).
 
 ## Rules
 

@@ -17,7 +17,7 @@ php artisan apiato:make:exception
 
 ## Definition and Principles
 
-Read [**Porto SAP Documentation (#Exceptions)**](https://github.com/Mahmoudz/Porto#definitions--principles).
+Read [**Porto SAP Documentation (#Exceptions)**](https://mahmoudz.github.io/Porto/docs/category/main-components).
 
 ## Rules
 

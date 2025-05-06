@@ -25,7 +25,7 @@ php artisan apiato:make:subaction
 
 ## Definition and Principles
 
-Read [**Porto SAP Documentation (#Sub-Actions)**](https://github.com/Mahmoudz/Porto#definitions--principles).
+Read [**Porto SAP Documentation (#Sub-Actions)**](https://mahmoudz.github.io/Porto/docs/category/main-components).
 
 ## Rules
 

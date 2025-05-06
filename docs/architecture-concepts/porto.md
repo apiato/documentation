@@ -1,114 +1,37 @@
 ---
 sidebar_position: 1
-title: Porto
+title: Porto SAP
 tags:
   - architecture
   - porto
 ---
 
-[Porto SAP](https://mahmoudz.github.io/Porto/) is a modern software architectural pattern
-that offers developers a comprehensive set of guidelines,
-principles, and patterns to organize their code in a highly maintainable and reusable way.
-The primary goal of Porto is to help developers create software that is scalable,
-flexible, and easy to maintain over time.
+Apiato is built on the [**Porto SAP**](https://mahmoudz.github.io/Porto/) architectural pattern, a design specifically crafted to enhance scalability, maintainability, and reusability. By adopting Porto, Apiato provides a structured, modular way to organize code, which helps developers scale from a simple monolithic setup to complex microservices as the application grows.
 
-## Layers
+### What is Porto SAP?
 
-Porto's architecture is based on two layers: Containers and Ship.
+Porto SAP (Service Architecture Pattern) is a software architecture designed to bring clarity and structure to large applications. It introduces a well-defined organization for code, divided into two primary layers:
 
-### Containers
-The Containers layer encompasses all the application's business logic code and consists of two primary concepts:
-- Section
-- Container
+- **Containers Layer**: Houses the core business logic and functionality, with components grouped into modular, independent sections.
+- **Ship Layer**: Acts as the foundation, holding shared infrastructure, utilities, and configuration files accessible across Containers.
 
-#### Section
-A Section refers to a collection of related Containers.
-These Containers can represent various entities such as services
-(either micro or larger in scale) or subsystems within the main system.
+Porto emphasizes modularity and clean separation of concerns, ensuring each part of the application remains maintainable and reusable.
 
-:::note
-A Section is not allowed to directly communicate with another Section, except via Events or Commands.
-:::
+### Understanding the Full Porto Architecture
 
-#### Container
-A Container represents a cohesive set of related functionalities.
-It can be a specific feature or a wrapper around a RESTful API resource.
+For a thorough understanding of Porto's structure and benefits, it’s recommended to explore the [Porto Documentation](https://mahmoudz.github.io/Porto/docs/Intro/). The documentation covers essential concepts like:
+- **Layers and Components**: A deep dive into the Containers and Ship layers, as well as core components (Routes, Actions, Models, Tasks, and more).
+- **Architectural Principles**: Learn about the foundational principles Porto follows, such as SOLID, Domain-Driven Design (DDD), and MVC, that enhance Apiato's architecture.
+- **Scalability and Maintainability**: Insights into how Porto’s modular approach helps you build applications that can grow and adapt to changing requirements.
 
-:::note
-A Container is allowed to depend on other Containers in the same Section.
-:::
+Understanding the Porto architecture is highly recommended for anyone developing with Apiato, as it offers a clear blueprint for creating scalable, manageable applications.
 
-### Ship
-The Ship layer contains the infrastructure code, which consists of shared code utilized by all Containers.
+### Layers Diagram
 
-## Typical Project Structure
-```markdown
-app
-├── Containers
-│   ├── Section
-│   │   └── Container
-│   │       ├── Actions
-│   │       ├── Configs
-│   │       ├── Data
-│   │       │   ├── Factories
-│   │       │   ├── Migrations
-│   │       │   ├── Repositories
-│   │       │   └── Seeders
-│   │       ├── Mails
-│   │       │   └── Templates
-│   │       ├── Middlewares
-│   │       ├── Models
-│   │       ├── Notifications
-│   │       ├── Providers
-│   │       ├── Tasks
-│   │       ├── Tests
-│   │       ├── Traits
-│   │       └── UI
-│   │           ├── API
-│   │           │   ├── Controllers
-│   │           │   ├── Requests
-│   │           │   ├── Routes
-│   │           │   └── Transformers
-│   │           ├── WEB
-│   │           │   ├── Controllers
-│   │           │   ├── Requests
-│   │           │   ├── Routes
-│   │           │   └── Views
-│   │           └── CLI
-│   │               └── Commands
-│   └── Vendor `// All installed and reusable Containers`
-│       ├── ContainerA
-│       └── ContainerB
-└── Ship `// All shared code between all Containers`
-    ├── Broadcasts
-    ├── Commands
-    ├── Configs
-    ├── Contracts
-    ├── Criterias
-    ├── Events
-    ├── Exceptions
-    ├── Generators
-    ├── Helpers
-    ├── Kernels
-    ├── Listeners
-    ├── Mails
-    ├── Middlewares
-    ├── Migrations
-    ├── Notifications
-    ├── Parents
-    ├── Providers
-    ├── Seeders
-    └── Tests
-```
-## Default Sections
-Apiato ships with two default Sections:
-- **AppSection**: contains all the default Containers.
-- **Vendor**: contains all the installed and reusable Containers.
+  <img src="https://raw.githubusercontent.com/Mahmoudz/Porto/refs/heads/master/docs/static/img/diagrams/porto_layers.svg" width="100%" alt="Laradock: Full PHP development environment on Docker." />
 
-:::tip
-The **Vendor** section is a special Section within the Containers layer that holds installed and reusable Containers.
-It serves a similar purpose as the vendor folder located at the root.
-Any Section is permitted to depend on the Vendor Section, allowing for the utilization of its Containers.
 
-Read more about the [Container Installer](../pacakges/readme.md) to learn how to install Vendor Containers.
-:::
+
+### Components Diagram
+
+  <img src="https://raw.githubusercontent.com/Mahmoudz/Porto/refs/heads/master/docs/static/img/diagrams/porto_container_interactions.svg" width="100%" alt="Laradock: Full PHP development environment on Docker." />

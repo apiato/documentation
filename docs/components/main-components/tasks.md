@@ -30,7 +30,7 @@ php artisan apiato:list:tasks
 
 ## Definition and Principles
 
-Read [**Porto SAP Documentation (#Tasks)**](https://github.com/Mahmoudz/Porto#definitions--principles).
+Read [**Porto SAP Documentation (#Tasks)**](https://mahmoudz.github.io/Porto/docs/category/main-components).
 
 ## Rules
 

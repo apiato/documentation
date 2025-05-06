@@ -21,7 +21,7 @@ php artisan apiato:make:model
 
 ## Definition and Principles
 
-Read [**Porto SAP Documentation (#Models)**](https://github.com/Mahmoudz/Porto#definitions--principles).
+Read [**Porto SAP Documentation (#Models)**](https://mahmoudz.github.io/Porto/docs/category/main-components).
 
 ## Rules
 

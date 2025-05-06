@@ -22,7 +22,7 @@ php artisan apiato:make:request
 
 ## Definition and Principles
 
-Read [**Porto SAP Documentation (#Requests)**](https://github.com/Mahmoudz/Porto#definitions--principles).
+Read [**Porto SAP Documentation (#Requests)**](https://mahmoudz.github.io/Porto/docs/category/main-components).
 
 ## Rules
 
