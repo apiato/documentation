@@ -31,7 +31,7 @@ php artisan apiato:make:provider
 - All Service Providers:
   - MUST extend the `App\Ship\Parents\Providers\ServiceProvider` class.
   - The parent extension SHOULD be aliased as `ParentServiceProvider`.
-- When using Laravel [default service providers](#laravel-service-providers):
+- When using Laravel built-in Service Providers:
   - `EventServiceProvider` MUST extend `App\Ship\Parents\Providers\EventServiceProvider`.
   - `RouteServiceProvider` MUST extend `App\Ship\Parents\Providers\RouteServiceProvider`.
   - The parent extension SHOULD be aliased as `Parent{ServiceProviderName}`. For example: `ParentAuthServiceProvider`.

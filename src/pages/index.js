@@ -53,7 +53,7 @@ export default function Home() {
                 "button button--outline button--secondary button--lg",
                 styles.heroButton
               )}
-              to={useBaseUrl("docs/getting-started/introduction")}
+              to={useBaseUrl("docs/getting-started/installation")}
             >
               Get Started
             </Link>

@@ -112,8 +112,6 @@ app
 
 Apiato provides a variety of custom assertion methods that you may use when testing your application.
 
-[assertDatabaseTable](#assertDatabaseTable)  
-
 #### assertDatabaseTable
 > Available since Core v8.5.0
 
