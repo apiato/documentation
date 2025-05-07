@@ -31,7 +31,7 @@ Read [**Porto SAP Documentation (#Views)**](https://github.com/Mahmoudz/Porto#Vi
                             - ...
 ```
 
-### Code Sample {#code-samples}
+### Code Sample {#code-sample}
 
 #### Welcome page View
 

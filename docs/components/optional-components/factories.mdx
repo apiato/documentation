@@ -1,0 +1,68 @@
+---
+title: Factories
+tags:
+  - component
+  - optional-component
+  - factory
+  - model
+  - testing
+  - seeder
+---
+
+Apiato factories are just [Laravel Factories](https://laravel.com/docs/eloquent-factories),
+and they function in the exact same way as Laravel factories.
+However, they come with additional rules and conventions specific to Apiato.
+
+To generate new factories, you may use the `apiato:make:factory` interactive command:
+
+```
+php artisan apiato:make:factory
+```
+
+## Rules
+
+- Factory name MUST be the same as its corresponding model name and suffixed with `Factory`.
+- All Factories:
+  - MUST be placed in the `app/Containers/{Section}/{Container}/Data/Factories` directory.
+  - MUST extend the `App\Ship\Parents\Factories\Factory` class.
+    - The parent extension SHOULD be aliased as `ParentFactory`.
+
+## Folder Structure
+
+```markdown
+app
+└── Containers
+    └── Section
+        └── Container
+            └── Data
+                └── Factories
+                    ├── ModelFactory.php
+                    └── ...
+```
+
+## Code Example
+
+Factories are defined exactly as you would define them in Laravel.
+
+## Model and Factory Discovery
+
+When you use a factory, Laravel relies on conventions to determine the appropriate factory for the model.
+By default,
+Laravel will search for a factory in the `Database\Factories` namespace
+that has a class name matching the model name and is suffixed with `Factory`.
+
+However, in the case of Apiato, factories are distributed across the Containers,
+and they are not all within the same namespace.
+As a result, Apiato follows a different convention to locate the appropriate factory for a model.
+
+Apiato will look for factories in `app/Containers/{Section}/{Container}/Data/Factories` directories
+that has a class name matching the model name and is suffixed with `Factory`.
+
+If these conventions do not apply to your particular application, you may configure the factory discovery
+via the [Apiato Configuration](../../digging-deeper/advance-configuration.mdx#factories) class.
+
+:::note Custom Models
+Apiato factory discovery feature depends on some features available in Apiato models.
+If your model does not extend the `App\Ship\Parents\Models\Model` or the `App\Ship\Parents\Models\UserModel` class,
+refer to the [Custom Models](../../components/main-components/models/#custom-models) section for more information.
+:::

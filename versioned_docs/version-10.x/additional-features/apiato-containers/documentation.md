@@ -191,7 +191,7 @@ Private documentations route is protection with the `auth:web` middleware.
 In order to access it you need to have `admin` role or `access-private-docs` permission.
 To modify this behavior you can remove `hasDocAccess` from `check()` in `GetPrivateDocumentationRequest` and add your own role/permissions or update `HasDocAccessTrait`.
 
-Read Documentation Customization [Below](#documentation-container-customization):
+Read Documentation Customization [Below](#documentation-customization):
 
 ## Documentation Container Customization {#documentation-customization}
 

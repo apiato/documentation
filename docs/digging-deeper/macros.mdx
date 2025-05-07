@@ -1,0 +1,44 @@
+---
+sidebar_position: 30
+title: Macros
+tags:
+  - digging-deeper
+  - macros
+---
+
+Apiato augments some of the Laravel core classes with its own set of custom macros.
+Below is a list of these macros, along with their usage examples.
+
+## Collection Macros {#collection-macros}
+
+#### `containsDecodedHash`
+Decodes a hashed value and checks if the decoded value exists in the collection under the specified key.
+
+```php
+$collection = collect([...]);
+$exists = $collection->containsDecodedHash('hashedValue123', 'id');
+```
+
+#### `decode`
+Decodes all hashed string values in the collection or throws an exception if any value fails to decode.
+
+```php
+$decodedCollection = collect(['hash1', 'hash2'])->decode();
+```
+
+## Config Macros {#config-macros}
+
+#### `unset`
+Removes the given key or keys from the configuration repository at runtime.
+
+```php
+Config::unset('apiato.rate-limiter');
+Config::unset(['appSection-authentication.tokens-expire-in', 'apiato.defaults.app']);
+```
+
+## Request Macros {#request-macros}
+
+#### `sanitize`
+The `sanitize` method can be used to cleanse request data.
+
+Read more about it in the [Requests](../components/main-components/requests.md#sanitizing-input) section.

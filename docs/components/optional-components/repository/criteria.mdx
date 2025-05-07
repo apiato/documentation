@@ -1,0 +1,95 @@
+---
+sidebar_position: 2
+title: Criteria
+tags:
+  - component
+  - optional-component
+  - criteria
+  - repository
+  - action
+  - task
+---
+
+> To prevent overlap with the L5 Repository documentation, this page
+> exclusively delves into Apiato distinct features and configurations,
+> offering only a limited set of examples.
+> To learn more about Criteria and the L5 Repository package,
+> please refer to its [documentation](https://github.com/andersao/l5-repository).
+
+Criteria are specialized classes designed to encapsulate
+and apply query conditions when fetching data from a database using a [Repository](repositories.mdx).
+Unlike adding query conditions directly to a Repository or as a scope within a Model,
+Criteria offer distinct advantages.
+
+With Criteria, you can define query conditions in a reusable and shareable way.
+This means
+that a single query condition can be defined once and then
+used across multiple Models and Repositories in your application.
+This approach offers the flexibility to create query conditions once
+and apply them consistently anywhere in your application,
+enhancing code reusability and maintainability.
+
+## Rules
+
+- All container-specific Criteria MUST be placed in the `app/Containers/{Section}/{Container}/Data/Criterias` directory.
+- All general Criteria MUST be placed in the `app/Ship/Criteria` directory.
+- All Criteria MUST extend the `App\Ship\Parents\Criteria\Criteria` class.
+  - The parent extension SHOULD be aliased as `ParentCriteria`.
+- Every Criteria MUST have an `apply` method.
+- A Criteria MUST not contain any extra code. If it needs data, the data MUST be passed to it.
+
+## Folder Structure
+
+```markdown
+app
+├── Containers
+│   └── Section
+│       └── Container
+│           └── Data
+│               └── Criteria
+│                   ├── ColourRedCriteria.php
+│                   ├── RaceCarsCriteria.php
+│                   └── ...
+└── Ship
+    └── Criteria
+        ├── CreatedTodayCriteria.php
+        ├── NotNullCriteria.php
+        └── ...
+```
+
+## Code Example
+
+```php
+use App\Ship\Parents\Criteria\Criteria as ParentCriteria;
+use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
+
+class IsNullCriteria extends ParentCriteria
+{
+    public function __construct(
+        private readonly string $field
+    ) {
+    }
+
+    public function apply($model, PrettusRepositoryInterface $repository)
+    {
+        return $model->whereNull($this->field);
+    }
+}
+```
+
+### Applying Criteria
+A Criteria can be applied to a Repository by using the `pushCriteria` method.
+The `pushCriteria` method accepts an instance of a Criteria class or a string with the Criteria class name.
+You can also apply multiple Criteria to a Repository by using the `pushCriteria` method multiple times.
+
+```php
+public function run()
+{
+    $repository = app(UserRepository::class);
+
+    $repository->pushCriteria(new IsNullCriteria('email'));
+    $repository->pushCriteria(OrderByNameCriteria::class);
+
+    return $repository->paginate();
+}
+```

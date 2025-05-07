@@ -11,7 +11,7 @@ Apiato seeders are just [Laravel Seeders](https://laravel.com/docs/seeding),
 and they function in the exact same way as Laravel seeders.
 However, they come with additional rules and conventions specific to Apiato.
 
-To generate new seeders you may use the `apiato:generate:seeder` interactive command:
+To generate new seeders, you may use the `apiato:generate:seeder` interactive command:
 
 ```
 php artisan apiato:generate:seeder

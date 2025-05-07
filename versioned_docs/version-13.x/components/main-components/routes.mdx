@@ -1,0 +1,138 @@
+---
+sidebar_position: 1
+title: Routes
+tags:
+  - component
+  - main-component
+  - route
+  - controller
+  - request
+---
+
+[Routes](https://laravel.com/docs/routing) are responsible for mapping incoming HTTP requests to their corresponding controller functions.
+
+Apiato introduces a new approach to route organization
+and does not use the default `routes/web.php` and `routes/api.php` files.
+Therefore, you won't find these files in Apiato.
+
+To generate new routes, you may use the `apiato:make:route` interactive command:
+
+```
+php artisan apiato:make:route
+```
+
+## Definition and Principles
+
+Read [**Porto SAP Documentation (#Routes)**](https://mahmoudz.github.io/Porto/docs/category/main-components).
+
+## Rules
+
+- All API Routes:
+  - MUST be placed in the `app/Containers/{Section}/{Container}/UI/API/Routes` directory.
+  - MUST follow a specific [naming convention](#api-routes).
+- All Web Routes MUST be placed in the `app/Containers/{Section}/{Container}/UI/WEB/Routes` directory.
+- Each Route file MUST contain only one Route.
+
+## Folder Structure
+
+```markdown
+app
+└── Containers
+    └── Section
+        └── Container
+            └── UI
+                ├── API
+                │   └── Routes
+                │       ├── RouteA.v1.public.php
+                │       ├── RouteB.v2.public.php
+                │       ├── RouteC.v1.private.php
+                │       └── ...
+                └── WEB
+                    └── Routes
+                        ├── main.php
+                        └── ...
+```
+
+## Code Example
+
+Routes are defined exactly as you would define them in Laravel.
+
+## Route Loading
+Apiato is configured
+to load all route files in the `app/Containers/{Section}/{Container}/UI/API/Routes` and `app/Containers/{Section}/{Container}/UI/WEB/Routes` directories.
+
+If the default configuration does not suit your needs,
+you can customize it via the [Apiato Configuration](../../digging-deeper/advance-configuration.mdx#routing) class.
+
+## Route File Naming Convention
+
+### API Routes
+
+API Route files MUST be named based on their functionality, API version and exposure level (public/private).
+
+#### Examples of valid API Route file names:
+
+- `CreateOrder.v1.public.php`
+- `FulfillOrder.v2.public.php`
+- `CancelOrder.v1.private.php`
+
+### Web Routes
+
+Web Route files can have any appropriate name.
+
+## API Versioning
+
+This feature is `enabled` by default.
+
+Apiato provides a streamlined approach to implementing API versioning within your application.
+You can manage multiple versions of your API by creating separate route files for each version.
+
+Once API versioning is enabled,
+you can create new API endpoints and define their version numbers directly in the route file names.
+The route file names must adhere to the following naming convention:
+* `{endpoint-name}.{version-number}.{endpoint-visibility}.php`
+
+You may customize the API versioning resolution logic
+via the [Apiato Configuration](../../digging-deeper/advance-configuration.mdx#routing) class.
+
+By following this naming convention,
+the endpoint inside the specified route file will automatically become accessible by appending the version number to the URL.
+
+#### Some Examples:
+| Route File Name             | Route File Content                                            | Generated Route                           |
+|-----------------------------|---------------------------------------------------------------|-------------------------------------------|
+| `CreateOrder.v1.public.php` | `Route::post('orders', CreateOrderController::class);`        | [POST] `http://api.apiato.test/v1/orders` |
+| `CreateOrder.v2.public.php` | `Route::post('orders', AnotherCreateOrderController::class);` | [POST] `http://api.apiato.test/v2/orders` |
+| `ListOrders.v1.private.php` | `Route::get('orders', ListOrdersController::class);`          | [GET] `http://api.apiato.test/v1/orders`  |
+
+## Public and Private Routes {#public-private-routes}
+
+Apiato supports two types of endpoints, `Public` and `Private`, out of the box.
+Maintaining this distinction enables the generation of separate documentations for each type,
+ensuring that your internal API remains private and secure.
+This feature can be configured through the [Documentation Generator](../../pacakges/documentation.mdx) package.
+
+#### Public Routes:
+- Accessible to third parties.
+- May or may not require authentication.
+
+#### Private Routes:
+- Accessible only to your own apps.
+- May or may not require authentication.
+
+## Rate Limiting
+Apiato uses the [Laravel Rate Limiting](https://laravel.com/docs/rate-limiting) feature
+and comes with a default `api` rate limiter.
+The `api` rate limiter is only applied to API routes and not to web routes and is _enabled_ by default.
+
+### Disable Rate Limiting
+The `api` rate limiter can be disabled on specific routes or globally via the [configs](#configuration) class.
+To disable rate limiting on a specific route, you can use the `withoutMiddleware` method.
+
+```php
+Route::post('orders', CreateOrderController::class)
+    ->withoutMiddleware('throttle:api');
+```
+
+### Configuration
+Rate limiting configuration is done in the `app/Ship/Configs/apiato.php` config file.

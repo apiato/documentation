@@ -3,7 +3,6 @@ title: Exceptions
 ---
 
 * [Definition & Principles](#definition-principles)
-* [Principles](#principles)
 * [Rules](#rules)
 * [Folder Structure](#folder-structure)
 * [Code Samples](#code-samples)

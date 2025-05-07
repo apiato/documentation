@@ -15,8 +15,6 @@ title: Query Parameters
     - [Search Join](#search-join)
   - [Filtering](#filtering)
 - [Pagination](#pagination)
-  - [Limit](#limit)
-  - [Skip the Pagination Limit](#skip-the-pagination-limit)
 - [Relationships (include)](#relationships-include)
 - [Skip caching](#skip-caching)
 - [Configuration](#configuration)

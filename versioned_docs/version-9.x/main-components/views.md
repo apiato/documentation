@@ -32,7 +32,7 @@ Read from the [**Porto SAP Documentation (#Views)**](https://github.com/Mahmoudz
                         - ...
 ```
 
-### Code Sample {#code-samples}
+### Code Sample {#code-sample}
 
 **Welcome page View**
 
