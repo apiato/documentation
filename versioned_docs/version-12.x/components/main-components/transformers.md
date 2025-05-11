@@ -306,7 +306,7 @@ use League\Fractal\Resource\Primitive;
 
 public function includeRelation(Model $model): Primitive|Item
 {
-    return $this->nullableItem($model->relation, new RelationTransformer();
+    return $this->nullableItem($model->relation, new RelationTransformer());
 }
 ```
 
