@@ -3,10 +3,31 @@ sidebar_position: 2
 title: Upgrade Guide
 ---
 
-#### Upgrading Laravel to 11.0 from 10.x
+Apiato 13.x is a major release that introduces breaking changes and new features.
+This release is compatible with Laravel 11.x and 12.x.
+
+## Upgrade Path
+- [Upgrade](#upgrade-laravel-11) to Laravel 11.x from 10.x.
+- [Upgrade](#upgrade-apiato-13) to Apiato and Core 13.0 from 12.x and 8.x respectively.
+- [Upgrade](#upgrade-laravel-12) to Laravel 12.x from 11.x.
+
+#### Upgrading Laravel to 11.0 from 10.x {#upgrade-laravel-11}
 Follow the official [Laravel 11 upgrade guide](https://laravel.com/docs/11.x/upgrade) to update your codebase accordingly.
 
-#### Upgrading Apiato to 13.0 from 12.x and Core to 13.0 from 8.x
+#### Upgrading Laravel to 12.0 from 11.x {#upgrade-laravel-12}
+Follow the official [Laravel 12 upgrade guide](https://laravel.com/docs/12.x/upgrade)
+to update your codebase accordingly.
+
+Update the `apiato/core` package to version [13.1](https://github.com/apiato/core/releases/tag/v13.1.0),
+as this is the only compatible version with Laravel 12.x.
+
+The most significant change involves the `laravel/passport` package.
+Follow the official [Laravel Passport 13 upgrade guide](https://github.com/laravel/passport/blob/13.x/UPGRADE.md#upgrading-to-130-from-12x)
+to update your codebase accordingly.
+You can review the [Laravel 12.x support](https://github.com/apiato/apiato/pull/781/files) pull request
+to help you with the upgrade process and identify any other modifications required to adapt your codebase.
+
+#### Upgrading Apiato to 13.0 from 12.x and Core to 13.0 from 8.x {#upgrade-apiato-13}
 This guide will walk you through upgrading Apiato and your project to the latest versions.
 
 ## Upgrade Utilities
