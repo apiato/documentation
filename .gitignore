@@ -13,7 +13,6 @@
 .sass-cache
 _site
 _docs
-yarn.lock
 
 # Misc
 .DS_Store
