@@ -78,7 +78,7 @@ export default function Home() {
           <div className="container">
             <div className="text--center">
               <a
-                href="https://smart.sista.ai/?utm_source=docs_apiato&utm_medium=sponsor&utm_campaign=landing_page"
+                href="https://smart.sista.ai/?utm_source=apiato&utm_medium=sponsor_banner&utm_campaign=landing_page"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -86,12 +86,15 @@ export default function Home() {
                   src={sponsorLogo}
                   alt="Sponsor Logo"
                   className={styles.sponsorLogo}
+                  style={{
+                    maxWidth: '450px',
+                    width: '100%',
+                    height: 'auto'
+                  }}
                 />
               </a>
               <p>
-                <strong>
-                  Turn Your App Smart with a Plug-and-Play AI Voice Assistant.
-                </strong>
+                <b>Plug-and-Play <a href="https://smart.sista.ai/?utm_source=apiato&utm_medium=sponsor_banner&utm_campaign=landing_page" target="_blank" style={{ color: '#8098f8' }}>AI Agents</a> for Apps & Websites</b>
               </p>
             </div>
           </div>
