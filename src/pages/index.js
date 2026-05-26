@@ -6,16 +6,18 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import features from "../features";
-import sponsorLogo from "../../static/sponsors/sista-ai.png";
+import sponsorLogo from "../../static/sponsors/sistava-logo.png";
+
+config.autoAddCss = false;
 
 function Feature({ icon, description }) {
   return (
     <div className={clsx("col col--3", styles.features)}>
-      {" "}
-      {/* Adjusted column size for better layout */}
       <div className={styles.featureIcon}>
-        <FontAwesomeIcon icon={icon} size={"3x"} color={"#4457C1"} />
+        <FontAwesomeIcon icon={icon} size="3x" color="#4457C1" />
       </div>
       <p className={styles.featureDescription}>{description}</p>
     </div>
@@ -23,27 +25,18 @@ function Feature({ icon, description }) {
 }
 
 export default function Home() {
-  const context = useDocusaurusContext();
-  const { siteConfig = {} } = context;
+  const { siteConfig = {} } = useDocusaurusContext();
   return (
     <Layout description="A scalable and enterprise-grade framework layered atop Laravel">
       <header className={clsx("hero hero--primary", styles.heroBanner)}>
         <div className="container">
           <h1 className={clsx(styles.heroTitle, "text--center")}>
             {siteConfig.title}
-          </h1>{" "}
-          {/* Centered title */}
+          </h1>
           <div className="row">
             <div className="col col--8 col--offset-2">
-              {" "}
-              {/* Adjusted column size and offset for better layout */}
-              <p
-                className={clsx(styles.heroSubtitle, "text--center")}
-                style={{ fontSize: "2.5em" }}
-              >
-                {" "}
-                {/* Increased font size and centered text */}A powerful PHP web
-                framework for building scalable, enterprise-grade APIs.
+              <p className={clsx(styles.heroSubtitle, "text--center")}>
+                A powerful PHP web framework for building scalable, enterprise-grade APIs.
               </p>
             </div>
           </div>
@@ -61,8 +54,7 @@ export default function Home() {
         </div>
       </header>
       <main>
-        <h1 className={clsx(styles.title, "text--center")}>Top Features</h1>{" "}
-        {/* Centered title */}
+        <h2 className={clsx(styles.title, "text--center")}>Top Features</h2>
         {features && features.length > 0 && (
           <section className={styles.features}>
             <div className="container">
@@ -78,23 +70,19 @@ export default function Home() {
           <div className="container">
             <div className="text--center">
               <a
-                href="https://smart.sista.ai/?utm_source=apiato&utm_medium=sponsor_banner&utm_campaign=landing_page"
+                href="https://sistava.com/?utm_source=apiato&utm_medium=sponsor_banner&utm_campaign=landing_page"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <img
                   src={sponsorLogo}
-                  alt="Sponsor Logo"
+                  alt="Sistava - Hire AI Employees to Run Your Business."
                   className={styles.sponsorLogo}
-                  style={{
-                    maxWidth: '450px',
-                    width: '100%',
-                    height: 'auto'
-                  }}
+                  loading="lazy"
                 />
               </a>
-              <p>
-                <b>Plug-and-Play <a href="https://smart.sista.ai/?utm_source=apiato&utm_medium=sponsor_banner&utm_campaign=landing_page" target="_blank" style={{ color: '#8098f8' }}>AI Agents</a> for Apps & Websites</b>
+              <p className={styles.sponsorTagline}>
+                <b>Hire <a href="https://sistava.com/?utm_source=apiato&utm_medium=sponsor_banner&utm_campaign=landing_page" target="_blank" rel="noopener noreferrer">AI Employees</a> to Run Your Business</b>
               </p>
             </div>
           </div>

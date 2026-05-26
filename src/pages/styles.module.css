@@ -41,8 +41,15 @@ html[data-theme="light"] .heroButton {
 }
 
 .heroSubtitle {
-  font-size: 1em;
+  font-size: 2.5em;
   margin-top: 1.5rem;
+  line-height: 1.25;
+}
+
+@media screen and (max-width: 768px) {
+  .heroSubtitle {
+    font-size: 1.6em;
+  }
 }
 
 .heroButton {
@@ -120,11 +127,23 @@ html[data-theme="light"] .sponsors {
 }
 
 .sponsorLogo {
-  width: 550px;
+  max-width: 450px;
+  width: 100%;
   height: auto;
-  margin-bottom: 40px;
+  margin-bottom: 12px;
 }
 
 .sponsors p {
-  font-size: 18px;
+  font-size: 22px;
+  letter-spacing: 0.2px;
+  margin-top: 0;
+}
+
+.sponsorTagline a {
+  color: #8098f8;
+}
+
+.sponsorTagline a:hover {
+  color: #a8b8ff;
+  text-decoration: underline;
 }

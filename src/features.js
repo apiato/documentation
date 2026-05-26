@@ -1,22 +1,21 @@
-import React from 'react';
 import {
+  faArrowsLeftRight,
+  faBook,
   faDatabase,
   faFileAlt,
   faFileCode,
+  faGears,
+  faHandsHelping,
   faHashtag,
   faHdd,
   faLanguage,
-  faTags
-} from '@fortawesome/free-solid-svg-icons';
-import {faFacebook} from '@fortawesome/free-brands-svg-icons';
-import {faGears} from "@fortawesome/free-solid-svg-icons/faGears";
-import {faBook} from "@fortawesome/free-solid-svg-icons/faBook";
-import {faArrowsLeftRight} from "@fortawesome/free-solid-svg-icons/faArrowsLeftRight";
-import {faLock} from "@fortawesome/free-solid-svg-icons/faLock";
-import {faSortNumericUpAlt} from "@fortawesome/free-solid-svg-icons/faSortNumericUpAlt";
-import {faUserLock} from "@fortawesome/free-solid-svg-icons/faUserLock";
-import {faTools} from "@fortawesome/free-solid-svg-icons/faTools";
-import {faHandsHelping} from "@fortawesome/free-solid-svg-icons/faHandsHelping";
+  faLock,
+  faSortNumericUpAlt,
+  faTags,
+  faTools,
+  faUserLock,
+} from "@fortawesome/free-solid-svg-icons";
+import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 
 const features = [
 

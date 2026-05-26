@@ -8,7 +8,7 @@ const darkTheme = themes.dracula;
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Apiato",
-  tagline: "Unearth Scale, Ignite Speed and Conquer Complexity",
+  tagline: "Unearth Scale, Ignite Speed, and Conquer Complexity",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
@@ -23,7 +23,11 @@ const config = {
   projectName: "documentation", // Usually your repo name.
 
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "throw",
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "throw",
+    },
+  },
 
   // Even if you don't use internationalization, you can use this field to set useful
   // metadata like HTML lang.
@@ -73,10 +77,6 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      announcementBar: {
-        id: "announcementBar-3", // Increment on change
-        content: `If you like Apiato, give it a ⭐️ on <a target="_blank" rel="noopener noreferrer" href="https://github.com/apiato/apiato">GitHub</a>`,
-      },
       docs: {
         sidebar: {
           hideable: true,
@@ -131,61 +131,8 @@ const config = {
       },
       footer: {
         style: "dark",
-        //   links: [
-        //     {
-        //       title: 'Docs',
-        //       items: [
-        //         {
-        //           label: 'Getting Started',
-        //           to: '/docs',
-        //         },
-        //         {
-        //           label: 'Porto Architecture',
-        //           to: 'https://github.com/Mahmoudz/Porto#porto-software-architectural-pattern',
-        //         },
-        //       ],
-        //     },
-        //     {
-        //       title: 'Community',
-        //       items: [
-        //         {
-        //           label: 'Discord Server',
-        //           href: 'https://discord.gg/ryPcV4KM5k',
-        //         },
-        //         {
-        //           label: 'GitHub Issues',
-        //           href: 'https://github.com/apiato/apiato/issues',
-        //         },
-        //       ],
-        //     },
-        //     {
-        //       title: 'Contributors',
-        //       items: [
-        //         {
-        //           label: 'Contribution Guide',
-        //           href: '/docs/contribution-guide',
-        //         },
-        //         {
-        //           label: 'Code of Conduct',
-        //           href: 'https://github.com/apiato/apiato/blob/9.0/CODE_OF_CONDUCT.md',
-        //         },
-        //       ],
-        //     },
-        //     {
-        //       title: 'Sponsors',
-        //       items: [
-        //         {
-        //           label: 'Our Sponsors',
-        //           href: 'https://github.com/apiato/apiato#sponsors',
-        //         },
-        //         {
-        //           label: 'Become a Sponsor',
-        //           href: 'https://opencollective.com/apiato',
-        //         },
-        //       ],
-        //     },
-        //   ],
-        copyright: `Copyright © 2016 - ${new Date().getFullYear()}`,
+        links: [],
+        copyright: `Copyright © 2016 - ${new Date().getFullYear()} - Apiato. Maintained by <a href="https://zalt.me" target="_blank" rel="noopener noreferrer">Mahmoud Zalt</a>, also building <a href="https://sistava.com" target="_blank" rel="noopener noreferrer">Sistava</a> at <a href="https://sista.ai" target="_blank" rel="noopener noreferrer">Sista AI</a>.`,
       },
       prism: {
         additionalLanguages: [

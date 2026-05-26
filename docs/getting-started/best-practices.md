@@ -9,13 +9,13 @@ Therefore, it’s crucial to design REST APIs properly so that we won’t run in
 We have to take into account security, performance, and ease of use for API consumers.
 
 Otherwise, we create problems for clients that use our APIs,
-which isn’t pleasant and detracts people from using our API.
+which isn’t pleasant and deters people from using our API.
 If we don’t follow commonly accepted conventions,
-then we confuse the maintainers of the API and the clients
-that use them since it is different from what everyone expects.
+we confuse both the maintainers of the API and the clients that consume it,
+since the behavior differs from what everyone expects.
 
-In this article, we'll look at how to design REST APIs to be easy to understand for anyone consuming them, future-proof,
-and secure and fast since they serve data to clients that may be confidential.
+In this article, we'll look at how to design REST APIs that are easy to consume, future-proof, secure, and fast,
+since they serve data to clients that may handle confidential information.
 
 ## What Is A RESTful API? {#what-is-a-restful-api}
 
