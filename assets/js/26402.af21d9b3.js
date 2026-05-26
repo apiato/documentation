@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkapiato_documentation=self.webpackChunkapiato_documentation||[]).push([[26402],{26402:(e,t,a)=>{a.d(t,{createArchitectureServices:()=>c.S});var c=a(45016);a(69302)}}]);

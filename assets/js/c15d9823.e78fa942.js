@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkapiato_documentation=self.webpackChunkapiato_documentation||[]).push([[18146],{29328:t=>{t.exports=JSON.parse('{"metadata":{"permalink":"/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":0,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
