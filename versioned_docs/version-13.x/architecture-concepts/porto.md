@@ -10,7 +10,7 @@ Apiato is built on the [**Porto SAP**](https://mahmoudz.github.io/Porto/) archit
 
 ### What is Porto SAP?
 
-Porto SAP (Service Architecture Pattern) is a software architecture designed to bring clarity and structure to large applications. It introduces a well-defined organization for code, divided into two primary layers:
+Porto SAP (Software Architectural Pattern) is a software architecture designed to bring clarity and structure to large applications. It introduces a well-defined organization for code, divided into two primary layers:
 
 - **Containers Layer**: Houses the core business logic and functionality, with components grouped into modular, independent sections.
 - **Ship Layer**: Acts as the foundation, holding shared infrastructure, utilities, and configuration files accessible across Containers.
@@ -28,10 +28,10 @@ Understanding the Porto architecture is highly recommended for anyone developing
 
 ### Layers Diagram
 
-  <img src="https://raw.githubusercontent.com/Mahmoudz/Porto/refs/heads/master/docs/static/img/diagrams/porto_layers.svg" width="100%" alt="Laradock: Full PHP development environment on Docker." />
+  <img src="https://raw.githubusercontent.com/Mahmoudz/Porto/refs/heads/master/docs/static/img/diagrams/porto_layers.svg" width="100%" alt="Porto Layers Diagram" />
 
 
 
 ### Components Diagram
 
-  <img src="https://raw.githubusercontent.com/Mahmoudz/Porto/refs/heads/master/docs/static/img/diagrams/porto_container_interactions.svg" width="100%" alt="Laradock: Full PHP development environment on Docker." />
+  <img src="https://raw.githubusercontent.com/Mahmoudz/Porto/refs/heads/master/docs/static/img/diagrams/porto_container_interactions.svg" width="100%" alt="Porto Container Interactions Diagram" />

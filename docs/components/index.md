@@ -4,6 +4,8 @@ title: Components
 
 import DocCardList from '@theme/DocCardList';
 
+Apiato organizes all application code into **Components**: small, single-responsibility building blocks that keep your codebase consistent, modular, and easy to maintain.
+
 The keywords "MUST", "MUST NOT", "REQUIRED",
 "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY",
 and "OPTIONAL"
