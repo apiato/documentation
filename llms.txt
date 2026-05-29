@@ -1,0 +1,14 @@
+# Apiato
+
+> A modern PHP framework built on top of Laravel for building scalable, maintainable APIs. Ships authentication, versioning, and proven patterns out of the box, on a clean architecture (the Porto pattern) that scales from monolith to microservices. Free, open-source (MIT).
+
+## Docs
+
+- [Introduction](https://apiato.io/docs/getting-started/introduction): What Apiato is, why use it, and its core features.
+- [Architecture Concepts](https://apiato.io/docs/architecture-concepts): The Porto pattern, the Containers and Ship layers, and how the codebase is organized.
+- [Components](https://apiato.io/docs/components): Main and Optional components (Actions, Tasks, Models, Routes, Requests, Transformers, and more) with usage guidelines.
+
+## Source
+
+- [Framework repository](https://github.com/apiato/apiato)
+- [Porto pattern](https://mahmoudz.github.io/Porto/)
