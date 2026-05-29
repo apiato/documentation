@@ -14,6 +14,10 @@ import {
   faTags,
   faTools,
   faUserLock,
+  faStopwatch,
+  faCircleCheck,
+  faListCheck,
+  faTableColumns,
 } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 
@@ -85,6 +89,22 @@ const features = [
   {
     icon: faBook,
     description: "Comprehensive Documentation",
+  },
+  {
+    icon: faStopwatch,
+    description: "Rate Limiting",
+  },
+  {
+    icon: faCircleCheck,
+    description: "Request Validation",
+  },
+  {
+    icon: faListCheck,
+    description: "Queues & Background Jobs",
+  },
+  {
+    icon: faTableColumns,
+    description: "Database Migrations & Factories",
   },
 ];
 
