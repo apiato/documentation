@@ -23,7 +23,10 @@ const config = {
   projectName: "documentation", // Usually your repo name.
 
   onBrokenLinks: "throw",
+  // Single markdown config. (Previously declared twice — the second `markdown`
+  // key silently clobbered this one, dropping the broken-link hook.)
   markdown: {
+    mermaid: true,
     hooks: {
       onBrokenMarkdownLinks: "throw",
     },
@@ -36,6 +39,68 @@ const config = {
     defaultLocale: "en",
     locales: ["en"],
   },
+
+  // Structured-data identity for Google Knowledge Graph + LLM citations.
+  // Apiato's author Mahmoud Zalt is linked to his Wikidata item (Q140002792).
+  headTags: [
+    {
+      tagName: "script",
+      attributes: { type: "application/ld+json" },
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        name: "Apiato",
+        alternateName: "Apiato PHP Framework",
+        url: "https://apiato.io",
+        sameAs: ["https://github.com/apiato/apiato"],
+        applicationCategory: "DeveloperApplication",
+        applicationSubCategory: "PHP API Framework",
+        operatingSystem: "Linux, macOS, Windows",
+        programmingLanguage: "PHP",
+        softwareRequirements: "PHP, Laravel",
+        license: "https://opensource.org/licenses/MIT",
+        datePublished: "2016-01-01",
+        isAccessibleForFree: true,
+        keywords:
+          "PHP, Laravel, API, framework, Porto, clean architecture, scalable API, REST API",
+        image: "https://apiato.io/img/apiato.png",
+        downloadUrl: "https://github.com/apiato/apiato",
+        softwareHelp: "https://apiato.io/docs/getting-started/introduction",
+        description:
+          "A modern PHP framework built on top of Laravel for building scalable, maintainable APIs using the Porto clean-architecture pattern.",
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+        },
+        author: {
+          "@type": "Person",
+          name: "Mahmoud Zalt",
+          url: "https://zalt.me",
+          sameAs: ["https://www.wikidata.org/wiki/Q140002792"],
+        },
+      }),
+    },
+    {
+      tagName: "script",
+      attributes: { type: "application/ld+json" },
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: "Apiato",
+        url: "https://apiato.io",
+        description:
+          "Official documentation for Apiato, a PHP API framework built on Laravel.",
+        inLanguage: "en",
+        publisher: {
+          "@type": "Person",
+          name: "Mahmoud Zalt",
+          url: "https://zalt.me",
+          sameAs: ["https://www.wikidata.org/wiki/Q140002792"],
+        },
+      }),
+    },
+  ],
 
   presets: [
     [
@@ -65,13 +130,17 @@ const config = {
           trackingID: "G-CVZBKZ36Y5", // Update with your Google Analytics ID
           anonymizeIP: true,
         },
+        sitemap: {
+          changefreq: "weekly",
+          priority: 0.5,
+          lastmod: "date",
+          ignorePatterns: ["/search", "/tags/**"],
+          filename: "sitemap.xml",
+        },
       }),
     ],
   ],
 
-  markdown: {
-    mermaid: true,
-  },
   themes: ["@docusaurus/theme-mermaid"],
 
   themeConfig:
@@ -91,8 +160,16 @@ const config = {
         searchPagePath: false,
         //... other Algolia params
       },
-      // Replace with your project's social card
-      // image: 'img/docusaurus-social-card.jpg',
+      // Default social card + SEO meta (per-page frontmatter can override).
+      image: "img/apiato.png",
+      metadata: [
+        {
+          name: "keywords",
+          content:
+            "apiato, php framework, laravel api, porto pattern, clean architecture, rest api, scalable api, php api framework",
+        },
+        { name: "twitter:card", content: "summary_large_image" },
+      ],
       navbar: {
         title: "Apiato",
         logo: {
